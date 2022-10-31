@@ -11,7 +11,7 @@
     <volumeId>Default</volumeId>
     <categoryId>PCP</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
-    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Gestor&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;GestorSolicitacoesPCP&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -29,10 +29,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Antecipação</processId>
-      <version>3</version>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>383</formId>
+    <formId>5610</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -61,7 +61,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitantesFormularios&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitaAntecipao&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -106,13 +106,13 @@
       </processStatePK>
       <stateName>ANALISA_ANTECIPACAO</stateName>
       <stateDescription>ANALISA_ANTECIPACAO</stateDescription>
-      <instruction></instruction>
+      <instruction>SolicitaAntecipao</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;AnalisaRelatorio&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;GestorSolicitacoesPCP&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -294,7 +294,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Antecipação</processId>
-        <version>3</version>
+        <version>1</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

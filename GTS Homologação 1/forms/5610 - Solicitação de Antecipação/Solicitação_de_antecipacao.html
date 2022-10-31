@@ -1,0 +1,141 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	
+	<!-- Campos para usos internos  -->
+	<input type="hidden" name="numFluig" id="numFluig" >
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+
+	<div class="col-sm-12">
+	    <div class="row banner-header">
+	        <font color="000" ><h1><strong id="cabecalho">Solicitação de Antecipação</strong></h1></font>
+	    </div>
+	</div>
+	
+	<div id="divSolicitacao" class="col-md-12"  >
+		<div class="row">
+	        <div class="col-md-12"  style="text-align:left">
+	       		<h4 ><strong>Dados das Maquinas</strong></h4>
+	       		<hr />  
+	        </div>
+	    </div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">		            
+					<!--  https://tdn.totvs.com/pages/releaseview.action?pageId=75270483-->
+					<div class="col-md-1 col-md-offset-2" align="left">
+						<label for="solicitacaoId">Número da Solicitação</label>
+						<input type="text" name="solicitacaoId" id="solicitacaoId" class="form-control" readonly/>
+		            </div>
+					<div class="col-md-4 col-md-offset-3" align="left">
+						<label for="solNomeSolicitante">Nome Solicitante</label>
+						<input type="text" name="solNomeSolicitante" id="solNomeSolicitante" class="form-control" data-protection="solNomeSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante do reembolso" readonly/>
+		            </div>  
+	     		</div>
+	     		<!-- Maquinas -->
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2" align="left">
+					<table class="table table-condensed table-nonfluid table-striped col-md-1 "  id="solTbMaquinas" tablename="solTbMaquinas" noaddbutton="true" customFnDelete="removeDespesa(this)">
+						<thead>
+							<tr>	
+								<th class="col-md-2">Número do Pedido</th>
+								<th class="col-md-3">Produto</th>		
+								<th class="col-md-3">Descrição do Produto</th>
+								<th class="col-md-4">Prazo da Solicitação</th>		
+							</tr>
+						</thead>
+						<tbody>
+							<tr detail="true" detailname="solTbMaquinas" >
+								<td>
+									<input type="text" name="solPedido" id="solPedido" class="form-control" onKeyPress="validafunctions.setNumNoFormat(this.id, 0, false , '')"/>
+								</td>
+								<td>	
+									<input type="text" id="solProduto"  name="solProduto" class="form-control itSolValorReembolsoItem"/>
+								</td>
+								<td>
+									<input type="text" id="solDesc"  name="solDesc" class="form-control" readonly/>
+								</td>
+								<td>
+									<div class="input-group">
+										<input type="text" class="form-control data" name="solPrazo" id="solPrazo" />				
+										<span class="input-group-addon">
+											<span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			<!--<div class="row">
+					<div class="col-md-2 col-md-offset-5" align="left">
+						<div id="divNovaMaquina" style="display:none;">
+			            	<br>
+							<button type="button" class="btn btn-primary" id="addMaquina" style="min-width: 130px;">Adicionar Máquina <i class="fluigicon fluigicon-plus-circle icon-sm"></i></button>
+						</div>			
+					</div>
+				</div>-->
+	     	</div>		
+	    </div>
+	
+	<!-- Aprovacação PCP-->
+	<div id="divAprovacao" style="display:none;"  class="col-md-12">
+	    <div class="col-md-12"  style="text-align:left">
+	   		<h4 ><strong>Aprovação PCP</strong></h4>
+	   		<hr />  
+	    </div>
+		<div class="row">
+			<div  class="col-md-10 col-md-offset-2">
+				<div class="col-md-2" align="left">
+					<label for="solPrazoAprov">Prazo da Solicitação</label>
+					<div class="input-group">
+										<input type="text" class="form-control data" name="solPrazo" id="solPrazo" />				
+										<span class="input-group-addon">
+											<span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+				</div>
+				<div class="col-md-4" align="left">
+					<label for="obsAntecipacao">Observação*</label>
+					<textarea rows="1" cols="6" name="obsAntecipacao" id="obsAntecipacao" class="form-control " ></textarea>
+				</div>
+				<div class="col-md-4" align="left">
+					<label for="obsAntecipacao">Antecipação*</label>
+					<div class="radio input-group">
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="aprovAntecipacao" value="aprovado" id="aprovAntecipacaoAprovado" />
+							<label for="aprovAntecipacaoAprovado">Antecipação Aprovada</label>
+						</div>
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="aprovAntecipacao" value="reprovado" id="aprovAntecipacaoReprovado" />
+							<label for="aprovAntecipacaoReprovado">Antecipação Reprovada</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+</form>
+</div>
+</body>
+</html>

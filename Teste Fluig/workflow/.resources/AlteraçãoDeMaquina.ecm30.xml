@@ -5,13 +5,13 @@
       <processId>AlteraçãoDeMaquina</processId>
     </processDefinitionPK>
     <processDescription>Alteração de Maquina</processDescription>
-    <instruction></instruction>
+    <instruction>Solicita a Alteração de Maquina</instruction>
     <active>true</active>
     <publicProcess>true</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>PCP</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
-    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Gestor&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;GestorSolicitacoesPCP&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -29,10 +29,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Alteração de Maquina</processId>
-      <version>10</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>361</formId>
+    <formId>5608</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -56,12 +56,14 @@
       </processStatePK>
       <stateName>Início</stateName>
       <stateDescription>Início</stateDescription>
-      <instruction>Pedido, Produto Atual, Descrição, Produto Destino, Descrição, data da solicitação - prazo para solicitação</instruction>
+      <instruction>SolicitaAlteracaoMaquina&#xd;
+&#xd;
+Pedido, Produto Atual, Descrição, Produto Destino, Descrição, data da solicitação - prazo para solicitação</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitantesFormularios&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitaAlteracaoMaquina&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -106,13 +108,15 @@
       </processStatePK>
       <stateName>ANALISA_ALTERACAO</stateName>
       <stateDescription>ANALISA_ALTERACAO</stateDescription>
-      <instruction>Aceite, Data Prevista, Observação</instruction>
+      <instruction>GestorSolicitacoesPCP&#xd;
+&#xd;
+Aceite, Data Prevista, Observação</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;AnalisaRelatorio&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;GestorSolicitacoesPCP&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -328,7 +332,7 @@ process.instructions=</eventDescription>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AlteraçãoDeMaquina</processId>
-        <version>10</version>
+        <version>2</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

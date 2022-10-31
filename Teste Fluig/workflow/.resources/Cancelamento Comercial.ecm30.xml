@@ -11,7 +11,7 @@
     <volumeId>Default</volumeId>
     <categoryId>PCP</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
-    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Gestor&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;GestorSolicitacoesPCP&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -29,10 +29,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Cancelamento Comercial</processId>
-      <version>3</version>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>375</formId>
+    <formId>5609</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -56,12 +56,14 @@
       </processStatePK>
       <stateName>Início</stateName>
       <stateDescription>Início</stateDescription>
-      <instruction>Pedido, Produto Atual, Descrição, Produto Destino, Descrição, data da solicitação - prazo para solicitação</instruction>
+      <instruction>SolicitaCancelamentoMaquina&#xd;
+&#xd;
+Pedido, Produto Atual, Descrição, Produto Destino, Descrição, data da solicitação - prazo para solicitação</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitantesFormularios&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitaAlteracaoMaquina&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -106,13 +108,13 @@
       </processStatePK>
       <stateName>ANALISA_CANCELAMENTO</stateName>
       <stateDescription>ANALISA_CANCELAMENTO</stateDescription>
-      <instruction></instruction>
+      <instruction>GestorSolicitacoesPCP</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;AnalisaRelatorio&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;GestorSolicitacoesPCP&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -294,7 +296,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Cancelamento Comercial</processId>
-        <version>3</version>
+        <version>2</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
