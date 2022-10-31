@@ -1713,7 +1713,7 @@
     <fonts name="Arial" size="8"/>
     <fonts bold="true" name="Arial" size="8"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess author="" cardIndex="5606" category="PCP" complementsLevel="1" expedient="Default" extendedFields="&lt;list/&gt;" formSource="server" id="Solicita&#231;&#227;o de Pe&#231;as" instruction="" keyWord="" managerAssignmentController="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;&#10;  &lt;groupId&gt;GestorSolicitaoPecas&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;" managerMechanism="Grupo" name="Solicita&#231;&#227;o de Pe&#231;as" notifyRequisitionerComplements="true" notifyResponsibleComplements="true" publicProcess="true" serverId="GTS Homologa&#231;&#227;o" version="5" volume="Default"/>
+  <bpmn2:BpmnProcess author="" category="PCP" complementsLevel="1" expedient="Default" extendedFields="&lt;list/&gt;" formSource="server" id="Solicita&#231;&#227;o de Pe&#231;as" instruction="" keyWord="" managerAssignmentController="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;&#10;  &lt;groupId&gt;GestorSolicitaoPecas&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;" managerMechanism="Grupo" name="Solicita&#231;&#227;o de Pe&#231;as" notifyRequisitionerComplements="true" notifyResponsibleComplements="true" publicProcess="true" serverId="GTS Homologa&#231;&#227;o" version="4" volume="Default"/>
   <bpmn2:BpmnPool cores="FFFFFF" id="pool1" name="Pool"/>
   <bpmn2:BpmnSwimLane cores="9F9F9F" id="swimlane2" name="Comercial"/>
   <bpmn2:BpmnSwimLane cores="C0C0C0" id="swimlane3" name="PCP"/>

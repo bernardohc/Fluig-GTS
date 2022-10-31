@@ -13,7 +13,7 @@ var funcoes = (function() {
 			eventsFuncoes.setup();
 		},
 		// limpa campos ao sair
-		limpaCamposItem: function(indexItem){
+		limpaCamposItem: function(index){
 			$("#solProduto___"+indexItem).val('');
 			$("#solDescAtual___"+indexItem).val('');
 		},
