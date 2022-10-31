@@ -107,7 +107,7 @@ function loadForm() {
 			defaultDate : today
 		});
 
-	} else if (CURRENT_STATE == AJUSTA_REEMBOLSO) {
+	} else if (CURRENT_STATE == ANALISA_ALTERACAO) {
 
 		FLUIGC.calendar('#solPrazo', {
 			language : 'pt-br',
@@ -115,6 +115,14 @@ function loadForm() {
 			pickDate : true,
 			pickTime : false,
 			defaultDate : today
+
+		});
+
+		FLUIGC.calendar('#solDataPrevista', {
+			language : 'pt-br',
+			maxDate : '',
+			pickDate : true,
+			pickTime : false,
 
 		});
 	}

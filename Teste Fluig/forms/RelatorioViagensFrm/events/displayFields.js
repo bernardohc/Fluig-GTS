@@ -18,6 +18,7 @@ function displayFields(form,customHTML){
 		
 		form.setValue("solMatSolicitante",  usuarioCorrente.getCode() );
 		form.setValue("solNomeSolicitante",  usuarioCorrente.getFullName() );
+		form.setValue('processoId', getValue('WKNumProces'));
 		
 		//Consultar dados do solicitante via Dataset
 		var c1 = DatasetFactory.createConstraint("colleaguePK.colleagueId", getValue("WKUser"), getValue("WKUser"), ConstraintType.MUST);
@@ -44,14 +45,18 @@ function displayFields(form,customHTML){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
-			
+			form.setVisibleById("divNovaDespesa", true);
+				
 		}
 	}else if(atv_atual == AJUSTA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
-			
+			form.setVisibleById("divNovaDespesa", true);
+			form.setVisibleById("divAprovacao", true);	
+			form.setVisibleById("divRevisao", true);
+			form.setVisibleById("divImprimir", false);			
 		}
 	}else if(atv_atual == REVISA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
@@ -59,6 +64,8 @@ function displayFields(form,customHTML){
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divRevisao", true);	
 			form.setVisibleById("divAprovacao", true);
+			form.setVisibleById("divImprimir", false);
+			form.setVisibleById("divNovaDespesa", true);
 		}
 	}else if(atv_atual == FIM){
 		form.setVisibleById("divAprovacao", true);

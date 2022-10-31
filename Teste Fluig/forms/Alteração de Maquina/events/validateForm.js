@@ -9,7 +9,6 @@ var WKNumState = getValue('WKNumState');
     	//INICIAL
         case INICIO_0 : 
         case INICIO : 
-        case AJUSTA_REEMBOLSO:
 
     		if (isEmpty("solPedido", form)) {
                 message += getMessage("Pedido", 1, form);
@@ -53,6 +52,30 @@ var WKNumState = getValue('WKNumState');
     		}
 
     	break;
+
+        case ANALISA_ALTERACAO:
+
+            if (isEmpty("solDataPrevista", form)) {
+                message += getMessage("Data Prevista", 1, form);
+                hasErros = true;
+            }
+ 
+            if (isEmpty("obsAlteracao", form)) {
+                message += getMessage("Observação", 1, form);
+                hasErros = true;
+            }
+
+           // if (isEmpty("solAprovacao", form)) {
+             //   message += getMessage("Observação", 1, form);
+               // hasErros = true;
+           // }
+
+           if (isEmpty("solAprovacao", form)) {	
+            message += getMessage("Precisa selecionar Aprovado ou Reprovado", 1, form, "Aprovação");
+            hasErros = true;
+           }
+
+        break;
 		           	
     }
     if (hasErros) {

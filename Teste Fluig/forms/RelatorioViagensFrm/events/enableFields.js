@@ -32,5 +32,7 @@ function enableFields(form){
 		form.setEnabled("aprovRelatorioReprovado", false);
 		form.setEnabled("aprovRelatorio", false);
 		form.setEnabled("aprovReembolsoObs", false);
+		form.setEnabled("revisaoRelatorio", false);
+		form.setEnabled("aprovRevisaoObs", false);
 	}
 }

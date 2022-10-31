@@ -27,7 +27,7 @@
 	</section>
 	<section name="ImportExportAction">
 		<item value="com.totvs.tds.ecm.designer.eclipse.ui.BPMExportManager" key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID"/>
-		<item value="com.totvs.tds.ecm.designer.eclipse.ui.ImportProcessGeneralWizard" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<item value="com.totvs.tds.ecm.designer.eclipse.ui.ImportFormWizard" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 			<item value="com.totvs.tds.ecm.category.bpm.importWizard"/>
@@ -62,11 +62,11 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\bernardo.correa\Downloads\fluig-utils-main\projetos\ComponenteAnexos"/>
 			<item value="C:\Users\bernardo.correa\Documents\## Apostilas e Materiais FLUIG\Arquivos"/>
 			<item value="C:\Users\bernardo.correa\Downloads\kitintranet"/>
 			<item value="C:\Users\bernardo.correa\Downloads\GTS Homologação 1\GTS Homologação 1"/>
 			<item value="C:\Users\bernardo.correa\Documents\4287 - Template\events"/>
-			<item value="C:\Users\bernardo.correa\Documents\4287 - Template"/>
 		</list>
 	</section>
 </section>

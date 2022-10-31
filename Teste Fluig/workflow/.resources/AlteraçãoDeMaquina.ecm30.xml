@@ -9,7 +9,7 @@
     <active>true</active>
     <publicProcess>true</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId>PCP - Alteração de Maquina</categoryId>
+    <categoryId>PCP</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
     <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Gestor&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Alteração de Maquina</processId>
-      <version>3</version>
+      <version>10</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>361</formId>
@@ -61,7 +61,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Gestor&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitantesFormularios&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -111,7 +111,7 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;AnalisaRelatorio&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
@@ -328,7 +328,7 @@ process.instructions=</eventDescription>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AlteraçãoDeMaquina</processId>
-        <version>3</version>
+        <version>10</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

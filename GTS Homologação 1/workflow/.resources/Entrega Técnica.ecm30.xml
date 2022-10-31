@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Entrega Técnica</processId>
-      <version>39</version>
+      <version>40</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>4329</formId>
@@ -1033,7 +1033,7 @@
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
         <expressionOrder>1</expressionOrder>
-        <version>39</version>
+        <version>40</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;cliCodigo&quot;) .trim() == &quot;&quot;</condition>
@@ -1045,7 +1045,7 @@
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
         <expressionOrder>2</expressionOrder>
-        <version>39</version>
+        <version>40</version>
         <sequence>9</sequence>
       </conditionProcessStatePK>
       <condition>true;</condition>
@@ -1057,7 +1057,7 @@
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
         <expressionOrder>1</expressionOrder>
-        <version>39</version>
+        <version>40</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;tipoSolicitante&quot;)  == &quot;Revenda&quot;</condition>
@@ -1069,7 +1069,7 @@
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
         <expressionOrder>2</expressionOrder>
-        <version>39</version>
+        <version>40</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;tipoSolicitante&quot;)  == &quot;Administrativo GTS&quot;</condition>
@@ -1081,7 +1081,7 @@
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
         <expressionOrder>1</expressionOrder>
-        <version>39</version>
+        <version>40</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;NFAprovAprovacao&quot;)  == &quot;aprovado&quot;</condition>
@@ -1093,7 +1093,7 @@
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
         <expressionOrder>2</expressionOrder>
-        <version>39</version>
+        <version>40</version>
         <sequence>29</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;NFAprovAprovacao&quot;)  == &quot;reprovado&quot;</condition>
@@ -1515,60 +1515,60 @@
         <processId>Entrega Técnica</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function servicetask48(attempt, message) {
-	
-	try{
-		//Envia e-mail interno informando a Ordem de Compra criada para pagamento
-		
-		var attachments = hAPI.listAttachments();
-		var anexosEmail = &quot;&quot;;
-		for (var i = 0; i &lt; attachments.size(); i++) {
-			var attachment = attachments.get(i);
-			if( attachment.getDocumentDescription() == &quot;Nota Fiscal&quot; || ( hAPI.getCardValue(&quot;NFPagtoFormaPagamento&quot;) == &quot;boleto&quot; &amp;&amp; attachment.getDocumentDescription() == &quot;Boleto&quot;) ){
-				if(anexosEmail == &quot;&quot;){
-					anexosEmail = attachment.getDocumentId().toString();
-				}else{
-					anexosEmail += &quot;;&quot; + attachment.getDocumentId().toString();
-				}
-			}
-		}
-		
-		var to = DatasetFactory.createConstraint(&quot;to&quot;, hAPI.getCardValue(&quot;OCEmailRecebimentoOC&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var anexos = DatasetFactory.createConstraint(&quot;anexos&quot;, anexosEmail, &quot;&quot;, ConstraintType.MUST); 
-		var numOC = DatasetFactory.createConstraint(&quot;numOC&quot;, hAPI.getCardValue(&quot;OCNumOC&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var numFluig = DatasetFactory.createConstraint(&quot;numFluig&quot;, hAPI.getCardValue(&quot;numFluig&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var formaPagto = DatasetFactory.createConstraint(&quot;formaPagto&quot;,hAPI.getCardValue(&quot;NFPagtoFormaPagamento&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var formaPagtoTransfBanco = DatasetFactory.createConstraint(&quot;formaPagtoTransfBanco&quot;,hAPI.getCardValue(&quot;NFPagtoBanco&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var formaPagtoTransfAgencia = DatasetFactory.createConstraint(&quot;formaPagtoTransfAgencia&quot;,hAPI.getCardValue(&quot;NFPagtoAgencia&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var formaPagtoTransfConta = DatasetFactory.createConstraint(&quot;formaPagtoTransfConta&quot;,hAPI.getCardValue(&quot;NFPagtoConta&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var formaPagtoTransfCodIdentificador = DatasetFactory.createConstraint(&quot;formaPagtoTransfCodIdentificador&quot;,hAPI.getCardValue(&quot;NFPagtoCodIdentificador&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var formaPagtoTransfNome = DatasetFactory.createConstraint(&quot;formaPagtoTransfNome&quot;,hAPI.getCardValue(&quot;NFPagtoNome&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var formaPagtoTransfCpfCnpj = DatasetFactory.createConstraint(&quot;formaPagtoTransfCpfCnpj&quot;,hAPI.getCardValue(&quot;NFPagtoCpfCnpj&quot;), &quot;&quot;, ConstraintType.MUST); 
-			
-
-		var constraints = new Array(to, anexos, numOC, numFluig, formaPagto, formaPagtoTransfBanco, formaPagtoTransfAgencia, formaPagtoTransfConta, formaPagtoTransfCodIdentificador, formaPagtoTransfNome, formaPagtoTransfCpfCnpj);
-		 
-		var dataset = DatasetFactory.getDataset(&quot;dsEntTecEmailInternoOC&quot;, null, constraints, null);
-		if(dsTemValor(dataset)){
-			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);
-			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);
-			
-			hAPI.setCardValue(&quot;emailInternoOCCodRet&quot;, codRetorno);
-			hAPI.setCardValue(&quot;emailInternoOCMsg&quot;, msgRetorno);
-			if(codRetorno == &apos;2&apos;){
-				throw(&quot;Erro ao disparar e-mail: &quot; + msgRetorno);
-			}
-		}else{
-			throw(&quot;Erro ao disparar e-mail: sem retorno do dataset.&quot;);
-		}
-		
-	
-	}catch(erro){ 
-		hAPI.setCardValue(&quot;emailInternoOCCodRet&quot;, &quot;2&quot;);
-		hAPI.setCardValue(&quot;emailInternoOCMsg&quot;, erro);
-		throw(&quot;Erro ao disparar e-mail: &quot; + erro);
-	}
-	
+      <eventDescription>function servicetask48(attempt, message) {&#xd;
+	&#xd;
+	try{&#xd;
+		//Envia e-mail interno informando a Ordem de Compra criada para pagamento&#xd;
+		&#xd;
+		var attachments = hAPI.listAttachments();&#xd;
+		var anexosEmail = &quot;&quot;;&#xd;
+		for (var i = 0; i &lt; attachments.size(); i++) {&#xd;
+			var attachment = attachments.get(i);&#xd;
+			if( attachment.getDocumentDescription() == &quot;Nota Fiscal&quot; || ( hAPI.getCardValue(&quot;NFPagtoFormaPagamento&quot;) == &quot;boleto&quot; &amp;&amp; attachment.getDocumentDescription() == &quot;Boleto&quot;) ){&#xd;
+				if(anexosEmail == &quot;&quot;){&#xd;
+					anexosEmail = attachment.getDocumentId().toString();&#xd;
+				}else{&#xd;
+					anexosEmail += &quot;;&quot; + attachment.getDocumentId().toString();&#xd;
+				}&#xd;
+			}&#xd;
+		}&#xd;
+		&#xd;
+		var to = DatasetFactory.createConstraint(&quot;to&quot;, hAPI.getCardValue(&quot;OCEmailRecebimentoOC&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var anexos = DatasetFactory.createConstraint(&quot;anexos&quot;, anexosEmail, &quot;&quot;, ConstraintType.MUST); &#xd;
+		var numOC = DatasetFactory.createConstraint(&quot;numOC&quot;, hAPI.getCardValue(&quot;OCNumOC&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var numFluig = DatasetFactory.createConstraint(&quot;numFluig&quot;, hAPI.getCardValue(&quot;numFluig&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var formaPagto = DatasetFactory.createConstraint(&quot;formaPagto&quot;,hAPI.getCardValue(&quot;NFPagtoFormaPagamento&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var formaPagtoTransfBanco = DatasetFactory.createConstraint(&quot;formaPagtoTransfBanco&quot;,hAPI.getCardValue(&quot;NFPagtoBanco&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var formaPagtoTransfAgencia = DatasetFactory.createConstraint(&quot;formaPagtoTransfAgencia&quot;,hAPI.getCardValue(&quot;NFPagtoAgencia&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var formaPagtoTransfConta = DatasetFactory.createConstraint(&quot;formaPagtoTransfConta&quot;,hAPI.getCardValue(&quot;NFPagtoConta&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var formaPagtoTransfCodIdentificador = DatasetFactory.createConstraint(&quot;formaPagtoTransfCodIdentificador&quot;,hAPI.getCardValue(&quot;NFPagtoCodIdentificador&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var formaPagtoTransfNome = DatasetFactory.createConstraint(&quot;formaPagtoTransfNome&quot;,hAPI.getCardValue(&quot;NFPagtoNome&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var formaPagtoTransfCpfCnpj = DatasetFactory.createConstraint(&quot;formaPagtoTransfCpfCnpj&quot;,hAPI.getCardValue(&quot;NFPagtoCpfCnpj&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+			&#xd;
+&#xd;
+		var constraints = new Array(to, anexos, numOC, numFluig, formaPagto, formaPagtoTransfBanco, formaPagtoTransfAgencia, formaPagtoTransfConta, formaPagtoTransfCodIdentificador, formaPagtoTransfNome, formaPagtoTransfCpfCnpj);&#xd;
+		 &#xd;
+		var dataset = DatasetFactory.getDataset(&quot;dsEntTecEmailInternoOC&quot;, null, constraints, null);&#xd;
+		if(dsTemValor(dataset)){&#xd;
+			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);&#xd;
+			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);&#xd;
+			&#xd;
+			hAPI.setCardValue(&quot;emailInternoOCCodRet&quot;, codRetorno);&#xd;
+			hAPI.setCardValue(&quot;emailInternoOCMsg&quot;, msgRetorno);&#xd;
+			if(codRetorno == &apos;2&apos;){&#xd;
+				throw(&quot;Erro ao disparar e-mail: &quot; + msgRetorno);&#xd;
+			}&#xd;
+		}else{&#xd;
+			throw(&quot;Erro ao disparar e-mail: sem retorno do dataset.&quot;);&#xd;
+		}&#xd;
+		&#xd;
+	&#xd;
+	}catch(erro){ &#xd;
+		hAPI.setCardValue(&quot;emailInternoOCCodRet&quot;, &quot;2&quot;);&#xd;
+		hAPI.setCardValue(&quot;emailInternoOCMsg&quot;, erro);&#xd;
+		throw(&quot;Erro ao disparar e-mail: &quot; + erro);&#xd;
+	}&#xd;
+	&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -1594,40 +1594,40 @@
         <processId>Entrega Técnica</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function servicetask13(attempt, message) {
-	try{
-		//Cadastra Base de Atendimento no Protheus
-		
-		var IDFLUIG = DatasetFactory.createConstraint(&quot;IDFLUIG&quot;, getValue(&apos;WKNumProces&apos;)+&quot;&quot;, &quot;&quot;, ConstraintType.MUST); 
-		var cliCodigo = DatasetFactory.createConstraint(&quot;cliCodigo&quot;, hAPI.getCardValue(&quot;cliCodigo&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var cliLoja = DatasetFactory.createConstraint(&quot;cliLoja&quot;, hAPI.getCardValue(&quot;cliLoja&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var equipCodProduto = DatasetFactory.createConstraint(&quot;equipCodProduto&quot;, hAPI.getCardValue(&quot;equipCodProduto&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var equipNumSerie = DatasetFactory.createConstraint(&quot;equipNumSerie&quot;, hAPI.getCardValue(&quot;equipNumSerie&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var equipNumNotaFiscal = DatasetFactory.createConstraint(&quot;equipNumNotaFiscal&quot;, hAPI.getCardValue(&quot;equipNumNotaFiscal&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var equipDataVenda = DatasetFactory.createConstraint(&quot;equipDataVenda&quot;, hAPI.getCardValue(&quot;equipDataVenda&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var equipDataTerminoGarantia = DatasetFactory.createConstraint(&quot;equipDataTerminoGarantia&quot;, hAPI.getCardValue(&quot;equipDataTerminoGarantia&quot;), &quot;&quot;, ConstraintType.MUST); 
-			
-		var constraints = new Array(IDFLUIG, cliCodigo, cliLoja, equipCodProduto, equipNumSerie, equipNumNotaFiscal, equipDataVenda, equipDataTerminoGarantia);
-		 
-		var dataset = DatasetFactory.getDataset(&quot;dsEntTecCadastraBaseDeAtendimento&quot;, null, constraints, null);
-		
-		if(dsTemValor(dataset)){
-			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);
-			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);
-			
-			if(codRetorno == &apos;1&apos;){
-				hAPI.setCardValue(&quot;equipCodBaseDeAtendimento&quot;, dataset.getValue(0, &quot;CIDFLUIG&quot;));
-			}else {
-				throw(msgRetorno);
-			}
-		}else{
-			throw(&quot;Erro ao criar base de atendimento: sem retorno do dataset.&quot;);
-		}
-		
-		
-	}catch(erro){ 
-		throw(&quot;Erro ao criar base de atendimento: &quot; + erro);
-	}
+      <eventDescription>function servicetask13(attempt, message) {&#xd;
+	try{&#xd;
+		//Cadastra Base de Atendimento no Protheus&#xd;
+		&#xd;
+		var IDFLUIG = DatasetFactory.createConstraint(&quot;IDFLUIG&quot;, getValue(&apos;WKNumProces&apos;)+&quot;&quot;, &quot;&quot;, ConstraintType.MUST); &#xd;
+		var cliCodigo = DatasetFactory.createConstraint(&quot;cliCodigo&quot;, hAPI.getCardValue(&quot;cliCodigo&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var cliLoja = DatasetFactory.createConstraint(&quot;cliLoja&quot;, hAPI.getCardValue(&quot;cliLoja&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var equipCodProduto = DatasetFactory.createConstraint(&quot;equipCodProduto&quot;, hAPI.getCardValue(&quot;equipCodProduto&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var equipNumSerie = DatasetFactory.createConstraint(&quot;equipNumSerie&quot;, hAPI.getCardValue(&quot;equipNumSerie&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var equipNumNotaFiscal = DatasetFactory.createConstraint(&quot;equipNumNotaFiscal&quot;, hAPI.getCardValue(&quot;equipNumNotaFiscal&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var equipDataVenda = DatasetFactory.createConstraint(&quot;equipDataVenda&quot;, hAPI.getCardValue(&quot;equipDataVenda&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var equipDataTerminoGarantia = DatasetFactory.createConstraint(&quot;equipDataTerminoGarantia&quot;, hAPI.getCardValue(&quot;equipDataTerminoGarantia&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+			&#xd;
+		var constraints = new Array(IDFLUIG, cliCodigo, cliLoja, equipCodProduto, equipNumSerie, equipNumNotaFiscal, equipDataVenda, equipDataTerminoGarantia);&#xd;
+		 &#xd;
+		var dataset = DatasetFactory.getDataset(&quot;dsEntTecCadastraBaseDeAtendimento&quot;, null, constraints, null);&#xd;
+		&#xd;
+		if(dsTemValor(dataset)){&#xd;
+			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);&#xd;
+			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);&#xd;
+			&#xd;
+			if(codRetorno == &apos;1&apos;){&#xd;
+				hAPI.setCardValue(&quot;equipCodBaseDeAtendimento&quot;, dataset.getValue(0, &quot;CIDFLUIG&quot;));&#xd;
+			}else {&#xd;
+				throw(msgRetorno);&#xd;
+			}&#xd;
+		}else{&#xd;
+			throw(&quot;Erro ao criar base de atendimento: sem retorno do dataset.&quot;);&#xd;
+		}&#xd;
+		&#xd;
+		&#xd;
+	}catch(erro){ &#xd;
+		throw(&quot;Erro ao criar base de atendimento: &quot; + erro);&#xd;
+	}&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -1679,41 +1679,41 @@
         <processId>Entrega Técnica</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function servicetask34(attempt, message) {
-	
-	try{
-		//Envia e-mail para Revenda referente a programação de pagamento
-		var emailRevenda = DatasetFactory.createConstraint(&quot;emailRevenda&quot;, hAPI.getCardValue(&quot;revContServicoEmail&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var emailAprovadorGTS = DatasetFactory.createConstraint(&quot;emailAprovadorGTS&quot;, hAPI.getCardValue(&quot;NFAprovEmailAprovador&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var numFluig = DatasetFactory.createConstraint(&quot;numFluig&quot;, hAPI.getCardValue(&quot;numFluig&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var numSerie = DatasetFactory.createConstraint(&quot;numSerie&quot;, hAPI.getCardValue(&quot;equipNumSerie&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var numNotaFiscal = DatasetFactory.createConstraint(&quot;numNotaFiscal&quot;, hAPI.getCardValue(&quot;equipNumNotaFiscal&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var nomeCliente = DatasetFactory.createConstraint(&quot;nomeCliente&quot;, hAPI.getCardValue(&quot;cliNomeCliente&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var dataPrevPagto = DatasetFactory.createConstraint(&quot;dataPrevPagto&quot;, hAPI.getCardValue(&quot;NFAprovDataPrevPagto&quot;), &quot;&quot;, ConstraintType.MUST); 
-
-
-		var constraints = new Array(emailRevenda, emailAprovadorGTS, numFluig, numSerie, numNotaFiscal, nomeCliente, dataPrevPagto);
-		 
-		var dataset = DatasetFactory.getDataset(&quot;dsEntTecEmailRevProgPagto&quot;, null, constraints, null);
-		if(dsTemValor(dataset)){
-			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);
-			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);
-			
-			hAPI.setCardValue(&quot;emailProgPagtoCodRet&quot;, codRetorno);
-			hAPI.setCardValue(&quot;emailProgPagtoMsg&quot;, msgRetorno);
-			if(codRetorno == &apos;2&apos;){
-				throw(&quot;Erro ao disparar e-mail: &quot; + msgRetorno);
-			}
-		}else{
-			throw(&quot;Erro ao disparar e-mail: sem retorno do dataset.&quot;);
-		}
-		
-	}catch(erro){ 
-		hAPI.setCardValue(&quot;emailProgPagtoCodRet&quot;, &quot;2&quot;);
-		hAPI.setCardValue(&quot;emailProgPagtoMsg&quot;, erro);
-		throw(&quot;Erro ao disparar e-mail: &quot; + erro);
-	}
-	
+      <eventDescription>function servicetask34(attempt, message) {&#xd;
+	&#xd;
+	try{&#xd;
+		//Envia e-mail para Revenda referente a programação de pagamento&#xd;
+		var emailRevenda = DatasetFactory.createConstraint(&quot;emailRevenda&quot;, hAPI.getCardValue(&quot;revContServicoEmail&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var emailAprovadorGTS = DatasetFactory.createConstraint(&quot;emailAprovadorGTS&quot;, hAPI.getCardValue(&quot;NFAprovEmailAprovador&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var numFluig = DatasetFactory.createConstraint(&quot;numFluig&quot;, hAPI.getCardValue(&quot;numFluig&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var numSerie = DatasetFactory.createConstraint(&quot;numSerie&quot;, hAPI.getCardValue(&quot;equipNumSerie&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var numNotaFiscal = DatasetFactory.createConstraint(&quot;numNotaFiscal&quot;, hAPI.getCardValue(&quot;equipNumNotaFiscal&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var nomeCliente = DatasetFactory.createConstraint(&quot;nomeCliente&quot;, hAPI.getCardValue(&quot;cliNomeCliente&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var dataPrevPagto = DatasetFactory.createConstraint(&quot;dataPrevPagto&quot;, hAPI.getCardValue(&quot;NFAprovDataPrevPagto&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+&#xd;
+&#xd;
+		var constraints = new Array(emailRevenda, emailAprovadorGTS, numFluig, numSerie, numNotaFiscal, nomeCliente, dataPrevPagto);&#xd;
+		 &#xd;
+		var dataset = DatasetFactory.getDataset(&quot;dsEntTecEmailRevProgPagto&quot;, null, constraints, null);&#xd;
+		if(dsTemValor(dataset)){&#xd;
+			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);&#xd;
+			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);&#xd;
+			&#xd;
+			hAPI.setCardValue(&quot;emailProgPagtoCodRet&quot;, codRetorno);&#xd;
+			hAPI.setCardValue(&quot;emailProgPagtoMsg&quot;, msgRetorno);&#xd;
+			if(codRetorno == &apos;2&apos;){&#xd;
+				throw(&quot;Erro ao disparar e-mail: &quot; + msgRetorno);&#xd;
+			}&#xd;
+		}else{&#xd;
+			throw(&quot;Erro ao disparar e-mail: sem retorno do dataset.&quot;);&#xd;
+		}&#xd;
+		&#xd;
+	}catch(erro){ &#xd;
+		hAPI.setCardValue(&quot;emailProgPagtoCodRet&quot;, &quot;2&quot;);&#xd;
+		hAPI.setCardValue(&quot;emailProgPagtoMsg&quot;, erro);&#xd;
+		throw(&quot;Erro ao disparar e-mail: &quot; + erro);&#xd;
+	}&#xd;
+	&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -1909,39 +1909,39 @@ function gravarLog(string){&#xd;
         <processId>Entrega Técnica</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function servicetask41(attempt, message) {
-	
-	try{
-		//Cadastra Ordem de Compra no Protheus para pagamento da Revenda
-		
-		var OCCpfCnpj = DatasetFactory.createConstraint(&quot;OCCpfCnpj&quot;, hAPI.getCardValue(&quot;OCCpfCnpj&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var OCCodCondPagto = DatasetFactory.createConstraint(&quot;OCCodCondPagto&quot;, hAPI.getCardValue(&quot;OCCodCondPagto&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var OCCodProduto = DatasetFactory.createConstraint(&quot;OCCodProduto&quot;, hAPI.getCardValue(&quot;OCCodProduto&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var OCCentroCusto = DatasetFactory.createConstraint(&quot;OCCentroCusto&quot;,hAPI.getCardValue(&quot;OCCentroCusto&quot;), &quot;&quot;, ConstraintType.MUST); 
-		var OCValorNota = DatasetFactory.createConstraint(&quot;OCValorNota&quot;,hAPI.getCardValue(&quot;OCValorNota&quot;), &quot;&quot;, ConstraintType.MUST); 
-			
-		var constraints = new Array(OCCpfCnpj, OCCodCondPagto, OCCodProduto, OCCentroCusto, OCValorNota);
-		 
-		var dataset = DatasetFactory.getDataset(&quot;dsEntTecCadastraOC&quot;, null, constraints, null);
-		
-		if(dsTemValor(dataset)){
-			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);
-			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);
-			
-			if(codRetorno == &apos;1&apos;){
-				hAPI.setCardValue(&quot;OCNumOC&quot;, dataset.getValue(0, &quot;NUMOC&quot;));
-			}else {
-				throw(msgRetorno);
-			}
-		}else{
-			throw(&quot;Erro ao criar ordem de compra: sem retorno do dataset.&quot;);
-		}
-		
-		
-	}catch(erro){ 
-		throw(&quot;Erro ao criar ordem de compra: &quot; + erro);
-	}
-	
+      <eventDescription>function servicetask41(attempt, message) {&#xd;
+	&#xd;
+	try{&#xd;
+		//Cadastra Ordem de Compra no Protheus para pagamento da Revenda&#xd;
+		&#xd;
+		var OCCpfCnpj = DatasetFactory.createConstraint(&quot;OCCpfCnpj&quot;, hAPI.getCardValue(&quot;OCCpfCnpj&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var OCCodCondPagto = DatasetFactory.createConstraint(&quot;OCCodCondPagto&quot;, hAPI.getCardValue(&quot;OCCodCondPagto&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var OCCodProduto = DatasetFactory.createConstraint(&quot;OCCodProduto&quot;, hAPI.getCardValue(&quot;OCCodProduto&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var OCCentroCusto = DatasetFactory.createConstraint(&quot;OCCentroCusto&quot;,hAPI.getCardValue(&quot;OCCentroCusto&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var OCValorNota = DatasetFactory.createConstraint(&quot;OCValorNota&quot;,hAPI.getCardValue(&quot;OCValorNota&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+			&#xd;
+		var constraints = new Array(OCCpfCnpj, OCCodCondPagto, OCCodProduto, OCCentroCusto, OCValorNota);&#xd;
+		 &#xd;
+		var dataset = DatasetFactory.getDataset(&quot;dsEntTecCadastraOC&quot;, null, constraints, null);&#xd;
+		&#xd;
+		if(dsTemValor(dataset)){&#xd;
+			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);&#xd;
+			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);&#xd;
+			&#xd;
+			if(codRetorno == &apos;1&apos;){&#xd;
+				hAPI.setCardValue(&quot;OCNumOC&quot;, dataset.getValue(0, &quot;NUMOC&quot;));&#xd;
+			}else {&#xd;
+				throw(msgRetorno);&#xd;
+			}&#xd;
+		}else{&#xd;
+			throw(&quot;Erro ao criar ordem de compra: sem retorno do dataset.&quot;);&#xd;
+		}&#xd;
+		&#xd;
+		&#xd;
+	}catch(erro){ &#xd;
+		throw(&quot;Erro ao criar ordem de compra: &quot; + erro);&#xd;
+	}&#xd;
+	&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -2019,7 +2019,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2030,7 +2030,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>17</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2041,7 +2041,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>22</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2052,7 +2052,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>26</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2063,7 +2063,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>28</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2074,7 +2074,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>31</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2085,7 +2085,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>31</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2096,7 +2096,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>38</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2107,7 +2107,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>38</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2118,7 +2118,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>45</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2129,7 +2129,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>45</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2140,7 +2140,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>52</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2151,7 +2151,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>52</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2162,7 +2162,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>55</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2173,7 +2173,7 @@ function gravarLog(string){&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Entrega Técnica</processId>
-        <version>39</version>
+        <version>40</version>
         <linkSequence>55</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2327,7 +2327,7 @@ function gravarLog(string){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Entrega Técnica</processId>
-      <processVersion>39</processVersion>
+      <processVersion>40</processVersion>
       <stateSequence>36</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -2337,7 +2337,7 @@ function gravarLog(string){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Entrega Técnica</processId>
-      <processVersion>39</processVersion>
+      <processVersion>40</processVersion>
       <stateSequence>36</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -2347,7 +2347,7 @@ function gravarLog(string){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Entrega Técnica</processId>
-      <processVersion>39</processVersion>
+      <processVersion>40</processVersion>
       <stateSequence>36</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -2357,7 +2357,7 @@ function gravarLog(string){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Entrega Técnica</processId>
-      <processVersion>39</processVersion>
+      <processVersion>40</processVersion>
       <stateSequence>36</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -2367,7 +2367,7 @@ function gravarLog(string){&#xd;
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Entrega Técnica</processId>
-      <processVersion>39</processVersion>
+      <processVersion>40</processVersion>
       <stateSequence>36</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

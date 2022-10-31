@@ -220,37 +220,19 @@ var eventsFuncoes = (function() {
 				funcoes.calculaTotalReembolso();
 			});
 
-			$(document)
-					.on(
-							"click",
-							"#addDespesa",
-							function() {
-								let
-								addNovoItem = true;
-								$("input[name*=itSolValorReembolsoItem___]")
-										.each(
-												function(index) {
-													var index = validafunctions
-															.getPosicaoFilho($(
-																	this).attr(
-																	"id"));
-													var itSolTipoDespesaItem = $(
-															"#itSolTipoDespesaItem___"
-																	+ index)
-															.val();
+			$(document).on("click","#addDespesa",function() {
+								let	addNovoItem = true;
+								$("input[name*=itSolValorReembolsoItem___]").each(function(index) {
+									var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+									var itSolTipoDespesaItem = $("#itSolTipoDespesaItem___"+ index).val();
 
-													if (itSolTipoDespesaItem
-															.trim() == "") {
-														addNovoItem = false;
-													}
-												});
+										if (itSolTipoDespesaItem.trim() == "") {
+											addNovoItem = false;
+										}
+										});
 								if (!addNovoItem) {
-									FLUIGC
-											.toast({
-												title : '',
-												message : "É preciso preencher o Tipo de Despesa anterior para adicionar um novo item.",
-												type : 'warning'
-											});
+										FLUIGC.toast({title : '',message : "É preciso preencher o Tipo de Despesa anterior para adicionar um novo item.",type : 'warning'
+								});
 								} else {
 									funcoes.addLinhaDespesa();
 								}
