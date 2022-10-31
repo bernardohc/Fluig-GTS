@@ -153,8 +153,8 @@ function loadForm(){
 	window.parent.$("#breadcrumb").remove();
 	//Aba Anexo
 	window.parent.$("#processTabs").find("li").first().hide();
-	//window.parent.$("#processTabs").find("li").last().hide();
-	//window.parent.$("#textActivity").remove();
+	window.parent.$("#processTabs").find("li").last().hide();
+	window.parent.$("#textActivity").remove();
 	//Botões
 	window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
 	window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");

@@ -5,7 +5,7 @@
       <processId>Solicitação de Peças</processId>
     </processDefinitionPK>
     <processDescription>Solicitação de Peças</processDescription>
-    <instruction></instruction>
+    <instruction>Solicita08 - Solicita Peças da Matriz para Filial</instruction>
     <active>true</active>
     <publicProcess>true</publicProcess>
     <volumeId>Default</volumeId>
@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Peças</processId>
-      <version>5</version>
+      <version>6</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>5606</formId>
@@ -56,12 +56,12 @@
       </processStatePK>
       <stateName>Início</stateName>
       <stateDescription>Início</stateDescription>
-      <instruction></instruction>
+      <instruction>SolicitaPecasFilial</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;GestorSolicitaoPecas&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitaPecasFilial&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -106,7 +106,7 @@
       </processStatePK>
       <stateName>ANALISA_SOLICITACAO</stateName>
       <stateDescription>ANALISA_SOLICITACAO</stateDescription>
-      <instruction></instruction>
+      <instruction>GestorSolicitacaoPecas</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -158,13 +158,13 @@
       </processStatePK>
       <stateName>SEPARACAO_ALMOX</stateName>
       <stateDescription>SEPARACAO_ALMOX</stateDescription>
-      <instruction></instruction>
+      <instruction>SeparacaoPecasAlmox</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;GestorSolicitaoPecas&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SeparacaoPecasAlmox&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -280,7 +280,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
         <expressionOrder>1</expressionOrder>
-        <version>5</version>
+        <version>6</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>&#xd;
@@ -293,7 +293,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;reprovado&quot;</condition>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
         <expressionOrder>2</expressionOrder>
-        <version>5</version>
+        <version>6</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>&#xd;
@@ -506,7 +506,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
-        <version>5</version>
+        <version>6</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -517,7 +517,7 @@ process.instructions=&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
-        <version>5</version>
+        <version>6</version>
         <linkSequence>16</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

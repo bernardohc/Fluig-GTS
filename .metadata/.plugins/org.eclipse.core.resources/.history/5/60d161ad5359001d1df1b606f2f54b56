@@ -1,81 +1,82 @@
-<?xml version="1.0" encoding="ASCII" standalone="no"?><xmi:XMI xmlns:xmi="http://www.omg.org/XMI" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
-  <pi:Diagram diagramTypeId="BPMNdiagram" gridUnit="10" name="Solicita&#231;&#227;oDePe&#231;as" pictogramLinks="/0/@children.0/@link /0/@children.0/@children.2/@link /0/@children.0/@children.1/@link /0/@children.1/@link /0/@children.2/@link /0/@connections.0/@link /0/@children.0/@children.0/@link /0/@children.3/@link /0/@connections.1/@link /0/@children.4/@link /0/@connections.2/@link /0/@children.5/@link /0/@connections.3/@link /0/@connections.4/@link" showGuides="true" snapToGrid="true" version="0.11.0" visible="true">
-    <graphicsAlgorithm background="/0/@styles.7/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.0" height="1000" width="1000" xsi:type="al:Rectangle"/>
-    <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm background="/0/@styles.35/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" height="290" lineWidth="1" style="/0/@styles.28" transparency="0.0" width="831" x="10" xsi:type="al:Rectangle" y="10"/>
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="BPMNdiagram" name="Solicita&#xe7;&#xe3;oDePe&#xe7;as" snapToGrid="true" showGuides="true" pictogramLinks="/0/@children.0/@link /0/@children.0/@children.2/@link /0/@children.0/@children.1/@link /0/@children.1/@link /0/@children.2/@link /0/@connections.0/@link /0/@children.0/@children.0/@link /0/@children.3/@link /0/@connections.1/@link /0/@children.4/@link /0/@connections.2/@link /0/@children.5/@link /0/@connections.3/@link /0/@connections.4/@link" version="0.11.0">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@styles.7/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.0" width="1000" height="1000"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@styles.35/@renderingStyle/@adaptedGradientColoredAreas/@adaptedGradientColoredAreas.0/@gradientColor.2/@end/@color" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" width="831" height="290" x="10" y="10" style="/0/@styles.28"/>
       <link businessObjects="pool1"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
-      <anchors active="true" referencedGraphicsAlgorithm="/0/@children.0/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
-        <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+      <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.0/@graphicsAlgorithm" relativeWidth="1.0" relativeHeight="0.51">
+        <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
-      <children active="true" visible="true" xsi:type="pi:ContainerShape">
-        <graphicsAlgorithm background="/0/@colors.7" foreground="/0/@colors.3" height="96" lineWidth="1" style="/0/@styles.43" transparency="0.0" width="801" x="30" xsi:type="al:Rectangle" y="96"/>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.7" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" width="801" height="96" x="30" y="96" style="/0/@styles.43"/>
         <link businessObjects="swimlane7"/>
         <anchors xsi:type="pi:ChopboxAnchor"/>
         <anchors xsi:type="pi:ChopboxAnchor"/>
-        <anchors active="true" referencedGraphicsAlgorithm="/0/@children.0/@children.0/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
-          <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+        <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.0/@children.0/@graphicsAlgorithm" relativeWidth="1.0" relativeHeight="0.51">
+          <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
         </anchors>
         <children visible="true">
-          <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="96" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.44" transparency="0.0" value="Amox" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+          <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="30" height="96" style="/0/@styles.44" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" verticalAlignment="ALIGNMENT_MIDDLE" angle="270" value="Amox" rotation="270.0"/>
         </children>
       </children>
-      <children active="true" visible="true" xsi:type="pi:ContainerShape">
-        <graphicsAlgorithm background="/0/@colors.10" foreground="/0/@colors.3" height="98" lineWidth="1" style="/0/@styles.33" transparency="0.0" width="801" x="30" xsi:type="al:Rectangle" y="192"/>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.10" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" width="801" height="98" x="30" y="192" style="/0/@styles.33"/>
         <link businessObjects="swimlane3"/>
         <anchors xsi:type="pi:ChopboxAnchor"/>
         <anchors xsi:type="pi:ChopboxAnchor"/>
-        <anchors active="true" referencedGraphicsAlgorithm="/0/@children.0/@children.1/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
-          <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+        <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.0/@children.1/@graphicsAlgorithm" relativeWidth="1.0" relativeHeight="0.51">
+          <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
         </anchors>
         <children visible="true">
-          <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="98" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.34" transparency="0.0" value="PCP" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+          <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="30" height="98" style="/0/@styles.34" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" verticalAlignment="ALIGNMENT_MIDDLE" angle="270" value="PCP" rotation="270.0"/>
         </children>
       </children>
-      <children active="true" visible="true" xsi:type="pi:ContainerShape">
-        <graphicsAlgorithm background="/0/@colors.15" foreground="/0/@colors.3" height="96" lineWidth="1" style="/0/@styles.30" transparency="0.0" width="801" x="30" xsi:type="al:Rectangle"/>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.15" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" width="801" height="96" x="30" style="/0/@styles.30"/>
         <link businessObjects="swimlane2"/>
         <anchors xsi:type="pi:ChopboxAnchor"/>
         <anchors xsi:type="pi:ChopboxAnchor"/>
-        <anchors active="true" referencedGraphicsAlgorithm="/0/@children.0/@children.2/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
-          <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+        <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.0/@children.2/@graphicsAlgorithm" relativeWidth="1.0" relativeHeight="0.51">
+          <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
         </anchors>
         <children visible="true">
-          <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="96" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.31" transparency="0.0" value="Comercial" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+          <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="30" height="96" style="/0/@styles.31" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" verticalAlignment="ALIGNMENT_MIDDLE" angle="270" value="Comercial" rotation="270.0"/>
         </children>
       </children>
       <children visible="true">
-        <graphicsAlgorithm angle="270" filled="false" font="/0/@fonts.1" height="290" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" rotation="270.0" style="/0/@styles.29" transparency="0.0" value="Pool" verticalAlignment="ALIGNMENT_MIDDLE" width="30" xsi:type="al:Text"/>
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="30" height="290" style="/0/@styles.29" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" verticalAlignment="ALIGNMENT_MIDDLE" angle="270" value="Pool" rotation="270.0"/>
       </children>
     </children>
-    <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm filled="false" height="35" lineVisible="false" lineWidth="1" transparency="0.0" width="35" x="150" xsi:type="al:Ellipse" y="41">
-        <graphicsAlgorithmChildren height="35" lineWidth="1" style="/0/@styles.35" transparency="0.0" width="35" xsi:type="al:Ellipse"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="35" x="150" y="41">
+        <graphicsAlgorithmChildren xsi:type="al:Ellipse" lineWidth="1" transparency="0.0" width="35" height="35" style="/0/@styles.35"/>
       </graphicsAlgorithm>
       <link businessObjects="startevent4"/>
-      <anchors outgoingConnections="/0/@connections.0" xsi:type="pi:ChopboxAnchor"/>
-      <anchors active="true" referencedGraphicsAlgorithm="/0/@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
-        <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0"/>
+      <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeWidth="1.0" relativeHeight="0.51">
+        <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
     </children>
-    <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm filled="false" height="70" lineVisible="false" lineWidth="1" transparency="0.0" width="106" x="240" xsi:type="al:Rectangle" y="120"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="106" height="70" x="240" y="120"/>
       <link businessObjects="task5"/>
-      <anchors incomingConnections="/0/@connections.0" outgoingConnections="/0/@connections.1" xsi:type="pi:ChopboxAnchor"/>
-      <anchors active="true" referencedGraphicsAlgorithm="/0/@children.2/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
-        <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.1" incomingConnections="/0/@connections.0"/>
+      <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.2/@graphicsAlgorithm" relativeWidth="1.0" relativeHeight="0.51">
+        <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm cornerHeight="5" cornerWidth="5" height="70" lineWidth="1" style="/0/@styles.36" transparency="0.0" width="106" xsi:type="al:RoundedRectangle"/>
+        <graphicsAlgorithm xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="106" height="70" style="/0/@styles.36" cornerHeight="5" cornerWidth="5"/>
       </children>
       <children visible="true">
-        <graphicsAlgorithm filled="false" font="/0/@fonts.1" height="60" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" style="/0/@styles.37" transparency="0.0" value="ANALISA_SOLICITACAO" width="96" x="5" xsi:type="al:MultiText" y="5"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="96" height="60" x="5" y="5" style="/0/@styles.37" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="ANALISA_SOLICITACAO"/>
       </children>
     </children>
-    <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm filled="false" height="116" lineVisible="false" lineWidth="1" transparency="0.0" width="60" x="460" xsi:type="al:Rectangle" y="104">
-        <graphicsAlgorithmChildren filled="true" height="60" lineWidth="1" style="/0/@styles.45" transparency="0.0" width="60" xsi:type="al:Polygon">
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="116" x="460" y="104">
+        <graphicsAlgorithmChildren xsi:type="al:Polygon" lineWidth="1" filled="true" transparency="0.0" width="60" height="60" style="/0/@styles.45">
           <points y="30"/>
           <points x="30"/>
           <points x="60" y="30"/>
@@ -84,189 +85,189 @@
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
       <link businessObjects="exclusivegateway8"/>
-      <anchors incomingConnections="/0/@connections.1" outgoingConnections="/0/@connections.2 /0/@connections.4" xsi:type="pi:ChopboxAnchor"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.2 /0/@connections.4" incomingConnections="/0/@connections.1"/>
       <anchors xsi:type="pi:ChopboxAnchor"/>
-      <anchors active="true" referencedGraphicsAlgorithm="/0/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeHeight="0.1" relativeWidth="0.51" visible="true" xsi:type="pi:BoxRelativeAnchor">
-        <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+      <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeWidth="0.51" relativeHeight="0.1">
+        <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <anchors xsi:type="pi:ChopboxAnchor"/>
-      <anchors active="true" referencedGraphicsAlgorithm="/0/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeHeight="0.93" relativeWidth="0.51" visible="true" xsi:type="pi:BoxRelativeAnchor">
-        <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+      <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeWidth="0.51" relativeHeight="0.93">
+        <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm filled="false" font="/0/@fonts.1" height="56" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" style="/0/@styles.46" transparency="0.0" value="APROVA&#10;_SOLICIT&#10;ACAO?&#10;" width="60" xsi:type="al:MultiText" y="60"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="60" height="56" y="60" style="/0/@styles.46" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="APROVA&#xA;_SOLICIT&#xA;ACAO?&#xA;"/>
       </children>
     </children>
-    <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm filled="false" height="70" lineVisible="false" lineWidth="1" transparency="0.0" width="106" x="530" xsi:type="al:Rectangle" y="224"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="106" height="70" x="530" y="224"/>
       <link businessObjects="task12"/>
-      <anchors incomingConnections="/0/@connections.2" outgoingConnections="/0/@connections.3" xsi:type="pi:ChopboxAnchor"/>
-      <anchors active="true" referencedGraphicsAlgorithm="/0/@children.4/@graphicsAlgorithm" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
-        <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.3" incomingConnections="/0/@connections.2"/>
+      <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.4/@graphicsAlgorithm" relativeWidth="1.0" relativeHeight="0.51">
+        <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm cornerHeight="5" cornerWidth="5" height="70" lineWidth="1" style="/0/@styles.50" transparency="0.0" width="106" xsi:type="al:RoundedRectangle"/>
+        <graphicsAlgorithm xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="106" height="70" style="/0/@styles.50" cornerHeight="5" cornerWidth="5"/>
       </children>
       <children visible="true">
-        <graphicsAlgorithm filled="false" font="/0/@fonts.1" height="60" horizontalAlignment="ALIGNMENT_CENTER" lineVisible="true" lineWidth="1" style="/0/@styles.51" transparency="0.0" value="SEPARACAO_ALMOX" width="96" x="5" xsi:type="al:MultiText" y="5"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="96" height="60" x="5" y="5" style="/0/@styles.51" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="SEPARACAO_ALMOX"/>
       </children>
     </children>
-    <children active="true" visible="true" xsi:type="pi:ContainerShape">
-      <graphicsAlgorithm filled="false" height="35" lineVisible="false" lineWidth="1" transparency="0.0" width="35" x="720" xsi:type="al:Ellipse" y="234">
-        <graphicsAlgorithmChildren height="35" lineWidth="3" style="/0/@styles.53" transparency="0.0" width="35" xsi:type="al:Ellipse"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="35" x="720" y="234">
+        <graphicsAlgorithmChildren xsi:type="al:Ellipse" lineWidth="3" transparency="0.0" width="35" height="35" style="/0/@styles.53"/>
       </graphicsAlgorithm>
       <link businessObjects="endevent14"/>
-      <anchors incomingConnections="/0/@connections.3 /0/@connections.4" xsi:type="pi:ChopboxAnchor"/>
-      <anchors active="true" referencedGraphicsAlgorithm="/0/@children.5/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeHeight="0.51" relativeWidth="1.0" visible="true" xsi:type="pi:BoxRelativeAnchor">
-        <graphicsAlgorithm filled="false" lineVisible="false" xsi:type="al:Ellipse"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.3 /0/@connections.4"/>
+      <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.5/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeWidth="1.0" relativeHeight="0.51">
+        <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
     </children>
-    <styles foreground="/0/@colors.1" id="BPMN-CLASS" lineWidth="2">
+    <styles foreground="/0/@colors.1" lineWidth="2" id="BPMN-CLASS">
       <renderingStyle>
         <adaptedGradientColoredAreas definedStyleId="blue-white-gloss" gradientType="0">
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="248" green="231" red="212"/>
+                <color red="212" green="231" blue="248"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="1">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="234" green="185" red="129"/>
+                <color red="129" green="185" blue="234"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="242" green="208" red="170"/>
+                <color red="170" green="208" blue="242"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="2">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="247" green="218" red="187"/>
+                <color red="187" green="218" blue="247"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="247" green="224" red="197"/>
+                <color red="197" green="224" blue="247"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="3">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="153"/>
+                <color red="153" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="102" green="153" red="51"/>
+                <color red="51" green="153" blue="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="4">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="255"/>
+                <color red="255" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color green="102" red="255"/>
+                <color red="255" green="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -285,26 +286,26 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="102" green="255" red="102"/>
+                <color red="102" green="255" blue="102"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="255" red="150"/>
+                <color red="150" green="255" blue="150"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="255" red="150"/>
+                <color red="150" green="255" blue="150"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="255" red="182"/>
+                <color red="182" green="255" blue="182"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="255" red="182"/>
+                <color red="182" green="255" blue="182"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="50">
-                <color blue="255" green="255" red="255"/>
+                <color red="255" green="255" blue="255"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -317,26 +318,26 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="102" green="102" red="255"/>
+                <color red="255" green="102" blue="102"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="150" red="255"/>
+                <color red="255" green="150" blue="150"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="150" red="255"/>
+                <color red="255" green="150" blue="150"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="182" red="255"/>
+                <color red="255" green="182" blue="182"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="182" red="255"/>
+                <color red="255" green="182" blue="182"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="50">
-                <color blue="255" green="255" red="255"/>
+                <color red="255" green="255" blue="255"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -349,146 +350,146 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="248" green="231" red="212"/>
+                <color red="212" green="231" blue="248"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="1">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="234" green="185" red="129"/>
+                <color red="129" green="185" blue="234"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="242" green="208" red="170"/>
+                <color red="170" green="208" blue="242"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="2">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="247" green="218" red="187"/>
+                <color red="187" green="218" blue="247"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="247" green="224" red="197"/>
+                <color red="197" green="224" blue="247"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="3">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="153"/>
+                <color red="153" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="102" green="153" red="51"/>
+                <color red="51" green="153" blue="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="4">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="255"/>
+                <color red="255" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color green="102" red="255"/>
+                <color red="255" green="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -506,26 +507,26 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="102" green="255" red="102"/>
+                <color red="102" green="255" blue="102"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="255" red="150"/>
+                <color red="150" green="255" blue="150"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="255" red="150"/>
+                <color red="150" green="255" blue="150"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="255" red="182"/>
+                <color red="182" green="255" blue="182"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="255" red="182"/>
+                <color red="182" green="255" blue="182"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="50">
-                <color blue="255" green="255" red="255"/>
+                <color red="255" green="255" blue="255"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -538,146 +539,146 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="248" green="231" red="212"/>
+                <color red="212" green="231" blue="248"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="1">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="234" green="185" red="129"/>
+                <color red="129" green="185" blue="234"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="242" green="208" red="170"/>
+                <color red="170" green="208" blue="242"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="2">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="247" green="218" red="187"/>
+                <color red="187" green="218" blue="247"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="247" green="224" red="197"/>
+                <color red="197" green="224" blue="247"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="3">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="153"/>
+                <color red="153" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="102" green="153" red="51"/>
+                <color red="51" green="153" blue="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="4">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="255"/>
+                <color red="255" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color green="102" red="255"/>
+                <color red="255" green="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -692,26 +693,26 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="102" green="102" red="255"/>
+                <color red="255" green="102" blue="102"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="150" red="255"/>
+                <color red="255" green="150" blue="150"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="150" red="255"/>
+                <color red="255" green="150" blue="150"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="182" red="255"/>
+                <color red="255" green="182" blue="182"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="182" red="255"/>
+                <color red="255" green="182" blue="182"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="50">
-                <color blue="255" green="255" red="255"/>
+                <color red="255" green="255" blue="255"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -725,146 +726,146 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="248" green="231" red="212"/>
+                <color red="212" green="231" blue="248"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="1">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="234" green="185" red="129"/>
+                <color red="129" green="185" blue="234"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="242" green="208" red="170"/>
+                <color red="170" green="208" blue="242"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="2">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="247" green="218" red="187"/>
+                <color red="187" green="218" blue="247"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="247" green="224" red="197"/>
+                <color red="197" green="224" blue="247"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="3">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="153"/>
+                <color red="153" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="102" green="153" red="51"/>
+                <color red="51" green="153" blue="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="4">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="255"/>
+                <color red="255" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color green="102" red="255"/>
+                <color red="255" green="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -879,146 +880,146 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="248" green="231" red="212"/>
+                <color red="212" green="231" blue="248"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="1">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="234" green="185" red="129"/>
+                <color red="129" green="185" blue="234"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="242" green="208" red="170"/>
+                <color red="170" green="208" blue="242"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="2">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="247" green="218" red="187"/>
+                <color red="187" green="218" blue="247"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="247" green="224" red="197"/>
+                <color red="197" green="224" blue="247"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="3">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="153"/>
+                <color red="153" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="102" green="153" red="51"/>
+                <color red="51" green="153" blue="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="4">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="255"/>
+                <color red="255" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color green="102" red="255"/>
+                <color red="255" green="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -1041,26 +1042,26 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="102" green="255" red="102"/>
+                <color red="102" green="255" blue="102"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="255" red="150"/>
+                <color red="150" green="255" blue="150"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="255" red="150"/>
+                <color red="150" green="255" blue="150"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="255" red="182"/>
+                <color red="182" green="255" blue="182"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="255" red="182"/>
+                <color red="182" green="255" blue="182"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="50">
-                <color blue="255" green="255" red="255"/>
+                <color red="255" green="255" blue="255"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -1073,146 +1074,146 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="248" green="231" red="212"/>
+                <color red="212" green="231" blue="248"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="1">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="234" green="185" red="129"/>
+                <color red="129" green="185" blue="234"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="242" green="208" red="170"/>
+                <color red="170" green="208" blue="242"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="2">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="247" green="218" red="187"/>
+                <color red="187" green="218" blue="247"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="247" green="224" red="197"/>
+                <color red="197" green="224" blue="247"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="3">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="153"/>
+                <color red="153" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="102" green="153" red="51"/>
+                <color red="51" green="153" blue="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="4">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="255"/>
+                <color red="255" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color green="102" red="255"/>
+                <color red="255" green="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -1227,146 +1228,146 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="248" green="231" red="212"/>
+                <color red="212" green="231" blue="248"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="1">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="234" green="185" red="129"/>
+                <color red="129" green="185" blue="234"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="242" green="208" red="170"/>
+                <color red="170" green="208" blue="242"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="2">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="247" green="218" red="187"/>
+                <color red="187" green="218" blue="247"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="247" green="224" red="197"/>
+                <color red="197" green="224" blue="247"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="3">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="153"/>
+                <color red="153" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="102" green="153" red="51"/>
+                <color red="51" green="153" blue="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="4">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="255"/>
+                <color red="255" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color green="102" red="255"/>
+                <color red="255" green="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -1384,10 +1385,10 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="204" green="255" red="255"/>
+                <color red="255" green="255" blue="204"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -1402,26 +1403,26 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="102" green="102" red="255"/>
+                <color red="255" green="102" blue="102"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="150" red="255"/>
+                <color red="255" green="150" blue="150"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="150" red="255"/>
+                <color red="255" green="150" blue="150"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="182" red="255"/>
+                <color red="255" green="182" blue="182"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="182" red="255"/>
+                <color red="255" green="182" blue="182"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="50">
-                <color blue="255" green="255" red="255"/>
+                <color red="255" green="255" blue="255"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -1435,146 +1436,146 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="251" red="248"/>
+                <color red="248" green="251" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="245" red="237"/>
+                <color red="237" green="245" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="250" green="237" red="222"/>
+                <color red="222" green="237" blue="250"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="248" green="231" red="212"/>
+                <color red="212" green="231" blue="248"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="252" green="251" red="250"/>
+                <color red="250" green="251" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="233" green="229" red="226"/>
+                <color red="226" green="229" blue="233"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="1">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="253" green="246" red="238"/>
+                <color red="238" green="246" blue="253"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="230" red="208"/>
+                <color red="208" green="230" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="244" green="210" red="172"/>
+                <color red="172" green="210" blue="244"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="234" green="185" red="129"/>
+                <color red="129" green="185" blue="234"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="242" green="208" red="170"/>
+                <color red="170" green="208" blue="242"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="224" green="191" red="154"/>
+                <color red="154" green="191" blue="224"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="2">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="254" green="249" red="245"/>
+                <color red="245" green="249" blue="254"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="1">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="252" green="239" red="226"/>
+                <color red="226" green="239" blue="252"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="2">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="249" green="227" red="203"/>
+                <color red="203" green="227" blue="249"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="3">
-                <color blue="247" green="218" red="187"/>
+                <color red="187" green="218" blue="247"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="247" green="224" red="197"/>
+                <color red="197" green="224" blue="247"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="2">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="229" green="205" red="178"/>
+                <color red="178" green="205" blue="229"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="3">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="153"/>
+                <color red="153" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color blue="102" green="153" red="51"/>
+                <color red="51" green="153" blue="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
           <adaptedGradientColoredAreas styleAdaption="4">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color green="204" red="255"/>
+                <color red="255" green="204"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_END" locationValue="0">
-                <color green="102" red="255"/>
+                <color red="255" green="102"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -1589,26 +1590,26 @@
           <adaptedGradientColoredAreas styleAdaption="0">
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="0">
-                <color blue="102" green="102" red="255"/>
+                <color red="255" green="102" blue="102"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="150" red="255"/>
+                <color red="255" green="150" blue="150"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="10">
-                <color blue="150" green="150" red="255"/>
+                <color red="255" green="150" blue="150"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="182" red="255"/>
+                <color red="255" green="182" blue="182"/>
               </end>
             </gradientColor>
             <gradientColor>
               <start locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="20">
-                <color blue="182" green="182" red="255"/>
+                <color red="255" green="182" blue="182"/>
               </start>
               <end locationType="LOCATION_TYPE_ABSOLUTE_START" locationValue="50">
-                <color blue="255" green="255" red="255"/>
+                <color red="255" green="255" blue="255"/>
               </end>
             </gradientColor>
           </adaptedGradientColoredAreas>
@@ -1617,115 +1618,115 @@
     </styles>
     <styles foreground="/0/@colors.2" id="BPMNCLASS-TEXT"/>
     <styles foreground="/0/@colors.2" id="BPMNCLASS-TEXT"/>
-    <connections active="true" end="/0/@children.2/@anchors.0" start="/0/@children.1/@anchors.0" visible="true" xsi:type="pi:FreeFormConnection">
-      <graphicsAlgorithm filled="false" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" xsi:type="al:Polyline"/>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.1/@anchors.0" end="/0/@children.2/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="1" filled="false" transparency="0.0"/>
       <link businessObjects="flow6"/>
-      <connectionDecorators active="true" location="0.5" locationRelative="true" visible="true">
-        <graphicsAlgorithm filled="false" font="/0/@fonts.0" lineWidth="1" style="/0/@styles.38" transparency="0.0" value="" x="10" xsi:type="al:Text"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" x="10" style="/0/@styles.38" font="/0/@fonts.0" value=""/>
       </connectionDecorators>
-      <connectionDecorators location="1.0" locationRelative="true" visible="true">
-        <graphicsAlgorithm background="/0/@colors.3" filled="true" foreground="/0/@colors.3" lineWidth="1" style="/0/@styles.5" transparency="0.0" xsi:type="al:Polygon">
-          <points after="3" before="3" x="-10" y="-5"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.3" foreground="/0/@colors.3" lineWidth="1" filled="true" transparency="0.0" style="/0/@styles.5">
+          <points x="-10" y="-5" before="3" after="3"/>
           <points/>
-          <points after="3" before="3" x="-10" y="5"/>
-          <points after="3" before="3" x="-8"/>
+          <points x="-10" y="5" before="3" after="3"/>
+          <points x="-8" before="3" after="3"/>
         </graphicsAlgorithm>
       </connectionDecorators>
       <bendpoints x="167" y="155"/>
     </connections>
-    <connections active="true" end="/0/@children.3/@anchors.0" start="/0/@children.2/@anchors.0" visible="true" xsi:type="pi:FreeFormConnection">
-      <graphicsAlgorithm filled="false" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" xsi:type="al:Polyline"/>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.2/@anchors.0" end="/0/@children.3/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="1" filled="false" transparency="0.0"/>
       <link businessObjects="flow9"/>
-      <connectionDecorators active="true" location="0.5" locationRelative="true" visible="true">
-        <graphicsAlgorithm filled="false" font="/0/@fonts.0" lineWidth="1" style="/0/@styles.47" transparency="0.0" value="" x="10" xsi:type="al:Text"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" x="10" style="/0/@styles.47" font="/0/@fonts.0" value=""/>
       </connectionDecorators>
-      <connectionDecorators location="1.0" locationRelative="true" visible="true">
-        <graphicsAlgorithm background="/0/@colors.3" filled="true" foreground="/0/@colors.3" lineWidth="1" style="/0/@styles.5" transparency="0.0" xsi:type="al:Polygon">
-          <points after="3" before="3" x="-10" y="-5"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.3" foreground="/0/@colors.3" lineWidth="1" filled="true" transparency="0.0" style="/0/@styles.5">
+          <points x="-10" y="-5" before="3" after="3"/>
           <points/>
-          <points after="3" before="3" x="-10" y="5"/>
-          <points after="3" before="3" x="-8"/>
+          <points x="-10" y="5" before="3" after="3"/>
+          <points x="-8" before="3" after="3"/>
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections active="true" end="/0/@children.4/@anchors.0" start="/0/@children.3/@anchors.0" visible="true" xsi:type="pi:FreeFormConnection">
-      <graphicsAlgorithm filled="false" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" xsi:type="al:Polyline"/>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.0" end="/0/@children.4/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="1" filled="false" transparency="0.0"/>
       <link businessObjects="flow13"/>
-      <connectionDecorators active="true" location="0.5" locationRelative="true" visible="true">
-        <graphicsAlgorithm filled="false" font="/0/@fonts.0" lineWidth="1" style="/0/@styles.52" transparency="0.0" value="" x="10" xsi:type="al:Text"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" x="10" style="/0/@styles.52" font="/0/@fonts.0" value=""/>
       </connectionDecorators>
-      <connectionDecorators location="1.0" locationRelative="true" visible="true">
-        <graphicsAlgorithm background="/0/@colors.3" filled="true" foreground="/0/@colors.3" lineWidth="1" style="/0/@styles.5" transparency="0.0" xsi:type="al:Polygon">
-          <points after="3" before="3" x="-10" y="-5"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.3" foreground="/0/@colors.3" lineWidth="1" filled="true" transparency="0.0" style="/0/@styles.5">
+          <points x="-10" y="-5" before="3" after="3"/>
           <points/>
-          <points after="3" before="3" x="-10" y="5"/>
-          <points after="3" before="3" x="-8"/>
+          <points x="-10" y="5" before="3" after="3"/>
+          <points x="-8" before="3" after="3"/>
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections active="true" end="/0/@children.5/@anchors.0" start="/0/@children.4/@anchors.0" visible="true" xsi:type="pi:FreeFormConnection">
-      <graphicsAlgorithm filled="false" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" xsi:type="al:Polyline"/>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.4/@anchors.0" end="/0/@children.5/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="1" filled="false" transparency="0.0"/>
       <link businessObjects="flow15"/>
-      <connectionDecorators active="true" location="0.5" locationRelative="true" visible="true">
-        <graphicsAlgorithm filled="false" font="/0/@fonts.0" lineWidth="1" style="/0/@styles.54" transparency="0.0" value="" x="10" xsi:type="al:Text"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" x="10" style="/0/@styles.54" font="/0/@fonts.0" value=""/>
       </connectionDecorators>
-      <connectionDecorators location="1.0" locationRelative="true" visible="true">
-        <graphicsAlgorithm background="/0/@colors.3" filled="true" foreground="/0/@colors.3" lineWidth="1" style="/0/@styles.5" transparency="0.0" xsi:type="al:Polygon">
-          <points after="3" before="3" x="-10" y="-5"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.3" foreground="/0/@colors.3" lineWidth="1" filled="true" transparency="0.0" style="/0/@styles.5">
+          <points x="-10" y="-5" before="3" after="3"/>
           <points/>
-          <points after="3" before="3" x="-10" y="5"/>
-          <points after="3" before="3" x="-8"/>
+          <points x="-10" y="5" before="3" after="3"/>
+          <points x="-8" before="3" after="3"/>
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections active="true" end="/0/@children.5/@anchors.0" start="/0/@children.3/@anchors.0" visible="true" xsi:type="pi:FreeFormConnection">
-      <graphicsAlgorithm filled="false" foreground="/0/@colors.3" lineWidth="1" transparency="0.0" xsi:type="al:Polyline"/>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.0" end="/0/@children.5/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.3" lineWidth="1" filled="false" transparency="0.0"/>
       <link businessObjects="flow16"/>
-      <connectionDecorators active="true" location="0.5" locationRelative="true" visible="true">
-        <graphicsAlgorithm filled="false" font="/0/@fonts.0" lineWidth="1" style="/0/@styles.55" transparency="0.0" value="" x="10" xsi:type="al:Text"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" x="10" style="/0/@styles.55" font="/0/@fonts.0" value=""/>
       </connectionDecorators>
-      <connectionDecorators location="1.0" locationRelative="true" visible="true">
-        <graphicsAlgorithm background="/0/@colors.3" filled="true" foreground="/0/@colors.3" lineWidth="1" style="/0/@styles.5" transparency="0.0" xsi:type="al:Polygon">
-          <points after="3" before="3" x="-10" y="-5"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" background="/0/@colors.3" foreground="/0/@colors.3" lineWidth="1" filled="true" transparency="0.0" style="/0/@styles.5">
+          <points x="-10" y="-5" before="3" after="3"/>
           <points/>
-          <points after="3" before="3" x="-10" y="5"/>
-          <points after="3" before="3" x="-8"/>
+          <points x="-10" y="5" before="3" after="3"/>
+          <points x="-8" before="3" after="3"/>
         </graphicsAlgorithm>
       </connectionDecorators>
       <bendpoints x="737" y="161"/>
     </connections>
-    <colors blue="249" green="238" red="227"/>
-    <colors blue="112" green="25" red="25"/>
-    <colors blue="153" green="51" red="51"/>
+    <colors red="227" green="238" blue="249"/>
+    <colors red="25" green="25" blue="112"/>
+    <colors red="51" green="51" blue="153"/>
     <colors/>
-    <colors blue="51" green="102" red="51"/>
-    <colors blue="51" green="51" red="153"/>
-    <colors blue="198" green="193" red="159"/>
-    <colors blue="183" green="176" red="130"/>
-    <colors blue="67" green="67" red="67"/>
-    <colors green="128" red="255"/>
-    <colors blue="192" green="192" red="192"/>
-    <colors blue="224" green="255" red="255"/>
-    <colors blue="172" green="201" red="173"/>
-    <colors blue="128" green="128" red="128"/>
-    <colors blue="172" green="172" red="172"/>
-    <colors blue="159" green="159" red="159"/>
+    <colors red="51" green="102" blue="51"/>
+    <colors red="153" green="51" blue="51"/>
+    <colors red="159" green="193" blue="198"/>
+    <colors red="130" green="176" blue="183"/>
+    <colors red="67" green="67" blue="67"/>
+    <colors red="255" green="128"/>
+    <colors red="192" green="192" blue="192"/>
+    <colors red="255" green="255" blue="224"/>
+    <colors red="173" green="201" blue="172"/>
+    <colors red="128" green="128" blue="128"/>
+    <colors red="172" green="172" blue="172"/>
+    <colors red="159" green="159" blue="159"/>
     <fonts name="Arial" size="8"/>
-    <fonts bold="true" name="Arial" size="8"/>
+    <fonts name="Arial" size="8" bold="true"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess author="" cardIndex="5606" category="PCP" complementsLevel="1" expedient="Default" extendedFields="&lt;list/&gt;" formSource="server" id="Solicita&#231;&#227;o de Pe&#231;as" instruction="Solicita08 - Solicita Pe&#231;as da Matriz para Filial" keyWord="" managerAssignmentController="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;&#10;  &lt;groupId&gt;GestorSolicitaoPecas&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;" managerMechanism="Grupo" name="Solicita&#231;&#227;o de Pe&#231;as" notifyRequisitionerComplements="true" notifyResponsibleComplements="true" publicProcess="true" serverId="GTS Homologa&#231;&#227;o" version="6" volume="Default"/>
-  <bpmn2:BpmnPool cores="FFFFFF" id="pool1" name="Pool"/>
-  <bpmn2:BpmnSwimLane cores="9F9F9F" id="swimlane2" name="Comercial"/>
-  <bpmn2:BpmnSwimLane cores="C0C0C0" id="swimlane3" name="PCP"/>
-  <bpmn2:BpmnStartEvent esforcoCalculo="0" expediente="" id="startevent4" initializerConfiguration="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;&#10;  &lt;groupId&gt;SolicitaPecasFilial&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup&gt;" instrucoes="SolicitaPecasFilial" name="In&#237;cio" outgoing="flow6" selecionaColaboradores="1" signalId="0" type="10"/>
-  <bpmn2:BpmnTask authNotify="true" esforcoCalculo="0" executionAttempts="0" expediente="" frequency="0" id="task5" incoming="flow6" instrucoes="GestorSolicitacaoPecas" loopType="0" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup&gt;&#10;  &lt;groupId&gt;GestorSolicitaoPecas&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Pool Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup&gt;" managerMechanism="Pool Grupo" name="ANALISA_SOLICITACAO" outgoing="flow9" selecionaColaboradores="1" type="80"/>
-  <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow6" name="" sourceRef="startevent4" targetRef="task5"/>
-  <bpmn2:BpmnSwimLane cores="82b0b7" id="swimlane7" name="Amox"/>
-  <bpmn2:BpmnGateway condition="&lt;list&gt;&#10;  &lt;org.eclipse.bpmn2.impl.ConditionImpl&gt;&#10;    &lt;order&gt;1&lt;/order&gt;&#10;    &lt;expression&gt;&amp;#xd;&#10;hAPI.getCardValue(&amp;quot;solAprovacao&amp;quot;) == &amp;quot;reprovado&amp;quot;&lt;/expression&gt;&#10;    &lt;targetTask&gt;endevent14&lt;/targetTask&gt;&#10;    &lt;conditionType&gt;0&lt;/conditionType&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl&gt;&#10;  &lt;org.eclipse.bpmn2.impl.ConditionImpl&gt;&#10;    &lt;order&gt;2&lt;/order&gt;&#10;    &lt;expression&gt;&amp;#xd;&#10;hAPI.getCardValue(&amp;quot;solAprovacao&amp;quot;) == &amp;quot;aprovado&amp;quot;&lt;/expression&gt;&#10;    &lt;targetTask&gt;task12&lt;/targetTask&gt;&#10;    &lt;conditionType&gt;0&lt;/conditionType&gt;&#10;    &lt;mecanismoAtribuicaoConfiguracao class=&quot;org.eclipse.bpmn2.impl.AssignmentControllerGroup&quot;&gt;&#10;      &lt;groupId&gt;AnalisaRelatorio&lt;/groupId&gt;&#10;      &lt;mechanismName&gt;Grupo&lt;/mechanismName&gt;&#10;    &lt;/mecanismoAtribuicaoConfiguracao&gt;&#10;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl&gt;&#10;&lt;/list&gt;" id="exclusivegateway8" incoming="flow9" name="APROVA_SOLICITACAO?" outgoing="flow13 flow16" type="120"/>
-  <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow9" name="" sourceRef="task5" targetRef="exclusivegateway8"/>
-  <bpmn2:BpmnTask authNotify="true" esforcoCalculo="0" executionAttempts="0" expediente="" frequency="0" id="task12" incoming="flow13" instrucoes="SeparacaoPecasAlmox" loopType="0" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup&gt;&#10;  &lt;groupId&gt;SeparacaoPecasAlmox&lt;/groupId&gt;&#10;  &lt;mechanismName&gt;Pool Grupo&lt;/mechanismName&gt;&#10;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup&gt;" managerMechanism="Pool Grupo" name="SEPARACAO_ALMOX" outgoing="flow15" selecionaColaboradores="1" type="80"/>
-  <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow13" name="" sourceRef="exclusivegateway8" targetRef="task12"/>
-  <bpmn2:BpmnEndEvent id="endevent14" incoming="flow15 flow16" name="Fim" signalId="0" type="60"/>
-  <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow15" name="" sourceRef="task12" targetRef="endevent14"/>
-  <bpmn2:SequenceFlow atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/&gt;" id="flow16" name="" sourceRef="exclusivegateway8" targetRef="endevent14"/>
+  <bpmn2:BpmnProcess id="Solicita&#xe7;&#xe3;o de Pe&#xe7;as" name="Solicita&#xe7;&#xe3;o de Pe&#xe7;as" serverId="GTS Homologa&#xe7;&#xe3;o" version="4" author="" extendedFields="&lt;list/>" cardIndex="5606" formSource="server" managerMechanism="Grupo" managerAssignmentController="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup>&#xA;  &lt;groupId>GestorSolicitaoPecas&lt;/groupId>&#xA;  &lt;mechanismName>Grupo&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup>" category="PCP" publicProcess="true" volume="Default" expedient="Default" instruction="Solicita08 - Solicita Pe&#xe7;as da Matriz para Filial" keyWord="" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
+  <bpmn2:BpmnPool id="pool1" name="Pool" cores="FFFFFF"/>
+  <bpmn2:BpmnSwimLane id="swimlane2" name="Comercial" cores="9F9F9F"/>
+  <bpmn2:BpmnSwimLane id="swimlane3" name="PCP" cores="C0C0C0"/>
+  <bpmn2:BpmnStartEvent id="startevent4" name="In&#xed;cio" outgoing="flow6" type="10" signalId="0" initializerConfiguration="&lt;org.eclipse.bpmn2.impl.AssignmentControllerGroup>&#xA;  &lt;groupId>SolicitaPecasFilial&lt;/groupId>&#xA;  &lt;mechanismName>Grupo&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerGroup>" instrucoes="SolicitaPecasFilial" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
+  <bpmn2:BpmnTask id="task5" name="ANALISA_SOLICITACAO" incoming="flow6" outgoing="flow9" type="80" managerMechanism="Pool Grupo" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup>&#xA;  &lt;groupId>GestorSolicitaoPecas&lt;/groupId>&#xA;  &lt;mechanismName>Pool Grupo&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup>" loopType="0" authNotify="true" instrucoes="GestorSolicitacaoPecas" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
+  <bpmn2:SequenceFlow id="flow6" name="" sourceRef="startevent4" targetRef="task5" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
+  <bpmn2:BpmnSwimLane id="swimlane7" name="Amox" cores="82b0b7"/>
+  <bpmn2:BpmnGateway id="exclusivegateway8" name="APROVA_SOLICITACAO?" incoming="flow9" outgoing="flow13 flow16" type="120" condition="&lt;list>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>1&lt;/order>&#xA;    &lt;expression>&amp;#xd;&#xA;hAPI.getCardValue(&amp;quot;solAprovacao&amp;quot;) == &amp;quot;reprovado&amp;quot;&lt;/expression>&#xA;    &lt;targetTask>endevent14&lt;/targetTask>&#xA;    &lt;conditionType>0&lt;/conditionType>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>2&lt;/order>&#xA;    &lt;expression>&amp;#xd;&#xA;hAPI.getCardValue(&amp;quot;solAprovacao&amp;quot;) == &amp;quot;aprovado&amp;quot;&lt;/expression>&#xA;    &lt;targetTask>task12&lt;/targetTask>&#xA;    &lt;conditionType>0&lt;/conditionType>&#xA;    &lt;mecanismoAtribuicaoConfiguracao class=&quot;org.eclipse.bpmn2.impl.AssignmentControllerGroup&quot;>&#xA;      &lt;groupId>AnalisaRelatorio&lt;/groupId>&#xA;      &lt;mechanismName>Grupo&lt;/mechanismName>&#xA;    &lt;/mecanismoAtribuicaoConfiguracao>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;&lt;/list>"/>
+  <bpmn2:SequenceFlow id="flow9" name="" sourceRef="task5" targetRef="exclusivegateway8" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
+  <bpmn2:BpmnTask id="task12" name="SEPARACAO_ALMOX" incoming="flow13" outgoing="flow15" type="80" managerMechanism="Pool Grupo" managerAssignmentControllerString="&lt;org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup>&#xA;  &lt;groupId>GestorSolicitaoPecas&lt;/groupId>&#xA;  &lt;mechanismName>Pool Grupo&lt;/mechanismName>&#xA;&lt;/org.eclipse.bpmn2.impl.AssignmentControllerPoolGroup>" loopType="0" authNotify="true" instrucoes="SeparacaoPecasAlmox" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
+  <bpmn2:SequenceFlow id="flow13" name="" sourceRef="exclusivegateway8" targetRef="task12" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
+  <bpmn2:BpmnEndEvent id="endevent14" name="Fim" incoming="flow15 flow16" type="60" signalId="0"/>
+  <bpmn2:SequenceFlow id="flow15" name="" sourceRef="task12" targetRef="endevent14" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
+  <bpmn2:SequenceFlow id="flow16" name="" sourceRef="exclusivegateway8" targetRef="endevent14" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
 </xmi:XMI>
