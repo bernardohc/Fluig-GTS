@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;RelatorioDeViagens.process&apos; to &apos;diagrams&apos;&#x0D;&#x0A;- Original project: &apos;Teste Fluig&apos;&#x0D;&#x0A;- Destination element: &apos;diagrams&apos;&#x0D;&#x0A;- Original element: &apos;RelatorioDeViagens.process&apos;" description="Copy file" element1="workflow/diagrams/RelatorioDeViagens.process" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1662496003326" target="/Teste Fluig/workflow/diagrams" units="0" version="1.0"/>
+</session>

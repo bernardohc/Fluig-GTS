@@ -1,0 +1,1168 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<link type="text/css" rel="stylesheet" href="css-anexo.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script>
+		$(document).ready(function() {
+			window.parent.$("#breadcrumb").remove();
+			//Aba Anexo
+			window.parent.$("#processTabs").find("li").first().hide();
+			window.parent.$("#processTabs").find("li").last().hide();
+			window.parent.$("#textActivity").remove();
+			//Se não conseguir encontrar o tipo de solicitante, mostra mensagem de usuário incorreto
+			//Ou se for Revenda e não ter os dados adicionais (A1_COD e A1_LOJA)
+			if($('#tipoSolicitante').val().trim() == '' || ( $('#tipoSolicitante').val().trim() == 'Revenda' && $('#A1_COD').val().trim() == ''  )){
+		 		window.parent.$("#collapse-tabs").remove();
+		 		window.parent.$("#textActivity").remove();
+		 		window.parent.$("#workflowActions").remove();
+		 		window.parent.$("#breadcrumb").remove();
+			}
+			
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+		});
+		
+	</script>
+	
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-moment.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-anexo.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	
+	<div class="col-md-12">
+	    <div class="row banner-header">
+	        <h1><font color="000" ><strong>Entrega Técnica</strong></font></h1>
+	    </div>
+	</div>
+	
+	<div id="divProgresso" class="col-md-12">
+		<div class="row ">
+			<p id="descricaoEtapa" style="font-weight: bold;"></p>
+			<div class="progress">
+			    <div id="progressBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" >
+			        <span id="porcentProgressBar"></span>
+			    </div>
+			</div>
+		</div>
+	</div>
+	
+	<input type="hidden" name="solicitante" id="solicitante" >
+	<input type="hidden" name="tipoSolicitante" id="tipoSolicitante" >
+	<input type="hidden" name="numFluig" id="numFluig" >
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+	<input type="hidden" name="A1_COD" id="A1_COD" class="form-control" >
+	<input type="hidden" name="A1_LOJA" id="A1_LOJA" class="form-control" >
+	<input type="hidden" name="A1_TIPO" id="A1_TIPO" class="form-control" >
+	<input type="hidden" name="A1_PAIS" id="A1_PAIS" class="form-control" >
+	<!-- Disparo de e-mail -->
+	<input type="hidden" name="emailProgPagtoCodRet" id="emailProgPagtoCodRet" class="form-control" >
+	<input type="hidden" name="emailProgPagtoMsg" id="emailProgPagtoMsg" class="form-control" >
+	<input type="hidden" name="emailInternoOCCodRet" id="emailInternoOCCodRet" class="form-control" >
+	<input type="hidden" name="emailInternoOCMsg" id="emailInternoOCMsg" class="form-control" >
+	
+	<ul id="myTab"  class="nav nav-tabs nav-justified" role="tablist">
+<!-- 	<ul id="myTab"  class="nav nav-pills nav-justified" role="navigation"> -->
+	    <li id="tabCadastramento" class="disabled" ><a href="#" role="tab" data-toggle="tab" >Cadastramento</a></li>
+	    <li id="tabEmissaoNF" class="disabled" ><a href="#" role="tab" data-toggle="tab">Emissão NF/Forma Pagamento</a></li>
+	    <li id="tabProgPagto" class="disabled" ><a href="#" role="tab" data-toggle="tab">Programação para Pagamento</a></li>
+	</ul>
+	
+	<!-- Tab panes -->
+	<div class="tab-content">
+	    <div class="tab-pane fade " id="divCadastramento">
+			<div id="divCadastramentoCadastroEquipamento" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong >Cadastro do Equipamento</strong></font></h5>
+				    </div>
+				</div>
+		    	<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="equipNumSerie">Número de Série*</label>
+							<input type="text" name="equipNumSerie" id="equipNumSerie" class="form-control" maxlength="30"/>
+		        		</div>    
+		        		<div class="col-md-2" align="left" >
+		        			<label for="equipTipoNota">Tipo da Nota*</label>
+		        			<input type="hidden" name="equipTipoNotaHidden" id="equipTipoNotaHidden" value="NV" />
+							<select name="equipTipoNota" id="equipTipoNota" class="form-control" >
+					        	<option value="NV">Nota de Venda</option>
+					        	<option value="ND" >Nota de Demonstração</option>
+					      	</select>
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="equipNumNotaFiscal">Nota Fiscal*</label>
+							<input type="text" name="equipNumNotaFiscal" id="equipNumNotaFiscal" class="form-control"  maxlength="30" readonly />
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="equipCodProduto">Código do Produto*</label>
+							<input type="text" name="equipCodProduto" id="equipCodProduto" class="form-control" readonly />
+		        		</div>
+		        		<div class="col-md-4" align="left">
+							<label for="equipDescricao">Descrição*</label>
+							<input type="text" name="equipDescricao" id="equipDescricao" class="form-control" readonly />
+		        		</div>
+		        		
+		        	</div>    
+				</div>  
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-5" align="left">
+							<label for="equipModelo">Modelo*</label>
+							<input type="text" name="equipModelo" id="equipModelo" class="form-control" maxlength="150"/>
+		        		</div>
+						<div class="col-md-3" align="left">
+							<label for="equipAcoplamento">Acoplamento*</label>
+							<input type="text" name="equipAcoplamento" id="equipAcoplamento" class="form-control" maxlength="150"/>
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="equipDataEntrega">Data de Entrega*</label>
+							<div class="input-group">
+								<input type="text" name="equipDataVenda" id="equipDataVenda"  class="form-control" readonly style="display:none;"/>				
+								<input type="text" name="equipDataEntrega" id="equipDataEntrega"  class="form-control" />				
+								<span class="input-group-addon">
+			                           <span class="fluigicon fluigicon-calendar"></span>
+			                    </span>
+							</div>
+						</div> 
+		        		<div class="col-md-2" align="left">
+							<label for="equipDataTerminoGarantia">Término Garantia*</label>
+							<input type="text" name="equipDataTerminoGarantia" id="equipDataTerminoGarantia" class="form-control" readonly />
+		        		</div>
+		        		
+		        		<input type="text" name="equipCodBaseDeAtendimento" id="equipCodBaseDeAtendimento" class="form-control" style="display:none;"/>
+					</div>
+				</div>
+			</div>
+			<div id="divCadastramentoCadastroRevenda">
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong><span id="spanSubTituloRevenda">Cadastro da Loja (Revenda)</span></strong></font></h5>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div id="divRevenda">
+						<div class="row">
+							<div class="col-md-2" align="left">
+								<label for="revCpfCnpj">CPF/CNPJ*</label>
+								<input type="text" name="revCpfCnpj" id="revCpfCnpj" class="form-control" readonly maxlength="20" 
+										data-protection="revCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir a revenda da entrega técnica" />
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revRazaoSocialRevenda">Razão Social*</label>
+								<input type="text" name="revRazaoSocialRevenda" id="revRazaoSocialRevenda" class="form-control" readonly />
+			        		</div>
+							<div class="col-md-3" align="left">
+								<label for="revNomeFantasiaRevenda">Nome Fantasia*</label>
+								<input type="text" name="revNomeFantasiaRevenda" id="revNomeFantasiaRevenda" class="form-control" readonly 
+										data-protection="revNomeFantasiaRevenda" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir a revenda da entrega técnica" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="revCodigo">Código*</label>
+								<input type="text" name="revCodigo" id="revCodigo" class="form-control" readonly />
+			        		</div>
+							<div class="col-md-1" align="left">
+								<label for="revLoja">Loja*</label>
+								<input type="text" name="revLoja" id="revLoja" class="form-control" readonly />
+			        		</div>
+		        		</div>
+						<div class="row">
+							<div class="col-md-4" align="left">
+								<label for="revCidade">Cidade*</label>
+								<input type="text" name="revCidade" id="revCidade" class="form-control" readonly />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="revEstado">Estado*</label>
+								<input type="hidden" name="revEstadoHidden" id="revEstadoHidden" />
+								<select name="revEstado" id="revEstado" class="form-control" disabled >
+				      				<option value=""></option>
+				      				<option value="AC">Acre</option>
+									<option value="AL">Alagoas</option>
+									<option value="AP">Amapá</option>
+									<option value="AM">Amazonas</option>
+									<option value="BA">Bahia</option>
+									<option value="CE">Ceará</option>
+									<option value="DF">Distrito Federal</option>
+									<option value="ES">Espírito Santo</option>
+									<option value="GO">Goiás</option>
+									<option value="MA">Maranhão</option>
+									<option value="MT">Mato Grosso</option>
+									<option value="MS">Mato Grosso do Sul</option>
+									<option value="MG">Minas Gerais</option>
+									<option value="PA">Pará</option>
+									<option value="PB">Paraíba</option>
+									<option value="PR">Paraná</option>
+									<option value="PE">Pernambuco</option>
+									<option value="PI">Piauí</option>
+									<option value="RJ">Rio de Janeiro</option>
+									<option value="RN">Rio Grande do Norte</option>
+									<option value="RS">Rio Grande do Sul</option>
+									<option value="RO">Rondônia</option>
+									<option value="RR">Roraima</option>
+									<option value="SC">Santa Catarina</option>
+									<option value="SP">São Paulo</option>
+									<option value="SE">Sergipe</option>
+									<option value="TO">Tocantins</option>
+								</select>
+			        		</div>
+		        		</div>
+						<div class="row">
+							<div class="col-md-4" align="left">
+								<label for="revClassPeca">Classificação de Peça</label>
+								<input type="text" name="revClassPeca" id="revClassPeca" class="form-control" readonly />
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revClassServico">Classificação de Serviço</label>
+								<input type="text" name="revClassServico" id="revClassServico" class="form-control" readonly />
+			        		</div>
+		        		</div>
+						<div class="row">
+							<div class="col-md-4" align="left">
+								<label for="revEmail">E-mail</label>
+								<input type="text" name="revEmail" id="revEmail" class="form-control" readonly 
+									data-protection="revEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato da revenda da entrega técnica" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="revTelefone">Telefone</label>
+								<input type="text" name="revTelefone" id="revTelefone" class="form-control" readonly 
+									data-protection="revTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato da revenda da entrega técnica" />
+			        		</div>
+		        		</div>
+	
+						<div class="row">
+							<div class="col-md-2" align="left">
+								<h4><strong>Contato de Vendas:</strong></h4>
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revContVendasNome">Nome</label>
+								<input type="text" name="revContVendasNome" id="revContVendasNome" class="form-control" 
+									data-protection="revContVendasNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o contato da revenda da entrega técnica do setor de vendas" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="revContVendasTelefone">Telefone</label>
+								<input type="text" name="revContVendasTelefone" id="revContVendasTelefone" class="form-control" 
+									data-protection="revContVendasTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato da revenda da entrega técnica do setor de vendas" />
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revContVendasEmail">E-mail</label>
+								<input type="text" name="revContVendasEmail" id="revContVendasEmail" class="form-control" 
+									data-protection="revContVendasEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato da revenda da entrega técnica do setor de vendas" />
+			        		</div>
+		        		</div>
+						<div class="row">
+							<div class="col-md-2" align="left">
+								<h4><strong>Contato de Peças:</strong></h4>
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revContPecasNome">Nome</label>
+								<input type="text" name="revContPecasNome" id="revContPecasNome" class="form-control" 
+									data-protection="revContPecasNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o contato da revenda da entrega técnica do setor de peças" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="revContPecasTelefone">Telefone</label>
+								<input type="text" name="revContPecasTelefone" id="revContPecasTelefone" class="form-control" 
+									data-protection="revContPecasTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato da revenda da entrega técnica do setor de peças" />
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revContPecasEmail">E-mail</label>
+								<input type="text" name="revContPecasEmail" id="revContPecasEmail" class="form-control" 
+									data-protection="revContPecasEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato da revenda da entrega técnica do setor de peças" />
+			        		</div>
+		        		</div>
+						<div class="row">
+							<div class="col-md-2" align="left">
+								<h4><strong>Contato de Serviço:</strong></h4>
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revContServicoNome">Nome*</label>
+								<input type="text" name="revContServicoNome" id="revContServicoNome" class="form-control" 
+									data-protection="revContServicoNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o contato da revenda da entrega técnica do setor de serviço" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="revContServicoTelefone">Telefone*</label>
+								<input type="text" name="revContServicoTelefone" id="revContServicoTelefone" class="form-control"
+									data-protection="revContServicoTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato da revenda da entrega técnica do setor de serviço" />
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revContServicoEmail">E-mail*</label>
+								<input type="text" name="revContServicoEmail" id="revContServicoEmail" class="form-control" 
+									data-protection="revContServicoEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato da revenda da entrega técnica do setor de serviço" />
+			        		</div>
+		        		</div>
+	        		</div>
+	        		<div id="divEntregadorTécnico">
+						<div class="row">
+							<div class="col-md-2" align="left">
+								<h4><strong>Entregador Técnico:</strong></h4>
+			        		</div>
+							<div class="col-md-4" align="left">
+								<label for="revEntTecNome">Nome*</label>
+								<input type="text" name="revEntTecNome" id="revEntTecNome" class="form-control" 
+									data-protection="revEntTecNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o entregador técnico da revenda" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="revEntTecTelefone">Telefone*</label>
+								<input type="text" name="revEntTecTelefone" id="revEntTecTelefone" class="form-control"
+									data-protection="revEntTecTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do entregador técnico da revenda" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="revEntTecCpf">CPF*</label>
+								<input type="text" name="revEntTecCpf" id="revEntTecCpf" class="form-control" maxlength="20" 
+									data-protection="revEntTecCpf" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o entregador técnico da revenda" />
+			        		</div>
+		        		</div>
+	        		</div>
+        		</div>
+			</div>
+			<div id="divCadastramentoProtocoloRecClienteFinal">
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong>Protocolo de Recebimento do Cliente Final</strong></font></h5>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4" align="left">
+							<label for="protoRecResponsavel">Responsável*</label>
+							<input type="text" name="protoRecResponsavel" id="protoRecResponsavel" class="form-control" 
+								data-protection="protoRecResponsavel" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o protocolo de recebimento do cliente final da entrega técnica" />
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="protoRecTelefone">Telefone*</label>
+							<input type="text" name="protoRecTelefone" id="protoRecTelefone" class="form-control" 
+								data-protection="protoRecTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do protocolo de recebimento do cliente final da entrega técnica" />
+		        		</div>
+		        		<div class="col-md-4" align="left">
+							<label for="protoRecEmail">E-mail*</label>
+							<input type="text" name="protoRecEmail" id="protoRecEmail" class="form-control" 
+								data-protection="protoRecEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do protocolo de recebimento do cliente final da entrega técnica" />
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="protoRecDataRecebimento">Data Recebimento*</label>
+							<div class="input-group">
+								<input type="text" name="protoRecDataRecebimento" id="protoRecDataRecebimento"  class="form-control" />				
+								<span class="input-group-addon">
+			                           <span class="fluigicon fluigicon-calendar"></span>
+			                    </span>
+							</div>
+						</div> 
+		        	</div>
+		        	<div class="row">
+		        		<div class="col-md-2">
+			            	<h5>Possui avarias?*</h5>
+							<div class="radio" >
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="protoRecPossuiAvarias" value="sim" id="protoRecPossuiAvariasSim">
+									<label for="protoRecPossuiAvariasSim">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="protoRecPossuiAvarias" value="nao" id="protoRecPossuiAvariasNao">
+									<label for="protoRecPossuiAvariasNao">Não</label>
+								</div>
+							</div>
+						</div>
+		        	</div>
+		        	<div id="divTabelaAvarias" class="row" style="display:none;">
+		        		<div class="col-md-10">
+							<h5><strong>Tabela de Avarias:</strong></h5> 
+		        			<table class="table table-condensed table-nonfluid table-striped" id="protoRecTbAvarias" tablename="protoRecTbAvarias" nodeletebutton=true noaddbutton="true" >
+								<thead>
+									<tr>	
+										<th class="tdDeleteRow"></th>
+										<th class="col-md-7">Descrição*</th>
+										<th class="col-md-5">Imagem Avaria*</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr detail="true" detailname="protoRecTbAvarias" >
+										<td class="fs-v-align-middle fs-text-center tdDeleteRow" style="width: 1%;">
+											<div>
+												<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Avarias" onclick="removeAvarias(this)"></i>
+											</div>
+										</td>
+										<td>	
+											<input type="text" name="protoRecAvariasDescricaoItem" id="protoRecAvariasDescricaoItem" class="form-control"  />
+										</td>
+										<td>	
+											<div class="componentAnexo">
+												<div class="input-group">
+													<input type="hidden" class="descAnexo" name="protoRecAvariasImagemDescItem" />
+													<input type="text" id="protoRecAvariasImagemItem" name="protoRecAvariasImagemItem" class="form-control inputAnexo" placeholder="Selecione um arquivo" readonly />
+												</div>
+												<div class="icones">
+													<button type="button" class="btnUpFile btn btn-success btn-sm" data-acao="upload" onclick="anexo(event)" title="Selecionar">
+														<i class="fluigicon fluigicon-file-upload icon-sm"></i>
+													</button>
+													<button style="display: none;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disabled>
+														<i class="fluigicon fluigicon-eye-open icon-sm"></i>
+													</button>
+													<button style="display: none;" type="button" class="btnDownloadFile btn btn-info btn-sm" data-acao="download" onclick="anexo(event)" title="Download" disabled>
+														<i class="fluigicon fluigicon-download icon-sm"></i>
+													</button>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div id="divBtnAddAvaria" class="row" style="display:none;">
+								<div class="col-md-3 col-md-offset-9">
+									<button type="button" class="btn btn-primary" id="btnAddAvarias">Adicionar Avaria</button>
+								</div>	
+							</div>	
+		        		</div>
+		        	</div>
+		        	<div id="divCienteSemAvarias" class="row" style="display:none">
+			        	<div class="col-sm-12">		
+				            <div class="col-md-12" align="left">
+				            	<label class="checkbox-inline">
+								    <input type="checkbox" name="protoRecCienteSemAvarias" id="protoRecCienteSemAvarias" value="ciente"> Estou ciente que estou criando um protocolo de recebimento sem avarias.
+								</label>
+				            </div>
+				        </div>
+			        </div>
+		        </div>
+			</div>
+			<div id="divCadastramentoCliente">
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong>Cliente</strong></font></h5>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="cliCpfCnpj">CPF/CNPJ*</label>
+							<input type="text" name="cliCpfCnpj" id="cliCpfCnpj" class="form-control" maxlength="20" 
+								data-protection="cliCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o cliente da entrega técnica" />
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="cliInscricaoEstadual">Inscrição Estadual*</label>
+							<input type="text" name="cliInscricaoEstadual" id="cliInscricaoEstadual" class="form-control" />
+		        		</div>
+		        		<div class="col-md-4" align="left">
+							<label for="cliNomeCliente">Nome Cliente*</label>
+							<input type="text" name="cliNomeCliente" id="cliNomeCliente" class="form-control" readonly 
+								data-protection="cliNomeCliente" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o cliente da entrega técnica" />
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="cliCodigo">Código</label>
+							<input type="text" name="cliCodigo" id="cliCodigo" class="form-control" maxlength="9" readonly onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+		        		</div>
+		        		<div class="col-md-1" align="left">
+							<label for="cliLoja">Loja</label>
+							<input type="text" name="cliLoja" id="cliLoja" class="form-control"  maxlength="4" readonly onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+		        		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="cliCEP">CEP*</label>
+							<input type="text" name="cliCEP" id="cliCEP" class="form-control"  readonly/>
+		        		</div>
+						<div class="col-md-4" align="left">
+							<label for="cliEndereco">Endereço*</label>
+							<input type="text" name="cliEndereco" id="cliEndereco" class="form-control"  readonly/>
+		        		</div>
+		        		<div class="col-md-3" align="left">
+							<label for="cliBairro">Bairro*</label>
+							<input type="text" name="cliBairro" id="cliBairro" class="form-control" readonly />
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="cliComplemento">Complemento</label>
+							<input type="text" name="cliComplemento" id="cliComplemento" class="form-control" readonly />
+		        		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4" align="left">
+							<label for="cliCidade">Cidade*</label>
+							<input type="text" name="cliCidade" id="cliCidade" class="form-control"  readonly/>
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="cliEstado">Estado*</label>
+							<input type="hidden" name="cliEstadoHidden" id="cliEstadoHidden"  />
+							<select name="cliEstado" id="cliEstado" class="form-control" disabled>
+			      				<option value=""></option>
+			      				<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+		        		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="cliTelefone">Telefone</label>
+							<input type="text" name="cliTelefone" id="cliTelefone" class="form-control"  readonly
+								data-protection="cliTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente da entrega técnica" />
+		        		</div>
+		        		<div class="col-md-4" align="left">
+							<label for="cliEmail">E-mail</label>
+							<input type="text" name="cliEmail" id="cliEmail" class="form-control" readonly 
+								data-protection="cliEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do cliente da entrega técnica" />
+		        		</div>
+		        		<div class="col-md-3" align="left">
+							<label for="cliTelefone">Telefone para Pesquisa de Satisfação*</label>
+							<input type="text" name="cliTelefonePesqSatisfacao" id="cliTelefonePesqSatisfacao" class="form-control" 
+								data-protection="cliTelefonePesqSatisfacao" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente para pesquisa de satisfação de entrega técnica" />
+		        		</div>
+					</div>
+					<div class="row">
+		        		<div class="col-md-4">
+			            	<h5>Possui equipamento GTS?*</h5>
+							<div class="radio" >
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="cliPossuiEquipamentoGTS" value="sim" id="cliPossuiEquipamentoGTSSim">
+									<label for="cliPossuiEquipamentoGTSSim">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="cliPossuiEquipamentoGTS" value="nao" id="cliPossuiEquipamentoGTSNao">
+									<label for="cliPossuiEquipamentoGTSNao">Não</label>
+								</div>
+							</div>
+						</div>
+		        	</div>
+		        	<div id="divTabelaEquipamentos" class="row" style="display:none;" >
+		        		<div class="col-md-8">
+							<h5><strong>Tabela de Equipamentos:</strong></h5> 
+		        			<table class="table table-condensed table-nonfluid table-striped" id="cliTbEquipamentos" tablename="cliTbEquipamentos" nodeletebutton="true" noaddbutton="true" >
+								<thead>
+									<tr>	
+										<th class="tdDeleteRow"></th>
+										<th class="col-md-6">Equipamento*</th>
+										<th class="col-md-4">Modelo</th>
+										<th class="col-md-2">Ano</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr detail="true" detailname="cliTbEquipamentos" >
+										<td class="fs-v-align-middle fs-text-center tdDeleteRow" style="width: 1%;">
+											<div>
+												<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Equipamento" onclick="removeCliEquipamentos(this)"></i>
+											</div>
+										</td>
+										<td>	
+											<input type="text" name="cliEquipEquipamentoItem" id="cliEquipEquipamentoItem" class="form-control"  />
+										</td>
+										<td>	
+											<input type="text" name="cliEquipModeloItem" id="cliEquipModeloItem" class="form-control"  />
+										</td>
+										<td>	
+											<input type="text" name="cliEquipAnoItem" id="cliEquipAnoItem" class="form-control" maxlength="4" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div id="divBtnAddEquipamento" class="row" style="display:none;">
+								<div class="col-md-3 col-md-offset-9">
+									<button type="button" class="btn btn-primary" id="btnAddEquipamento">Adicionar Equipamento</button>
+								</div>
+							</div>		
+		        		</div>
+		        	</div>
+		        </div>
+			</div>
+			<div id="divCadastramentoPropRuralCliente">
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong>Propriedade Rural do Cliente</strong></font></h5>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div id="divAddPropRural" style="display:none;">
+						<div class="row">
+							<div class="col-md-4" align="left">
+								<label for="propRuralCidade">Cidade</label>
+								<input type="text" name="propRuralCidade" id="propRuralCidade" class="form-control" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="propRuralEstado">Estado</label>
+								<select name="propRuralEstado" id="propRuralEstado" class="form-control">
+				      				<option value=""></option>
+				      				<option value="Acre">Acre</option>
+									<option value="Alagoas">Alagoas</option>
+									<option value="Amapá">Amapá</option>
+									<option value="Amazonas">Amazonas</option>
+									<option value="Bahia">Bahia</option>
+									<option value="Ceará">Ceará</option>
+									<option value="Distrito Federal">Distrito Federal</option>
+									<option value="Espírito Santo">Espírito Santo</option>
+									<option value="Goiás">Goiás</option>
+									<option value="Maranhão">Maranhão</option>
+									<option value="Mato Grosso">Mato Grosso</option>
+									<option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+									<option value="Minas Gerais">Minas Gerais</option>
+									<option value="Pará">Pará</option>
+									<option value="Paraíba">Paraíba</option>
+									<option value="Paraná">Paraná</option>
+									<option value="Pernambuco">Pernambuco</option>
+									<option value="Piauí">Piauí</option>
+									<option value="Rio de Janeiro">Rio de Janeiro</option>
+									<option value="Rio Grande do Norte">Rio Grande do Norte</option>
+									<option value="Rio Grande do Sul">Rio Grande do Sul</option>
+									<option value="Rondônia">Rondônia</option>
+									<option value="Roraima">Roraima</option>
+									<option value="Santa Catarina">Santa Catarina</option>
+									<option value="São Paulo">São Paulo</option>
+									<option value="Sergipe">Sergipe</option>
+									<option value="Tocantins">Tocantins</option>
+								</select>
+			        		</div>
+			        		<div class="col-md-4" align="left">
+								<label for="propRuralNomePropriedade">Nome da Propriedade</label>
+								<input type="text" name="propRuralNomePropriedade" id="propRuralNomePropriedade" class="form-control" />
+			        		</div>
+			        		<div class="col-md-2" align="left">
+								<label for="propRuralKmAtePropriedade">Km até a propriedade</label>
+								<input type="text" name="propRuralKmAtePropriedade" id="propRuralKmAtePropriedade" class="form-control" maxlength="10" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);"/>
+			        		</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<br>
+								<button type="button" class="btn btn-primary" id="btnAddPropRural">Adicionar Propriedade Rural</button>
+							</div>
+						</div>
+					</div>
+					<div id="divTabelaPropRural" class="row" >
+		        		<div class="col-md-12">
+							<h5><strong>Tabela de Propriedade Rural:</strong></h5> 
+		        			<table class="table table-condensed table-nonfluid table-striped" id="propRuralTbPropriedadesRurais" tablename="propRuralTbPropriedadesRurais" nodeletebutton="true" noaddbutton="true" >
+								<thead>
+									<tr>	
+										<th class="tdDeleteRow" ></th>
+										<th class="col-md-1" style="text-align:center;">Entrega de Equipamento</th>
+										<th class="col-md-4">Cidade</th>
+										<th class="col-md-2">Estado</th>
+										<th class="col-md-4">Nome da Propriedade</th>
+										<th class="col-md-1">Km até a Propriedade</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr detail="true" detailname="propRuralTbPropriedadesRurais" >
+										<td class="fs-v-align-middle fs-text-center tdDeleteRow" style="width: 1%;">
+											<div>
+												<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Equipamento" onclick="removePropRural(this)"></i>
+											</div>
+										</td>
+										<td style="text-align:center; vertical-align: middle;">	
+											<input type="checkbox" name="propRuralEntrega" id="propRuralEntrega" class="change-propRuralEntrega" value="selecionado" style="height: 18px; width: 18px;">
+										</td>
+										<td>	
+											<input type="text" name="propRuralCidadeItem" id="propRuralCidadeItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="propRuralEstadoItem" id="propRuralEstadoItem" class="form-control"  readonly />
+										</td>
+										<td>	
+											<input type="text" name="propRuralNomePropriedadeItem" id="propRuralNomePropriedadeItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="propRuralKmAtePropriedadeItem" id="propRuralKmAtePropriedadeItem" class="form-control" readonly />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+		        		</div>
+		        	</div>
+		        </div>
+			</div>
+			<div id="divCadastramentoAtendimento">
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong>Atendimento</strong></font></h5>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="atendKMTotalUtilizado">Km Total Utilizado*</label>
+							<input type="text" name="atendKMTotalUtilizado" id="atendKMTotalUtilizado" class="form-control" maxlength="10" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);"/>
+		        		</div>
+		        	</div>
+		        </div>
+			</div>
+			<div id="divCadastramentoAnexo">
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong>Anexos</strong></font></h5>
+				    </div>
+				</div>
+		        <div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label">Relatório de Atendimento*</label>
+						<div class="componentAnexo">
+							<div class="input-group">
+								<input type="hidden" class="descAnexo" name="anexoRelAtendimentoDesc" value="Relatório de Atendimento" />
+								<input type="text" id="anexoRelAtendimento" name="anexoRelAtendimento" class="form-control inputAnexo " placeholder="Selecione um arquivo" readonly />
+							</div>
+							<div class="icones">
+								<button type="button" class="btnUpFile btn btn-success btn-sm" data-acao="upload" onclick="anexo(event)" title="Selecionar">
+									<i class="fluigicon fluigicon-file-upload icon-sm"></i>
+								</button>
+								<button style="display: none;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disabled>
+									<i class="fluigicon fluigicon-eye-open icon-sm"></i>
+								</button>
+								<button style="display: none;" type="button" class="btnDownloadFile btn btn-info btn-sm" data-acao="download" onclick="anexo(event)" title="Download" disabled>
+									<i class="fluigicon fluigicon-download icon-sm"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		        <div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label">Checklist*</label>
+						<div class="componentAnexo">
+							<div class="input-group">
+								<input type="hidden" class="descAnexo" name="anexoChecklistDesc" value="Checklist" />
+								<input type="text" id="anexoChecklist" name="anexoChecklist" class="form-control inputAnexo " placeholder="Selecione um arquivo" readonly />
+							</div>
+							<div class="icones">
+								<button type="button" class="btnUpFile btn btn-success btn-sm" data-acao="upload" onclick="anexo(event)" title="Selecionar">
+									<i class="fluigicon fluigicon-file-upload icon-sm"></i>
+								</button>
+								<button style="display: none;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disabled>
+									<i class="fluigicon fluigicon-eye-open icon-sm"></i>
+								</button>
+								<button style="display: none;" type="button" class="btnDownloadFile btn btn-info btn-sm" data-acao="download" onclick="anexo(event)" title="Download" disabled>
+									<i class="fluigicon fluigicon-download icon-sm"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    	</div>
+    	
+    	
+	    <div class="tab-pane fade " id="divEmissaoNF">
+	    	<div id="divEmissaoNFInformacoes" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong >Informações para Emissão da Nota Fiscal</strong></font></h5>
+				    </div>
+				</div>
+		    	<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<p>Segue a norma interna sobre o procedimento com as respectivas notas fiscais de assistência técnica:</p>
+		    				<p>
+			    				-A nota fiscal deve ser de prestação de serviços referente a Assistência Técnica e deverá ser anexadas nesse processo dentro do mês de emissão.<br>
+								-Na nota fiscal deverá conter no campo dados adicionais o <span style="text-decoration: underline;" >número de série</span> do equipamento que recebeu o serviço, para cada equipamento deverá ser gerado uma nota fiscal, bem como com os  dados bancários do valor da nota fiscal ou anexar o boleto com pagamento para 28 dias.<br>
+								Exemplo: FPM00000: Banco XXX; Agência: YYY; Conta ZZZ
+							</p>
+							<p style="text-decoration: underline;">Dados para faturamento</p>
+							<p>
+								Endereço: Rua Alcides Baccin nº 3000, bairro São Paulo, Lages - Santa Catarina. CEP: 88.506-605<br>
+								CNPJ: 04.043.327.0001/00 - I.M.: 100855<br>
+								Telefone: (49) 3251-7100
+							</p>	
+							<p style="text-decoration: underline;">Código de Serviço</p>
+							<p>
+								14.01 - Lubrificação, limpeza, lustração, revisão, carga e recarga, conserto, restauração, blindagem, manutenção e conservação.<br>
+								ou<br>
+								14.02 - Assistência Técnica
+							</p>
+						</div>
+					</div>    
+				</div>
+			</div>	
+	    	<div id="divEmissaoNFValores" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong >Valores</strong></font></h5>
+				    </div>
+				</div>
+		    	<div class="col-md-12">
+					<div id="divValoresSimulacao" class="row" style="display:none;">
+						<div class="col-md-2" align="left">
+							<label for="NFvalKmTotalUtilizado">Km Total Utilizado</label>
+							<input type="text" name="NFvalKmTotalUtilizado" id="NFvalKmTotalUtilizado" class="form-control" readonly/>
+		        		</div>
+						<div class="col-md-2" align="left">
+							<label for="NFvalValorKMRevenda">Valor por KM da revenda</label>
+							<input type="text" name="NFvalValorKMRevenda" id="NFvalValorKMRevenda" class="form-control" readonly/>
+		        		</div>
+						<div class="col-md-2  col-md-offset-1" align="left">
+							<label for="NFvalKmTotalUtilizado">Total Simulação</label>
+							<input type="text" name="NFvalTotalSimulacao" id="NFvalTotalSimulacao" class="form-control" readonly/>
+		        		</div>
+					</div>    
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="NFvalValorEntrega">Valor Entrega*</label>
+							<input type="text" name="NFvalValorEntrega" id="NFvalValorEntrega" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')" />
+		        		</div>
+						<div class="col-md-2" align="left">
+							<label for="NFvalValorDeslocamento">Valor Deslocamento*</label>
+							<input type="text" name="NFvalValorDeslocamento" id="NFvalValorDeslocamento" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')" />
+		        		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="NFvalValorAddEntrega">Valor Adicional Entrega</label>
+							<input type="text" name="NFvalValorAddEntrega" id="NFvalValorAddEntrega" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')" />
+		        		</div>
+						<div class="col-md-3" align="left">
+							<div class="row">
+								<div class="col-md-12" align="left">
+									<label for="NFvalValorAddDeslocamento">Valor Adicional Deslocamento</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-8" align="left">
+									<input type="text" name="NFvalValorAddDeslocamento" id="NFvalValorAddDeslocamento" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')" />
+		        				</div>
+							</div>
+		        		</div>
+						<div class="col-md-2" align="left">
+							<label for="NFvalValorTotal">Valor Total</label>
+							<input type="text" name="NFvalValorTotal" id="NFvalValorTotal" class="form-control" readonly />
+		        		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-7 " align="left">
+						    <label for="NFvalObservacao">Observação</label>
+							<textarea rows="3" cols="6" name="NFvalObservacao" id="NFvalObservacao" class="form-control " ></textarea>
+			            </div>
+					</div>
+					<div class="row">
+						<div class="col-md-4" align="left">
+							<h5><strong>Entrega de Equipamento</strong></h5>
+		       				<hr /> 
+						</div>
+					</div>
+					<div class="row">	
+						<div class="col-md-4" align="left">
+							<label for="NFvalEntregaCidade">Cidade</label>
+							<input type="text" name="NFvalEntregaCidade" id="NFvalEntregaCidade" class="form-control" readonly/>
+		        		</div>
+						<div class="col-md-2" align="left">
+							<label for="NFvalEntregaEstado">Estado</label>
+							<input type="text" name="NFvalEntregaEstado" id="NFvalEntregaEstado" class="form-control" readonly/>
+		        		</div>
+		        		<div class="col-md-4" align="left">
+							<label for="NFvalEntregaNomePropriedade">Nome da Propriedade</label>
+							<input type="text" name="NFvalEntregaNomePropriedade" id="NFvalEntregaNomePropriedade" class="form-control" readonly/>
+		        		</div>
+		        		<div class="col-md-2" align="left">
+							<label for="NFvalEntregaKmAtePropriedade">Km até a propriedade</label>
+							<input type="text" name="NFvalEntregaKmAtePropriedade" id="NFvalEntregaKmAtePropriedade" class="form-control" readonly />
+		        		</div>
+					</div>
+				</div>
+			</div>	
+			<div id="divEmissaoNFNotaFiscalPagto" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong >Nota Fiscal/Forma de Pagamento</strong></font></h5>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label">Nota Fiscal*</label>
+								<div class="componentAnexo">
+									<div class="input-group">
+										<input type="hidden" class="descAnexo" name="anexoNotaFiscalDesc" value="Nota Fiscal" />
+										<input type="text" id="anexoNotaFiscal" name="anexoNotaFiscal" class="form-control inputAnexo " placeholder="Selecione um arquivo" readonly />
+									</div>
+									<div class="icones">
+										<button type="button" class="btnUpFile btn btn-success btn-sm" data-acao="upload" onclick="anexo(event)" title="Selecionar">
+											<i class="fluigicon fluigicon-file-upload icon-sm"></i>
+										</button>
+										<button style="display: none;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disabled>
+											<i class="fluigicon fluigicon-eye-open icon-sm"></i>
+										</button>
+										<button style="display: none;" type="button" class="btnDownloadFile btn btn-info btn-sm" data-acao="download" onclick="anexo(event)" title="Download" disabled>
+											<i class="fluigicon fluigicon-download icon-sm"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>    
+					<div class="row">
+		        		<div class="col-md-4">
+			            	<h5>Forma de Pagamento?*</h5>
+							<div class="radio" >
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="NFPagtoFormaPagamento" value="boleto" id="NFPagtoFormaPagamentoBoleto">
+									<label for="NFPagtoFormaPagamentoBoleto">Boleto</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="NFPagtoFormaPagamento" value="transferencia" id="NFPagtoFormaPagamentoTransferencia">
+									<label for="NFPagtoFormaPagamentoTransferencia">Transferência Bancária</label>
+								</div>
+							</div>
+						</div>
+		        	</div>
+		        	<div id="divPagtoBoleto" class="row" style="display:none;">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label">Boleto*</label>
+								<div class="componentAnexo">
+									<div class="input-group">
+										<input type="hidden" class="descAnexo" name="anexoBoletoDesc" value="Boleto" />
+										<input type="text" id="anexoBoleto" name="anexoBoleto" class="form-control inputAnexo " placeholder="Selecione um arquivo" readonly />
+									</div>
+									<div class="icones">
+										<button type="button" class="btnUpFile btn btn-success btn-sm" data-acao="upload" onclick="anexo(event)" title="Selecionar">
+											<i class="fluigicon fluigicon-file-upload icon-sm"></i>
+										</button>
+										<button style="display: none;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disabled>
+											<i class="fluigicon fluigicon-eye-open icon-sm"></i>
+										</button>
+										<button style="display: none;" type="button" class="btnDownloadFile btn btn-info btn-sm" data-acao="download" onclick="anexo(event)" title="Download" disabled>
+											<i class="fluigicon fluigicon-download icon-sm"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="divPagtoTranferencia" style="display:none;">
+						<div class="row" >
+							<div class="col-md-3" align="left">
+								<label for="NFPagtoBanco">Banco*</label>
+								<input type="text" name="NFPagtoBanco" id="NFPagtoBanco" class="form-control" />
+			        		</div>
+							<div class="col-md-1" align="left">
+								<label for="NFPagtoAgencia">Agência*</label>
+								<input type="text" name="NFPagtoAgencia" id="NFPagtoAgencia" class="form-control" maxlength="8" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="NFPagtoConta">Conta*</label>
+								<input type="text" name="NFPagtoConta" id="NFPagtoConta" class="form-control" maxlength="15"/>
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="NFPagtoNome">Código Identificador</label>
+								<input type="text" name="NFPagtoCodIdentificador" id="NFPagtoCodIdentificador" class="form-control" />
+			        		</div>
+		        		</div>
+		        		<div class="row" >
+							<div class="col-md-4" align="left">
+								<label for="NFPagtoNome">Nome</label>
+								<input type="text" name="NFPagtoNome" id="NFPagtoNome" class="form-control" />
+			        		</div>
+							<div class="col-md-2" align="left">
+								<label for="NFPagtoCpfCnpj">CPF/CNPJ</label>
+								<input type="text" name="NFPagtoCpfCnpj" id="NFPagtoCpfCnpj" class="form-control" />
+			        		</div>
+		        		</div>
+		        		
+	        		</div>
+				</div>
+				
+			</div>
+			<div id="divEmissaoNFAprovNotaFiscalPagto" style="display:none;">
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong >Aprovação Nota Fiscal/Forma de Pagamento</strong></font></h5>
+				    </div>
+				</div>
+		    	<div class="col-md-12">
+					<div class="row">
+				        <div class="col-md-4" style="text-align:left">
+				       		<h4 ><strong>Aprovado?</strong></h4>
+				       		<hr />  
+				        </div>
+				    </div>
+				    <input type="text" name="NFAprovEmailAprovador" id="NFAprovEmailAprovador" class="form-control" style="display:none;" />
+					<div class="row">
+						<div class="col-md-5 " align="left" >
+							<div class="radio input-group">
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="NFAprovAprovacao" value="aprovado" id="NFAprovAprovacaoAprovado" />
+									<label for="NFAprovAprovacaoAprovado">Aprovado</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="NFAprovAprovacao" value="reprovado" id="NFAprovAprovacaoReprovado" />
+									<label for="NFAprovAprovacaoReprovado">Reprovado</label>
+								</div>
+							</div>
+			            </div>
+					</div>
+					<div class="row" >
+						<div class="col-md-5 " align="left">
+							<label for="aprovGerTerritorialMotivoRep">Observação</label>
+							<textarea rows="3" cols="6" name="NFAprovObservacao" id="NFAprovObservacao" class="form-control " ></textarea>
+			           	</div>
+			        </div> 
+			        <div id="divNFAprovDataPrevPagto" class="row" style="display:none;">
+				        <div class="col-md-2" align="left">
+							<label for="NFAprovDataPrevPagto">Previsão de Pagamento*</label>
+							<div class="input-group">
+								<input type="text" name="NFAprovDataPrevPagto" id="NFAprovDataPrevPagto"  class="form-control" />				
+								<span class="input-group-addon">
+			                           <span class="fluigicon fluigicon-calendar"></span>
+			                    </span>
+							</div>
+						</div>	
+					</div>	
+					
+				</div>
+			</div>
+    	</div>
+    	
+	    <div class="tab-pane fade " id="divProgPagto">
+	    	
+        	<div id="divProgInterna" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h5><font color="000" ><strong>Programação Interna</strong></font></h5>
+				    </div>
+				</div>
+		    	<div id="divNumOC" class="col-md-12" style="display:none;">
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="OCNumOC">Nº Ordem de Compra</label>
+							<input type="text" name="OCNumOC" id="OCNumOC" class="form-control" readonly />
+		        		</div>
+						<div class="col-md-4" align="left">
+							<label for="OCStatusOC">Status OC</label>
+							<input type="text" name="OCStatusOC" id="OCStatusOC" class="form-control" readonly />
+		        		</div>
+					</div>    
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4" align="left">
+							<h5><strong>Dados Revenda</strong></h5>
+		       				<hr /> 
+						</div>
+					</div>
+				
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="OCCpfCnpj">CPF/CNPJ</label>
+							<input type="text" name="OCCpfCnpj" id="OCCpfCnpj" class="form-control" readonly 
+								data-protection="OCCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o pagamento da ordem de compra" />
+		        		</div>
+						<div class="col-md-4" align="left">
+							<label for="OCRazaoSocialRevenda">Razão Social Revenda</label>
+							<input type="text" name="OCRazaoSocialRevenda" id="OCRazaoSocialRevenda" class="form-control" readonly 
+								data-protection="OCRazaoSocialRevenda" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o pagamento da ordem de compra" />
+		        		</div>
+						<div class="col-md-4" align="left">
+							<label for="OCNomeFantasiaRevenda">Nome Fantasia Revenda</label>
+							<input type="text" name="OCNomeFantasiaRevenda" id="OCNomeFantasiaRevenda" class="form-control" readonly 
+								data-protection="OCNomeFantasiaRevenda" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o pagamento da ordem de compra" />
+		        		</div>
+					</div>    
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="OCCondPagto">Condição de Pagamento</label>
+							<input type="hidden" name="OCCodCondPagto" id="OCCodCondPagto" value="009" />
+							<input type="text" name="OCCondPagto" id="OCCondPagto" class="form-control" readonly value="28 dias"/>
+		        		</div>
+						<div class="col-md-2" align="left">
+							<label for="OCCentroCusto">Centro de Custo</label>
+							<input type="text" name="OCCentroCusto" id="OCCentroCusto" class="form-control" readonly value="130406" />
+		        		</div>
+	        		</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="OCCodProduto">Código do Produto</label>
+							<input type="text" name="OCCodProduto" id="OCCodProduto" class="form-control" readonly value="7010900020"/>
+		        		</div>
+						<div class="col-md-4" align="left">
+							<label for="OCDescProduto">Descrição</label>
+							<input type="text" name="OCDescProduto" id="OCDescProduto" class="form-control" readonly value="Assistência Técnica" />
+		        		</div>
+						<div class="col-md-2" align="left">
+							<label for="OCValorNota">Valor da Nota</label>
+							<input type="text" name="OCValorNota" id="OCValorNota" class="form-control" readonly />
+		        		</div>
+	        		</div>
+					<div class="row">
+						<div class="col-md-8" align="left">
+							<label for="OCEmailRecebimentoOC">E-mails para recebimento da OC (separados por ;)*</label>
+<!-- 							<input type="text" name="OCEmailRecebimentoOC" id="OCEmailRecebimentoOC" class="form-control" value="keroly@gts.com.br;fernanda@gtsdobrasil.com.br"/> -->
+							<input type="text" name="OCEmailRecebimentoOC" id="OCEmailRecebimentoOC" class="form-control" value="marcommas@gmail.com;marco.comassetto@totvs.com.br"/>
+		        		</div>
+	        		</div>
+	        		<div class="row">
+						<div class="col-md-12">
+					        &nbsp;
+					    </div>
+					</div>
+					<div class="row" >
+			        	<div class="col-sm-12">		
+				            <div class="col-md-12" align="left">
+				            	<label class="checkbox-inline">
+								    <input type="checkbox" name="OCConfirmaDados" id="OCConfirmaDados" value="confirmo"> Confirmo que os dados acima estão corretos para o lançamento da Ordem de Compra*
+								</label>
+				            </div>
+				        </div>
+			        </div>
+				</div>
+			</div>	
+    	</div>
+
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+
+</form>
+</div>
+</body>
+</html>

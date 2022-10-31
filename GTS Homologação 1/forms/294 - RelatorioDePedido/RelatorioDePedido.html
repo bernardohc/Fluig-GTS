@@ -1,0 +1,130 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+  	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+<!-- 	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script> -->
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+<input type="hidden" id="fieldNeeded" name="fieldNeeded" />
+
+	<div class="col-sm-12">
+	    <div class="row">
+	    	<div class="col-xs-2" align="left">
+				<img height="50" width="250" src="https://i.ibb.co/wc27BYd/Logo-GTS.jpg">
+            </div>
+			<div class="col-xs-8" align="center">
+				<font class="banner-header" color="000" ><h1><strong>Pedido nº <span id="numPedido"></span></strong></h1></font>
+            </div>
+	    </div>
+	    <hr /> 
+	</div>
+
+	<div id="divCabecalho" class="col-sm-12"  >
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-xs-6 col-md-6" align="left">
+						<label class="labelsrel" for="pedRevenda">Revendedor</label>
+						<p id="pedRevenda" class="textDesc" ></p>
+		            </div>
+					<div class="col-xs-3" align="left" style="display:none;">
+						<label class="labelsrel"  for="pedTpPedido">Tipo de Pedido</label>
+						<p id="pedTpPedido" class="textDesc" ></p>
+		            </div>
+					<div class="col-xs-3" align="left">
+						<label class="labelsrel"  for="pedDataEmissao">Data Emissão</label>
+						<p id="pedDataEmissao" class="textDesc" ></p>
+		            </div>
+	            </div>
+            </div>
+            
+            <div class="col-sm-12">
+				<div class="row">
+					<div class="col-xs-6 col-md-6 " align="left">
+						<label class="labelsrel" for="pedCondPgto">Condição de Pagamento</label>
+						<p id="pedCondPgto" class="textDesc" ></p>
+		            </div>
+					<div class="col-xs-3" align="left">
+						<label class="labelsrel"  for="pedTpFrete">Tipo Frete</label>
+						<p id="pedTpFrete" class="textDesc" ></p>
+		            </div>
+					<div class="col-xs-3" align="left">
+						<label class="labelsrel"  for="pedValFrete">Valor Frete</label>
+						<p id="pedValFrete" class="textDesc" ></p>
+		            </div>
+	            </div>
+            </div>
+  
+		</div>
+	</div>
+	
+	
+	<div id="divPedidoTabItens" class="col-sm-12"  >
+		<div class="row">
+			<table class="table table-condensed table-nonfluid " id="tbItensPedido">
+				<thead>
+					<tr>	
+						<th class="font-item" >Código</th>		
+						<th class="font-item" style="min-width:240px; " >Produto</th>
+						<th class="font-item" >Qtd.</th>
+						<th class="font-item" >Preço</th>
+						<th class="font-item" >NCM</th>
+						<th class="font-item" >IPI</th>
+						<th class="font-item" >ICMS</th>
+						<th class="font-item" style="min-width:73px; ">ICMS-ST</th>
+						<th class="font-item" >Total</th>
+					</tr>
+				</thead>
+				
+			</table>
+		
+			
+			<div id="divTotais">
+            	<div class="col-sm-12">
+				    <div class="row">
+				        <div class="col-xs-6 col-xs-offset-6" style="text-align:center">
+				       		<h3 class="totais" ><strong>Totais</strong></h3>
+				       		<hr />  
+				        </div>
+				    </div>
+				</div>
+            
+            	<div class="col-sm-12">
+					<div class="row">
+						<div class="col-xs-2 col-xs-offset-6" align="left" >
+							<label class="labelsrel" for="totalIPI">IPI</label>
+					      	<p id="totalIPI" class="textDesc"></p>
+						</div>
+						
+						<div class="col-xs-2" align="left" >
+							<label class="labelsrel" for="totalICMS-ST">ICMS-ST</label>
+					      	<p id="totalICMSRet" class="textDesc"></p>
+						</div>
+						
+						<div class="col-xs-2" align="left">
+							<label class="labelsrel" for="totalPedido">Valor Total</label>
+					      	<p id="totalPedido" class="textDesc"><p>
+						</div>
+					</div>
+				</div>
+			</div>	
+		
+		</div>
+	</div>
+	
+</form>
+</div>
+</body>
+</html>

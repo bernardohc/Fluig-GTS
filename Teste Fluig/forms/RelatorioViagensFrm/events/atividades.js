@@ -1,0 +1,6 @@
+var INICIO_0 = 0;
+var INICIO = 4;
+var ANALISA_RELATORIO = 5;
+var AJUSTA_RELATORIO = 19;
+var REVISA_RELATORIO = 23;
+var FIM = 15;

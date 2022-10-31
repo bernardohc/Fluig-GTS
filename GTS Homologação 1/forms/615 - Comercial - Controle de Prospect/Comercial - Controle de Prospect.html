@@ -1,0 +1,347 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-atividades.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+ 	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()" >
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	
+	<!-- CAMPOS HIDDEN PARA USO INTERNO -->
+	<input type="hidden" name="solicitacao" id="solicitacao"  >
+	<input type="hidden" name="WKNumState" id="WKNumState"  >
+	<input type="hidden" name="tipoUsuarioAtual" id="tipoUsuarioAtual" >
+	
+<!-- 	<div class="col-sm-12"> -->
+<!-- 	    <div class="row banner-header"> -->
+<!-- 	        <h1 style="color:black; ">Controle de Prospect</h1> -->
+<!-- 	    </div> -->
+<!-- 	</div> -->
+	
+	<div id="divCabecalho" class="col-sm-12"  >
+	<div class="panel panel-default">
+        <div class="panel-heading ">
+            <h3 class="panel-title">
+               <span><i class="fluigicon fluigicon-user-edit icon-md"></i> Dados Gerais</span>
+            </h3>
+        </div>
+        <div class="panel-body">
+	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-md-2 " align="left">
+							<label for="solicitante">Solicitante</label>
+							<input type="hidden" name="tipoSolicitante" id="tipoSolicitante" >
+							<input type="hidden" name="WKUserSolicitante" id="WKUserSolicitante" >
+							<input type="text" name="solicitante" id="solicitante" class="form-control" readonly>
+			            </div>
+						<div class="col-md-3" align="left">
+							<label for="representante">Representante<span id="asteriscoRepresentante">*</span></label>
+							<input type="hidden" name="tipoRepresentante" id="tipoRepresentante" >
+							<input type="hidden" name="WKUserRepresentante" id="WKUserRepresentante" >
+							<input type="zoom" name="representante" id="representante"
+												  data-zoom="{
+									                              'displayKey':'RepComNome', 
+									                              'datasetId':'dsRepresentantesComercial', 
+									                              'maximumSelectionLength':'1',
+									                              'placeholder':'',
+									                              'fields':[
+									                              	 { 
+											                              'field':'RepComNome', 
+											                              'label':' ',
+											                               'standard':'true'
+										                              },
+									                              	  {
+															               'field':'RepComWKUser',
+															               'label':'  '
+															          }
+									                              ] 
+								                              	}" /> 
+			            </div>
+			            <div class="col-md-3" align="left">
+							<label for="gestorTerritorial">Gestor Territorial<span id="asteriscoGestorTerritorial">*</span></label>
+							<input type="hidden" name="WKUserGestorTerritorial" id="WKUserGestorTerritorial" >
+							<input type="zoom" name="gestorTerritorial" id="gestorTerritorial"
+												  data-zoom="{
+									                              'displayKey':'gesTerNome', 
+									                              'datasetId':'dsGestorTerritorial', 
+									                              'maximumSelectionLength':'1',
+									                              'placeholder':'',
+									                              'fields':[ 
+										                              { 
+											                              'field':'gesTerNome', 
+											                              'label':' '
+										                              }
+									                              ] 
+								                              	}" /> 
+							
+			            </div>
+			            <div class="col-md-2" align="left">
+							<label for="gestorComercial">Gestor Comercial<span id="asteriscoGestorComercial">*</span></label>
+							<input type="hidden" name="WKUserGestorComercial" id="WKUserGestorComercial" >
+							<input type="zoom" name="gestorComercial" id="gestorComercial" readonly
+												  data-zoom="{
+									                              'displayKey':'gesComNome', 
+									                              'datasetId':'dsGestorComercial', 
+									                              'maximumSelectionLength':'1',
+									                              'placeholder':'',
+									                              'fields':[ 
+										                              { 
+											                              'field':'gesComNome', 
+											                              'label':' '
+										                              }
+									                              ] 
+								                              	}" /> 
+							
+			            </div>
+			            <div class="col-md-2" align="left">
+							<label for="dataAberturaSolicitacao">Data Solicitação</label>
+							<input type="text" name="dataAberturaSolicitacao" id="dataAberturaSolicitacao" class="form-control" readonly>
+			            </div>
+		            </div>
+	            </div>
+			</div>
+		
+			<div class="col-sm-12">
+			    <div class="row">
+			        &nbsp;
+			    </div>
+			</div>
+		
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-1" align="left">
+							<label for="nomeRevendaCliente">Nome da Revenda / Cliente<span id="asteriscoRevendaCliente">*</span></label>
+							<input type="text" name="nomeRevendaCliente" id="nomeRevendaCliente" class="form-control" maxlength="150">
+			            </div>
+						<div class="col-md-3" align="left">
+							<label for="municipioRevendaCliente">Município</label>
+							<input type="text" name="municipioRevendaCliente" id="municipioRevendaCliente" class="form-control" maxlength="100">
+			            </div>
+			            <div class="col-md-2 " align="left">
+						    <label for="estadoRevendaCliente">Estado</label>
+			     			<input type="hidden" name="estadoRevendaClienteHidden" id="estadoRevendaClienteHidden" >
+			     			<select name="estadoRevendaCliente" id="estadoRevendaCliente" class="form-control">
+			      				<option value=""></option>
+			      				<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="EX">Extrangeiro</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+						</div>  
+		            </div>
+	            </div>
+			</div>
+		
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-md-2 col-md-offset-1" align="left">
+						    <label for="acao">Ação<span id="asteriscoAcao">*</span></label>
+			     			<select name="acao" id="acao" class="form-control">
+			      				<option value=""></option>
+			      				<option value="Pedido">Pedido</option>
+								<option value="Condição Comercial">Condição Comercial</option>
+								<option value="Entrega">Entrega</option>
+								<option value="Demonstração">Demonstração</option>
+								<option value="Revendedor">Revendedor</option>
+								<option value="Informação">Informação</option>
+								<option value="Premiação">Premiação</option>
+								<option value="Troca/Devolução">Troca/Devolução</option>
+								<option value="Engenharia">Engenharia</option>
+								<option value="Marketing">Marketing</option>
+								<option value="Partes">Partes</option>
+								<option value="Pós-Vendas">Pós-Vendas</option>
+								<option value="Financeiro">Financeiro</option>
+								<option value="Logística">Logística</option>
+								<option value="Outros">Outros</option>
+							</select>
+						</div>  
+						
+						<div id="divDSFamiliaTipoProduto" class="col-md-3 " align="left">
+								<label for="familiaTipoProduto">Família/Tipo de Produto</label>
+								<input type="zoom" name="familiaTipoProduto" id="familiaTipoProduto"
+												  data-zoom="{
+									                              'displayKey':'familiaTipoProduto', 
+									                              'datasetId':'dsFamiliaTipoProduto', 
+									                              'maximumSelectionLength':'1',
+									                              'placeholder':'',
+									                              'fields':[ 
+										                              { 
+											                              'field':'familiaTipoProduto', 
+											                              'label':' '
+										                              }
+									                              ] 
+								                              	}" /> 
+			            </div>
+			           	
+			           	
+			            
+			             <div id="divStatus" class="col-md-2 " align="left">
+						    <label for="statusSolicitacao">Status</label>
+			     			<input type="hidden" name="statusSolicitacaoHidden" id="statusSolicitacaoHidden" >
+			     			<select name="statusSolicitacao" id="statusSolicitacao" class="form-control">
+			      				<option value=""></option>
+			      				<option value="OK">OK</option>
+								<option value="Andamento">Andamento</option>
+								<option value="Cancelado/Parado">Cancelado/Parado</option>
+							</select>
+						</div> 
+		            </div>
+	            </div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="row">      
+						<div id="divDescricaoInicial" class="col-md-5 col-md-offset-1" align="left" >
+						    <label for="descricaoInicial">Descrição<span id="asteriscoDescricao">*</span></label>
+							<textarea rows="3" cols="6" name="descricaoInicial" id="descricaoInicial" class="form-control " ></textarea>
+			            </div>
+					</div>
+				</div>
+			</div>     
+		</div>
+	
+	</div>
+	</div>
+	
+	<div id="divDefinicao" class="col-sm-12"  >
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+		
+		
+		<div class="row">
+<!-- 			<hr /> -->
+			<div class="col-sm-12">
+				<div class="row">
+					<div id="divObsInteracao" class="col-md-5 col-md-offset-1" align="left" >
+					    <label for="obsInteracao">Observação<span id="asteriscoObservacao">*</span></label>
+						<textarea rows="3" cols="6" name="obsInteracao" id="obsInteracao" class="form-control " ></textarea>
+		            </div>
+		            
+		            <div class="col-md-3 " align="left">
+					    <label for="encaminharAtividade">Encaminhar a atividade para:<span id="asteriscoEncaminhar">*</span></label>
+				    		<select name="encaminharAtividade" id="encaminharAtividade" class="form-control">
+			      				<option value=""></option>
+			      				<option value="encaminhaRepresentante" id="optEncaminhaRepresentante">Representante</option>
+								<option value="encaminhaGestorTerritorial" id="optEncaminhaGestorTerritorial">Gestor Territorial</option>
+								<option value="encaminhaGestorComercial" id="optEncaminhaGestorComercial">Gestor Comercial</option>
+								<option value="encaminhaFinalizar" id="optEncaminhaFinalizar">Finalizar</option>
+							</select>
+					    		
+		            </div>
+	            </div>
+			</div>
+		</div>
+
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	
+	<div id="divInteracoes" class="col-sm-12"  >
+		<table class="table table-condensed table-nonfluid table-striped" id="tbInteracoes" tablename="tbInteracoes" noaddbutton="true" nodeletebutton="true">
+			<thead>
+				<tr>
+					<th class="col-md-2">Usuário</th>	
+					<th class="col-md-2">Data</th>
+					<th class="col-md-7">Observação</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr detail="true" detailname="tbInteracoes" >
+					<td class="col-md-2" >
+						<input type="hidden" name="intWKUserUsuario" id="intWKUserUsuario" class="form-control" readonly>
+						<input type="text" name="intNomeUsuario" id="intNomeUsuario" class="form-control" readonly>
+					</td>
+					<td class="col-md-2" >	
+						<input type="text" name="intDataHoraInteracao" id="intDataHoraInteracao" class="form-control" readonly>
+					</td>
+					<td class="col-md-7" >	
+			    		<textarea rows="2" cols="2" name="intObservacao" id="intObservacao" class="form-control " readonly></textarea>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+</form>
+
+</div>
+</body>
+</html>

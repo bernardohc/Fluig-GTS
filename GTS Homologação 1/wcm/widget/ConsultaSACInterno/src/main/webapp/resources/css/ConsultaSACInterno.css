@@ -1,0 +1,12 @@
+/* Coloque aqui seu codigo CSS */
+.message{
+    margin-top: 10px;
+}
+.icon-acoes{
+	width: 1% !important;
+	max-width: 1% !important;
+}
+.quebratexto {
+    white-space: pre-line;
+    word-wrap: break-word;
+}

@@ -1,0 +1,78 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-validafunctions.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-custom.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+<input type="hidden" id="fieldNeeded" name="fieldNeeded" />
+<div class="container-fluid fs-no-padding">	
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Configurar Desconto Pedido Promocional por Estado</h2>
+		</div>
+	</div>
+	
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-12">
+				<div class="form-field table-responsive">
+					<table class="table table-striped" cellspacing="0" tablename="table_pedido_promocional" nodeletebutton=true customFnDelete="removeRegistro(this)" noaddbutton=true>
+						<thead>
+							<tr class="tableHeadRow">
+								<th class="tableColumn">Sigla Estado</th>
+								<th class="tableColumn">Período Inicial</th>
+								<th class="tableColumn">Período Final</th>
+								<th class="tableColumn">% Desconto</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="col-md-1 ">	
+									<input type="text" name="siglaEstado" id="siglaEstado" class="form-control siglaEstado" maxlength="2" >
+								</td>
+								<td class="col-md-2 ">	
+									<div class="input-group">
+										<input name="periodoInicialDesconto" id="periodoInicialDesconto" type="text" class="form-control" >				
+										<span class="input-group-addon">
+					                           <span class="fluigicon fluigicon-calendar"></span>
+					                    </span>
+				                    </div>
+								</td>
+								<td class="col-md-2 ">	
+									<div class="input-group">
+										<input name="periodoFinalDesconto" id="periodoFinalDesconto" type="text" class="form-control" >				
+										<span class="input-group-addon">
+					                           <span class="fluigicon fluigicon-calendar"></span>
+					                    </span>
+				                     </div>
+								</td>
+								<td class="col-md-2 ">	
+									<input type="text" name="porcDescontoPP" id="porcDescontoPP" class="form-control" onKeyPress="validafunctions.setPercentual(this.id, 2, false )">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="div_rowBtnAddTipo" >
+			<div class="col-md-12 col-sm-12">
+				<button type="button" id="btnAddLinha" class="btn btn-primary" onclick="addLinha();">Adicionar</button>
+			</div>
+		</div>
+	</div>	
+</div>
+</form>
+</div>
+</body>
+</html>

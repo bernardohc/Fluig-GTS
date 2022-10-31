@@ -1,0 +1,459 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>Frota-Checklist</processId>
+    </processDefinitionPK>
+    <processDescription>Frota - Checklist</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Frota</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;gestorFrotaChecklist&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Frota - Checklist</processId>
+      <version>1</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>4632</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>true</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Frota-Checklist</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;cadastraFrotaChecklist&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>150</positionX>
+      <positionY>82</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Frota-Checklist</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>360</positionX>
+      <positionY>82</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>6</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Frota-Checklist</processId>
+        <version>1</version>
+        <linkSequence>6</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>Frota-Checklist</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId){&#xd;
+	&#xd;
+	var WKNumProces = processId+&quot;&quot;;&#xd;
+	hAPI.setCardValue(&quot;numFluig&quot;, WKNumProces);&#xd;
+	&#xd;
+	hAPI.setCardValue(&quot;dataAbertura&quot;, dataHoraAtual(&apos;dd/mm/yyyy hh:mm&apos;));&#xd;
+	hAPI.setCardValue(&quot;geraisDataHoraAbertura&quot;, dataHoraAtual(&apos;dd/mm/yyyy hh:mm&apos;));&#xd;
+	hAPI.setCardValue(&quot;geraisDataAbertura&quot;, dataAtual());&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>Frota-Checklist</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	&#xd;
+	var message = &quot;&quot;;&#xd;
+	var hasErros = false;&#xd;
+	&#xd;
+	var ehGestorFrotaChecklist = false;&#xd;
+	//Se o usuário logado for gestor do processo, no papel gestorOrcamento, vai conseguir cancelar a solicitação&#xd;
+	var c1 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.colleagueId&apos;, getValue(&quot;WKUser&quot;), getValue(&quot;WKUser&quot;), ConstraintType.MUST);&#xd;
+	var c2 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.companyId&apos;, getValue(&quot;WKCompany&quot;), getValue(&quot;WKCompany&quot;), ConstraintType.MUST);&#xd;
+	var c3 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.roleId&apos;, &quot;gestorFrotaChecklist&quot;, &quot;gestorFrotaChecklist&quot;, ConstraintType.MUST);&#xd;
+	&#xd;
+	var constraints = new Array(c1, c2, c3);&#xd;
+	var datasetWorkflowColleagueRole = DatasetFactory.getDataset(&apos;workflowColleagueRole&apos;, null, constraints, null);&#xd;
+	if(dsTemValor(datasetWorkflowColleagueRole)){&#xd;
+		ehGestorFrotaChecklist = true;&#xd;
+	}&#xd;
+	&#xd;
+	/*&#xd;
+	 * Se for marcado alguma das opções ou for Gestor do Processo, vai poder cancelar&#xd;
+	 */&#xd;
+	if( !ehGestorFrotaChecklist ){&#xd;
+		hasErros = true;&#xd;
+		message = &quot;ATENÇÃO! Somente o gestor do processo possui permissão para cancelar solicitações!&quot;;&#xd;
+	}&#xd;
+	&#xd;
+	if (hasErros) {&#xd;
+        throw  message;&#xd;
+    }&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>utils</eventId>
+        <processId>Frota-Checklist</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function dataHoraAtual(formato){&#xd;
+   &#xd;
+    var retornoDataMinuto = &quot;&quot;;&#xd;
+    var data = new Date();&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    var hora = addZero(data.getHours());&#xd;
+    var minuto = addZero(data.getMinutes());&#xd;
+    &#xd;
+    if(formato == &quot;dd/mm/yyyy hh:mm&quot;){&#xd;
+    	retornoDataMinuto = dia + &quot;/&quot; + mes + &quot;/&quot; + ano + &quot; &quot; + hora + &quot;:&quot; + minuto ;&#xd;
+    }&#xd;
+    &#xd;
+    return retornoDataMinuto;&#xd;
+}&#xd;
+&#xd;
+function dataAtual(){&#xd;
+    var data = new Date();&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    return dia + &quot;/&quot; + mes + &quot;/&quot; + ano;&#xd;
+}&#xd;
+&#xd;
+function dataAtualAddDays(days){&#xd;
+    var data = new Date();&#xd;
+    &#xd;
+    data.setDate(data.getDate()+days);&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    return ano + &quot;&quot; + mes + &quot;&quot; + dia;&#xd;
+}&#xd;
+&#xd;
+function addZero(i) {&#xd;
+    if (i &lt; 10) {&#xd;
+        i = &quot;0&quot; + i;&#xd;
+    }&#xd;
+    return i;&#xd;
+}&#xd;
+&#xd;
+function temValor(valor){&#xd;
+	if(valor != null &amp;&amp; valor != undefined){&#xd;
+		valor = valor.toString().trim();&#xd;
+		&#xd;
+		if(valor != &quot;&quot;){&#xd;
+			return true;&#xd;
+		}else{&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	return false;&#xd;
+}&#xd;
+&#xd;
+function temValorArray(arrayValor){&#xd;
+	if(arrayValor != null &amp;&amp; arrayValor != undefined &amp;&amp; arrayValor.length &gt; 0){&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function dsTemValor(dataset){&#xd;
+	if(dataset != null &amp;&amp; dataset != undefined &amp;&amp; dataset.rowsCount &gt; 0){&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function buscarData(){&#xd;
+	return new Date();&#xd;
+}&#xd;
+&#xd;
+function buscarDiaAtual(){&#xd;
+	return buscarData().getDate().toString();&#xd;
+}&#xd;
+&#xd;
+function buscarMesAtual(){&#xd;
+	return (buscarData().getMonth()+1).toString();&#xd;
+}&#xd;
+&#xd;
+function buscarAnoAtual(){&#xd;
+	return buscarData().getFullYear().toString();&#xd;
+}&#xd;
+&#xd;
+function buscarDataAtualSistema(){&#xd;
+	return formatarData(buscarDiaAtual(), buscarMesAtual(), buscarAnoAtual());&#xd;
+}&#xd;
+&#xd;
+function formatarData(dia, mes, ano){&#xd;
+	if(dia.length == 1)&#xd;
+		dia = 0+dia;	&#xd;
+	if(mes.length == 1)&#xd;
+		mes = 0+mes;	&#xd;
+	return dia+&quot;/&quot;+mes+&quot;/&quot;+ano;&#xd;
+}&#xd;
+&#xd;
+function formataData(data, formato){&#xd;
+	&#xd;
+	var ano = &apos;&apos;;&#xd;
+	var mes = &apos;&apos;;&#xd;
+	var dia = &apos;&apos;;&#xd;
+	if(data.indexOf(&apos;-&apos;) &gt; -1){&#xd;
+		ano = data.substring(0, 4);&#xd;
+		mes = data.substring(5, 7);&#xd;
+		dia = data.substring(8, 10);&#xd;
+	}else if(data.indexOf(&apos;/&apos;) &gt; -1){&#xd;
+		dia = data.substring(0, 2);&#xd;
+		mes = data.substring(3, 5);&#xd;
+		ano = data.substring(6, 10);&#xd;
+	}&#xd;
+	&#xd;
+	if(formato == &quot;dd/mm/yyyy&quot;){&#xd;
+		retornoData = dia + &quot;/&quot; + mes + &quot;/&quot; + ano;&#xd;
+	}else if(formato == &quot;yyyymmdd&quot;){&#xd;
+		retornoData = ano + &quot;&quot; + mes + &quot;&quot; + dia;&#xd;
+	}else if(formato == &quot;yyyy-mm-dd&quot;){&#xd;
+		retornoData = ano + &quot;-&quot; + mes + &quot;-&quot; + dia;&#xd;
+	}&#xd;
+	&#xd;
+	return retornoData;&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+function buscarIdSolicitacao(){&#xd;
+	return getValue(&quot;WKNumProces&quot;);&#xd;
+}&#xd;
+&#xd;
+function buscarUsuarioLogado(){&#xd;
+	return getValue(&quot;WKUser&quot;);&#xd;
+}&#xd;
+&#xd;
+function buscarEmpresa(){&#xd;
+	return getValue(&quot;WKCompany&quot;);&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Retorna o Valor do Campo&#xd;
+ */&#xd;
+function buscarValorCampo(nomeCampo) {&#xd;
+	return hAPI.getCardValue(nomeCampo);&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Método para retornar os Dados do dataSet selecionado&#xd;
+ */&#xd;
+function getValorDataSet(nomeDataSet, campoIdDataSet, valorIdDataSet, nomeCampo) {&#xd;
+	var dataSet = DatasetFactory.getDataset(nomeDataSet, null, null, null);&#xd;
+	var valorCampo = false;&#xd;
+&#xd;
+	for ( var i = 0; i &lt; dataSet.rowsCount; i++) {&#xd;
+		if (dataSet.getValue(i, codigoDataSet) == valorIdDataSet) {&#xd;
+			valorCampo = dataSet.getValue(i, nomeCampo);&#xd;
+		}&#xd;
+	}&#xd;
+	return valorCampo;&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Debug&#xd;
+ */&#xd;
+function debug(string){&#xd;
+	log.info(string);	&#xd;
+	throw string;&#xd;
+}&#xd;
+&#xd;
+function gravarLog(string){&#xd;
+	log.info(string);&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>181</height>
+      <width>501</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName>Pool</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Frota-Checklist</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>9F9F9F</color>
+      <height>181</height>
+      <width>471</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName></stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Frota-Checklist</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

@@ -1,0 +1,21 @@
+application.type=widget
+application.code=ConsultaSACExterno
+application.title=Consulta SAC Externo
+application.description=Consulta SAC Externo
+application.category=SAC
+application.renderer=freemarker
+application.uiwidget=true
+application.mobileapp=true
+application.version=${build.version}-${build.revision}
+
+developer.code=Comassetto
+developer.name=Marco Comassetto
+developer.url=http://www.fluig.com
+
+view.file=view.ftl
+edit.file=edit.ftl
+locale.file.base.name=ConsultaSACExterno
+
+application.resource.css.1=/resources/css/ConsultaSACExterno.css
+application.resource.js.2=/resources/js/validafunctions.js
+application.resource.js.3=/resources/js/ConsultaSACExterno.js

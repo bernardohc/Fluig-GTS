@@ -1,0 +1,22 @@
+application.type=widget
+application.code=menuoflinks
+application.title=Menu of Links
+application.description=Create a menu of links and sublinks.
+application.category=Fluig Store
+application.renderer=freemarker
+application.uiwidget=true
+application.icon=flat_menu.png
+application.mobileapp=true
+
+developer.code=bruno.bulnes
+developer.name=Bruno Bulnes
+developer.url=http://www.totvs.com
+
+view.file=view.ftl
+edit.file=edit.ftl
+
+application.resource.css.1=/resources/css/bootstrap-select.min.css
+application.resource.css.2=/resources/css/menu_of_links.css
+
+#application.resource.js.3=/resources/js/bootstrap-select.min.js
+#application.resource.js.4=/resources/js/menu_of_links.js

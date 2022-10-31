@@ -1,0 +1,1903 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>Orcamento_HOMOLOGACAO</processId>
+    </processDefinitionPK>
+    <processDescription>Orcamento HOMOLOGACAO</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>GTS</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;gestorOrcamento&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Orcamento HOMOLOGACAO</processId>
+      <version>79</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>5</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>true</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>80</positionX>
+      <positionY>66</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Revisar o orçamento</stateName>
+      <stateDescription>Revisar o orçamento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>280</positionX>
+      <positionY>47</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>Full</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>9</sequence>
+      </processStatePK>
+      <stateName>Formalizar o Pedido</stateName>
+      <stateDescription>Formalizar o Pedido</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;gerenteRevenda&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>280</positionX>
+      <positionY>200</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>17</sequence>
+      </processStatePK>
+      <stateName>Encaminhar Pedido para GTS</stateName>
+      <stateDescription>Encaminhar Pedido para GTS</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>0</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>280</positionX>
+      <positionY>344</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>19</sequence>
+      </processStatePK>
+      <stateName>Analisa Erro de Integração</stateName>
+      <stateDescription>Analisa Erro de Integração</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;AnalisaErroIntegracao&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>420</positionX>
+      <positionY>400</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>22</sequence>
+      </processStatePK>
+      <stateName>GTS Analisa Pedido</stateName>
+      <stateDescription>GTS Analisa Pedido</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>5400</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;gestorEstado&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>590</positionX>
+      <positionY>343</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ADMGTS</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>31</sequence>
+      </processStatePK>
+      <stateName>Gerente da Revenda Verifica Pedido</stateName>
+      <stateDescription>Gerente da Revenda Verifica Pedido</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>5400</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;gerenteRevenda&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>770</positionX>
+      <positionY>170</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>Full</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>39</sequence>
+      </processStatePK>
+      <stateName>Email de confirmação do pedido</stateName>
+      <stateDescription>Email de confirmação do pedido</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>0</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>900</positionX>
+      <positionY>340</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>40</sequence>
+      </processStatePK>
+      <stateName>Analisa Erro Envio de Email Pedido </stateName>
+      <stateDescription>Analisa Erro Envio de Email Pedido </stateDescription>
+      <instruction></instruction>
+      <deadlineTime>600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;AnalisaErroIntegracao&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1038</positionX>
+      <positionY>387</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ADMGTS</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>18</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>370</positionX>
+      <positionY>384</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>17</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>41</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>970</positionX>
+      <positionY>400</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>39</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>24</sequence>
+      </processStatePK>
+      <stateName>PV Integrado completamento?</stateName>
+      <stateDescription>PV Integrado completamento?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>790</positionX>
+      <positionY>320</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>46</sequence>
+      </processStatePK>
+      <stateName>Formaliza Pedido?</stateName>
+      <stateDescription>Formaliza Pedido?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>460</positionX>
+      <positionY>27</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>52</sequence>
+      </processStatePK>
+      <stateName>Gerar Pedido GTS?</stateName>
+      <stateDescription>Gerar Pedido GTS?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>460</positionX>
+      <positionY>174</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>58</sequence>
+      </processStatePK>
+      <stateName>Orçamento / Pedido</stateName>
+      <stateDescription>Orçamento / Pedido</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>160</positionX>
+      <positionY>27</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>28</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1150</positionX>
+      <positionY>330</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>50</sequence>
+      </processStatePK>
+      <stateName>Cancelado</stateName>
+      <stateDescription>Cancelado</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>570</positionX>
+      <positionY>60</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>65</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>56</sequence>
+      </processStatePK>
+      <stateName>Cancelado</stateName>
+      <stateDescription>Cancelado</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>570</positionX>
+      <positionY>214</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>65</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>79</version>
+        <sequence>24</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;itensIntegrados&quot;) == &quot;false&quot;</condition>
+      <destinationSequenceId>31</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>79</version>
+        <sequence>24</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;itensIntegrados&quot;) == &quot;true&quot;</condition>
+      <destinationSequenceId>39</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>79</version>
+        <sequence>46</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;formalizarPedido&quot;) == &quot;Sim&quot;</condition>
+      <destinationSequenceId>9</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>79</version>
+        <sequence>46</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;formalizarPedido&quot;) == &quot;Cancelar&quot;</condition>
+      <destinationSequenceId>50</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>79</version>
+        <sequence>52</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;gerarPedidoGTS&quot;) == &quot;Sim&quot;</condition>
+      <destinationSequenceId>17</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>79</version>
+        <sequence>52</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;gerarPedidoGTS&quot;) == &quot;Cancelar&quot;</condition>
+      <destinationSequenceId>56</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>79</version>
+        <sequence>58</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;A1_TIPO&quot;) == &quot;BALCONISTA&quot;</condition>
+      <destinationSequenceId>5</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>79</version>
+        <sequence>58</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;defineOrcamentoPedido&quot;) == &quot;orcamento&quot;</condition>
+      <destinationSequenceId>5</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>79</version>
+        <sequence>58</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;defineOrcamentoPedido&quot;) == &quot;pedido&quot;</condition>
+      <destinationSequenceId>17</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>20</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>18</initialStateSequence>
+      <finalStateSequence>19</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>21</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>19</initialStateSequence>
+      <finalStateSequence>17</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>23</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>17</initialStateSequence>
+      <finalStateSequence>22</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>25</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>22</initialStateSequence>
+      <finalStateSequence>24</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle></movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>27</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>24</initialStateSequence>
+      <finalStateSequence>39</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>29</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>39</initialStateSequence>
+      <finalStateSequence>28</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Pedido @[request:id] finalizado!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>32</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>24</initialStateSequence>
+      <finalStateSequence>31</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>33</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>31</initialStateSequence>
+      <finalStateSequence>22</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Pedido @[request:id] encaminhado para o analisata da GTS!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>44</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>40</initialStateSequence>
+      <finalStateSequence>39</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>45</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>41</initialStateSequence>
+      <finalStateSequence>40</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>47</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>46</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>49</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>46</initialStateSequence>
+      <finalStateSequence>50</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Pedido @[request:id] cancelado!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>51</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>46</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Pedido @[request:id] encaminhado para formalizar o pedido!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>53</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>52</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>55</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>52</initialStateSequence>
+      <finalStateSequence>56</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Pedido @[request:id] cancelado!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>57</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>52</initialStateSequence>
+      <finalStateSequence>17</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Pedido @[request:id] encaminhado para o analista da GTS!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>59</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>58</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>60</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>58</initialStateSequence>
+      <finalStateSequence>17</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Pedido @[request:id] encaminhado para o analista da GTS!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <linkSequence>61</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>58</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Orçamento @[request:id] cadastrado com sucesso!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para consultar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>atividades</eventId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>var INICIO_0 = 0;&#xd;
+var INICIO = 4;&#xd;
+var REVISARORCAMENTO = 5;&#xd;
+var FORMALIZAPEDIDO = 9;&#xd;
+var INTEGRAPROTHEUS = 17;&#xd;
+var ANALISAERROINTEGRA = 19;&#xd;
+var ANALISAPEDIDO = 22;&#xd;
+var GERENTEREVISAPEDIDO = 31;&#xd;
+var FIM = 28;&#xd;
+var CANCELAMENTOFORMALIZA = 50;&#xd;
+var CANCELAMENTOPEDIDO = 56;&#xd;
+var ANALISAERROEMAIL = 40;</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId){&#xd;
+	hAPI.setCardValue(&quot;solicitacao&quot;, getValue(&quot;WKNumProces&quot;));&#xd;
+	hAPI.setCardValue(&quot;DataAbertura&quot;, dataAtual());&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	&#xd;
+	var message = &quot;&quot;;&#xd;
+	var hasErros = false;&#xd;
+//	var sequenceId = hAPI.getCardValue(&quot;WKNumState&quot;);&#xd;
+	var formalizarPedido = hAPI.getCardValue(&quot;formalizarPedido&quot;);&#xd;
+	var gerarPedidoGTS = hAPI.getCardValue(&quot;gerarPedidoGTS&quot;);&#xd;
+	var ehGestorOrcamento = false;&#xd;
+	&#xd;
+	//Se o usuário logado for gestor do processo, no papel gestorOrcamento, vai conseguir cancelar a solicitação&#xd;
+	var c1 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.colleagueId&apos;, getValue(&quot;WKUser&quot;), getValue(&quot;WKUser&quot;), ConstraintType.MUST);&#xd;
+	var c2 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.companyId&apos;, getValue(&quot;WKCompany&quot;), getValue(&quot;WKCompany&quot;), ConstraintType.MUST);&#xd;
+	var c3 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.roleId&apos;, &quot;gestorOrcamento&quot;, &quot;gestorOrcamento&quot;, ConstraintType.MUST);&#xd;
+	&#xd;
+	var constraints = new Array(c1, c2, c3);&#xd;
+	var datasetWorkflowColleagueRole = DatasetFactory.getDataset(&apos;workflowColleagueRole&apos;, null, constraints, null);&#xd;
+	if(dsTemValor(datasetWorkflowColleagueRole)){&#xd;
+		ehGestorOrcamento = true;&#xd;
+	}&#xd;
+	&#xd;
+	&#xd;
+	if(formalizarPedido == &quot;Cancelar&quot; || gerarPedidoGTS == &quot;Cancelar&quot; || ehGestorOrcamento){&#xd;
+		&#xd;
+	}else{&#xd;
+		&#xd;
+		hasErros = true;&#xd;
+		message = &quot;ATENÇÃO! Não é possível cancelar o pedido! Só é possível cancelar o pedido pelo formulário!&quot;;&#xd;
+		&#xd;
+	}&#xd;
+	&#xd;
+	//So passar um sequenceId pra frente, pois pega o último registro salvo/carregado do displayFields&#xd;
+	/*if( sequenceId == INICIO_0){&#xd;
+		sequenceId = INICIO;&#xd;
+	}else if(sequenceId == INICIO){&#xd;
+		sequenceId = REVISARORCAMENTO;&#xd;
+	}else if(sequenceId == REVISARORCAMENTO ){&#xd;
+		sequenceId = FORMALIZAPEDIDO;&#xd;
+	}&#xd;
+	&#xd;
+	if( sequenceId == INICIO || sequenceId == REVISARORCAMENTO){&#xd;
+		hasErros = false;&#xd;
+	}else if(sequenceId == FORMALIZAPEDIDO){&#xd;
+		var dataset = DatasetFactory.getDataset(&quot;dsClienteViaDadosAdicionais&quot;, null, null, null);&#xd;
+		if(dsTemValor(dataset)){&#xd;
+			log.info(dataset.getValue(0, &quot;A1_TIPO&quot;).toUpperCase());&#xd;
+			if( dataset.getValue(0, &quot;A1_TIPO&quot;).toUpperCase() != &apos;GERENTE&apos; ){ &#xd;
+				hasErros = true;&#xd;
+				message = &quot;ATENÇÃO! Não é possível cancelar o pedido!&quot;;&#xd;
+			}&#xd;
+		}&#xd;
+	}else{&#xd;
+		hasErros = true;&#xd;
+		message = &quot;ATENÇÃO! Não é possível cancelar o pedido!&quot;;&#xd;
+	}&#xd;
+	*/&#xd;
+	&#xd;
+	if (hasErros) {&#xd;
+        throw  message;&#xd;
+    }&#xd;
+}&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>utils</eventId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function dataHoraAtual(){&#xd;
+    var data = new Date();&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    var hora = addZero(data.getHours());&#xd;
+    var minuto = addZero(data.getMinutes());&#xd;
+    var segundo = addZero(data.getSeconds());&#xd;
+    &#xd;
+    return dia + &quot;/&quot; + mes + &quot;/&quot; + ano + &quot; &quot; + hora + &quot;:&quot; + minuto + &quot;:&quot; + segundo;&#xd;
+}&#xd;
+&#xd;
+function dataAtual(){&#xd;
+    var data = new Date();&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    return dia + &quot;/&quot; + mes + &quot;/&quot; + ano;&#xd;
+}&#xd;
+&#xd;
+function addZero(i) {&#xd;
+    if (i &lt; 10) {&#xd;
+        i = &quot;0&quot; + i;&#xd;
+    }&#xd;
+    return i;&#xd;
+}&#xd;
+&#xd;
+function temValor(valor){&#xd;
+	if(valor != null &amp;&amp; valor != undefined){&#xd;
+		valor = valor.toString().trim();&#xd;
+		&#xd;
+		if(valor != &quot;&quot;){&#xd;
+			return true;&#xd;
+		}else{&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	return false;&#xd;
+}&#xd;
+&#xd;
+function temValorArray(arrayValor){&#xd;
+	if(arrayValor != null &amp;&amp; arrayValor != undefined &amp;&amp; arrayValor.length &gt; 0){&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function dsTemValor(dataset){&#xd;
+	if(dataset != null &amp;&amp; dataset != undefined &amp;&amp; dataset.rowsCount &gt; 0){&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function buscarData(){&#xd;
+	return new Date();&#xd;
+}&#xd;
+&#xd;
+function buscarDiaAtual(){&#xd;
+	return buscarData().getDate().toString();&#xd;
+}&#xd;
+&#xd;
+function buscarMesAtual(){&#xd;
+	return (buscarData().getMonth()+1).toString();&#xd;
+}&#xd;
+&#xd;
+function buscarAnoAtual(){&#xd;
+	return buscarData().getFullYear().toString();&#xd;
+}&#xd;
+&#xd;
+function buscarDataAtualSistema(){&#xd;
+	return formatarData(buscarDiaAtual(), buscarMesAtual(), buscarAnoAtual());&#xd;
+}&#xd;
+&#xd;
+function formatarData(dia, mes, ano){&#xd;
+	if(dia.length == 1)&#xd;
+		dia = 0+dia;	&#xd;
+	if(mes.length == 1)&#xd;
+		mes = 0+mes;	&#xd;
+	return dia+&quot;/&quot;+mes+&quot;/&quot;+ano;&#xd;
+}&#xd;
+&#xd;
+function buscarIdSolicitacao(){&#xd;
+	return getValue(&quot;WKNumProces&quot;);&#xd;
+}&#xd;
+&#xd;
+function buscarUsuarioLogado(){&#xd;
+	return getValue(&quot;WKUser&quot;);&#xd;
+}&#xd;
+&#xd;
+function buscarEmpresa(){&#xd;
+	return getValue(&quot;WKCompany&quot;);&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Retorna o Valor do Campo&#xd;
+ */&#xd;
+function buscarValorCampo(nomeCampo) {&#xd;
+	return hAPI.getCardValue(nomeCampo);&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Método para retornar os Dados do dataSet selecionado&#xd;
+ */&#xd;
+function getValorDataSet(nomeDataSet, campoIdDataSet, valorIdDataSet, nomeCampo) {&#xd;
+	var dataSet = DatasetFactory.getDataset(nomeDataSet, null, null, null);&#xd;
+	var valorCampo = false;&#xd;
+&#xd;
+	for ( var i = 0; i &lt; dataSet.rowsCount; i++) {&#xd;
+		if (dataSet.getValue(i, codigoDataSet) == valorIdDataSet) {&#xd;
+			valorCampo = dataSet.getValue(i, nomeCampo);&#xd;
+		}&#xd;
+	}&#xd;
+	return valorCampo;&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Debug&#xd;
+ */&#xd;
+function debug(string){&#xd;
+	log.info(string);	&#xd;
+	throw string;&#xd;
+}&#xd;
+&#xd;
+function gravarLog(string){&#xd;
+	log.info(string);&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask17</eventId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask17(attempt, message) {&#xd;
+	&#xd;
+	var ProtheusServiceProvider = ServiceManager.getServiceInstance(&quot;WSORCFLUIG&quot;);	    																  &#xd;
+    var ProtheusServiceLocator = ProtheusServiceProvider.instantiate(&quot;br.com.protheus.WSORCFLUIG&quot;);&#xd;
+    var ProtheusService = ProtheusServiceLocator.getWSORCFLUIGSOAP();&#xd;
+    &#xd;
+    &#xd;
+    var locator = ProtheusServiceProvider.instantiate(&apos;br.com.protheus.ObjectFactory&apos;);&#xd;
+	var _a = locator.createITENSLIST(); //_a é um VETORREGINCOS&#xd;
+	var _c = locator.createARRAYOFLISTA(); //_c é um ARRAYOFSTREG&#xd;
+	var _b = _c.getLISTA(); //b eh um java.util.List&lt;STREG&gt;&#xd;
+	&#xd;
+	var indice = 0;&#xd;
+	var campos1 = hAPI.getCardData(getValue(&quot;WKNumProces&quot;));&#xd;
+	var contador1 = campos1.keySet().iterator();&#xd;
+	while (contador1.hasNext()) {&#xd;
+		&#xd;
+		var id1 = contador1.next();&#xd;
+		&#xd;
+		//pega a quantidade de itens&#xd;
+		var caux = id1.split(&quot;orcCodProdutoItem___&quot;).pop();&#xd;
+		if(parseInt(caux)&gt;indice){		&#xd;
+			indice = parseInt(caux);&#xd;
+			&#xd;
+		}&#xd;
+		&#xd;
+	}&#xd;
+		&#xd;
+	var straux = &quot;&quot;;&#xd;
+	&#xd;
+	var campos = hAPI.getCardData(getValue(&quot;WKNumProces&quot;));&#xd;
+	for (var j=1;j&lt;=indice;j++){&#xd;
+		&#xd;
+		var contador = campos.keySet().iterator();&#xd;
+		var _e = locator.createLISTA(); //_e eh um STREG&#xd;
+		straux = &quot;&quot;;&#xd;
+		var orcCodProdutoItem = &quot;&quot;;	&#xd;
+		var orcQtdItem = &quot;&quot;;&#xd;
+		var orcPrecoTabelaItem = &quot;&quot;;&#xd;
+		var orcPrecoUnitItem = &quot;&quot;;&#xd;
+		var orcTotalItem = &quot;&quot;;&#xd;
+		var desconto = 0;&#xd;
+		var comissao = 0;&#xd;
+		&#xd;
+		&#xd;
+		while (contador.hasNext()) {&#xd;
+			var id = contador.next();&#xd;
+			//item 1&#xd;
+			log.info(&apos;id.trim()=&apos;+id.trim())&#xd;
+			if (id.trim() == &apos;orcCodProdutoItem___&apos;+j){&#xd;
+				orcCodProdutoItem = campos.get(id).trim();&#xd;
+			}&#xd;
+			log.info(&apos;orcCodProdutoItem-&gt;-&gt;&apos;+orcCodProdutoItem)&#xd;
+			//item 2&#xd;
+			if (id.trim() == &apos;orcQtdItem___&apos;+j){&#xd;
+				orcQtdItem = campos.get(id).trim();&#xd;
+			}&#xd;
+			//item 3 &#xd;
+			if (id.trim() == &apos;orcPrecoTabelaItem___&apos;+j){&#xd;
+				orcPrecoTabelaItem = campos.get(id).trim();&#xd;
+			}&#xd;
+			//item 4 &#xd;
+			if (id.trim() == &apos;orcPrecoCustoItem___&apos;+j){&#xd;
+				orcPrecoUnitItem = campos.get(id).trim();&#xd;
+			}&#xd;
+			//item 5&#xd;
+			if (id.trim() == &apos;orcTotalCustoItem___&apos;+j){&#xd;
+				orcTotalItem = campos.get(id).trim();&#xd;
+				  			  &#xd;
+			}&#xd;
+&#xd;
+		}//final do while&#xd;
+		//1-orcCodProdutoItem 			2-orcQtdItem	3-orcPrecoTabelaItem 	4-orcPrecoUnitItem		5-orcTotalItem	5desconto		&#xd;
+		straux = orcCodProdutoItem +&quot;;&quot;+ orcQtdItem +&quot;;&quot;+orcPrecoTabelaItem+&quot;;&quot;+ orcPrecoUnitItem +&quot;;&quot;+ orcTotalItem +&quot;;0;0&quot;;&#xd;
+		log.info(&quot;straux -&gt; &quot; + straux);&#xd;
+		&#xd;
+		_e.setDADOS(straux);&#xd;
+		_b.add(_e);&#xd;
+		_e = null;	&#xd;
+	}&#xd;
+&#xd;
+	_a.setREGISTROS(_c);&#xd;
+	&#xd;
+	&#xd;
+//	A1COD, A1LOJA,CONDPG,TABPRECO,OBSORC,PERCDESC,_DADOS&#xd;
+	var A1COD = new String(hAPI.getCardValue(&quot;A1_COD&quot;));&#xd;
+	var A1LOJA = new String(hAPI.getCardValue(&quot;A1_LOJA&quot;));&#xd;
+	var CONDPG = new String(hAPI.getCardValue(&quot;codCondPagto&quot;));&#xd;
+	var TIPOPEDIDO = new String(hAPI.getCardValue(&quot;tipoPedido&quot;));&#xd;
+	var IDFLUIG = getValue(&apos;WKNumProces&apos;);&#xd;
+	var TABPRECO = &apos;011&apos;; &#xd;
+	var OBSORC = &apos;&apos;;&#xd;
+	var PERCDESC = &apos;0&apos;;&#xd;
+	&#xd;
+	 log.info(&apos;IDFLUIG-&gt;&apos;+IDFLUIG);&#xd;
+	 log.info(&apos;straux-&gt;&apos;+straux);&#xd;
+	 log.info(&apos;_a-&gt;&apos;+_a);&#xd;
+	try{&#xd;
+    	ProtheusService.cadastraorcamento(  A1COD ,&#xd;
+											A1LOJA,&#xd;
+											CONDPG,&#xd;
+											TABPRECO,&#xd;
+											OBSORC,&#xd;
+											PERCDESC,&#xd;
+											TIPOPEDIDO,&#xd;
+											IDFLUIG,&#xd;
+											_a);//metodo   &#xd;
+&#xd;
+	    log.info(&quot;Orçamento criado&quot;);&#xd;
+&#xd;
+    }catch(e){    &#xd;
+    	log.info(&quot;Orçamento: deu erro na geração do Orçamento no protheus: &quot; + e);&#xd;
+    	throw(&quot;Erro &quot; + e);&#xd;
+    };&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask39</eventId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask39(attempt, message) {
+	
+	/*
+	 * Pega o email que esta no Fluig do gerente da revenda pelo campo gerenteRevenda
+	 * 
+	 */
+	var WKCompany = getValue(&quot;WKCompany&quot;)
+	var WKUserGerente =  hAPI.getCardValue(&apos;gerenteRevenda&apos;);
+	var c1 = DatasetFactory.createConstraint(&quot;colleaguePK.companyId&quot;, WKCompany, WKCompany, ConstraintType.MUST);
+	var c2 = DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, WKUserGerente, WKUserGerente, ConstraintType.MUST);
+
+	var colunasColleague = new Array(&apos;mail&apos;,&apos;colleagueName&apos;);
+	var datasetColleague = DatasetFactory.getDataset(&apos;colleague&apos;, colunasColleague, new Array(c1, c2), null);
+	
+	/*
+	 * Passa as constraints para o dataset, para que seja possível
+	 */
+	var paraTo = datasetColleague.getValue(0, &quot;mail&quot;);
+	var numPedido = hAPI.getCardValue(&apos;numPedido&apos;);
+	var idFluig = getValue(&apos;WKNumProces&apos;);
+	var gestorEstado = hAPI.getCardValue(&apos;gestorEstado&apos;);
+	
+	
+	if(paraTo != &quot;&quot;){
+		var c1 = DatasetFactory.createConstraint(&quot;paraTo&quot;, paraTo, paraTo, ConstraintType.MUST);
+		var c2 = DatasetFactory.createConstraint(&quot;numPedido&quot;, numPedido, numPedido, ConstraintType.MUST);
+		var c3 = DatasetFactory.createConstraint(&quot;idFluig&quot;, idFluig, idFluig, ConstraintType.MUST);
+		var c4 = DatasetFactory.createConstraint(&quot;gestorEstado&quot;, gestorEstado, gestorEstado, ConstraintType.MUST);
+		
+		
+		var constraints = new Array(c1, c2, c3, c4);
+		var dataset = DatasetFactory.getDataset(&quot;dsEnviaEmailPedidoCriado&quot;, [], constraints, []);
+		var envioOK = &apos;&apos;;
+		for (var i = 0; i &lt; dataset.rowsCount; i++) {
+			envioOK = dataset.getValue(i, &quot;COK&quot;);
+		}
+
+		if(envioOK == &apos;&apos;){
+			throw &apos;Não enviou o email do pedido de venda&apos;;
+		}
+	}else{
+		throw &apos;Não encontrou o email do gerente da revenda&apos;;
+	}
+	
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>441</height>
+      <width>1191</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName>Pool</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>9F9F9F</color>
+      <height>147</height>
+      <width>1161</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName>Revenda</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>C0C0C0</color>
+      <height>147</height>
+      <width>1161</width>
+      <positionX>40</positionX>
+      <positionY>157</positionY>
+      <stateName>Gerente da Revenda</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>82b0b7</color>
+      <height>147</height>
+      <width>1161</width>
+      <positionX>40</positionX>
+      <positionY>304</positionY>
+      <stateName>Administrativo GTS</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>79</version>
+        <linkSequence>21</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>471</positionX>
+      <positionY>492</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>79</version>
+        <linkSequence>21</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>332</positionX>
+      <positionY>492</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>79</version>
+        <linkSequence>33</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>642</positionX>
+      <positionY>218</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>79</version>
+        <linkSequence>44</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1092</positionX>
+      <positionY>477</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>79</version>
+        <linkSequence>44</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>948</positionX>
+      <positionY>477</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Orcamento_HOMOLOGACAO</processId>
+        <version>79</version>
+        <linkSequence>60</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>190</positionX>
+      <positionY>385</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>Orcamento_HOMOLOGACAO</processId>
+      <version>1</version>
+      <sequence>17</sequence>
+      <attempts>0</attempts>
+      <sucessFullMessage>Pedido gerado com sucesso!</sucessFullMessage>
+      <serviceName></serviceName>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>Orcamento_HOMOLOGACAO</processId>
+      <version>1</version>
+      <sequence>39</sequence>
+      <attempts>0</attempts>
+      <sucessFullMessage>Email de confirmação do pedido enviado com sucesso!</sucessFullMessage>
+      <serviceName></serviceName>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

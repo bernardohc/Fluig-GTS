@@ -1,0 +1,252 @@
+<html>
+   <head>
+      <link type="text/css" rel="stylesheet" href="http://style.fluig.com/css/fluig-style-guide.min.css"/>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+      <script type="text/javascript" src="http://style.fluig.com/js/fluig-style-guide.min.js" charset="utf-8"></script>
+   </head>
+   <body>
+      <div class="fluig-style-guide">
+         <h1 class="title-form-application">Cadastro de Jogo</h1>
+         <form name="form" role="form">
+         	<input type="hidden" name="eventidentifier" id="eventidentifier">
+            <div class="checkbox">
+               <label> 
+               <input type="checkbox" name="isactive" id="isactive" value="Ativo">Ativo
+               </label>
+            </div>
+            <div class="form-group">
+               <label for="gamename">Nome do jogo</label> 
+               <input type="text"
+                  name="gamename" value="" placeholder="" required="required"
+                  class="form-control">
+            </div>
+            <div class="row">
+               <div class="col-xs-4">
+                  <label for="startdate">Data de início</label> 
+                  <input type="text"
+                     name="startdate" id="startdate" value="" placeholder=""
+                     class="form-control">
+               </div>
+               <div class="col-xs-4">
+                  <label for="enddate">Data de término</label> 
+                  <input type="text"
+                     name="enddate" id="enddate" value="" placeholder=""
+                     class="form-control">
+               </div>
+            </div>
+            <br>
+            <input type="button" onclick="window.open(&quot;/webdesk/zoom.jsp?datasetId=CommunityDataset&amp;dataFields=alias, Alias,name,Nome&amp;resultFields=alias,name&amp;type=addcommunity&quot;, &quot;zoom&quot;, &quot;status , scrollbars=no ,width=600, height=350 , top=0 , left=0&quot;);" value="Adicionar Comunidade" id="addcommunity" class="btn btn-default">
+            <div data-type="tabledetail"
+               data-show-properties="" data-field-name="Comunidades_Par">
+               <label style="white-space: normal;" class="label-field-properties">Comunidades
+               Participantes</label>
+               <div class="form-group">
+                  <table tablename="allowedcommunities" width="90%" cellspacing="0"
+                     class="table table-striped  table-bordered" noaddbutton=true>
+                     <thead>
+                        <tr>
+                           <td>Comunidade</td>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr >
+                           <td >
+                              <input type="text"
+                                 name="communityalias" id="communityalias" value="" placeholder="" required="required"
+                                 class="form-control">
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <input type="button" class="btn btn-default" onclick="addHashTagRow()" value="Adicionar Hashtag" id="addhashtag">
+            <div data-type="tabledetail"
+               data-show-properties="" data-field-name="Comunidades_Par">
+               <label style="white-space: normal;" class="label-field-properties">Hashtags pontuáveis</label>
+               <div class="form-group">
+                  <table tablename="allowedhashtags" width="90%" cellspacing="0"
+                     class="table table-striped  table-bordered" noaddbutton=true>
+                     <thead>
+                        <tr>
+                           <td>Hashtag</td>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr >
+                           <td >
+                              <input type="text" class="form-control" id="fluiggametag" name="fluiggametag" placeholder="TAG para identificar conteúdo gamificado">
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+<!--             <div data-type="tabledetail" -->
+<!--                data-show-properties="" data-field-name="Comunidades_Par"> -->
+<!--                <label style="white-space: normal;" class="label-field-properties">Hashtags pontuáveis</label> -->
+<!--                <div class="form-group"> -->
+<!--                   <table tablename="gamepoints" width="90%" cellspacing="0" -->
+<!--                      class="table table-striped  table-bordered" addbuttonlabel="Adicionar pontuações por ação" addbuttonclass="btn btn-default"> -->
+<!--                      <thead> -->
+<!--                         <tr> -->
+<!--                            <td>Tipo de ação</td> -->
+<!--                            <td>Valor da pontuação</td> -->
+<!--                            <td>A cada</td> -->
+<!--                         </tr> -->
+<!--                      </thead> -->
+<!--                      <tbody> -->
+<!-- 						<tr> -->
+<!-- 							<td> -->
+<!-- 								<select name="tipoacao" class="form-control"> -->
+<!-- 									<option	value="like">Apoiar</option> -->
+<!-- 									<option value="publish">Publicar</option> -->
+<!-- 									<option value="share">Compartilhar</option> -->
+<!-- 									<option value="comment">Comentar</option> -->
+<!-- 								</select> -->
+<!-- 							</td> -->
+<!-- 							<td> -->
+<!-- 								<input type="number" min=1 id="scorepoints" name="scorepoints" placeholder="1" data-only-numbers="" class="form-control"> -->
+<!-- 							</td> -->
+<!-- 							<td> -->
+<!-- 								<input type="number" min=1 id="foreachaction" name="foreachaction" placeholder="1" data-only-numbers="" class="form-control"> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 						</tbody> -->
+<!--                   </table> -->
+<!--                </div> -->
+<!--             </div> -->
+         </form>
+      </div>
+      <script src="http://127.0.0.1:8080/portal/resources/js/jquery/jquery.js?v=1.5.3-INC-SNAPSHOT" type="text/javascript"></script>
+      <script src="http://127.0.0.1:8080/portal/resources/js/jquery/jquery-ui.min.js?v=1.5.3-INC-SNAPSHOT" type="text/javascript"></script>
+      <script src="http://127.0.0.1:8080/portal/resources/components/placeholder/plugin-placeholder.js?v=1.5.3-INC-SNAPSHOT" type="text/javascript"></script>
+      <script src="http://127.0.0.1:8080/portal/resources/components/ratingstar/plugin-rating.js?v=1.5.3-INC-SNAPSHOT" type="text/javascript"></script>
+      <script src="http://127.0.0.1:8080/portal/../ecm_resources/resources/assets/forms/forms.js?v=1.5.3-INC-SNAPSHOT" type="text/javascript"></script>
+      <script type="text/javascript">
+
+      	 var mySimpleCalendar = FLUIGC.calendar('*[id*=date]');
+      
+         var getFields = document.forms[0],
+         	getInputDate = $(getFields).find('[data-type="date"]').find('input'),
+         	lenDate = getInputDate.length;
+         
+         for(var i = 0; i < lenDate; i++) {
+         	if(getInputDate[i].type === 'text' && $(getInputDate[i]).attr('readonly') != 'readonly'){
+         		$(getInputDate[i]).datepicker({
+         			dateFormat: 'dd/mm/yy',
+         			beforeShow: function(input, inst) {
+         				setTimeout(function() {
+         					inst.dpDiv.css({
+             					top: $(input).position().top + $(input).outerHeight() + 5
+             				});
+         				}, 100);
+         			}
+         		});
+         	}
+         }
+         
+         function addHashTagRow() {
+        	 var row = wdkAddChild('allowedhashtags');
+             
+        	 $(function(){
+       		  $('#fluiggametag___' + row).keypress(function(e){
+       		    if(e.which == 32 || e.which == 35){
+       		      return false;
+       		    }
+       		  });
+       		});
+         }
+         
+         //Validar se o navegador suporta placeholder
+         function phSupport() {
+         	var i = document.createElement('input');
+         	return 'placeholder' in i;
+         }
+         
+         if(!phSupport()) {
+         	// navegador não suporta placeholder
+         }
+         
+         //permite digitar somente numeros
+         $('body').on('keypress', '[data-only-numbers]', function(ev) {
+         	var k = ev.keyCode || ev.which;
+         	//Permite apagar o conteúdo do campo usando as teclas 'backspace' ou 'delete' no firefox.
+         	//Nos outros navegadores o keypress não gera evento.
+         	if (k == 8 || k == 46) {
+         		return true;
+         	}
+         	k = String.fromCharCode(k);
+         	if(isNaN(k)) {
+         		return false;
+         	}
+         	return true;
+         });
+         
+         $('.create-form-components').on('keyup', 'input[required="required"][type="text"], input[required="required"][type="number"], input[required="required"][type="date"], textarea[required="required"]', function(){
+         	validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+         });
+         
+         $('.create-form-components').on('change', 'input[required="required"][type="checkbox"], input[required="required"][type="radio"], select[required="required"]', function(){
+         	validationFieldsForm($(this), $(this).parents('.form-field').data('type'));
+         });
+         
+         function validationFieldsForm(field, type){
+             if(type === "checkbox" || type === "radio"){
+         	    if(!field.is(':checked')){
+         	        field.parents('.form-field').addClass('required');
+         	    }else{
+         	        field.parents('.form-field').removeClass('required');
+         	    }
+             }else{
+         	    if(!field.val().trim()){
+         	        field.parents('.form-field').addClass('required');
+         	    }else{
+         	        field.parents('.form-field').removeClass('required');
+         	    }
+             }
+         }
+         
+         function setSelectedZoomItem(selectedItem) {
+         	var selValue, input;
+         	$.each(selectedItem, function(key, value) {
+         		if (key == "type") {
+         			input = $('#' + value)[0];
+         		} else {
+         			if(!selValue) {
+         				selValue = value;
+         			}
+         		}
+         	});
+         	if(input.id == 'addcommunity') {
+         		var communities = $('*[id*=communityalias___]');
+         		for (i = 0; i < communities.length; i++) { 
+         			if(communities[i].value == selValue) {
+         				return;
+         			}
+         		}
+         		var row = wdkAddChild('allowedcommunities');
+         		var communityAlias = $('#communityalias___' + row)[0];
+         		communityAlias.value = selValue;
+         	} 
+         }
+         
+         var ratings = $(".rating");
+         if (ratings.length > 0) ratingStars(ratings);
+         function ratingStars(stars) {
+         	$.each(stars, function(i, obj) {
+         		var field = $(obj).find("input");
+         
+         		$(obj).rating({
+         			field: field,
+         			maxvalue: 5,
+         			curvalue: field.val()
+         		});
+         	});
+         }
+         
+      </script>
+   </body>
+</html>

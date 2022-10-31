@@ -1,0 +1,139 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-atividades.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+  	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<!-- <script type="text/javascript" src="js-vcXMLRPC.js" charset="utf-8"></script> -->
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()" >
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<input type="hidden" id="fieldNeeded" name="fieldNeeded" />
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	    	<div class="col-xs-2" align="left">
+				<img align="center" height="50" width="250" src="https://i.ibb.co/wc27BYd/Logo-GTS.jpg">
+            </div>
+			<div class="col-xs-8" align="left">
+				<font class="banner-header" color="000" ><h1><strong>i18n.translate("lb_pre_pedido") nº <span id="numOrcamento"></span></strong></h1></font>
+            </div>
+	    </div>
+	    <hr /> 
+	</div>
+	
+	<div id="divOrcamentoCliente" class="col-sm-12"  >
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-xs-4 col-md-offset-3" align="left">
+						<label class="labelsrel" for="orcTpPedido">i18n.translate("lb_tipo_pedido")</label>
+						<p id="orcTpPedido" class="textDesc"></p>
+		            </div>
+					<div class="col-xs-5" align="left">
+						<label class="labelsrel"  for="orcCondPgto">i18n.translate("lb_condicao_pagamento")</label>
+						<p id="orcCondPgto" class="textDesc"></p>
+		            </div>
+					<div class="col-xs-2" align="left">
+						<label class="labelsrel"  for="orcDataOrcamento">i18n.translate("lb_data")</label>
+						<p id="orcDataOrcamento" class="textDesc"></p>
+		            </div>
+	            </div>
+            </div>
+            
+            <div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-3" align="left">
+						<label class="labelsrel" for="pedObservacao">i18n.translate("lb_observacao")</label>
+						<p id="pedObservacao" class="textDesc"></p>
+		             </div>
+		         </div>    
+			</div> 
+		</div>
+	</div>
+	
+	<div id="divOrcamentoTabItens" class="col-sm-12"  >
+		<div class="row">
+			<table class="table table-condensed table-nonfluid table-striped" id="tbItensOrcamento">
+				<thead>
+					<tr>	
+						<th class="font-cab-tabela">i18n.translate("lb_it_qtd")</th>
+						<th class="font-cab-tabela">i18n.translate("lb_it_cod_produto")</th>		
+						<th class="font-cab-tabela">i18n.translate("lb_it_desc_produto")</th>
+						<th class="font-cab-tabela">i18n.translate("lb_it_ncm")</th>
+						<th class="font-cab-tabela">i18n.translate("lb_it_preco_custo")</th>
+						<th class="font-cab-tabela hide-usa">IPI</th>
+						<th class="font-cab-tabela hide-usa">ICMS</th>
+						<th class="font-cab-tabela hide-usa">Total</th>
+						<th class="font-cab-tabela show-usa" style="display:none;">Total (USD)</th>
+					</tr>
+				</thead>
+				
+			</table>
+		
+			
+			<div id="divTotais">
+            	<div class="col-sm-12">
+				    <div class="row">
+				        <div id="divTotais" class="col-xs-6 col-xs-offset-6" style="text-align:center">
+				       		<h3 class="totais" ><strong>i18n.translate("lb_tot_totais")</strong></h3>
+				       		<hr />  
+				        </div>
+				    </div>
+				</div>
+            
+            	<div class="col-sm-12">
+					<div class="row">
+						<div class="col-xs-2 col-xs-offset-6 hide-usa" align="left" >
+							<label class="labelsrel" for="totalIPI">IPI</label>
+					      	<p id="totalIPI" class="textDesc"></p>
+						</div>
+						<div class="col-xs-2 hide-usa" align="left" >
+							<label class="labelsrel" for="totalICMSRet">ICMS-ST</label>
+					      	<p id="totalICMSRet" class="textDesc"></p>
+						</div>
+						<div class="col-xs-2 hide-usa" align="left">
+							<label class="labelsrel" for="totalCustoPedido">Valor Total</label>
+					      	<p id="totalCustoPedido" class="textDesc"></p>
+						</div>
+						
+						<div class="col-xs-3 col-xs-offset-8 show-usa"  style="display:none;" align="left">
+							<label class="labelsrel" for="totalCustoPedido">Total Cost (USD)</label>
+					      	<p id="totalCustoPedidoDolar" class="textDesc"></p>
+						</div>
+					</div>
+				</div>
+			</div>	
+		
+		</div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+</form>
+</div>
+</body>
+</html>

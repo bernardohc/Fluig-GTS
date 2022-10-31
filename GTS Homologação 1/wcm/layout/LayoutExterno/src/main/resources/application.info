@@ -1,0 +1,17 @@
+application.type=layout
+application.code=LayoutExterno
+application.title=Layout Externo
+application.description=Layout Externo
+application.category=Layout
+application.renderer=freemarker
+developer.code=Comassetto
+developer.name=Marco Comassetto
+developer.url=http://www.fluig.com
+layout.defaultSlot=SlotA
+layout.file=layout.ftl
+locale.file.base.name=LayoutExterno
+slot.SlotGlobalAlert=alertpopover
+slot.SlotInstantSearch=suggestsearch
+slot.SlotLogin=sociallogin
+slot.SlotMenu=menu
+slot.SlotUsePolicy=usepolicy

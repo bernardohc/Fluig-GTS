@@ -1,0 +1,172 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-atividades.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+	
+</head>
+<body onload="loadForm()" >
+<div class="fluig-style-guide">
+<form name="form" role="form">
+		<div class="col-sm-12">
+	    <div class="row banner-header">
+	        <font color="000" ><h1><strong>Reanálise de Preço</strong></h1></font>
+	    </div>
+	</div>
+
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+
+
+	<div id="divReanalise" class="col-sm-12"  >
+		<div class="row">
+			
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3" align="left">
+						<label for="repNome">Representante*</label>
+						<input type="text" name="repNome" id="repNome" class="form-control" maxlength="50" readonly>
+		            </div>
+	            </div>
+            </div>
+            
+            <div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3" align="left">
+						<label for="repTelProtheus">Telefone*</label>
+						<input type="text" name="repTelProtheus" id="repTelProtheus" class="form-control" maxlength="20" readonly>
+		            </div>
+		            
+		            <div class="col-md-3" align="left">
+						<label for="repTel">Telefone*</label>
+						<input type="text" name="repTel" id="repTel" class="form-control" maxlength="20">
+		            </div>
+	            </div>
+            </div>
+            
+            <div class="col-sm-12">
+				<div class="row">
+          			<div class="col-md-2 col-md-offset-3" align="left">
+						<label for="reaPrecoCodProduto">Cod. Produto*</label>
+						<input type="text" name="reaPrecoCodProduto" id="reaPrecoCodProduto" class="form-control" maxlength="40">
+	            	</div>
+	            	
+	            	<div class="col-md-4 " align="left">
+						<label for="reaPrecoDescProduto">Desc. Produto*</label>
+						<input type="text" name="reaPrecoDescProduto" id="reaPrecoDescProduto" class="form-control" maxlength="60">
+	            	</div>
+	        	</div>    
+			</div> 
+            
+            <div class="col-sm-12">
+				<div class="row">
+          			<div class="col-md-2 col-md-offset-3" align="left">
+						<label for="reaPrecoMarca">Marca*</label>
+						<input type="text" name="reaPrecoMarca" id="reaPrecoMarca" class="form-control" maxlength="40">
+	            	</div>
+	            	
+	            	<div class="col-md-4" align="left">
+						<label for="reaPrecoRazSocFornec">Razão Social Fornecedor*</label>
+						<input type="text" name="reaPrecoRazSocFornec" id="reaPrecoRazSocFornec" class="form-control" maxlength="60">
+	            	</div>
+	        	</div>    
+			</div>
+			
+			<div class="col-sm-12">
+				<div class="row">
+          			<div class="col-md-2 col-md-offset-4" align="left">
+						<label for="reaPrecoPrecoBalcao">Preço Balcão*</label>
+						<input type="text" id="reaPrecoPrecoBalcao"  name="reaPrecoPrecoBalcao" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+	            	</div>
+	            	
+	            	<div class="col-md-2" align="left">
+						<label for="reaPrecoPrecoConcorrente">Preço Concorrente*</label>
+						<input type="text" id="reaPrecoPrecoConcorrente"  name="reaPrecoPrecoConcorrente" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+	            	</div>
+	        	</div>    
+			</div>
+			
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3" align="left">
+						<label for="reaPrecoObservacao">Observação</label>
+						<textarea rows="3" cols="6" name="reaPrecoObservacao" id="reaPrecoObservacao" class="form-control " ></textarea>
+		             </div>
+		         </div>    
+			</div>  
+			 
+		</div>
+	</div>
+            
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	<div id="divAdmReanalise" class="col-sm-12"  >
+		<div class="row">
+			<div class="col-sm-12">
+				<hr >
+				<div class="row">
+					
+					<div class="col-md-3" >
+						<label for="reaPrecoUsuarioAdm">Usuário</label> 
+						<input type="text" name="reaPrecoUsuarioAdm" id="reaPrecoUsuarioAdm" class="form-control" readonly>
+					</div>
+					<div class="col-md-2 " > 
+						<label for="reaPrecoDataRespAdm">Data</label>
+						<input type="text" name="reaPrecoDataRespAdm" id="reaPrecoDataRespAdm" class="form-control" readonly>
+					</div>
+					
+				    <div class="col-md-1 " align="center"> 
+						<label for="reaPrecoPedAtacado">Pedido Atacado?*</label>
+						<br>
+						<input type="checkbox" id="reaPrecoPedAtacado" name="reaPrecoPedAtacado"  data-on-color="success" data-off-color="danger" data-on-value="true" data-off-value="false" data-on-text="Sim" data-off-text="Não">							
+					</div>
+					<div class="col-md-5 " align="left">
+						<label for="reaPrecoObservacaoAdm">Observação*</label>
+						<textarea rows="3" cols="6" name="reaPrecoObservacaoAdm" id="reaPrecoObservacaoAdm" class="form-control " ></textarea>
+		             </div>
+		         </div>    
+			</div> 
+		</div>
+            
+	</div>            
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+</form>
+</div>
+</body>
+</html>

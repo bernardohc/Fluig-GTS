@@ -1,0 +1,68 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link type="text/css" rel="stylesheet" href="custom.css"/>
+	<script type="text/javascript" src="util.js"></script>
+	<script type="text/javascript" src="custom.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+<input type="hidden" id="fieldNeeded" name="fieldNeeded" />
+<div class="container-fluid fs-no-padding">	
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Configurar Administrador do Estado</h2>
+		</div>
+	</div>
+	
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-12">
+				<div class="form-field table-responsive">
+					<table class="table table-striped" cellspacing="0" tablename="table_gestor_estado" nodeletebutton=true customFnDelete="removeRegistro(this)" noaddbutton=true>
+						<thead>
+							<tr class="tableHeadRow">
+								<th class="tableColumn">Sigla Estado</th>
+								<th class="tableColumn">Matrícula Usuário</th>
+								<th class="tableColumn">Código Vendedor (Protheus)</th>
+								<th class="tableColumn">Matrícula Usuário Valida Pedido Risco A</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="col-md-1 ">	
+									<input type="text" name="siglaEstado" id="siglaEstado" class="form-control" maxlength="2">
+								</td>
+								<td class="col-md-2 ">	
+									<input type="text" name="matriculaEstado" id="matriculaEstado" class="form-control" maxlength="30">
+								</td>
+								<td class="col-md-2 ">	
+									<input type="text" name="codVendedorProtheus" id="codVendedorProtheus" class="form-control" maxlength="30">
+								</td>
+								<td class="col-md-2 ">	
+									<input type="text" name="matriculaValidaPedRiscoA" id="matriculaValidaPedRiscoA" class="form-control" maxlength="30">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="div_rowBtnAddTipo" style="display:none">
+			<div class="col-md-12 col-sm-12">
+				<button type="button" class="btn btn-primary" onclick="addLinha();">Adicionar</button>
+			</div>
+		</div>
+	</div>	
+</div>
+		
+</form>
+</div>
+</body>
+</html>

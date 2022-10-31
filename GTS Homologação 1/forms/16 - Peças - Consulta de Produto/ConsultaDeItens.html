@@ -1,0 +1,203 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+ 	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+<!-- 	<script type="text/javascript" src="js-vcXMLRPC.js" charset="utf-8"></script> -->
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>		
+	
+	<script>
+	window.parent.$("#collapse-tabs").remove();
+	window.parent.$("#textActivity").remove();
+	window.parent.$("#workflowActions").remove();
+	window.parent.$("#breadcrumb").remove();
+	
+	
+	</script>
+	
+</head>
+<body onload="loadForm()" >
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	
+	<input type="hidden" name="A1_COD" id="A1_COD" class="form-control" >
+	<input type="hidden" name="A1_LOJA" id="A1_LOJA" class="form-control" >
+	<input type="hidden" name="A1_TIPO" id="A1_TIPO" class="form-control" >
+	<input type="hidden" name="A1_PAIS" id="A1_PAIS" class="form-control" >
+	<input type="hidden" name="gerenteRevenda" id="gerenteRevenda" class="form-control" >
+	
+<!-- 	<div id="divOrcamentoProduto" class="col-sm-12" style="top: -130px;" > -->
+	<div id="divOrcamentoProduto" class="col-sm-12"  >	
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1 " align="left">
+						<label for="orcProdCod">i18n.translate("lb_cod_produto")</label>
+						<input type="text" name="orcProdCod" id="orcProdCod" class="form-control" maxlength="20">
+		            </div>
+		            
+		            <div class="col-md-2 class-not-eua" align="left">
+						<label for="orcProdPercentAcresc">% Acréscimo</label>
+		            	<input type="text" name="orcProdPercentAcresc" id="orcProdPercentAcresc" value='0%' class="form-control" maxlength="20" onKeyPress="validafunctions.setPercentual(this.id, 0, false)">
+		            	
+		            </div>
+		            
+					<div class="col-md-1 col-md-offset-1" align="left">
+		            	<br>
+						<button type="button" class="btn btn-primary" id="limparCampos">i18n.translate("lb_limpar")</button>						
+					</div>
+					<div id="divEstoqueRevenda" class="col-md-2 " align="left">
+		            	<br>
+						<button type="button" class="btn btn-primary" id="estoqueRevenda">Estoque Revenda</button>						
+					</div>
+	            </div>
+            </div>
+            <div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1" align="left">
+						<label for="orcProdCodAntigo">i18n.translate("lb_cod_produto_antigo")</label>
+						<input type="text" name="orcProdCodAntigo" id="orcProdCodAntigo" class="form-control" maxlength="20" readonly>
+		            </div>
+					<div class="col-md-6" align="left">
+						<label for="orcProdDesc">i18n.translate("lb_desc_produto")</label>
+						<input type="text" name="orcProdDesc" id="orcProdDesc" class="form-control" maxlength="50" readonly>
+		            </div>
+
+	            </div>
+            </div>
+            <div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1 class-not-eua" align="left">
+						<label for="orcProdPrecoSugerido">Preço Sugerido</label>
+						<input type="hidden" name="orcPrecoTabela" id="orcPrecoTabela" class="form-control" readonly >
+						<input type="text" name="orcProdPrecoSugerido" id="orcProdPrecoSugerido" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
+		            </div>
+					<div class="col-md-2 class-not-eua" align="left">
+						<label for="orcProdPrecoVenda">Preço Venda</label>
+						<input type="text" name="orcProdPrecoVenda" id="orcProdPrecoVenda" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
+		            </div>
+					<div id="divEstDisp" class="col-md-2 class-not-eua-gerente" align="left">
+						<label for="orcProdEstoque">i18n.translate("lb_estoque_disp")</label>
+						<input type="text" name="orcProdEstoque" id="orcProdEstoque" class="form-control" maxlength="20" readonly >
+		            </div>
+		            <div id="divUnidEmb" class="col-md-2" align="left">
+						<label for="orcProdEmbalagem">i18n.translate("lb_unid_emb")</label>
+						<input type="text" name="orcProdEmbalagem" id="orcProdEmbalagem" class="form-control" maxlength="20" readonly >
+		            </div>
+		            <div id="divPesoUnit" class="col-md-1" align="left">
+						<label for="orcProdPesoUnit">i18n.translate("lb_peso_unit")</label>
+						<input type="text" name="orcProdPesoUnit" id="orcProdPesoUnit" class="form-control" maxlength="10" readonly >
+		            </div>
+		            <div id="divUnMed" class="col-md-1" align="left">
+						<label for="orcProdUnMedida">i18n.translate("lb_un_medida")</label>
+						<input type="text" name="orcProdUnMedida" id="orcProdUnMedida" class="form-control" maxlength="10" readonly >
+		            </div>
+	            </div>
+            </div>
+            <div class="col-sm-12">
+				<div class="row">
+				<!-- CAMPOS HIDDEN PARA USO INTERNO -->
+					<input type="hidden" name="orcProdIPI" id="orcProdIPI" class="form-control" maxlength="20">
+					<input type="hidden" name="orcProdICMS" id="orcProdICMS" class="form-control" maxlength="20">
+					<input type="hidden" name="orcProdPIS" id="orcProdPIS" class="form-control" maxlength="20">
+					<input type="hidden" name="orcProdCOFINS" id="orcProdCOFINS" class="form-control" maxlength="20">
+<!-- 					<input type="hidden" name="orcProdAlqIPI" id="orcProdAlqIPI" class="form-control" maxlength="20"> -->
+<!-- 					<input type="hidden" name="orcProdAlqICMS" id="orcProdAlqICMS" class="form-control" maxlength="20"> -->
+					<input type="hidden" name="orcProdPrecoMin" id="orcProdPrecoMin" class="form-control">
+					<input type="hidden" name="orcProdPrecoCusto" id="orcProdPrecoCusto" class="form-control">
+					
+					<div id="divOrcProdAlqIPI" class="col-md-2 col-md-offset-1 class-not-eua" align="left">
+						<label for="orcProdAlqIPI">Alíquota IPI</label>
+						<input type="text" name="orcProdAlqIPI" id="orcProdAlqIPI" class="form-control" maxlength="20" readonly >
+		            </div>
+					<div id="divOrcProdAlqICMS" class="col-md-2 class-not-eua" align="left">
+						<label for="orcProdAlqICMS">Alíquota ICMS</label>
+						<input type="text" name="orcProdAlqICMS" id="orcProdAlqICMS" class="form-control" maxlength="20" readonly >
+		            </div>
+					<div id="divOrcProdICMSRET" class="col-md-2 class-not-eua" align="left">
+						<label for="orcProdICMSRET">ICMS-ST</label>
+						<input type="text" name="orcProdICMSRET" id="orcProdICMSRET" class="form-control" maxlength="20" readonly >
+		            </div>
+		            <div id="divOrcProdCustoTotal" class="col-md-2" align="left">
+						<label for="orcProdCustoTotal">i18n.translate("lb_custo_total_it") <span class="cifrao-dolar" style="display:none;">(USD)</span></label>
+						<input type="text" name="orcProdCustoTotal" id="orcProdCustoTotal" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
+		            </div>
+		            
+		            <div id="divOrcNCM" class="col-md-2 " align="left">
+		            	<label for="orcProdNCM">i18n.translate("lb_ncm")</label>
+		            	<input type="text" name="orcProdNCM" id="orcProdNCM" class="form-control" readonly>
+		            </div>
+	            </div>
+            </div>            
+            <div class="col-sm-12">
+				<div class="row">
+					
+					<div class="col-md-2 col-md-offset-1 class-not-eua" align="left">
+		            	<label for="orcProdPrecoSugeridoMP">Preço Sugerido-MP</label>
+		            	<input type="text" name="orcProdPrecoSugeridoMP" id="orcProdPrecoSugeridoMP" class="form-control" maxlength="20" readonly>
+		            </div>
+					<div class="col-md-2 class-not-eua" align="left">
+						<label for="orcProdCurvaABC">Curva ABC</label>
+						<input type="text" name="orcProdCurvaABC" id="orcProdCurvaABC" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
+		            </div>
+					<div id="divCodCritico" class="col-md-2" align="left">					
+						<label for="orcProdCodCritico">i18n.translate("lb_cod_critico")</label>																
+							
+							<i id="popoverPort" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover class-not-eua"  data-toggle="popover" title="" data-original-title="" data-content="
+							<div class='cor-verde'    >G10 - BAIXA COMPLEXIDADE - ALTO GIRO</div> 
+							<div class='cor-amarela'  >G20 - MANUTENÇÃO PERIÓDICA</div> 
+							<div class='cor-amarela'  >G21 - MÁQUINA PARADA, MENOS DE 2 HRS PARA A MANUTENÇÃO</div> 
+							<div class='cor-vermelha' >G30 - MÁQUINA PARADA, MAIS DE 2 HRS PARA A MANUTENÇÃO</div> 
+							<div class='cor-vermelha' >G31 - DESGASTE – REPAROS, DIÁRIO / SEMPRE QUE NECESSÁRIO</div>
+							<div class='cor-vermelha' >G32 - ALTA COMPLEXIDADE</div> 
+							<div class='cor-azul'     >G40 - BAIXO GIRO - REFORMA</div> "></i>	
+							
+							<i id="popoverEnUs" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
+							<div class='cor-verde'    >G10 - LOW COMPLEXITY - HIGH SPIN</div>
+							<div class='cor-amarela'  >G20 - PERIODIC MAINTENANCE</div> 
+							<div class='cor-amarela'  >G21 - MACHINE STOP, LESS THAN 2 HOURS FOR MAINTENANCE</div> 
+							<div class='cor-vermelha' >G30 - MACHINE STOP, MORE THAN 2 HOURS FOR MAINTENANCE</div> 
+							<div class='cor-vermelha' >G31 - WEAR - REPAIRS, DAILY / WHENEVER NECESSARY</div>
+							<div class='cor-vermelha' >G32 - HIGH COMPLEXITY</div> 
+							<div class='cor-azul'     >G40 - LOW TURN - REFORM</div> "></i>														    						    						 																	    																																																																					
+						<input type="text" name="orcProdCodCritico" id="orcProdCodCritico" class="form-control" maxlength="80" width="80" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
+		            </div>
+		            <div id="divOrcProdCustoTotalItemMP" class="col-md-2 class-not-eua" align="left">
+						<label for="orcProdCustoTotalItemMP">Custo Total Item-MP</label>
+						<input type="text" name="orcProdCustoTotalItemMP" id="orcProdCustoTotalItemMP" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">						
+						
+						<input type="hidden" name="orcProdPrecoCustoMP" id="orcProdPrecoCustoMP" class="form-control">
+		            </div>   
+					<div class="col-md-2 class-not-eua" align="left" >
+						<label for="orcProdRecompra">Recompra</label>
+						<input type="text" name="orcProdRecompra" id="orcProdRecompra" class="form-control" maxlength="20" readonly >
+		            </div>		           		        
+		            	                    
+	            </div>
+            </div>               
+            <!--  "APLICAÇÃO DE PEÇAS" -->
+            <div class="col-sm-12" style="display:none;"> 
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1" align="left" >
+					<br>
+						 <button type="button" class="btn btn-link" id="aplicacao"><i class="fluigicon fluigicon-cog icon-sm " ></i> Aplicação de Peças</button>
+		            </div>
+				</div>
+			</div> 
+                                                                   
+		</div>
+	</div>
+		
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+application.type=widget
+application.code=ConsultaSACInterno
+application.title=Consulta SAC Interno
+application.description=Consulta SAC Interno
+application.category=SAC
+application.renderer=freemarker
+developer.code=Comassetto
+developer.name=Marco Comassetto
+developer.url=http://www.fluig.com
+application.uiwidget=true
+application.mobileapp=true
+view.file=view.ftl
+edit.file=edit.ftl
+locale.file.base.name=ConsultaSACInterno
+application.resource.js.1=/resources/js/ConsultaSACInterno.js
+application.resource.js.2=/resources/js/validafunctions.js
+application.resource.css.3=/resources/css/ConsultaSACInterno.css

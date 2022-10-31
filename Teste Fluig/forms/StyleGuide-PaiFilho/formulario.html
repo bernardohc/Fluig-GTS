@@ -1,0 +1,105 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide-filter.min.css" />
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
+	<title>Formulario pai e filho</title>
+</head>
+<body class="fluig-style-guide background">
+<div class="page-header">
+	<h1>Exemplo<small> Formulário pai e filho</small></h1>
+</div>
+<form method="post">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="form-group">
+				<label for="requisitante">Requisitante</label> <input type="hidden" name="hdnrespativ1" id="hdnrespativ1" />
+				<input
+						type="zoom"
+						name="txtrespativ1"
+						data-zoom="{
+							'displayKey':'colleagueName',
+							'datasetId':'colleague',
+							'filterValues':'active,true',
+							'fields':[
+								{'field':'colleagueId', 'label':'ID'},
+								{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+								{'field':'login', 'label':'Login'}]
+							}"
+				/>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-field table-responsive" data-type="tabledetail" data-show-properties="" data-field-name="tabledetail">
+				<table class="table" cellspacing="0" tablename="ingre" noaddbutton="true">
+					<thead>
+					<tr class="tableHeadRow">
+						<th class="tableColumn">Descrição</th>
+						<th class="tableColumn">Unidade</th>
+						<th class="tableColumn">Responsavel</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td class="col-md-6 col-sm-5">
+							<div class="form-group">
+								<input type="text" name="nomeativ" class="form-control" maxlength="200" />
+							</div>
+						</td>
+
+						<td class="col-md-2 col-sm-3">
+							<div class="form-group fs-cursor-pointer" id="dtprazoativ">
+								<div class="input-group date">
+									<input type="text" class="form-control uppercase" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="InputQT" id="InputQT" maxlength="999" />
+								</div>
+							</div>
+						</td>
+
+						<td class="col-md-4 col-sm-4">
+							<div class="form-group">
+								<input type="hidden" name="hdnrespativ2" id="hdnrespativ2" />
+								<input
+										type="zoom"
+										name="txtrespativ2"
+										data-zoom="{
+												'displayKey':'colleagueName',
+												'datasetId':'colleague',
+												'filterValues':'active,true',
+												'fields':[
+													{'field':'colleagueId', 'label':'ID'},
+													{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+													{'field':'login', 'label':'Login'}]
+												}"
+								/>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="form-group">
+				<button type="button" class="btn btn-default" name="inputAdicionar" id="inputAdicionar" onclick="wdkAddChild('ingre')">Adicionar</button>
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<div class="form-group">
+				<label for="requisitante">Observações</label>
+				<textarea class="form-control" name="modopreparo" rows="6" cols="40"></textarea>
+			</div>
+		</div>
+	</div>
+</form>
+</body>
+</html>

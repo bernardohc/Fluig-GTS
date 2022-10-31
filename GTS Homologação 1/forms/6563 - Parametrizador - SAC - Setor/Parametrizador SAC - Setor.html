@@ -1,0 +1,81 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-validafunctions.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-custom.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Parametrização SAC - Setor</h2>
+		</div>
+	</div>
+	
+	
+	<div class="panel-body">
+		
+		<div class="row">
+			<div class="col-md-2" align="left">
+				<label for="nomeSetor">Setor*</label>
+				<input type="text" name="nomeSetor" id="nomeSetor" class="form-control" maxlength="50" >
+            </div>
+			<div class="col-md-2" align="left">
+				<label for="codigoGrupo">Código Grupo*</label>
+				<input type="text" name="codigoGrupo" id="codigoGrupo" class="form-control" maxlength="50" >
+            </div>
+		</div>
+		
+		<div class="row" id="div_rowBtnAddTipo" >
+			<div class="col-md-12 col-sm-12">
+				<button type="button" id="btnAddLinha" class="btn btn-primary" onclick="addLinha();">Adicionar</button>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-sm-12">
+				<div class="form-field table-responsive">
+					<table class="table table-striped" cellspacing="0" tablename="table_sac_setor" nodeletebutton=true noaddbutton=true>
+						<thead>
+							<tr class="tableHeadRow">
+								<th class="tableColumn">Ativo</th>
+								<th class="tableColumn">Cod. Setor</th>
+								<th class="tableColumn">Setor</th>
+								<th class="tableColumn">Cod. Grupo de Atendimento</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="col-md-1 ">	
+									<input type="checkbox" name="ativo" id="ativo" class="form-control" value="selecionado" >
+								</td>
+								<td class="col-md-2 ">	
+									<input type="text" name="codSetor" id="codSetor" class="form-control" maxlength="50" readonly>
+								</td>
+								<td class="col-md-2 ">	
+									<input type="text" name="setor" id="setor" class="form-control" maxlength="50" >
+								</td>
+								<td class="col-md-2 ">	
+									<input type="text" name="codGrupo" id="codGrupo" class="form-control" maxlength="50" >
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+</form>
+</div>
+</body>
+</html>

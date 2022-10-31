@@ -1,0 +1,240 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-atividades.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-vcXMLRPC.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-beforeSendValidate.js" charset="utf-8"></script>
+	
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	
+	<input type="hidden" name="A1_COD" id="A1_COD" class="form-control" >
+	<input type="hidden" name="A1_LOJA" id="A1_LOJA" class="form-control" >
+	<input type="hidden" name="WKUserGerRevenda" id="WKUserGerRevenda" class="form-control">
+	
+	
+	<div class="col-md-12">
+	    <div class="row banner-header">
+	        <font color="000" ><h1><strong id="cabecalho" >Itens Pendentes</strong></h1></font>
+	    </div>
+	</div>
+	
+	<div id="msgPrazoResposta" class="col-md-offset-2 col-md-8" style="display:none; text-align:center;">
+	     <div class="alert alert-warning" role="alert">Caso não seja tomado uma decisão no prazo de <u>12 horas</u>, o pedido será realizado na integra.</div>
+	</div>
+	
+	
+	<div id="divCabItensPendentes" class="col-sm-12"  >
+		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1" align="left">
+						<label for="numPedidoVenda">Nº Pedido Venda</label>
+						<input type="text" name="numPedidoVenda" id="numPedidoVenda" class="form-control" readonly>
+		            </div>
+					<div class="col-md-2" align="left">
+						<label for="idFluigOrcamento" >Id Fluig - Orçamento</label>
+						<a href="" id="idFluigOrcamentoHref" target="_blank"> 
+							<input type="text" name="idFluigOrcamento" id="idFluigOrcamento" class="form-control" readonly>
+						</a>
+		            </div>
+					<div class="col-md-2" align="left">
+						<label for="tipoPedido">Tipo de Pedido</label>
+<!-- 						<input type="text" name="tipoPedido" id="tipoPedido" class="form-control" readonly> -->
+						<select name="tipoPedido" id="tipoPedido" class="form-control" readonly>
+							<option value=""> </option>
+				        	<option value="PCI" style='display:none;'>Pedido Contrato Estoque Inicial de Novos Equipamentos</option>
+				        	<option value="CP">Compra Programada</option>
+				        	<option value="PE">Pedido Estoque</option>
+				        	<option value="PP">Pedido Promocional</option>
+				        	<option value="PG" class="tpGreenSystem" >Pedido Garantia</option>
+				        	<option value="MP" >Máquina Parada</option>
+				        	<option value="PEUSA" >Pedido Estoque USA</option>
+				      	</select>
+					      	
+		            </div>
+					<div class="col-md-4" align="left">
+						<label for="nomeRevenda">Revendedor</label>
+						<input type="text" name="nomeRevenda" id="nomeRevenda" class="form-control" readonly>
+		            </div>
+	            </div>
+            </div>
+            
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1" align="left">
+						<label for="dataEmissao">Data Emissão</label>
+						<input type="text" name="dataEmissao" id="dataEmissao" class="form-control" readonly>
+		            </div>
+					<div class="col-md-2" align="left">
+						<label for="condPagamento">Condição de Pagamento</label>
+						<input type="text" name="condPagamento" id="condPagamento" class="form-control" readonly>
+		            </div>
+					<div class="col-md-2" align="left">
+						<label for="tipoFrete">Tipo de Frete</label>
+						<input type="text" name="tipoFrete" id="tipoFrete" class="form-control" readonly>
+		            </div>
+					<div class="col-md-1" align="left">
+						<label for="vlrFrete">Valor Frete</label>
+						<input type="text" name="vlrFrete" id="vlrFrete" class="form-control" readonly>
+		            </div>
+	            </div>   
+			</div>  
+		</div>
+		
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+	
+	<div id="divTabItensPendentes" class="col-sm-12"  >
+		<div class="row">
+			
+			<div class="col-sm-12">
+			    <div class="row">
+			        &nbsp;
+			    </div>
+			</div>
+			
+			<table class="table table-condensed table-nonfluid table-striped" id="tbItensPendente" tablename="tbItensPendente" noaddbutton="true" nodeletebutton="true">
+				<thead>
+					<tr>	
+						<th>Eliminar Itens Pedido?</th>
+						<th>Cod. Produto</th>
+						<th>Desc. Produto</th>
+						<th>Previsão de Chegada</th>
+						<th>Quantidade Solicitada</th>
+						<th>Quantidade Pendente</th>
+						<th>Custo dos Itens Pendentes (R$)</th>
+						<th class="prc-dolar-total-pendente" style="display:none;">Custo dos Itens Pendentes ($)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr detail="true" detailname="tbItensPendente" >
+						<td class="col-md-1 " > 
+							<input type="checkbox" class="btn-elimina-item" name="itmEliminarItem" id="itmEliminarItem"  data-on-color="success" data-off-color="danger" data-on-value="true" data-off-value="false" data-on-text="Sim" data-off-text="Não" >
+							<input type="hidden" id="itmEliminarHiddenItem"  name="itmEliminarHiddenItem" class="form-control"/>		            	
+						</td>
+						<td class="col-md-1">									    	
+							<input type="text" name="itmCodProdutoItem" id="itmCodProdutoItem" class="form-control" readonly style="min-width: 130px !important;">
+						</td>
+						<td class="col-md-4 ">									    	
+							<input type="text" name="itmDescProdutoItem" id="itmDescProdutoItem" class="form-control" readonly>
+						</td>
+						<td class="col-md-2 " >	
+							<div class="input-group">
+								<input type="text" name="itmDataPrevistaChegadaItem" id="itmDataPrevistaChegadaItem"  class="form-control" >				
+								<span class="input-group-addon">
+			                           <span class="fluigicon fluigicon-calendar"></span>
+			                    </span>
+							</div>
+						</td>
+						<td class="col-md-1 ">	
+							<input type="text" name="itmQtdSolicitadaItem" id="itmQtdSolicitadaItem" class="form-control" readonly >
+						</td>
+						<td class="col-md-1 ">	
+							<input type="text" name="itmQtdPendenteItem" id="itmQtdPendenteItem" class="form-control" readonly >
+						</td>
+						<td class="col-md-2 prc-total-pendente" >									    	
+							<input type="text" name="itmPrcTotalPendenteItem" id="itmPrcTotalPendenteItem" class="form-control" readonly >
+						</td>
+						<td class="col-md-1 prc-dolar-total-pendente" style="display:none;" >									    	
+							<input type="text" name="itmPrcDolarTotalPendenteItem" id="itmPrcDolarTotalPendenteItem" class="form-control" readonly >
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div id="divRetornoRevenda" class="col-sm-12"  style="display:none">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row" id="divDataRespostaRevenda" style="display:none">
+					<div class="col-md-2 col-md-offset-1" align="left">
+						<label for="dataHoraRespostaRevenda">Data Resposta Revenda</label>
+						<input type="text" name="dataHoraRespostaRevenda" id="dataHoraRespostaRevenda" class="form-control" readonly>
+		            </div>
+	            </div>
+	            
+	            <div class="row" id="divMovimentacaoAutomatica" style="display:none">
+					<div class="col-md-9 col-md-offset-1" align="left">
+						<p style="font-weight: bold;">A Revenda não respondeu essa solicitação no prazo.
+						<br>A tarefa foi movimentada automaticamente no dia <span id="dataHoraMovimentadoAutomaticamente"></span></p>
+		            </div>
+	            </div>
+	            
+	            
+	            <br><br>
+	            <div id="divCienteGTS" class="row">
+	            	<div class="col-md-11 col-md-offset-1" align="left">
+		            	<label class="checkbox-inline">
+						    <input type="checkbox" name= "chkGTSCienteRetornoRevenda" id="chkGTSCienteRetornoRevenda" value="ciente"> Estou ciente do retorno dos itens pendentes informado pela revenda.
+						</label>
+		            </div>
+	            </div>
+            </div>
+		</div>
+	</div>
+            
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>	
+</form>
+</div>
+</body>
+</html>

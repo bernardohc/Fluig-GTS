@@ -1,0 +1,134 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	
+	<!-- Campos para usos internos  -->
+	<input type="hidden" name="numFluig" id="numFluig" >
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+
+	<div class="col-sm-12">
+	    <div class="row banner-header">
+	        <font color="000" ><h1><strong id="cabecalho">Alteração de Máquina</strong></h1></font>
+	    </div>
+	</div>
+	
+	<div id="divSolicitacao" class="col-md-12"  >
+		<div class="row">
+	        <div class="col-md-12"  style="text-align:left">
+	       		<h4 ><strong>Dados das Maquinas</strong></h4>
+	       		<hr />  
+	        </div>
+	    </div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">		            
+					<!--  https://tdn.totvs.com/pages/releaseview.action?pageId=75270483-->
+					<div class="col-md-3 col-md-offset-1" align="left">
+						<label for="solNomeSolicitante">Nome Solicitante</label>
+						<input type="text" name="solNomeSolicitante" id="solNomeSolicitante" class="form-control" data-protection="solNomeSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante do reembolso" readonly/>
+		            </div>  
+		            <div class="col-md-2 col-md-offset-5" align="left">
+						<label for="solPedido">Pedido</label>
+						<input type="text" name="solPedido" id="solPedido" class="form-control" onKeyPress="validafunctions.setNumNoFormat(this.id, 0, false , '')"/>
+		            </div>
+	     		</div>
+	     		<!-- Maquinas -->
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1" align="left">
+					<table class="table table-condensed table-nonfluid table-striped "  id="solTbMaquinas" tablename="solTbMaquinas" noaddbutton="true" customFnDelete="removeDespesa(this)">
+						<thead>
+							<tr>	
+								<th class="col-md-2">Produto Atual</th>
+								<th class="col-md-3">Descrição Atual</th>		
+								<th class="col-md-2">Prazo da Solicitação</th>
+								<th class="col-md-2">Produto Destino</th>		
+								<th class="col-md-3">Descrição Destino</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr detail="true" detailname="solTbMaquinas" >
+								<td>	
+									<input type="text" id="solProdutoAtual"  name="solProdutoAtual" class="form-control itSolValorReembolsoItem"/>
+								</td>
+								<td >
+									<input type="text" id="solDescAtual"  name="solDescAtual" class="form-control" readonly/>
+								</td>
+								<td >
+									<div class="input-group">
+										<input type="text" class="form-control data" name="solPrazo" id="solPrazo" />				
+										<span class="input-group-addon">
+											<span class="fluigicon fluigicon-calendar"></span>
+										</span>
+									</div>
+								</td>
+								<td >
+									<input type="text" id="solProdutoDestino"  name="solProdutoDestino" class="form-control"/>
+								</td>
+								<td >
+									<input type="text" id="solDescDestino"  name="solDescDestino" class="form-control" readonly/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-5" align="left">
+						<div id="divNovaMaquina" style="display:none;">
+			            	<br>
+							<button type="button" class="btn btn-primary" id="addMaquina" style="min-width: 130px;">Adicionar Máquina <i class="fluigicon fluigicon-plus-circle icon-sm"></i></button>
+						</div>			
+					</div>
+				</div>
+	     	</div>		
+	     </div>
+	    </div>
+	<!-- Aprovacação PCP-->
+	<div id="divAprovacao" style="display:none;"  class="col-md-12">
+		<div class="radio input-group">
+			<div class="input-group">
+				<input type="text" class="form-control data" name="solDataPrevista" id="solDataPrevista" />				
+				<span class="input-group-addon">
+					<span class="fluigicon fluigicon-calendar"></span>
+				</span>
+			</div>
+			<div class="custom-radio custom-radio-inline custom-radio-primary">
+				<input type="radio" name="confRecebimento" value="confirmado" id="confRecebimentoConfirmado" />
+				<label for="confRecebimentoConfirmado">Confirmo o rececebimento</label>
+			</div>
+			<div class="custom-radio custom-radio-inline custom-radio-primary">
+				<input type="radio" name="confRecebimento" value="nao_confirmado" id="confRecebimentoNaoConfirmado" />
+				<label for="confRecebimentoNaoConfirmado">Não confirmo o recebimento</label>
+			</div>
+			<div class="col-md-5 col-md-offset-2" align="left">
+				<label for="pagtoObs">Observação*</label>
+				<textarea rows="3" cols="6" name="pagtoObs" id="pagtoObs" class="form-control " ></textarea>
+	          	</div>
+	       </div>  
+		</div>	
+	</div>		
+</div>
+
+
+</form>
+</div>
+</body>
+</html>

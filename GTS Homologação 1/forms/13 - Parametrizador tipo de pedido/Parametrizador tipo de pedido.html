@@ -1,0 +1,117 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-validafunctions.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+<!-- 	<script type="text/javascript" src="js-util.js"></script> -->
+	<script type="text/javascript" src="js-custom.js" charset="utf-8"></script>
+</head>
+<body onLoad="init();">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+<input type="hidden" id="fieldNeeded" name="fieldNeeded" />
+<div class="container-fluid fs-no-padding">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Cadastrar tipo de pedido</h2>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				Cadastro de tipo de pedido
+			</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="form-field table-responsive">
+						<table class="table table-striped" cellspacing="0" tablename="table_tipo_pedido" nodeletebutton="true" customFnDelete="removeRegistro(this)" noaddbutton="true">
+							<thead>
+								<tr class="tableHeadRow">
+									<th class="tableColumn" style="display:none">Excluir</th>
+									<th class="tableColumn">Tipo de pedido</th>
+									<th class="tableColumn">Descrição</th>
+									<!-- Condição de pagamento agora está no dataset dsOrcPedConsultaCondPgto -->
+									<th class="tableColumn" style="display:none;">Cód. Condição de Pagto</th>
+									<th class="tableColumn" style="display:none;">Condição de pagamento</th>
+									<th class="tableColumn">Desconto %</th>									
+									<th class="tableColumn" style="display:none">Desconto GS %</th>									
+									<th class="tableColumn">Valor mínimo</th>
+									<th class="tableColumn">Frete</th>									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-1 col-sm-12 fs-no-margin" style="display:none">
+										<div class="form-group fs-cursor-pointer fs-v-align-middle" onclick="removeRegistro(this);">
+											<span class="fluigicon fluigicon-trash fluigicon-md fluigicon-sm" id="deleteRegistro"></span>
+											<input type="hidden" name="idDelete" id="idDelete" readonly />
+										</div>
+									</td>
+									<td class="col-md-1 col-sm-12">
+										<div class="form-group">
+											<input type="text" name="tipoPedido" id="tipoPedido" class="form-control" readonly="readonly" />
+										</div>
+									</td>
+									<td class="col-md-3 col-sm-12">
+										<div class="form-group">
+											<input type="text" name="DescricaoTipoPedido" id="DescricaoTipoPedido" class="form-control" />
+										</div>
+									</td>
+									
+									<td class="col-md-1 col-sm-12" style="display:none;">
+										<div class="form-group">
+											<input type="text" name="CodFormaPagto" id="CodFormaPagto" class="form-control" />
+										</div>
+									</td>
+									
+									<td class="col-md-2 col-sm-12" style="display:none;">
+										<div class="form-group">
+											<input type="text" name="DescricaoFormaPagto" id="DescricaoFormaPagto" class="form-control" />
+										</div>
+									</td>
+									<td class="col-md-1 col-sm-12" >
+										<div class="form-group">
+											<input type="text" name="Desconto" id="Desconto" class="form-control" onKeyPress="validafunctions.setPercentual(this.id, 0, false)"/>
+										</div>
+									</td>
+									<td class="col-md-1 col-sm-12" style="display:none">
+										<div class="form-group">
+											<input type="text" name="DescontoGS" id="DescontoGS" class="form-control" />
+										</div>
+									</td>
+									<td class="col-md-1 col-sm-12">
+										<div class="form-group">
+											<input type="text" name="ValorMin" id="ValorMin" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+										</div>
+									</td>
+									<td class="col-md-1 col-sm-12">
+										<div class="form-group">
+											<input type="text" name="TpFrete" id="TpFrete" class="form-control" maxlength="10" />
+										</div>
+									</td>									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="div_rowBtnAddTipo" style="display:none">
+				<div class="col-md-12 col-sm-12">
+					<button type="button" class="btn btn-primary" onclick="addTipoPedido();">Adicionar Tipo</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,904 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-beforeSendValidate.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<div class="col-sm-12">
+	    <div class="row banner-header">
+	        <h1><font color="000" ><strong>Checklist</strong></font></h1>
+	    </div>
+	</div>
+	
+	<input type="hidden" name="solicitante" id="solicitante" >
+	<input type="hidden" name="nomeSolicitante" id="nomeSolicitante" >
+	<input type="hidden" name="numFluig" id="numFluig" >
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+	
+	<div id="divDadosGerais" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Dados Gerais</strong></font></h5>
+		    </div>
+		</div>
+    	<div class="col-md-12">
+			<div class="row">
+				<div class="form-group col-md-2 col-md-offset-1" align="left">
+					<label for="geraisCarimboDataHora">Carimbo de Data/Hora*</label>
+					<input type="text" name="geraisCarimboDataHora" id="geraisCarimboDataHora" class="form-control" />
+        		</div>    
+        		<div class="form-group col-md-2" align="left">
+					<label for="geraisNumFrota">Nº Frota*</label>
+					<input type="text" name="geraisNumFrota" id="geraisNumFrota" class="form-control"  maxlength="30" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+        		</div>
+        		<div class="form-group col-md-2" align="left">
+					<label for="geraisDataAbertura">Data*</label>
+					<input type="hidden" name="geraisDataHoraAbertura" id="geraisDataHoraAbertura" class="form-control"  />
+					<input type="text" name="geraisDataAbertura" id="geraisDataAbertura" class="form-control" readonly />
+        		</div>
+        	</div>    
+        	<div class="row">
+				<div class="form-group col-md-4 col-md-offset-1" align="left">
+					<label for="geraisCondutor">Condutor*</label>
+					<input type="text" name="geraisCondutor" id="geraisCondutor" class="form-control" readonly maxlength="150"
+								data-protection="geraisCondutor" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o condutor do veículo" />
+        		</div>
+				<div class="form-group col-md-3" align="left" >
+	       			<label for="geraisEstaComCNHeVigente">Você está com a sua CNH e em Vigência?*</label>
+					<select name="geraisEstaComCNHeVigente" id="geraisEstaComCNHeVigente" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-2" align="left" >
+	       			<label for="geraisCategoriaCNH">Categoria da sua CNH*</label>
+					<input type="text" name="geraisCategoriaCNH" id="geraisCategoriaCNH" class="form-control" maxlength="10" />
+	       		</div>
+       		</div>
+       		
+			<div class="row">
+				<div class="form-group col-md-4 col-md-offset-1" align="left">
+					<label for="geraisCidade">Cidade*</label>
+					<input type="text" name="geraisCidade" id="geraisCidade" class="form-control" maxlength="150"/>
+        		</div>
+				<div class="form-group col-md-2" align="left">
+					<label for="geraisEstado">Estado*</label>
+					<select name="geraisEstado" id="geraisEstado" class="form-control" >
+	      				<option value=""></option>
+	      				<option value="AC">Acre</option>
+						<option value="AL">Alagoas</option>
+						<option value="AP">Amapá</option>
+						<option value="AM">Amazonas</option>
+						<option value="BA">Bahia</option>
+						<option value="CE">Ceará</option>
+						<option value="DF">Distrito Federal</option>
+						<option value="ES">Espírito Santo</option>
+						<option value="GO">Goiás</option>
+						<option value="MA">Maranhão</option>
+						<option value="MT">Mato Grosso</option>
+						<option value="MS">Mato Grosso do Sul</option>
+						<option value="MG">Minas Gerais</option>
+						<option value="PA">Pará</option>
+						<option value="PB">Paraíba</option>
+						<option value="PR">Paraná</option>
+						<option value="PE">Pernambuco</option>
+						<option value="PI">Piauí</option>
+						<option value="RJ">Rio de Janeiro</option>
+						<option value="RN">Rio Grande do Norte</option>
+						<option value="RS">Rio Grande do Sul</option>
+						<option value="RO">Rondônia</option>
+						<option value="RR">Roraima</option>
+						<option value="SC">Santa Catarina</option>
+						<option value="SP">São Paulo</option>
+						<option value="SE">Sergipe</option>
+						<option value="TO">Tocantins</option>
+					</select>
+        		</div>
+        		
+        		
+			</div>
+			
+			
+		</div>
+	</div>
+	<div id="divVeiculo" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Veículo</strong></font></h5>
+		    </div>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="form-group col-md-4 col-md-offset-1" align="left">
+					<label for="veiVeiculo">Veículo*</label>
+					<input type="text" name="veiVeiculo" id="veiVeiculo" class="form-control" />
+        		</div>
+        		<div class="form-group col-md-2" align="left">
+					<label for="veiKmAtual">Km Atual*</label>
+					<input type="text" name="veiKmAtual" id="veiKmAtual" class="form-control" maxlength="15" onKeyPress="validafunctions.setNumero(this.id, 0, false)"/>
+        		</div>
+			</div>
+			<div class="row">
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="veiEstaAbastecido">O Veículo está Abastecido?*</label>
+					<select name="veiEstaAbastecido" id="veiEstaAbastecido" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Cheio">Cheio</option>
+			        	<option value="3/4">3/4</option>
+			        	<option value="Meio Tanque">Meio Tanque</option>
+			        	<option value="1/4">1/4</option>
+			        	<option value="Reserva">Reserva</option>
+			      	</select>
+        		</div>
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="veiPossuiSemiReboque">Possui Semi Reboque?*</label>
+					<select name="veiPossuiSemiReboque" id="veiPossuiSemiReboque" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Não se aplica">Não se aplica</option>
+			      	</select>
+        		</div>
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="veiNumFrotaSemiReboqueAtrelado">Nº Frota Semi Reboque Atrelado*</label>
+        			<input type="text" name="veiNumFrotaSemiReboqueAtrelado" id="veiNumFrotaSemiReboqueAtrelado" class="form-control" maxlength="30" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+        		</div>
+			</div>
+		</div>
+	</div>
+		
+	<div id="divPneus" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Pneus</strong></font></h5>
+		    </div>
+		</div>	
+		<div class="col-md-12">
+			<div class="row">
+        		<div class="form-group col-md-4 " align="left" >
+        			<label for="pneuPneuDiantCavBomEstado">Pneus Dianteira Cavalo em bom estado?*</label>
+					<select name="pneuPneuDiantCavBomEstado" id=pneuPneuDiantCavBomEstado class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Outro">Outro</option>
+			      	</select>
+			      	<div class="form-group" align="left" >
+				      	<input type="text" name="pneuPneuDiantCavBomEstadoOut" id="pneuPneuDiantCavBomEstadoOut" class="form-control" maxlength="100" style="display:none;"/>
+	        		</div>
+        		</div>
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="pneuPneuTracaoCavBomEstado">Pneus Tração Cavalo em bom estado?*</label>
+					<select name="pneuPneuTracaoCavBomEstado" id="pneuPneuTracaoCavBomEstado" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Outro">Outro</option>
+			      	</select>
+			      	<div class="form-group" align="left" >
+			      		<input type="text" name="pneuPneuTracaoCavBomEstadoOut" id="pneuPneuTracaoCavBomEstadoOut" class="form-control" maxlength="100" style="display:none;"/>
+	        		</div>
+        		</div>
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="pneuPneuTruckCavBomEstado">Pneus Truck Cavalo em bom estado?*</label>
+					<select name="pneuPneuTruckCavBomEstado" id="pneuPneuTruckCavBomEstado" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Outro">Outro</option>
+			      	</select>
+			      	<div class="form-group" align="left" >
+			      		<input type="text" name="pneuPneuTruckCavBomEstadoOut" id="pneuPneuTruckCavBomEstadoOut" class="form-control" maxlength="100" style="display:none;"/>
+	        		</div>
+        		</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+        		<div class="form-group col-md-4 " align="left" >
+        			<label for="pneuPneuSemiReb1Eixo">Pneus Semi Reboque - 1º Eixo?*</label>
+					<select name="pneuPneuSemiReb1Eixo" id=pneuPneuSemiReb1Eixo class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Outro">Outro</option>
+			      	</select>
+			      	<div class="form-group" align="left" >
+			      		<input type="text" name="pneuPneuSemiReb1EixoOut" id="pneuPneuSemiReb1EixoOut" class="form-control" maxlength="100" style="display:none;"/>
+	        		</div>
+        		</div>
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="pneuPneuSemiReb2Eixo">Pneus Semi Reboque - 2º Eixo?*</label>
+					<select name="pneuPneuSemiReb2Eixo" id="pneuPneuSemiReb2Eixo" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Outro">Outro</option>
+			      	</select>
+			      	<div class="form-group" align="left" >
+			      		<input type="text" name="pneuPneuSemiReb2EixoOut" id="pneuPneuSemiReb2EixoOut" class="form-control" maxlength="100" style="display:none;"/>
+	        		</div>
+        		</div>
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="pneuPneuSemiReb3Eixo">Pneus Semi Reboque - 3º Eixo?*</label>
+					<select name="pneuPneuSemiReb3Eixo" id="pneuPneuSemiReb3Eixo" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Não se aplica">Não se aplica</option>
+			        	<option value="Outro">Outro</option>
+			      	</select>
+					<div class="form-group" align="left" >			      	
+			      		<input type="text" name="pneuPneuSemiReb3EixoOut" id="pneuPneuSemiReb3EixoOut" class="form-control" maxlength="100" style="display:none;"/>
+	        		</div>
+        		</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="pneuPneuSterpBomEstado">Pneus Sterp em bom estado?*</label>
+					<select name="pneuPneuSterpBomEstado" id=pneuPneuSterpBomEstado class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Outro">Outro</option>
+			      	</select>
+			      	<div class="form-group" align="left" >
+			      		<input type="text" name="pneuPneuSterpBomEstadoOut" id="pneuPneuSterpBomEstadoOut" class="form-control" maxlength="100" style="display:none;"/>
+	        		</div>
+        		</div>
+        		<div class="form-group col-md-4" align="left" >
+        			<label for="pneuRodaCavSemiRebBomEstado">Rodas do Cavalo e Semi Reboque em bom estado?*</label>
+					<select name="pneuRodaCavSemiRebBomEstado" id="pneuRodaCavSemiRebBomEstado" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Outro">Outro</option>
+			      	</select>
+			      	<div class="form-group" align="left" >
+			      		<input type="text" name="pneuRodaCavSemiRebBomEstadoOut" id="pneuRodaCavSemiRebBomEstadoOut" class="form-control" maxlength="100" style="display:none;"/>
+	        		</div>
+        		</div>
+			</div>
+		</div>
+	</div>
+	<div id="divOleo" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Óleos</strong></font></h5>
+		    </div>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="form-group col-md-4 " align="left" >
+	       			<label for="oleoHidNvlCorreto">Óleo Hidráulico no nível correto?*</label>
+					<select name="oleoHidNvlCorreto" id="oleoHidNvlCorreto" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       		<div class="form-group col-md-4" align="left" >
+	       			<label for="oleoFluidoFreioNvlCorreto">Óleo Fluido de Freio no nível correto?*</label>
+					<select name="oleoFluidoFreioNvlCorreto" id="oleoFluidoFreioNvlCorreto" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       		<div class="form-group col-md-4" align="left" >
+	       			<label for="oleoMotorValidadeeNvlCorreto">Óleo de Motor na Validade e nível correto?*</label>
+					<select name="oleoMotorValidadeeNvlCorreto" id="oleoMotorValidadeeNvlCorreto" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+       		</div>
+      	</div>
+	</div>
+	<div id="divMotor" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Motor</strong></font></h5>
+		    </div>
+		</div>
+		
+		<div class="col-md-12">
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="motorCorreiasBomEstado">Correias em bom estado?*</label>
+					<select name="motorCorreiasBomEstado" id="motorCorreiasBomEstado" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="motorRadiadorArrefNivel">Água do Radiador ou Líquido de Arrefecimento no nível?*</label>
+					<select name="motorRadiadorArrefNivel" id="motorRadiadorArrefNivel" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="motorBateriasFuncionando">Baterias funcionando?*</label>
+					<select name="motorBateriasFuncionando" id="motorBateriasFuncionando" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+		</div>
+	</div>
+	<div id="divExterno" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Externo</strong></font></h5>
+		    </div>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extLanternasLentesOK">Lanternas e Lentes ok?*</label>
+					<select name="extLanternasLentesOK" id="extLanternasLentesOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extEscapamentoOK">Escapamento ok?*</label>
+					<select name="extEscapamentoOK" id="extEscapamentoOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extTampaCombustivelOK">Tampas de Combustível estão ok?*</label>
+					<select name="extTampaCombustivelOK" id="extTampaCombustivelOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+       		</div>
+       		<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extCarroTampAssoalhoBomEstado">Carroceria, Tampas e Assoalho em bom estado?*</label>
+					<select name="extCarroTampAssoalhoBomEstado" id="extCarroTampAssoalhoBomEstado" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extLatariaPinturaBomEstado">Lataria e Pintura em bom estado?*</label>
+					<select name="extLatariaPinturaBomEstado" id="extLatariaPinturaBomEstado" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extSistemaArlaOK">Sistema de Arla esta funcionando ok?*</label>
+					<select name="extSistemaArlaOK" id="extSistemaArlaOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extTravaSegQuintaRodaFunc">Trava de Segurança da quinta roda esta funcionando corretamente?*</label>
+					<select name="extTravaSegQuintaRodaFunc" id="extTravaSegQuintaRodaFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extTomEletMangConexArFunc">Tomada elétrica, mangueiras e conexões de ar estão funcionando corretamente?*</label>
+					<select name="extTomEletMangConexArFunc" id="extTomEletMangConexArFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extPesSemiReboqueFunc">Os pés do Semi reboque estão baixando e levantando corretamente?*</label>
+					<select name="extPesSemiReboqueFunc" id="extPesSemiReboqueFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Não se aplica">Não se aplica</option>
+			      	</select>
+	       		</div>
+       		</div>
+				
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extTravaPortaFechaduraFunc">Travas das Portas e Fechaduras estão funcionando corretamente?*</label>
+					<select name="extTravaPortaFechaduraFunc" id="extTravaPortaFechaduraFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extProtecoesParalamaOK">Proteções, Paralamas, para barros e badanas estão ok?*</label>
+					<select name="extProtecoesParalamaOK" id="extProtecoesParalamaOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extFreioCavESemiReboqueFunc">Freios do cavalo e semi reboque estão funcionando corretamente?*</label>
+					<select name="extFreioCavESemiReboqueFunc" id="extFreioCavESemiReboqueFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+       		</div>
+			<div class="row">	
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extRuidoAnormal">Possui algum nível de ruído ou barulho anormal?*</label>
+					<select name="extRuidoAnormal" id="extRuidoAnormal" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="extTrianguloSinalOK">Possui triangulo de sinalização?*</label>
+					<select name="extTrianguloSinalOK" id="extTrianguloSinalOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       		<div class="form-group col-md-4" align="left" >
+	       			<label for="extMacadoChaveRodaOK">Veículo possui Macaco e chave de rodas?*</label>
+					<select name="extMacadoChaveRodaOK" id="extMacadoChaveRodaOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       	</div>
+	       	<div class="row">	
+	       		<div class="form-group col-md-4" align="left" >
+	       			<label for="extSuspEixoTruckFunc">Suspensor de eixo do truck esta funcionando bem?*</label>
+					<select name="extSuspEixoTruckFunc" id="extSuspEixoTruckFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       		<div class="form-group col-md-4" align="left" >
+	       			<label for="extBasculandoOK">Veiculo esta basculando e possui alavanca para bascular?*</label>
+					<select name="extBasculandoOK" id="extBasculandoOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+       			<div class="form-group col-md-4" align="left" >
+	       			<label for="extSemiRebPinoReiOK">Semi Reboque esta com o Pino Rei em boas condições?*</label>
+					<select name="extSemiRebPinoReiOK" id="extSemiRebPinoReiOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Não se aplica">Não se aplica</option>
+			      	</select>
+	       		</div>
+	       	</div>
+       		<div class="row">	
+       			<div class="form-group col-md-4" align="left" >
+	       			<label for="extTravaSegQuintaRodaOK">Trava de Segurança da Quinta Roda esta esta em boas condições?*</label>
+					<select name="extTravaSegQuintaRodaOK" id="extTravaSegQuintaRodaOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Não se aplica">Não se aplica</option>
+			      	</select>
+	       		</div>
+       			<div class="form-group col-md-4" align="left" >
+	       			<label for="extTanqueCombOK">Tanques de Combustível estão em boas condições e sem vazamentos?*</label>
+					<select name="extTanqueCombOK" id="extTanqueCombOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+       			<div class="form-group col-md-4" align="left" >
+	       			<label for="extManivelaPeSemiRebFunc">Manivela e Pés do Semi Reboque estão funcionando corretamente?*</label>
+					<select name="extManivelaPeSemiRebFunc" id="extManivelaPeSemiRebFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       	</div>
+       		<div class="row">		
+				<div class="form-group col-md-4 " align="left" >
+	       			<label for="extIdentDifVist">Identificou algo diferente durante a vistoria externa ao redor do veículo?*</label>
+					<select name="extIdentDifVist" id="extIdentDifVist" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+		</div>
+	</div>
+	<div id="divInterno" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Interno</strong></font></h5>
+		    </div>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intCintoSegurancaOK">Cinto de Segurança perfeito e funcionando?*</label>
+					<select name="intCintoSegurancaOK" id="intCintoSegurancaOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intFreioEstacionamentoFunc">Freio de Estacionamento funcionando?*</label>
+					<select name="intFreioEstacionamentoFunc" id="intFreioEstacionamentoFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intDirecaoBomEstado">Direção em bom estado e sem Folgas?*</label>
+					<select name="intDirecaoBomEstado" id="intDirecaoBomEstado" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+       		</div>
+       		<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intLimpadorParabrisaFunc">Limpador de Para-brisa funcionando bem e com Água?*</label>
+					<select name="intLimpadorParabrisaFunc" id="intLimpadorParabrisaFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intInstrumPainelFunc">Instrumentos do Painel funcionando bem?*</label>
+					<select name="intInstrumPainelFunc" id="intInstrumPainelFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intRetrovisorAjust">Retrovisores Ajustados e funcionando bem?*</label>
+					<select name="intRetrovisorAjust" id="intRetrovisorAjust" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intBuzinaFunc">Buzina funcionando bem?*</label>
+					<select name="intBuzinaFunc" id="intBuzinaFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intFaroisLampFunc">Faróis e Lâmpadas funcionando bem?*</label>
+					<select name="intFaroisLampFunc" id="intFaroisLampFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intSetaPiscaFunc">Setas e Piscas funcionando bem?*</label>
+					<select name="intSetaPiscaFunc" id="intSetaPiscaFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intAlertaFunc">Alerta funcionando bem?*</label>
+					<select name="intAlertaFunc" id="intAlertaFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intLuzReFunc">Luz de Ré e Alarme funcionando bem?*</label>
+					<select name="intLuzReFunc" id="intLuzReFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intLuzFreioFunc">Luz de Freio funcionando bem?*</label>
+					<select name="intLuzFreioFunc" id="intLuzFreioFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intExtintorDentroValidade">Possui Extintor dentro da validade?*</label>
+					<select name="intExtintorDentroValidade" id="intExtintorDentroValidade" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intVidroParabrisaOK">Vidros e Para-brisa estão ok?*</label>
+					<select name="intVidroParabrisaOK" id="intVidroParabrisaOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intCortBancoEstofOK">Cortinas, Bancos e Estofamento em bom estado?*</label>
+					<select name="intCortBancoEstofOK" id="intCortBancoEstofOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intChaveGeralOK">Possui Chave Geral de Segurança e em bom estado?*</label>
+					<select name="intChaveGeralOK" id="intChaveGeralOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			        	<option value="Não se aplica">Não se aplica</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intRadioPXFunc">Rádio PX esta funcionando corretamente?*</label>
+					<select name="intRadioPXFunc" id="intRadioPXFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intClimatizadorFunc">Climatizador esta funcionando corretamente?*</label>
+					<select name="intClimatizadorFunc" id="intClimatizadorFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intArCondicionadoFunc">Ar Condicionado esta funcionando corretamente?*</label>
+					<select name="intArCondicionadoFunc" id="intArCondicionadoFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intArCavSemiRebVazamento">Sistemas de Ar Cavalo x Semi Reboque possui algum vazamento?*</label>
+					<select name="intArCavSemiRebVazamento" id="intArCavSemiRebVazamento" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intFreioMotorFunc">Freio Motor esta funcionando corretamente?*</label>
+					<select name="intFreioMotorFunc" id="intFreioMotorFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intSomRadioFMFunc">Som e Rádio FM estão funcionando corretamente?*</label>
+					<select name="intSomRadioFMFunc" id="intSomRadioFMFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intEsguichoFunc">Esguicho esta injetando água?*</label>
+					<select name="intEsguichoFunc" id="intEsguichoFunc" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intPalhetaOK">Palhetas estão em boas condições?*</label>
+					<select name="intPalhetaOK" id="intPalhetaOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intTacografoOK">Tacógrafos esta funcionando e foi trocado nos últimos 7 dias?*</label>
+					<select name="intTacografoOK" id="intTacografoOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="intTAGPedagioFuncCorreto">O Veículo está com a TAG do Sem Parar funcionando corretamente?*</label>
+					<select name="intTAGPedagioFuncCorreto" id="intTAGPedagioFuncCorreto" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       		
+			</div>
+		</div>
+	</div>
+		
+	<div id="divDocumentacao" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Documentação</strong></font></h5>
+		    </div>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="docCertifTacografoOK">Certificado do Tacógrafo esta junto com os documentos e em vigência?*</label>
+					<select name="docCertifTacografoOK" id="docCertifTacografoOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="docCavSemiRebOK">Documentos do Cavalo e Semi reboque estão no veiculo e em vigência?*</label>
+					<select name="docCavSemiRebOK" id="docCavSemiRebOK" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="docCartaoSeguro">O Veículo está com o Cartão Seguro, com o Nº 0800 para Chamar Socorro?*</label>
+					<select name="docCartaoSeguro" id="docCartaoSeguro" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       	</div>
+			<div class="row">	
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="docCartaoAbastecimento">O Veículo está com o Cartão de Abastecimento RF?*</label>
+					<select name="docCartaoAbastecimento" id="docCartaoAbastecimento" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+	       		<div class="form-group col-md-4" align="left" >
+	       			<label for="docAETemVigencia">O Veículo está com todos os AETs e em Vigência?*</label>
+					<select name="docAETemVigencia" id="docAETemVigencia" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="docSinalExcessoCorreto">O Veículo está com a Tampa Traseira Sinalizando Excesso Corretamento e Legível?*</label>
+					<select name="docSinalExcessoCorreto" id="docSinalExcessoCorreto" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+       		</div>
+			<div class="row">
+				<div class="form-group col-md-4" align="left" >
+	       			<label for="docEtiqTrocaOleo">O Veículo possui Manual e Etiqueta indicando a próxima Revisão de Troca de Óleo e Filtros?*</label>
+					<select name="docEtiqTrocaOleo" id="docEtiqTrocaOleo" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Sim">Sim</option>
+			        	<option value="Não">Não</option>
+			      	</select>
+	       		</div>
+       		</div>
+      	</div>
+	</div>
+	<div id="divObservacoes" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Observações</strong></font></h5>
+		    </div>
+		</div>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="form-group col-md-9 col-md-offset-1" align="left">
+				    <label for="obsObservacao">Observação</label>
+					<textarea rows="3" cols="6" name="obsObservacao" id="obsObservacao" class="form-control" ></textarea>
+	            </div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-md-12" >
+		<div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-md-12" >
+		<div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-md-12" >
+		<div class="row">
+	        &nbsp;
+	    </div>
+	</div>	
+</form>
+</div>
+</body>
+</html>

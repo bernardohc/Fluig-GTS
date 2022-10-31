@@ -1,0 +1,97 @@
+<html>
+<head>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="http://style.fluig.com/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="http://style.fluig.com/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+	<h1 class="title-form-application">Cadastro de parâmetros de Gamificação</h1>
+		<form role="form">
+			<div class="form-group">
+				<label for="fluigpath">Endereço WEB do Fluig</label> 
+				<input type="text" class="form-control" id="fluigpath" name="fluigpath" placeholder="http://suaempresa.com.br:8080">
+			</div>
+			<div class="form-group">
+				<label for="OAUTH_APP_PUBLIC">OAUTH APP PUBLIC</label> 
+				<input type="text" class="form-control" id="OAUTH_APP_PUBLIC" name="OAUTH_APP_PUBLIC" placeholder="Informe o OAUTH APP PUBLIC">
+			</div>
+			<div class="form-group">
+				<label for="OAUTH_APP_PRIVATE">OAUTH APP PRIVATE</label> 
+				<input type="text" class="form-control" id="OAUTH_APP_PRIVATE" name="OAUTH_APP_PRIVATE" placeholder="Informe o OAUTH APP PRIVATE">
+			</div>
+			<div class="form-group">
+				<label for="OAUTH_USER_APP_PUBLIC">OAUTH USER APP PUBLIC</label> 
+				<input type="text" class="form-control" id="OAUTH_USER_APP_PUBLIC" name="OAUTH_USER_APP_PUBLIC" placeholder="Informe o OAUTH USER APP PUBLIC">
+			</div>
+			<div class="form-group">
+				<label for="OAUTH_USER_APP_SECRET">OAUTH USER APP SECRET</label> 
+				<input type="text" class="form-control" id="OAUTH_USER_APP_SECRET" name="OAUTH_USER_APP_SECRET" placeholder="Informe o OAUTH USER APP SECRET">
+			</div>
+			<input type="hidden" class="form-control" value='Propriedades de gamificação' id="gamificationProperties" name="gamificationProperties">
+		</form>
+	</div>
+
+	<script type="text/javascript">
+
+			$(function(){
+			  $('#fluigGameTag').keypress(function(e){
+			    if(e.which == 32){
+			      return false;
+			    }
+			  });
+			});
+	
+			var getFields = document.forms[0],
+				getInputDate = $(getFields).find('[data-type="date"]').find('input'),
+				lenDate = getInputDate.length;
+
+
+			function validationFieldsForm(field, type){
+			    if(type === "checkbox" || type === "radio"){
+				    if(!field.is(':checked')){
+				        field.parents('.form-field').addClass('required');
+				    }else{
+				        field.parents('.form-field').removeClass('required');
+				    }
+			    }else{
+				    if(!field.val().trim()){
+				        field.parents('.form-field').addClass('required');
+				    }else{
+				        field.parents('.form-field').removeClass('required');
+				    }
+			    }
+			}
+
+			function setSelectedZoomItem(selectedItem) {
+				var selValue, input;
+				$.each(selectedItem, function(key, value) {
+					if (key == "type") {
+						input = $('#' + value)[0];
+					} else {
+						if(!selValue) {
+							selValue = value;
+						}
+					}
+				});
+				input.value = selValue;
+			}
+
+			$('body').on('keypress', '[data-only-numbers]', function(ev) {
+				var k = ev.keyCode || ev.which;
+				//Permite apagar o conteúdo do campo usando as teclas 'backspace' ou 'delete' no firefox.
+				//Nos outros navegadores o keypress não gera evento.
+				if (k == 8 || k == 46) {
+					return true;
+				}
+				k = String.fromCharCode(k);
+				if(isNaN(k)) {
+					return false;
+				}
+				return true;
+			});
+
+			</script>
+
+</body>
+</html>

@@ -1,0 +1,1340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.7.0.v201706222054</property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+importPackage(Packages.java.util);
+var count = 0;
+var dataset = null;
+var dataset1 = null;
+var dtAssunto = null;
+var dtunidade = null;
+var countA = 0;
+var countu=0;
+var count1=0;
+
+
+]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="Codprotocolo" id="49">
+            <text-property name="promptText">Codigo do processo ou % para todos</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">%</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Unidade" id="83">
+            <text-property name="promptText">Localização dos Processos na Unidade</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="isRequired">false</property>
+            <property name="dataSetName">dtunidade</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["codigo"]</expression>
+            <expression name="labelExpr" type="javascript">dataSetRow["nome"]</expression>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">Todos</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="UnidadeInteressada" id="86">
+            <text-property name="promptText">Unidade Origem do Processo</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="isRequired">false</property>
+            <property name="dataSetName">dtunidade</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["codigo"]</expression>
+            <expression name="labelExpr" type="javascript">dataSetRow["nome"]</expression>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">Todos</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Assunto" id="46">
+            <text-property name="helpText">Tema</text-property>
+            <text-property name="promptText">Tema do Processo</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="isRequired">false</property>
+            <property name="dataSetName">dtAssunto</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["Descricao"]</expression>
+            <expression name="labelExpr" type="javascript">dataSetRow["Descricao"]</expression>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">Todos</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="interessado" id="43">
+            <text-property name="helpText">Digite qualquer palavra para pesquisa por interessado ou % para todos</text-property>
+            <text-property name="promptText">Digite qualquer palavra para pesquisa por interessado ou % para todos</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">%</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Resumo" id="63">
+            <text-property name="promptText">Digite o resumo do Assunto do protocolo/Processo</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">%</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="DataInicio" id="50">
+            <text-property name="promptText">Data de Inicio da consulta</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="javascript">'01/01/'+(new Date().getYear()+1900)</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="DataFim" id="51">
+            <text-property name="promptText">Data final da consulta</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="javascript">'01/12/'+(new Date().getYear()+1900)</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="DsProtocolo" id="4">
+            <method name="open"><![CDATA[
+            importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+importPackage(Packages.java.util);
+factory = DatasetFactory.getInstance(${WKCompany});
+count = 0;
+count1 = 0;
+dataset = null;
+dataset1 = null;
+dtAssunto = null;
+dtunidade = null;
+countA = 0;
+countu=0;
+]]></method>
+        </script-data-source>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="dtAssunto" id="45">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">Descricao</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">Descricao</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">Descricao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[
+            try {	
+		
+var c1 = factory.createConstraint('metadata#active', 'true', 'true', ConstraintType.MUST);
+dtAssunto = factory.getDataset("dsTemaProtocolo", null,new Array(c1),new Array('tema'));
+	
+	}catch (e) {
+}finally {
+}
+            
+            ]]></method>
+            <method name="afterClose"><![CDATA[countA = 0;]]></method>
+            <property name="dataSource">DsProtocolo</property>
+            <method name="fetch"><![CDATA[
+
+if (dtAssunto != null) {
+	
+		
+	if (countA <	dtAssunto.rowsCount){
+		//monta o objeto da linha
+		row["Descricao"] = dtAssunto.getValue(countA, "tema");
+		//Atualiza o contador  
+		countA++;
+		return true;
+	}
+
+	return false;
+}
+]]></method>
+        </script-data-set>
+        <script-data-set name="dtProcesso" id="5">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">codProcesso</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">UsuarioInteressado</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">assunto</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">interessado</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">codprotocolo1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">UnidadeInteressada</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">resumo</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">Localizacao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">tipo</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">codProcesso</property>
+                </structure>
+                <structure>
+                    <property name="columnName">UsuarioInteressado</property>
+                </structure>
+                <structure>
+                    <property name="columnName">assunto</property>
+                </structure>
+                <structure>
+                    <property name="columnName">interessado</property>
+                </structure>
+                <structure>
+                    <property name="columnName">codprotocolo1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">UnidadeInteressada</property>
+                </structure>
+                <structure>
+                    <property name="columnName">resumo</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Localizacao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">tipo</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">codProcesso</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">UsuarioInteressado</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">assunto</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">interessado</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">codprotocolo1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">UnidadeInteressada</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">resumo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">Localizacao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">tipo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try {	
+			
+
+
+	var dataInicio = params["DataInicio"].value;
+	var dataFim = params["DataFim"].value;
+	var filtros = new Array();
+	
+	var intDtInicio = dataInicio.substring(6,11)+''+dataInicio.substring(3,5)+''+dataInicio.substring(0,2);
+	var intDtFim = dataFim.substring(6,11)+''+dataFim.substring(3,5)+''+dataFim.substring(0,2);
+// filtro geral
+	var c1 = factory.createConstraint('metadata#active', 'true', 'true', ConstraintType.MUST);
+	var c2 = factory.createConstraint('interessado', '%'+params["interessado"].value+'%', '%'+params["interessado"].value+'%', ConstraintType.MUST);
+		c2.setLikeSearch(true);
+	var c3 = factory.createConstraint('DataCriacao', intDtInicio, intDtFim, ConstraintType.MUST);
+
+//filtro processos	
+	filtros.push(c1);
+	filtros.push(c2);
+	var filtrotp=factory.createConstraint('tpProcesso', '%'+(new Packages.java.lang.String(params["Assunto"].value)).replace("Todos", "%")+'%', '%'+(new Packages.java.lang.String(params["Assunto"].value)).replace("Todos", "%")+'%', ConstraintType.MUST); 
+	filtrotp.setLikeSearch(true);
+	filtros.push(filtrotp);
+	var filtrotp1 = factory.createConstraint('codProcesso', '%'+params["Codprotocolo"].value+'%',  '%'+params["Codprotocolo"].value+'%', ConstraintType.MUST);
+	filtrotp1.setLikeSearch(true);
+	filtros.push(filtrotp1);
+
+	if(params["Codprotocolo"].value =="%"){
+	filtros.push(c3);
+	}
+
+
+	if(params["Resumo"].value != '%'){
+		var cpc1 = factory.createConstraint('Assunto', '%'+params["Resumo"].value+'%','%'+ params["Resumo"].value+'%', ConstraintType.MUST); //c1 processo
+		cpc1.setLikeSearch(true);	//c1 processo
+		filtros.push(cpc1);
+	}
+	
+	if(params["Unidade"].value != 'Todos' &amp;&amp; params["Unidade"].value != null){
+		var c4 = factory.createConstraint('unidadeLogado', params["Unidade"].value, params["Unidade"].value, ConstraintType.MUST); //c2 processo
+		//c4.setLikeSearch(true);	
+		filtros.push(c4);
+		
+	}
+
+	if(params["UnidadeInteressada"].value != 'Todos' &amp;&amp; params["UnidadeInteressada"].value != null){
+		var cpc3 = factory.createConstraint('UnidadeInteressada', params["UnidadeInteressada"].value, params["UnidadeInteressada"].value, ConstraintType.MUST); //c3 processo
+		//cpc3.setLikeSearch(true);	
+		filtros.push(cpc3);
+	}
+	
+	
+//	dataset = factory.getDataset("Gprocessos", null,filtros,new Array('codProcesso'));
+		dataset = factory.getDataset("Gprocessos", null,filtros,new Array('codProcesso'));
+	//dataset = factory.getDataset("protocoloDocumentos", null,new Array(c2,c3,c4,c5),new Array('codprotocolo'));
+	
+		
+	
+	}catch (e) {
+}finally {
+}
+	]]></method>
+            <method name="afterClose"><![CDATA[count = 0;
+]]></method>
+            <property name="dataSource">DsProtocolo</property>
+            <method name="fetch"><![CDATA[if (dataset != null ) {
+	
+	
+	
+	if (count <	dataset.rowsCount){
+		//monta o objeto da linha
+		row["resumo"] = dataset.getValue(count, "assunto");
+		row["codProcesso"] = String(dataset.getValue(count, "codProcesso"));		
+		row["codprotocolo1"] = dataset.getValue(count, "codProcesso1");		
+		row["interessado"] = dataset.getValue(count, "interessado");		
+		row["UnidadeInteressada"] = dataset.getValue(count, "UnidadeInteressada");		
+		row["UsuarioInteressado"] = dataset.getValue(count, "UsuarioInteressado");		
+		row["assunto"] = dataset.getValue(count, "tpprocesso");	
+		row["Localizacao"] = dataset.getValue(count, "unidadeLogado");	
+		row["tipo"] = 'Processo';	
+				//Atualiza o contador  
+		count++;
+		return true;
+	}
+
+	return false;
+}
+]]></method>
+        </script-data-set>
+        <script-data-set name="dtunidade" id="82">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">codigo</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">nome</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">codigo</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nome</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">codigo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">nome</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[
+            try {	
+		
+//var c1 = factory.createConstraint('metadata#active', 'true', 'true', ConstraintType.MUST);
+dtunidade = factory.getDataset("dsUnidadegrupoFiltrov2", null,null,new Array('DESCRICAO'));
+	
+	}catch (e) {
+}finally {
+}
+            
+       ]]></method>
+            <property name="dataSource">DsProtocolo</property>
+            <method name="fetch"><![CDATA[if (dtunidade != null) {
+	
+		
+	if (countu <	dtunidade.rowsCount){
+		//monta o objeto da linha
+		row["codigo"] = dtunidade.getValue(countu, "COD");
+		row["nome"] = dtunidade.getValue(countu, "DESCRICAO");
+		//Atualiza o contador  
+		countu++;
+		return true;
+	}
+
+	return false;
+}
+]]></method>
+        </script-data-set>
+        <script-data-set name="dtProtocolo" id="94">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">codprotocolo</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">UsuarioCriadorProtocolo</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">assunto</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">interessado</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">codprotocolo1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">resumo</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">detalhes</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">UnidadeOrigem</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">Localizacao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">tipo</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">codprotocolo</property>
+                </structure>
+                <structure>
+                    <property name="columnName">UsuarioCriadorProtocolo</property>
+                </structure>
+                <structure>
+                    <property name="columnName">assunto</property>
+                </structure>
+                <structure>
+                    <property name="columnName">interessado</property>
+                </structure>
+                <structure>
+                    <property name="columnName">codprotocolo1</property>
+                </structure>
+                <structure>
+                    <property name="columnName">resumo</property>
+                </structure>
+                <structure>
+                    <property name="columnName">detalhes</property>
+                </structure>
+                <structure>
+                    <property name="columnName">UnidadeOrigem</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Localizacao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">tipo</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">codprotocolo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">UsuarioCriadorProtocolo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">assunto</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">interessado</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">codprotocolo1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">resumo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">detalhes</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">UnidadeOrigem</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">Localizacao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">tipo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try {	
+			
+
+
+	var dataInicio = params["DataInicio"].value;
+	var dataFim = params["DataFim"].value;
+
+	var intDtInicio = dataInicio.substring(6,11)+''+dataInicio.substring(3,5)+''+dataInicio.substring(0,2);
+	var intDtFim = dataFim.substring(6,11)+''+dataFim.substring(3,5)+''+dataFim.substring(0,2);
+//	var filtros;
+	var filtros  = new Array();
+	//throw "Data Inicio: "+intDtInicio; UnidadeOrigem
+	
+	var c1 = factory.createConstraint('metadata#active', 'true', 'true', ConstraintType.MUST);
+	var c2 = factory.createConstraint('interessado', '%'+params["interessado"].value+'%', '%'+params["interessado"].value+'%', ConstraintType.MUST);
+		c2.setLikeSearch(true);
+	var c3 = factory.createConstraint('assunto', '%'+(new Packages.java.lang.String(params["Assunto"].value)).replace("Todos", "%")+'%', '%'+(new Packages.java.lang.String(params["Assunto"].value)).replace("Todos", "%")+'%', ConstraintType.MUST);
+		c3.setLikeSearch(true);
+	var c4 = factory.createConstraint('codprotocolo', '%'+params["Codprotocolo"].value+'%',  '%'+params["Codprotocolo"].value+'%', ConstraintType.MUST);
+		c4.setLikeSearch(true);
+	var c5 = factory.createConstraint('DataCriacao', intDtInicio, intDtFim, ConstraintType.MUST);
+
+	filtros.push(c1);
+	filtros.push(c2);
+	filtros.push(c3);
+	filtros.push(c4);
+
+	if(params["Codprotocolo"].value=="%"){
+	filtros.push(c5);
+	}
+	
+	if(params["Resumo"].value != '%'){
+		var c6 = factory.createConstraint('resumo', '%'+params["Resumo"].value+'%','%'+ params["Resumo"].value+'%', ConstraintType.MUST);
+		c6.setLikeSearch(true);	
+		filtros.push(c6);
+	}
+
+		if(params["Unidade"].value != 'Todos' &amp;&amp; params["Unidade"].value != null){
+		var c7 = factory.createConstraint('unidadeLogado', params["Unidade"].value, params["Unidade"].value, ConstraintType.MUST); //c2 processo
+		c7.setLikeSearch(true);	
+		filtros.push(c7);
+	}
+	
+	if(params["UnidadeInteressada"].value != 'Todos' &amp;&amp; params["UnidadeInteressada"].value != null){
+		var c8 = factory.createConstraint('UnidadeOrigem', params["UnidadeInteressada"].value, params["UnidadeInteressada"].value, ConstraintType.MUST); //c3 processo
+		c8.setLikeSearch(true);	
+		filtros.push(c8);
+	}
+	
+	dataset1 = factory.getDataset("protocoloDocumentos", null,filtros,new Array('codprotocolo'));
+	
+	}catch (e) {
+}finally {
+}
+	]]></method>
+            <method name="afterClose"><![CDATA[count1 = 0;]]></method>
+            <property name="dataSource">DsProtocolo</property>
+            <method name="fetch"><![CDATA[if (dataset1 != null) {
+	
+	
+	
+	if (count1 <	dataset1.rowsCount){
+		//monta o objeto da linha
+		if (dataset1.getValue(count1, "UsuarioCriadorProtocolo")== null){
+		row["UsuarioCriadorProtocolo"] = '';
+		}else{
+		row["UsuarioCriadorProtocolo"] = dataset1.getValue(count1, "UsuarioCriadorProtocolo");
+		}
+		
+	if (dataset1.getValue(count1, "UnidadeOrigem")== null){
+		row["UnidadeOrigem"] = '';
+		}else{
+		row["UnidadeOrigem"] = dataset1.getValue(count1, "UnidadeOrigem");
+		}
+		
+
+		row["assunto"] = dataset1.getValue(count1, "assunto");
+		row["codprotocolo"] = dataset1.getValue(count1, "codprotocolo");		
+		row["codprotocolo1"] = dataset1.getValue(count1, "codprotocolo1");		
+		row["interessado"] = dataset1.getValue(count1, "interessado");		
+		if(dataset1.getValue(count1, "resumo") != null){
+			row["resumo"] = dataset1.getValue(count1, "resumo");	
+		}
+		row["Localizacao"] = dataset1.getValue(count1, "unidadeLogado");		
+		row["tipo"] = 'Protocolo';	
+		//Atualiza o contador  
+		count1++;
+		return true;
+	}
+
+	return false;
+}
+]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="NewStyle" id="41">
+            <property name="backgroundColor">#808080</property>
+            <property name="color">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+        <style name="NewStyle1" id="42">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+        <style name="TITULO" id="48">
+            <property name="fontSize">x-large</property>
+            <property name="textAlign">center</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-header>
+                <label id="47">
+                    <property name="style">TITULO</property>
+                    <text-property name="text">PESQUISA DE PROCESSOS E PROTOCOLOS</text-property>
+                </label>
+            </page-header>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <data id="87">
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">UnidadeInteressada</property>
+                    <expression name="expression" type="javascript">params["UnidadeInteressada"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">UnidadeInteressada</property>
+        </data>
+        <text id="161">
+            <property name="style">TITULO</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[PROCESSOS]]></text-property>
+        </text>
+        <table id="7">
+            <property name="style">NewStyle1</property>
+            <property name="dataSet">dtProcesso</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">assunto</property>
+                    <text-property name="displayName">assunto</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["assunto"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">interessado</property>
+                    <text-property name="displayName">interessado</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["interessado"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">codprotocolo1</property>
+                    <text-property name="displayName">codprotocolo1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["codprotocolo1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">usuarioInteressado</property>
+                    <text-property name="displayName">Usuario Interessado</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["UsuarioInteressado"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">UnidadeInteressada</property>
+                    <text-property name="displayName">Unidade Interessada</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["UnidadeInteressada"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">resumo</property>
+                    <text-property name="displayName">Resumo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["resumo"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">codProcesso</property>
+                    <text-property name="displayName">Cod Processo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["codProcesso"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Localizacao</property>
+                    <text-property name="displayName">Localizacao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Localizacao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">tipo</property>
+                    <text-property name="displayName">tipo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["tipo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="79">
+                <property name="style">NewStyle1</property>
+                <property name="width">4%</property>
+            </column>
+            <column id="37">
+                <property name="style">NewStyle1</property>
+                <property name="width">25%</property>
+            </column>
+            <column id="91">
+                <property name="style">NewStyle1</property>
+                <property name="width">15%</property>
+            </column>
+            <column id="38">
+                <property name="style">NewStyle1</property>
+                <property name="width">15%</property>
+            </column>
+            <column id="40">
+                <property name="style">NewStyle1</property>
+                <property name="width">15%</property>
+            </column>
+            <column id="56">
+                <property name="style">NewStyle1</property>
+                <property name="width">40%</property>
+            </column>
+            <header>
+                <row id="8">
+                    <property name="style">NewStyle</property>
+                    <property name="fontWeight">bold</property>
+                    <cell id="76">
+                        <property name="fontFamily">"Arial"</property>
+                        <label id="80">
+                            <text-property name="text">Codigo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="11">
+                        <property name="fontFamily">"Arial"</property>
+                        <label id="12">
+                            <text-property name="text">Usuario/Unidade Interessada</text-property>
+                        </label>
+                    </cell>
+                    <cell id="88">
+                        <property name="fontFamily">"Arial"</property>
+                        <label id="92">
+                            <text-property name="text">Localizacao</text-property>
+                        </label>
+                    </cell>
+                    <cell id="13">
+                        <property name="fontFamily">"Arial"</property>
+                        <label id="14">
+                            <text-property name="text">Tema</text-property>
+                        </label>
+                    </cell>
+                    <cell id="17">
+                        <property name="fontFamily">"Arial"</property>
+                        <label id="18">
+                            <text-property name="text">interessado</text-property>
+                        </label>
+                    </cell>
+                    <cell id="53">
+                        <property name="fontFamily">"Arial"</property>
+                        <label id="59">
+                            <text-property name="text">Assunto</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="19">
+                    <property name="style">NewStyle1</property>
+                    <cell id="77">
+                        <property name="fontFamily">"Arial"</property>
+                        <data id="81">
+                            <property name="resultSetColumn">codProcesso</property>
+                            <list-property name="action">
+                                <structure>
+                                    <property name="linkType">hyperlink</property>
+                                    <expression name="uri" type="javascript">"http://fluig.ma.sebrae.com.br/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID="+row["codprotocolo1"]</expression>
+                                    <property name="targetWindow">_blank</property>
+                                </structure>
+                            </list-property>
+                        </data>
+                    </cell>
+                    <cell id="22">
+                        <property name="fontFamily">"Arial"</property>
+                        <text-data id="57">
+                            <expression name="valueExpr">row["usuarioInteressado"]+"("+row["UnidadeInteressada"]+")"</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                    <cell id="89">
+                        <property name="fontFamily">"Arial"</property>
+                        <data id="93">
+                            <property name="resultSetColumn">Localizacao</property>
+                        </data>
+                    </cell>
+                    <cell id="24">
+                        <property name="fontFamily">"Arial"</property>
+                        <data id="62">
+                            <property name="resultSetColumn">assunto</property>
+                        </data>
+                    </cell>
+                    <cell id="28">
+                        <property name="fontFamily">"Arial"</property>
+                        <data id="29">
+                            <property name="resultSetColumn">interessado</property>
+                        </data>
+                    </cell>
+                    <cell id="54">
+                        <property name="fontFamily">"Arial"</property>
+                        <data id="60">
+                            <property name="resultSetColumn">resumo</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="30">
+                    <cell id="78">
+                        <property name="fontFamily">"Arial"</property>
+                    </cell>
+                    <cell id="32">
+                        <property name="fontFamily">"Arial"</property>
+                    </cell>
+                    <cell id="90">
+                        <property name="fontFamily">"Arial"</property>
+                    </cell>
+                    <cell id="33">
+                        <property name="fontFamily">"Arial"</property>
+                    </cell>
+                    <cell id="35">
+                        <property name="fontFamily">"Arial"</property>
+                    </cell>
+                    <cell id="55">
+                        <property name="fontFamily">"Arial"</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <text id="162">
+            <property name="style">TITULO</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[PROTOCOLOS]]></text-property>
+        </text>
+        <table id="102">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">medium</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">medium</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">medium</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">medium</property>
+            <property name="dataSet">dtProtocolo</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">codprotocolo</property>
+                    <text-property name="displayName">codprotocolo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["codprotocolo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">UsuarioCriadorProtocolo</property>
+                    <text-property name="displayName">UsuarioCriadorProtocolo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["UsuarioCriadorProtocolo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">assunto</property>
+                    <text-property name="displayName">assunto</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["assunto"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">interessado</property>
+                    <text-property name="displayName">interessado</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["interessado"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">resumo</property>
+                    <text-property name="displayName">resumo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["resumo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">UnidadeOrigem</property>
+                    <text-property name="displayName">UnidadeOrigem</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["UnidadeOrigem"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Localizacao</property>
+                    <text-property name="displayName">Localizacao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Localizacao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">tipo</property>
+                    <text-property name="displayName">tipo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["tipo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">codprotocolo1</property>
+                    <expression name="expression" type="javascript">dataSetRow["codprotocolo1"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="146"/>
+            <column id="147"/>
+            <column id="152">
+                <property name="repeat">1</property>
+            </column>
+            <column id="158"/>
+            <column id="149"/>
+            <column id="150"/>
+            <header>
+                <row id="103">
+                    <property name="backgroundColor">#808080</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#FFFFFF</property>
+                    <cell id="104">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <label id="105">
+                            <text-property name="text">Codigo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="106">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <label id="107">
+                            <text-property name="text">Usuario/Unidade Interessada</text-property>
+                        </label>
+                    </cell>
+                    <cell id="116">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <label id="117">
+                            <text-property name="text">Localizacao</text-property>
+                        </label>
+                    </cell>
+                    <cell id="155">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <label id="159">
+                            <text-property name="text">assunto</text-property>
+                        </label>
+                    </cell>
+                    <cell id="110">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <label id="111">
+                            <text-property name="text">interessado</text-property>
+                        </label>
+                    </cell>
+                    <cell id="112">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <label id="113">
+                            <text-property name="text">resumo</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="120">
+                    <cell id="121">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <data id="122">
+                            <property name="resultSetColumn">codprotocolo</property>
+                            <list-property name="action">
+                                <structure>
+                                    <property name="linkType">hyperlink</property>
+                                    <expression name="uri" type="javascript">"http://fluig.ma.sebrae.com.br/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID="+row["codprotocolo1"]</expression>
+                                    <property name="targetWindow">_blank</property>
+                                </structure>
+                            </list-property>
+                        </data>
+                    </cell>
+                    <cell id="123">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <text-data id="154">
+                            <expression name="valueExpr">row["UsuarioCriadorProtocolo"]+"("+row["UnidadeOrigem"]+")"</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                    <cell id="133">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <data id="134">
+                            <property name="resultSetColumn">Localizacao</property>
+                        </data>
+                    </cell>
+                    <cell id="156">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <data id="160">
+                            <property name="resultSetColumn">assunto</property>
+                        </data>
+                    </cell>
+                    <cell id="127">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <data id="128">
+                            <property name="resultSetColumn">interessado</property>
+                        </data>
+                    </cell>
+                    <cell id="129">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <data id="130">
+                            <property name="resultSetColumn">resumo</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="137">
+                    <cell id="138">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                    </cell>
+                    <cell id="139">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                    </cell>
+                    <cell id="144">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                    </cell>
+                    <cell id="157">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                    </cell>
+                    <cell id="141">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                    </cell>
+                    <cell id="142">
+                        <property name="fontFamily">"Arial"</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

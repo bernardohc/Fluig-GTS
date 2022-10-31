@@ -1,0 +1,71 @@
+<html>
+<head>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="http://style.fluig.com/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="http://style.fluig.com/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+	<h1 class="title-form-application">Cadastro de grupos Gamificados</h1>
+		<form class="form-inline" role="form">
+			<div class="form-group">
+				<label for="registerValue">Grupo</label> 
+				<input class="form-control" type="text" id="registerValue" name="registerValue" readonly=""
+					dataset="group" datasetvalue="groupPK.groupId"> 
+				<a  name="link_zoom" style="padding: 5px"
+					href="#"
+					onclick="window.open(&quot;/webdesk/zoom.jsp?datasetId=group&amp;dataFields=groupPK.groupId,ID,groupDescription,Description&amp;resultFields=groupPK.groupId,groupDescription&amp;type=registerValue&quot;, &quot;zoom&quot;, &quot;status , scrollbars=no ,width=600, height=350 , top=0 , left=0&quot;);">
+					<img src="/ecm_resources/resources/assets/images/magnifier.png"
+					border="0" >
+				</a>
+				<a  name="link_eliminar" style="padding: 5px"
+					onclick="$(this).parent().find(&quot;input:first&quot;).val(&quot;&quot;);return false;"
+					href="#"> 
+					<img src="/ecm_resources/resources/assets/images/delete_16.png"
+					border="0">
+				</a>
+			</div>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+
+			var getFields = document.forms[0],
+				getInputDate = $(getFields).find('[data-type="date"]').find('input'),
+				lenDate = getInputDate.length;
+
+
+			function validationFieldsForm(field, type){
+			    if(type === "checkbox" || type === "radio"){
+				    if(!field.is(':checked')){
+				        field.parents('.form-field').addClass('required');
+				    }else{
+				        field.parents('.form-field').removeClass('required');
+				    }
+			    }else{
+				    if(!field.val().trim()){
+				        field.parents('.form-field').addClass('required');
+				    }else{
+				        field.parents('.form-field').removeClass('required');
+				    }
+			    }
+			}
+
+			function setSelectedZoomItem(selectedItem) {
+				var selValue, input;
+				$.each(selectedItem, function(key, value) {
+					if (key == "type") {
+						input = $('#' + value)[0];
+					} else {
+						if(!selValue) {
+							selValue = value;
+						}
+					}
+				});
+				input.value = selValue;
+			}
+
+			</script>
+
+</body>
+</html>

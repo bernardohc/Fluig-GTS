@@ -1,0 +1,1008 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>SAC</processId>
+    </processDefinitionPK>
+    <processDescription>SAC</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>SAC</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;gestorSAC&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>true</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>SAC</processId>
+      <version>1</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>6569</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;cadastraSAC&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>150</positionX>
+      <positionY>82</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Setor Atendimento SAC</stateName>
+      <stateDescription>Setor Atendimento SAC</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>86400</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;codGrupoSetor&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>460</positionX>
+      <positionY>180</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ADMGTS</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <sequence>13</sequence>
+      </processStatePK>
+      <stateName>Cadastra SAC</stateName>
+      <stateDescription>Cadastra SAC</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>300</positionX>
+      <positionY>70</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <sequence>8</sequence>
+      </processStatePK>
+      <stateName>Finalizado?</stateName>
+      <stateDescription>Finalizado?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>630</positionX>
+      <positionY>170</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <sequence>11</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>780</positionX>
+      <positionY>203</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>6</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>1</version>
+        <sequence>8</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;statusAtendimento&quot;) == &quot;Finalizado&quot;</condition>
+      <destinationSequenceId>11</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>1</version>
+        <sequence>8</sequence>
+      </conditionProcessStatePK>
+      <condition>1==1</condition>
+      <destinationSequenceId>5</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <linkSequence>9</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>8</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <linkSequence>10</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>8</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Solicitação @[request:id] encaminhada para o setor de atendimento!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para acessar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <linkSequence>12</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>8</initialStateSequence>
+      <finalStateSequence>11</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Solicitação @[request:id] finalizada com sucesso!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para acessar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <linkSequence>14</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>13</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Solicitação @[request:id] iniciada com sucesso!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para acessar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <linkSequence>15</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>13</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <movementTitle>Solicitação @[request:id] encaminhada para o setor de atendimento!</movementTitle>
+      <movementDescription>-------------------------------------------------------------------------------------------------------------</movementDescription>
+      <movementAccessLinkDescription>Clique aqui para acessar esta solicitação!</movementAccessLinkDescription>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>atividades</eventId>
+        <processId>SAC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>var INICIO_0 = 0;&#xd;
+var INICIO = 4;&#xd;
+var CADASTRA_SAC = 13;&#xd;
+var ATENDIMENTO_SETOR = 5;&#xd;
+var FIM = 11;&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>SAC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId){&#xd;
+	&#xd;
+	hAPI.setCardValue(&quot;dataAbertura&quot;, dataHoraAtual(&apos;dd/mm/yyyy hh:mm&apos;));&#xd;
+	&#xd;
+	var dataAbertura = dataAtual(&quot;yyyymmdd&quot;);&#xd;
+	var WKNumProces = processId+&quot;&quot;;&#xd;
+	&#xd;
+	hAPI.setCardValue(&quot;numProtocoloFluig&quot;, dataAbertura +&apos;&apos;+ completeToLeft( WKNumProces, &quot;0&quot;, 7 ));&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>SAC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	&#xd;
+	var message = &quot;&quot;;&#xd;
+	var hasErros = false;&#xd;
+	var ehGestorSAC = false;&#xd;
+	&#xd;
+	//Se o usuário logado for gestor do processo, no papel gestorOrcamento, vai conseguir cancelar a solicitação&#xd;
+	var c1 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.colleagueId&apos;, getValue(&quot;WKUser&quot;), getValue(&quot;WKUser&quot;), ConstraintType.MUST);&#xd;
+	var c2 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.companyId&apos;, getValue(&quot;WKCompany&quot;), getValue(&quot;WKCompany&quot;), ConstraintType.MUST);&#xd;
+	var c3 = DatasetFactory.createConstraint(&apos;workflowColleagueRolePK.roleId&apos;, &quot;gestorSAC&quot;, &quot;gestorSAC&quot;, ConstraintType.MUST);&#xd;
+	&#xd;
+	var constraints = new Array(c1, c2, c3);&#xd;
+	var datasetWorkflowColleagueRole = DatasetFactory.getDataset(&apos;workflowColleagueRole&apos;, null, constraints, null);&#xd;
+	if(dsTemValor(datasetWorkflowColleagueRole)){&#xd;
+		ehGestorSAC = true;&#xd;
+	}&#xd;
+	&#xd;
+	&#xd;
+	if(!ehGestorSAC){&#xd;
+		hasErros = true;&#xd;
+		message = &quot;ATENÇÃO! Não é possível cancelar a solicitação! Somente o gestor possui este privilégio!&quot;;&#xd;
+	}&#xd;
+	&#xd;
+	if (hasErros) {&#xd;
+	    throw  message;&#xd;
+	}&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessFinish</eventId>
+        <processId>SAC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessFinish(processId){&#xd;
+	&#xd;
+	hAPI.setCardValue(&quot;dataEncerramento&quot;, dataHoraAtual(&apos;dd/mm/yyyy hh:mm&apos;));&#xd;
+	&#xd;
+	&#xd;
+	//Envia e-mail para requisitante&#xd;
+	var numProtocoloFluig = DatasetFactory.createConstraint(&quot;numProtocoloFluig&quot;, hAPI.getCardValue(&quot;numProtocoloFluig&quot;), hAPI.getCardValue(&quot;numProtocoloFluig&quot;), ConstraintType.MUST); &#xd;
+	var dataAbertura = DatasetFactory.createConstraint(&quot;dataAbertura&quot;, hAPI.getCardValue(&quot;dataAbertura&quot;), hAPI.getCardValue(&quot;dataAbertura&quot;), ConstraintType.MUST); &#xd;
+	var dataEncerramento = DatasetFactory.createConstraint(&quot;dataEncerramento&quot;, hAPI.getCardValue(&quot;dataEncerramento&quot;), hAPI.getCardValue(&quot;dataEncerramento&quot;), ConstraintType.MUST); &#xd;
+&#xd;
+	var emailRequisitante = DatasetFactory.createConstraint(&quot;emailRequisitante&quot;, hAPI.getCardValue(&quot;emailRequisitante&quot;), hAPI.getCardValue(&quot;emailRequisitante&quot;), ConstraintType.MUST); &#xd;
+&#xd;
+	var constraints = new Array(numProtocoloFluig, dataAbertura, dataEncerramento, emailRequisitante);&#xd;
+	 &#xd;
+	var dataset = DatasetFactory.getDataset(&quot;dsSACEmailRequisitanteFinaliz&quot;, null, constraints, null);&#xd;
+	var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);&#xd;
+	var msgRetorno = dataset.getValue(0, &quot;MSG&quot;);&#xd;
+	&#xd;
+	hAPI.setCardValue(&quot;emailRequisitanteFimCodRetorno&quot;, codRetorno);&#xd;
+	hAPI.setCardValue(&quot;emailRequisitanteFimMsgRetorno&quot;, msgRetorno);&#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>utils</eventId>
+        <processId>SAC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function dataHoraAtual(formato){&#xd;
+   &#xd;
+    var retornoDataMinuto = &quot;&quot;;&#xd;
+    var data = new Date();&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    var hora = addZero(data.getHours());&#xd;
+    var minuto = addZero(data.getMinutes());&#xd;
+    &#xd;
+    if(formato == &quot;dd/mm/yyyy hh:mm&quot;){&#xd;
+    	retornoDataMinuto = dia + &quot;/&quot; + mes + &quot;/&quot; + ano + &quot; &quot; + hora + &quot;:&quot; + minuto ;&#xd;
+    }&#xd;
+    &#xd;
+    return retornoDataMinuto;&#xd;
+}&#xd;
+&#xd;
+//function dataAtual(){&#xd;
+//    var data = new Date();&#xd;
+//    &#xd;
+//    var dia = addZero(data.getDate());&#xd;
+//    var mes = addZero(data.getMonth()+1);&#xd;
+//    var ano = data.getFullYear(); &#xd;
+//    &#xd;
+//    return dia + &quot;/&quot; + mes + &quot;/&quot; + ano;&#xd;
+//}&#xd;
+function dataAtual(formato){&#xd;
+    var retornoData = &quot;&quot;;&#xd;
+	var data = new Date();&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    var hora = addZero(data.getHours());&#xd;
+    var minuto = addZero(data.getMinutes());&#xd;
+    &#xd;
+    if(formato == &quot;dd/mm/yyyy&quot;){&#xd;
+    	retornoData = dia + &quot;/&quot; + mes + &quot;/&quot; + ano;&#xd;
+    }else if(formato == &quot;yyyymmdd&quot;){&#xd;
+    	retornoData = ano + &quot;&quot; + mes + &quot;&quot; + dia;&#xd;
+    }&#xd;
+    &#xd;
+    return retornoData;&#xd;
+}&#xd;
+&#xd;
+function dataAtualAddDays(days){&#xd;
+    var data = new Date();&#xd;
+    &#xd;
+    data.setDate(data.getDate()+days);&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    return ano + &quot;&quot; + mes + &quot;&quot; + dia;&#xd;
+}&#xd;
+&#xd;
+function addZero(i) {&#xd;
+    if (i &lt; 10) {&#xd;
+        i = &quot;0&quot; + i;&#xd;
+    }&#xd;
+    return i;&#xd;
+}&#xd;
+&#xd;
+function temValor(valor){&#xd;
+	if(valor != null &amp;&amp; valor != undefined){&#xd;
+		valor = valor.toString().trim();&#xd;
+		&#xd;
+		if(valor != &quot;&quot;){&#xd;
+			return true;&#xd;
+		}else{&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	return false;&#xd;
+}&#xd;
+&#xd;
+function temValorArray(arrayValor){&#xd;
+	if(arrayValor != null &amp;&amp; arrayValor != undefined &amp;&amp; arrayValor.length &gt; 0){&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function dsTemValor(dataset){&#xd;
+	if(dataset != null &amp;&amp; dataset != undefined &amp;&amp; dataset.rowsCount &gt; 0){&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function buscarData(){&#xd;
+	return new Date();&#xd;
+}&#xd;
+&#xd;
+function buscarDiaAtual(){&#xd;
+	return buscarData().getDate().toString();&#xd;
+}&#xd;
+&#xd;
+function buscarMesAtual(){&#xd;
+	return (buscarData().getMonth()+1).toString();&#xd;
+}&#xd;
+&#xd;
+function buscarAnoAtual(){&#xd;
+	return buscarData().getFullYear().toString();&#xd;
+}&#xd;
+&#xd;
+function buscarDataAtualSistema(){&#xd;
+	return formatarData(buscarDiaAtual(), buscarMesAtual(), buscarAnoAtual());&#xd;
+}&#xd;
+&#xd;
+function formatarData(dia, mes, ano){&#xd;
+	if(dia.length == 1)&#xd;
+		dia = 0+dia;	&#xd;
+	if(mes.length == 1)&#xd;
+		mes = 0+mes;	&#xd;
+	return dia+&quot;/&quot;+mes+&quot;/&quot;+ano;&#xd;
+}&#xd;
+&#xd;
+function buscarIdSolicitacao(){&#xd;
+	return getValue(&quot;WKNumProces&quot;);&#xd;
+}&#xd;
+&#xd;
+function buscarUsuarioLogado(){&#xd;
+	return getValue(&quot;WKUser&quot;);&#xd;
+}&#xd;
+&#xd;
+function buscarEmpresa(){&#xd;
+	return getValue(&quot;WKCompany&quot;);&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Retorna o Valor do Campo&#xd;
+ */&#xd;
+function buscarValorCampo(nomeCampo) {&#xd;
+	return hAPI.getCardValue(nomeCampo);&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Método para retornar os Dados do dataSet selecionado&#xd;
+ */&#xd;
+function getValorDataSet(nomeDataSet, campoIdDataSet, valorIdDataSet, nomeCampo) {&#xd;
+	var dataSet = DatasetFactory.getDataset(nomeDataSet, null, null, null);&#xd;
+	var valorCampo = false;&#xd;
+&#xd;
+	for ( var i = 0; i &lt; dataSet.rowsCount; i++) {&#xd;
+		if (dataSet.getValue(i, codigoDataSet) == valorIdDataSet) {&#xd;
+			valorCampo = dataSet.getValue(i, nomeCampo);&#xd;
+		}&#xd;
+	}&#xd;
+	return valorCampo;&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Debug&#xd;
+ */&#xd;
+function debug(string){&#xd;
+	log.info(string);	&#xd;
+	throw string;&#xd;
+}&#xd;
+&#xd;
+function gravarLog(string){&#xd;
+	log.info(string);&#xd;
+}&#xd;
+&#xd;
+function completeToLeft(value, caracter, size) {&#xd;
+	&#xd;
+	var result = value;&#xd;
+	&#xd;
+	while (result.length &lt; size) {&#xd;
+		result = caracter + result;&#xd;
+	}&#xd;
+&#xd;
+	return result;&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateLeave</eventId>
+        <processId>SAC</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateLeave(sequenceId){&#xd;
+	&#xd;
+	if(sequenceId == INICIO_0 || sequenceId == INICIO){&#xd;
+		&#xd;
+		hAPI.setCardValue(&quot;statusAtendimento&quot;, &quot;Abertura&quot;);&#xd;
+		hAPI.setCardValue(&quot;statusAtendimentoDesc&quot;, &quot;Abertura&quot;);&#xd;
+		&#xd;
+	}else if(sequenceId == CADASTRA_SAC){&#xd;
+		//Quando finalizar o CADASTRA_SAC, já marca que o status está em AguardandoAnalise&#xd;
+		hAPI.setCardValue(&quot;statusAtendimento&quot;, &quot;AguardandoAnalise&quot;);&#xd;
+		hAPI.setCardValue(&quot;statusAtendimentoDesc&quot;, &quot;Aguardando Análise&quot;);&#xd;
+		&#xd;
+		//Envia e-mail para requisitante&#xd;
+		var numProtocoloFluig = DatasetFactory.createConstraint(&quot;numProtocoloFluig&quot;, hAPI.getCardValue(&quot;numProtocoloFluig&quot;), hAPI.getCardValue(&quot;numProtocoloFluig&quot;), ConstraintType.MUST); &#xd;
+		var dataAbertura = DatasetFactory.createConstraint(&quot;dataAbertura&quot;, hAPI.getCardValue(&quot;dataAbertura&quot;), hAPI.getCardValue(&quot;dataAbertura&quot;), ConstraintType.MUST); &#xd;
+		//Requisitante&#xd;
+		var nomeRequisitante = DatasetFactory.createConstraint(&quot;nomeRequisitante&quot;, hAPI.getCardValue(&quot;nomeRequisitante&quot;), hAPI.getCardValue(&quot;nomeRequisitante&quot;), ConstraintType.MUST); &#xd;
+		var cpfCnpjRequisitante = DatasetFactory.createConstraint(&quot;cpfCnpjRequisitante&quot;, hAPI.getCardValue(&quot;cpfCnpjRequisitante&quot;), hAPI.getCardValue(&quot;cpfCnpjRequisitante&quot;), ConstraintType.MUST); &#xd;
+		var emailRequisitante = DatasetFactory.createConstraint(&quot;emailRequisitante&quot;, hAPI.getCardValue(&quot;emailRequisitante&quot;), hAPI.getCardValue(&quot;emailRequisitante&quot;), ConstraintType.MUST); &#xd;
+		var telRequisitante = DatasetFactory.createConstraint(&quot;telRequisitante&quot;, hAPI.getCardValue(&quot;telRequisitante&quot;), hAPI.getCardValue(&quot;telRequisitante&quot;), ConstraintType.MUST); &#xd;
+		var estadoRequisitante = DatasetFactory.createConstraint(&quot;estadoRequisitante&quot;, hAPI.getCardValue(&quot;estadoRequisitante&quot;), hAPI.getCardValue(&quot;estadoRequisitante&quot;), ConstraintType.MUST); &#xd;
+		var cidadeRequisitante = DatasetFactory.createConstraint(&quot;cidadeRequisitante&quot;, hAPI.getCardValue(&quot;cidadeRequisitante&quot;), hAPI.getCardValue(&quot;cidadeRequisitante&quot;), ConstraintType.MUST); &#xd;
+		//Solicitação&#xd;
+		var tipoSolicitacao = DatasetFactory.createConstraint(&quot;tipoSolicitacao&quot;, hAPI.getCardValue(&quot;tipoSolicitacaoDesc&quot;), hAPI.getCardValue(&quot;tipoSolicitacaoDesc&quot;), ConstraintType.MUST); &#xd;
+		var estadoRevenda = DatasetFactory.createConstraint(&quot;estadoRevenda&quot;, hAPI.getCardValue(&quot;estadoRevenda&quot;), hAPI.getCardValue(&quot;estadoRevenda&quot;), ConstraintType.MUST); &#xd;
+		var cidadeRevenda = DatasetFactory.createConstraint(&quot;cidadeRevenda&quot;, hAPI.getCardValue(&quot;cidadeRevenda&quot;), hAPI.getCardValue(&quot;cidadeRevenda&quot;), ConstraintType.MUST); &#xd;
+		var revenda = DatasetFactory.createConstraint(&quot;revenda&quot;, hAPI.getCardValue(&quot;revenda&quot;), hAPI.getCardValue(&quot;revenda&quot;), ConstraintType.MUST); &#xd;
+		var cpfCnpjRevenda = DatasetFactory.createConstraint(&quot;cpfCnpjRevenda&quot;, hAPI.getCardValue(&quot;cpfCnpjRevenda&quot;), hAPI.getCardValue(&quot;cpfCnpjRevenda&quot;), ConstraintType.MUST); &#xd;
+		var setor = DatasetFactory.createConstraint(&quot;setor&quot;, hAPI.getCardValue(&quot;setor&quot;), hAPI.getCardValue(&quot;setor&quot;), ConstraintType.MUST); &#xd;
+		var numSerie = DatasetFactory.createConstraint(&quot;numSerie&quot;, hAPI.getCardValue(&quot;numSerie&quot;), hAPI.getCardValue(&quot;numSerie&quot;), ConstraintType.MUST); &#xd;
+		var modeloEquipamento = DatasetFactory.createConstraint(&quot;modeloEquipamento&quot;, hAPI.getCardValue(&quot;modeloEquipamento&quot;), hAPI.getCardValue(&quot;modeloEquipamento&quot;), ConstraintType.MUST); &#xd;
+		var assuntoSolicitacao = DatasetFactory.createConstraint(&quot;assuntoSolicitacao&quot;, hAPI.getCardValue(&quot;assuntoSolicitacao&quot;), hAPI.getCardValue(&quot;assuntoSolicitacao&quot;), ConstraintType.MUST); &#xd;
+		var descricaoSolicitacao = DatasetFactory.createConstraint(&quot;descricaoSolicitacao&quot;, hAPI.getCardValue(&quot;descricaoSolicitacao&quot;), hAPI.getCardValue(&quot;descricaoSolicitacao&quot;), ConstraintType.MUST); &#xd;
+		&#xd;
+		var constraints = new Array(numProtocoloFluig, dataAbertura, &#xd;
+				nomeRequisitante, cpfCnpjRequisitante, emailRequisitante, telRequisitante, estadoRequisitante, cidadeRequisitante, &#xd;
+				tipoSolicitacao, estadoRevenda, cidadeRevenda, revenda, cpfCnpjRevenda, setor, numSerie, modeloEquipamento, assuntoSolicitacao, descricaoSolicitacao);&#xd;
+		 &#xd;
+		var dataset = DatasetFactory.getDataset(&quot;dsSACEmailRequisitanteAbert&quot;, null, constraints, null);&#xd;
+		var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);&#xd;
+		var msgRetorno = dataset.getValue(0, &quot;MSG&quot;);&#xd;
+		&#xd;
+		hAPI.setCardValue(&quot;emailRequisitanteCodRetorno&quot;, codRetorno);&#xd;
+		hAPI.setCardValue(&quot;emailRequisitanteMsgRetorno&quot;, msgRetorno);&#xd;
+		&#xd;
+		&#xd;
+	}else if(sequenceId == ATENDIMENTO_SETOR || sequenceId == FIM){&#xd;
+		&#xd;
+		var indexes = hAPI.getChildrenIndexes(&quot;tbAtendimento&quot;);&#xd;
+		var cont = 1;&#xd;
+		for (var i = 0; i &lt; indexes.length; i++) {&#xd;
+			if(cont == indexes.length){&#xd;
+				hAPI.setCardValue(&quot;atendData___&quot;+indexes[i], dataHoraAtual(&apos;dd/mm/yyyy hh:mm&apos;));&#xd;
+			}&#xd;
+			cont++;&#xd;
+		}&#xd;
+		&#xd;
+	}&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>301</height>
+      <width>831</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName></stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>9F9F9F</color>
+      <height>150</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName>SAC</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>C0C0C0</color>
+      <height>151</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>160</positionY>
+      <stateName>Atendimento</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <linkSequence>10</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>660</positionX>
+      <positionY>130</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <linkSequence>10</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>512</positionX>
+      <positionY>130</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <version>1</version>
+        <linkSequence>15</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>352</positionX>
+      <positionY>221</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>cidadeRequisitante</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Cidade</fieldDescription>
+      <slotId>1</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>cpfCnpjRevenda</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>CPF/CNPJ</fieldDescription>
+      <slotId>2</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>dataAbertura</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Abertura</fieldDescription>
+      <slotId>3</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>estadoRequisitante</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Estado</fieldDescription>
+      <slotId>4</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>nomeRequisitante</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Requisitante</fieldDescription>
+      <slotId>5</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>numProtocoloFluig</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Protocolo</fieldDescription>
+      <slotId>6</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>numProtocoloTelefonico</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Protocolo Tel</fieldDescription>
+      <slotId>7</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>revenda</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Revenda</fieldDescription>
+      <slotId>8</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>setor</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Setor</fieldDescription>
+      <slotId>9</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>statusAtendimentoDesc</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Status</fieldDescription>
+      <slotId>10</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>SAC</processId>
+        <fieldId>tipoSolicitacaoDesc</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Tipo</fieldDescription>
+      <slotId>11</slotId>
+    </ProcessFormField>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>SAC</processId>
+      <processVersion>1</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>SAC</processId>
+      <processVersion>1</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>SAC</processId>
+      <processVersion>1</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>SAC</processId>
+      <processVersion>1</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>SAC</processId>
+      <processVersion>1</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+  </list>
+  <list/>
+  <list/>
+</list>
