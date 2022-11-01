@@ -33,44 +33,44 @@
 	<div id="divSolicitacao" class="col-md-12"  >
 		<div class="row">
 	        <div class="col-md-12"  style="text-align:left">
-	       		<h4 ><strong>Dados das Maquinas</strong></h4>
+	       		<h4 ><strong>Dados das Máquinas</strong></h4>
 	       		<hr />  
 	        </div>
 	    </div>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="row">
-					<div class="col-md-2 col-md-offset-2" align="left">
+					<div class="col-md-2" align="left">
 						<label for="solicitacaoId">Número da Solicitação</label>
 						<input type="text" name="solicitacaoId" id="solicitacaoId" class="form-control" readonly/>
 		            </div>		            
 					<!--  https://tdn.totvs.com/pages/releaseview.action?pageId=75270483-->
-					<div class="col-md-3 " align="left">
-						<label for="solNomeSolicitante">Nome Solicitante</label>
+					<div class="col-md-3" align="left">
+						<label for="solNomeSolicitante">Nome do Solicitante</label>
 						<input type="text" name="solNomeSolicitante" id="solNomeSolicitante" class="form-control" data-protection="solNomeSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante do reembolso" readonly/>
 		            </div>  
-		            <div class="col-md-3" align="left">
+		            <div class="col-md-3 col-md-offset-4" align="left">
 						<label for="solPedido">Pedido</label>
 						<input type="text" name="solPedido" id="solPedido" class="form-control" onKeyPress="validafunctions.setNumNoFormat(this.id, 0, false , '')"/>
 		            </div>
 	     		</div>
 	     		<!-- Maquinas -->
 				<div class="row">
-					<div class="col-md-10 col-md-offset-1" align="left">
+					<div class="col-md-12" align="left">
 					<table class="table table-condensed table-nonfluid table-striped "  id="solTbMaquinas" tablename="solTbMaquinas" noaddbutton="true" customFnDelete="removeDespesa(this)">
 						<thead>
 							<tr>	
 								<th class="col-md-2">Produto Atual</th>
-								<th class="col-md-3">Descrição Atual</th>		
+								<th class="col-md-3">Descrição do Produto Atual</th>		
 								<th class="col-md-2">Prazo da Solicitação</th>
 								<th class="col-md-2">Produto Destino</th>		
-								<th class="col-md-3">Descrição Destino</th>
+								<th class="col-md-3">Descrição do Produto Destino</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr detail="true" detailname="solTbMaquinas" >
 								<td>	
-									<input type="text" id="solProdutoAtual"  name="solProdutoAtual" class="form-control itSolValorReembolsoItem"/>
+									<input type="text" id="solProdutoAtual"  name="solProdutoAtual" class="form-control inputItSolProduto"/>
 								</td>
 								<td >
 									<input type="text" id="solDescAtual"  name="solDescAtual" class="form-control" readonly/>
@@ -84,7 +84,7 @@
 									</div>
 								</td>
 								<td >
-									<input type="text" id="solProdutoDestino"  name="solProdutoDestino" class="form-control"/>
+									<input type="text" id="solProdutoDestino"  name="solProdutoDestino" class="form-control inputItSolProdutoDestino"/>
 								</td>
 								<td >
 									<input type="text" id="solDescDestino"  name="solDescDestino" class="form-control" readonly/>

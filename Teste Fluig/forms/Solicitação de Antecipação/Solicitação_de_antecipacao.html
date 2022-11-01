@@ -33,7 +33,7 @@
 	<div id="divSolicitacao" class="col-md-12"  >
 		<div class="row">
 	        <div class="col-md-12"  style="text-align:left">
-	       		<h4 ><strong>Dados das Maquinas</strong></h4>
+	       		<h4 ><strong>Dados das Máquinas</strong></h4>
 	       		<hr />  
 	        </div>
 	    </div>
@@ -41,25 +41,25 @@
 			<div class="col-md-12">
 				<div class="row">		            
 					<!--  https://tdn.totvs.com/pages/releaseview.action?pageId=75270483-->
-					<div class="col-md-1 col-md-offset-2" align="left">
+					<div class="col-md-2" align="left">
 						<label for="solicitacaoId">Número da Solicitação</label>
 						<input type="text" name="solicitacaoId" id="solicitacaoId" class="form-control" readonly/>
 		            </div>
-					<div class="col-md-4 col-md-offset-3" align="left">
-						<label for="solNomeSolicitante">Nome Solicitante</label>
+					<div class="col-md-4 col-md-offset-6" align="left">
+						<label for="solNomeSolicitante">Nome do Solicitante</label>
 						<input type="text" name="solNomeSolicitante" id="solNomeSolicitante" class="form-control" data-protection="solNomeSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante do reembolso" readonly/>
 		            </div>  
 	     		</div>
 	     		<!-- Maquinas -->
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2" align="left">
+					<div class="col-md-12" align="left">
 					<table class="table table-condensed table-nonfluid table-striped col-md-1 "  id="solTbMaquinas" tablename="solTbMaquinas" noaddbutton="true" customFnDelete="removeDespesa(this)">
 						<thead>
 							<tr>	
 								<th class="col-md-2">Número do Pedido</th>
 								<th class="col-md-3">Produto</th>		
-								<th class="col-md-3">Descrição do Produto</th>
-								<th class="col-md-4">Prazo da Solicitação</th>		
+								<th class="col-md-5">Descrição do Produto</th>
+								<th class="col-md-2">Prazo da Solicitação</th>		
 							</tr>
 						</thead>
 						<tbody>
@@ -68,7 +68,7 @@
 									<input type="text" name="solPedido" id="solPedido" class="form-control" onKeyPress="validafunctions.setNumNoFormat(this.id, 0, false , '')"/>
 								</td>
 								<td>	
-									<input type="text" id="solProduto"  name="solProduto" class="form-control itSolValorReembolsoItem"/>
+									<input type="text" id="solProduto"  name="solProduto" class="form-control inputItSolProduto"/>
 								</td>
 								<td>
 									<input type="text" id="solDesc"  name="solDesc" class="form-control" readonly/>
@@ -108,7 +108,7 @@
 				<div class="col-md-2" align="left">
 					<label for="solPrazoAprov">Prazo da Solicitação</label>
 					<div class="input-group">
-										<input type="text" class="form-control data" name="solPrazo" id="solPrazo" />				
+										<input type="text" class="form-control data" name="solPrazoAprov" id="solPrazoAprov" />				
 										<span class="input-group-addon">
 											<span class="fluigicon fluigicon-calendar"></span>
 										</span>

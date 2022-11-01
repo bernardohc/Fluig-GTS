@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Alteração de Maquina</processId>
-      <version>2</version>
+      <version>3</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>5608</formId>
@@ -332,7 +332,7 @@ process.instructions=</eventDescription>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>AlteraçãoDeMaquina</processId>
-        <version>2</version>
+        <version>3</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
