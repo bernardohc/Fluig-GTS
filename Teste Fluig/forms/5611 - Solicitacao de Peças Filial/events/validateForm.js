@@ -44,11 +44,11 @@ var WKNumState = getValue('WKNumState');
     	break;	
         
         case ANALISA_SOLICITACAO:  
-           
+         /*   
         if (isEmpty("solAprovacao", form)) {
             message += getMessage("Aprovação", 1, form);
             hasErros = true;
-        }
+        }*/
 
         	//Se for clicado em Enviar 
             if (getValue("WKCompletTask") == "true" ){
@@ -64,73 +64,43 @@ var WKNumState = getValue('WKNumState');
             	    hasErros = true;
             	}else{
             	    for (var i = 0; i < indexesSolTbDespesas.length; i++) {
-                        
-            	        
-                        if (isEmpty("solLiberacao___" + indexesSolTbDespesas[i], form)) {
-                             message += getMessage("Liberação PCP", 1, form, "Produtos");
-                                hasErros = true;
-                        }else if( form.getValue("solLiberacao___"+ indexesSolTbDespesas[i]) != "naoLiberado" ){
-                            if (isEmpty("solQtdeLiberada___" + indexesSolTbDespesas[i], form)) {
-                                message += getMessage(" Quantidade Liberada precisa ser preenchida.", 1, form, "Itens de despesa");
-                                hasErros = true;
-                            }
-                        }                                      
+
+						if (isEmpty("solAprovacao___" + indexesSolTbDespesas[i], form)) {
+						message += getMessage("Liberação PCP", 1, form, "Liberação PCP");
+						hasErros = true;
+						} 
+                        if (isEmpty("solQtdeLiberada___" + indexesSolTbDespesas[i], form)) {
+                            message += getMessage("Qauntidade Liberada pelo PCP", 1, form, "Liberação PCP");
+                            hasErros = true;
+                        }
+                                                               
             	    }
             	}
     		}
         break;
 
         case SEPARACAO_ALMOX:
-            
-            if (isEmpty("aprovContagem", form)) {
+
+            /*if (isEmpty("aprovContagem", form)) {
                 message += getMessage("Separação", 1, form);
                 hasErros = true;
+            }*/
+            if (isEmpty("aprovContagem", form)) {	
+                message += getMessage("Separação", 3, form);
+                hasErros = true;
+            }else if( form.getValue("aprovContagem") == 'contagemFinalizada' ){
+                if (isEmpty("solQtdeAlmox", form)) {	
+                    message += getMessage("Quantidade", 1, form);
+                    hasErros = true;
+                }
             }
-
-            //Se for clicado em Enviar 
-            if (getValue("WKCompletTask") == "true" ){
-                
-                var indexesSolTbDespesas = form.getChildrenIndexes("solTbMaquinas");
-            	if(indexesSolTbDespesas.length == 0){
-            	    if (isMobile(form)) {
-            	        message += getMessage("Não possuí nenhuma solicitação cadastrada!.", 6, form);
-            	    }else{
-            	        message += getMessage("Não possuí nenhuma solicitação cadastrada!.", 6, form);
-            	    }
-            	    hasErros = true;
-            	}else{
-            	    for (var i = 0; i < indexesSolTbDespesas.length; i++) {
-                        
-            	     if( form.getValue("solLiberacao___"+ indexesSolTbDespesas[i]) != "naoLiberado" ){
-                            if (isEmpty("solQtdeAlmox___" + indexesSolTbDespesas[i], form)) {
-                                message += getMessage(" Quantidade Almox precisa ser preenchida.", 1, form, "Itens de despesa");
-                                hasErros = true;
-                            }
-                        }                                      
-            	    }
-            	}
-
-                /*
-            	//Itens Despesa
-            	var indexesSolTbDespesas = form.getChildrenIndexes("solTbMaquinas");
-            	if(indexesSolTbDespesas.length == 0){
-            	    if (isMobile(form)) {
-            	        message += getMessage("Não possuí nenhuma solicitação cadastrada!.", 6, form);
-            	    }else{
-            	        message += getMessage("Não possuí nenhuma solicitação cadastrada!.", 6, form);
-            	    }
-            	    hasErros = true;
-            	}else{
-            	    for (var i = 0; i < indexesSolTbDespesas.length; i++) {
-
-						if (isEmpty("solQtdeAlmox___" + indexesSolTbDespesas[i], form)) {
-						message += getMessage("Quantidade de Peças Liberada pelo Almox", 1, form, "Liberação PCP");
-						hasErros = true;
-						}                                                                
-            	    }
-            	}*/
-    		}
-
+            
+            /*
+            if (isEmpty("obslmox", form)) {
+                message += getMessage("Observação do Almox", 1, form);
+                hasErros = true;
+            }
+            */
         break;
         
     }if (hasErros) {

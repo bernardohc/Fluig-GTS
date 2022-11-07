@@ -48,19 +48,22 @@
 		            </div>		            
 					<!--  https://tdn.totvs.com/pages/releaseview.action?pageId=75270483-->
 					<div class="col-md-3 col-md-offset-5" align="left">
-						<label for="solNomeSolicitante">Nome Solicitante</label>
+						<label for="solNomeSolicitante">Nome do Solicitante</label>
 						<input type="text" name="solNomeSolicitante" id="solNomeSolicitante" class="form-control" data-protection="solNomeSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante do reembolso" readonly/>
 		            </div>  
 	     		</div>
 				 <div class="row">
-					<div class="col-md-10 col-md-offset-1" align="left">
+					<div class="col-md-12" align="left">
 					<table class="table table-condensed table-nonfluid table-striped"  id="solTbMaquinas" tablename="solTbMaquinas" noaddbutton="true" customFnDelete="removeDespesa(this)">
 						<thead>
 							<tr>	
-								<th class="col-md-3">Produto</th>
+								<th class="col-md-2">Produto</th>
 								<th class="col-md-4">Descrição</th>		
-								<th class="col-md-2">Quantidade</th>		
-								<th class="col-md-3">Tipo</th>
+								<th class="col-md-1">Quantidade</th>		
+								<th class="col-md-1">Tipo</th>
+								<th class="col-md-2">Liberação PCP</th>
+								<th class="col-md-1">Qtde. Liberado</th>
+								<th class="col-md-1">Qtde. Almox</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -76,6 +79,20 @@
 								</td>
 								<td >
 									<input type="text" id="solTipo"  name="solTipo" class="form-control"/>
+								</td>
+								<td>
+									<select name="solLiberacao" id="solLiberacao" class="form-control">
+										<option value=""> </option>
+										<option value="liberado">Liberado</option>
+										<option value="parcial">Parcial</option>
+										<option value="naoLiberado">Não Liberado</option>
+									  </select>
+								</td>
+								<td>	
+									<input type="text" name="solQtdeLiberada" id="solQtdeLiberada" class="form-control" onKeyPress="validafunctions.setNumeroNoFormat(this.id, 0, false , '')"/>
+								</td>
+								<td>	
+									<input type="text" name="solQtdeAlmox" id="solQtdeAlmox" class="form-control" onKeyPress="validafunctions.setNumeroNoFormat(this.id, 0, false , '')"/>
 								</td>
 							</tr>
 						</tbody>
@@ -94,12 +111,12 @@
 				<!-- Inicio div aprovção, editavel pelo analista-->
 				<div id="divAprovacao" style="display:none;"  class="col-md-12">
 					<div class="col-md-12"  style="text-align:left">
-						<h4 ><strong>Aprovação PCP</strong></h4>
+						<h4 ><strong>Observação PCP</strong></h4>
 						<hr />  
 					</div>
 					<div class="row">
 						<div  class="col-md-10 col-md-offset-1">
-							<div class="col-md-4" align="left">
+							<div class="col-md-4 col-md-offset-2" align="left">
 								<label for="solAprovacao">Aprovação Solicitação de Peças</label>
 								<div class="radio input-group">
 									<div class="custom-radio custom-radio-inline custom-radio-primary">
@@ -113,17 +130,12 @@
 								</div>
 							</div>
 							<div class="col-md-4" align="left">
-								<label for="solQtdeLiberada">Quantidade Liberada</label>
-								<input type="text" id="solQtdeLiberada"  name="solQtdeLiberada" class="form-control" onKeyPress="validafunctions.setNumeroNoFormat(this.id, 0, false , '')"/>
-							</div>
-							<div class="col-md-4" align="left">
 								<label for="obsAlteracao">Observação*</label>
 								<textarea rows="1" cols="6" name="obsAlteracao" id="obsAlteracao" class="form-control " ></textarea>
 							</div>
 							<br>
-						</div>
-					</div> 
-				</div> <!-- Fim div aprovção, editavel pelo analista -->
+						</div> 
+					</div> <!-- Fim div aprovção, editavel pelo analista -->
 				<!--Separação Almox  -->
 				<div id="divSeparacaoAlmox" style="display:none;"  class="col-md-12">
 					<div class="row">
@@ -134,7 +146,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-10 col-md-offset-1" align="left">
-							<div class="col-md-4" align="left">
+							<div class="col-md-4 col-md-offset-2" align="left">
 								<label for="aprovContagem">Separação</label>
 								<div class="radio input-group">
 									<div class="custom-radio custom-radio-inline custom-radio-primary">
@@ -146,10 +158,6 @@
 										<label for="aprovContagemNaoFinalizada">Saldo Indisponível</label>
 									</div> 						
 								</div>
-							</div>
-							<div class="col-md-4" align="left">
-								<label for="solQtdeAlmox">Quantidade de Peças Almox</label>
-								<input type="text" id="solQtdeAlmox"  name="solQtdeAlmox" class="form-control" onKeyPress="validafunctions.setNumeroNoFormat(this.id, 0, false , '')"/>
 							</div>
 							<div class="col-md-4" align="left">
 								<label for="obslmox">Observação*</label>
