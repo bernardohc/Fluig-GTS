@@ -39,7 +39,7 @@ function imprimeRelatorio() {
 
             '.footer {'+
             '  	height: 30px;'+
-            '  	width:  100%;'+
+           // '  	width:  100%;'+
             ' 	position: fixed;'+
             ' 	bottom: 5px;'+
             '}'+
@@ -234,9 +234,9 @@ function imprimeRelatorio() {
    
         
         var WindowObject = window.open( "_blank", "width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes,titlebar=yes");
-        WindowObject.document.writeln(HTML);
+        WindowObject.document.writeln();
         WindowObject.document.close();
-        WindowObject.focus(HTML);
-        WindowObject.print(HTML);
+        WindowObject.focus();
+        WindowObject.print();
         
     }

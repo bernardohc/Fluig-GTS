@@ -1,0 +1,56 @@
+[id^=menu_of_links_].edit {
+	padding: 10px 20px;
+}
+
+.fluig-style-guide .panel-heading {
+	padding: 0px !important;
+}
+
+[id^=menu_of_links_] div#menu_accordion .panel-heading h4 .fluigicon.fluigicon-plus {
+	font-size: 12px;
+}
+[id^=menu_of_links_] div#menu_accordion .panel-heading h4 a {
+    color: white;
+  	display: block;
+  	padding: 10px 15px;
+    font-size: 14px;
+    text-decoration: none;
+}
+[id^=menu_of_links_] div#menu_accordion .panel-body {
+	padding: 0px;
+}
+[id^=menu_of_links_] div#menu_accordion .list-group {
+	margin-bottom: 0px !important;
+}
+[id^=menu_of_links_] div#menu_accordion .list-group-item:first-child {
+	border-top-right-radius: 0px !important;
+	border-top-left-radius: 0px !important;
+}
+[id^=menu_of_links_] div#menu_accordion .list-group-item {
+	border: 0px solid #eee !important;
+}
+[id^=menu_of_links_] div#menu_accordion .fluigicon.fluigicon-chevron-right {
+	font-size: 9px;
+}
+
+[id^=menu_of_links_] .breadcrumb {
+	display: none;
+}
+[id^=menu_of_links_] #level2 {
+	display: none;
+} 
+
+[id^=menu_of_links_] .breadcrumb li {
+	cursor: pointer;
+}
+
+[id^=menu_of_links_] a[data-parent] {
+    position: relative !important;
+    padding-left: 30px !important;
+}
+[id^=menu_of_links_] a[data-parent] span {
+	font-size: 14px !important;
+    position: absolute !important;
+    top: 30% !important;
+    left: 10px !important;
+}

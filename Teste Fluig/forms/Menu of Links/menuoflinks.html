@@ -1,0 +1,37 @@
+<html>
+<head>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="/webdesk/vcXMLRPC.js"></script>
+	<script src="menuoflinks.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form role="form"> 
+			<div class="form-group">
+				<label for="mdp_name">Nome *</label>
+				<input type="text" name="mdp_name" id="mdp_name" class="form-control">
+			</div>
+
+			<div class="form-group">
+				<label for="mdp_link">Link</label>
+				<input type="url" name="mdp_link" id="mdp_link" class="form-control">
+			</div>
+
+			<div class="form-group">
+				<label for="mdp_origin">Origem</label>
+				<input type="hidden" name="mdp_origin" id="mdp_origin"/>
+				<select class="form-control mdp-temp-combo" name="select_origin">
+					<option class="hidden" value="">Selecione...</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="mdp_path">Path</label>
+				<input type="text" name="mdp_path" id="mdp_path" class="form-control" readonly>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
