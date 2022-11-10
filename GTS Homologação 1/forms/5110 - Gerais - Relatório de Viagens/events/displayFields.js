@@ -45,21 +45,29 @@ function displayFields(form,customHTML){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
-			
+			form.setVisibleById("divNovaDespesa", true);
+				
 		}
 	}else if(atv_atual == AJUSTA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
-			
+			form.setVisibleById("divNovaDespesa", true);
+			form.setVisibleById("divRevisao", true);	
+			form.setVisibleById("divImprimir", false);
+				
 		}
+		form.setVisibleById("divAprovacao", true);
+		
 	}else if(atv_atual == REVISA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divRevisao", true);	
 			form.setVisibleById("divAprovacao", true);
+			form.setVisibleById("divImprimir", false);
+			form.setVisibleById("divNovaDespesa", true);
 		}
 	}else if(atv_atual == FIM){
 		form.setVisibleById("divAprovacao", true);

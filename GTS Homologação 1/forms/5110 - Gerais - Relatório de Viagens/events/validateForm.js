@@ -8,9 +8,7 @@ var WKNumState = getValue('WKNumState');
     switch (parseInt(WKNumState)) {
     	//INICIAL
         case INICIO_0 : 
-        case INICIO : 
-        case ANALISA_RELATORIO:
-        case REVISA_RELATORIO:    
+        case INICIO :    
 
     		if (isEmpty("solMatSolicitante", form)) {
                 message += getMessage("Matricula do Solicitante", 1, form);
@@ -25,12 +23,8 @@ var WKNumState = getValue('WKNumState');
     		//Se for clicado em Enviar 
             if (getValue("WKCompletTask") == "true" ){
         		
-				if (isEmpty("solValorAdiantamento", form)) {
-                    message += getMessage("Valor do Adiantamento", 1, form);
-                    hasErros = true;
-                }
-                if (isEmpty("solNumColaboradores", form)) {
-                    message += getMessage("Número de Colaboradores", 1, form);
+				if (!isEmpty("solValorAdiantamento", form) & isEmpty("solMoeda", form)) {
+                    message += getMessage("Tipo de Moeda", 1, form);
                     hasErros = true;
                 }
 				if (isEmpty("solDataSaida", form)) {
@@ -40,13 +34,7 @@ var WKNumState = getValue('WKNumState');
 				if (isEmpty("solDataRetorno", form)) {
                     message += getMessage("Data de Retorno", 1, form);
                     hasErros = true;
-                }/*                
-                if ("solDataSaida" > "solDataRetorno", form) {
-                    message += getMessage("Data de Retorno", 8, form);
-                    hasErros = true;
-
-                    Number($("#solQuantidade2").val());	
-                }*/
+                } 
               
             	//Itens Despesa
             	var indexesSolTbDespesas = form.getChildrenIndexes("solTbDespesas");
@@ -95,8 +83,130 @@ var WKNumState = getValue('WKNumState');
 
     		}
 
-    	break;	
+    	break;	        
+
+        case ANALISA_RELATORIO: 
+            if (isEmpty("aprovRelatorio", form)) {	
+                message += getMessage("Aprovação Analista", 3, form);
+                hasErros = true;
+            }else if( form.getValue("aprovRelatorio") == 'reprovado' ){
+                if (isEmpty("aprovReembolsoObs", form)) {	
+                    message += getMessage("Observação", 1, form);
+                    hasErros = true;
+                }
+            }
+           //Se for clicado em Enviar 
+           if (getValue("WKCompletTask") == "true" ){ 
+          
+            //Itens Despesa
+            var indexesSolTbDespesas = form.getChildrenIndexes("solTbDespesas");
+            if(indexesSolTbDespesas.length == 0){
+                if (isMobile(form)) {
+                    message += getMessage("Tabela de itens de despesas não possui nenhum item.", 6, form);
+                }else{
+                    message += getMessage("Tabela <b>itens de despesas</b> não possui nenhum item.", 6, form);
+                }
+                hasErros = true;
+            }else{
+                for (var i = 0; i < indexesSolTbDespesas.length; i++) {
+
+                    if (isEmpty("solEstabelecimento___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Estabelecimento", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    } 
+                    if (isEmpty("solDocumento___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Número do Documento", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    }
+                     if (isEmpty("solDataDocumento___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Data do Documento", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    }                   
+                    if (isEmpty("itSolTipoPagamento___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Tipo de Pagamento", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    }
+                    if (isEmpty("itSolTipoDespesaItem___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Classificação de Despesa", 1, form, "Itens de despesa");
+                    hasErros = true;
+                       }
+                      if (isEmpty("itSolValorDespesa___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Valor da Despesa", 1, form, "Itens de despesa");
+                       hasErros = true;
+                       }
+                    if (isEmpty("itSolCentroCusto___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Centro de Custo", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    }
+                    
+                    
+                }
+            }
+
+        }
+        break;
+
+        case REVISA_RELATORIO:
+            if (isEmpty("revisaoRelatorio", form)) {	
+                message += getMessage("Revisão Gestor", 3, form);
+                hasErros = true;
+            }else if( form.getValue("revisaoRelatorio") == 'revisaoReprovado' ){
+                if (isEmpty("aprovRevisaoObs", form)) {	
+                    message += getMessage("Observação", 1, form);
+                    hasErros = true;
+                }
+            }
+            //Se for clicado em Enviar 
+           if (getValue("WKCompletTask") == "true" ){ 
+          
+            //Itens Despesa
+            var indexesSolTbDespesas = form.getChildrenIndexes("solTbDespesas");
+            if(indexesSolTbDespesas.length == 0){
+                if (isMobile(form)) {
+                    message += getMessage("Tabela de itens de despesas não possui nenhum item.", 6, form);
+                }else{
+                    message += getMessage("Tabela <b>itens de despesas</b> não possui nenhum item.", 6, form);
+                }
+                hasErros = true;
+            }else{
+                for (var i = 0; i < indexesSolTbDespesas.length; i++) {
+
+                    if (isEmpty("solEstabelecimento___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Estabelecimento", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    } 
+                    if (isEmpty("solDocumento___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Número do Documento", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    }
+                     if (isEmpty("solDataDocumento___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Data do Documento", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    }                   
+                    if (isEmpty("itSolTipoPagamento___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Tipo de Pagamento", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    }
+                    if (isEmpty("itSolTipoDespesaItem___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Classificação de Despesa", 1, form, "Itens de despesa");
+                    hasErros = true;
+                       }
+                      if (isEmpty("itSolValorDespesa___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Valor da Despesa", 1, form, "Itens de despesa");
+                       hasErros = true;
+                       }
+                    if (isEmpty("itSolCentroCusto___" + indexesSolTbDespesas[i], form)) {
+                    message += getMessage("Centro de Custo", 1, form, "Itens de despesa");
+                    hasErros = true;
+                    }
+                    
+                    
+                }
+            }
+        }
+        break;
     }
+
     if (hasErros) {
         if (isMobile(form)) throw message;
         throw "<ul style='list-style-type: disc; padding-left:90px' class='alert alert-danger'>" + message + "</ul>";

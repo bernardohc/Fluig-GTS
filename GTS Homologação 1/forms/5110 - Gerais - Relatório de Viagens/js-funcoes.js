@@ -7,22 +7,28 @@ $(document).ready(function() {
 var funcoes = (function() {
 	var loading = FLUIGC.loading(window);
 	var index = 0;
-
+	let contador = 1000;
 	return {
 		start : function() {
 			eventsFuncoes.setup();
 		},
-
-			
+	
 		/*
 		 * Formulário
 		 */
 		
 		addLinhaDespesa: function(){
-			var row = wdkAddChild('solTbDespesas');
+			const tablename = "solTbDespesas"
+			const indice = wdkAddChild(tablename);
 			//Insere calendario no formulario filho a ao criar nova linha
-			FLUIGC.calendar('.data')	    
-			funcoes.calculaDiaria();	
+			FLUIGC.calendar('.data')	
+			//Inicia as mascaras  
+			MaskEvent.init();
+			//contador
+			contador++;
+			//Atribui valor do contador ao campo codigoID
+			$(`#codigoID___${indice}`).val(contador).prop("readonly", true);
+			//tableLineCount(tablename)  
 		},
 
 		//Calcula total de despesas
@@ -43,21 +49,41 @@ var funcoes = (function() {
 			validafunctions.setMoeda("ssolTotalDespesas", 2, false , '');
 		},
 		
-		//Calcula saldo
-		calculaSaldo : function(){
-			console.log('via console');
-			
-			var solValorAdiantamento = validafunctions.getFloatValue("solValorAdiantamento");
-			var solTotalDespesas =Number($("#solTotalDespesas").val());	
-			var solSaldoTotal = 0; 
+			//Calcula saldo
+			calculaSaldo : function(){
 
-			if (solValorAdiantamento > 0) {
-				solSaldoTotal = (solValorAdiantamento -solTotalDespesas);
-			}
-			
-			$("#solSaldo").val(solSaldoTotal.toFixed(2));
-			validafunctions.setMoeda("solSaldo", 2, true , '')
-		},
+				let itSolValorDespesa = 0;
+				let itSolTipoPagamento = "";
+				let somaValoresDinheiro = 0;
+
+				$("input[name*=itSolValorDespesa___]").each(function(index){
+					var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+					
+					itSolValorDespesa = validafunctions.getFloatValue("itSolValorDespesa___"+index);
+					//Traz valor do itSolTipoPagamento filho 
+					itSolTipoPagamento = $("#itSolTipoPagamento___"+index).val();
+					
+					console.log(itSolTipoPagamento);
+					
+					//compara itSolTipoPagamento, se for dinheiro soma as depesas em dinheiro
+					if (itSolTipoPagamento == "Dinheiro" ) {
+						somaValoresDinheiro +=  itSolValorDespesa;
+					}
+				});
+
+				console.log('via console');
+				
+				var solValorAdiantamento = validafunctions.getFloatValue("solValorAdiantamento");
+				var solTotalDespesas =Number($("#solTotalDespesas").val());	
+				var solSaldoTotal = 0;
+
+				if (solValorAdiantamento > 0) {
+					solSaldoTotal = (solValorAdiantamento -somaValoresDinheiro);
+				}
+				
+				$("#solSaldo").val(solSaldoTotal.toFixed(2));
+				validafunctions.setMoeda("solSaldo", 2, true , '')
+			},
 
 		//Calcula Diaria			
 		calculaDiaria : function(){
@@ -123,11 +149,26 @@ var funcoes = (function() {
 	}
 })();
 
-//Função que habilita o uploado no formulário pai e filho
-var indice = 0; // contador para gerar um valor para cada anexo
+//Função que habilita o upload no formulário pai e filho e seta a a descrição conforme as funções
 function showCamera() {
-	indice++;
-	JSInterface.showCamera("Comprovante_" + indice); 
+
+	var valorID = 0;
+	var solEstabelecimento = 0;
+	var solDocumento = 0;
+
+	$("input[id^='codigoID___']").each(function(index, value){
+		valorID =  $(this).val();
+	});
+
+	$("input[id^='solEstabelecimento___']").each(function(index, value){
+		solEstabelecimento = $(this).val();
+	});
+
+	$("input[id^='solDocumento___']").each(function(index, value){
+		solDocumento = $(this).val();
+	});
+	
+	JSInterface.showCamera(valorID+ "_" + solEstabelecimento + "_" + solDocumento ); 
 			// alterei o css para gerar uma confirmação visual após o click
 	$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success"); 
 }

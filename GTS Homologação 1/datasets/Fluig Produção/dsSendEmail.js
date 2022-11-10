@@ -49,18 +49,39 @@ function createDataset(fields, constraints, sortFields) {
 		//Dados de conexão do e-mail
 	    var username = "naoresponda@gtsdobrasil.com.br";
 	    var nameuser = 'GTS do Brasil';
-	    var password = "gtsdobrasil2021";
+	    var password = "irDFfjh9pg";
 	    var host = "mail.atpmail.com.br";
 	    var port = "587";
+		
+//	    var username = "homologacaodesistemas@gmail.com";
+//	    var nameuser = 'GTS do Brasil';
+//	    var password = "twmuunigbtwimgkx";
+//	    var host = "smtp.gmail.com";
+//	    var port = "587";
 	    
 	    //Define propriedades
 	    var props = new java.util.Properties();
 	    props.put("mail.transport.protocol", "smtp");
 	    props.put("mail.smtp.auth", "true");
-	    props.put("mail.smtp.starttls.enable", "false");
+		props.put("mail.smtp.user", username);
+		props.put("mail.smtp.password", password);
+	    props.put("mail.smtp.starttls.enable", "true");
 	    props.put("mail.smtp.ssl.trust", "mail.atpmail.com.br");
 	    props.put("mail.smtp.host", host);
 	    props.put("mail.smtp.port", port);
+	    
+   
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.host", host);
+//        props.put("mail.smtp.port", port);
+//        props.put("mail.smtp.starttls.enable", "true");
+        
+//	    props.put("mail.transport.protocol", "smtp");
+//	    props.put("mail.smtp.auth", "true");
+//	    props.put("mail.smtp.starttls.enable", "true");
+//	    props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+//	    props.put("mail.smtp.host", host);
+//	    props.put("mail.smtp.port", port);
 	
 	    var session = javax.mail.Session.getDefaultInstance(props);
 	    var message = new javax.mail.internet.MimeMessage(session);
@@ -69,7 +90,8 @@ function createDataset(fields, constraints, sortFields) {
 	    
 	    var transport = session.getTransport("smtp");
 	    //Set usuário From
-	    message.setFrom(new javax.mail.internet.InternetAddress(username, nameuser));
+//	    message.setFrom(new javax.mail.internet.InternetAddress(username, nameuser));
+	    message.setFrom(new javax.mail.internet.InternetAddress("naoresponda@gtsdobrasil.com.br", nameuser));
 	    //Set Assunto
 	    message.setSubject(assunto);
 	    //Adiciona os usuários 'para'
@@ -149,6 +171,7 @@ function createDataset(fields, constraints, sortFields) {
 	    message.setContent(multipart);
 	    
 	    //Realiza conexão e envia mensagem
+//	    transport.connect(host, port, username, password);
 	    transport.connect(host, port, username, password);
 	    transport.sendMessage(message, message.getAllRecipients());
 

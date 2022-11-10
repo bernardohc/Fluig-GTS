@@ -54,10 +54,11 @@ function displayFields(form,customHTML){
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divNovaDespesa", true);
-			form.setVisibleById("divAprovacao", true);	
-			form.setVisibleById("divRevisao", true);
+			form.setVisibleById("divRevisao", true);	
 			form.setVisibleById("divImprimir", false);			
 		}
+	
+		
 	}else if(atv_atual == REVISA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho

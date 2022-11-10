@@ -27,11 +27,11 @@ function enableFields(form){
 		// Solicitação
 		form.setEnabled("solMatSolicitante", false);
 		form.setEnabled("solNomeSolicitante", false);
+		form.setEnabled("itSolObsDespesaItem", false);
 		form.setEnabled("solSaldo", false);
-		form.setEnabled("aprovRelatorioAprovado", false);
-		form.setEnabled("aprovRelatorioReprovado", false);
 		form.setEnabled("aprovRelatorio", false);
 		form.setEnabled("aprovReembolsoObs", false);
+		form.setEnabled("itSolObsDespesaItem", true);
 		form.setEnabled("revisaoRelatorio", false);
 		form.setEnabled("aprovRevisaoObs", false);
 	}
