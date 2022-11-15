@@ -1,0 +1,192 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-beforeSendValidate.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	
+	<div class="col-sm-12">
+	    <div class="row banner-header">
+	        <h1><font color="000" ><strong>Abastecimento</strong></font></h1>
+	    </div>
+	</div>
+	
+	<input type="hidden" name="solicitante" id="solicitante" >
+	<input type="hidden" name="nomeSolicitante" id="nomeSolicitante" >
+	<input type="hidden" name="numFluig" id="numFluig" >
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+	
+	<div id="divDadosGerais" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Dados Gerais</strong></font></h5>
+		    </div>
+		</div>
+    	<div class="col-md-12">
+    		<div class="row">
+    			<div class="form-group col-md-2 col-md-offset-1 col-xs-6" align="left">
+					<label for="geraisCodMotorista">Cod. Motorista*</label>
+					<input type="text" name="geraisCodMotorista" id="geraisCodMotorista" class="form-control"  readonly  />
+        		</div>
+				<div class="form-group col-md-2 col-xs-6" align="left">
+					<label for="geraisCPFMotorista">CPF Motorista*</label>
+					<input type="text" name="geraisCPFMotorista" id="geraisCPFMotorista" class="form-control" maxlength="14" readonly
+								data-protection="geraisCPFMotorista" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o cpf do motorista no abastecimento" />
+        		</div>
+				<div class="form-group col-md-4 col-xs-12" align="left">
+					<label for="geraisNomeMotorista">Nome Motorista*</label>
+					<input type="text" name="geraisNomeMotorista" id="geraisNomeMotorista" class="form-control" maxlength="150" readonly
+								data-protection="geraisNomeMotorista" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o nome do motorista no abastecimento" />
+        		</div>
+    		</div>
+			<div class="row">
+				<div class="form-group col-md-2 col-md-offset-1 col-xs-12" align="left">
+					<label for="geraisCarimboDataHora">Carimbo de Data/Hora*</label>
+					<input type="text" name="geraisCarimboDataHora" id="geraisCarimboDataHora" class="form-control" maxlength="16" />
+        		</div>    
+        		<div class="form-group col-md-2 col-xs-12" align="left">
+					<label for="geraisPlaca">Placa*</label>
+					<input type="text" name="geraisPlaca" id="geraisPlaca" class="form-control"  maxlength="7"  />
+        		</div>
+        		<div class="form-group col-md-4 col-xs-12" align="left">
+					<label for="geraisVeiculo">Veículo*</label>
+					<input type="text" name="geraisVeiculo" id="geraisVeiculo" class="form-control" readonly maxlength="50"   />
+        		</div>
+       		</div>
+		</div>
+	</div>
+	
+	<div id="divAbastecimento" >
+		<div class="col-md-12">
+		    <div class="row sub-titulo">
+		        <h5><font color="000"><strong >Abastecimento</strong></font></h5>
+		    </div>
+		</div>
+    	<div class="col-md-12">
+    		<div id="divCodAbastecimento" class="row" style="display:none;">
+				<div class="form-group col-md-2 col-md-offset-1 col-xs-12" align="left">
+					<label for="abastCodAbastecimento">Cod. Abastecimento</label>
+					<input type="text" name="abastCodAbastecimento" id="abastCodAbastecimento" class="form-control" readonly/>
+					<input type="text" name="abastRetornoIntegracao" id="abastRetornoIntegracao" class="form-control" readonly/>
+        		</div>
+       		</div>
+			<div class="row">
+				<div class="form-group col-md-2 col-md-offset-1 col-xs-8" align="left">
+					<label for="abastCNPJPosto">CNPJ do Posto*</label>
+					<input type="text" name="abastCNPJPosto" id="abastCNPJPosto" class="form-control" />
+        		</div>    
+        		<div class="form-group col-md-4 col-xs-12" align="left">
+					<label for="abastNomePosto">Nome do Posto*</label>
+					<input type="text" name="abastNomePosto" id="abastNomePosto" class="form-control"  readonly maxlength="100"/>
+        		</div>
+        	</div>
+        	<div class="row">
+				<div class="form-group col-md-2 col-md-offset-1 col-xs-8" align="left">
+					<label for="abastKmAbastecimento">Km Abastecimento*</label>
+					<input type="text" name="abastKmAbastecimento" id="abastKmAbastecimento" class="form-control" maxlength="15" onKeyPress="validafunctions.setNumero(this.id, 0, false)"/>
+        		</div>    
+				<div class="form-group col-md-2 col-xs-12" align="left" >
+        			<label for="abastTpCombustivel">Tipo de Combustível*</label>
+					<select name="abastTpCombustivel" id="abastTpCombustivel" class="form-control" >
+			        	<option value=""></option>
+			      	</select>
+        		</div>
+				<div class="form-group col-md-2 col-xs-6 " align="left">
+					<label for="abastQtdLitros">Qtd. Litros*</label>
+					<input type="text" name="abastQtdLitros" id="abastQtdLitros" class="form-control" maxlength="15" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+        		</div>
+				<div class="form-group col-md-2 col-xs-6 " align="left">
+					<label for="abastValorLitro">Valor Litro*</label>
+					<input type="text" name="abastValorLitro" id="abastValorLitro" class="form-control" maxlength="15" onKeyPress="validafunctions.setMoeda(this.id, 3, false , '')"/>
+        		</div>
+				<div class="form-group col-md-2 col-xs-12 " align="left">
+					<label for="abastValorTotal">Valor Total*</label>
+					<input type="text" name="abastValorTotal" id="abastValorTotal" class="form-control" maxlength="15" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+        		</div>
+        	</div>
+        	<div class="row">
+    			<div class="form-group col-md-2 col-md-offset-1 col-xs-12" align="left" >
+        			<label for="abastFormaPagamento">Forma de Pagamento*</label>
+					<select name="abastFormaPagamento" id="abastFormaPagamento" class="form-control" >
+			        	<option value=""></option>
+			        	<option value="Assinado NF (Boleto)">Assinado NF (Boleto)</option>
+			        	<option value="Cartão Corporativo">Cartão Corporativo</option>
+			        	<option value="Dinheiro">Dinheiro</option>
+			        	<option value="Rede Frota (Caminhões)">Rede Frota (Caminhões)</option>
+			        	<option value="Não se aplica">Não se aplica</option>
+			      	</select>
+        		</div>
+    			<div class="form-group col-md-2 col-xs-12" align="left">
+					<label for="abastSetor">Setor*</label>
+					<input type="text" name="abastSetor" id="abastSetor" class="form-control"  maxlength="30"/>
+        		</div>    	    
+			</div>
+			<div class="row">
+    			<div class="form-group col-md-2 col-md-offset-1 col-xs-12" align="left">
+					<label for="abastSetor">Nota Fiscal*</label>
+					<input type="button" class="btn btn-primary btn-block" value="Anexar a Nota Fiscal" onclick="showCamera('Nota Fiscal');"/>
+        		</div>    	    
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-md-12" >
+		<div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-md-12" >
+		<div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-md-12" >
+		<div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-md-12" >
+		<div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-md-12" >
+		<div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+</form>
+</div>
+</body>
+
+<script language="javascript">
+
+//Desabilite o evento Pull to refresh do componente nativo
+//Há uma maneira bem simples para desabilitar o evento de Pull to refresh responsável por atualizar os dados do formulário. 
+//Para isso é necessário inserir o método disablePullToRefresh:
+    function disablePullToRefresh(){
+        return true;
+    }
+</script>
+</html>

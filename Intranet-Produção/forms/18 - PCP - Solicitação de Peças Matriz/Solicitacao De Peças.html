@@ -1,0 +1,175 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="fluigFileUpload.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">	
+	<!-- Campos para usos internos  -->
+	<input type="hidden" name="numFluig" id="numFluig" >
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+	
+
+	<div class="col-sm-12">
+	    <div class="row banner-header">
+	        <font color="000" ><h1><strong id="cabecalho">Solicitação de Peças Para Matriz</strong></h1></font>
+	    </div>
+	</div>
+	<div id="divSolicitacao" class="col-md-12"  >
+		<div class="row">
+	        <div class="col-md-12" style="text-align:left">
+	       		<h4 ><strong>Matriz solicita para Filial</strong></h4>
+	       		<hr />  
+	        </div>
+	    </div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1" align="left">
+						<label for="processoId">Número da Solicitação</label>
+						<input type="text" name="processoId" id="processoId" class="form-control" readonly/>
+		            </div>		            
+					<!--  https://tdn.totvs.com/pages/releaseview.action?pageId=75270483-->
+					<div class="col-md-3 col-md-offset-5" align="left">
+						<label for="solNomeSolicitante">Nome do Solicitante</label>
+						<input type="text" name="solNomeSolicitante" id="solNomeSolicitante" class="form-control" data-protection="solNomeSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante do reembolso" readonly/>
+		            </div>  
+	     		</div>
+				 <div class="row">
+					<div class="col-md-12" align="left">
+					<table class="table table-condensed table-nonfluid table-striped"  id="solTbMaquinas" tablename="solTbMaquinas" noaddbutton="true" customFnDelete="removeDespesa(this)">
+						<thead>
+							<tr>	
+								<th class="col-md-2">Produto</th>
+								<th class="col-md-4">Descrição</th>		
+								<th class="col-md-1">Quantidade</th>		
+								<th class="col-md-1">Tipo</th>
+								<th class="col-md-2">Liberação PCP</th>
+								<th class="col-md-1">Qtde. Liberado</th>
+								<th class="col-md-1">Qtde. Almox</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr detail="true" detailname="solTbMaquinas" >
+								<td>
+									<input type="text" id="solProduto"  name="solProduto" class="form-control inputItSolProduto"/>
+								</td>
+								<td>
+									<input type="text" id="solDescAtual"  name="solDescAtual" class="form-control" readonly/>
+								</td>
+								<td>	
+									<input type="text" name="solQuantidade" id="solQuantidade" class="form-control" onKeyPress="validafunctions.setNumeroNoFormat(this.id, 0, false , '')"/>
+								</td>
+								<td >
+									<input type="text" id="solTipo"  name="solTipo" class="form-control"/>
+								</td>
+								<td>
+									<select name="solLiberacao" id="solLiberacao" class="form-control">
+										<option value=""> </option>
+										<option value="liberado">Liberado</option>
+										<option value="parcial">Parcial</option>
+										<option value="naoLiberado">Não Liberado</option>
+									  </select>
+								</td>
+								<td>	
+									<input type="text" name="solQtdeLiberada" id="solQtdeLiberada" class="form-control" onKeyPress="validafunctions.setNumeroNoFormat(this.id, 0, false , '')"/>
+								</td>
+								<td>	
+									<input type="text" name="solQtdeAlmox" id="solQtdeAlmox" class="form-control" onKeyPress="validafunctions.setNumeroNoFormat(this.id, 0, false , '')"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-5" align="left">
+						<div id="divNovaMaquina" style="display:none;">
+			            	<br>
+							<button type="button" class="btn btn-primary addMaquina" id="addMaquina" style="min-width: 130px;">Adicionar Peças <i class="fluigicon fluigicon-plus-circle icon-sm"></i></button>
+						</div>			
+					</div>
+				</div>
+				<br>
+				<!-- Inicio div aprovção, editavel pelo analista-->
+				<div id="divAprovacao" style="display:none;"  class="col-md-12">
+					<div class="col-md-12"  style="text-align:left">
+						<h4 ><strong>Observação PCP</strong></h4>
+						<hr />  
+					</div>
+					<div class="row">
+						<div  class="col-md-10 col-md-offset-1">
+							<div class="col-md-4 col-md-offset-2" align="left">
+								<label for="solAprovacao">Aprovação Solicitação de Peças</label>
+								<div class="radio input-group">
+									<div class="custom-radio custom-radio-inline custom-radio-primary">
+										<input type="radio" name="solAprovacao" value="aprovado" id="solAprovacaoAprovado" />
+										<label for="solAprovacaoAprovado">Solicitação Aprovada</label>
+									</div>
+									<div class="custom-radio custom-radio-inline custom-radio-primary">
+										<input type="radio" name="solAprovacao" value="reprovado" id="solAprovacaoNaoAprovado" />
+										<label for="solAprovacaoNaoAprovado">Solicitação Reprovada</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4" align="left">
+								<label for="obsAlteracao">Observação*</label>
+								<textarea rows="1" cols="6" name="obsAlteracao" id="obsAlteracao" class="form-control " ></textarea>
+							</div>
+							<br>
+						</div> 
+					</div> <!-- Fim div aprovção, editavel pelo analista -->
+				<!--Separação Almox  -->
+				<div id="divSeparacaoAlmox" style="display:none;"  class="col-md-12">
+					<div class="row">
+						<div class="col-md-12" style="text-align:left">
+							   <h4 ><strong>Separação Almox </strong></h4>
+							   <hr/>  
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1" align="left">
+							<div class="col-md-4 col-md-offset-2" align="left">
+								<label for="aprovContagem">Separação</label>
+								<div class="radio input-group">
+									<div class="custom-radio custom-radio-inline custom-radio-primary">
+										<input type="radio" name="aprovContagem" value="contagemFinalizada" id="aprovContagemFinalizada" />
+										<label for="aprovContagemFinalizada">Separação Finalizada</label>
+									</div>
+									<div class="custom-radio custom-radio-inline custom-radio-primary">
+										<input type="radio" name="aprovContagem" value="contagemNãoFinalizada" id="aprovContagemNaoFinalizada" />
+										<label for="aprovContagemNaoFinalizada">Saldo Indisponível</label>
+									</div> 						
+								</div>
+							</div>
+							<div class="col-md-4" align="left">
+								<label for="obslmox">Observação*</label>
+								<textarea rows="1" cols="6" name="obslmox" id="obslmox" class="form-control " ></textarea>
+							</div>
+					   </div> 
+					</div>
+				</div> 
+	     	</div>		
+	    </div>
+	</div>
+</form>
+</div>
+</body>
+</html>
