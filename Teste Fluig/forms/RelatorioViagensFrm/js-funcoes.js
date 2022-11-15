@@ -135,14 +135,6 @@ var funcoes = (function() {
 			var valorDiaria = somaValores;
 		}
 		
-		
-		
-	//	if (solNumColaboradores > 1 ) {
-	//		var valorDiaria = (somaValores / difData) /solNumColaboradores;
-	//	}else{
-	//		var valorDiaria = (somaValores / difData);
-	//	}
-
 		$("#solValorDiaria").val(valorDiaria.toFixed(2));
 		validafunctions.setMoeda("solValorDiaria", 2, false , '');
 		},

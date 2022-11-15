@@ -1086,6 +1086,185 @@
       </void>
      </object>
     </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.DocumentDto">
+      <void property="UUID">
+       <string>2B72D160-CCC2-4868-9887-AF4003004142</string>
+      </void>
+      <void property="accessCount">
+       <int>0</int>
+      </void>
+      <void property="additionalComments">
+       <string></string>
+      </void>
+      <void property="colleagueId">
+       <string>admin</string>
+      </void>
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="createDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>15</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>11</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2022</int>
+        </void>
+       </object>
+      </void>
+      <void property="datasetName">
+       <string>dsFormRelatorioDeViagens</string>
+      </void>
+      <void property="documentDescription">
+       <string>Contas a Pagar - Relatório de Viagens</string>
+      </void>
+      <void property="documentId">
+       <int>22</int>
+      </void>
+      <void property="documentPropertyNumber">
+       <int>22</int>
+      </void>
+      <void property="documentPropertyVersion">
+       <int>1000</int>
+      </void>
+      <void property="documentType">
+       <string>4</string>
+      </void>
+      <void property="documentTypeId">
+       <string></string>
+      </void>
+      <void property="expirationDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>15</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>11</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2022</int>
+        </void>
+       </object>
+      </void>
+      <void property="iconId">
+       <int>0</int>
+      </void>
+      <void property="inheritSecurity">
+       <boolean>true</boolean>
+      </void>
+      <void property="keyWord">
+       <string></string>
+      </void>
+      <void property="languageId">
+       <string></string>
+      </void>
+      <void property="lastModifiedDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>15</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>11</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2022</int>
+        </void>
+       </object>
+      </void>
+      <void property="parentDocumentId">
+       <int>21</int>
+      </void>
+      <void property="phisicalFile">
+       <string>RelatorioViagensFrm.html</string>
+      </void>
+      <void property="phisicalFileSize">
+       <float>0.09285641</float>
+      </void>
+      <void property="publisherId">
+       <string>admin</string>
+      </void>
+      <void property="relatedFiles">
+       <string>RelatorioViagensFrm.html css-custom.css js-atividades.js js-funcoes.js js-imprimir.js js-jquery_mask.js js-priceformat.js js-util.js js-validafunctions.js</string>
+      </void>
+      <void property="topicId">
+       <int>1</int>
+      </void>
+      <void property="validationStartDate">
+       <object class="com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl">
+        <void property="day">
+         <int>15</int>
+        </void>
+        <void property="hour">
+         <int>0</int>
+        </void>
+        <void property="minute">
+         <int>0</int>
+        </void>
+        <void property="month">
+         <int>11</int>
+        </void>
+        <void property="second">
+         <int>0</int>
+        </void>
+        <void property="timezone">
+         <int>-180</int>
+        </void>
+        <void property="year">
+         <int>2022</int>
+        </void>
+       </object>
+      </void>
+      <void property="version">
+       <int>1000</int>
+      </void>
+      <void property="versionDescription">
+       <string></string>
+      </void>
+      <void property="volumeId">
+       <string>Default</string>
+      </void>
+     </object>
+    </void>
    </object>
   </void>
   <void method="put">
@@ -1128,58 +1307,21 @@
    </array>
   </void>
   <void method="put">
-   <string>camposFormulario, documentoId = 18</string>
-   <array class="java.lang.String" length="15">
-    <void index="0">
-     <string>aprovContagem</string>
-    </void>
-    <void index="1">
-     <string>dataAbertura</string>
-    </void>
-    <void index="2">
-     <string>numFluig</string>
-    </void>
-    <void index="3">
-     <string>obsAlteracao</string>
-    </void>
-    <void index="4">
-     <string>obslmox</string>
-    </void>
-    <void index="5">
-     <string>processoId</string>
-    </void>
-    <void index="6">
-     <string>solAprovacao</string>
-    </void>
-    <void index="7">
-     <string>solDescAtual</string>
-    </void>
-    <void index="8">
-     <string>solLiberacao</string>
-    </void>
-    <void index="9">
-     <string>solNomeSolicitante</string>
-    </void>
-    <void index="10">
-     <string>solProduto</string>
-    </void>
-    <void index="11">
-     <string>solQtdeAlmox</string>
-    </void>
-    <void index="12">
-     <string>solQtdeLiberada</string>
-    </void>
-    <void index="13">
-     <string>solQuantidade</string>
-    </void>
-    <void index="14">
-     <string>solTipo</string>
-    </void>
-   </array>
-  </void>
-  <void method="put">
    <string>processosServidor</string>
    <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>Contas a Pagar - Relatorio de Viagens</string>
+      </void>
+      <void property="processId">
+       <string>Contas-a-Pagar-Relatorio-de-Viagens</string>
+      </void>
+     </object>
+    </void>
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
       <void property="companyId">
@@ -1546,6 +1688,58 @@
       </void>
       <void property="roleId">
        <string>000022</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>Gestor de Processo - Contas a Pagar - Relatório de Viagens</string>
+      </void>
+      <void property="roleId">
+       <string>000023</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>Solicitante - Contas a Pagar - Relatório de Viagens</string>
+      </void>
+      <void property="roleId">
+       <string>000024</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>Análisa Relátorio - Contas a Pagar - Relatório de Viagens</string>
+      </void>
+      <void property="roleId">
+       <string>000025</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>Revisa Relatório - Contas a Pagar - Relatório de Viagens</string>
+      </void>
+      <void property="roleId">
+       <string>000026</string>
       </void>
      </object>
     </void>
