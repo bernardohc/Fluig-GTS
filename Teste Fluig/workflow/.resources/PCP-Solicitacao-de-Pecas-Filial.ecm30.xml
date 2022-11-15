@@ -2,10 +2,10 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+      <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
     </processDefinitionPK>
-    <processDescription>PCP - Solicitação de Peças Matriz</processDescription>
-    <instruction>Solicita Peças da Matriz </instruction>
+    <processDescription>PCP - Solicitação de Peças Filial</processDescription>
+    <instruction>Solicita08 - Solicita Peças da Matriz para Filial</instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
@@ -28,11 +28,11 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>PCP - Solicitação de Peças Matriz</processId>
-      <version>1</version>
+      <processId>PCP - Solicitação de Peças Filial</processId>
+      <version>2</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>18</formId>
+    <formId>17</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -50,7 +50,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -61,7 +61,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000017&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000020&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -100,7 +100,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
@@ -112,7 +112,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000018&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000021&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -152,7 +152,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>12</sequence>
       </processStatePK>
@@ -164,7 +164,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Pool Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000019&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000022&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -204,7 +204,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>8</sequence>
       </processStatePK>
@@ -229,7 +229,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>14</sequence>
       </processStatePK>
@@ -278,9 +278,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>&#xd;
@@ -291,9 +291,9 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;reprovado&quot;</condition>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>2</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>&#xd;
@@ -306,7 +306,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <linkSequence>6</linkSequence>
       </processLinkPK>
@@ -323,7 +323,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <linkSequence>9</linkSequence>
       </processLinkPK>
@@ -340,7 +340,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <linkSequence>13</linkSequence>
       </processLinkPK>
@@ -357,7 +357,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <linkSequence>15</linkSequence>
       </processLinkPK>
@@ -374,7 +374,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <linkSequence>16</linkSequence>
       </processLinkPK>
@@ -404,7 +404,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
@@ -420,7 +420,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
@@ -436,7 +436,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>3</sequence>
       </swimLanePK>
@@ -452,7 +452,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
         <version>1</version>
         <sequence>4</sequence>
       </swimLanePK>
@@ -464,8 +464,8 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
-        <version>1</version>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
+        <version>2</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -475,8 +475,8 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>PCP-Solicitacao-de-Pecas-Matriz</processId>
-        <version>1</version>
+        <processId>PCP-Solicitacao-de-Pecas-Filial</processId>
+        <version>2</version>
         <linkSequence>16</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
