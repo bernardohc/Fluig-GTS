@@ -24,11 +24,26 @@ var funcoes = (function() {
 			FLUIGC.calendar('.data')	
 			//Inicia as mascaras  
 			MaskEvent.init();
-			//contador
-			contador++;
-			//Atribui valor do contador ao campo codigoID
-			$(`#codigoID___${indice}`).val(contador).prop("readonly", true);
-			//tableLineCount(tablename)  
+			
+
+			$('[name^="codigoID___"'); //trará todos os campos filhos deste formulário. 
+
+			for(var i = 0; i < $('[name^="codigoID___"').length; i++){
+
+			//Aqui percorrerá todos os itens.
+
+			//Busca o nome do campo pra facilitar a identificação
+			var nomeCampo = $('[name^="codigoID___"')[i].name;
+
+			//Busca o separador do indice, após encontrar, como posiciona no início, pulamos 3 posições e buscamos o restante.
+
+			var indiceFilho = nomeCampo.substr(nomeCampo.indexOf("___")+3);
+			
+			index = parseInt(contador) + parseInt(indiceFilho);
+
+			$(`#codigoID___${indice}`).val(index).prop("readonly", true);
+			}
+			
 		},
 
 		//Calcula total de despesas
@@ -161,8 +176,9 @@ function showCamera() {
 	});
 	
 	JSInterface.showCamera(valorID+ "_" + solEstabelecimento + "_" + solDocumento ); 
-			// alterei o css para gerar uma confirmação visual após o click
-	$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success"); 
+			// alterei o css para gerar uma confirmação visual após o click	
+	//$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
+
 }
 
 //Aqui colocar os gatilhos
