@@ -234,7 +234,7 @@ function imprimeRelatorio() {
    
         
         var WindowObject = window.open( "_blank", "width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes,titlebar=yes");
-        WindowObject.document.writeln();
+        WindowObject.document.writeln(HTML);
         WindowObject.document.close();
         WindowObject.focus();
         WindowObject.print();

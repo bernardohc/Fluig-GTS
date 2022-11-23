@@ -33,8 +33,6 @@ function displayFields(form,customHTML){
 			}
 		}
 		
-		form.setVisibleById("divNovaDespesa", true);
-		
 	}else if(atv_atual == INICIO){
 		if(form.getFormMode() == 'MOD'){
 			form.setVisibleById("divNovaDespesa", true);

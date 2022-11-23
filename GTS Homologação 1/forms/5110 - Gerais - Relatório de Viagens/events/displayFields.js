@@ -55,10 +55,9 @@ function displayFields(form,customHTML){
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divNovaDespesa", true);
 			form.setVisibleById("divRevisao", true);	
-			form.setVisibleById("divImprimir", false);
-				
+			form.setVisibleById("divImprimir", false);			
 		}
-		form.setVisibleById("divAprovacao", true);
+	
 		
 	}else if(atv_atual == REVISA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){

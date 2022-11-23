@@ -6,7 +6,7 @@ $(document).ready(function() {
 //Aqui cria as funcioes
 var funcoes = (function() {
 	var loading = FLUIGC.loading(window);
-	var index = 0;
+	var indiceId = 0;
 	let contador = 1000;
 	return {
 		start : function() {
@@ -39,9 +39,9 @@ var funcoes = (function() {
 
 			var indiceFilho = nomeCampo.substr(nomeCampo.indexOf("___")+3);
 			
-			index = parseInt(contador) + parseInt(indiceFilho);
+			indiceId = parseInt(contador) + parseInt(indiceFilho);
 
-			$(`#codigoID___${indice}`).val(index).prop("readonly", true);
+			$(`#codigoID___${indice}`).val(indiceId).prop("readonly", true);
 			}
 			
 		},
@@ -178,8 +178,26 @@ function showCamera() {
 	JSInterface.showCamera(valorID+ "_" + solEstabelecimento + "_" + solDocumento ); 
 			// alterei o css para gerar uma confirmação visual após o click	
 	//$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
+	
+	$('[name^="inputAnexo___"'); //isso lhe trará todos os campos filhos deste formulário. Após isso, você por implementar um for, podendo ser um foreach.
 
-}
+	for(var i = 0; i < $('[name^="inputAnexo___"').length; i++){
+
+	//Aqui percorrerá todos os itens.
+
+	//Busca o nome do campo pra facilitar a identificação
+	var nomeCampo = $('[name^="inputAnexo___"')[i].name;
+
+	//Busca o separador do indice, após encontrar, como posiciona no início, pulamos 3 posições e buscamos o restante.
+
+	var indice = nomeCampo.substr(nomeCampo.indexOf("___")+3);
+	$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
+	$("#itSolNomeAnexo___" + indice).val(valorID+ "_" + solEstabelecimento + "_" + solDocumento);
+	$("#itSolCentroCusto___" + indice).val(valorID+ "_" + solEstabelecimento + "_" + solDocumento);
+	}
+	
+
+}	
 
 //Aqui colocar os gatilhos
 var eventsFuncoes = (function() {

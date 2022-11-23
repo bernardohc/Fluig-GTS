@@ -29,5 +29,10 @@ function enableFields(form){
 		form.setEnabled("solNomeSolicitante", false);
 		form.setEnabled("itSolObsDespesaItem", false);
 		form.setEnabled("solSaldo", false);
+		form.setEnabled("aprovRelatorio", false);
+		form.setEnabled("aprovReembolsoObs", false);
+		form.setEnabled("itSolObsDespesaItem", true);
+		form.setEnabled("revisaoRelatorio", false);
+		form.setEnabled("aprovRevisaoObs", false);
 	}
 }
