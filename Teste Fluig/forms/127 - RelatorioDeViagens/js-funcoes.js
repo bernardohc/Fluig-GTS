@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function() {wdkAddChild
 	setTimeout(function() {
 		funcoes.start();
 	}, 100)	
@@ -6,7 +6,7 @@ $(document).ready(function() {
 //Aqui cria as funcioes
 var funcoes = (function() {
 	var loading = FLUIGC.loading(window);
-	var indiceId = 0;
+	var index = 0;
 	let contador = 1000;
 	return {
 		start : function() {
@@ -39,9 +39,9 @@ var funcoes = (function() {
 
 			var indiceFilho = nomeCampo.substr(nomeCampo.indexOf("___")+3);
 			
-			indiceId = parseInt(contador) + parseInt(indiceFilho);
+			index = parseInt(contador) + parseInt(indiceFilho);
 
-			$(`#codigoID___${indice}`).val(indiceId).prop("readonly", true);
+			$(`#codigoID___${indice}`).val(index).prop("readonly", true);
 			}
 			
 		},
@@ -175,7 +175,7 @@ function showCamera() {
 		solDocumento = $(this).val();
 	});
 	
-	JSInterface.showCamera(valorID+ "_" + solEstabelecimento + "_" + solDocumento ); 
+	JSInterface.showCamera(valorID+ "_" + solEstabelecimento + "_" + solDocumento); 
 			// alterei o css para gerar uma confirmação visual após o click	
 	//$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
 	
@@ -191,13 +191,12 @@ function showCamera() {
 	//Busca o separador do indice, após encontrar, como posiciona no início, pulamos 3 posições e buscamos o restante.
 
 	var indice = nomeCampo.substr(nomeCampo.indexOf("___")+3);
-	$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
-	$("#itSolNomeAnexo___" + indice).val(valorID+ "_" + solEstabelecimento + "_" + solDocumento);
-	$("#itSolCentroCusto___" + indice).val(valorID+ "_" + solEstabelecimento + "_" + solDocumento);
-	}
 	
-
-}	
+	$("#nomeAnexo___"+indice).val(valorID+ "_" + solEstabelecimento + "_" + solDocumento);
+	//$("#inputAnexo___" + indice).prop("disabled", true);
+	//$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
+	}
+}
 
 //Aqui colocar os gatilhos
 var eventsFuncoes = (function() {

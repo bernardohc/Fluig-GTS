@@ -76,6 +76,11 @@ var WKNumState = getValue('WKNumState');
 						message += getMessage("Centro de Custo", 1, form, "Itens de despesa");
 						hasErros = true;
 						}
+
+                        if (isEmpty("nomeAnexo___" + indexesSolTbDespesas[i], form)) {
+                            message += getMessage("Anexo", 1, form, "Itens de despesa");
+                            hasErros = true;
+                        }
                         
             	        
             	    }

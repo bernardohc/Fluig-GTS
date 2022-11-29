@@ -13,7 +13,7 @@ function displayFields(form,customHTML){
 	 */
 	
 	outraDespesa(form,customHTML);
-	
+
 	if (atv_atual == INICIO_0){
 		
 		form.setValue("solMatSolicitante",  usuarioCorrente.getCode() );
@@ -33,11 +33,13 @@ function displayFields(form,customHTML){
 			}
 		}
 		
+		form.setVisibleById("divNovaDespesa", true);
+		
 	}else if(atv_atual == INICIO){
 		if(form.getFormMode() == 'MOD'){
-			form.setVisibleById("divNovaDespesa", true);
-		}
-		
+			form.setVisibleById("divNovaDespesa", true);	
+		}	
+
 	}else if(atv_atual == ANALISA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
@@ -78,7 +80,5 @@ function outraDespesa(form,customHTML){
 	
 	if(solTipoDespesa == "Outro"){
 		form.setVisibleById("divOutraDespesa", true);
-	}
-	
+	}	
 }
-	
