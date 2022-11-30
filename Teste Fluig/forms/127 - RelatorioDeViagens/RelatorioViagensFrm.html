@@ -26,6 +26,7 @@
 	<!-- Campos para usos internos  -->
 	<input type="hidden" name="numFluig" id="numFluig" >
 	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+	<input type="hidden" name="grupoAnalisaRelatorio" id="grupoAnalisaRelatorio" >
 	
 	<div class="col-sm-12">
 	    <div class="row banner-header">
@@ -63,24 +64,36 @@
 						<label for="processoId">ID</label>
 						<input type="text" id="processoId"  name="processoId" class="form-control" readonly/>
 					</div>
+					<div  class="col-md-2" align="left">
+						<label for="setor">Setor</label>
+						<select name="setor" id="setor" class="form-control">
+							<option value=""></option>
+							<option value="Motorista">Motorista</option>
+							<option value="Técnico">Técnico</option>
+							<option value="Outro">Outro</option>
+						</select>
+					</div>
+					
 					<div class="col-md-2" align="left">
 						<label for="solValorAdiantamento">Valor Adiantamento</label>
 						<input type="text" id="solValorAdiantamento"  name="solValorAdiantamento" class="form-control" onkeyup="validafunctions.setMoeda(this.id, 2, false , '')"/>
 					</div>
-					<div class="col-md-2" align="left" >
-						<label for="solMoeda">Moeda</label>
-						<div class="radio input-group">
-							<div class="custom-radio custom-radio-inline custom-radio-primary">
-								<input type="radio" name="solMoeda" value="real" id="solMoedaReal" />
-								<label for="solMoedaReal">Real</label>
+					
+					
+				   <div class="col-md-9  col-md-offset-2" align="left">
+				   		<div class="col-md-3" align="left" >
+							<label for="solMoeda">Moeda</label>
+							<div class="radio input-group">
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="solMoeda" value="real" id="solMoedaReal" />
+									<label for="solMoedaReal">Real</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="solMoeda" value="estrangeira" id="solMoedaReprovadoEstrangeira" />
+									<label for="solMoedaReprovadoEstrangeira">Moeda Estrangeira</label>
+								</div>
 							</div>
-							<div class="custom-radio custom-radio-inline custom-radio-primary">
-								<input type="radio" name="solMoeda" value="estrangeira" id="solMoedaReprovadoEstrangeira" />
-								<label for="solMoedaReprovadoEstrangeira">Moeda Estrangeira</label>
-							</div>
-						</div>
-				   </div>
-				   <div class="col-md-8  col-md-offset-3" align="left">
+					   </div>
 						<div class="col-md-3" align="left">
 							<label for="solDataSaida">Data de Saída</label>
 							<div class="input-group">
@@ -99,14 +112,14 @@
 								</span>
 							</div>
 						</div>
-						<div class="col-md-2 align="left">
+						<div class="col-md-2" align="left" id="colaboradores">
 							<label for="solNumColaboradores">Nº de Colaboradores</label>
 							<input type="number" name="solNumColaboradores" id="solNumColaboradores" class="form-control"/>
 						</div>
 					</div>
 	     		</div>
 				<br>
-				<!-- Inicio formulário pai e filho-->
+				<!-- Inicio formulÃ¡rio pai e filho-->
 				<div class="row">
 					<div class="col-md-12" align="left">
 						<table class="table table-condensed table-nonfluid table-striped "  id="solTbDespesas" tablename="solTbDespesas" name="solTbDespesas" noaddbutton="true" customFnDelete="removeDespesa(this)">
@@ -146,17 +159,17 @@
 										<select name="itSolTipoPagamento" id="itSolTipoPagamento" class="form-control">
 											<option value=""> </option>
 											<option value="Dinheiro">Dinheiro</option>
-											<option value="Cartão">Cartão</option>
+											<option value="CartÃ£o">Cartão</option>
 										</select>
 									</td>
 									<td>	
 										<select name="itSolTipoDespesaItem" id="itSolTipoDespesaItem" class="form-control">
 											<option value=""> </option>
-											<option value="Acomodação">Acomodação</option>
-											<option value="Combustível">Combustível</option>
-											<option value="Refeição">Refeição</option>
+											<option value="AcomodaÃ§Ã£o">Acomodação</option>
+											<option value="CombustÃ­vel">Combustível</option>
+											<option value="RefeiÃ§Ã£o">Refeição</option>
 											<option value="Transporte">Transporte</option>
-											<option value="Pedágio">Pedágio</option>
+											<option value="PedÃ¡gio">Pedágio</option>
 											<option value="Outros">Outros</option>
 										  </select>
 									</td>
@@ -166,9 +179,9 @@
 									<td >
 										<input type="text" id="itSolCentroCusto"  name="itSolCentroCusto" class="form-control"/>
 									</td>
-									<td>
-										<div class="form-input">
-											<input type="button" class="btn btn-warning inputAnexo" id="inputAnexo" value="Inserir Anexo" onclick="showCamera();"/> 
+									<td class="inputAnexo">
+										<div class="form-input inputAnexo">
+											<input type="button" class="btn btn-warning inputAnexo" id="inputAnexo" value="Inserir Anexo" onclick="showCamera(this);"/> 
 											<input type="hidden" name="nomeAnexo" id="nomeAnexo">
 										</div>
 									</td>
@@ -177,7 +190,7 @@
 						</table>
 					</div>
 				</div>
-				<!--Fim formulário pai e filho -->
+				<!--Fim formulÃ¡rio pai e filho -->
 				<div class="row">
 					<div class="col-md-2 col-md-offset-5" align="left">
 							<div id="divNovaDespesa" style="display:none;"> 
@@ -206,7 +219,7 @@
 					</div>
 				</div>
 				<br>
-				<!-- Inicio div aprovção, editavel pelo analista-->
+				<!-- Inicio div aprovÃ§Ã£o, editavel pelo analista-->
 				<div id="divAprovacao" style="display:none;"  class="col-md-12">
 					<div class="row">
 						<div class="col-md-12" style="text-align:left">
@@ -240,12 +253,12 @@
 								<br>
 								<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
 								<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
-											<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatório</div>"></i>		
+											<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatÃ³rio</div>"></i>		
 							</div>
 						</div>		
 					</div>  
-				</div> <!-- Fim div aprovção, editavel pelo analista -->
-				<!-- Inicio div revisão, editavel pelo gestor-->
+				</div> <!-- Fim div aprovÃ§Ã£o, editavel pelo analista -->
+				<!-- Inicio div revisÃ£o, editavel pelo gestor-->
 				<div id="divRevisao" style="display:none;"  class="col-md-12">
 					<div class="row">
 						<div class="col-md-12" style="text-align:left">
@@ -279,13 +292,13 @@
 								<br>
 								<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
 								<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
-											<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatório</div>"></i>		
+											<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatÃ³rio</div>"></i>		
 							</div>
 						</div>		
 					</div>
 					</div>  
 					<br>
-				</div>  <!-- Fim div aprovção, editavel pelo gestor -->
+				</div>  <!-- Fim div aprovÃ§Ã£o, editavel pelo gestor -->
 	     	</div>		
 	    </div>
 	</div>

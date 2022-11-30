@@ -23,6 +23,13 @@ var WKNumState = getValue('WKNumState');
     		//Se for clicado em Enviar 
             if (getValue("WKCompletTask") == "true" ){
         		
+            	if (isEmpty("setor", form)) {
+                    message += getMessage("Setor", 1, form);
+                    hasErros = true;
+                }else if (isEmpty("grupoAnalisaRelatorio", form)) {
+                    message += getMessage("Grupo Analisa Relatório", 1, form);
+                    hasErros = true;
+                }
 				if (!isEmpty("solValorAdiantamento", form) & isEmpty("solMoeda", form)) {
                     message += getMessage("Tipo de Moeda", 1, form);
                     hasErros = true;
@@ -150,7 +157,17 @@ var WKNumState = getValue('WKNumState');
 
         }
         break;
-
+        
+        case AJUSTA_RELATORIO:
+	        if (isEmpty("setor", form)) {
+	            message += getMessage("Setor", 1, form);
+	            hasErros = true;
+	        }else if (isEmpty("grupoAnalisaRelatorio", form)) {
+	            message += getMessage("Grupo Analisa Relatório", 1, form);
+	            hasErros = true;
+	        }
+	     break;
+	        
         case REVISA_RELATORIO:
             if (isEmpty("revisaoRelatorio", form)) {	
                 message += getMessage("Revisão Gestor", 3, form);

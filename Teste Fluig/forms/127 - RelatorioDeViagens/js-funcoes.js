@@ -135,7 +135,6 @@ var funcoes = (function() {
 		var solNumColaboradores = document.getElementById("solNumColaboradores").value;
 
 		//Calula valor da diaria
-		
 		if (solNumColaboradores > 1) {
 			if(difData >=2 ){
 				var valorDiaria = (somaValores / difData) /solNumColaboradores;
@@ -157,45 +156,39 @@ var funcoes = (function() {
 })();
 
 //Função que habilita o upload no formulário pai e filho e seta a a descrição conforme as funções
-function showCamera() {
-
-	var valorID = 0;
-	var solEstabelecimento = 0;
-	var solDocumento = 0;
-
-	$("input[id^='codigoID___']").each(function(index, value){
-		valorID =  $(this).val();
-	});
-
-	$("input[id^='solEstabelecimento___']").each(function(index, value){
-		solEstabelecimento = $(this).val();
-	});
-
-	$("input[id^='solDocumento___']").each(function(index, value){
-		solDocumento = $(this).val();
-	});
+function showCamera(oElement) {
 	
-	JSInterface.showCamera(valorID+ "_" + solEstabelecimento + "_" + solDocumento); 
-			// alterei o css para gerar uma confirmação visual após o click	
-	//$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
+	const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
 	
-	$('[name^="inputAnexo___"'); //isso lhe trará todos os campos filhos deste formulário. Após isso, você por implementar um for, podendo ser um foreach.
+	let valorID = "";
+	let solEstabelecimento = "";
+	let solDocumento = "";
+	let nomeAnexo = "";
 
-	for(var i = 0; i < $('[name^="inputAnexo___"').length; i++){
-
-	//Aqui percorrerá todos os itens.
-
-	//Busca o nome do campo pra facilitar a identificação
-	var nomeCampo = $('[name^="inputAnexo___"')[i].name;
-
-	//Busca o separador do indice, após encontrar, como posiciona no início, pulamos 3 posições e buscamos o restante.
-
-	var indice = nomeCampo.substr(nomeCampo.indexOf("___")+3);
+	valorID = $('#codigoID___'+indice).val();
 	
-	$("#nomeAnexo___"+indice).val(valorID+ "_" + solEstabelecimento + "_" + solDocumento);
-	//$("#inputAnexo___" + indice).prop("disabled", true);
-	//$("#inputAnexo___" + indice).removeClass().addClass("btn btn-success");
+	solEstabelecimento = $('#solEstabelecimento___'+indice).val();
+
+	solDocumento = $('#solDocumento___'+indice).val();
+	
+	
+	if(valorID == ''){
+		FLUIGC.toast({ title: '', message: "É preciso preencher o código Id.", type: 'warning' });
+		return;
+	}else if(solEstabelecimento == ''){
+		FLUIGC.toast({ title: '', message: "É preciso preencher o Estabelecimento.", type: 'warning' });
+		return;
+	}else if(solDocumento == ''){
+		FLUIGC.toast({ title: '', message: "É preciso preencher o Documento.", type: 'warning' });
+		return;
 	}
+	
+	nomeAnexo = (valorID+ "_" + solEstabelecimento + "_" + solDocumento);
+
+	JSInterface.showCamera(nomeAnexo); 	
+	
+	$("#nomeAnexo___"+indice).val(nomeAnexo);
+	$("#nomeAnexo___"+indice).prev().prop('disabled', true);
 }
 
 //Aqui colocar os gatilhos
@@ -210,6 +203,24 @@ var eventsFuncoes = (function() {
 			$(document).on("click", "#imprimirRelatorio", function() {
 	
 				imprimeRelatorio();
+				
+			});
+			
+			$(document).on("change", "#setor", function() {
+				let setor = $("#setor").val();
+				
+				if(setor == 'Motorista'){
+					//Grupo Relatório de Viagens - Analisa Motorista
+					$('#grupoAnalisaRelatorio').val('Pool:Group:000003');
+				}else if(setor == 'Técnico'){
+					//Grupo Relatório de Viagens - Analisa Técnico
+					$('#grupoAnalisaRelatorio').val('Pool:Group:000004');
+				}else if(setor == 'Outro'){
+					//Grupo Relatório de Viagens - Analisa Outro
+					$('#grupoAnalisaRelatorio').val('Pool:Group:000005');
+				}else{
+					$('#grupoAnalisaRelatorio').val('');
+				}
 				
 			});
 			

@@ -2,37 +2,36 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+      <processId>RelatorioDeViagens</processId>
     </processDefinitionPK>
-    <processDescription>Contas a Pagar - Relatorio de Viagens</processDescription>
+    <processDescription>Relatório De Viagens</processDescription>
     <instruction></instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId>Contas a Pagar</categoryId>
-    <managerEngineAllocationId>Papel</managerEngineAllocationId>
-    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000016&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <categoryId>Relatorio de Viagens</categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
-    <periodId>ADMGTS</periodId>
+    <periodId>Default</periodId>
     <uniqueCardVersion>false</uniqueCardVersion>
     <keyWord></keyWord>
     <complementsLevel>1</complementsLevel>
     <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
     <notifyManagerComplements>false</notifyManagerComplements>
-    <deadlineTime>28800</deadlineTime>
-    <warningDeadlineTime>7200</warningDeadlineTime>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
     <notifyAuthorityComplements>true</notifyAuthorityComplements>
   </ProcessDefinition>
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Contas a Pagar - Relatorio de Viagens</processId>
-      <version>1</version>
+      <processId>Relatório De Viagens</processId>
+      <version>46</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>22</formId>
+    <formId>127</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -50,7 +49,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -60,8 +59,8 @@
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000024&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;SolicitantesFormularios&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>true</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -100,7 +99,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
@@ -111,8 +110,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000025&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;grupoAnalisaRelatorio&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -152,7 +151,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>9</sequence>
       </processStatePK>
@@ -204,7 +203,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>13</sequence>
       </processStatePK>
@@ -215,8 +214,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Papel</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000026&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Gestor&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -256,7 +255,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>7</sequence>
       </processStatePK>
@@ -281,7 +280,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>15</sequence>
       </processStatePK>
@@ -306,7 +305,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>18</sequence>
       </processStatePK>
@@ -355,9 +354,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>46</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;reprovado&quot;</condition>
@@ -367,9 +366,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>46</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;aprovado&quot;</condition>
@@ -379,9 +378,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>1</version>
+        <version>46</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoReprovado&quot;</condition>
@@ -391,9 +390,9 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>1</version>
+        <version>46</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoAprovado&quot;</condition>
@@ -405,7 +404,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <linkSequence>6</linkSequence>
       </processLinkPK>
@@ -422,7 +421,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <linkSequence>8</linkSequence>
       </processLinkPK>
@@ -439,7 +438,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <linkSequence>10</linkSequence>
       </processLinkPK>
@@ -456,7 +455,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <linkSequence>11</linkSequence>
       </processLinkPK>
@@ -473,7 +472,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <linkSequence>14</linkSequence>
       </processLinkPK>
@@ -490,7 +489,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <linkSequence>16</linkSequence>
       </processLinkPK>
@@ -507,7 +506,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <linkSequence>17</linkSequence>
       </processLinkPK>
@@ -524,7 +523,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <linkSequence>19</linkSequence>
       </processLinkPK>
@@ -540,7 +539,41 @@
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>ENG_LITERALS</eventId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>process.description=RelatorioDeViagens
+process.category=
+process.instructions=</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>ESP_LITERALS</eventId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>process.description=RelatorioDeViagens
+process.category=
+process.instructions=</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>POR_LITERALS</eventId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>process.description=RelatorioDeViagens
+process.category=
+process.instructions=</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
@@ -554,7 +587,7 @@
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
@@ -570,7 +603,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
@@ -586,7 +619,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>3</sequence>
       </swimLanePK>
@@ -602,7 +635,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <processId>RelatorioDeViagens</processId>
         <version>1</version>
         <sequence>4</sequence>
       </swimLanePK>
@@ -614,8 +647,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>1</version>
+        <processId>RelatorioDeViagens</processId>
+        <version>46</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -625,8 +658,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>1</version>
+        <processId>RelatorioDeViagens</processId>
+        <version>46</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -636,8 +669,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>1</version>
+        <processId>RelatorioDeViagens</processId>
+        <version>46</version>
         <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -647,8 +680,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>1</version>
+        <processId>RelatorioDeViagens</processId>
+        <version>46</version>
         <linkSequence>14</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -658,8 +691,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>1</version>
+        <processId>RelatorioDeViagens</processId>
+        <version>46</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -672,108 +705,7 @@
   <list/>
   <list/>
   <list/>
-  <list>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>title</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>description</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>highlight</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>approve</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>reject</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>9</stateSequence>
-      <appKey>approval</appKey>
-      <appField>title</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>9</stateSequence>
-      <appKey>approval</appKey>
-      <appField>description</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>9</stateSequence>
-      <appKey>approval</appKey>
-      <appField>highlight</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>9</stateSequence>
-      <appKey>approval</appKey>
-      <appField>approve</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-      <processVersion>1</processVersion>
-      <stateSequence>9</stateSequence>
-      <appKey>approval</appKey>
-      <appField>reject</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-  </list>
+  <list/>
   <list/>
   <list/>
 </list>

@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Relatorio De Viagens</processId>
-      <version>24</version>
+      <version>27</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>5110</formId>
@@ -111,8 +111,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Pool Grupo</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;AnalistaRelatorioViagens&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;grupoAnalisaRelatorio&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -336,7 +336,7 @@
       <positionY>234</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
-      <notifyManagerFollowUp>true</notifyManagerFollowUp>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
@@ -357,7 +357,7 @@
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>24</version>
+        <version>27</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;reprovado&quot;</condition>
@@ -369,7 +369,7 @@
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>24</version>
+        <version>27</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;aprovado&quot;</condition>
@@ -381,7 +381,7 @@
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>24</version>
+        <version>27</version>
         <sequence>26</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoReprovado&quot;</condition>
@@ -393,7 +393,7 @@
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>24</version>
+        <version>27</version>
         <sequence>26</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoAprovado&quot;</condition>
@@ -549,7 +549,7 @@
       </processAttachmentSecurityPK>
       <engineAllocationId>Todos os Usuários</engineAllocationId>
       <accessLevel>PR</accessLevel>
-      <editionMode>true</editionMode>
+      <editionMode>false</editionMode>
     </ProcessAttachmentSecurity>
   </list>
   <list/>
@@ -573,10 +573,10 @@
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>98</height>
+      <height>96</height>
       <width>931</width>
       <positionX>40</positionX>
-      <positionY>202</positionY>
+      <positionY>10</positionY>
       <stateName>Solicitante</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -589,10 +589,10 @@
     </SwimLane>
     <SwimLane>
       <color>82b0b7</color>
-      <height>96</height>
+      <height>98</height>
       <width>931</width>
       <positionX>40</positionX>
-      <positionY>10</positionY>
+      <positionY>202</positionY>
       <stateName>Analista</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -627,7 +627,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>24</version>
+        <version>27</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -638,7 +638,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>24</version>
+        <version>27</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -649,7 +649,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>24</version>
+        <version>27</version>
         <linkSequence>31</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -660,7 +660,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>24</version>
+        <version>27</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -671,7 +671,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>24</version>
+        <version>27</version>
         <linkSequence>33</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -684,158 +684,7 @@
   <list/>
   <list/>
   <list/>
-  <list>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>title</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>description</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>highlight</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>approve</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>5</stateSequence>
-      <appKey>approval</appKey>
-      <appField>reject</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>23</stateSequence>
-      <appKey>approval</appKey>
-      <appField>title</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>23</stateSequence>
-      <appKey>approval</appKey>
-      <appField>description</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>23</stateSequence>
-      <appKey>approval</appKey>
-      <appField>highlight</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>23</stateSequence>
-      <appKey>approval</appKey>
-      <appField>approve</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>23</stateSequence>
-      <appKey>approval</appKey>
-      <appField>reject</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>30</stateSequence>
-      <appKey>approval</appKey>
-      <appField>title</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>30</stateSequence>
-      <appKey>approval</appKey>
-      <appField>description</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>30</stateSequence>
-      <appKey>approval</appKey>
-      <appField>highlight</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>30</stateSequence>
-      <appKey>approval</appKey>
-      <appField>approve</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-    <ProcessAppConfiguration>
-      <id>0</id>
-      <tenantId>0</tenantId>
-      <processId>RelatorioDeViagens</processId>
-      <processVersion>24</processVersion>
-      <stateSequence>30</stateSequence>
-      <appKey>approval</appKey>
-      <appField>reject</appField>
-      <description></description>
-    </ProcessAppConfiguration>
-  </list>
+  <list/>
   <list/>
   <list/>
 </list>

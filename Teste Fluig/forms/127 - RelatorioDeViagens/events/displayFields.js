@@ -9,12 +9,26 @@ function displayFields(form,customHTML){
 	var usuarioCorrente = fluigAPI.getUserService().getCurrent();
 	
 	/*
-	 * Globais
+	 * Globais todas as atividades
 	 */
+	//Desabilita campo no formulario pai x filho
+	var indexes = form.getChildrenIndexes("solTbDespesas");
 	
-	outraDespesa(form,customHTML);
+	for (var i = 0; i < indexes.length; i++) {		
+		
+		if (form.getFormMode() == "VIEW"){
+			customHTML.append("<script>$('#nomeAnexo___"+  indexes[i] +"').closest('.form-input').css('display', 'none');</script>");
+		}
+		
+		if (form.getValue('nomeAnexo___'+indexes[i]) != "" ){
+			
+			customHTML.append("<script>$('#nomeAnexo___"+  indexes[i] +"').prev().prop('disabled', true);</script>");
+			
+		}
+	}
+	
 
-	if (atv_atual == INICIO_0){
+	if (form.getFormMode() == "ADD" || (form.getFormMode() == "MOD") && atv_atual == INICIO_0){
 		
 		form.setValue("solMatSolicitante",  usuarioCorrente.getCode() );
 		form.setValue("solNomeSolicitante",  usuarioCorrente.getFullName() );
@@ -32,14 +46,13 @@ function displayFields(form,customHTML){
 				form.setValue("solEmailSolicitanteDataset", mailUser);
 			}
 		}
-		
 		form.setVisibleById("divNovaDespesa", true);
-		
+				
+		return;	
 	}else if(atv_atual == INICIO){
 		if(form.getFormMode() == 'MOD'){
-			form.setVisibleById("divNovaDespesa", true);	
-		}	
-
+			form.setVisibleById("divNovaDespesa", true);
+		}
 	}else if(atv_atual == ANALISA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
