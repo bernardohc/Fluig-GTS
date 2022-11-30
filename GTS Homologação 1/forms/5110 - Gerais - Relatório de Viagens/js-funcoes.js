@@ -12,7 +12,7 @@ var funcoes = (function() {
 		start : function() {
 			eventsFuncoes.setup();
 		},
-	
+
 		/*
 		 * Formulário
 		 */
@@ -24,6 +24,7 @@ var funcoes = (function() {
 			FLUIGC.calendar('.data')	
 			//Inicia as mascaras  
 			MaskEvent.init();
+			funcoes.calculaSaldo();
 			
 
 			$('[name^="codigoID___"'); //trará todos os campos filhos deste formulário. 
@@ -59,66 +60,74 @@ var funcoes = (function() {
 					total +=  itSolValorDespesa;
 				}
 			});
+
+			funcoes.calculaSaldo();
 			
 			$("#solTotalDespesas").val(total.toFixed(2));
 			validafunctions.setMoeda("ssolTotalDespesas", 2, false , '');
 		},
 		
-			//Calcula saldo
-			calculaSaldo : function(){
+		//Calcula saldo
+		calculaSaldo : function(){
 
-				let itSolValorDespesa = 0;
-				let itSolTipoPagamento = "";
-				let somaValoresDinheiro = 0;
+			let itSolValorDespesa = 0;
+			let itSolTipoPagamento = "";
+			let somaValoresDinheiro = 0;
 
-				$("input[name*=itSolValorDespesa___]").each(function(index){
-					var index = validafunctions.getPosicaoFilho($(this).attr("id"));
-					
-					itSolValorDespesa = validafunctions.getFloatValue("itSolValorDespesa___"+index);
-					//Traz valor do itSolTipoPagamento filho 
-					itSolTipoPagamento = $("#itSolTipoPagamento___"+index).val();
-					
-					console.log(itSolTipoPagamento);
-					
-					//compara itSolTipoPagamento, se for dinheiro soma as depesas em dinheiro
-					if (itSolTipoPagamento == "Dinheiro" ) {
-						somaValoresDinheiro +=  itSolValorDespesa;
-					}
-				});
-
-				console.log('via console');
+			$("input[name*=itSolValorDespesa___]").each(function(index){
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				console.log(index + " Indice")
+				itSolValorDespesa = validafunctions.getFloatValue("itSolValorDespesa___"+index);
+				console.log(itSolValorDespesa + " Valor deespesa")
+				//Traz valor do itSolTipoPagamento filho 
+				itSolTipoPagamento = $("#itSolTipoPagamento___"+index).val();
 				
-				var solValorAdiantamento = validafunctions.getFloatValue("solValorAdiantamento");
-				var solTotalDespesas =Number($("#solTotalDespesas").val());	
-				var solSaldoTotal = 0;
-
-				if (solValorAdiantamento > 0) {
-					solSaldoTotal = (solValorAdiantamento -somaValoresDinheiro);
+				console.log(itSolTipoPagamento);
+				
+				//compara itSolTipoPagamento, se for dinheiro soma as depesas em dinheiro
+				if (itSolTipoPagamento == "Dinheiro" ) {
+					somaValoresDinheiro +=  itSolValorDespesa;
+					console.log(somaValoresDinheiro + "Soma dinheiro")
 				}
-				
-				$("#solSaldo").val(solSaldoTotal.toFixed(2));
-				validafunctions.setMoeda("solSaldo", 2, true , '')
-			},
+			});
+
+			//console.log('via console');
+			
+			var solValorAdiantamento = validafunctions.getFloatValue("solValorAdiantamento");
+			var solTotalDespesas =Number($("#solTotalDespesas").val());	
+			var solSaldoTotal = 0;
+
+			if (solValorAdiantamento > 0) {
+				solSaldoTotal = solValorAdiantamento - somaValoresDinheiro;
+				//console.log(solTotalDespesas + "Total de Despesas");
+				console.log(solSaldoTotal + " Saldo total");
+			}
+			$("#solSaldo").val(solSaldoTotal.toFixed(2));
+			validafunctions.setMoeda("solSaldo", 2, false , '');
+		},
 
 		//Calcula Diaria			
 		calculaDiaria : function(){
 		let itSolValorDespesa = 0;
 		let itSolTipoDespesaItem = "";
 		let somaValores = 0;
-
+	
+		
 		//Soma tipo de despesa quando acomodação e refeição, traz valor da despesa do filho e index
 		$("input[name*=itSolValorDespesa___]").each(function(index){
 			var index = validafunctions.getPosicaoFilho($(this).attr("id"));
-			
+			console.log(index + " Index")
+
 			itSolValorDespesa = validafunctions.getFloatValue("itSolValorDespesa___"+index);
+			console.log(itSolValorDespesa + " Valor Despesa")
 			//Traz valor do somaValores filho 
 			itSolTipoDespesaItem = $("#itSolTipoDespesaItem___"+index).val();
-			
-			console.log(itSolTipoDespesaItem);
+			console.log(itSolTipoDespesaItem + " Tipo Despesa");
 			
 			//compara itSolTipoDespesaItem
 			if (itSolTipoDespesaItem =="Acomodação" || itSolTipoDespesaItem =="Refeição" ) {
 				somaValores +=  itSolValorDespesa;
+				console.log(somaValores + " Soma")
 			}
 		});
 
@@ -131,22 +140,27 @@ var funcoes = (function() {
 		var dataFinalInt = parseInt(dataFinal);
 
 		difData = dataFinalInt - dataInicialInt ;
+		console.log(difData + "Diferença Datas")
 
 		var solNumColaboradores = document.getElementById("solNumColaboradores").value;
-
+		console.log(solNumColaboradores + "Numero Colaboradores")
 		//Calula valor da diaria
 		if (solNumColaboradores > 1) {
 			if(difData >=2 ){
 				var valorDiaria = (somaValores / difData) /solNumColaboradores;
+				console.log(valorDiaria + "Diaria (somaValores / difData) /solNumColaboradores")
 			}
 			else{
 				var valorDiaria = (somaValores / solNumColaboradores);
+				console.log(valorDiaria + "Diaira (somaValores / solNumColaboradores)")
 			}
 		}else if(difData >=2) {
 			var valorDiaria = (somaValores / difData)
+			console.log(valorDiaria + "Diaria (somaValores / difData)")
 
 		}else{
 			var valorDiaria = somaValores;
+			console.log(valorDiaria + "Diaria valorDiaria = somaValores")
 		}
 		
 		$("#solValorDiaria").val(valorDiaria.toFixed(2));
@@ -255,22 +269,32 @@ var eventsFuncoes = (function() {
 			});
 
 			$(document).on("change", ".solNumColaboradores", function() {
+				funcoes.calculaTotalDespesas();
+				funcoes.calculaSaldo();
 				funcoes.calculaDiaria();
 			});
 
 			$(document).on("change", ".solDataSaida", function() {
+				funcoes.calculaTotalDespesas();
+				funcoes.calculaSaldo();
 				funcoes.calculaDiaria();
 			});
 
 			$(document).on("change", ".solDataRetorno", function() {
+				funcoes.calculaTotalDespesas();
+				funcoes.calculaSaldo();
 				funcoes.calculaDiaria();
 			});
 
 			$(document).on("change", ".itSolTipoDespesaItem", function() {
+				funcoes.calculaTotalDespesas();
+				funcoes.calculaSaldo();
 				funcoes.calculaDiaria();
 			});
 
 			$(document).on("change", ".itSolCentroCusto", function() {
+				funcoes.calculaTotalDespesas();
+				funcoes.calculaSaldo();
 				funcoes.calculaDiaria();
 			});
 
@@ -282,7 +306,9 @@ var eventsFuncoes = (function() {
 //Remover despessas do pai e filho
 function removeDespesa(oElement){
 	fnWdkRemoveChild(oElement);
-	
+	funcoes.calculaDiaria();
+	funcoes.calculaSaldo();
+	funcoes.calculaTotalDespesas();
 };
 
 function loadForm(){

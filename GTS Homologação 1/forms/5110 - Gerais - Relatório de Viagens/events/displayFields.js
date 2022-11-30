@@ -64,7 +64,7 @@ function displayFields(form,customHTML){
 	}else if(atv_atual == AJUSTA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
-			form.setHideDeleteButton(true);
+			//form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divNovaDespesa", true);
 			form.setVisibleById("divRevisao", true);	

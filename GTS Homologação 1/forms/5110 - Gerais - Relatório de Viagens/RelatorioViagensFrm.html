@@ -165,16 +165,16 @@
 									<td>	
 										<select name="itSolTipoDespesaItem" id="itSolTipoDespesaItem" class="form-control">
 											<option value=""> </option>
-											<option value="AcomodaÃ§Ã£o">Acomodação</option>
-											<option value="CombustÃ­vel">Combustível</option>
-											<option value="RefeiÃ§Ã£o">Refeição</option>
+											<option value="Acomodação">Acomodação</option>
+											<option value="Combustível">Combustível</option>
+											<option value="Refeição">Refeição</option>
 											<option value="Transporte">Transporte</option>
-											<option value="PedÃ¡gio">Pedágio</option>
+											<option value="Pedágio">Pedágio</option>
 											<option value="Outros">Outros</option>
 										  </select>
 									</td>
 									<td>
-										<input type="text" name="itSolValorDespesa" id="itSolValorDespesa" class="form-control itSolValorDespesa" onkeyup="validafunctions.setMoeda(this.id, 2, false , '')"/ onchange="calculaDiaria();"/>
+										<input type="text" name="itSolValorDespesa" id="itSolValorDespesa" class="form-control itSolValorDespesa" onkeyup="validafunctions.setMoeda(this.id, 2, false , '')" onchange="calculaDiaria();"/>
 									</td>
 									<td >
 										<input type="text" id="itSolCentroCusto"  name="itSolCentroCusto" class="form-control"/>
@@ -215,7 +215,7 @@
 					</div>
 					<div class="col-md-2" align="left">
 						<label for="solSaldo">Saldo</label>
-						<input type="text" id="solSaldo"  name="solSaldo" class="form-control" onchange="validafunctions.setMoeda(this.id, 2, false , '')" readonly/>
+						<input type="text" id="solSaldo"  name="solSaldo" class="form-control solSaldo" onchange="validafunctions.setMoeda(this.id, 2, false , '')" readonly/>
 					</div>
 				</div>
 				<br>
