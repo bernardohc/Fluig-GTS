@@ -18,7 +18,7 @@ function inputFields(form){
 			form.setValue('solDataRetorno', split[2] + '/' + split[1] + '/' + split[0]);
 		}
 		
-		//Regex do percorrendo o formulario filho
+		//Regex percorrendo o formulario filho
 		var indexesSolTbDespesas = form.getChildrenIndexes("solTbDespesas");
 		 for (var i = 0; i < indexesSolTbDespesas.length; i++) { 
 			 if (form.getValue('solDataDocumento___'+ indexesSolTbDespesas[i]).match(regEx)) {

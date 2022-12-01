@@ -171,7 +171,7 @@ function showCamera(oElement) {
 
 	solDocumento = $('#solDocumento___'+indice).val();
 	
-	
+	//Validação só anexa se os campos estiverem preenchidos para gerar o nome
 	if(valorID == ''){
 		FLUIGC.toast({ title: '', message: "É preciso preencher o código Id.", type: 'warning' });
 		return;
@@ -205,7 +205,7 @@ var eventsFuncoes = (function() {
 				imprimeRelatorio();
 				
 			});
-			
+			//Itens para atribuição da tarefa por campo.
 			$(document).on("change", "#setor", function() {
 				let setor = $("#setor").val();
 				
