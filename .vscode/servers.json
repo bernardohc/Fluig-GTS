@@ -1,0 +1,17 @@
+{
+	"version": "0.0.1",
+	"configurations": [
+		{
+			"id": "kyg4je40jsjlbl3ayds0gxi8ekuxz5r",
+			"name": "Teste Fluig",
+			"host": "192.168.0.233",
+			"ssl": false,
+			"port": 8080,
+			"username": "bernardo.correa",
+			"password": "U2FsdGVkX1/eEun0jm993YuwQGNmSD4wgrexdTlz7oY=",
+			"userCode": "bernardo.correa",
+			"confirmExporting": false,
+			"companyId": 1
+		}
+	]
+}
