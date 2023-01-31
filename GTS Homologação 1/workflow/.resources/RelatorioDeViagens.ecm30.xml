@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Relatorio De Viagens</processId>
-      <version>27</version>
+      <version>56</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>5110</formId>
@@ -84,7 +84,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId>ADMGTS</periodId>
       <stateType>0</stateType>
       <bpmnType>10</bpmnType>
@@ -127,7 +127,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>180</positionX>
+      <positionX>310</positionX>
       <positionY>120</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -135,7 +135,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId>ADMGTS</periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
@@ -179,7 +179,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>470</positionX>
+      <positionX>550</positionX>
       <positionY>217</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -187,7 +187,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId>ADMGTS</periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
@@ -231,7 +231,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>450</positionX>
+      <positionX>590</positionX>
       <positionY>24</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -239,7 +239,59 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+        <sequence>34</sequence>
+      </processStatePK>
+      <stateName>SALVAR_RELATORIO</stateName>
+      <stateDescription>SALVAR_RELATORIO</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;First&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>70</positionX>
+      <positionY>120</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
@@ -268,7 +320,7 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>350</positionX>
+      <positionX>460</positionX>
       <positionY>104</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
@@ -293,8 +345,33 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>680</positionX>
-      <positionY>201</positionY>
+      <positionX>780</positionX>
+      <positionY>194</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+        <sequence>36</sequence>
+      </processStatePK>
+      <stateName>Enviar</stateName>
+      <stateDescription>Enviar</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>210</positionX>
+      <positionY>104</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -332,7 +409,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>840</positionX>
+      <positionX>900</positionX>
       <positionY>234</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -357,7 +434,7 @@
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>27</version>
+        <version>56</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;reprovado&quot;</condition>
@@ -369,7 +446,7 @@
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>27</version>
+        <version>56</version>
         <sequence>16</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;aprovado&quot;</condition>
@@ -381,7 +458,7 @@
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>27</version>
+        <version>56</version>
         <sequence>26</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoReprovado&quot;</condition>
@@ -393,32 +470,41 @@
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>27</version>
+        <version>56</version>
         <sequence>26</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoAprovado&quot;</condition>
       <destinationSequenceId>15</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
-  </list>
-  <list>
-    <ProcessLink>
-      <processLinkPK>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>1</version>
-        <linkSequence>6</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>4</initialStateSequence>
-      <finalStateSequence>5</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
+        <expressionOrder>1</expressionOrder>
+        <version>56</version>
+        <sequence>36</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
+      <destinationSequenceId>4</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;All&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>56</version>
+        <sequence>36</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
+      <destinationSequenceId>5</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
+  <list>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
@@ -538,6 +624,74 @@
       <defaultLink>false</defaultLink>
       <type>0</type>
     </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+        <linkSequence>35</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+        <linkSequence>37</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>36</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+        <linkSequence>38</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>36</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+        <linkSequence>39</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>36</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
   </list>
   <list>
     <ProcessAttachmentSecurity>
@@ -627,31 +781,31 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>27</version>
-        <linkSequence>6</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>117</positionX>
-      <positionY>155</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>RelatorioDeViagens</processId>
-        <version>27</version>
+        <version>56</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>379</positionX>
+      <positionX>489</positionX>
       <positionY>251</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>27</version>
+        <version>56</version>
         <linkSequence>31</linkSequence>
         <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>809</positionX>
+      <positionY>58</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <version>56</version>
+        <linkSequence>31</linkSequence>
+        <bendSequence>2</bendSequence>
       </processLinkBendPK>
       <positionX>710</positionX>
       <positionY>58</positionY>
@@ -660,22 +814,33 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>27</version>
+        <version>56</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>502</positionX>
+      <positionX>642</positionX>
       <positionY>154</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>RelatorioDeViagens</processId>
-        <version>27</version>
+        <version>56</version>
         <linkSequence>33</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>233</positionX>
+      <positionX>362</positionX>
+      <positionY>58</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>RelatorioDeViagens</processId>
+        <version>56</version>
+        <linkSequence>39</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>239</positionX>
       <positionY>58</positionY>
     </ProcessLinkBend>
   </list>

@@ -8,7 +8,8 @@ var WKNumState = getValue('WKNumState');
     switch (parseInt(WKNumState)) {
     	//INICIAL
         case INICIO_0 : 
-        case INICIO :    
+        case INICIO :  
+        case SALVAR_RELATORIO:  
 
     		if (isEmpty("solMatSolicitante", form)) {
                 message += getMessage("Matricula do Solicitante", 1, form);
@@ -40,6 +41,11 @@ var WKNumState = getValue('WKNumState');
                 }
 				if (isEmpty("solDataRetorno", form)) {
                     message += getMessage("Data de Retorno", 1, form);
+                    hasErros = true;
+                } 
+                
+                if (isEmpty("salvarEnviar", form)) {
+                    message += getMessage("Deseja Salvar ou Enviar?", 9, form);
                     hasErros = true;
                 } 
               
@@ -165,7 +171,7 @@ var WKNumState = getValue('WKNumState');
 	        }else if (isEmpty("grupoAnalisaRelatorio", form)) {
 	            message += getMessage("Grupo Analisa Relatório", 1, form);
 	            hasErros = true;
-	        }
+	        } 
 	     break;
 	        
         case REVISA_RELATORIO:
@@ -254,6 +260,8 @@ function getMessage(texto, tipoMensagem, form, tabpaifilho) {
            	 	return "Campo: "+texto+" precisa estar marcado."; 
             case 8:
                 return "Campo: "+texto+" não pode ser menor que a data de saída";  	 	
+            case 9:
+                return "Atenção! Selcione a opção: " +texto;    
         }
     } else {
         switch (tipoMensagem) {
@@ -272,7 +280,9 @@ function getMessage(texto, tipoMensagem, form, tabpaifilho) {
             case 7:
            	 	return "<li>Campo: <b>"+texto+"</b> precisa estar marcado.</li>";
             case 8:
-                return "<li>Campo: <b>"+texto+"</b> não pode ser menor que a data de saída </li>";     
+                return "<li>Campo: <b>"+texto+"</b> não pode ser menor que a data de saída </li>";   
+            case 9:
+                return "<li>Atenção! Selcione a opção: <b>"+texto+"</b></li>";  
         }
     }
 } 

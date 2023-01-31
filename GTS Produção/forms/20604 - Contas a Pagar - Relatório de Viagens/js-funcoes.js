@@ -12,7 +12,7 @@ var funcoes = (function() {
 		start : function() {
 			eventsFuncoes.setup();
 		},
-	
+		
 		/*
 		 * Formulário
 		 */
@@ -23,8 +23,7 @@ var funcoes = (function() {
 			//Insere calendario no formulario filho a ao criar nova linha
 			FLUIGC.calendar('.data')	
 			//Inicia as mascaras  
-			MaskEvent.init();
-			
+			MaskEvent.init();						
 
 			$('[name^="codigoID___"'); //trará todos os campos filhos deste formulário. 
 
@@ -278,7 +277,6 @@ var eventsFuncoes = (function() {
 	}
 })();
 
-
 //Remover despessas do pai e filho
 function removeDespesa(oElement){
 	fnWdkRemoveChild(oElement);
@@ -299,6 +297,10 @@ function loadForm(){
 	window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
 	window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
 	window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+
+	document.getElementById('salvarEnviar').value = "";
+	//$('input[salvarEnviar]').attr('checked',false);
+	//document.getElementById('salvarEnviar').reset();
 	
 	var today = new Date();	
 	

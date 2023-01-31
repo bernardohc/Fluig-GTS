@@ -53,13 +53,18 @@ function displayFields(form,customHTML){
 		if(form.getFormMode() == 'MOD'){
 			form.setVisibleById("divNovaDespesa", true);
 		}
+	}else if(atv_atual ==  SALVAR_RELATORIO){
+		if(form.getFormMode() == 'MOD'){
+			form.setVisibleById("divNovaDespesa", true);
+		}	
 	}else if(atv_atual == ANALISA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divNovaDespesa", true);
-				
+			form.setVisibleById("divSalvarEnviar", false);	
+			form.setVisibleById("botaoSalvarEnviar", false);	
 		}
 	}else if(atv_atual == AJUSTA_RELATORIO){
 		if(form.getFormMode() == 'MOD'){
@@ -68,7 +73,9 @@ function displayFields(form,customHTML){
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divNovaDespesa", true);
 			form.setVisibleById("divRevisao", true);	
-			form.setVisibleById("divImprimir", false);			
+			form.setVisibleById("divImprimir", false);
+			form.setVisibleById("divSalvarEnviar", false);		
+			form.setVisibleById("botaoSalvarEnviar", false);		
 		}
 	
 		
@@ -80,6 +87,8 @@ function displayFields(form,customHTML){
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divImprimir", false);
 			form.setVisibleById("divNovaDespesa", true);
+			form.setVisibleById("divSalvarEnviar", false);	
+			form.setVisibleById("botaoSalvarEnviar", false);	
 		}
 	}else if(atv_atual == FIM){
 		form.setVisibleById("divAprovacao", true);

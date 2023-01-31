@@ -119,7 +119,7 @@
 					</div>
 	     		</div>
 				<br>
-				<!-- Inicio formulÃ¡rio pai e filho-->
+				<!-- Inicio formulario pai e filho-->
 				<div class="row">
 					<div class="col-md-12" align="left">
 						<table class="table table-condensed table-nonfluid table-striped "  id="solTbDespesas" tablename="solTbDespesas" name="solTbDespesas" noaddbutton="true" customFnDelete="removeDespesa(this)">
@@ -159,17 +159,17 @@
 										<select name="itSolTipoPagamento" id="itSolTipoPagamento" class="form-control">
 											<option value=""> </option>
 											<option value="Dinheiro">Dinheiro</option>
-											<option value="CartÃ£o">Cartão</option>
+											<option value="Cartão">Cartão</option>
 										</select>
 									</td>
 									<td>	
 										<select name="itSolTipoDespesaItem" id="itSolTipoDespesaItem" class="form-control">
 											<option value=""> </option>
-											<option value="AcomodaÃ§Ã£o">Acomodação</option>
-											<option value="CombustÃ­vel">Combustível</option>
-											<option value="RefeiÃ§Ã£o">Refeição</option>
+											<option value="Acomodação">Acomodação</option>
+											<option value="Combustível">Combustível</option>
+											<option value="Refeição">Refeição</option>
 											<option value="Transporte">Transporte</option>
-											<option value="PedÃ¡gio">Pedágio</option>
+											<option value="Pedágio">Pedágio</option>
 											<option value="Outros">Outros</option>
 										  </select>
 									</td>
@@ -190,7 +190,7 @@
 						</table>
 					</div>
 				</div>
-				<!--Fim formulÃ¡rio pai e filho -->
+				<!--Fim formulario pai e filho -->
 				<div class="row">
 					<div class="col-md-2 col-md-offset-5" align="left">
 							<div id="divNovaDespesa" style="display:none;"> 
@@ -219,7 +219,19 @@
 					</div>
 				</div>
 				<br>
-				<!-- Inicio div aprovÃ§Ã£o, editavel pelo analista-->
+				<br>
+				<div class="row" id="divSalvarEnviar"><!--style="display:none;"-->
+					<div  class="col-md-2  col-md-offset-5" align="left" >
+						<label for="salvarEnviar">Deseja Salvar ou Enviar?</label>
+						<select name="salvarEnviar" id="salvarEnviar" class="form-control salvarEnviar">
+							<option value=""></option>
+							<option value="Salvar">Salvar</option>
+							<option value="Enviar">Enviar</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<!-- Inicio div aprovacao, editavel pelo analista-->
 				<div id="divAprovacao" style="display:none;"  class="col-md-12">
 					<div class="row">
 						<div class="col-md-12" style="text-align:left">
@@ -257,8 +269,8 @@
 							</div>
 						</div>		
 					</div>  
-				</div> <!-- Fim div aprovÃ§Ã£o, editavel pelo analista -->
-				<!-- Inicio div revisÃ£o, editavel pelo gestor-->
+				</div> <!-- Fim div aprovacao, editavel pelo analista -->
+				<!-- Inicio div revisao, editavel pelo gestor-->
 				<div id="divRevisao" style="display:none;"  class="col-md-12">
 					<div class="row">
 						<div class="col-md-12" style="text-align:left">
@@ -298,7 +310,7 @@
 					</div>
 					</div>  
 					<br>
-				</div>  <!-- Fim div aprovÃ§Ã£o, editavel pelo gestor -->
+				</div>  <!-- Fim div aprovacao, editavel pelo gestor -->
 	     	</div>		
 	    </div>
 	</div>

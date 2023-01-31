@@ -44,11 +44,11 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-2" align="left">
-						<label for="solMatSolicitante">Matricula Solicitante</label>
+						<label for="solMatSolicitante">Matrícula do Solicitante</label>
 						<input type="text" name="solMatSolicitante" id="solMatSolicitante" class="form-control" readonly/>
 		            </div>
 					<div class="col-md-3" align="left">
-						<label for="solNomeSolicitante">Nome Solicitante</label>
+						<label for="solNomeSolicitante">Nome do Solicitante</label>
 						<input type="text" name="solNomeSolicitante" id="solNomeSolicitante" class="form-control" data-protection="solNomeSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante do reembolso" readonly/>
 		            </div>  
 					<div class="col-md-2" align="left">
@@ -119,7 +119,7 @@
 					</div>
 	     		</div>
 				<br>
-				<!-- Inicio formulÃ¡rio pai e filho-->
+				<!-- Inicio formulario pai e filho-->
 				<div class="row">
 					<div class="col-md-12" align="left">
 						<table class="table table-condensed table-nonfluid table-striped "  id="solTbDespesas" tablename="solTbDespesas" name="solTbDespesas" noaddbutton="true" customFnDelete="removeDespesa(this)">
@@ -219,7 +219,19 @@
 					</div>
 				</div>
 				<br>
-				<!-- Inicio div aprovÃ§Ã£o, editavel pelo analista-->
+				<br>
+				<div class="row" id="divSalvarEnviar"><!--style="display:none;"-->
+					<div  class="col-md-2  col-md-offset-5" align="left" >
+						<label for="salvarEnviar">Deseja Salvar ou Enviar?</label>
+						<select name="salvarEnviar" id="salvarEnviar" class="form-control salvarEnviar">
+							<option value=""></option>
+							<option value="Salvar">Salvar</option>
+							<option value="Enviar">Enviar</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<!-- Inicio div aprovacao, editavel pelo analista-->
 				<div id="divAprovacao" style="display:none;"  class="col-md-12">
 					<div class="row">
 						<div class="col-md-12" style="text-align:left">
@@ -257,8 +269,8 @@
 							</div>
 						</div>		
 					</div>  
-				</div> <!-- Fim div aprovÃ§Ã£o, editavel pelo analista -->
-				<!-- Inicio div revisÃ£o, editavel pelo gestor-->
+				</div> <!-- Fim div aprovacao, editavel pelo analista -->
+				<!-- Inicio div revisao, editavel pelo gestor-->
 				<div id="divRevisao" style="display:none;"  class="col-md-12">
 					<div class="row">
 						<div class="col-md-12" style="text-align:left">
@@ -298,7 +310,7 @@
 					</div>
 					</div>  
 					<br>
-				</div>  <!-- Fim div aprovÃ§Ã£o, editavel pelo gestor -->
+				</div>  <!-- Fim div aprovacao, editavel pelo gestor -->
 	     	</div>		
 	    </div>
 	</div>

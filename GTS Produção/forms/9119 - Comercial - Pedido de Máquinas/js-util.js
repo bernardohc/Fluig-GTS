@@ -12,6 +12,16 @@ function removeCampoObrigatorio(id){
 	$("#lbl_" + id).removeClass('required');
 }
 
+/**
+ * Função que retorno o resultado formatado, caso a terceira casa decimal seja 5, vai arredondar para cima.
+ * Ex: 2.390,325 -> retorna 2.390,33 e não 2.390,32
+ * @param number
+ * @param decimals
+ */
+function toFixed(number, decimals) {
+    var x = Math.pow(10, Number(decimals) + 1);
+    return (Number(number) + (1 / x)).toFixed(decimals)
+}
 
 /**
  * Funcao para retornar o indice do elemento obj dentro de um pai x filho
@@ -62,6 +72,7 @@ function getNome(matricula){
 	
 	var c1 = DatasetFactory.createConstraint("active", true, true, ConstraintType.MUST);
 	var c2 = DatasetFactory.createConstraint("colleaguePK.colleagueId", matricula, matricula, ConstraintType.MUST);
+//	var c3 = DatasetFactory.createConstraint("colleaguePK.colleagueId", matricula, matricula, ConstraintType.MUST);
 	dsColleagues = DatasetFactory.getDataset("colleague", null, new Array(c1, c2), null);
 	if (dsColleagues != null && dsColleagues != undefined && dsColleagues.values.length > 0) {
 		return dsColleagues.values[0]["colleagueName"];
@@ -223,7 +234,7 @@ function formatarData(dia, mes, ano){
 	return dia+"/"+mes+"/"+ano;
 }
 
-function dataHoraAtual(){
+function dataHoraAtual(formato){
     var data = new Date();
     var dia = data.getDate();
     
@@ -240,7 +251,12 @@ function dataHoraAtual(){
     var minuto = addZero(data.getMinutes());
     var segundo = addZero(data.getSeconds());
     
-    return dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto + ":" + segundo;
+    var retornaData = '';
+    if(formato == 'dd/mm/yyyy hh:mm'){
+    	retornaData = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto;
+    }
+    
+    return retornaData;
 }
 
 function addZero(i) {
@@ -343,4 +359,113 @@ function mTel(tel) {
 		tel=tel.replace(/(.{4})$/,"-$1")
 	}
 	return tel;
+}
+
+function primeiraLetraMaiuscula(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function retornaSO(){
+	var OSName = "Unknown";
+	if (window.navigator.userAgent.indexOf("Windows NT 10.0")!= -1) OSName="windows 10";
+	if (window.navigator.userAgent.indexOf("Windows NT 6.3") != -1) OSName="windows 8.1";
+	if (window.navigator.userAgent.indexOf("Windows NT 6.2") != -1) OSName="windows 8";
+	if (window.navigator.userAgent.indexOf("Windows NT 6.1") != -1) OSName="windows 7";
+	if (window.navigator.userAgent.indexOf("Windows NT 6.0") != -1) OSName="windows vista";
+	if (window.navigator.userAgent.indexOf("Windows NT 5.1") != -1) OSName="windows xp";
+	if (window.navigator.userAgent.indexOf("Windows NT 5.0") != -1) OSName="windows 2000";
+	if (window.navigator.userAgent.indexOf("Mac")            != -1) OSName="mac/ios";
+	if (window.navigator.userAgent.indexOf("X11")            != -1) OSName="unix";
+	if (window.navigator.userAgent.indexOf("Linux")          != -1) OSName="linux";
+	
+	return OSName;
+}
+
+//https://metring.com.br/arredondar-numero-em-javascript
+const round = (num, places) => {
+	if (!("" + num).includes("e")) {
+		return +(Math.round(num + "e+" + places)  + "e-" + places);
+	} else {
+		let arr = ("" + num).split("e");
+		let sig = ""
+		if (+arr[1] + places > 0) {
+			sig = "+";
+		}
+
+		return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + places)) + "e-" + places);
+	}
+}
+
+//const round = (num, places) => {
+//	return +(parseFloat(num).toFixed(places));
+//}
+
+function getDataset(dataset, filtros, callback) {
+	var retorno;
+	
+	var request_data = {
+			url: '/api/public/ecm/dataset/datasets',
+			method: 'POST'
+	}
+	
+	//type of the constraint(1 - MUST, 2 - SHOULD, 3 - MUST_NOT)
+	var dataRequest = {
+			"name": dataset,
+			"fields": [] ,
+			"constraints": filtros,
+			"order": []
+	}
+	
+	$.ajax({
+		async: true,
+		url: request_data.url,
+		type: request_data.method,
+		data: JSON.stringify(dataRequest),
+		contentType: 'application/json',
+		
+	}).fail(function(e, data) {
+		console.log('fail', data);
+		callback(data);
+	}).success(function(data) {
+		callback(data);
+	});
+	
+}
+
+function criaConstraint(fields, initialValue, finalValue) {
+    return {
+        _field: fields,
+        _initialValue: initialValue,
+        _finalValue: finalValue,
+        _type: 1,
+        _likeSearch: false
+    };
+}
+
+//var constConsultaProduto = new Array(
+//criaConstraint("PROCOD", codProduto, codProduto)
+//);
+//
+//getDataset("dsPedMaqConsultaProduto", constConsultaProduto, function(data){
+//if (data != null && data.content != null && data.content.values.length > 0) {		
+//const records = data.content.values;
+//
+//if( records[0].CODRET == "1"){
+//}
+//}
+//});
+/**
+ * Entrada: 11111111111111
+ * Saída: 11.111.111/1111-11
+ * Entrada: 11111111111
+ * Saída: 111.111.111-11
+ */
+function formataCPFCNPJ(valor){
+	
+	if(valor.trim().length == 14){
+		valor = valor.trim().replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+	}else if(valor.trim().length == 11){
+		valor = valor.trim().replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+	}
+	return valor;
 }

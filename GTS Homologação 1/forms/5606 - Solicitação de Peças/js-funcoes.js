@@ -110,6 +110,20 @@ var eventsFuncoes = (function() {
 				
 			});
 			
+			$(document).on("change", "#Unidade", function() {
+				let unidade = $("#Unidade").val();
+				
+				if(setor == 'Matriz'){
+					//Grupo Relatório de Viagens - Analisa Motorista
+					$('#grupoAnalisaSolicitacao').val('Pool:Group:000011');
+				}/*else if(unidade == 'Técnico'){
+					//Grupo Relatório de Viagens - Analisa Técnico
+					$('#grupoAnalisaSolicitacao').val('Pool:Group:000004');
+				}*/else{
+					$('#grupoAnalisaSolicitacao').val('');
+				}
+				
+			});
 			
 			//Validação para adiconar nova despesa, o itSolTipoDespesaItem não pode estar vazio
 			$(document).on("click", "#addMaquina", function() {

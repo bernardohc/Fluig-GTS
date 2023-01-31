@@ -11,7 +11,7 @@
   </void>
   <void method="put">
    <string>camposFormulario, documentoId = 5110</string>
-   <array class="java.lang.String" length="31">
+   <array class="java.lang.String" length="33">
     <void index="0">
      <string>aprovReembolsoObs</string>
     </void>
@@ -31,78 +31,84 @@
      <string>grupoAnalisaRelatorio</string>
     </void>
     <void index="6">
-     <string>itSolCentroCusto</string>
+     <string>indiceFilho</string>
     </void>
     <void index="7">
-     <string>itSolObsDespesaItem</string>
+     <string>itSolCentroCusto</string>
     </void>
     <void index="8">
-     <string>itSolTipoDespesaItem</string>
+     <string>itSolObsDespesaItem</string>
     </void>
     <void index="9">
-     <string>itSolTipoPagamento</string>
+     <string>itSolTipoDespesaItem</string>
     </void>
     <void index="10">
-     <string>itSolValorDespesa</string>
+     <string>itSolTipoPagamento</string>
     </void>
     <void index="11">
-     <string>nomeAnexo</string>
+     <string>itSolValorDespesa</string>
     </void>
     <void index="12">
-     <string>numFluig</string>
+     <string>nomeAnexo</string>
     </void>
     <void index="13">
-     <string>processoId</string>
+     <string>numFluig</string>
     </void>
     <void index="14">
-     <string>revisaoRelatorio</string>
+     <string>processoId</string>
     </void>
     <void index="15">
-     <string>setor</string>
+     <string>revisaoRelatorio</string>
     </void>
     <void index="16">
-     <string>solDataDocumento</string>
+     <string>salvarEnviar</string>
     </void>
     <void index="17">
-     <string>solDataRelatorio</string>
+     <string>setor</string>
     </void>
     <void index="18">
-     <string>solDataRetorno</string>
+     <string>solDataDocumento</string>
     </void>
     <void index="19">
-     <string>solDataSaida</string>
+     <string>solDataRelatorio</string>
     </void>
     <void index="20">
-     <string>solDocumento</string>
+     <string>solDataRetorno</string>
     </void>
     <void index="21">
-     <string>solEstabelecimento</string>
+     <string>solDataSaida</string>
     </void>
     <void index="22">
-     <string>solMatSolicitante</string>
+     <string>solDocumento</string>
     </void>
     <void index="23">
-     <string>solMoeda</string>
+     <string>solEstabelecimento</string>
     </void>
     <void index="24">
-     <string>solNomeSolicitante</string>
+     <string>solMatSolicitante</string>
     </void>
     <void index="25">
-     <string>solNumColaboradores</string>
+     <string>solMoeda</string>
     </void>
     <void index="26">
-     <string>solSaldo</string>
+     <string>solNomeSolicitante</string>
     </void>
     <void index="27">
-     <string>solTbDespesas</string>
+     <string>solNumColaboradores</string>
     </void>
     <void index="28">
-     <string>solTotalDespesas</string>
+     <string>solSaldo</string>
     </void>
     <void index="29">
-     <string>solValorAdiantamento</string>
+     <string>solTbDespesas</string>
     </void>
     <void index="30">
+     <string>solTotalDespesas</string>
+    </void>
+    <void index="31">
+     <string>solValorAdiantamento</string>
+    </void>
+    <void index="32">
      <string>solValorDiaria</string>
     </void>
    </array>
@@ -793,46 +799,6 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
       <void property="groupDescription">
-       <string>Administrativo GTS - Entrega Técnica</string>
-      </void>
-      <void property="groupId">
-       <string>AdmGTSEntregaTecnica</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
-      <void property="groupDescription">
-       <string>Revenda - Entrega Técnica</string>
-      </void>
-      <void property="groupId">
-       <string>revendaEntregaTecnica</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
-      <void property="groupDescription">
-       <string>Consulta - Frota - Checklist</string>
-      </void>
-      <void property="groupId">
-       <string>consultaFrotaChecklist</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
-      <void property="groupDescription">
-       <string>Consulta - Frota - Abastecimento</string>
-      </void>
-      <void property="groupId">
-       <string>consultaFrotaAbastecimento</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
-      <void property="groupDescription">
        <string>Moderator group Treinamento</string>
       </void>
       <void property="groupId">
@@ -953,7 +919,7 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
       <void property="groupDescription">
-       <string>Consulta Processo - Frota - Checklist</string>
+       <string>Frota - Checklist - Consulta Processo</string>
       </void>
       <void property="groupId">
        <string>000001</string>
@@ -963,7 +929,7 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
       <void property="groupDescription">
-       <string>Consulta Processo - Frota - Abastecimento</string>
+       <string>Frota - Abastecimento - Consulta Processo</string>
       </void>
       <void property="groupId">
        <string>000002</string>
@@ -973,7 +939,7 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
       <void property="groupDescription">
-       <string>Relatório de Viagens - Analisa Motorista</string>
+       <string>Contas a Pagar - Relatório de Viagens - Analisa Motorista</string>
       </void>
       <void property="groupId">
        <string>000003</string>
@@ -983,10 +949,80 @@
     <void method="add">
      <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
       <void property="groupDescription">
-       <string>Relatório de Viagens - Analisa Técnico</string>
+       <string>Contas a Pagar - Relatório de Viagens - Analisa Técnico</string>
       </void>
       <void property="groupId">
        <string>000004</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Contas a Pagar - Relatório de Viagens - Analisa Outro</string>
+      </void>
+      <void property="groupId">
+       <string>000005</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>GFE - Checklist - Consulta Página</string>
+      </void>
+      <void property="groupId">
+       <string>000006</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>GFE - Checklist - Acesso a pasta de Maquinários no GED</string>
+      </void>
+      <void property="groupId">
+       <string>000007</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Pós-Vendas - Entrega Técnica - Administrativo GTS</string>
+      </void>
+      <void property="groupId">
+       <string>000008</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Pós-Vendas - Entrega Técnica - Revenda</string>
+      </void>
+      <void property="groupId">
+       <string>000009</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Peças - Itens Pendentes - Administrativo GTS</string>
+      </void>
+      <void property="groupId">
+       <string>000010</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>PCP - Solicitação de Peças - Matriz</string>
+      </void>
+      <void property="groupId">
+       <string>000011</string>
       </void>
      </object>
     </void>

@@ -8,7 +8,7 @@ function createDataset(fields, constraints, sortFields) {
 
 	
 	try{
-		var PROCOD  = 'IDC002000247';
+		var PROCOD  = '';
 		var PROQTD  = 1;
 		var PROPORCDESC  = 0;
 		var PROPRCUNIT  = '';

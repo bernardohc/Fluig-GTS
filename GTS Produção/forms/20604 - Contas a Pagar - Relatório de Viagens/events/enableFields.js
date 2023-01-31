@@ -34,6 +34,7 @@ function enableFields(form){
 		form.setEnabled("itSolObsDespesaItem", true);
 		form.setEnabled("revisaoRelatorio", false);
 		form.setEnabled("aprovRevisaoObs", false);
+		
 	}
 }
 
