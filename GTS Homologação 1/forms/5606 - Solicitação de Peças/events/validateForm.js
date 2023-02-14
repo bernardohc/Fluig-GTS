@@ -9,11 +9,16 @@ function validateForm(form){
             //INICIAL
             case INICIO_0 : 
             case INICIO :   
+
+                if (isEmpty("Unidade", form)) {
+                    message += getMessage("Unidade", 1, form);
+                    hasErros = true;
+                }
                  
                 //Se for clicado em Enviar 
                 if (getValue("WKCompletTask") == "true" ){
                   
-                    //Itens Despesa
+                    //Pças
                     var indexesSolTbDespesas = form.getChildrenIndexes("solTbMaquinas");
                     if(indexesSolTbDespesas.length == 0){
                         if (isMobile(form)) {
@@ -26,16 +31,20 @@ function validateForm(form){
                         for (var i = 0; i < indexesSolTbDespesas.length; i++) {
     
                             if (isEmpty("solProduto___" + indexesSolTbDespesas[i], form)) {
-                            message += getMessage("Produto", 1, form, "Solicitação");
-                            hasErros = true;
-                            } 
-                            if (isEmpty("solQuantidade___" + indexesSolTbDespesas[i], form)) {
-                            message += getMessage("Quantidade", 1, form, "Solicitação");
-                            hasErros = true;
-                            }
-                             if (isEmpty("solTipo___" + indexesSolTbDespesas[i], form)) {
-                            message += getMessage("Tipo", 1, form, "Solicitação");
-                            hasErros = true;
+                                message += getMessage("Produto", 1, form, "Solicitação");
+                                hasErros = true;
+                            }if (isEmpty("solQuantidade___" + indexesSolTbDespesas[i], form)) {
+                                message += getMessage("Quantidade", 1, form, "Solicitação");
+                                hasErros = true;
+                            }if (isEmpty("solTipo___" + indexesSolTbDespesas[i], form)) {
+                                message += getMessage("Tipo", 1, form, "Solicitação");
+                                hasErros = true;      
+                            }if (isEmpty("solObs___" + indexesSolTbDespesas[i], form)) {
+                                message += getMessage("Observação", 1, form, "Solicitação");
+                                hasErros = true;
+                            }if (isEmpty("solVendedor___" + indexesSolTbDespesas[i], form)) {
+                                message += getMessage("Vendedor", 1, form, "Solicitação");
+                                hasErros = true;
                             }                                        
                         }
                     }
@@ -52,8 +61,18 @@ function validateForm(form){
     
                 //Se for clicado em Enviar 
                 if (getValue("WKCompletTask") == "true" ){
+
+                    if (isEmpty("Unidade", form)) {
+                        message += getMessage("Unidade", 1, form);
+                        hasErros = true;
+                    }if(form.getValue("solAprovacao") == 'reprovado' ){
+                        if (isEmpty("obsAlteracao", form)) {	
+                            message += getMessage("Obsevação", 1, form);
+                            hasErros = true;
+                        }
+                    }        
                   
-                    //Itens Despesa
+                    //Peças
                     var indexesSolTbDespesas = form.getChildrenIndexes("solTbMaquinas");
                     if(indexesSolTbDespesas.length == 0){
                         if (isMobile(form)) {
@@ -69,9 +88,9 @@ function validateForm(form){
                             if (isEmpty("solLiberacao___" + indexesSolTbDespesas[i], form)) {
                                  message += getMessage("Liberação PCP", 1, form, "Produtos");
                                     hasErros = true;
-                            }else if( form.getValue("solLiberacao___"+ indexesSolTbDespesas[i]) != "naoLiberado" ){
+                            }else if( form.getValue("solLiberacao___"+ indexesSolTbDespesas[i]) == "Parcial" ){
                                 if (isEmpty("solQtdeLiberada___" + indexesSolTbDespesas[i], form)) {
-                                    message += getMessage(" Quantidade Liberada precisa ser preenchida.", 1, form, "Itens de despesa");
+                                    message += getMessage("Quantidade Liberado.", 9, form, "Itens de despesa");
                                     hasErros = true;
                                 }
                             }                                      
@@ -85,6 +104,11 @@ function validateForm(form){
                 if (isEmpty("aprovContagem", form)) {
                     message += getMessage("Separação", 1, form);
                     hasErros = true;
+                }if(form.getValue("aprovContagem") == 'contagemNãoFinalizada' ){
+                    if (isEmpty("obslmox", form)) {	
+                        message += getMessage("Obsevação", 1, form);
+                        hasErros = true;
+                    }
                 }
     
                 //Se for clicado em Enviar 
@@ -101,34 +125,15 @@ function validateForm(form){
                     }else{
                         for (var i = 0; i < indexesSolTbDespesas.length; i++) {
                             
-                         if( form.getValue("solLiberacao___"+ indexesSolTbDespesas[i]) != "naoLiberado" ){
-                                if (isEmpty("solQtdeAlmox___" + indexesSolTbDespesas[i], form)) {
+                         if( form.getValue("aprovContagem___"+ indexesSolTbDespesas[i]) == "contagemFinalizada" ){
+                                                           
+                            if (isEmpty("solQtdeAlmox___" + indexesSolTbDespesas[i], form)) {
                                     message += getMessage(" Quantidade Almox precisa ser preenchida.", 1, form, "Itens de despesa");
                                     hasErros = true;
                                 }
                             }                                      
                         }
                     }
-    
-                    /*
-                    //Itens Despesa
-                    var indexesSolTbDespesas = form.getChildrenIndexes("solTbMaquinas");
-                    if(indexesSolTbDespesas.length == 0){
-                        if (isMobile(form)) {
-                            message += getMessage("Não possuí nenhuma solicitação cadastrada!.", 6, form);
-                        }else{
-                            message += getMessage("Não possuí nenhuma solicitação cadastrada!.", 6, form);
-                        }
-                        hasErros = true;
-                    }else{
-                        for (var i = 0; i < indexesSolTbDespesas.length; i++) {
-    
-                            if (isEmpty("solQtdeAlmox___" + indexesSolTbDespesas[i], form)) {
-                            message += getMessage("Quantidade de Peças Liberada pelo Almox", 1, form, "Liberação PCP");
-                            hasErros = true;
-                            }                                                                
-                        }
-                    }*/
                 }
     
             break;
@@ -157,7 +162,9 @@ function validateForm(form){
                 case 7:
                         return "Campo: "+texto+" precisa estar marcado."; 
                 case 8:
-                    return "Campo: "+texto+" não pode ser menor que a data de saída";  	 	
+                    return "Campo: "+texto+" não pode ser menor que a data de saída"; 
+                case 9:
+                return "Campo: "+texto+" não pode estar vazio caso seja liberado parcialmente.";  	 	
             }
         } else {
             switch (tipoMensagem) {
@@ -176,7 +183,9 @@ function validateForm(form){
                 case 7:
                         return "<li>Campo: <b>"+texto+"</b> precisa estar marcado.</li>";
                 case 8:
-                    return "<li>Campo: <b>"+texto+"</b> não pode ser menor que a data de saída </li>";     
+                    return "<li>Campo: <b>"+texto+"</b> não pode ser menor que a data de saída. </li>";     
+                case 9:
+                return "<li>Campo: <b>"+texto+"</b> não pode estar vazio caso liberação seja Parcial. </li>"; 
             }
         }
     } 

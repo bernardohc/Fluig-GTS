@@ -29,6 +29,7 @@ function displayFields(form,customHTML){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
+			form.setVisibleById("divImprimirPcp", true);
 			
 		}
 	}else if(atv_atual == SEPARACAO_ALMOX){
@@ -37,7 +38,8 @@ function displayFields(form,customHTML){
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divSeparacaoAlmox", true);
-			
+			form.setVisibleById("divImprimirAlmox", true);
+			form.setVisibleById("divImprimirPcp", false);
 		}
 	}else if(atv_atual == FIM){
 		if(getValue('solAprovacao') == 'reprovado'){
@@ -45,6 +47,8 @@ function displayFields(form,customHTML){
 		}else{
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divSeparacaoAlmox", true);
+			form.setVisibleById("divImprimirPcp", false);
+			form.setVisibleById("divImprimirAlmox", false);
 		}	
 	}
 }

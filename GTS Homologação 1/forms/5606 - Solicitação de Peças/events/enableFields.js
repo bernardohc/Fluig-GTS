@@ -19,6 +19,9 @@ function enableFields(form){
 		    	form.setEnabled("solQuantidade___" + indexes[i], false);
 		    	form.setEnabled("solTipo___" + indexes[i], false);
 				form.setEnabled("solQtdeAlmox___" + indexes[i], false);
+				form.setEnabled("solObs___" + indexes[i], false);
+				form.setEnabled("solVendedor___" + indexes[i], false);
+				form.setEnabled("Unidade", false);	
 		    }
 		}
 		
@@ -33,6 +36,9 @@ function enableFields(form){
 		    	form.setEnabled("solTipo___" + indexes[i], false);
 				form.setEnabled("solLiberacao___" + indexes[i], false);
 		    	form.setEnabled("solQtdeLiberada___" + indexes[i], false);
+				form.setEnabled("solObs___" + indexes[i], false);
+				form.setEnabled("solVendedor___" + indexes[i], false);
+				form.setEnabled("Unidade", false);	
 		    }
 		}
 		//Aprovação PCP

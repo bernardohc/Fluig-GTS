@@ -90,9 +90,11 @@ var eventsFuncoes = (function() {
 	return {
 		setup : function() {	
 			
-			/*
-			 * Adiantamento
-			 */
+			$(document).on("click", "#imprimirRelatorio", function() {
+	
+				imprimeRelatorio();
+				
+			});
 			
 			//data set consulta de produtos
 			$(document).on("change", ".inputItSolProduto", function() {
@@ -107,22 +109,37 @@ var eventsFuncoes = (function() {
 				
 			});
 			
+			//Valida campo para atribuição analise.
 			$(document).on("change", "#Unidade", function() {
-				let unidade = $("#Unidade").val();
+				let Unidade = $("#Unidade").val();
 				
-				if(setor == 'Matriz'){
-					//Grupo Relatório de Viagens - Analisa Motorista
-					$('#grupoAnalisaSolicitacao').val('Pool:Group:000011');
-				}/*else if(unidade == 'Técnico'){
-					//Grupo Relatório de Viagens - Analisa Técnico
-					$('#grupoAnalisaSolicitacao').val('Pool:Group:000004');
-				}*/else{
-					$('#grupoAnalisaSolicitacao').val('');
-				}
+				if(Unidade == 'Matriz'){
+					//Grupo PCP - Solicitação de Peças - Matriz Analisa
+					$('#grupoAnalisaSolicitacao').val('Pool:Group:000012');
+				}else if(Unidade == 'Unidade2'){
+					//Grupo PCP - Solicitação de Peças - Filial 2 Analisa
+					$('#grupoAnalisaSolicitacao').val('Pool:Group:000013');
+				}else{
+					$('#grupoAnalisaRelatorio').val('');
+				}			
+			});
+
+			//Valida campo para atribuição almox.
+			$(document).on("change", "#Unidade", function() {
+				let Unidade = $("#Unidade").val();
 				
+				if(Unidade == 'Matriz'){
+					//Grupo PCP - Solicitação de Peças - Separação Almox Matriz
+					$('#grupoSeparacaoAlmox').val('Pool:Group:000014');
+				}else if(Unidade == 'Unidade2'){
+					//Grupo PCP - Solicitação de Peças - Separação Almox Filial 2
+					$('#grupoSeparacaoAlmox').val('Pool:Group:000015');
+				}else{
+					$('#grupoAnalisaRelatorio').val('');
+				}			
 			});
 			
-			//Validação para adiconar nova despesa, o itSolTipoDespesaItem não pode estar vazio
+			//Validação para adiconar novos proutos
 			$(document).on("click", "#addMaquina", function() {
 				let addNovoItem = true;
 				$("input[name*=solProduto___]").each(function(index){
@@ -130,6 +147,8 @@ var eventsFuncoes = (function() {
 					var solProduto = $("#solProduto___"+index).val();
 					var solQuantidade = $("#solQuantidade___"+index).val();
 					var solTipo = $("#solTipo___"+index).val();
+					var solObs = $("#solObs___"+index).val();
+					var solVendedor = $("#solVendedor___"+index).val();
 					
 					if(solProduto.trim() == ""){
 						addNovoItem = false;
@@ -140,9 +159,15 @@ var eventsFuncoes = (function() {
 					if(solTipo.trim() == ""){
 						addNovoItem = false;
 					}
+					if(solObs.trim() == ""){
+						addNovoItem = false;
+					}
+					if(solVendedor.trim() == ""){
+						addNovoItem = false;
+					}
 				});
 					if(!addNovoItem){
-						FLUIGC.toast({ title: '', message: "É preciso preencher a Solicitação anterior para adicionar uma nova.", type: 'warning' });
+						FLUIGC.toast({ title: '', message: "É preciso preencher a solicitação anterior para adicionar uma nova.", type: 'warning' });
 					}else{
 						funcoes.addLinhaDespesa();
 					}

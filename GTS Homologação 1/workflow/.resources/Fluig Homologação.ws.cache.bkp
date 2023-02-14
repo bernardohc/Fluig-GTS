@@ -10,6 +10,961 @@
    </array>
   </void>
   <void method="put">
+   <string>mecanismoGrupo</string>
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>revenda</string>
+      </void>
+      <void property="groupId">
+       <string>revenda</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Revendas</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Revendas</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Revendas</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Revendas</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Rio Grande do Sul</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_rio-grande-do-sul</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Rio Grande do Sul</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_rio-grande-do-sul</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Rio Grande do Sul</string>
+      </void>
+      <void property="groupId">
+       <string>rio-grande-do-sul</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Santa Catarina</string>
+      </void>
+      <void property="groupId">
+       <string>santa-catarina</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Santa Catarina</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_santa-catarina</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Santa Catarina</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_santa-catarina</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Paraná</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Parana</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Paraná</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Parana</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group São Paulo</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_sao-paulo</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group São Paulo</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_sao-paulo</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Paraná</string>
+      </void>
+      <void property="groupId">
+       <string>parana</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Mato Grosso do Sul</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_mato-grosso-do-sul</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Mato Grosso do Sul</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_mato-grosso-do-sul</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Mato Grosso do Sul</string>
+      </void>
+      <void property="groupId">
+       <string>mato-grosso-do-sul</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Maranhão</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_maranhao</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Maranhão</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_maranhao</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Tocantins</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Tocantins</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Tocantins</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Tocantins</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Piaui</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Piaui</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Piaui</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Piaui</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Mato Grosso</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_mato-grosso</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Mato Grosso</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_mato-grosso</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Alagoas</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Alagoas</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Alagoas</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Alagoas</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Bahia</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Bahia</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Bahia</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Bahia</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Goias</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Goias</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Goias</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Goias</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Pará</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_para</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Pará</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_para</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Rondônia</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Rondonia</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Rondônia</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Rondonia</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group GTS DO BRASIL</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_gts-do-brasil</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group GTS DO BRASIL</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_gts-do-brasil</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>GTS DO BRASIL</string>
+      </void>
+      <void property="groupId">
+       <string>GTS-DO-BRASIL</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Bahia</string>
+      </void>
+      <void property="groupId">
+       <string>Bahia</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Goias</string>
+      </void>
+      <void property="groupId">
+       <string>Goias</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Maranhão</string>
+      </void>
+      <void property="groupId">
+       <string>Maranhão</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Mato Grosso</string>
+      </void>
+      <void property="groupId">
+       <string>Mato-Grosso</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Pará</string>
+      </void>
+      <void property="groupId">
+       <string>Para</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Piaui</string>
+      </void>
+      <void property="groupId">
+       <string>Piaui</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Rondônia</string>
+      </void>
+      <void property="groupId">
+       <string>Rondonia</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Tocantins</string>
+      </void>
+      <void property="groupId">
+       <string>Tocantins</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>São paulo</string>
+      </void>
+      <void property="groupId">
+       <string>Sao-paulo</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Minas Gerais</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_minas-gerais</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Minas Gerais</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_minas-gerais</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Minas Gerais</string>
+      </void>
+      <void property="groupId">
+       <string>minas-gerais</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - Engenharia</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_Engenharia</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - Peças</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_Pecas</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - Financerio</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_Financerio</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - Outros</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_Outros</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - RH</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_RH</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - Logística</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_Logistica</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - Qualidade</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_Qualidade</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - Serviços</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_Servicos</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - Vendas</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_Vendas</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Revenda Exportação USA</string>
+      </void>
+      <void property="groupId">
+       <string>revendaEXUSA</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Territorial 1</string>
+      </void>
+      <void property="groupId">
+       <string>Territorial1</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Territorial 2</string>
+      </void>
+      <void property="groupId">
+       <string>Territorial2</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Territorial 3</string>
+      </void>
+      <void property="groupId">
+       <string>Territorial3</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Exportação 1 </string>
+      </void>
+      <void property="groupId">
+       <string>Exportacao1</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Revenda Máquina</string>
+      </void>
+      <void property="groupId">
+       <string>revendaMaquina</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Pedido de Máquina - Administrativo  GTS</string>
+      </void>
+      <void property="groupId">
+       <string>validaPedidoDeMaquinaAdmGTS</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Acompanha Pedido de Máquina - Administrativo  GTS</string>
+      </void>
+      <void property="groupId">
+       <string>acompanhaPedidoDeMaquinaAdmGTS</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>pedidoDeMaquina</string>
+      </void>
+      <void property="groupId">
+       <string>pedidoDeMaquina</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Moderator group Treinamento</string>
+      </void>
+      <void property="groupId">
+       <string>MODERATOR_Treinamento</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Member group Treinamento</string>
+      </void>
+      <void property="groupId">
+       <string>MEMBER_Treinamento</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>SAC - TI</string>
+      </void>
+      <void property="groupId">
+       <string>SAC_TI</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Gestor Relatório de Viagens</string>
+      </void>
+      <void property="groupId">
+       <string>GestorRelatorioDeViagens</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Analista do Relatório de viagens</string>
+      </void>
+      <void property="groupId">
+       <string>AnalistaRelatorioViagens</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Solicitante Relatorio de Viagens</string>
+      </void>
+      <void property="groupId">
+       <string>SolicitanteRelatorioViagens</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Solicita Pecas Filial para Matriz</string>
+      </void>
+      <void property="groupId">
+       <string>SolicitaPecasFilial</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Separa Peças do Almox Matriz para Filial</string>
+      </void>
+      <void property="groupId">
+       <string>SeparacaoPecasAlmox</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Solicitante de Alteração de Maquina</string>
+      </void>
+      <void property="groupId">
+       <string>SolicitaAlteracaoMaquina</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>GestorSolicitacoesPCP</string>
+      </void>
+      <void property="groupId">
+       <string>GestorSolicitacoesPCP</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Solicita Cancelamento Comercial</string>
+      </void>
+      <void property="groupId">
+       <string>SolicitaCancelamentoComercial</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Solicita Antecipao</string>
+      </void>
+      <void property="groupId">
+       <string>SolicitaAntecipao</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Frota - Checklist - Consulta Processo</string>
+      </void>
+      <void property="groupId">
+       <string>000001</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Frota - Abastecimento - Consulta Processo</string>
+      </void>
+      <void property="groupId">
+       <string>000002</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Contas a Pagar - Relatório de Viagens - Analisa Motorista</string>
+      </void>
+      <void property="groupId">
+       <string>000003</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Contas a Pagar - Relatório de Viagens - Analisa Técnico</string>
+      </void>
+      <void property="groupId">
+       <string>000004</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Contas a Pagar - Relatório de Viagens - Analisa Outro</string>
+      </void>
+      <void property="groupId">
+       <string>000005</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>GFE - Checklist - Consulta Página</string>
+      </void>
+      <void property="groupId">
+       <string>000006</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>GFE - Checklist - Acesso a pasta de Maquinários no GED</string>
+      </void>
+      <void property="groupId">
+       <string>000007</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Pós-Vendas - Entrega Técnica - Administrativo GTS</string>
+      </void>
+      <void property="groupId">
+       <string>000008</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Pós-Vendas - Entrega Técnica - Revenda</string>
+      </void>
+      <void property="groupId">
+       <string>000009</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Peças - Itens Pendentes - Administrativo GTS</string>
+      </void>
+      <void property="groupId">
+       <string>000010</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>PCP - Solicitação de Peças - Matriz</string>
+      </void>
+      <void property="groupId">
+       <string>000011</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>PCP - Solicitação de Peças - Matriz Analisa</string>
+      </void>
+      <void property="groupId">
+       <string>000012</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>PCP - Solicitação de Peças - Filial 2 Analisa</string>
+      </void>
+      <void property="groupId">
+       <string>000013</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>PCP - Solicitação de Peças - Separação Almox Matriz</string>
+      </void>
+      <void property="groupId">
+       <string>000014</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>PCP - Solicitação de Peças - Separação Almox Filial 2</string>
+      </void>
+      <void property="groupId">
+       <string>000015</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="put">
    <string>expediente</string>
    <array class="java.lang.String" length="3">
     <void index="0">
@@ -20,6 +975,71 @@
     </void>
     <void index="2">
      <string>Full</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 5606</string>
+   <array class="java.lang.String" length="20">
+    <void index="0">
+     <string>aprovContagem</string>
+    </void>
+    <void index="1">
+     <string>dataAbertura</string>
+    </void>
+    <void index="2">
+     <string>grupoAnalisaSolicitacao</string>
+    </void>
+    <void index="3">
+     <string>grupoSeparacaoAlmox</string>
+    </void>
+    <void index="4">
+     <string>numFluig</string>
+    </void>
+    <void index="5">
+     <string>obsAlteracao</string>
+    </void>
+    <void index="6">
+     <string>obslmox</string>
+    </void>
+    <void index="7">
+     <string>processoId</string>
+    </void>
+    <void index="8">
+     <string>solAprovacao</string>
+    </void>
+    <void index="9">
+     <string>solDescAtual</string>
+    </void>
+    <void index="10">
+     <string>solLiberacao</string>
+    </void>
+    <void index="11">
+     <string>solNomeSolicitante</string>
+    </void>
+    <void index="12">
+     <string>solObs</string>
+    </void>
+    <void index="13">
+     <string>solProduto</string>
+    </void>
+    <void index="14">
+     <string>solQtdeAlmox</string>
+    </void>
+    <void index="15">
+     <string>solQtdeLiberada</string>
+    </void>
+    <void index="16">
+     <string>solQuantidade</string>
+    </void>
+    <void index="17">
+     <string>solTipo</string>
+    </void>
+    <void index="18">
+     <string>solVendedor</string>
+    </void>
+    <void index="19">
+     <string>Unidade</string>
     </void>
    </array>
   </void>
