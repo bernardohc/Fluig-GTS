@@ -1,0 +1,48 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<div class="form-group">
+		<label for="nome">Nome</label>
+		<input type="text" class="form-control" name="nome" id="nome">
+	</div>
+	<div class="form-group">
+		<label for="email">E-mail</label>
+		<input type="mail" class="form-control" name="email" id="email">
+	</div>
+	<div class="form-group">
+		<label for="perfil">Perfil</label>
+		<input type="text" class="form-control" name="perfil" id="perfil">
+	</div>	
+	<div class="form-group">
+		<label for="linkedin">Linkedin</label>
+		<input type="text" class="form-control" name="linkedin" id="linkedin">
+	</div>
+	<div class="form-group">
+		<label for="login">Login</label>
+		<input type="text" class="form-control" name="login" id="login">
+	</div>	
+	<div class="form-group">
+		<label for="senha">Senha</label>
+		<input type="text" class="form-control" name="senha" id="senha">
+	</div>
+	<div class="col-md-1">
+		<button class="btn btn-info" id="criaUsuario">Criar Usu�rio</button>
+	</div>
+	<div class="col-md-1">
+		<button class="btn btn-warning" id="adicionaAComunidade">Adicionar � Comunidade</button>
+	</div>
+</form>
+</div>
+</body>
+<script type="text/javascript" src="criaUsuario.js"></script>
+<!-- Biblioteca para pder consultar o dataset-->
+<script type="text/javascript" src="../vcXMLRPC.js"></script>
+</html>

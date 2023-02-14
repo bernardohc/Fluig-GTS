@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Contas a Pagar - Relatorio de Viagens</processId>
-      <version>6</version>
+      <version>9</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>20604</formId>
@@ -84,8 +84,8 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>ADMGTS</periodId>
       <stateType>0</stateType>
       <bpmnType>10</bpmnType>
       <signalId>0</signalId>
@@ -267,7 +267,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId></engineAllocationId>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;First&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -433,7 +434,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>6</version>
+        <version>9</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;reprovado&quot;</condition>
@@ -445,7 +446,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>6</version>
+        <version>9</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;aprovado&quot;</condition>
@@ -457,7 +458,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>6</version>
+        <version>9</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoReprovado&quot;</condition>
@@ -469,7 +470,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>6</version>
+        <version>9</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoAprovado&quot;</condition>
@@ -481,12 +482,12 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>6</version>
+        <version>9</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
       <destinationSequenceId>20</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;All&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;20&lt;/BaseActivity&gt;&lt;Returns&gt;All&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <engineAllocationId>Executor Atividade</engineAllocationId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
@@ -495,7 +496,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>6</version>
+        <version>9</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
@@ -780,7 +781,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>6</version>
+        <version>9</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -791,7 +792,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>6</version>
+        <version>9</version>
         <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -802,7 +803,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>6</version>
+        <version>9</version>
         <linkSequence>14</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -813,7 +814,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>6</version>
+        <version>9</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -824,7 +825,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>6</version>
+        <version>9</version>
         <linkSequence>17</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -835,7 +836,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>6</version>
+        <version>9</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

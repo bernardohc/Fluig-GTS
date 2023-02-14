@@ -1,0 +1,34 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">
+<soapenv:Header/>
+<soapenv:Body>
+   <ws:create>
+      <companyId>1</companyId>
+      <username>caio.rodrigues</username>
+      <password>caio.rodrigues</password>
+      <card>
+         <item>
+            <additionalComments>Criado via Página Pública</additionalComments>
+            <cardData>
+               <field>nome</field>
+               <value name="nome"></value>
+            </cardData>
+            <cardData>
+               <field>email</field>
+               <value name="email"></value>
+            </cardData>
+            <cardData>
+               <field>perfil</field>
+               <value name="perfil"></value>
+            </cardData>
+            <cardData>
+               <field>linkedin</field>
+               <value name="linkedin"></value>
+            </cardData>
+            <colleagueId>caio.rodrigues</colleagueId>
+            <documentDescription>Currículo Enviado</documentDescription>
+            <parentDocumentId>21</parentDocumentId>
+         </item>
+      </card>
+   </ws:create>
+</soapenv:Body>
+</soapenv:Envelope>

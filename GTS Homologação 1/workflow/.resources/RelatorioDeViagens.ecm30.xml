@@ -15,7 +15,7 @@
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
-    <periodId>ADMGTS</periodId>
+    <periodId>Default</periodId>
     <uniqueCardVersion>false</uniqueCardVersion>
     <keyWord></keyWord>
     <complementsLevel>1</complementsLevel>
@@ -706,7 +706,34 @@
       <editionMode>false</editionMode>
     </ProcessAttachmentSecurity>
   </list>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeTaskSave</eventId>
+        <processId>RelatorioDeViagens</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeTaskSave(colleagueId, nextSequenceId, userList) {&#xd;
+    log.info(&quot;#### TESTE BEFORE TASK SAVE ####&quot;);&#xd;
+    var attachments = hAPI.listAttachments();&#xd;
+    var hasAttachment = false;&#xd;
+&#xd;
+    for (var i = 0; i &lt; attachments.size(); i++) {&#xd;
+        var attachment = attachments.get(i);&#xd;
+        if (attachment.getDocumentDescription() == &quot;fluig.pdf&quot;) {&#xd;
+            hasAttachment = true;&#xd;
+        }&#xd;
+    }&#xd;
+    log.info(&quot;#### hasAttachment ####&quot;);&#xd;
+    log.info(hasAttachment);&#xd;
+&#xd;
+    if (!hasAttachment) {&#xd;
+        throw &quot;Attachment not found!&quot;;&#xd;
+    }&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>

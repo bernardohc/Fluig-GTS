@@ -88,6 +88,37 @@ var funcoes = (function() {
 	}
 })();
 
+$("#solProduto").blur(function(){
+
+	//Cria o json esperado pelo serviço
+	var dados = { communityAlias : "mais-fluig", userAliases : [$("#login").val()]};
+	
+	//Requisição ajax que enviara ao servidor
+	$.ajax({
+		
+		//Dados que serão enviados na requisição.
+		//Converte em string,
+		data: JSON.stringify(dados),
+		//O Tipo de retorno
+		dataType: 'json',
+		//Url endereço de onde será enviada a requisição
+		url: 'http://spon010108205:8082/api/public/2.0/communities/addUsers',
+		//Tipo da requisição
+		type: 'POST',
+		//Tipo de dado que está enviando ao servidor
+		contentType: 'application/json',
+		//Retorno com sucesso
+		success: function(result) {
+			FLUIGC.toast({
+		        message: 'Usuário adicionado na comunidade.' ,
+		        type: 'warning'
+		    });
+		}
+		
+	});
+	
+});
+
 //Aqui colocar os gatilhos
 var eventsFuncoes = (function() {
 	return {

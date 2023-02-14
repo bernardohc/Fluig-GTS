@@ -1,0 +1,33 @@
+<!--Inicio envolope soap-->
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.workflow.ecm.technology.totvs.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:simpleStartProcess>
+         <username>bernardo.correa</username>
+         <password>GTS@2022</password>
+         <companyId>1</companyId>
+         <processId>AvaliarCandidato</processId>
+         <comments>Criado via Soap UI</comments>
+         <attachments>
+         </attachments>
+         <cardData>
+            <item>
+               <item>nome</item>
+               <item name="nome"></item>
+            </item>
+            <item>
+               <item>perfil</item>
+               <item name="perfil"></item>
+            </item>
+            <item>
+               <item>email</item>
+               <item name="email"></item>
+            </item>
+            <item>
+               <item>linkedin</item>
+               <item name="linkedin"></item>
+            </item>
+         </cardData>
+      </ws:simpleStartProcess>
+   </soapenv:Body>
+</soapenv:Envelope>

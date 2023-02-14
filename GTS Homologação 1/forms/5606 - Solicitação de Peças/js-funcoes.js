@@ -33,23 +33,20 @@ var funcoes = (function() {
 				type: "GET",
 				dataType: "json",
 				async: true,
-				url: "/api/public/ecm/dataset/search?datasetId=dsConsultaProd&filterFields=PROCOD,"+codProduto,
-				data: "",
+				url: "/api/public/ecm/dataset/search?datasetId=dsConsultaProdutoPCP&filterFields=cPROD,"+codProduto,
 				
 				success: function (data, status, xhr) {
 					if (data != null && data.content != null && data.content.length > 0) {
 						const records = data.content;
 						if( records[0].CODRET == "1"){
 							var record = records[0];
-							var CodigoItem = record.PROCOD;
-							var DescricaoItem = record.PRODESC;
+							var DescricaoItem = record.CDESC;
 							
 							$("#solDescAtual___"+indexItem).val(DescricaoItem);
 							
 						}else if (records[0].CODRET == "2"){
 							FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
 							funcoes.limpaCamposItem(indexItem);
-							
 						}
 						
 					}else{
