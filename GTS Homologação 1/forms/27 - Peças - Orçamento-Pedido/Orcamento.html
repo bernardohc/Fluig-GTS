@@ -1,0 +1,1121 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-atividades.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<!--  	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>-->
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-vcXMLRPC.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-beforeSendValidate.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-xlsx.full.min.js" ></script>
+	<script type="text/javascript" src="js-fileSaver.min.js" ></script>
+</head>
+<body onload="loadForm()" >
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<!-- CAMPOS HIDDEN PARA USO INTERNO -->
+	<input type="hidden" name="origemSolicitacao" id="origemSolicitacao" class="form-control">
+	<input type="hidden" name="itensProcessados" id="itensProcessados" class="form-control">
+	<input type="hidden" name="dataItensProcessados" id="dataItensProcessados" class="form-control">
+	<input type="hidden" name="solicitacao" id="solicitacao" class="form-control">
+	<input type="hidden" name="solicitante" id="solicitante" class="form-control">
+	<input type="hidden" name="DataAbertura" id="DataAbertura" class="form-control">
+	<input type="hidden" name="WKNumState" id="WKNumState" class="form-control">
+	<input type="hidden" name="A1_COD" id="A1_COD" class="form-control" >
+	<input type="hidden" name="A1_LOJA" id="A1_LOJA" class="form-control" >
+	<input type="hidden" name="A1_TIPO" id="A1_TIPO" class="form-control" >
+	<input type="hidden" name="A1_PAIS" id="A1_PAIS" class="form-control" >
+	<input type="hidden" name="gestorEstado" id="gestorEstado" class="form-control" >
+	<input type="hidden" name="matriculaValidaPedRiscoA" id="matriculaValidaPedRiscoA" class="form-control" >
+	<input type="hidden" name="codVendedorProtheus" id="codVendedorProtheus" class="form-control" >
+	<input type="hidden" name="gerenteRevenda" id="gerenteRevenda" class="form-control" >
+	<input type="hidden" name="tipoGS" id="tipoGS" class="form-control" >
+	<input type="hidden" name="periodoInicialDescontoPP" id="periodoInicialDescontoPP" class="form-control" >
+	<input type="hidden" name="periodoFinalDescontoPP" id="periodoFinalDescontoPP" class="form-control" >
+	<input type="hidden" name="PercentDesc" id="PercentDesc" class="form-control">
+	<input type="hidden" name="porcDescontoPP" id="porcDescontoPP" class="form-control" >
+	<input type="hidden" name="porcDescontoParamTipoPedido" id="porcDescontoParamTipoPedido" class="form-control" >
+	<input type="hidden" name="porcDescontoParamCondPgtoAV" id="porcDescontoParamCondPgtoAV" value="3" >
+	
+	
+	<input type="text" name="endNomeCliente" id="endNomeCliente" class="form-control" style="display:none;" />
+	<input type="text" name="endCNPJ" id="endCNPJ" class="form-control" style="display:none;" />
+	<input type="text" name="endIE" id="endIE" class="form-control" style="display:none;" />
+	<input type="text" name="endEndereco" id="endEndereco" class="form-control" style="display:none;" />
+	<input type="text" name="endNumero" id="endNumero" class="form-control" style="display:none;" />
+	<input type="text" name="endBairro" id="endBairro" class="form-control" style="display:none;" />
+	<input type="text" name="endCEP" id="endCEP" class="form-control" style="display:none;" />
+	<input type="text" name="endCidade" id="endCidade" class="form-control" style="display:none;" />
+	<input type="text" name="endUF" id="endUF" class="form-control" style="display:none;" />
+	<input type="hidden" name="descontoUsuario" id="descontoUsuario" class="form-control" >
+	<input type="hidden" name="riscoRevenda" id="riscoRevenda" class="form-control" >
+	<input type="text" name="vendedor1"  id="vendedor1"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor2"  id="vendedor2"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor3"  id="vendedor3"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor4"  id="vendedor4"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor5"  id="vendedor5"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor6"  id="vendedor6"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor7"  id="vendedor7"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor8"  id="vendedor8"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor9"  id="vendedor9"  class="form-control" style="display:none;" readonly />
+	<input type="text" name="vendedor10" id="vendedor10" class="form-control" style="display:none;" readonly />
+	
+	<div id="divInternacionalizacao" style="display:none;" >
+		<span id="msg_erro_consulta_revenda">i18n.translate("msg_erro_consulta_revenda")</span>
+		<span id="msg_erro_consulta_produto">i18n.translate("msg_erro_consulta_produto")</span>
+		<span id="msg_cod_prod_nao_preenchido">i18n.translate("msg_cod_prod_nao_preenchido")</span>
+		<span id="msg_qt_nao_preenchido">i18n.translate("msg_qt_nao_preenchido")</span>
+		<span id="msg_item_ja_existe_na_tabela">i18n.translate("msg_item_ja_existe_na_tabela")</span>
+		<span id="msg_multiplo_embalagem">i18n.translate("msg_multiplo_embalagem")</span>
+	</div>
+	<div class="col-sm-12">
+	    <div class="row banner-header">
+	        <font color="000" ><h1><strong id="cabecalho" name="cabecalho">Orçamento</strong></h1></font>
+	    </div>
+	</div>
+	
+	<div id="divOrcamentoPedido" class="col-sm-12 text-center" style="display:none;" >
+		<div class="row">
+			<div class="col-md-12 ">
+            	<h3 >O que você deseja realizar?*</h3>
+				<div class="radio " >
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="defineOrcamentoPedido" value="orcamento" id="defineOrcamento">
+						<label for="defineOrcamento">Gerar orçamento para cliente?</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="defineOrcamentoPedido" value="pedido" id="definePedido">
+						<label for="definePedido">Gerar pedido para GTS?</label>
+					</div>
+					<div id="divDefineCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="defineOrcamentoPedido" value="Cancelar" id="defineCancelar">
+						<label for="defineCancelar">Cancelar</label>
+					</div>
+				</div>
+				<hr /> 
+			</div>
+		</div>
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+	
+	<div id="divDefineExportacaoPedido" class="col-sm-12 text-center" style="display:none;" >
+		<div class="row">
+			<div class="col-md-12 ">
+            	<h3 >i18n.translate("lb_deseja_realizar")*</h3>
+				<div class="radio " >
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="defineExpPedidoSalvarCancel" value="pedido" id="defineExpPedido">
+						<label for="defineExpPedido">i18n.translate("lb_deseja_realizar_pedido")</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="defineExpPedidoSalvarCancel" value="salvar" id="defineExpSalvar">
+						<label for="defineExpSalvar">i18n.translate("lb_deseja_realizar_salvar")</label>
+					</div>
+					<div id="divDefineExpCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="defineExpPedidoSalvarCancel" value="cancelar" id="defineExpCancelar">
+						<label for="defineExpCancelar">i18n.translate("lb_deseja_realizar_cancelar")</label>
+					</div>
+				</div>
+				<hr /> 
+			</div>
+		</div>
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+		
+	<div id="divOrigemCatalogo"  class="col-sm-12" style="display:none;">
+		<div class="row">
+			<div class="col-sm-12 ">
+				<div class="row">
+					<div class="col-sm-12 ">
+						<div class="col-md-8 " align="left">
+							<!-- Tudo isso para ficar alinhado no front -->
+							<span id="spanOrigemPedidoCatalogo" style="font-size:14px; font-weight:bold;">i18n.translate("span_origem") </span><a id="linkCatalogo" target="_blank"><span id="spanNumCatalogo" style="font-size:14px; font-weight:bold;"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+		
+	<div id="divOrcamentoCliente" class="col-sm-12"  >
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-2" align="left">
+						<label for="orcNomeFantasia">Nome Fantasia (Cliente Final)*</label>
+						<input type="text" name="orcNomeClienteFinal" id="orcNomeClienteFinal" class="form-control" maxlength="50"  data-protection="Nome do cliente" data-protection-anonymizable data-protection-sensitive data-protection-name data-protection-class-consent="Identifica o cliente final do orçamento">
+		            </div>
+					<div class="col-md-2" align="left">
+						<label for="orcTelClienteFinal">Telefone*</label>
+						<input type="text" name="orcTelClienteFinal" id="orcTelClienteFinal" class="form-control" maxlength="20" data-protection="Telefone" data-protection-anonymizable data-protection-sensitive data-protection-other data-protection-class-consent="Contato do cliente final do orçamento">
+		            </div>
+	            </div>
+            </div>
+            
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2" align="left">
+						<label for="orcObservacao">Observação</label>
+						<textarea rows="3" cols="6" name="orcObservacao" id="orcObservacao" class="form-control " ></textarea>
+		             </div>
+		         </div>    
+			</div>  
+		</div>
+		
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+	
+	<div id="divGerenteAdm" style="display:none;" class="col-sm-12">
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="divSolicitante" class="row" style="display:none;">
+					<div class="col-sm-12">
+						<div id="divDadosSolicitante" class="col-md-8 " align="left">
+							<label for="nomeSolicitante">i18n.translate("lb_solicitante"): <span id="spanNomeSolicitante" style="font-size:18px; text-decoration: underline; font-weight:bold;"></span> <span id="spanCNPJSolicitante" style="font-size:18px; text-decoration: underline; font-weight:bold;"></span> <span id="spanEndSolicitante" style="font-size:18px; text-decoration: underline; font-weight:bold;"></span></label>
+							<input type="hidden" name="nomeSolicitante" id="nomeSolicitante" class="form-control" readonly="readonly" style="display:none">
+			            </div>
+			            
+			            <div id="divNumCatalogo" class="col-md-2 " align="left" style="display:none;">
+							<label for="numCatalogo">i18n.translate("lb_num_cat")</label>
+							<input type="text" name="numCatalogo" id="numCatalogo" class="form-control" maxlength="10" readonly >
+						</div>
+			            <div id="divNumOrcamento" class="col-md-2 " align="left" style="display:none;">
+							<label for="numOrcamento">i18n.translate("lb_num_orc")</label>
+							<input type="text" name="numOrcamento" id="numOrcamento" class="form-control" maxlength="10" readonly >
+						</div>
+			            <div id="divNumPedido" class="col-md-2 " align="left" style="display:none;">
+							<label for="numPedido">i18n.translate("lb_num_ped")</label>
+							<input type="text" name="numPedido" id="numPedido" class="form-control" maxlength="10" readonly >
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div id="divTipoPedido" class="col-md-2" align="left">
+							<label for="tipoPedido">i18n.translate("lb_tipo_pedido")</label>
+							<i id="popoverTipoPedido"  class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover class-not-eua"  data-toggle="popover" title="" data-original-title="" data-content="
+							<div style='background-color: #fff;'> 
+							<table style='border: 1px solid #ddd; width: 100%; border-collapse: collapse;'>
+								<thead>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; font-weight:bold; border: 1px solid #ddd;'>Tipo de Pedido</td>
+										<td style='font-size: 11px; padding: 5px; font-weight:bold; border: 1px solid #ddd;'>Prazo de Entrega</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Compra Futura</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Atendimento em até 30 dias úteis</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Compra Programada</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Atendimento de 30 a 90 dias úteis</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Pedido de Estoque</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Atendimento em 5 dias úteis</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Pedido de Garantia</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Atendimento em 2 dias úteis</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Máquina Parada</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Atendimento em 2 dias úteis</td>
+									</tr>
+								</tbody>	
+							</table>
+							<p style='text-align:center;'>*CONFORME DISPONIBILIDADE NO MOMENTO*<p/>
+							</div>
+							"></i>	
+							<select name="tipoPedido" id="tipoPedido" class="form-control classCliente">
+								<option value=""> </option>
+<!-- 				        		<option value="PC" class="tpGreenSystem">Pedido Contrato</option> -->
+					        	<option value="PCI" style='display:none;'>Pedido Contrato Estoque Inicial de Novos Equipamentos</option>
+					        	<option value="CF">Compra Futura</option>
+					        	<option value="CP">Compra Programada</option>
+					        	<option value="PE">Pedido Estoque</option>
+					        	<option value="PP">Pedido Promocional</option>
+					        	<option value="PG" class="tpGreenSystem" >Pedido Garantia</option>
+					        	<option value="MP" >Máquina Parada</option>
+					        	<option value="PEUSA" style='display:none;'>i18n.translate("cb_val_ped_estoque_usa")</option>
+					      	</select>
+					    </div>
+					    <div class="col-md-3" align="left">
+							<label for="condPagto">i18n.translate("lb_condicao_pagamento")*</label>
+							<i id="popoverCondPgto"  class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover class-not-eua"  data-toggle="popover" title="" data-original-title="" data-content="
+							<div style='background-color: #fff;'> 
+							<table style='border: 1px solid #ddd; width: 100%; border-collapse: collapse;'>
+								<thead>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; font-weight:bold; border: 1px solid #ddd;'>Tipo de Pedido</td>
+										<td style='font-size: 11px; padding: 5px; font-weight:bold; border: 1px solid #ddd;'>Condição de Pagamento</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Compra Futura</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Até R$ 59.999,99 - 7x <br>&nbsp;&nbsp;Parcelas de [1º-10%; 2º-20%; 3º-20%; 4º-20%; 5º-10%; 6º-10%; 7º-10%]<br>
+											Até R$ 119.999,99 - 9x <br>&nbsp;&nbsp;Parcelas de [1º-3,33%; 2º-3,33%; 3º-10,83%; 4º-17,5%; 5º-17,5%;<br>
+											&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;6º-17,5%; 7º-10%; 8º-10%; 9º-10%]<br>
+											Acima de R$ 120.000,00 - 12x <br>&nbsp;&nbsp;Parcelas de [1º-2,5%; 2º-2,5%; 3º-7,5%; 4º-7,5%; 5º-12,5%; 6º-12,5%;<br>
+											&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;7º-12,5%; 8º-12,5%; 9º-7,5%; 10º-7,5%; 11º-7,5%; 12º-7,5%]
+										</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Compra Programada</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >30/60/90 dias</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Pedido de Estoque</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Até R$ 15.999,99 - À Vista | 3x<br>
+											Até R$ 29.999,99 - À Vista | 3x | 5x<br>
+											Até R$ 59.999,99 - À Vista | 3x | 5x | 7x<br>
+											Acima de R$ 60.000,00 - À Vista | 3x | 5x | 7x | 9x
+										</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Pedido Promocional</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >30/60/90 dias</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Pedido de Garantia</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >60 dias</td>
+									</tr>
+									<tr>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >Máquina Parada</td>
+										<td style='font-size: 11px; padding: 5px; border: 1px solid #ddd;' >30 dias</td>
+									</tr>
+								</tbody>	
+							</table>
+							</div>
+							"></i>	
+							<!-- Este campo codCondPagto deve vir do parâmetro do tipo de pedido  -->
+							<input type="hidden" name="codCondPagto" id="codCondPagto"  readonly class="form-control">
+							<input type="text" name="condPagto" id="condPagto" readonly class="form-control" style="display:none;" >
+							<div id="divZoomCondPagto">
+								<input type="zoom" name="zoomCondPagto" id="zoomCondPagto"
+								  data-zoom="{
+					                              'displayKey':'descCondPagto', 
+					                              'datasetId':'dsOrcPedConsultaCondPgto', 
+					                              'fields':[ 
+						                              { 
+							                              'field':'descCondPagto', 
+							                              'label':' ' 
+						                              } 
+					                              ] 
+				                              	}" />
+							</div>
+							
+							
+							
+			            </div>
+			            <div id="divFrete" class="col-md-2" align="left">
+							<label for="tpFrete">Frete*</label>
+							<!-- Este campo codCondPagto deve vir do parâmetro do tipo de pedido  -->
+							<input type="text" name="tpFrete" id="tpFrete" readonly class="form-control" >
+			            </div>
+						
+			            
+						<div id="divTransporteProprio" class="col-md-1 " align="left">
+			            	<br />
+			            	<label class="checkbox-inline">
+							    <input type="checkbox" name="chkTransporteProprio" id="chkTransporteProprio"  value="sim"> Transporte próprio?
+							</label>
+			            </div>
+						<div id="divDSTransp" class="col-md-4 " align="left">
+							<label for="tpTransportadora">Transportadora*</label>
+							<input type="zoom" name="tpTransportadora" id="tpTransportadora"
+											  data-zoom="{
+ 							                              'displayKey':'A4_NOME', 
+ 							                              'datasetId':'dsConsultaTransportadora', 
+ 							                              'fields':[ 
+ 								                              { 
+ 									                              'field':'A4_NOME', 
+ 									                              'label':'Transportadora' 
+ 								                              } 
+ 							                              ] 
+ 						                              	}" /> 
+			            </div>
+			            <div id="divTransp" class="col-md-4 " align="left" style="display:none;">
+							<label for="nomeTransportadora">Transportadora*</label>
+							<input type="hidden" name="codTransportadora" id="codTransportadora" class="form-control" >
+							<input type="text" name="nomeTransportadora" id="nomeTransportadora" class="form-control" maxlength="100"  >
+							<div id="divTxtTransp" style="display:none;">
+								<p class="text-warning text-center" style="text-decoration: underline;">Atenção! Não havendo transporte próprio no período de 10 dias, as peças serão enviadas por outra transportadora.</p>
+							</div>
+						</div>
+
+						
+			            
+            	        
+					</div>
+			     </div>
+			   	
+				<div class="row" >
+					<div class="col-sm-12">
+			            <div id="divGarantiaBalcao" class="col-md-2 col-md-offset-1" align="left" style="display:none;">
+			            	<label>Garantia balcão?*</label> 
+							<div class="radio input-group">
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="garantiaBalcao" value="Sim" id="garantiaBalcaoSim">
+									<label for="garantiaBalcaoSim">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="garantiaBalcao" value="Nao" id="garantiaBalcaoNao">
+									<label for="garantiaBalcaoNao">Não</label>
+								</div>
+							</div>
+			            </div>
+			            
+			            <div id="divRedespacho" class="col-md-1 col-md-offset-7" align="left">
+			            	<br />
+			            	<label class="checkbox-inline">
+							    <input type="checkbox" name="chkRedespacho" id="chkRedespacho"  value="sim"> Redespacho?
+							</label>
+			            </div>
+			            <div id="divTxtRedespacho" class="col-md-4 " align="left" >
+							<label for="nomeRedespacho">Redespacho*</label>
+							<input type="text" name="nomeRedespacho" id="nomeRedespacho" class="form-control" maxlength="100" readonly="readonly" style="display:none;">
+							<input type="hidden" name="redespachoMsgNotaFiscal" id="redespachoMsgNotaFiscal" class="form-control"  >
+							<input type="zoom"  name="zoomRedespacho" id="zoomRedespacho"
+											  data-zoom="{
+ 							                              'displayKey':'descRedespacho', 
+ 							                              'datasetId':'ds_parametro_redespachoXtransportadora', 
+ 							                              'fields':[ 
+ 								                              { 
+ 									                              'field':'descRedespacho', 
+ 									                              'label':'Redespacho' 
+ 								                              } 
+ 							                              ] 
+ 						                              	}" /> 
+						</div>
+			            
+			        </div>
+			    </div>
+			</div>
+			
+			<div id="tipoPG" style="display:none;" class="col-sm-12">
+				
+				<div class="col-sm-12">
+				    <div class="row">
+				        <div class="col-md-6 col-md-offset-1" style="text-align:center">
+				       		<h4 class="CabPedidoGarantia" ><strong>Pedido Garantia</strong></h4>
+				       		<hr />  
+				        </div>
+				    </div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">		
+			            <div class="col-md-11 col-md-offset-1" align="left">
+			            	<label class="checkbox-inline">
+							    <input type="checkbox" name= "chkAceitePG" id="chkAceitePG" value="option1"> O total do pedido é para um único processo de garantia?
+							    <input type="hidden" name= "chkAceito" id="chkAceito" value=""> 
+							</label>
+			            </div>
+			        </div>
+			    </div>
+		    	<div class="col-sm-12"> 
+				    <div class="row">
+				        &nbsp;
+				    </div>
+				</div>
+				
+				<div class="col-md-11 col-md-offset-1">
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="dataAberturaPed">Data de Abertura do Atendimento*</label>
+							<div class="input-group">
+								<input type="text" name="dataAberturaPed" id="dataAberturaPed"  class="form-control" >				
+								<span class="input-group-addon">
+			                           <span class="fluigicon fluigicon-calendar"></span>
+			                    </span>
+							</div>
+						</div> 
+						
+						 <!-- QUANDO FOR O TIPO DE GARANTIA BALCAO SIM, MOSTRA ESSES CAMPOS -->
+						<div class="tipoPGBalcaoSim">
+							<div class="col-md-2" align="left">
+								<label for="dataEmissaoBalcao">Data da Emissão via balcão NF*</label>
+								<div class="input-group">
+									<input type="text" name="dataEmissaoBalcao" id="dataEmissaoBalcao"  class="form-control" >				
+									<span class="input-group-addon">
+				                           <span class="fluigicon fluigicon-calendar"></span>
+				                    </span>
+								</div>
+							</div> 
+							<div class="col-md-2" align="left">
+								<label for="NFEmissaoBalcao">Num. da Nota Fiscal via balcão*</label>
+								<input type="text" name="NFEmissaoBalcao" id="NFEmissaoBalcao" class="form-control">
+				            </div>
+			            </div>
+			            
+			            <!-- QUANDO FOR O TIPO DE GARANTIA BALCAO NÃO, MOSTRA ESSES CAMPOS -->
+			            <div class="tipoPGBalcaoNao">
+			            	<div class="col-md-2" align="left">
+								<label for="nroNFGTS">Num. da NF GTS da Compra do Equip.*</label>
+								<input type="text" name="nroNFGTS" id="nroNFGTS" class="form-control">
+				            </div>
+				            <div class="col-md-2" align="left">
+								<label for="dataVenda">Data da NF da venda do Equip. p/ o cliente*</label>
+								<div class="input-group">
+									<input type="text" name="dataVenda" id="dataVenda"  class="form-control" >				
+									<span class="input-group-addon">
+				                           <span class="fluigicon fluigicon-calendar"></span>
+				                    </span>
+								</div>
+							</div> 
+							<div class="col-md-2" align="left">
+								<label for="nroNFVenda">Num. da NF da venda do Equip. p/ o cliente*</label>
+								<input type="text" name="nroNFVenda" id="nroNFVenda" class="form-control">
+				            </div>
+			            </div>
+					</div>
+				</div>
+				
+				 <!-- QUANDO FOR O TIPO DE GARANTIA BALCAO NÃO, MOSTRA ESSES CAMPOS -->				
+				<div class="row" id="tipoPGBalcaoNaoSerie">
+					<div class="col-sm-12">
+						<div class="col-md-6 col-md-offset-1" align="left">
+							<label for="serieEquipamento">Série Equipamento em Período de Garantia*</label>
+							<input type="text" name="serieEquipamento" id="serieEquipamento" class="form-control">
+			            </div>
+			        </div>
+			    </div>
+			    
+		 	    <div class="col-sm-12">
+				    <div class="row">
+				        &nbsp;
+				    </div>
+				</div>
+	        </div>
+	        <div id="tipoCP" style="display:none;" class="col-sm-12">
+	        	
+	        	<div class="col-sm-12">
+				    <div class="row">
+				        <div class="col-md-6 col-md-offset-1" style="text-align:center">
+				       		<h4 class="CabCompraProgramada" ><strong>Compra Programada</strong></h4>
+				       		<hr />  
+				        </div>
+				    </div>
+				</div>
+			    <div class="row">
+					<div class="col-sm-12">		
+			            <div class="col-md-11 col-md-offset-1" align="left">
+			            	<label class="checkbox-inline">
+							    <input type="checkbox" name= "CPchkAceite" id="CPchkAceite" value="aceito"> <b>Atenção!</b> Estou de acordo com as condições do pedido de Compra Programada e ciente que não poderei alterar dados após enviar o pedido
+							</label>
+			            </div>
+			        </div>
+			    </div>
+			    <br>
+			    <div class="row">
+			    	<div class="col-sm-12">		
+			    		<div class="col-md-2 col-md-offset-1" align="left">
+							<label for="qtdOpcaoRecebimentoCP">Qtd. Opção de Recebimento</label>
+							<input type="text" name="CPqtdOpcaoRecebimento" id="CPqtdOpcaoRecebimento" class="form-control" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);">
+			            </div>
+			    	</div>
+			    </div>
+			    <div class="row">
+			    	<div class="col-sm-12">		
+			    		<div class="col-md-7 col-md-offset-1" align="left">
+			            	<table class="table table-condensed table-nonfluid table-striped" id="tbCPRecebimento" >
+								<thead>
+									<tr>	
+										<th class="col-md-1 ">Opção de Recebimento</th>
+										<th class="col-md-3 ">Programação de Retirada</th>
+										<th class="col-md-2 ">Valor</th>		
+										<th class="col-md-2 thNumOrcProtheus" style="display:none">Nº Orçamento</th>		
+										<th class="col-md-2 thNumPedProtheus" style="display:none">Nº Pedido</th>		
+									</tr>
+								</thead>
+								<tbody>
+									<tr id="CPLinhaOpcao1" style='display:none'>
+										<td class="col-md-1 ">	
+											<input type="text" name="CPOpcaoRecebimento_1" id="CPOpcaoRecebimento_1"  value="1" class="form-control"  readonly >
+										</td>
+										<td class="col-md-3 ">	
+											<input type="hidden" name="CPDiasRetirada_1" id="CPDiasRetirada_1" value="30" /> 
+											<input type="text" name="CPProgramacaoRetirada_1" id="CPProgramacaoRetirada_1" class="form-control" value="30 dias" readonly/> 
+										</td>
+										<td class="col-md-2 ">	
+											<input type="text" name="CPValor_1" id="CPValor_1" class="form-control" readonly >
+										</td>
+										<td class="col-md-2 tdNumOrcProtheus" style="display:none">	
+											<input type="text" name="CPNumOrcProtheus_1" id="CPNumOrcProtheus_1" class="form-control" readonly >
+										</td>
+										<td class="col-md-2 tdNumPedProtheus" style="display:none">	
+											<input type="text" name="CPNumPedProtheus_1" id="CPNumPedProtheus_1" class="form-control" readonly >
+										</td>
+									</tr>
+									
+									<tr id="CPLinhaOpcao2" style='display:none' >
+										<td class="col-md-1 ">	
+											<input type="text" name="CPOpcaoRecebimento_2" id="CPOpcaoRecebimento_2"  value="2" class="form-control"  readonly >
+										</td>
+										<td class="col-md-4 ">	
+											<input type="hidden" name="CPDiasRetirada_2" id="CPDiasRetirada_2" /> 
+											<input type="zoom" name="CPProgramacaoRetirada_2" id="CPProgramacaoRetirada_2"
+											  data-zoom="{
+ 							                              'displayKey':'descPgto', 
+ 							                              'datasetId':'dsConsultaCPCondPgto', 
+ 							                              'fields':[ 
+ 								                              { 
+ 									                              'field':'descPgto', 
+ 									                              'label':' ' 
+ 								                              } 
+ 							                              ] 
+ 						                              	}" /> 
+										</td>
+										<td class="col-md-2 ">	
+											<input type="text" name="CPValor_2" id="CPValor_2" class="form-control" readonly >
+										</td>
+										<td class="col-md-2 tdNumOrcProtheus" style="display:none">	
+											<input type="text" name="CPNumOrcProtheus_2" id="CPNumOrcProtheus_2" class="form-control" readonly >
+										</td>
+										<td class="col-md-2 tdNumPedProtheus" style="display:none">	
+											<input type="text" name="CPNumPedProtheus_2" id="CPNumPedProtheus_2" class="form-control" readonly >
+										</td>
+									</tr>
+									
+									<tr id="CPLinhaOpcao3" style='display:none'>
+										<td class="col-md-1 ">	
+											<input type="text" name="CPOpcaoRecebimento_3" id="CPOpcaoRecebimento_3" value="3" class="form-control" readonly >
+										</td>
+										<td class="col-md-4 ">	
+											<input type="hidden" name="CPDiasRetirada_3" id="CPDiasRetirada_3" /> 
+											<input type="zoom" name="CPProgramacaoRetirada_3" id="CPProgramacaoRetirada_3"
+											  data-zoom="{
+ 							                              'displayKey':'descPgto', 
+ 							                              'datasetId':'dsConsultaCPCondPgto', 
+ 							                              'fields':[ 
+ 								                              { 
+ 									                              'field':'descPgto', 
+ 									                              'label':' ' 
+ 								                              } 
+ 							                              ] 
+ 						                              	}" /> 
+										</td>
+										<td class="col-md-2 ">	
+											<input type="text" name="CPValor_3" id="CPValor_3" class="form-control" readonly >
+										</td>
+										<td class="col-md-2 tdNumOrcProtheus" style="display:none">	
+											<input type="text" name="CPNumOrcProtheus_3" id="CPNumOrcProtheus_3" class="form-control" readonly >
+										</td>
+										<td class="col-md-2 tdNumPedProtheus" style="display:none">	
+											<input type="text" name="CPNumPedProtheus_3" id="CPNumPedProtheus_3" class="form-control" readonly >
+										</td>
+									</tr>
+								</tbody>
+			            	</table>
+			            </div>
+			            
+			    	</div>
+			    </div> 
+	        	<div class="col-sm-12">
+				    <div class="row">
+				        &nbsp;
+				    </div>
+				</div>
+	        </div>
+	    </div>
+
+	</div>
+		
+	<div id="divOrcamentoProduto" class="col-sm-12"  >
+		
+		
+			
+		<div class="col-sm-12">
+		    <div class="row">
+		        <div class="col-md-6 col-md-offset-1" style="text-align:center">
+		       		<h4 class="CabProduto" ><strong>i18n.translate("lb_cab_produto")</strong></h4>
+		       		<hr />  
+		        </div>
+		    </div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1" align="left">
+						<label for="orcProdCod">i18n.translate("lb_cod_produto") *</label>
+						<input type="text" name="orcProdCod" id="orcProdCod" class="form-control" maxlength="20">
+		            </div>
+		            <div id="divPorcAcres" class="col-md-1" align="left">
+						<label for="orcProdPercentAcresc">% Acresc.</label>
+						<input type="text" name="orcProdPercentAcresc" id="orcProdPercentAcresc" class="form-control" maxlength="20" onKeyPress="validafunctions.setPercentual(this.id, 0, false)">
+		            </div>
+		            <div class="col-md-2" align="left">
+						<label for="orcProdQtd">i18n.translate("lb_qtd_produto")*</label>
+						<input type="text" name="orcProdQtd" id="orcProdQtd" class="form-control" maxlength="5">
+		            </div>
+		            <div class="col-md-2" align="left">
+		            	<br>
+						<button type="button" class="btn btn-primary" id="addItem">i18n.translate("lb_adicionar_item")</button>
+					</div>
+					
+					<!-- CAMPOS HIDDEN PARA USO INTERNO -->
+					<input type="hidden" name="orcProdIPI" id="orcProdIPI" class="form-control" maxlength="20">
+					<input type="hidden" name="orcProdICMS" id="orcProdICMS" class="form-control" maxlength="20">
+					<input type="hidden" name="orcProdAlqIPI" id="orcProdAlqIPI" class="form-control" maxlength="20">
+					<input type="hidden" name="orcProdAlqICMS" id="orcProdAlqICMS" class="form-control" maxlength="20">
+					<input type="hidden" name="orcProdICMSRet" id="orcProdICMSRet" class="form-control" maxlength="20">
+					<input type="hidden" name="orcProdPrecoMin" id="orcProdPrecoMin" class="form-control">
+					<input type="hidden" name="orcProdPrecoCusto" id="orcProdPrecoCusto" class="form-control">
+					<input type="hidden" name="orcProdPrecoCustoDolar" id="orcProdPrecoCustoDolar" class="form-control">
+					<input type="hidden" name="PercentDesconto" id="PercentDesconto" class="form-control">
+					<input type="hidden" name="ValorMinimo" id="ValorMinimo" class="form-control">
+					<input type="hidden" name="ValorValido" id="ValorValido" class="form-control" value="true">
+		            
+	            </div>
+            </div>
+            <div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1" align="left">
+						<label for="orcProdCodAntigo">i18n.translate("lb_cod_produto_antigo")</label>
+						<input type="text" name="orcProdCodAntigo" id="orcProdCodAntigo" class="form-control" maxlength="20" readonly>
+		            </div>
+					<div class="col-md-6" align="left">
+						<label for="orcProdDesc">i18n.translate("lb_desc_produto")</label>
+						<input type="text" name="orcProdDesc" id="orcProdDesc" class="form-control" maxlength="50" readonly>
+						<input type="text" name="orcProdDescUSA" id="orcProdDescUSA" class="form-control" maxlength="50" readonly style="display:none;">
+		            </div>
+					
+					<div class="col-md-2 " align="left" >
+		            	<label for="orcProdNCM">i18n.translate("lb_ncm")</label>
+		            	<input type="text" name="orcProdNCM" id="orcProdNCM" class="form-control" readonly>
+		            </div>
+	            </div>
+            </div>
+            <div class="col-sm-12">
+				<div class="row">
+					<div id="divPrcSugerido" class="col-md-2 col-md-offset-1" align="left">
+						<label for="orcProdPrecoSugerido">Preço Sugerido</label>
+						<input type="hidden" name="orcPrecoTabela" id="orcPrecoTabela" class="form-control" readonly >
+						<input type="text" name="orcProdPrecoSugerido" id="orcProdPrecoSugerido" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
+		            </div>
+					<div id="divPrcVenda" class="col-md-2" align="left">
+						<label for="orcProdPrecoVenda">Preço Venda</label>
+						<input type="text" name="orcProdPrecoVenda" id="orcProdPrecoVenda" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
+		            </div>
+		            <div id="divPrcCustoCab" class="col-md-2" align="left" style="display:none">
+						<label for="orcProdPrecoCustoCab">i18n.translate("lb_preco_custo")</label>
+						<input type="text" name="orcProdPrecoCustoCab" id="orcProdPrecoCustoCab" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
+		            </div>
+		            <div id="divPrcCustoDolarCab" class="col-md-2" align="left" style="display:none">
+						<label for="orcProdPrecoCustoCabDolar">i18n.translate("lb_preco_custo_dolar")</label>
+						<input type="text" name="orcProdPrecoCustoCabDolar" id="orcProdPrecoCustoCabDolar" class="form-control" maxlength="20" readonly >
+		            </div>
+					<div id="divEstoque" class="col-md-2" align="left">
+						<label for="orcProdEstoque">i18n.translate("lb_estoque_disp")</label>
+						<input type="text" name="orcProdEstoque" id="orcProdEstoque" class="form-control" maxlength="20" readonly >
+		            </div>
+		            <div class="col-md-2" align="left">
+						<label for="orcProdEmbalagem">i18n.translate("lb_unid_emb")</label>
+						<input type="text" name="orcProdEmbalagem" id="orcProdEmbalagem" class="form-control" maxlength="20" readonly >
+		            </div>
+		            <div id="divPesoUnit" class="col-md-1" align="left">
+						<label for="orcProdPesoUnit">i18n.translate("lb_peso_unit")</label>
+						<input type="text" name="orcProdPesoUnit" id="orcProdPesoUnit" class="form-control" maxlength="10" readonly >
+		            </div>
+		            <div id="divUnMed" class="col-md-1" align="left">
+						<label for="orcProdUnMedida">i18n.translate("lb_un_medida")</label>
+						<input type="text" name="orcProdUnMedida" id="orcProdUnMedida" class="form-control" maxlength="10" readonly >
+		            </div>
+	            </div>
+            </div>
+            <div class="col-sm-12">
+				<div class="row">
+					<div id="divPrcSugeMP" class="col-md-2 col-md-offset-1" align="left">
+		            	<label for="orcProdPrecoSugeridoMP">Preço Sugerido-MP</label>
+		            	<input type="text" name="orcProdPrecoSugeridoMP" id="orcProdPrecoSugeridoMP" class="form-control" maxlength="20" readonly>
+		            </div>
+					<div id="divCurvaAbc" class="col-md-2" align="left" >
+						<label for="orcProdCurvaABC">Curva ABC</label>
+						<input type="text" name="orcProdCurvaABC" id="orcProdCurvaABC" class="form-control" maxlength="20" readonly >
+		            </div>
+					<div id="divCodCritico" class="col-md-2" align="left" >
+						<label for="orcProdCodCritico">i18n.translate("lb_cod_critico")</label>																
+							<i id="popoverPort"  class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover class-not-eua"  data-toggle="popover" title="" data-original-title="" data-content="
+							<div class='cor-verde'    >G10 - BAIXA COMPLEXIDADE - ALTO GIRO</div> 
+							<div class='cor-amarela'  >G20 - MANUTENÇÃO PERIÓDICA</div> 
+							<div class='cor-amarela'  >G21 - MÁQUINA PARADA, MENOS DE 2 HRS PARA A MANUTENÇÃO</div> 
+							<div class='cor-vermelha' >G30 - MÁQUINA PARADA, MAIS DE 2 HRS PARA A MANUTENÇÃO</div> 
+							<div class='cor-vermelha' >G31 - DESGASTE – REPAROS, DIÁRIO / SEMPRE QUE NECESSÁRIO</div>
+							<div class='cor-vermelha' >G32 - ALTA COMPLEXIDADE</div> 
+							<div class='cor-azul'     >G40 - BAIXO GIRO - REFORMA</div> "></i>	
+							
+							<i id="popoverEnUs" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover " style="display:none;" data-toggle="popover" title="" data-original-title="" data-content="
+							<div class='cor-verde'    >G10 - LOW COMPLEXITY - HIGH SPIN</div>
+							<div class='cor-amarela'  >G20 - PERIODIC MAINTENANCE</div> 
+							<div class='cor-amarela'  >G21 - MACHINE STOP, LESS THAN 2 HOURS FOR MAINTENANCE</div> 
+							<div class='cor-vermelha' >G30 - MACHINE STOP, MORE THAN 2 HOURS FOR MAINTENANCE</div> 
+							<div class='cor-vermelha' >G31 - WEAR - REPAIRS, DAILY / WHENEVER NECESSARY</div>
+							<div class='cor-vermelha' >G32 - HIGH COMPLEXITY</div> 
+							<div class='cor-azul'     >G40 - LOW TURN - REFORM</div> "></i>		
+						
+						<input type="text" name="orcProdCodCritico" id="orcProdCodCritico" class="form-control" maxlength="20" readonly >
+		            </div>
+					<div id="divRecompra" class="col-md-2 class-eua" align="left" >
+						<label for="orcProdRetornavel">Recompra</label>
+						<input type="text" name="orcProdRecompra" id="orcProdRecompra" class="form-control" maxlength="20" readonly >
+		            </div>
+	            </div>
+            </div>
+            
+		</div>
+	</div>
+	
+	<div id="divOrcamentoTabItens" class="col-sm-12"  >
+		<div class="row ">
+			
+			<div class="col-sm-12">
+			    <div class="row">
+			        &nbsp;
+			    </div>
+			</div>
+			
+			<div style="overflow-x: auto; width: 100%">
+				<table class="table table-condensed table-nonfluid table-striped "   id="tbItensOrcamento" tablename="tbItensOrcamento" noaddbutton="true" customFnDelete="removeItem(this)">
+					<thead>
+						<tr>	
+							<th class="itQtd">i18n.translate("lb_it_qtd")</th>
+							<th class="itCP1Ret thCP1Ret" style="display:none;" >1ª Retirada</th>
+							<th class="itCP2Ret thCP2Ret" style="display:none;" >2ª Retirada</th>
+							<th class="itCP3Ret thCP3Ret" style="display:none;" >3ª Retirada</th>
+							<th class="itQtdEmb" style="display:none;">i18n.translate("lb_it_unid_emb")</th>
+							<th class="itCodProduto">i18n.translate("lb_it_cod_produto")</th>		
+							<th class="itDescProduto">i18n.translate("lb_it_desc_produto")</th>
+							<th class="itNCM">i18n.translate("lb_it_ncm")</th>
+							<th class="itPrcCustoReal" style="display:none;">i18n.translate("lb_it_preco_custo")</th>
+							<th class="itPrcCustoDolar" style="display:none;">i18n.translate("lb_it_preco_custo_dolar")</th>
+							<th class="itPrcUnitReal" >Preço Unit.</th>
+							<th class="itIPI" >IPI</th>
+							<th class="itICMS" >ICMS</th>
+							<th class="itTotReal" >i18n.translate("lb_it_total")</th>
+							<th class="itTotCustoReal" style="display:none;">i18n.translate("lb_it_total_custo")</th>
+							<th class="itTotCustoDolar" style="display:none;">i18n.translate("lb_it_total_custo_dolar")</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr detail="true" detailname="tbItensOrcamento" >
+							<td class="itQtd" >	
+								<input type="hidden" name="orcItemProcessadoItem" id="orcItemProcessadoItem" class="form-control" >
+								<input type="text" name="orcQtdItem" id="orcQtdItem" class="form-control qtd-total-item change-quantidade" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" style="min-width:75px !important; max-width:75px !important;" >
+							</td>
+							<td class="itCP1Ret tdCP1Ret " style="display:none;">	
+								<input type="text" name="orcQtdCP1RetItem" id="orcQtdCP1RetItem" class="form-control change-quantidade-CP1" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" style="min-width:75px !important;"  >
+								<input type="hidden" name="orcCP1RetTotalCustoItem" id="orcCP1RetTotalCustoItem"  class="form-control" readonly style="display:none;">
+							</td>
+							<td class="itCP2Ret tdCP2Ret " style="display:none;">	
+								<input type="text" name="orcQtdCP2RetItem" id="orcQtdCP2RetItem" class="form-control change-quantidade-CP2" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" style="min-width:75px !important;" >
+								<input type="hidden" name="orcCP2RetTotalCustoItem" id="orcCP2RetTotalCustoItem"  class="form-control" readonly style="display:none;">
+							</td>
+							<td class="itCP3Ret tdCP3Ret " style="display:none;">	
+								<input type="text" name="orcQtdCP3RetItem" id="orcQtdCP3RetItem" class="form-control change-quantidade-CP3" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" style="min-width:75px !important;">
+								<input type="hidden" name="orcCP3RetTotalCustoItem" id="orcCP3RetTotalCustoItem"  class="form-control" readonly style="display:none;">
+							</td>
+							<td class="itQtdEmb" style="display:none;">	
+								<input type="text" name="orcEmbalagemItem" id="orcEmbalagemItem" class="form-control" readonly onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" style="min-width:75px !important;"  >
+							</td>
+							<td class="itCodProduto" >									    	
+								<input type="text" name="orcCodProdutoItem" id="orcCodProdutoItem" class="form-control" readonly style="min-width: 130px !important; max-width: 150px !important;">
+							</td>
+							<td class="itDescProduto divDescProdutoItem descProdTabela">									    	
+								<input type="text" name="orcDescProdutoItem" id="orcDescProdutoItem" class="form-control inputOrcDescProdutoItem" readonly >
+								<input type="text" name="orcDescProdutoUSAItem" id="orcDescProdutoUSAItem" class="form-control inputOrcDescProdutoUSAItem" readonly  style="display:none;">
+							</td>
+							<td class="itNCM divNCMItem" >									    	
+								<input type="text" name="orcNCMItem" id="orcNCMItem" class="form-control" readonly style="min-width: 90px !important; max-width: 100px !important;">
+							</td>
+							<td class="itPrcCustoReal" style="display:none;">
+								<input type="hidden" id="orcPrecoCustoOrigItem"  name="orcPrecoCustoOrigItem" readonly class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 6, false , '')"/>
+								<input type="text" id="orcPrecoCustoItem"  name="orcPrecoCustoItem" readonly class="form-control inputOrcPrecoCustoItem" onKeyPress="validafunctions.setMoeda(this.id, 6, false , '')" style="min-width: 120px !important;"/>
+							</td>
+							<td class="itPrcCustoDolar" style="display:none;">
+								<input type="text" id="orcPrecoCustoDolarItem"  name="orcPrecoCustoDolarItem" readonly class="form-control inputOrcPrecoCustoDolarItem" onKeyPress="validafunctions.setMoeda(this.id, 6, false , '')" style="min-width: 120px !important; "/>
+							</td>
+							<td class="itPrcUnitReal divPrcUnitItem">
+								<input type="hidden" id="orcPrecoMinItem"  name="orcPrecoMinItem" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+								<input type="hidden" id="orcPrecoTabelaItem"  name="orcPrecoTabelaItem" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+								<input type="hidden" id="orcPrecoSugeItem"  name="orcPrecoSugeItem" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+								<input type="text" id="orcPrecoUnitItem"  name="orcPrecoUnitItem" class="form-control change-val-venda" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')" style="min-width: 120px !important; max-width: 120px !important;"/>
+							</td>
+							<td class="itIPI">									    	
+								<input type="text" name="orcAlqIPIItem" id="orcAlqIPIItem" class="form-control" readonly style="min-width:70px; !important;">
+								<input type="hidden" name="orcIPIItem" id="orcIPIItem" class="form-control" readonly>
+							</td>
+							<td class="itICMS">									    	
+								<input type="text" name="orcAlqICMSItem" id="orcAlqICMSItem" class="form-control" readonly style="min-width:70px !important;">
+								<input type="hidden" name="orcICMSItem" id="orcICMSItem" class="form-control" readonly>
+								<input type="hidden" name="orcICMSRetItem" id="orcICMSRetItem" class="form-control" readonly>
+							</td>
+							<td class="itTotReal">									    	
+								<input type="text" name="orcTotalItem" id="orcTotalItem" class="form-control" readonly  style="min-width:150px !important; max-width:150px !important;">
+							</td>
+							<td class="itTotCustoReal" style="display:none;">									    	
+								<input type="text" name="orcTotalCustoItem" id="orcTotalCustoItem"  class="form-control" readonly style="display:none;">
+								<input type="text" name="orcTotalCustoComImpItem" id="orcTotalCustoComImpItem" class="form-control" readonly style="min-width:120px !important;">
+							</td>
+							<td class="itTotCustoDolar" style="display:none;">									    	
+								<input type="text" name="orcTotalCustoDolarItem" id="orcTotalCustoDolarItem"  class="form-control" readonly style="display:block; min-width:120px !important;">
+							</td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+			
+		<div class="row ">	
+			<div id="divTotais">
+            	<div class="col-sm-12">
+				    <div class="row">
+				        
+				        <div id="divTotaisLinha" class="col-md-6 col-md-offset-6" style="text-align:center">
+				       		<h2 class="totais" ><strong>i18n.translate("lb_tot_totais")</strong></h2>
+				       		<hr />  
+				        </div>
+				        
+				    </div>
+				</div>
+            
+            	<div class="col-sm-12">
+					<div class="row">
+						<div id="divObsPed" class="col-md-4" align="left" style='display:none'>
+						    <label for="pedObservacao">i18n.translate("lb_tot_observacao")</label>
+							<textarea rows="3" cols="6" name="pedObservacao" id="pedObservacao" class="form-control " ></textarea>
+			            </div>
+			            
+			            <div id="divBtnImprimirExcel" class="col-md-2" align="left" style="display:none">	
+				            <div id="divBtnImprimir" align="left" style="display:none">	
+				            	<br>
+								<button type="button" class="btn btn-default" id="btnImprimir">i18n.translate("bt_imprimir")   <i class="fluigicon fluigicon-print icon-sm"></i></button>
+							</div>
+							
+				            <div id="divBtnExcelPartes" align="left" style="display:none">	
+				            	<br>
+								<button type="button" class="btn btn-default" id="btnExcelPartes">Gerar Excel <i class="fluigicon fluigicon-file-xlsx icon-sm"></i></button>
+							</div>
+						</div>
+						<div id="divIPI"  class="col-md-2 col-md-offset-6" align="left">
+							<label for="totalIPI">IPI</label>
+					      	<input type="text" name="totalIPI" id="totalIPI" class="form-control" readonly="readonly">
+						</div>
+						
+						<div id="divICMS" class="col-md-2" align="left" style="display:none">
+							<label for="totalICMS">ICMS</label>
+					      	<input type="text" name="totalICMS" id="totalICMS" class="form-control" readonly="readonly">
+						</div>
+						
+						<div id="divICMSRet" class="col-md-2" align="left">
+							<label for="totalICMSRet">ICMS-ST</label>
+					      	<input type="text" name="totalICMSRet" id="totalICMSRet" class="form-control" readonly="readonly">
+						</div>
+						
+						<div id="divTotalVenda" class="col-md-2" align="left">
+							<label for="totalPedido">i18n.translate("lb_tot_valor_total")</label>
+					      	<input type="text" name="totalPedido" id="totalPedido" class="form-control" readonly="readonly">
+						</div>
+						
+						<div id="divTotalCusto" class="col-md-2" align="left" style="display:none;">
+<!-- 							<label for="totalCustoPedido">i18n.translate("lb_tot_valor_total_custo")</label> -->
+							<label for="totalCustoPedido">Total Custo (R$)</label>
+					      	<input type="text" name="totalCustoPedido" id="totalCustoPedido" class="form-control" readonly="readonly">
+						</div>
+						
+						<div id="divTotalCustoDolar" class="col-md-2" align="left" style="display:none;">
+							<label for="totalCustoPedidoDolar">Total Cost (USD)</label>
+					      	<input type="text" name="totalCustoPedidoDolar" id="totalCustoPedidoDolar" class="form-control" readonly="readonly">
+						</div>
+					</div>
+				</div>
+				
+			</div>	
+				
+			<div id="divAcaoFormalizaPedido" style="display:none">
+				<div class="col-sm-12">
+				    <div class="row">
+				        &nbsp;
+				    </div>
+				</div>
+				<div class="col-sm-12">
+				    <div class="row">
+				        <div class="col-md-5 col-md-offset-3" style="text-align:center">
+				       		<h2 class="totais" ><strong>O que você deseja realizar?*</strong></h2>
+				       		<hr />  
+				        </div>
+				    </div>
+				</div>
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-md-5 col-md-offset-4" align="left" >
+							<div class="radio input-group">
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="formalizarPedido" value="Sim" id="formalizarPedidoGTSSim">
+									<label for="formalizarPedidoGTSSim">Formalizar Pedido</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="formalizarPedido" value="Cancelar" id="formalizarPedidoGTSCancelar">
+									<label for="formalizarPedidoGTSCancelar">Cancelar Pedido</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="formalizarPedido" value="Salvar" id="formalizarPedidoGTSSalvar">
+									<label for="formalizarPedidoGTSSalvar">Salvar</label>
+								</div>
+							</div>
+			            </div>
+					</div>
+							
+					<div id="divMotivoCancelamento" class="row" style="display:none">
+						<div class="col-md-5 col-md-offset-3" align="left">
+							<label for="formalizarPedidoMotCancel">Motivo Cancelamento*</label>
+							<textarea rows="3" cols="6" name="formalizarPedidoMotCancel" id="formalizarPedidoMotCancel" class="form-control " ></textarea>
+		             	</div>
+			        </div>    
+							
+				</div>
+			
+			</div>
+			
+			<div id="divAcaoGerarPedido" style="display:none">
+				<div class="col-sm-12">
+				    <div class="row">
+				        <div class="col-md-5 col-md-offset-3" style="text-align:center">
+				       		<h2 class="totais" ><strong>i18n.translate("lb_deseja_realizar")*</strong></h2>
+				       		<hr />  
+				        </div>
+				    </div>
+				</div>
+			
+				<div class="col-md-5 col-md-offset-4" align="left" >
+					<div class="radio input-group">
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="gerarPedidoGTS" value="Sim" id="gerarPedidoGTSSim">
+							<label for="gerarPedidoGTSSim">i18n.translate("lb_deseja_realizar_pedido")</label>
+						</div>
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="gerarPedidoGTS" value="Salvar" id="gerarPedidoGTSSalvar">
+							<label for="gerarPedidoGTSSalvar">i18n.translate("lb_deseja_realizar_salvar")</label>
+						</div>
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="gerarPedidoGTS" value="Cancelar" id="gerarPedidoGTSCancelar">
+							<label for="gerarPedidoGTSCancelar">i18n.translate("lb_deseja_realizar_cancelar")</label>
+						</div>
+					</div>
+	            </div>	
+				
+				<div id="divMotCancelGerarPed" class="col-md-5 col-md-offset-3" style="display:none">
+					<div class="row">
+						<label for="formalizarPedidoMotivoCancelamento">i18n.translate("lb_deseja_realizar_mot_cancel")*</label>
+						<textarea rows="3" cols="6" name="gerarPedidoMotCancel" id="gerarPedidoMotCancel" class="form-control " ></textarea>
+	             	</div>
+		        </div> 
+			        
+			</div>
+			
+			<div id="divAcaoPartes" style="display:none">
+				<div class="col-sm-12">
+				    <div class="row">
+				        <div class="col-md-5 col-md-offset-3" style="text-align:center">
+				       		<h2 class="totais" ><strong>O que você deseja realizar?*</strong></h2>
+				       		<hr />  
+				        </div>
+				    </div>
+				</div>
+			
+				<div class="col-md-6 col-md-offset-3" align="left" >
+					<div class="radio input-group">
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="partesTransformaOrcEmPed" value="Sim" id="partesTransformaOrcEmPedSim">
+							<label for="partesTransformaOrcEmPedSim">Transformar Orçamento em Pedido na GTS</label>
+						</div>
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="partesTransformaOrcEmPed" value="Cancelar" id="partesTransformaOrcEmPedCancelar">
+							<label for="partesTransformaOrcEmPedCancelar">Cancelar Orçamento</label>
+						</div>
+					</div>
+	            </div>	
+				
+<!-- 				<div id="divMotCancelGerarPed" class="col-md-5 col-md-offset-3" style="display:none"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<label for="formalizarPedidoMotivoCancelamento">Motivo Cancelamento*</label> -->
+<!-- 						<textarea rows="3" cols="6" name="gerarPedidoMotCancel" id="gerarPedidoMotCancel" class="form-control " ></textarea> -->
+<!-- 	             	</div> -->
+<!-- 		        </div>  -->
+			        
+			</div>
+			
+			<div id="divPartesCientePedido" style="display:none">
+				<div class="col-md-12">	
+					<div class="row">	
+						<br><br><br>
+			            <div class="col-md-11 col-md-offset-1" align="left">
+			            	<label class="checkbox-inline">
+							    <input type="checkbox" name= "chkPartesCientePedido" id="chkPartesCientePedido" value="ciente"> Estou ciente do pedido de venda realizado pela revenda.
+							</label>
+			            </div>
+		            </div>
+		        </div>
+		    </div>
+			    
+		</div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+</form>
+</div>
+</body>
+</html>

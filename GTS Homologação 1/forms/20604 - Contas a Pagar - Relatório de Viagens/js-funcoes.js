@@ -41,8 +41,6 @@ var funcoes = (function() {
 			index = parseInt(contador) + parseInt(indiceFilho);
 
 			$(`#codigoID___${indice}`).val(index).prop("readonly", true);
-			$(`#indiceFilho${indice}`).val(indiceFilho);
-			console.log(indiceFilho + " indice")
 			}
 			
 		},
@@ -62,7 +60,7 @@ var funcoes = (function() {
 			});
 			
 			$("#solTotalDespesas").val(total.toFixed(2));
-			validafunctions.setMoeda("solTotalDespesas", 2, false , '');
+			validafunctions.setMoeda("ssolTotalDespesas", 2, false , '');
 		},
 		
 			//Calcula saldo
@@ -301,6 +299,8 @@ function loadForm(){
 	window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
 
 	document.getElementById('salvarEnviar').value = "";
+	//$('input[salvarEnviar]').attr('checked',false);
+	//document.getElementById('salvarEnviar').reset();
 	
 	var today = new Date();	
 	
