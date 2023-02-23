@@ -39,7 +39,7 @@ var funcoes = (function() {
 				type: "GET",
 				dataType: "json",
 				async: true,
-				url: "/api/public/ecm/dataset/search?datasetId=dsConsultaProdutoPCP&filterFields=cPROD,"+codProduto,
+				url: "/api/public/ecm/dataset/search?datasetId=dsPCPConsultaMaquina&filterFields=cPROD,"+codProduto,
 				
 				success: function (data, status, xhr) {
 					if (data != null && data.content != null && data.content.length > 0) {
@@ -51,7 +51,7 @@ var funcoes = (function() {
 							$("#solDescAtual___"+indexItem).val(DescricaoItem);
 							
 						}else if (records[0].CODRET == "2"){
-							FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
 							funcoes.limpaCamposItem(indexItem);
 							
 						}
@@ -94,7 +94,7 @@ var funcoes = (function() {
 				type: "GET",
 				dataType: "json",
 				async: true,
-				url: "/api/public/ecm/dataset/search?datasetId=dsConsultaProdutoPCP&filterFields=cPROD,"+codProduto,
+				url: "/api/public/ecm/dataset/search?datasetId=dsPCPConsultaMaquina&filterFields=cPROD,"+codProduto,
 				
 				success: function (data, status, xhr) {
 					if (data != null && data.content != null && data.content.length > 0) {
@@ -106,7 +106,7 @@ var funcoes = (function() {
 							$("#solDescDestino___"+indexItem).val(DescricaoItem);
 							
 						}else if (records[0].CODRET == "2"){
-							FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
 							funcoes.limpaCamposItem(indexItem);
 							
 						}

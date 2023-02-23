@@ -44,8 +44,8 @@ var funcoes = (function() {
 							
 							$("#solDescAtual___"+indexItem).val(DescricaoItem);
 							
-						}else if (records[0].CODRET == "2"){
-							FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+						}else if (records[0].CODRET == "2"){		
+							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
 							funcoes.limpaCamposItem(indexItem);
 						}
 						

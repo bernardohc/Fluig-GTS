@@ -28,7 +28,7 @@ function createDataset(fields, constraints, sortFields) {
 		var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'PROTHEUSGTS_REST',
-	            endpoint : '/rest/ws_gts_fluig/getItem?CPROD='+ cPROD,
+	            endpoint : '/rest/ws_gts_fluig/getMaquina?CPROD='+ cPROD,
 	            method : 'get',
 	            timeoutService: '100', // segundos
             	headers: {
