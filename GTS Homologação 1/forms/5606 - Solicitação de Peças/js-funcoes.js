@@ -156,15 +156,7 @@ var eventsFuncoes = (function() {
 					if(solQuantidade.trim() == ""){
 						addNovoItem = false;
 					}
-					if(solTipo.trim() == ""){
-						addNovoItem = false;
-					}
-					if(solObs.trim() == ""){
-						addNovoItem = false;
-					}
-					if(solVendedor.trim() == ""){
-						addNovoItem = false;
-					}
+					
 				});
 					if(!addNovoItem){
 						FLUIGC.toast({ title: '', message: "É preciso preencher a solicitação anterior para adicionar uma nova.", type: 'warning' });
@@ -198,6 +190,8 @@ function loadForm(){
 	window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
 	window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
 	window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+
+	document.getElementById('salvarEnviar').value = "";
 	
 	var today = new Date();	
 	

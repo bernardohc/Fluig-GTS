@@ -5,10 +5,36 @@ function enableFields(form){
 	if(atv_atual == INICIO_0){
 		form.setEnabled("solLiberacao", false);		
 		form.setEnabled("solQtdeLiberada", false);		
-		form.setEnabled("solQtdeAlmox", false);		
+		form.setEnabled("solQtdeAlmox", false);			
+
+		var indexes = form.getChildrenIndexes("solTbMaquinas");
+		if(indexes.length > 0){
+		    for (var i = 0; i < indexes.length; i++) { 
+				form.setEnabled("solLiberacao___" + indexes[i], false);
+				form.setEnabled("solQtdeLiberada___" + indexes[i], false);
+				form.setEnabled("solQtdeAlmox___" + indexes[i], false);
+		    }
+		};
 	
 
+	}else if(atv_atual == SALVAR){
+
+		form.setEnabled("solLiberacao", false);		
+		form.setEnabled("solQtdeLiberada", false);		
+		form.setEnabled("solQtdeAlmox", false);	
+
+		var indexes = form.getChildrenIndexes("solTbMaquinas");
+		if(indexes.length > 0){
+		    for (var i = 0; i < indexes.length; i++) { 
+				form.setEnabled("solLiberacao___" + indexes[i], false);
+				form.setEnabled("solQtdeLiberada___" + indexes[i], false);
+				form.setEnabled("solQtdeAlmox___" + indexes[i], false);
+		    }
+		}
+		
 	}else if(atv_atual == ANALISA_SOLICITACAO){
+
+		form.setEnabled("Solicitapara", false);	
 
 		form.setEnabled("solAprovacao", true);		
 		//Itens Despesa form pai e filho, solicitação
@@ -25,8 +51,9 @@ function enableFields(form){
 		    }
 		}
 		
-		
+	
 	}else if(atv_atual == SEPARACAO_ALMOX){
+
 		//Itens Despesa form pai e filho, solicitação
 		var indexes = form.getChildrenIndexes("solTbMaquinas");
 		if(indexes.length > 0){
@@ -45,6 +72,7 @@ function enableFields(form){
 		form.setEnabled("solAprovacao", false);
 		form.setEnabled("solQtdeLiberada", false);
 		form.setEnabled("obsAlteracao", false);
+		form.setEnabled("Solicitapara", false);	
 
 	}
 	

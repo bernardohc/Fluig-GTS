@@ -7,59 +7,85 @@ function displayFields(form,customHTML){
 	
 	var usuarioCorrente = fluigAPI.getUserService().getCurrent();
 	
-	form.setValue("solicitante",  usuarioCorrente.getCode() );
-	form.setValue("nomeSolicitante",  usuarioCorrente.getFullName() );
+	showHideCampoObservacao(form, customHTML)
+	
+	if(atv_atual == INICIO_0){
+		form.setValue("solicitante",  usuarioCorrente.getCode() );
+		form.setValue("nomeSolicitante",  usuarioCorrente.getFullName() );
 
-	//Preenche nome do condutor com o nome de quem está abrindo a solicitação
-	form.setValue("geraisCondutor",  usuarioCorrente.getFullName() );
-	
-	if(!isMobile(form)){
-		if(form.getFormMode() != 'VIEW'){
-			customHTML.append("<script>$('body').addClass('class-body-inicio');</script>");
-		}
+		//Preenche nome do condutor com o nome de quem está abrindo a solicitação
+		form.setValue("geraisCondutor",  usuarioCorrente.getFullName() );
+	}else if(atv_atual == INICIO){
+		
+	}else if(atv_atual == FIM){
+		form.setVisibleById("divDataAbertura", true);
+		customHTML.append("<script>$('#divCarimboDataHora').removeClass('col-md-offset-1');</script>");
 	}
-	
-	
-	showHideCampoOutros(form, customHTML)
 	
 }
 
-function showHideCampoOutros(form, customHTML){
+function showHideCampoObservacao(form, customHTML){
+	
 	/*
-	 * PNEU
+	 * Gerais
 	 */
-	//11. Pneus Dianteira Cavalo em Bom Estado?
-	if(form.getValue("pneuPneuDiantCavBomEstado") == "Outro" ){
-		form.setVisibleById("pneuPneuDiantCavBomEstadoOut", true);
+	if(form.getValue("geraisDocumentacaoGeralOk") == "Não" ){
+		form.setVisibleById("geraisDocumentacaoGeralOkObs", true);
 	}
-	//12. Pneus Tração Cavalo em Bom Estado?
-	if(form.getValue("pneuPneuTracaoCavBomEstado") == "Outro" ){
-		form.setVisibleById("pneuPneuTracaoCavBomEstadoOut", true);
+	/*
+	 * Veículo
+	 */
+	if(form.getValue("veiOleoHidraulico") == "Não" ){
+		form.setVisibleById("veiOleoHidraulicoObs", true);
 	}
-	//13. Pneus Truck Cavalo em Bom Estado?
-	if(form.getValue("pneuPneuTruckCavBomEstado") == "Outro" ){
-		form.setVisibleById("pneuPneuTruckCavBomEstadoOut", true);
+	if(form.getValue("veiRadiadorArrefNivel") == "Não" ){
+		form.setVisibleById("veiRadiadorArrefNivelObs", true);
 	}
-	//14. Pneus Semi Reboque - 1º Eixo?
-	if(form.getValue("pneuPneuSemiReb1Eixo") == "Outro" ){
-		form.setVisibleById("pneuPneuSemiReb1EixoOut", true);
+	if(form.getValue("veiVistoriaExterna") == "Não" ){
+		form.setVisibleById("veiVistoriaExternaObs", true);
 	}
-	//15. Pneus Semi Reboque - 2º Eixo?
-	if(form.getValue("pneuPneuSemiReb2Eixo") == "Outro" ){
-		form.setVisibleById("pneuPneuSemiReb2EixoOut", true);
+	if(form.getValue("veiVistoriaInterna") == "Não" ){
+		form.setVisibleById("veiVistoriaInternaObs", true);
 	}
-	//16. Pneus Semi Reboque - 3º Eixo?
-	if(form.getValue("pneuPneuSemiReb3Eixo") == "Outro" ){
-		form.setVisibleById("pneuPneuSemiReb3EixoOut", true);
+	if(form.getValue("veiVistoriaEletrica") == "Não" ){
+		form.setVisibleById("veiVistoriaEletricaObs", true);
 	}
-	//17. Pneus Sterp em Bom Estado?
-	if(form.getValue("pneuPneuSterpBomEstado") == "Outro" ){
-		form.setVisibleById("pneuPneuSterpBomEstadoOut", true);
+	if(form.getValue("veiFreios") == "Não" ){
+		form.setVisibleById("veiFreiosObs", true);
 	}
-	//18. Rodas do Cavalo e Semi Reboque em Bom Estado?
-	if(form.getValue("pneuRodaCavSemiRebBomEstado") == "Outro" ){
-		form.setVisibleById("pneuRodaCavSemiRebBomEstadoOut", true);
+	if(form.getValue("veiDirecao") == "Não" ){
+		form.setVisibleById("veiDirecaoObs", true);
+	}
+	if(form.getValue("veiTanquesTampas") == "Não" ){
+		form.setVisibleById("veiTanquesTampasObs", true);
+	}
+	if(form.getValue("veiNivelRuido") == "Não" ){
+		form.setVisibleById("veiNivelRuidoObs", true);
+	}
+	if(form.getValue("veiEtqRevOleoFiltro") == "Não" ){
+		form.setVisibleById("veiEtqRevOleoFiltroObs", true);
 	}
 	
+	/*
+	 * PNEUS
+	 */
+	if(form.getValue("pneuPneu") == "Não" ){
+		form.setVisibleById("pneuPneuObs", true);
+	}
 	
+	/*
+	 * SEGURANÇA
+	 */
+	if(form.getValue("segTriMacacoChaveGeral") == "Não" ){
+		form.setVisibleById("segTriMacacoChaveGeralObs", true);
+	}
+	if(form.getValue("segTravaSeg") == "Não" ){
+		form.setVisibleById("segTravaSegObs", true);
+	}
+	if(form.getValue("segExtintorDentroVal") == "Não" ){
+		form.setVisibleById("segExtintorDentroValObs", true);
+	}
+	if(form.getValue("segSinalizandoExcesso") == "Não" ){
+		form.setVisibleById("segSinalizandoExcessoObs", true);
+	}
 }

@@ -24,88 +24,179 @@ var eventsFuncoes = (function() {
 			/*
 			 * DADOS GERAIS
 			 */
-			/**
-			 * Sempre em maiusculo o numero de série
-			 */
-			$(document).on("keyup", "#geraisCategoriaCNH", function() {
-				$("#geraisCategoriaCNH").val( $("#geraisCategoriaCNH").val().toUpperCase()   );
+			$(document).on("change", "input:radio[name='geraisDocumentacaoGeralOk']", function() {
+				let geraisDocumentacaoGeralOk = $("input:radio[name='geraisDocumentacaoGeralOk']:checked").val();
+				if( geraisDocumentacaoGeralOk == 'Não'){
+					$('#geraisDocumentacaoGeralOkObs').show();
+				}else{
+					$('#geraisDocumentacaoGeralOkObs').val('');
+					$('#geraisDocumentacaoGeralOkObs').hide();
+				}
 			});
 			
 			/**
-			 * Gatilho para quando alterado para opção 'Outro' mostrar o campo de descrição 'Outro'
+			 * Gatilho para quando alterado para opção 'Não' mostrar o campo de descrição 'Observação'
 			 */
-			//Pneus Dianteira Cavalo em Bom Estado?
-			$(document).on("change", "#pneuPneuDiantCavBomEstado", function() {
-				if($('#pneuPneuDiantCavBomEstado').val() == 'Outro'){
-					$('#pneuPneuDiantCavBomEstadoOut').show();
+			//Óleo Hidráulico?
+			$(document).on("change", "input:radio[name='veiOleoHidraulico']", function() {	
+				let veiOleoHidraulico = $("input:radio[name='veiOleoHidraulico']:checked").val();
+				if( veiOleoHidraulico == 'Não'){
+					$('#veiOleoHidraulicoObs').show();
 				}else{
-					$('#pneuPneuDiantCavBomEstadoOut').val('');
-					$('#pneuPneuDiantCavBomEstadoOut').hide();
+					$('#veiOleoHidraulicoObs').val('');
+					$('#veiOleoHidraulicoObs').hide();
 				}
 			});
-			//Pneus Tração Cavalo em Bom Estado?
-			$(document).on("change", "#pneuPneuTracaoCavBomEstado", function() {
-				if($('#pneuPneuTracaoCavBomEstado').val() == 'Outro'){
-					$('#pneuPneuTracaoCavBomEstadoOut').show();
+			//Água do Radiador ou Líquido de Arrefecimento no nível?
+			$(document).on("change", "input:radio[name='veiRadiadorArrefNivel']", function() {
+				let veiRadiadorArrefNivel = $("input:radio[name='veiRadiadorArrefNivel']:checked").val();
+				if( veiRadiadorArrefNivel == 'Não'){
+					$('#veiRadiadorArrefNivelObs').show();
 				}else{
-					$('#pneuPneuTracaoCavBomEstadoOut').val('');
-					$('#pneuPneuTracaoCavBomEstadoOut').hide();
+					$('#veiRadiadorArrefNivelObs').val('');
+					$('#veiRadiadorArrefNivelObs').hide();
 				}
 			});
-			//Pneus Truck Cavalo em Bom Estado?
-			$(document).on("change", "#pneuPneuTruckCavBomEstado", function() {
-				if($('#pneuPneuTruckCavBomEstado').val() == 'Outro'){
-					$('#pneuPneuTruckCavBomEstadoOut').show();
+			//Vistoria Externa ok?
+			$(document).on("change", "input:radio[name='veiVistoriaExterna']", function() {
+				let veiVistoriaExterna = $("input:radio[name='veiVistoriaExterna']:checked").val();
+				if( veiVistoriaExterna == 'Não'){
+					$('#veiVistoriaExternaObs').show();
 				}else{
-					$('#pneuPneuTruckCavBomEstadoOut').val('');
-					$('#pneuPneuTruckCavBomEstadoOut').hide();
+					$('#veiVistoriaExternaObs').val('');
+					$('#veiVistoriaExternaObs').hide();
 				}
 			});
-			//Pneus Semi Reboque - 1º Eixo?
-			$(document).on("change", "#pneuPneuSemiReb1Eixo", function() {
-				if($('#pneuPneuSemiReb1Eixo').val() == 'Outro'){
-					$('#pneuPneuSemiReb1EixoOut').show();
+			//Vistoria Interna ok?
+			$(document).on("change", "input:radio[name='veiVistoriaInterna']", function() {
+				let veiVistoriaInterna = $("input:radio[name='veiVistoriaInterna']:checked").val();
+				if( veiVistoriaInterna == 'Não'){
+					$('#veiVistoriaInternaObs').show();
 				}else{
-					$('#pneuPneuSemiReb1EixoOut').val('');
-					$('#pneuPneuSemiReb1EixoOut').hide();
+					$('#veiVistoriaInternaObs').val('');
+					$('#veiVistoriaInternaObs').hide();
 				}
 			});
-			//Pneus Semi Reboque - 2º Eixo?
-			$(document).on("change", "#pneuPneuSemiReb2Eixo", function() {
-				if($('#pneuPneuSemiReb2Eixo').val() == 'Outro'){
-					$('#pneuPneuSemiReb2EixoOut').show();
+			//Vistoria Elétrica ok?
+			$(document).on("change", "input:radio[name='veiVistoriaEletrica']", function() {
+				let veiVistoriaEletrica = $("input:radio[name='veiVistoriaEletrica']:checked").val();
+				if( veiVistoriaEletrica == 'Não'){
+					$('#veiVistoriaEletricaObs').show();
 				}else{
-					$('#pneuPneuSemiReb2EixoOut').val('');
-					$('#pneuPneuSemiReb2EixoOut').hide();
+					$('#veiVistoriaEletricaObs').val('');
+					$('#veiVistoriaEletricaObs').hide();
 				}
 			});
-			//Pneus Semi Reboque - 3º Eixo?
-			$(document).on("change", "#pneuPneuSemiReb3Eixo", function() {
-				if($('#pneuPneuSemiReb3Eixo').val() == 'Outro'){
-					$('#pneuPneuSemiReb3EixoOut').show();
+			//Freios ok?
+			$(document).on("change", "input:radio[name='veiFreios']", function() {
+				let veiFreios = $("input:radio[name='veiFreios']:checked").val();
+				if( veiFreios == 'Não'){
+					$('#veiFreiosObs').show();
 				}else{
-					$('#pneuPneuSemiReb3EixoOut').val('');
-					$('#pneuPneuSemiReb3EixoOut').hide();
+					$('#veiFreiosObs').val('');
+					$('#veiFreiosObs').hide();
 				}
 			});
-			//Pneus Sterp em Bom Estado?
-			$(document).on("change", "#pneuPneuSterpBomEstado", function() {
-				if($('#pneuPneuSterpBomEstado').val() == 'Outro'){
-					$('#pneuPneuSterpBomEstadoOut').show();
+			//Direção em bom estado e sem folgas?
+			$(document).on("change", "input:radio[name='veiDirecao']", function() {
+				let veiDirecao = $("input:radio[name='veiDirecao']:checked").val();
+				if( veiDirecao == 'Não'){
+					$('#veiDirecaoObs').show();
 				}else{
-					$('#pneuPneuSterpBomEstadoOut').val('');
-					$('#pneuPneuSterpBomEstadoOut').hide();
+					$('#veiDirecaoObs').val('');
+					$('#veiDirecaoObs').hide();
 				}
 			});
-			//Rodas do Cavalo e Semi Reboque em Bom Estado?
-			$(document).on("change", "#pneuRodaCavSemiRebBomEstado", function() {
-				if($('#pneuRodaCavSemiRebBomEstado').val() == 'Outro'){
-					$('#pneuRodaCavSemiRebBomEstadoOut').show();
+			//Tanques e tampas ok?
+			$(document).on("change", "input:radio[name='veiTanquesTampas']", function() {
+				let veiTanquesTampas = $("input:radio[name='veiTanquesTampas']:checked").val();
+				if( veiTanquesTampas == 'Não'){
+					$('#veiTanquesTampasObs').show();
 				}else{
-					$('#pneuRodaCavSemiRebBomEstadoOut').val('');
-					$('#pneuRodaCavSemiRebBomEstadoOut').hide();
+					$('#veiTanquesTampasObs').val('');
+					$('#veiTanquesTampasObs').hide();
 				}
 			});
+			//Nível de ruído ok? (Barulho anormal)
+			$(document).on("change", "input:radio[name='veiNivelRuido']", function() {
+				let veiNivelRuido = $("input:radio[name='veiNivelRuido']:checked").val();
+				if( veiNivelRuido == 'Não'){
+					$('#veiNivelRuidoObs').show();
+				}else{
+					$('#veiNivelRuidoObs').val('');
+					$('#veiNivelRuidoObs').hide();
+				}
+			});
+			//O Veículo possui Manual e Etiqueta Indicando a Próxima Revisão de Troca de Óleo e Filtros?
+			$(document).on("change", "input:radio[name='veiEtqRevOleoFiltro']", function() {
+				let veiEtqRevOleoFiltro = $("input:radio[name='veiEtqRevOleoFiltro']:checked").val();
+				if( veiEtqRevOleoFiltro == 'Não'){
+					$('#veiEtqRevOleoFiltroObs').show();
+				}else{
+					$('#veiEtqRevOleoFiltroObs').val('');
+					$('#veiEtqRevOleoFiltroObs').hide();
+				}
+			});
+			
+			/*
+			 * PNEUS
+			 */
+			//Pneus ok?
+			$(document).on("change", "input:radio[name='pneuPneu']", function() {
+				let pneuPneu = $("input:radio[name='pneuPneu']:checked").val();
+				if( pneuPneu == 'Não'){
+					$('#pneuPneuObs').show();
+				}else{
+					$('#pneuPneuObs').val('');
+					$('#pneuPneuObs').hide();
+				}
+			});
+			/*
+			 * SEGURANÇA
+			 */
+			//Triangulo de Sinalização, Macaco e Chave Geral ok?
+			$(document).on("change", "input:radio[name='segTriMacacoChaveGeral']", function() {
+				let segTriMacacoChaveGeral = $("input:radio[name='segTriMacacoChaveGeral']:checked").val();
+				if( segTriMacacoChaveGeral == 'Não'){
+					$('#segTriMacacoChaveGeralObs').show();
+				}else{
+					$('#segTriMacacoChaveGeralObs').val('');
+					$('#segTriMacacoChaveGeralObs').hide();
+				}
+			});
+			//Trava de Segurança, Quinta Roda e Pino está funcionando corretamente?
+			$(document).on("change", "input:radio[name='segTravaSeg']", function() {
+				let segTravaSeg = $("input:radio[name='segTravaSeg']:checked").val();
+				if( segTravaSeg == 'Não'){
+					$('#segTravaSegObs').show();
+				}else{
+					$('#segTravaSegObs').val('');
+					$('#segTravaSegObs').hide();
+				}
+			});
+			//Possui Extintor dentro da Validade?
+			$(document).on("change", "input:radio[name='segExtintorDentroVal']", function() {
+				let segExtintorDentroVal = $("input:radio[name='segExtintorDentroVal']:checked").val();
+				if( segExtintorDentroVal == 'Não'){
+					$('#segExtintorDentroValObs').show();
+				}else{
+					$('#segExtintorDentroValObs').val('');
+					$('#segExtintorDentroValObs').hide();
+				}
+			});
+			//O Veículo está com a Tampa Traseira Sinalizando Excesso corretamente e legível?
+			$(document).on("change", "input:radio[name='segSinalizandoExcesso']", function() {
+				let segSinalizandoExcesso = $("input:radio[name='segSinalizandoExcesso']:checked").val();
+				if( segSinalizandoExcesso == 'Não'){
+					$('#segSinalizandoExcessoObs').show();
+				}else{
+					$('#segSinalizandoExcessoObs').val('');
+					$('#segSinalizandoExcessoObs').hide();
+				}
+			});
+			
+			
+		
 			
 		}
 	}
@@ -115,7 +206,6 @@ var eventsFuncoes = (function() {
 function loadForm(){
 	
 	// Ocultar Aba de anexos do workflow
-	window.parent.$("#processTabs").find("li").hide();
 	window.parent.$("#breadcrumb").remove();
 	window.parent.$("#textActivity").remove();
 	
@@ -139,38 +229,13 @@ function loadForm(){
 			  pickDate: true,
 			  pickTime: true,
 			  showToday: true
-			  
-			  
-//			  pickDate: true, 
-//			    pickTime: false, 
-//			    useMinutes: true, 
-//			    useSeconds: true, 
-//			    useCurrent: true,
-//			    minuteStepping: 1,
-//			    minDate: '1/1/2014',
-//			    maxDate: '1/1/2015',
-//			    showToday: true,
-//			    language: 'pt-br',
-//			    defaultDate: "",
-//			    disabledDates: [],
-//			    enabledDates: [],
-//			    useStrict: false,
-//			    sideBySide: false,
-//			    daysOfWeekDisabled: []
+
 		});
 	}else if(CURRENT_STATE == INICIO){
 		
-		if(FORM_MODE == 'VIEW'){
-			window.parent.$("#processTabs").find("li").show();
-			window.parent.$("#processTabs").find("li").first().hide();
-			window.parent.$("#processTabs").find("li").last().hide();
-		}
 		
 	}else if(CURRENT_STATE == FIM){
 		
-		window.parent.$("#processTabs").find("li").show();
-		window.parent.$("#processTabs").find("li").first().hide();
-		window.parent.$("#processTabs").find("li").last().hide();
 		
 	}
 	

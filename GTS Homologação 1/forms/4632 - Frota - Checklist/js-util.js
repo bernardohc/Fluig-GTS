@@ -344,7 +344,12 @@ function mTel(tel) {
 	return tel;
 }
 
-function isEmpty(idCampo) {
-    var valor = $('#'+idCampo).val();
+function isEmpty(idCampo, tipoCampo) {
+	var valor = '';
+    if(tipoCampo == 'radio'){
+    	valor = $("input:radio[name='"+idCampo+"']:checked").val();
+    }else{
+    	valor = $('#'+idCampo).val();
+    }
     return valor == null || valor.trim().length == 0 || typeof valor === undefined || valor.trim() == '' || valor.trim() == '0' || valor.trim() == '0,00';
 }

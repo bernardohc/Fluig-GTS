@@ -54,9 +54,9 @@
 						<label for="solNomeSolicitante">Nome do Solicitante</label>
 						<input type="text" name="solNomeSolicitante" id="solNomeSolicitante" class="form-control" data-protection="solNomeSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante do reembolso" readonly/>
 		            </div>
-					<div  class="col-md-3" align="left">
-						<label for="Unidade">Solicita para?</label>
-						<select name="Unidade" id="Unidade" class="form-control">
+					<div class="col-md-3" align="left" id="Solicitapara">
+						<label for="Solicitapara">Solicita para?</label>
+						<select name="Solicitapara" id="Unidade" class="form-control Solicitapara" >
 							<option value=""></option>
 							<option value="Matriz">Matriz</option>
 							<option value="Unidade2">Unidade 2</option>
@@ -121,16 +121,28 @@
 				<div class="row">
 					<div class="col-md-2 col-md-offset-5" align="left">
 						<div id="divNovaMaquina" style="display:none;">
-			            	<br>
+							<br>
 							<button type="button" class="btn btn-primary addMaquina" id="addMaquina" style="min-width: 130px;">Adicionar Peças <i class="fluigicon fluigicon-plus-circle icon-sm"></i></button>
 						</div>			
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="row salvarEnviar">
+					<div class="col-md-2 col-md-offset-5" align="left"  id="divSalvarEnviar">
+						<label for="salvarEnviar">Deseja Salvar ou Enviar?</label>
+						<select name="salvarEnviar" id="salvarEnviar" class="form-control salvarEnviar">
+							<option value=""></option>
+							<option value="Salvar">Salvar</option>
+							<option value="Enviar">Enviar</option>
+						</select>
 					</div>
 				</div>
 				<br>
 				<!-- Inicio div aprovção PCP, editavel pelo analista-->
 				<div id="divAprovacao" style="display:none;"  class="col-md-12">
 					<div class="col-md-12"  style="text-align:left">
-						<h4 ><strong>Observação PCP</strong></h4>
+						<h4 ><strong>Aprovação PCP</strong></h4>
 						<hr />  
 					</div>
 					<div class="row">

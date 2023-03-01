@@ -52,13 +52,13 @@ var funcoes = (function() {
 							
 						}else if (records[0].CODRET == "2"){
 							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
-							funcoes.limpaCamposItem(indexItem);
+							funcoes.limpaCamposProdInicial(indexItem);
 							
 						}
 						
 					}else{
 							FLUIGC.toast({ title: '', message: 'Erro ao consultar o item, comunicar o Administrador do Sistema!', type: 'danger' });
-							funcoes.limpaCamposItem(indexItem);
+							funcoes.limpaCamposProdInicial(indexItem);
 						}
 					setTimeout(function(){ 
 						loading.hide();
@@ -72,7 +72,7 @@ var funcoes = (function() {
 						message: 'Erro na consulta do Item, comunicar Administrador do Sistema' ,
 						type: 'danger'
 					});
-					funcoes.limpaCamposItem(indexItem)
+					funcoes.limpaCamposProdInicial(indexItem)
 					loading.hide();
 				}
 			});
@@ -107,13 +107,13 @@ var funcoes = (function() {
 							
 						}else if (records[0].CODRET == "2"){
 							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
-							funcoes.limpaCamposItem(indexItem);
+							funcoes.limpaCamposProdFinal(indexItem);
 							
 						}
-						
+												
 					}else{
 							FLUIGC.toast({ title: '', message: 'Erro ao consultar o item, comunicar o Administrador do Sistema!', type: 'danger' });
-							funcoes.limpaCamposItem(indexItem);
+							funcoes.limpaCamposProdFinal(indexItem);
 						}
 					setTimeout(function(){ 
 						loading.hide();
@@ -127,7 +127,7 @@ var funcoes = (function() {
 						message: 'Erro na consulta do Item, comunicar Administrador do Sistema' ,
 						type: 'danger'
 					});
-					funcoes.limpaCamposItem(indexItem)
+					funcoes.limpaCamposProdFinal(indexItem)
 					loading.hide();
 				}
 			});
@@ -159,7 +159,7 @@ var eventsFuncoes = (function() {
 			//data set consulta de produtos
 			$(document).on("change", ".inputItSolProduto", function() {
 				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
-				
+					
 				if( $(this).val().trim() == ""){
 					funcoes.limpaCamposProdInicial(index);
 					
@@ -172,7 +172,7 @@ var eventsFuncoes = (function() {
 			//data set consulta de produtos
 			$(document).on("change", ".inputItSolProdutoDestino", function() {
 				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
-				
+					
 				if( $(this).val().trim() == ""){
 					funcoes.limpaCamposProdFinal(index);
 					

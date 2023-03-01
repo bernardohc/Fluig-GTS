@@ -113,10 +113,8 @@ var funcoes = (function() {
 			//Traz valor do somaValores filho 
 			itSolTipoDespesaItem = $("#itSolTipoDespesaItem___"+index).val();
 			
-			console.log(itSolTipoDespesaItem);
-			
 			//compara itSolTipoDespesaItem
-			if (itSolTipoDespesaItem =="Acomodação" || itSolTipoDespesaItem =="Refeição" ) {
+			if (itSolTipoDespesaItem == "Acomodação" || "Refeição" ) {
 				somaValores +=  itSolValorDespesa;
 			}
 		});
@@ -130,9 +128,11 @@ var funcoes = (function() {
 		var dataFinalInt = parseInt(dataFinal);
 
 		difData = dataFinalInt - dataInicialInt ;
+		if(difData < 0){
+			difData = difData * -1	
+		}
 
 		var solNumColaboradores = document.getElementById("solNumColaboradores").value;
-
 		//Calula valor da diaria
 		if (solNumColaboradores > 1) {
 			if(difData >=2 ){
@@ -149,7 +149,7 @@ var funcoes = (function() {
 		}
 		
 		$("#solValorDiaria").val(valorDiaria.toFixed(2));
-		validafunctions.setMoeda("solValorDiaria", 2, false , '');
+		//validafunctions.setMoeda("solValorDiaria", 2, false , '');
 		},
 	}
 })();
@@ -194,10 +194,6 @@ function showCamera(oElement) {
 var eventsFuncoes = (function() {
 	return {
 		setup : function() {	
-			
-			/*
-			 * Adiantamento
-			 */
 
 			$(document).on("click", "#imprimirRelatorio", function() {
 	

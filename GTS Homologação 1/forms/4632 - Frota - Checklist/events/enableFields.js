@@ -8,10 +8,6 @@ function enableFields(form){
 		form.setEnabled("geraisNumFrota", false);
 		form.setEnabled("geraisDataAbertura", false);
 		form.setEnabled("geraisCondutor", false);
-		form.setEnabled("geraisEstaComCNHeVigente", false);
-		form.setEnabled("geraisCategoriaCNH", false);
-		form.setEnabled("geraisCidade", false);
-		form.setEnabled("geraisEstado", false);
 		
 	}
 	

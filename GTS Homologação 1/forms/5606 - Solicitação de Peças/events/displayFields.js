@@ -24,15 +24,22 @@ function displayFields(form,customHTML){
 			form.setVisibleById("divNovaMaquina", true);
 		}
 		
+	}else if(atv_atual == SALVAR){
+		if(form.getFormMode() == 'MOD'){
+			form.setVisibleById("divNovaMaquina", true);
+		}
+		
 	}else if(atv_atual == ANALISA_SOLICITACAO){
+		
+		form.setVisibleById("divSalvarEnviar", false);
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
 			form.setVisibleById("divAprovacao", true);
-			form.setVisibleById("divImprimirPcp", true);
-			
+			form.setVisibleById("divImprimirPcp", true);			
 		}
 	}else if(atv_atual == SEPARACAO_ALMOX){
+		form.setVisibleById("divSalvarEnviar", false);
 		if(form.getFormMode() == 'MOD'){
 			//Oculta botão excluir de tabela paiXfilho
 			form.setHideDeleteButton(true);
@@ -42,13 +49,14 @@ function displayFields(form,customHTML){
 			form.setVisibleById("divImprimirPcp", false);
 		}
 	}else if(atv_atual == FIM){
+		form.setVisibleById("divSalvarEnviar", false);
 		if(getValue('solAprovacao') == 'reprovado'){
 			form.setVisibleById("divAprovacao", true);	
 		}else{
 			form.setVisibleById("divAprovacao", true);
 			form.setVisibleById("divSeparacaoAlmox", true);
 			form.setVisibleById("divImprimirPcp", false);
-			form.setVisibleById("divImprimirAlmox", false);
+			form.setVisibleById("divImprimirAlmox", true);
 		}	
 	}
 }

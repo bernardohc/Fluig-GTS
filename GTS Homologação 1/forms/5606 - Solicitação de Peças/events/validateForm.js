@@ -8,13 +8,19 @@ function validateForm(form){
         switch (parseInt(WKNumState)) {
             //INICIAL
             case INICIO_0 : 
-            case INICIO :   
+            case INICIO : 
+            case SALVAR: 
 
-                if (isEmpty("Unidade", form)) {
-                    message += getMessage("Unidade", 1, form);
+                if (isEmpty("Solicitapara", form)) {
+                    message += getMessage("Solicita para", 1, form);
                     hasErros = true;
                 }
-                 
+
+                if (isEmpty("salvarEnviar", form)) {
+                    message += getMessage("Opção deseja salvar ou enviar", 1, form);
+                    hasErros = true;
+                }
+
                 //Se for clicado em Enviar 
                 if (getValue("WKCompletTask") == "true" ){
                   
@@ -36,16 +42,16 @@ function validateForm(form){
                             }if (isEmpty("solQuantidade___" + indexesSolTbDespesas[i], form)) {
                                 message += getMessage("Quantidade", 1, form, "Solicitação");
                                 hasErros = true;
-                            }if (isEmpty("solTipo___" + indexesSolTbDespesas[i], form)) {
-                                message += getMessage("Tipo", 1, form, "Solicitação");
-                                hasErros = true;      
-                            }if (isEmpty("solObs___" + indexesSolTbDespesas[i], form)) {
-                                message += getMessage("Observação", 1, form, "Solicitação");
-                                hasErros = true;
-                            }if (isEmpty("solVendedor___" + indexesSolTbDespesas[i], form)) {
-                                message += getMessage("Vendedor", 1, form, "Solicitação");
-                                hasErros = true;
-                            }                                        
+                             }//if (isEmpty("solTipo___" + indexesSolTbDespesas[i], form)) {
+                            //     message += getMessage("Tipo", 1, form, "Solicitação");
+                            //     hasErros = true;      
+                            // }if (isEmpty("solObs___" + indexesSolTbDespesas[i], form)) {
+                            //     message += getMessage("Observação", 1, form, "Solicitação");
+                            //     hasErros = true;
+                            // }if (isEmpty("solVendedor___" + indexesSolTbDespesas[i], form)) {
+                            //     message += getMessage("Vendedor", 1, form, "Solicitação");
+                            //     hasErros = true;
+                            //}                                        
                         }
                     }
                 }
@@ -62,8 +68,8 @@ function validateForm(form){
                 //Se for clicado em Enviar 
                 if (getValue("WKCompletTask") == "true" ){
 
-                    if (isEmpty("Unidade", form)) {
-                        message += getMessage("Unidade", 1, form);
+                    if (isEmpty("Solicitapara", form)) {
+                        message += getMessage("Solicita Para", 1, form);
                         hasErros = true;
                     }if(form.getValue("solAprovacao") == 'reprovado' ){
                         if (isEmpty("obsAlteracao", form)) {	
@@ -127,10 +133,10 @@ function validateForm(form){
                             
                          if( form.getValue("aprovContagem___"+ indexesSolTbDespesas[i]) == "contagemFinalizada" ){
                                                            
-                            if (isEmpty("solQtdeAlmox___" + indexesSolTbDespesas[i], form)) {
-                                    message += getMessage(" Quantidade Almox precisa ser preenchida.", 1, form, "Itens de despesa");
-                                    hasErros = true;
-                                }
+                            // if (isEmpty("solQtdeAlmox___" + indexesSolTbDespesas[i], form)) {
+                            //         message += getMessage(" Quantidade Almox precisa ser preenchida.", 1, form, "Itens de despesa");
+                            //         hasErros = true;
+                            //     }
                             }                                      
                         }
                     }

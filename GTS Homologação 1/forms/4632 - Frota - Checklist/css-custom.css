@@ -27,3 +27,7 @@
     font-weight: bold;
     border-bottom: 2px solid #f28425;
 }
+.has-error-custom{
+	border: 1px solid rgb(204, 61, 61);
+	border-radius: 4px;
+}
