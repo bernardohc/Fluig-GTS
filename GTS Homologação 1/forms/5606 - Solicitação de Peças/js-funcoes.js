@@ -119,6 +119,9 @@ var eventsFuncoes = (function() {
 				}else if(Unidade == 'Unidade2'){
 					//Grupo PCP - Solicitação de Peças - Filial 2 Analisa
 					$('#grupoAnalisaSolicitacao').val('Pool:Group:000013');
+				}else if(Unidade == 'CentralDePecas'){
+					//Grupo PCP - Solicitação de Peças - PCP Central de Peças Analisa
+					$('#grupoAnalisaSolicitacao').val('Pool:Group:000032');
 				}else{
 					$('#grupoAnalisaRelatorio').val('');
 				}			
@@ -134,6 +137,9 @@ var eventsFuncoes = (function() {
 				}else if(Unidade == 'Unidade2'){
 					//Grupo PCP - Solicitação de Peças - Separação Almox Filial 2
 					$('#grupoSeparacaoAlmox').val('Pool:Group:000015');
+				}else if(Unidade == 'CentralDePecas'){
+					//Grupo PCP - Solicitação de Peças - Separação Almox Peças
+					$('#grupoSeparacaoAlmox').val('Pool:Group:000033');
 				}else{
 					$('#grupoAnalisaRelatorio').val('');
 				}			

@@ -13,6 +13,9 @@ function imprimeRelatorio(tipo) {
 	
 	let cliCpfCnpj = ( $("#cliCpfCnpj").val().length == 6 ) ? "" : $("#cliCpfCnpj").val();
 	
+	let itPedPrecoUnitItem = '0,00';
+	let itPedValorFreteItem = '0,00';
+	
 	let pedTipoPreco = '';
 	let pedTipoPrecoChecked = $("input:radio[name*='pedTipoPreco']:checked").val();
 	if(pedTipoPrecoChecked == 'pedTipoPrecoPreFixado'){
@@ -142,7 +145,7 @@ function imprimeRelatorio(tipo) {
 				        '<table style="width:  100%; border-bottom: 1px solid #4F4F4F; " >' +
 				        '	<tr>' +
 				        '		<td align="center" style="width:  165px;">' +
-				        '			<img align="center" height="42" width="77" src="https://i.ibb.co/wc27BYd/Logo-GTS.jpg">' +
+				        '			<img align="center" height="42" width="77" src="http://177.101.121.27:8075/assinatura/img2/nova_assinatura/logo-20-anos.png">' +
 				        '		</td>' +
 				        '		<td align="center" style="font-size: 22px !important;">' +
 				        '			<b>PEDIDO ' + WKNumProces + '</b>' +
@@ -298,14 +301,19 @@ function imprimeRelatorio(tipo) {
 			        '		<th class="fonte-pedido" style="text-align:left; width:6%;" >IPI</th>' +
 			        '		<th class="fonte-pedido" style="text-align:left; width:10%;" >Total</th>' +
 			        '	</tr>';
+		    
 					$("input[name^=itPedCodItemItem___]").each(function(index){
 						var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+						
+						itPedPrecoUnitItem = $("#itPedPrecoUnitItem___"+index).val();
+						itPedValorFreteItem = $("#itPedValorFreteItem___"+index).val();
+						
 				HTML +=	'	<tr>' +
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedQtdItem___"+index).val() +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedCodItemItem___"+index).val() +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedDescricaoItemItem___"+index).val() +'</td>'+
-						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedPrecoUnitItem___"+index).val() +'</td>'+
-						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedValorFreteItem___"+index).val() +'</td>'+
+						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ itPedPrecoUnitItem +'</td>'+
+						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ itPedValorFreteItem +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedNCMItem___"+index).val() +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedFinameItem___"+index).val() +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedIPIAliqItem___"+index).val() +'</td>'+
@@ -314,27 +322,6 @@ function imprimeRelatorio(tipo) {
 					});
 				HTML += '</table>'+
         
-					//Totais
-					'<div class="content-block">'+
-				 	'<br>'+
-					'<table style="width:100%">'+
-					'  <tr>'+
-			        '     <th style="width:64%"></th>'+             
-			        '     <th colspan="3" class="header-section-relatorio" style="text-align:center; border-bottom: 1px solid #4F4F4F;"><b>Totais</b></td>'+
-			        '  </tr>'+
-			        '  <tr>'+
-			        '     <th style="width:64%"></th>'+             
-			        '     <th class="fonte-pedido" style="text-align:center; width:14%;">IPI</th>'+
-			        '     <th class="fonte-pedido" style="text-align:center; width:22%;">Valor Total</th>'+
-			        '  </tr>'+
-			        '  <tr>'+
-			        '     <td style="width:64%"></td>'+             
-			        '     <td class="fonte-pedido" style="text-align:center; width:14%;" valign="top">' + $('#pedTotalIPI').val() + '</td>'+             
-			        '     <td class="fonte-pedido" style="text-align:center; width:22%;" valign="top">' + $('#pedTotalPedido').val() + ' <br>(' + primeiraLetraMaiuscula( $('#pedTotalPedido').val().extenso(true) )+ ')</td>'+             
-			        '  </tr>'+         
-			        '</table>'+
-			        '</div>'+
-			        
 			        '<table style="width: 100%;" >' +
 			        '	<tr>' +
 			        '		<th class="fonte-pedido" style="width:100%; text-align:left;">Observação do Produto</th>' +
@@ -344,7 +331,8 @@ function imprimeRelatorio(tipo) {
 			        '	</tr>' +
 			        '</table>';
 			        
-			        if(  $("input:radio[name='pecaPossuiPeca']:checked").val() == "pecaPossuiPecaSim") {
+			        if(  $("input:radio[name*='pecaPossuiPeca']:checked").val() == "pecaPossuiPecaSim") {
+			    //Adiciona Seção de 'Tem Peça'    	
 			    HTML +=	'<table class="table-section" >' +
 				        '	<tr>' +
 				        '		<td align="left" class="header-section-relatorio">' +
@@ -361,11 +349,78 @@ function imprimeRelatorio(tipo) {
 				        '		<td class="fonte-pedido quebratexto" style="text-align: justify;">' + $("#pecaDescricao").val() +'</td>' +
 				        '		<td class="fonte-pedido" style="text-align: justify; vertical-align: top;">' + $("#pecaValor").val() +'</td>' +
 				        '	</tr>' +
-				        '</table>';
-			        }
+				        '</table>'+
+				        
+				        //Totais
+				        '<div class="content-block">'+
+					 	'<br>'+
+						'<table style="width:100%">'+
+						'  <tr>'+
+				        '     <th style="width:61%"></th>'+             
+				        '     <th colspan="4" class="header-section-relatorio" style="text-align:center; border-bottom: 1px solid #4F4F4F;"><b>Totais</b></td>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <th style="width:61%"></th>'+             
+				        '     <th class="fonte-pedido" style="text-align:center; width:12%;">Máquina</th>'+
+				        '     <th class="fonte-pedido" style="text-align:center; width:9%;">Frete</th>'+
+				        '     <th class="fonte-pedido" style="text-align:center; width:9%;">IPI</th>'+
+				        '     <th class="fonte-pedido" style="text-align:center; width:9%;">Peça</th>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:12%;" valign="top">' + itPedPrecoUnitItem + '</td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:9%;" valign="top">' + itPedValorFreteItem + '</td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:9%;" valign="top">' + $('#pedTotalIPI').val() + '</td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:9%;" valign="top">' + $('#pecaValor').val() + '</td>'+             
+				        '  </tr>'+ 
+				        '</table>'+
+				        '<table style="width:100%">'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+    
+				        '     <th class="fonte-pedido" style="text-align:center; width:39%;">Valor Total</th>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+    
+				        '     <td class="fonte-pedido" style="text-align:center; width:39%;" valign="top">' + $('#pedTotalPedido').val() + ' <br>(' + primeiraLetraMaiuscula( $('#pedTotalPedido').val().extenso(true) )+ ')</td>'+  
+				        '  </tr>'+  
+				        '</table>'+
+				        '</div>';
+			    
+			        }else{
 				
-			        
-		        
+			        //Totais
+			   HTML +='<div class="content-block">'+
+				 	'<br>'+
+					'<table style="width:100%">'+
+					'  <tr>'+
+			        '     <th style="width:61%"></th>'+             
+			        '     <th colspan="3" class="header-section-relatorio" style="text-align:center; border-bottom: 1px solid #4F4F4F;"><b>Totais</b></td>'+
+			        '  </tr>'+
+			        '  <tr>'+
+			        '     <th style="width:61%"></th>'+             
+			        '     <th class="fonte-pedido" style="text-align:center; width:13%;">Máquina</th>'+
+			        '     <th class="fonte-pedido" style="text-align:center; width:13%;">Frete</th>'+
+			        '     <th class="fonte-pedido" style="text-align:center; width:13%;">IPI</th>'+
+			        '  </tr>'+
+			        '  <tr>'+
+			        '     <td style="width:61%"></td>'+             
+			        '     <td class="fonte-pedido" style="text-align:center; width:13%;" valign="top">' + itPedPrecoUnitItem + '</td>'+             
+			        '     <td class="fonte-pedido" style="text-align:center; width:13%;" valign="top">' + itPedValorFreteItem + '</td>'+             
+			        '     <td class="fonte-pedido" style="text-align:center; width:13%;" valign="top">' + $('#pedTotalIPI').val() + '</td>'+             
+			        '  </tr>'+ 
+			        '</table>'+
+			        '<table style="width:100%">'+
+			        '  <tr>'+
+			        '     <td style="width:61%"></td>'+    
+			        '     <th class="fonte-pedido" style="text-align:center; width:39%;">Valor Total</th>'+
+			        '  </tr>'+
+			        '  <tr>'+
+			        '     <td style="width:61%"></td>'+    
+			        '     <td class="fonte-pedido" style="text-align:center; width:39%;" valign="top">' + $('#pedTotalPedido').val() + ' <br>(' + primeiraLetraMaiuscula( $('#pedTotalPedido').val().extenso(true) )+ ')</td>'+  
+			        '  </tr>'+  
+			        '</table>'+
+			        '</div>';
+				}
 			        /*
 			         * Início do Contrato
 			         */
@@ -610,7 +665,7 @@ function imprimeRelatorio(tipo) {
 				        '<table style="width:  100%; border-bottom: 1px solid #4F4F4F; " >' +
 				        '	<tr>' +
 				        '		<td align="center" style="width:  165px;">' +
-				        '			<img align="center" height="42" width="77" src="https://i.ibb.co/wc27BYd/Logo-GTS.jpg">' +
+				        '			<img align="center" height="42" width="77" src="http://177.101.121.27:8075/assinatura/img2/nova_assinatura/logo-20-anos.png">' +
 				        '		</td>' +
 				        '		<td align="center" style="font-size: 22px !important;">' +
 				        '			<b>PEDIDO ' + WKNumProces + '</b>' +
@@ -756,9 +811,9 @@ function imprimeRelatorio(tipo) {
 			        '	<tr style="border-bottom: 1px solid #4F4F4F;">' +
 			        '		<th class="fonte-pedido" style="text-align:left; width:4%;" >Qtd.</th>' +
 			        '		<th class="fonte-pedido" style="text-align:left; width:9%;" >Cod. Item</th>' +
-			        '		<th class="fonte-pedido" style="text-align:left; width:33%;" >Descrição</th>' +
+			        '		<th class="fonte-pedido" style="text-align:left; width:31%;" >Descrição</th>' +
 			        '		<th class="fonte-pedido" style="text-align:left; width:15%;" >Preço Unit. (USD)</th>' +
-			        '		<th class="fonte-pedido" style="text-align:left; width:7%;" >Frete</th>' +
+			        '		<th class="fonte-pedido" style="text-align:left; width:9%;" >Frete (USD)</th>' +
 			        '		<th class="fonte-pedido" style="text-align:left; width:8%;" >NCM</th>' +
 			        '		<th class="fonte-pedido" style="text-align:left; width:8%;" >Finame</th>' +
 			        '		<th class="fonte-pedido" style="text-align:left; width:6%;" >IPI</th>' +
@@ -766,12 +821,14 @@ function imprimeRelatorio(tipo) {
 			        '	</tr>';
 					$("input[name^=itPedCodItemItem___]").each(function(index){
 						var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+						itPedPrecoUnitItem = $("#itPedPrecoUnitItem___"+index).val();
+						itPedValorFreteItem = $("#itPedValorFreteItem___"+index).val();
 				HTML +=	'	<tr>' +
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedQtdItem___"+index).val() +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedCodItemItem___"+index).val() +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedDescricaoItemItem___"+index).val() +'</td>'+
-						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedPrecoUnitItem___"+index).val() +'</td>'+
-						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedValorFreteItem___"+index).val() +'</td>'+
+						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ itPedPrecoUnitItem +'</td>'+
+						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ itPedValorFreteItem +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedNCMItem___"+index).val() +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedFinameItem___"+index).val() +'</td>'+
 						'		<td style="text-align:left; " class="fonte-itens-pedido" >'+ $("#itPedIPIAliqItem___"+index).val() +'</td>'+
@@ -780,27 +837,6 @@ function imprimeRelatorio(tipo) {
 					});
 				HTML += '</table>'+
         
-					//Totais
-					'<div class="content-block">'+
-					 	'<br>'+
-						'<table style="width:100%">'+
-						'  <tr>'+
-				        '     <th style="width:64%"></th>'+             
-				        '     <th colspan="3" class="header-section-relatorio" style="text-align:center; border-bottom: 1px solid #4F4F4F;"><b>Totais</b></td>'+
-				        '  </tr>'+
-				        '  <tr>'+
-				        '     <th style="width:64%"></th>'+             
-				        '     <th class="fonte-pedido" style="text-align:center; width:14%;">IPI</th>'+
-				        '     <th class="fonte-pedido" style="text-align:center; width:22%;">Valor Total (USD)</th>'+
-				        '  </tr>'+
-				        '  <tr>'+
-				        '     <td style="width:64%"></td>'+             
-				        '     <td class="fonte-pedido" style="text-align:center; width:14%;" valign="top">' + $('#pedTotalIPI').val() + '</td>'+             
-				        '     <td class="fonte-pedido" style="text-align:center; width:22%;" valign="top">' + $('#pedTotalPedido').val() + ' <br>(' + primeiraLetraMaiuscula( $('#pedTotalPedido').val().extensoDolar(true) )+ ')</td>'+             
-				        '  </tr>'+         
-				        '</table>'+
-			        '</div>'+
-	        
 			        '<table style="width: 100%;" >' +
 			        '	<tr>' +
 			        '		<th class="fonte-pedido" style="width:100%; text-align:left;">Observação do Produto</th>' +
@@ -810,7 +846,8 @@ function imprimeRelatorio(tipo) {
 			        '	</tr>' +
 			        '</table>';
 			        
-			        if(  $("input:radio[name='pecaPossuiPeca']:checked").val() == "pecaPossuiPecaSim") {
+			        if(  $("input:radio[name*='pecaPossuiPeca']:checked").val() == "pecaPossuiPecaSim") {
+		        	//Adiciona Seção de 'Tem Peça'    	
 			    HTML +=	'<table class="table-section" >' +
 				        '	<tr>' +
 				        '		<td align="left" class="header-section-relatorio">' +
@@ -827,8 +864,77 @@ function imprimeRelatorio(tipo) {
 				        '		<td class="fonte-pedido quebratexto" style="text-align: justify;">' + $("#pecaDescricao").val() +'</td>' +
 				        '		<td class="fonte-pedido" style="text-align: justify; vertical-align: top;">' + $("#pecaValor").val() +'</td>' +
 				        '	</tr>' +
-				        '</table>';
-			        }
+				        '</table>'+
+				        
+				      //Totais
+				        '<div class="content-block">'+
+					 	'<br>'+
+						'<table style="width:100%">'+
+						'  <tr>'+
+				        '     <th style="width:61%"></th>'+             
+				        '     <th colspan="4" class="header-section-relatorio" style="text-align:center; border-bottom: 1px solid #4F4F4F;"><b>Totais</b></td>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <th style="width:61%"></th>'+             
+				        '     <th class="fonte-pedido" style="text-align:center; width:12%;">Máquina (USD)</th>'+
+				        '     <th class="fonte-pedido" style="text-align:center; width:9%;">Frete (USD)</th>'+
+				        '     <th class="fonte-pedido" style="text-align:center; width:9%;">IPI (USD)</th>'+
+				        '     <th class="fonte-pedido" style="text-align:center; width:9%;">Peça (USD)</th>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:12%;" valign="top">' + itPedPrecoUnitItem + '</td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:9%;" valign="top">' + itPedValorFreteItem + '</td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:9%;" valign="top">' + $('#pedTotalIPI').val() + '</td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:9%;" valign="top">' + $('#pecaValor').val() + '</td>'+             
+				        '  </tr>'+ 
+				        '</table>'+
+				        '<table style="width:100%">'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+    
+				        '     <th class="fonte-pedido" style="text-align:center; width:39%;">Valor Total (USD)</th>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+    
+				        '     <td class="fonte-pedido" style="text-align:center; width:39%;" valign="top">' + $('#pedTotalPedido').val() + ' <br>(' + primeiraLetraMaiuscula( $('#pedTotalPedido').val().extensoDolar(true) ) + ')</td>'+  
+				        '  </tr>'+  
+				        '</table>'+
+				        '</div>';
+			        }else{
+						
+				        //Totais
+				   HTML +='<div class="content-block">'+
+					 	'<br>'+
+						'<table style="width:100%">'+
+						'  <tr>'+
+				        '     <th style="width:61%"></th>'+             
+				        '     <th colspan="3" class="header-section-relatorio" style="text-align:center; border-bottom: 1px solid #4F4F4F;"><b>Totais</b></td>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <th style="width:61%"></th>'+             
+				        '     <th class="fonte-pedido" style="text-align:center; width:13%;">Máquina (USD)</th>'+
+				        '     <th class="fonte-pedido" style="text-align:center; width:13%;">Frete (USD)</th>'+
+				        '     <th class="fonte-pedido" style="text-align:center; width:13%;">IPI (USD)</th>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:13%;" valign="top">' + itPedPrecoUnitItem + '</td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:13%;" valign="top">' + itPedValorFreteItem + '</td>'+             
+				        '     <td class="fonte-pedido" style="text-align:center; width:13%;" valign="top">' + $('#pedTotalIPI').val() + '</td>'+             
+				        '  </tr>'+ 
+				        '</table>'+
+				        '<table style="width:100%">'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+    
+				        '     <th class="fonte-pedido" style="text-align:center; width:39%;">Valor Total (USD)</th>'+
+				        '  </tr>'+
+				        '  <tr>'+
+				        '     <td style="width:61%"></td>'+    
+				        '     <td class="fonte-pedido" style="text-align:center; width:39%;" valign="top">' + $('#pedTotalPedido').val() + ' <br>(' + primeiraLetraMaiuscula( $('#pedTotalPedido').val().extensoDolar(true) ) + ')</td>'+  
+				        '  </tr>'+  
+				        '</table>'+
+				        '</div>';
+					}
 	 	        
 				//Fim tbody Principal
 			    HTML +=	'</td></tr>'+

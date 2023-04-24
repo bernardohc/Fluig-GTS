@@ -5918,5 +5918,73 @@
     </void>
    </array>
   </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 31125</string>
+   <array class="java.lang.String" length="21">
+    <void index="0">
+     <string>aprovContagem</string>
+    </void>
+    <void index="1">
+     <string>dataAbertura</string>
+    </void>
+    <void index="2">
+     <string>grupoAnalisaSolicitacao</string>
+    </void>
+    <void index="3">
+     <string>grupoSeparacaoAlmox</string>
+    </void>
+    <void index="4">
+     <string>numFluig</string>
+    </void>
+    <void index="5">
+     <string>obsAlteracao</string>
+    </void>
+    <void index="6">
+     <string>obslmox</string>
+    </void>
+    <void index="7">
+     <string>processoId</string>
+    </void>
+    <void index="8">
+     <string>salvarEnviar</string>
+    </void>
+    <void index="9">
+     <string>solAprovacao</string>
+    </void>
+    <void index="10">
+     <string>solDescAtual</string>
+    </void>
+    <void index="11">
+     <string>Solicitapara</string>
+    </void>
+    <void index="12">
+     <string>solLiberacao</string>
+    </void>
+    <void index="13">
+     <string>solNomeSolicitante</string>
+    </void>
+    <void index="14">
+     <string>solObs</string>
+    </void>
+    <void index="15">
+     <string>solProduto</string>
+    </void>
+    <void index="16">
+     <string>solQtdeAlmox</string>
+    </void>
+    <void index="17">
+     <string>solQtdeLiberada</string>
+    </void>
+    <void index="18">
+     <string>solQuantidade</string>
+    </void>
+    <void index="19">
+     <string>solTipo</string>
+    </void>
+    <void index="20">
+     <string>solVendedor</string>
+    </void>
+   </array>
+  </void>
  </object>
 </java>

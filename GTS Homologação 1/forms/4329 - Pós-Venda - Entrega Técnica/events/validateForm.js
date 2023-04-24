@@ -1055,25 +1055,29 @@ function validateForm(form){
         				  form.getValue("tipoSolicitante") == 'Revenda' && 
         				  form.getValue("equipNumSerie").substring(0, 3) != 'FGS'){
         			
-        			
-        			if (isEmpty("NFvalValorEntrega", form) ) {
-    	                message += getMessage("Valor Entrega", 1, form);
+        			if (isEmpty("entTecGeracaoPagto", form) ) {
+    	                message += getMessage("Geração de Pagamento da Entrega Técnica?", 3, form);
     	                hasErros = true;
+    	            }else if( form.getValue("entTecGeracaoPagto") == 'sim' ){
+    	            	if (isEmpty("NFvalValorEntrega", form) ) {
+        	                message += getMessage("Valor Entrega", 1, form);
+        	                hasErros = true;
+        	            }
+        	    		if (isEmpty("NFvalValorDeslocamento", form) ) {
+        	    			message += getMessage("Valor Deslocamento", 1, form);
+        	    			hasErros = true;
+        	    		}
+        	    		if (isEmpty("NFvalValorTotal", form) ) {
+        	    			message += getMessage("Valor Total", 1, form);
+        	    			hasErros = true;
+        	    		}
+        	        	if (!isEmpty("NFvalValorAddEntrega", form) || !isEmpty("NFvalValorAddDeslocamento", form)) {
+        	        		if (isEmpty("NFvalObservacao", form) ) {
+        	        			message += getMessage("Observação", 1, form);
+        	        			hasErros = true;
+        	        		}
+        	        	}
     	            }
-    	    		if (isEmpty("NFvalValorDeslocamento", form) ) {
-    	    			message += getMessage("Valor Deslocamento", 1, form);
-    	    			hasErros = true;
-    	    		}
-    	    		if (isEmpty("NFvalValorTotal", form) ) {
-    	    			message += getMessage("Valor Total", 1, form);
-    	    			hasErros = true;
-    	    		}
-    	        	if (!isEmpty("NFvalValorAddEntrega", form) || !isEmpty("NFvalValorAddDeslocamento", form)) {
-    	        		if (isEmpty("NFvalObservacao", form) ) {
-    	        			message += getMessage("Observação", 1, form);
-    	        			hasErros = true;
-    	        		}
-    	        	}
     	        	
         		}else if( form.getValue("entTecAprov") == 'reprovado' ){
         			
@@ -1583,19 +1587,6 @@ function validateForm(form){
 		    			message += getMessage("Boleto", 8, form);
 		    			hasErros = true;
 		    		} 
-	   	       	}else if( form.getValue("NFPagtoFormaPagamento") == 'transferencia' ){
-	   	       		if (isEmpty("NFPagtoBanco", form)) {	
-	   	       			message += getMessage("Banco", 1, form);
-	   	       			hasErros = true;
-  	       			}
-	   	       		if (isEmpty("NFPagtoAgencia", form)) {	
-	   	       			message += getMessage("Agência", 1, form);
-	   	       			hasErros = true;
-	   	       		}
-	   	       		if (isEmpty("NFPagtoConta", form)) {	
-	   	       			message += getMessage("Conta", 1, form);
-	   	       			hasErros = true;
-	   	       		}
 	   	       	}
         	}
         	break;

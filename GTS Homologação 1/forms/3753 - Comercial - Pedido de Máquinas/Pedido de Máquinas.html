@@ -196,11 +196,11 @@
 		    </div>
 		</div>
 		<div class="row">
-			<div class="col-md-1 col-md-offset-1" align="left"  style="display:non;">
+			<div class="col-md-1 col-md-offset-1" align="left" >
 				<label for="repA3COD">Código</label>
 				<input type="text" name="repA3COD" id="repA3COD" class="form-control" readonly />
 	        </div>
-			<div class="col-md-5 col-md-offset-1" align="left">
+			<div class="col-md-5" align="left">
 				<label for="repNome">Representante</label>
 				<input type="hidden" name="repWKUser" id="repWKUser" class="form-control" >
 				<input type="hidden" name="repTipo" id="repTipo" class="form-control" >
@@ -228,11 +228,11 @@
 		
 		<div class="row">
 			
-			<div class="col-md-1 col-md-offset-1" align="left"  style="display:non;">
+			<div class="col-md-1 col-md-offset-1" align="left" >
 				<label for="repGesTerA3COD">Código</label>
-				<input type="text" name="repGesTerA3COD" id=repGesTerA3COD class="form-control" readonly />
+				<input type="text" name="repGesTerA3COD" id="repGesTerA3COD" class="form-control" readonly />
 	        </div>
-			<div class="col-md-5 col-md-offset-1" align="left">
+			<div class="col-md-5" align="left">
 				<label for="repGestorTerritorial">Gestor Territorial</label>
 				<input type="hidden" name="repGestorTerritorialWKUser" id="repGestorTerritorialWKUser" class="form-control" />
 				<input type="text" name="repGestorTerritorial" id="repGestorTerritorial" class="form-control" readonly
@@ -247,11 +247,11 @@
 	        
 		</div>
 		<div class="row">
-			<div class="col-md-1 col-md-offset-1" align="left" style="display:none;">
+			<div class="col-md-1 col-md-offset-1" align="left">
 				<label for="repGesComA3COD">Código</label>
 				<input type="text" name="repGesComA3COD" id=repGesComA3COD class="form-control" readonly />
 	        </div>
-			<div class="col-md-5 col-md-offset-1" align="left">
+			<div class="col-md-5" align="left">
 				<label for="repGestorTerritorial">Gestor Comercial</label>
 				<input type="hidden" name="repGestorComercialWKUser" id="repGestorComercialWKUser" class="form-control" />
 				<input type="text" name="repGestorComercial" id="repGestorComercial" class="form-control" readonly
@@ -265,35 +265,40 @@
 	        </div>
 		</div>
 		<div class="row">
-			<div class="col-md-1 col-md-offset-1" align="left">
-				<input type="text" name="vendedor1" id="vendedor1" class="form-control" style="display:non;" readonly />
+			<div id="divVend1" class="col-md-1 col-md-offset-1" align="left" style="display:none;">
+				<label for="vendedor1">Vend. 1*</label>
+				<input type="text" name="vendedor1" id="vendedor1" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor2" id="vendedor2" class="form-control" style="display:non;" readonly />
+			<div id="divVend2" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor2">Vend. 2</label>
+				<input type="text" name="vendedor2" id="vendedor2" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor3" id="vendedor3" class="form-control" style="display:non;" readonly />
+			<div id="divVend3" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor3">Vend. 3</label>
+				<input type="text" name="vendedor3" id="vendedor3" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor4" id="vendedor4" class="form-control" style="display:non;" readonly />
+			<div id="divVend4" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor4" id="vendedor4" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor5" id="vendedor5" class="form-control" style="display:non;" readonly />
+			<div id="divVend5" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor5">Vend. 5*</label>
+				<input type="text" name="vendedor5" id="vendedor5" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor6" id="vendedor6" class="form-control" style="display:non;" readonly />
+			<div id="divVend6" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor6">Vend. 6</label>
+				<input type="text" name="vendedor6" id="vendedor6" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor7" id="vendedor7" class="form-control" style="display:non;" readonly />
+			<div id="divVend7" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor7" id="vendedor7" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor8" id="vendedor8" class="form-control" style="display:non;" readonly />
+			<div id="divVend8" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor8" id="vendedor8" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor9" id="vendedor9" class="form-control" style="display:non;" readonly />
+			<div id="divVend9" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor9" id="vendedor9" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
-			<div class="col-md-1" align="left">
-				<input type="text" name="vendedor10" id="vendedor10" class="form-control" style="display:non;" readonly />
+			<div id="divVend10" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor10" id="vendedor10" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
         </div>	        
 	</div>
@@ -362,13 +367,13 @@
 	    <div class="row">
 	    	<div class="col-md-2 col-md-offset-1" align="left">
 				<label for="cliCpfCnpj">CPF/CNPJ/Código Exterior*</label>
-				<input type="text" name="cliCpfCnpj" id="cliCpfCnpj" class="form-control" maxlength="20" 
+				<input type="text" name="cliCpfCnpj" id="cliCpfCnpj" class="form-control" readonly maxlength="20" 
 					data-protection="cliCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir cliente do pedido de máquina" />
 	        </div>
 	    	
 	    	<div class="col-md-2 " align="left">
 				<label for="cliInscricaoEstadual">Inscrição Estadual*</label>
-				<input type="text" name="cliInscricaoEstadual" id="cliInscricaoEstadual" class="form-control"/>
+				<input type="text" name="cliInscricaoEstadual" id="cliInscricaoEstadual" readonly maxlength="20" class="form-control"/>
 	        </div>
 	    	
 	    	<div class="col-md-5" align="left">
@@ -630,24 +635,7 @@
 			    <label for="pedObservacaoProduto">Observação do Produto</label>
 				<textarea rows="3" cols="6" name="pedObservacaoProduto" id="pedObservacaoProduto" class="form-control " ></textarea>
             </div>
-				
-			<div class="col-md-3 col-md-offset-3" align="left">	
-		        <div id="divTotaisLinha" style="text-align:center">
-		       		<h2 ><strong>Totais</strong></h2>
-		       		<hr />  
-	       		</div>
 			
-				<div class="col-md-4 " align="left">
-					<label for="pedTotalIPI">IPI <span class="tipoMoeda"></span></label>
-			      	<input type="text" name="pedTotalIPI" id="pedTotalIPI" class="form-control" readonly />
-				</div>
-				
-				<div  class="col-md-8" align="left">
-					<label for="pedTotalPedido">Valor Total <span class="tipoMoeda"></span></label>
-			      	<input type="text" name="pedTotalPedidoSemImposto" id="pedTotalPedidoSemImposto" class="form-control" readonly style="display:none;" />
-			      	<input type="text" name="pedTotalPedido" id="pedTotalPedido" class="form-control" readonly />
-				</div>
-			</div>
 		</div>
 	</div>
 	 
@@ -691,7 +679,42 @@
 		
 		    	
     </div> 
-	    
+	<div id="divTotais">
+	    <div class="row">
+	    	<div class="col-md-6 col-md-offset-6" align="left">	
+		        <div id="divTotaisLinha" style="text-align:center">
+		       		<h2 ><strong>Totais</strong></h2>
+		       		<hr />  
+	       		</div>
+	       		<div class="row">
+	       			<div class="col-md-3 " align="left"> 
+						<label for="pedTotalMaquina">Máquina<span class="tipoMoeda"></span>:</label>
+			      		<p id="pedTotalMaquina" class="form-control" readonly ></p>
+					</div>
+	       			<div class="col-md-3 " align="left"> 
+						<label for="pedTotalFrete">Frete<span class="tipoMoeda"></span>:</label>
+			      		<p id="pedTotalFrete" class="form-control" readonly ></p>
+					</div>
+					<div class="col-md-3 " align="left">
+						<label for="pedTotalIPI">IPI <span class="tipoMoeda"></span></label>
+				      	<input type="text" name="pedTotalIPI" id="pedTotalIPI" class="form-control" readonly />
+					</div>
+					<div class="col-md-3 " align="left"> 
+						<label for="pedTotalPeca">Peça<span class="tipoMoeda"></span>:</label>
+			      		<p id="pedTotalPeca" class="form-control" readonly ></p>
+					</div>
+				</div>
+				
+				<div class="row">	
+	       			<div  class="col-md-offset-3 col-md-6" align="center">
+						<label for="pedTotalPedido">Valor Total <span class="tipoMoeda"></span></label>
+				      	<input type="text" name="pedTotalPedidoSemImposto" id="pedTotalPedidoSemImposto" class="form-control" readonly style="display:none;" />
+				      	<input type="text" name="pedTotalPedido" id="pedTotalPedido" class="form-control" style="font-size: 18px; font-weight: bold; color: #3F3F3C; text-align:center;" readonly />
+					</div>
+				</div>
+			</div>
+		</div>
+    </div> 
 	<div id="divComunicacaoInterna">
 	    <div class="row sub-titulo">
 	    	<div class="col-md-12">
@@ -714,6 +737,7 @@
 	        	<table class="table table-condensed table-nonfluid table-striped" id="tbComunicacaoInterna" tablename="tbComunicacaoInterna" noaddbutton="true" nodeletebutton="true">
 					<thead>
 						<tr>
+							<th class="tdDeleteRowComunicacaoInterna" style="display:none;"></th>
 							<th class="col-md-3">Usuário</th>	
 							<th class="col-md-2">Data</th>
 							<th class="col-md-4">Observação</th>
@@ -721,6 +745,11 @@
 					</thead>
 					<tbody>
 						<tr detail="true" detailname="tbComunicacaoInterna" >
+							<td class="fs-v-align-middle fs-text-center tdDeleteRowComunicacaoInterna" style="width: 1%; display:none;">
+								<div>
+									<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Comunicação Interna" onclick="removeComunicacaoInterna(this)"></i>
+								</div>
+							</td>
 							<td class="col-md-2" >
 								<input type="hidden" name="comIntOrdem" id="comIntOrdem" class="form-control" readonly>
 								<input type="hidden" name="comIntWKUserUsuario" id="comIntWKUserUsuario" class="form-control" readonly>

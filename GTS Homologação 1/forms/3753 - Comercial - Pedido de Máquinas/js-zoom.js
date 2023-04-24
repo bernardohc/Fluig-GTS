@@ -27,6 +27,9 @@ function setSelectedZoomItem(selectedItem) {
     					
 			    		$("#repA3COD").val(CODVEND);
 			    		
+			    		if( $('#vendedor1').val().trim() != '' && ( $('#vendedor1').val().trim() != CODVEND.trim() ) ){
+			    			FLUIGC.toast({ title: 'Atenção!', message: 'O Representante definido no formulário não está vinculado como "Representante do Cliente"!', type: 'danger' });
+			    		}
     	    		}else if (records[0].CODRET == "2"){
 	    	    		FLUIGC.toast({ title: '', message: 'Erro ao consultar o Representante no ERP, comunicar o Administrador do Sistema!', type: 'danger'});
 	   				 	console.log(records[0].MSGRET);

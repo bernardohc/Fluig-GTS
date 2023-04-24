@@ -7,7 +7,7 @@
     <processDescription>Solicitação de Antecipação</processDescription>
     <instruction></instruction>
     <active>true</active>
-    <publicProcess>true</publicProcess>
+    <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>PCP</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Antecipação</processId>
-      <version>3</version>
+      <version>4</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>5610</formId>
@@ -294,7 +294,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Antecipação</processId>
-        <version>3</version>
+        <version>4</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

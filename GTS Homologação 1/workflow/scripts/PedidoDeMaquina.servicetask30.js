@@ -18,12 +18,27 @@ function servicetask30(attempt, message) {
 			cabHashMap.put("PORCDESC", "0");
 			cabHashMap.put("TPFRETE", hAPI.getCardValue("pedFrete"));
 			cabHashMap.put("FRETE", hAPI.getCardValue("itPedValorFreteItem___"+indexesItensPedido[i]));
-			cabHashMap.put("REPTIPO", hAPI.getCardValue("repTipo")); //representante
-			cabHashMap.put("VEND1", hAPI.getCardValue("repA3COD")); //representante
-			cabHashMap.put("VEND2", hAPI.getCardValue("revA3COD")); //revenda
-			//VEND3 é feito diretamente dentro do Dataset
-			cabHashMap.put("VEND5", hAPI.getCardValue("repGesTerA3COD"));  //gestor territorial
-			
+			cabHashMap.put("VEND1", hAPI.getCardValue("vendedor1")); //representante
+			cabHashMap.put("VEND2", hAPI.getCardValue("vendedor2")); //revenda
+			cabHashMap.put("VEND3", hAPI.getCardValue("vendedor3")); //000008 se for representante nacional e nada se for exportação
+			cabHashMap.put("VEND4", hAPI.getCardValue("vendedor4")); 
+			cabHashMap.put("VEND5", hAPI.getCardValue("vendedor5")); //Gestor Territorial
+			cabHashMap.put("VEND6", hAPI.getCardValue("vendedor6")); //AGCO e CASE
+			cabHashMap.put("VEND7", hAPI.getCardValue("vendedor7"));
+			cabHashMap.put("VEND8", hAPI.getCardValue("vendedor8"));
+			cabHashMap.put("VEND9", hAPI.getCardValue("vendedor9"));
+			cabHashMap.put("VEND10", hAPI.getCardValue("vendedor10"));
+			var pecaPossuiPeca = "";
+			if(hAPI.getCardValue("pecaPossuiPeca") == "pecaPossuiPecaSim"){
+				pecaPossuiPeca = "1";
+			}else if(hAPI.getCardValue("pecaPossuiPeca") == "pecaPossuiPecaNao"){
+				pecaPossuiPeca = "2";
+			}
+			cabHashMap.put("PECAPOSSUI", pecaPossuiPeca);
+			cabHashMap.put("PECADESC", hAPI.getCardValue("pecaDescricao"));
+			cabHashMap.put("PECACONDPGTO", hAPI.getCardValue("pecaCodPagto"));
+			cabHashMap.put("PECAVALOR", hAPI.getCardValue("pecaValor"));
+				
 			//Adiciona em um ArrayList para consegui converter em JSON
 			cabArrList.add(cabHashMap);
 			//Converte o ArrayList para um JSON, para poder passar este JSON na constraint

@@ -80,7 +80,6 @@ function servicetask17(attempt, message) {
 							orcTotalItem = campos.get(id).trim();
 						}
 					}
-					
 					//item 3 Preço Tabela
 					if (id.trim() == 'orcPrecoTabelaItem___'+j){
 						orcPrecoTabelaItem = campos.get(id).trim();
@@ -89,10 +88,6 @@ function servicetask17(attempt, message) {
 					if (id.trim() == 'orcPrecoCustoItem___'+j){
 						orcPrecoUnitItem = campos.get(id).trim();
 					}
-					//item 5
-//						if (id.trim() == 'orcTotalCustoItem___'+j){
-//							orcTotalItem = campos.get(id).trim();
-//						}
 		
 				}
 				//1-orcCodProdutoItem 			2-orcQtdItem	3-orcPrecoTabelaItem 	4-orcPrecoUnitItem		5-orcTotalItem			
@@ -143,8 +138,14 @@ function servicetask17(attempt, message) {
 				}
 			}
 			var MATADMREV = new String(hAPI.getCardValue("gerenteRevenda"));
-			var CODVENDPROTHEUS = new String(hAPI.getCardValue("codVendedorProtheus"));
-		
+			
+			var tpFrete = "";
+			if (hAPI.getCardValue("tpFrete").toUpperCase() == "FOB"){
+				tpFrete = "F";
+			}else if(hAPI.getCardValue("tpFrete").toUpperCase() == "CIF"){
+				tpFrete = "C";
+			}
+			
 			var cA1COD  = DatasetFactory.createConstraint("A1COD", A1COD, A1COD, ConstraintType.MUST);
 			var cA1LOJA  = DatasetFactory.createConstraint("A1LOJA", A1LOJA, A1LOJA, ConstraintType.MUST);
 			var cCONDPG  = DatasetFactory.createConstraint("CONDPG", CONDPG, CONDPG, ConstraintType.MUST);
@@ -158,9 +159,21 @@ function servicetask17(attempt, message) {
 			var cMATADMREV  = DatasetFactory.createConstraint("MATADMREV", MATADMREV, MATADMREV, ConstraintType.MUST); 
 			var cCPRETIRADA  = DatasetFactory.createConstraint("CPRETIRADA", CPProgramacaoRetirada, CPProgramacaoRetirada, ConstraintType.MUST); 
 			var cCPDTRETIRADA = DatasetFactory.createConstraint("CPDTRETIRADA", CPDataProgramacaoRetirada, CPDataProgramacaoRetirada, ConstraintType.MUST); 
-			var cCODVENDPROTHEUS = DatasetFactory.createConstraint("CODVENDPROTHEUS", CODVENDPROTHEUS, CODVENDPROTHEUS, ConstraintType.MUST); 
+			var cVEND1 = DatasetFactory.createConstraint("VEND1", hAPI.getCardValue("vendedor1"), hAPI.getCardValue("vendedor1"), ConstraintType.MUST); 
+			var cVEND2 = DatasetFactory.createConstraint("VEND2", hAPI.getCardValue("vendedor2"), hAPI.getCardValue("vendedor2"), ConstraintType.MUST); 
+			var cVEND3 = DatasetFactory.createConstraint("VEND3", hAPI.getCardValue("vendedor3"), hAPI.getCardValue("vendedor3"), ConstraintType.MUST); 
+			var cVEND4 = DatasetFactory.createConstraint("VEND4", hAPI.getCardValue("vendedor4"), hAPI.getCardValue("vendedor4"), ConstraintType.MUST); 
+			var cVEND5 = DatasetFactory.createConstraint("VEND5", hAPI.getCardValue("vendedor5"), hAPI.getCardValue("vendedor5"), ConstraintType.MUST); 
+			var cVEND6 = DatasetFactory.createConstraint("VEND6", hAPI.getCardValue("vendedor6"), hAPI.getCardValue("vendedor6"), ConstraintType.MUST); 
+			var cVEND7 = DatasetFactory.createConstraint("VEND7", hAPI.getCardValue("vendedor7"), hAPI.getCardValue("vendedor7"), ConstraintType.MUST); 
+			var cVEND8 = DatasetFactory.createConstraint("VEND8", hAPI.getCardValue("vendedor8"), hAPI.getCardValue("vendedor8"), ConstraintType.MUST); 
+			var cVEND9 = DatasetFactory.createConstraint("VEND9", hAPI.getCardValue("vendedor9"), hAPI.getCardValue("vendedor9"), ConstraintType.MUST); 
+			var cVEND10 = DatasetFactory.createConstraint("VEND10", hAPI.getCardValue("vendedor10"), hAPI.getCardValue("vendedor10"), ConstraintType.MUST); 
+			var cFRETE = DatasetFactory.createConstraint("FRETE", tpFrete, tpFrete, ConstraintType.MUST); 
+			var cCODTRANSPORTADORA = DatasetFactory.createConstraint("CODTRANSPORTADORA", hAPI.getCardValue("codTransportadora").trim(), hAPI.getCardValue("codTransportadora").trim(), ConstraintType.MUST); 
+			var cMSGNOTAREDESPACHO = DatasetFactory.createConstraint("MSGNOTAREDESPACHO", hAPI.getCardValue("redespachoMsgNotaFiscal").trim(), hAPI.getCardValue("redespachoMsgNotaFiscal").trim(), ConstraintType.MUST); 
 			
-			var constraints = new Array(cA1COD, cA1LOJA, cCONDPG, cTABPRECO, cOBSORC, cPERCDESC, cTIPOPEDIDO, cIDFLUIG, cITENS, cCODORC, cMATADMREV, cCPRETIRADA, cCPDTRETIRADA, cCODVENDPROTHEUS);
+			var constraints = new Array(cA1COD, cA1LOJA, cCONDPG, cTABPRECO, cOBSORC, cPERCDESC, cTIPOPEDIDO, cIDFLUIG, cITENS, cCODORC, cMATADMREV, cCPRETIRADA, cCPDTRETIRADA, cVEND1, cVEND2, cVEND3, cVEND4, cVEND5, cVEND6, cVEND7, cVEND8, cVEND9, cVEND10, cFRETE, cCODTRANSPORTADORA, cMSGNOTAREDESPACHO);
 			 
 			var dataset = DatasetFactory.getDataset("dsCadastraOrcamento", [], constraints, []);
 			var codRetorno = dataset.getValue(0, "CODRET");

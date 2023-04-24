@@ -90,9 +90,9 @@ function enableFields(form){
 	}else if( atv_atual == REP_VERIFICA_PED){	
 		
 		//Dados Revenda
-		form.setEnabled("revCpfCnpj", false);
-		form.setEnabled("revMatFluig", false);
-		form.setEnabled("revNomeFluig", false);
+//		form.setEnabled("revCpfCnpj", false);
+//		form.setEnabled("revMatFluig", false);
+//		form.setEnabled("revNomeFluig", false);
 		
 		//Dados Representante
 		form.setEnabled("repNome", false);
@@ -108,9 +108,9 @@ function enableFields(form){
 	}else if( atv_atual == REV_VERIFICA_PED){	
 		
 		//Dados Revenda
-		form.setEnabled("revCpfCnpj", false);
-		form.setEnabled("revMatFluig", false);
-		form.setEnabled("revNomeFluig", false);
+//		form.setEnabled("revCpfCnpj", false);
+//		form.setEnabled("revMatFluig", false);
+//		form.setEnabled("revNomeFluig", false);
 		
 		//Dados Representante
 		form.setEnabled("repNome", false);
@@ -122,9 +122,9 @@ function enableFields(form){
 	}else if( atv_atual == REV_RET_ADM_GTS){
 		
 		//Dados Revenda
-		form.setEnabled("revCpfCnpj", false);
-		form.setEnabled("revMatFluig", false);
-		form.setEnabled("revNomeFluig", false);
+//		form.setEnabled("revCpfCnpj", false);
+//		form.setEnabled("revMatFluig", false);
+//		form.setEnabled("revNomeFluig", false);
 		
 		//Dados Representante
 		form.setEnabled("repNome", false);

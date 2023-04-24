@@ -134,7 +134,7 @@
 							<input type="text" name="equipModelo" id="equipModelo" class="form-control" maxlength="150"/>
 		        		</div>
 						<div class="col-md-3" align="left">
-							<label for="equipAcoplamento">Acoplamento*</label>
+							<label for="equipAcoplamento">Marca Colheitadeira/Trator*</label>
 							<input type="text" name="equipAcoplamento" id="equipAcoplamento" class="form-control" maxlength="150"/>
 		        		</div>
 		        		<div class="col-md-2" align="left">
@@ -943,6 +943,25 @@
 		        </div>
 			</div>
 			
+			<div id="divConfirmaGeracaoPagto" style="display:none;">
+				<div class="col-md-12">
+		        	<div class="row">
+						<div class="col-md-5 " align="left" >
+							<h5>Geração de Pagamento da Entrega Técnica?*</h5>
+							<div class="radio input-group">
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="entTecGeracaoPagto" value="sim" id="entTecGeracaoPagtoSim" />
+									<label for="entTecGeracaoPagtoSim">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="entTecGeracaoPagto" value="nao" id="entTecGeracaoPagtoNao" />
+									<label for="entTecGeracaoPagtoNao">Não</label>
+								</div>
+							</div>
+			            </div>
+					</div>
+		        </div>
+			</div>
 			
     	</div>
     	
@@ -960,8 +979,7 @@
 							<p>Segue a norma interna sobre o procedimento com as respectivas notas fiscais de assistência técnica:</p>
 		    				<p>
 			    				-A nota fiscal deve ser de prestação de serviços referente a Assistência Técnica e deverá ser anexadas nesse processo dentro do mês de emissão.<br>
-								-Na nota fiscal deverá conter no campo dados adicionais o <span style="text-decoration: underline;" >número de série</span> do equipamento que recebeu o serviço, para cada equipamento deverá ser gerado uma nota fiscal, bem como com os  dados bancários do valor da nota fiscal ou anexar o boleto com pagamento para 28 dias.<br>
-								Exemplo: FPM00000: Banco XXX; Agência: YYY; Conta ZZZ
+								-Na nota fiscal deverá conter no campo dados adicionais o <span style="text-decoration: underline;" >número de série</span> do equipamento que recebeu o serviço, para cada equipamento deverá ser gerado uma nota fiscal e anexado o boleto com pagamento para 28 dias.<br>
 							</p>
 							<p style="text-decoration: underline;">Dados para faturamento</p>
 							<p>
@@ -1107,17 +1125,13 @@
 			            	<h5>Forma de Pagamento?*</h5>
 							<div class="radio" >
 								<div class="custom-radio custom-radio-inline custom-radio-primary">
-									<input type="radio" name="NFPagtoFormaPagamento" value="boleto" id="NFPagtoFormaPagamentoBoleto">
+									<input type="radio" name="NFPagtoFormaPagamento" value="boleto" id="NFPagtoFormaPagamentoBoleto" >
 									<label for="NFPagtoFormaPagamentoBoleto">Boleto</label>
-								</div>
-								<div class="custom-radio custom-radio-inline custom-radio-primary">
-									<input type="radio" name="NFPagtoFormaPagamento" value="transferencia" id="NFPagtoFormaPagamentoTransferencia">
-									<label for="NFPagtoFormaPagamentoTransferencia">Transferência Bancária</label>
 								</div>
 							</div>
 						</div>
 		        	</div>
-		        	<div id="divPagtoBoleto" class="row" style="display:none;">
+		        	<div id="divPagtoBoleto" class="row" >
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="control-label">Boleto*</label>

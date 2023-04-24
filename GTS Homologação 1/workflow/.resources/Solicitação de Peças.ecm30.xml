@@ -7,7 +7,7 @@
     <processDescription>Solicitação de Peças</processDescription>
     <instruction>Solicita08 - Solicita Peças da Matriz para Filial</instruction>
     <active>true</active>
-    <publicProcess>true</publicProcess>
+    <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
     <categoryId>PCP</categoryId>
     <managerEngineAllocationId>Grupo</managerEngineAllocationId>
@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Peças</processId>
-      <version>15</version>
+      <version>20</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>5606</formId>
@@ -44,7 +44,7 @@
     <processStates/>
     <favorito>false</favorito>
     <inheritFormSecurity>false</inheritFormSecurity>
-    <mobileReady>false</mobileReady>
+    <mobileReady>true</mobileReady>
   </ProcessDefinitionVersion>
   <list>
     <ProcessState>
@@ -106,7 +106,12 @@
       </processStatePK>
       <stateName>ANALISA_SOLICITACAO</stateName>
       <stateDescription>ANALISA_SOLICITACAO</stateDescription>
-      <instruction>GestorSolicitacoesPCP</instruction>
+      <instruction>Analise por Grupos&#xd;
+000012&#xd;
+000013&#xd;
+000032 - PCP - Central de Peças - Analisa&#xd;
+&#xd;
+GestorSolicitacoesPCP</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -125,7 +130,7 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>330</positionX>
       <positionY>120</positionY>
@@ -177,10 +182,10 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
-      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>530</positionX>
-      <positionY>224</positionY>
+      <positionX>620</positionX>
+      <positionY>217</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -210,7 +215,7 @@
       </processStatePK>
       <stateName>SALVAR</stateName>
       <stateDescription>SALVAR</stateDescription>
-      <instruction></instruction>
+      <instruction>Salva a solicitação para continuar o preenchimento.</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -231,8 +236,8 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>60</positionX>
-      <positionY>127</positionY>
+      <positionX>240</positionX>
+      <positionY>31</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -285,16 +290,16 @@
         <version>1</version>
         <sequence>19</sequence>
       </processStatePK>
-      <stateName>Exclusivo</stateName>
-      <stateDescription>Exclusivo</stateDescription>
+      <stateName>Salvar</stateName>
+      <stateDescription>Salvar</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>210</positionX>
-      <positionY>104</positionY>
+      <positionX>170</positionX>
+      <positionY>111</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -332,7 +337,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>720</positionX>
+      <positionX>780</positionX>
       <positionY>234</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -357,7 +362,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>20</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>&#xd;
@@ -370,7 +375,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;reprovado&quot;</condition>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>20</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition>&#xd;
@@ -383,13 +388,11 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>20</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
       <destinationSequenceId>17</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;17&lt;/BaseActivity&gt;&lt;Returns&gt;First&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <engineAllocationId>Executor Atividade</engineAllocationId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -397,7 +400,7 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>20</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
@@ -479,23 +482,6 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
         <version>1</version>
-        <linkSequence>18</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>4</initialStateSequence>
-      <finalStateSequence>17</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>Solicitação de Peças</processId>
-        <version>1</version>
         <linkSequence>20</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
@@ -534,6 +520,23 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>19</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Peças</processId>
+        <version>1</version>
+        <linkSequence>23</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
       <initialStateSequence>19</initialStateSequence>
       <finalStateSequence>17</finalStateSequence>
       <returnLabel></returnLabel>
@@ -548,35 +551,55 @@ hAPI.getCardValue(&quot;solAprovacao&quot;) == &quot;aprovado&quot;</condition>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
-        <eventId>ENG_LITERALS</eventId>
+        <eventId>servicetask24</eventId>
         <processId>Solicitação de Peças</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>process.description=SolicitaçãoDePeças
-process.category=
-process.instructions=</eventDescription>
+      <eventDescription>function servicetask34(attempt, message) {&#xd;
+	&#xd;
+	try{&#xd;
+		//Envia e-mail para Solicitante&#xd;
+		var solicitante = DatasetFactory.createConstraint(&quot;emailRevenda&quot;, hAPI.getCardValue(&quot;revContServicoEmail&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var emailAprovadorGTS = DatasetFactory.createConstraint(&quot;emailAprovadorGTS&quot;, hAPI.getCardValue(&quot;NFAprovEmailAprovador&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var numFluig = DatasetFactory.createConstraint(&quot;numFluig&quot;, hAPI.getCardValue(&quot;numFluig&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var numSerie = DatasetFactory.createConstraint(&quot;numSerie&quot;, hAPI.getCardValue(&quot;equipNumSerie&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var numNotaFiscal = DatasetFactory.createConstraint(&quot;numNotaFiscal&quot;, hAPI.getCardValue(&quot;equipNumNotaFiscal&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var nomeCliente = DatasetFactory.createConstraint(&quot;nomeCliente&quot;, hAPI.getCardValue(&quot;cliNomeCliente&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+		var dataPrevPagto = DatasetFactory.createConstraint(&quot;dataPrevPagto&quot;, hAPI.getCardValue(&quot;NFAprovDataPrevPagto&quot;), &quot;&quot;, ConstraintType.MUST); &#xd;
+&#xd;
+&#xd;
+		var constraints = new Array(emailRevenda, emailAprovadorGTS, numFluig, numSerie, numNotaFiscal, nomeCliente, dataPrevPagto);&#xd;
+		 &#xd;
+		var dataset = DatasetFactory.getDataset(&quot;dsEntTecEmailRevProgPagto&quot;, null, constraints, null);&#xd;
+		if(dsTemValor(dataset)){&#xd;
+			var codRetorno = dataset.getValue(0, &quot;CODRET&quot;);&#xd;
+			var msgRetorno = dataset.getValue(0, &quot;MSGRET&quot;);&#xd;
+			&#xd;
+			hAPI.setCardValue(&quot;emailProgPagtoCodRet&quot;, codRetorno);&#xd;
+			hAPI.setCardValue(&quot;emailProgPagtoMsg&quot;, msgRetorno);&#xd;
+			if(codRetorno == &apos;2&apos;){&#xd;
+				throw(&quot;Erro ao disparar e-mail: &quot; + msgRetorno);&#xd;
+			}&#xd;
+		}else{&#xd;
+			throw(&quot;Erro ao disparar e-mail: sem retorno do dataset.&quot;);&#xd;
+		}&#xd;
+		&#xd;
+	}catch(erro){ &#xd;
+		hAPI.setCardValue(&quot;emailProgPagtoCodRet&quot;, &quot;2&quot;);&#xd;
+		hAPI.setCardValue(&quot;emailProgPagtoMsg&quot;, erro);&#xd;
+		throw(&quot;Erro ao disparar e-mail: &quot; + erro);&#xd;
+	}&#xd;
+	&#xd;
+}</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
       <workflowProcessEventPK>
         <companyId>1</companyId>
-        <eventId>ESP_LITERALS</eventId>
+        <eventId>beforeTaskSave</eventId>
         <processId>Solicitação de Peças</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>process.description=SolicitaçãoDePeças
-process.category=
-process.instructions=</eventDescription>
-    </WorkflowProcessEvent>
-    <WorkflowProcessEvent>
-      <workflowProcessEventPK>
-        <companyId>1</companyId>
-        <eventId>POR_LITERALS</eventId>
-        <processId>Solicitação de Peças</processId>
-        <version>1</version>
-      </workflowProcessEventPK>
-      <eventDescription>process.description=SolicitaçãoDePeças
-process.category=
-process.instructions=</eventDescription>
+      <eventDescription>function beforeTaskSave(colleagueId,nextSequenceId,userList){}</eventDescription>
     </WorkflowProcessEvent>
   </list>
   <list/>
@@ -653,23 +676,56 @@ process.instructions=</eventDescription>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
-        <version>15</version>
-        <linkSequence>16</linkSequence>
+        <version>20</version>
+        <linkSequence>13</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>737</positionX>
-      <positionY>161</positionY>
+      <positionX>550</positionX>
+      <positionY>251</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Peças</processId>
-        <version>15</version>
+        <version>20</version>
+        <linkSequence>16</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>797</positionX>
+      <positionY>155</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Peças</processId>
+        <version>20</version>
+        <linkSequence>20</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>200</positionX>
+      <positionY>59</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Peças</processId>
+        <version>20</version>
         <linkSequence>22</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>179</positionX>
-      <positionY>56</positionY>
+      <positionX>97</positionX>
+      <positionY>154</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Peças</processId>
+        <version>20</version>
+        <linkSequence>23</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>292</positionX>
+      <positionY>127</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

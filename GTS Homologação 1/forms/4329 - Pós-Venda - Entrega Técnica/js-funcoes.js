@@ -976,6 +976,25 @@ var eventsFuncoes = (function() {
 				$("#propRuralEntrega___"+indexChange).prop('checked', true);
 			});
 			
+			/**
+			 * Gatilho para quando aprova a Entrega Técnica, e define se vai gerar o pagamento.
+			 */
+			$(document).on("change", "input:radio[name='entTecAprov']", function() {
+				var entTecAprov = $("input:radio[name='entTecAprov']:checked").val();
+				
+				if(entTecAprov == 'aprovado'){
+					//Só pode ter a opção de pagamento se o Solicitante foi Revenda e não for equipamento GreenSystem
+					if( $('#tipoSolicitante').val() == 'Revenda' && $('#equipNumSerie').val().substring(0, 3) != 'FGS'){
+						$('#divConfirmaGeracaoPagto').show();
+					}
+				}else if(entTecAprov == 'reprovado'){
+					$('#divConfirmaGeracaoPagto').hide();
+					$("input:radio[name='entTecGeracaoPagto']").prop( "checked", false );
+				}
+				
+			});
+			
+			
 			/*
 			 * EMISSÃO NOTA FISCAL
 			 */
@@ -1001,25 +1020,6 @@ var eventsFuncoes = (function() {
 			/*
 			 * Nota Fiscal/Forma de Pagamento
 			 */
-			/**
-			 * Quando seleciona a forma de pagamento (Boleto ou Transferência)
-			 */
-			$(document).on("change", "input:radio[name='NFPagtoFormaPagamento']", function() {
-				var NFPagtoFormaPagamento = $("input:radio[name='NFPagtoFormaPagamento']:checked").val();
-				
-				if(NFPagtoFormaPagamento == 'boleto'){
-					
-					$('#divPagtoBoleto').show();
-					$('#divPagtoTranferencia').hide();
-					
-				}else if(NFPagtoFormaPagamento == 'transferencia'){
-					
-					$('#divPagtoBoleto').hide();
-					$('#divPagtoTranferencia').show();
-					
-				}
-				
-			});
 			/**
 			 * Transforma a mascara da forma de pagamento de Transferencia
 			 */

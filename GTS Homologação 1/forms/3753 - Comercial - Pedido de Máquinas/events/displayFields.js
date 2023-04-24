@@ -30,6 +30,10 @@ function displayFields(form,customHTML){
 	if(indexesComunicacaoInterna.length == 0){
 		form.setVisibleById("divTbComInterna", false);
 	}
+	//Somente se estiver abrindo a solicitação aparece o botão de deletar
+	if(form.getFormMode() == 'ADD'){
+		customHTML.append("<script>$('.tdDeleteRowComunicacaoInterna').show();</script>");
+	}
 	
 	/*
 	 * Este campo serve para quando cancelar automaticamente, marcar que pode cancelar
@@ -615,6 +619,12 @@ function displayFields(form,customHTML){
 			if (!isEmpty("revCpfCnpj", form) && isEmpty("revA3COD", form)) {	
 				customHTML.append("<script>$('#revA3COD').prop('readonly', false);</script>");
 			}
+			
+			form.setVisibleById("divVend1", true);
+			form.setVisibleById("divVend2", true);
+			form.setVisibleById("divVend3", true);
+			form.setVisibleById("divVend5", true);
+			form.setVisibleById("divVend6", true);
 			
 			if ( isEmpty("cliCodigo", form)) {	
 				customHTML.append("<script>$('#cliCodigo').prop('readonly', false);</script>");

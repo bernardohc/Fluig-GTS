@@ -40,6 +40,9 @@ var funcoes = (function() {
 			funcoes.addLinhaItemPedido();
 			
 			//Totais
+			$("#pedTotalMaquina").text('0,00');
+			$("#pedTotalFrete").text('0,00');
+			$("#pedTotalPeca").text('0,00');
 			$("#pedTotalIPI").val('0');
 			validafunctions.setMoeda("pedTotalIPI", 2, false , '');
 			$("#pedTotalPedido").val('0');
@@ -60,29 +63,32 @@ var funcoes = (function() {
 		},
 			
 		trataCampoConsumidorFinalOURevendedor : function(){
-//			if($('#pedClienteRevenda').val() == "Cliente"){
-//				$('#revFator').prop('readonly', false);
-//			}else{
-//				$('#revFator').val('');
-//				$('#revFator').prop('readonly', true);
-//			}
 			
 			if($('#pedClienteRevenda').val() == "Cliente"){
-				$('#revCpfCnpj').prop('readonly', false);
+//				$('#revCpfCnpj').prop('readonly', false);
 				$('#revFator').prop('readonly', false);
-			}else{
-				$('#revCpfCnpj').prop('readonly', true);
-				$('#revCpfCnpj').val('');
-				$('#revA3COD').val('');
-				$('#revA1COD').val('');
-				$('#revA1LOJA').val('');
-				$('#revNome').val('');
+				
+				//Se for definido como Cliente, libera para buscar o cliente
+				$('#cliCpfCnpj').prop('readonly', false);
+				$('#cliInscricaoEstadual').prop('readonly', false);
+			}else if( $('#pedClienteRevenda').val() == "Revenda" ){
+//				$('#revCpfCnpj').prop('readonly', true);
 				$('#revFator').val('');
 				$('#revFator').prop('readonly', true);
-				$('#revMatFluig').val('');
-				$('#revNomeFluig').val('');
 				
+				//Se for definido como Cliente, libera para buscar o cliente
+				$('#cliCpfCnpj').prop('readonly', false);
+				$('#cliInscricaoEstadual').prop('readonly', false);
+			}else{
+//				$('#revCpfCnpj').prop('readonly', true);
+				$('#revFator').val('');
+				$('#revFator').prop('readonly', true);
+				
+				//Se for definido como Cliente, libera para buscar o cliente
+				$('#cliCpfCnpj').prop('readonly', true);
+				$('#cliInscricaoEstadual').prop('readonly', true);
 			}
+			
 		},
 		
 		/**
@@ -122,8 +128,12 @@ var funcoes = (function() {
     			    			let nomeRevendaFluig = getNome(VENDMAT);
     			    			$("#revNomeFluig").val(nomeRevendaFluig);
     			    		}else{
-    			    			FLUIGC.toast({ title: '', message: 'A matrícula da revenda não foi localidado, comunicar o Administrador do Sistema!', type: 'danger' });
+    			    			FLUIGC.toast({ title: '', message: 'A matrícula da revenda não foi localizada, comunicar o Administrador do Sistema!', type: 'danger' });
     			    		}
+    			    		
+//    			    		if( $("#vendedor2").val().trim() != CODVEND.trim() ){
+//    			    			FLUIGC.toast({ title: 'Atenção!', message: 'A Revenda definida no formulário não está vinculada como "Revenda do Cliente"!', type: 'danger' });
+//    			    		}
 	    	    		}else if (records[0].CODRET == "2"){
 		    	    		FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
 		    	    		funcoes.limpaCamposRevenda();
@@ -278,7 +288,6 @@ var funcoes = (function() {
 	    					let CLITELEFONE = record.CLITELEFONE;
 	    					let CLIVEND1 = record.CLIVEND1;
 	    					let CLIVEND2 = record.CLIVEND2;
-	    					console.log(record.CLIVEND2CGC.length)
 	    					let CLIVEND2CGC = record.CLIVEND2CGC; //CNPJ da Revenda
 	    					let CLIVEND2NOM = record.CLIVEND2NOM; //Nome da Revenda
 	    					let CLIVEND2MAT = record.CLIVEND2MAT; //Mat. Fluig da Revenda
@@ -291,10 +300,13 @@ var funcoes = (function() {
 	    					let CLIVEND9 = record.CLIVEND9;
 	    					let CLIVEND10 = record.CLIVEND10;
 	    					
-	    					
-    			    		$("#cliCodigo").val(CLICOD);
-    			    		$("#cliLoja").val(CLILOJA);
-    			    		$("#cliNome").val(CLINOME);
+	    					if(tipoBusca == 'cpfCnpj'){
+	    						$("#cliCodigo").val(CLICOD);
+	    			    		$("#cliLoja").val(CLILOJA);
+	    					}else if(tipoBusca == 'codLoja'){
+	    						$("#cliCpfCnpj").val(formataCPFCNPJ(CLICGC));
+	    					}
+	    					$("#cliNome").val(CLINOME);
     			    		$("#cliInscricaoEstadual").val(CLIINSCR);
     			    		$("#cliCEP").val(CLICEP);
     			    		validafunctions.setCep("cliCEP");
@@ -319,22 +331,22 @@ var funcoes = (function() {
     						$('#vendedor9').val(CLIVEND9);
     						$('#vendedor10').val(CLIVEND10);
     			    		
-    						if($('#pedClienteRevenda').val() == 'Revenda' ){
-    							//Se estiver definido como 'Revenda', é preenchido os campos de 'Dados da Revenda', conforme retorno
-    							$("#revCpfCnpj").val(formataCPFCNPJ('06945143902'));
+//    						if($('#pedClienteRevenda').val() == 'Revenda' ){
+//    							//Se estiver definido como 'Revenda', é preenchido os campos de 'Dados da Revenda', conforme retorno
 //    							$("#revCpfCnpj").val(formataCPFCNPJ(CLIVEND2CGC));
-    			    			$("#revA3COD").val(CLIVEND2);
-    			    			$("#revNome").val(CLIVEND2NOM);
-    			    			$('#revNome').prop('readonly', true);
-    			    			$("#revMatFluig").val(CLIVEND2MAT);
-    			    			
-        			    		if( CLIVEND2MAT != "" ){
-        			    			let nomeRevendaFluig = getNome(CLIVEND2MAT);
-        			    			$("#revNomeFluig").val(nomeRevendaFluig);
-        			    		}else{
-        			    			FLUIGC.toast({ title: '', message: 'A matrícula da revenda não foi localidado, comunicar o Administrador do Sistema!', type: 'danger' });
-        			    		}
-    			    		}
+//    			    			$("#revA3COD").val(CLIVEND2);
+//    			    			$("#revNome").val(CLIVEND2NOM);
+//    			    			$('#revNome').prop('readonly', true);
+//    			    			$("#revMatFluig").val(CLIVEND2MAT);
+//    			    			
+//        			    		if( CLIVEND2MAT.trim() != "" ){
+//        			    			let nomeRevendaFluig = getNome(CLIVEND2MAT);
+//        			    			$("#revNomeFluig").val(nomeRevendaFluig);
+//        			    		}else if( CLIVEND2MAT != "" && CLIVEND2CGC.trim() != ""){
+//				
+//    			    				FLUIGC.toast({ title: '', message: 'A matrícula da revenda não foi localizada, comunicar o Administrador do Sistema!', type: 'danger' });
+//			    				}
+//    			    		}
     			    		
     			    		funcoes.mascaraTelefone();
     			    		funcoes.somenteLeituraCamposCliente(true);
@@ -350,14 +362,38 @@ var funcoes = (function() {
         			    		}, 750);
     			    		}
     			    		
-    			    		if( $("#solTipoSolicitante").val() == 'RepresentanteNacional' ||  $("#solTipoSolicitante").val() == 'RepresentanteExportacao'){
-	    			    		if( CLIVEND1 != $('#repA3COD').val() ){
-	    			    			FLUIGC.toast({ title: 'Atenção!', message: 'Este Representante não está vinculado como "Representante do Cliente"!', type: 'danger' });
+    			    		if( CLIVEND1.trim() != $('#repA3COD').val().trim() ){
+    			    			FLUIGC.toast({ title: 'Atenção!', message: 'O Representante definido no formulário não está vinculado como "Representante do Cliente"!', type: 'danger' });
+    			    		}
+    			    		if( $('#solTipoSolicitante').val() != 'RepresentanteExportacao'){
+	    			    		if( CLIVEND5.trim() != $('#repGesTerA3COD').val().trim() ){
+	    			    			FLUIGC.toast({ title: 'Atenção!', message: 'O Gestor Territorial definido no formulário não está vinculado como "Gestor Territorial do Cliente"!', type: 'danger' });
 	    			    		}
     			    		}
+//    			    		if( CLIVEND2.trim() != $('#revA3COD').val().trim() ){
+//    			    			FLUIGC.toast({ title: 'Atenção!', message: 'A Revenda definida no formulário não está vinculada como "Revenda do Cliente"!', type: 'danger' });
+//    			    		}
     			    		
 	    	    		}else if (records[0].CODRET == "2"){
 		    	    		FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+		    	    		
+		    	    		$('#vendedor1').val('');
+    						$('#vendedor2').val('');
+    						$('#vendedor3').val('');
+    						$('#vendedor4').val('');
+    						$('#vendedor5').val('');
+    						$('#vendedor6').val('');
+    						$('#vendedor7').val('');
+    						$('#vendedor8').val('');
+    						$('#vendedor9').val('');
+    						$('#vendedor10').val('');
+//    						if($('#pedClienteRevenda').val() == 'Revenda' ){
+//    							$("#revCpfCnpj").val('');
+//    			    			$("#revA3COD").val('');
+//    			    			$("#revNome").val('');
+//    			    			$("#revMatFluig").val('');
+//    			    			$("#revNomeFluig").val('');
+//    			    		}
 		    	    		$('#cliCodigo').val('');
 		    				$('#cliLoja').val('');
 		    	    		funcoes.somenteLeituraCamposCliente(false);
@@ -604,9 +640,17 @@ var funcoes = (function() {
 						totalCustoItensSemImposto +=  pecaValor;
 						totalCustoItensComImposto +=  pecaValor;
 					}
+					
+					$("#pedTotalPeca").text( $('#pecaValor').val() );
+				}else{
+					$("#pedTotalPeca").text('0,00');
 				}
 				
+				//Vai ter sempre somente 1 item
+				$("#pedTotalMaquina").text( $('#itPedPrecoUnitItem___'+index).val()  );
+				$("#pedTotalFrete").text( $('#itPedValorFreteItem___'+index).val()  );
 			});
+			
 			
 			$("#pedTotalPedidoSemImposto").val(totalCustoItensSemImposto.toFixed(2));
 			validafunctions.setMoeda("pedTotalPedidoSemImposto", 2, false , '');
@@ -650,15 +694,25 @@ var eventsFuncoes = (function() {
 			 * Gatilho para quando for tipo final Revenda, mostrar a section de Revenda para preencher
 			 */
 			$(document).on("change", "#pedClienteRevenda", function() {
-
+				
+				//Sempre limpa o campo de 'Dados Revenda' quando troca Consumidor Final/Revendedor
+//				$('#revCpfCnpj').val('');
+//				$('#revA3COD').val('');
+//				$('#revA1COD').val('');
+//				$('#revA1LOJA').val('');
+//				$('#revNome').val('');
+//				$('#revFator').val('');
+//				$('#revMatFluig').val('');
+//				$('#revNomeFluig').val('');
+				
 				funcoes.trataCampoConsumidorFinalOURevendedor();
 				
-				if($('#pedClienteRevenda').val() == "Revenda" && $('#cliCodigo').val() != "" ){
+//				if( $('#cliCodigo').val() != "" ){
 					//Se definiu como Revendedor e tiver o cliCodigo preenchido, limpa os campos do cliente
 					//É limpo, porque ao pesquisar o cliente novamente, é preenchido os 'Dados da Revenda' quando for definido como Revendedor
-					funcoes.limpaCamposCliente();
+//					funcoes.limpaCamposCliente();
 					
-				}
+//				}
 			});
 			
 			/*
@@ -1118,6 +1172,27 @@ var eventsFuncoes = (function() {
 	}
 })();
 
+function removeComunicacaoInterna(oElement){
+	//Somente se estiver na Atividade 0 que pode deletar
+	if(CURRENT_STATE == INICIO_0)
+	{	
+		try {
+	        FLUIGC.message.confirm({
+	            message: `Deseja remover o registro da tabela de Comunicação Interna?`,
+	            title: 'Confirmação',
+	            labelYes: 'Sim, quero remover',
+	            labelNo: 'Não, quero cancelar',
+	        }, function (result) {
+	            if (result) {
+	                fnWdkRemoveChild(oElement)
+	            }
+	        });
+	    } catch (e) {
+	        console.error("Houve um erro inesperado na função removeComunicacaoInterna")
+	        console.error(e)
+	    }
+	}
+}
 
 function loadForm(){
 	
@@ -1132,7 +1207,25 @@ function loadForm(){
 	window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
 	window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
 	
-//	funcoes.trataCampoConsumidorFinalOURevendedor();
+	funcoes.trataCampoConsumidorFinalOURevendedor();
+	
+	//Para alimentar totais que são do tipo <p>
+	//o possuiPeca com _ na frente, significa um campo que esta no enableFields
+	let pecaPossuiPeca = $("input:radio[name='pecaPossuiPeca']:checked").val();
+	let _pecaPossuiPeca = $("input:radio[name='_pecaPossuiPeca']:checked").val();
+	//Se for marcado como Possui Peça SIM, coloca o valor da peça, se não é 0
+	if(pecaPossuiPeca == "pecaPossuiPecaSim" || _pecaPossuiPeca == "pecaPossuiPecaSim"){
+		$("#pedTotalPeca").text( $('#pecaValor').val() );
+	}else{
+		$("#pedTotalPeca").text('0,00');
+	}
+	$("input[name*=itPedCodItemItem___]").each(function(index){
+		var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+		//Vai ter sempre somente 1 item, não tem mais a opção de adicionar e remover.
+		$("#pedTotalMaquina").text( $('#itPedPrecoUnitItem___'+index).val() );
+		$("#pedTotalFrete").text( $('#itPedValorFreteItem___'+index).val() );
+	});
+	
 	
 	if(CURRENT_STATE == INICIO_0)
 	{	
@@ -1144,7 +1237,7 @@ function loadForm(){
 		//Dados Clientes
 		$('#cliCEP').mask('99.999-999');
 		
-		if($("#cliCodigo").val().trim() != ""){
+		if($("#cliCodigo").val().trim() != "" || ($("#cliCodigo").val().trim() == "" && $("#cliCpfCnpj").val().trim() == "") ){
 			funcoes.somenteLeituraCamposCliente(true);
 		}
 		

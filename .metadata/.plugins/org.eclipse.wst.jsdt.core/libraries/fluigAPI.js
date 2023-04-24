@@ -6859,7 +6859,18 @@ com.fluig.sdk.service.DocumentService.prototype = {
 	* @param {int} documentId 
 	* @param {int} version 
 	*/
-	"validateDocumentPublicUrlConfiguration": function(tenantId, documentId, version) {}
+	"validateDocumentPublicUrlConfiguration": function(tenantId, documentId, version) {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @param {long} tenantId 
+	* @param {int} documentId 
+	* @param {int} version 
+	* @param {String} userCode 
+	* @param {boolean} fluigViewer 
+	* @returns {boolean} 
+	*/
+	"isCanDownloadDocument": function(tenantId, documentId, version, userCode, fluigViewer) {}
 };
 DocumentService.prototype = {
 	/**
@@ -7007,7 +7018,18 @@ DocumentService.prototype = {
 	* @param {int} documentId 
 	* @param {int} version 
 	*/
-	"validateDocumentPublicUrlConfiguration": function(tenantId, documentId, version) {}
+	"validateDocumentPublicUrlConfiguration": function(tenantId, documentId, version) {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @param {long} tenantId 
+	* @param {int} documentId 
+	* @param {int} version 
+	* @param {String} userCode 
+	* @param {boolean} fluigViewer 
+	* @returns {boolean} 
+	*/
+	"isCanDownloadDocument": function(tenantId, documentId, version, userCode, fluigViewer) {}
 };
 com.fluig.sdk.api.document.FolderVO.prototype = {
 	/**
@@ -17371,7 +17393,13 @@ com.fluig.sdk.service.GlobalParameterService.prototype = {
 	* @memberOf fluigAPI
 	* @returns {boolean} 
 	*/
-	"getViewJustProcessWithApproval": function() {}
+	"getViewJustProcessWithApproval": function() {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @returns {long} 
+	*/
+	"getMaxUploadSize": function() {}
 };
 GlobalParameterService.prototype = {
 	/**
@@ -17391,7 +17419,13 @@ GlobalParameterService.prototype = {
 	* @memberOf fluigAPI
 	* @returns {boolean} 
 	*/
-	"getViewJustProcessWithApproval": function() {}
+	"getViewJustProcessWithApproval": function() {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @returns {long} 
+	*/
+	"getMaxUploadSize": function() {}
 };
 com.fluig.sdk.api.workflow.ProcessDefinitionVersionVO.prototype = {
 	/**

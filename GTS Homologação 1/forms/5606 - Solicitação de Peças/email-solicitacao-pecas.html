@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 12px;
+        }
+        table{
+            width: 100%;
+        }
+
+        th,td{
+            border: thin solid black;
+            padding: 4px;
+        }
+        th{
+            background-color: #c7c7c7;
+        }
+    </style>
+</head>
+<body>
+    
+    <img src="http://177.101.121.27:8075/assinatura/img2/nova_assinatura/logo-20-anos.png" alt="">
+    <h1>Solicitação de Peças: ${numero_solicitacao!''}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Número da Solicitação</th>
+                <th>Nome do Solicitante</th>
+                <th>Solicita para</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${numero_solicitacao!''}</td>
+                <td>${solicitante!''}</td>
+                <td>${solicita_para!''}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Itens da solicitação</h2>
+
+    ${table_itens!''}
+    <!--
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Qtde</th>
+                <th>Tipo</th>
+                <th>Obs</th>
+                <th>Vendedor</th>
+                <th>Liberação PCP</th>
+                <th>Qtde Liberada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${produto!''}</td>
+                <td>${descricao!''}</td>
+                <td>${quantidade!''}</td>
+                <td>${tipo!''}</td>
+                <td>${observacao!''}</td>
+                <td>${vendedor!''}</td>
+                <td>${liberacao_pcp!''}</td>
+                <td>${qtde_liberada!''}</td>
+            </tr>
+        </tbody>
+    </table>
+    -->
+    
+</body>
+</html>

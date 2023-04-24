@@ -40,12 +40,6 @@ function displayFields(form,customHTML){
 	if(tipoUsuario == 'Administrativo GTS'){
 		form.setVisibleById("divValoresSimulacao", true);
 	}
-	//Nota Fiscal/Forma de Pagamento
-	if(form.getValue("NFPagtoFormaPagamento") == "boleto"){
-		form.setVisibleById("divPagtoBoleto", true);
-	}else if(form.getValue("NFPagtoFormaPagamento") == "transferencia"){
-		form.setVisibleById("divPagtoTranferencia", true);
-	}
 	//Aprovação
 	if(form.getValue("NFAprovAprovacao") == "aprovado"){
 		form.setVisibleById("divNFAprovDataPrevPagto", true);
@@ -405,6 +399,7 @@ function displayFields(form,customHTML){
 		
 		
 		//ABA-EMISSAO NF/PAGAMENTO
+		form.setValue("NFPagtoFormaPagamento", "boleto");
 		if(form.getFormMode() == 'MOD'){
 			form.setVisibleById("divMsgAnexoNFBoleto", true);
 		}
