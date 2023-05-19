@@ -1,0 +1,932 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide-carousel.min.css">
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide-carousel.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			window.parent.$("#breadcrumb").remove();
+			window.parent.$("#textActivity").text('');
+			window.parent.$("#informationsTab").remove();
+
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			window.parent.$('#wcm_widget').find("[data-cancel-workflow-request]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-cancel-workflow-request]").removeAttr("data-cancel");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+		});
+		
+	</script>
+	
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-moment.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+	
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	
+	<input type="hidden" name="solicitante" id="solicitante" >
+	<input type="hidden" name="numFluig" id="numFluig" >
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+	<input type="hidden" name="codigoTecnicoGTS" id="codigoTecnicoGTS" >
+	<input type="hidden" name="matFluigSuporteGTS" id="matFluigSuporteGTS" >
+	
+	<div class="col-md-12">
+	    <div class="row banner-header">
+	        <h1>Complemento de Ordem de Serviço</h1>
+	    </div>
+	</div>
+	
+	<ul id="myTab"  class="nav nav-tabs nav-justified" role="tablist">
+	    <li id="tabAtendimento" class="active" ><a href="#divTabAtendimento" role="tab" data-toggle="tab" >Atendimento</a></li>
+	    <li id="tabComunicacao" class="disabled" ><a href="#" role="tab" data-toggle="tab">Comunicação</a></li>
+	</ul>
+	
+	<div class="tab-content">
+	
+		<div id="divDesejaRealizar" class="col-md-12 text-center" style="display:none;" >
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4 ">
+	            	<h3>O que você deseja realizar?*</h3>
+	            	<select name="solDesejaRealizar" id="solDesejaRealizar" class="form-control" >
+	      				<option value=""></option>
+	      				<option value="Salvar">Salvar e manter solicitação comigo</option>
+	      				<option value="EnviarGTS">Enviar para Suporte GTS</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+	    <div class="tab-pane fade active in" id="divTabAtendimento">
+			<div id="divDadosGerais" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Dados Gerais</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4" align="left">
+							<label for="gerTecnicoGTS">Técnico GTS</label>
+							<input type="hidden" name="gerWKUserTecnicoGTS" id="gerWKUserTecnicoGTS" />
+							<input type="text" name="gerTecnicoGTS" id="gerTecnicoGTS" class="form-control" readonly/>
+			       		</div>
+						<div class="col-md-2 col-md-offset-6" align="left"> 
+							<label for="status">Status</label>
+				      		<p id="getStatus" class="form-control" readonly ></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 " align="left">
+							<label for="gerNumeroOS">Número da OS*</label>
+							<input type="text" name="gerNumeroOS" id="gerNumeroOS" class="form-control" value="0" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+			       		</div>
+						<div class="col-md-3 " align="left">
+							<label for="gerModalidade">Modalidade</label>
+							<input type="text" name="gerModalidade" id="gerModalidade" class="form-control" readonly />
+			       		</div>
+			       		<div class="col-md-2" align="left">
+							<label for="gerNumSerie">Número de Série</label>
+							<input type="text" name="gerNumSerie" id="gerNumSerie" class="form-control" readonly />
+			       		</div>
+			       		<div class="col-md-4" align="left">
+							<label for="gerModeloEquipamento">Modelo do Equipamento</label>
+							<input type="text" name="gerModeloEquipamento" id="gerModeloEquipamento" class="form-control" readonly />
+			       		</div>
+			       	</div>	
+		       	
+			    	<div class="row" >
+						<div class="col-md-12 " align="left">
+							<label for="gerLaudo">Laudo</label>
+							<textarea rows="5" cols="6" name="gerLaudo" id="gerLaudo" class="form-control" readonly ></textarea>
+			           	</div>
+			        </div> 
+			        <div class="row" >
+			       		<div class="col-md-3" align="left">
+			       			<br>
+							<button type="button" class="btn btn-primary btn-block" id="btnVisualizarFotos"><i class="flaticon flaticon-image icon-sm" aria-hidden="true"></i> Visualizar Imagens</button>
+							<br>
+							<br>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-3" align="left">
+							<label for="maqFamilia">Família*</label>
+							<input type="hidden" name="maqCodFamilia" id="maqCodFamilia" />
+							<input type="hidden" name="maqCodFalhaFamilia" id="maqCodFalhaFamilia" />
+							<input type="zoom" name="maqDescFamilia" id="maqDescFamilia"
+											  data-zoom="{
+								                              'displayKey':'FAMILIACODFALHADESC', 
+								                              'datasetId':'dsCompOSSubconjuntos', 
+								                              'filterValues':'tipoFiltro,familia',
+								                              'fields':[ 
+									                              { 
+										                              'field':'FAMILIACODFALHA', 
+										                              'label':'Código' 
+									                              },
+									                              { 
+										                              'field':'FAMILIADESC', 
+										                              'label':'Descrição' 
+									                              } 
+								                              ] 
+							                              	}" /> 
+			            </div>
+						<div class="form-group col-md-3" align="left">
+							<label for="maqModeloMaquina">Modelo da Máquina*</label>
+							<input type="hidden" name="maqCodFalhaModeloMaquina" id="maqCodFalhaModeloMaquina" />
+							<input type="zoom" name="maqDescModeloMaquina" id="maqDescModeloMaquina"
+											  data-zoom="{
+								                              'displayKey':'MODELOCODFALHADESC', 
+								                              'datasetId':'dsCompOSSubconjuntos',
+								                              'fields':[ 
+									                              { 
+										                              'field':'MODELOCODFALHA', 
+										                              'label':'Código' 
+									                              },
+									                              { 
+										                              'field':'MODELODESC', 
+										                              'label':'Descrição' 
+									                              }
+								                              ] 
+							                              	}" /> 
+			            </div>
+						<div id="divMaqNumLinha" class="col-md-1" align="left" style="display:none;">
+							<label for="maqNumLinha">Nº de Linhas*</label>
+							<input type="text" name="maqNumLinha" id="maqNumLinha" class="form-control" maxlength="4" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+			       		</div>
+			       		<div id="divMaqEspacamento" class="col-md-1" align="left" style="display:none;">
+							<label for="maqEspacamento">Espaçamento*</label>
+							<input type="text" name="maqEspacamento" id="maqEspacamento" class="form-control" maxlength="4" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+			       		</div>
+			       		<div id="divMaqHastes" class="col-md-1" align="left" style="display:none;">
+							<label for="maqHastes">Hastes*</label>
+							<input type="text" name="maqHastes" id="maqHastes" class="form-control" maxlength="4" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+			       		</div>
+			       		<div id="divMaqPes" class="col-md-1 col-xs-6" align="left" style="display:none;">
+							<label for="maqPes">Pés*</label>
+							<input type="text" name="maqPes" id="maqPes" class="form-control" maxlength="4" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+			       		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3" align="left">
+							<label for="maqMarcaColheitadeiraTrator">Marca Colheiradeira/Trator*</label>
+							<select name="maqMarcaColheitadeiraTrator" id="maqMarcaColheitadeiraTrator" class="form-control" >
+			      				<option value=""></option>
+			      				<option value="AGRALE">AGRALE</option>
+			      				<option value="CASE">CASE</option>
+			      				<option value="CLASS">CLASS</option>
+			      				<option value="FENDT">FENDT</option>
+			      				<option value="JOHN DEERE">JOHN DEERE</option>
+			      				<option value="MAHINDRA">MAHINDRA</option>
+			      				<option value="MASSEY FERGUSON">MASSEY FERGUSON</option>
+			      				<option value="NEW HOLLAND ">NEW HOLLAND </option>
+								<option value="VALTRA">VALTRA</option>
+							</select>
+			       		</div>	
+			       		<div class="col-md-3 col-xs-8" align="left">
+							<label for="maqModelo">Modelo*</label>
+							<input type="text" name="maqModelo" id="maqModelo" class="form-control"  maxlength="150" />
+			       		</div>
+			       		<div class="col-md-1 col-xs-4" align="left">
+							<label for="maqAno">Ano</label>
+							<input type="text" name="maqAno" id="maqAno" class="form-control"  maxlength="4" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+			       		</div>		
+					</div>	
+				</div>	
+			</div>
+			<div id="divCliente" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Cliente</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+			    		<div class="col-md-2" align="left">
+							<label for="cliCpfCnpj">CPF/CNPJ*</label>
+							<input type="text" name="cliCpfCnpj" id="cliCpfCnpj" class="form-control" readonly
+								data-protection="cliCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o cliente" />
+			       		</div>
+						<div class="col-md-2" align="left">
+							<label for="cliInscricaoEstadual">Inscrição Estadual</label>
+							<input type="text" name="cliInscricaoEstadual" id="cliInscricaoEstadual" class="form-control" readonly maxlength="20" />
+			       		</div>
+			       		<div class="col-md-5" align="left">
+							<label for="cliNomeCliente">Nome Cliente*</label>
+							<input type="text" name="cliNomeCliente" id="cliNomeCliente" class="form-control" readonly  maxlength="150"
+								data-protection="cliNomeCliente" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir o cliente" />
+			       		</div>
+			       		<div class="col-md-2 col-xs-8" align="left">
+							<label for="cliCodigo">Código</label>
+							<input type="text" name="cliCodigo" id="cliCodigo" class="form-control" readonly />
+			       		</div>
+			       		<div class="col-md-1 col-xs-4" align="left">
+							<label for="cliLoja">Loja</label>
+							<input type="text" name="cliLoja" id="cliLoja" class="form-control"  readonly />
+			       		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="cliCEP">CEP</label>
+							<input type="text" name="cliCEP" id="cliCEP" class="form-control"  readonly/>
+			       		</div>
+						<div class="col-md-4" align="left">
+							<label for="cliEndereco">Endereço</label>
+							<input type="text" name="cliEndereco" id="cliEndereco" class="form-control"  readonly maxlength="150" />
+			       		</div>
+			       		<div class="col-md-3" align="left">
+							<label for="cliBairro">Bairro</label>
+							<input type="text" name="cliBairro" id="cliBairro" class="form-control" readonly maxlength="150" />
+			       		</div>
+			       		<div class="col-md-3" align="left">
+							<label for="cliComplemento">Complemento</label>
+							<input type="text" name="cliComplemento" id="cliComplemento" class="form-control" readonly maxlength="150" />
+			       		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4" align="left">
+							<label for="cliCidade">Cidade*</label>
+							<input type="text" name="cliCidade" id="cliCidade" class="form-control" readonly maxlength="150" />
+			       		</div>
+						<div class="col-md-2" align="left">
+							<label for="cliEstado">Estado*</label>
+							<input type="hidden" name="cliEstadoHidden" id="cliEstadoHidden" class="form-control" />
+							<select name="cliEstado" id="cliEstado" class="form-control" disabled >
+			      				<option value=""></option>
+			      				<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="EX">Exterior</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+			       		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="cliTelefone">Telefone*</label>
+							<input type="text" name="cliTelefone" id="cliTelefone" class="form-control"  readonly maxlength="30"
+								data-protection="cliTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente" />
+			       		</div>
+			       		<div class="col-md-4" align="left">
+							<label for="cliEmail">E-mail</label>
+							<input type="text" name="cliEmail" id="cliEmail" class="form-control" readonly  maxlength="150"
+								data-protection="cliEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do cliente" />
+			       		</div>
+					</div>
+				</div>
+			</div>
+			<div id="divRevenda" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Revenda</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+			    		<div class="col-md-2" align="left">
+							<label for="revCpfCnpj">CNPJ</label>
+							<input type="text" name="revCpfCnpj" id="revCpfCnpj" class="form-control" readonly
+								data-protection="revCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir a revenda" />
+			       		</div>
+						<div class="col-md-2" align="left">
+							<label for="revInscricaoEstadual">Inscrição Estadual</label>
+							<input type="text" name="revInscricaoEstadual" id="revInscricaoEstadual" class="form-control" readonly  maxlength="50" />
+			       		</div>
+			       		<div id="divRevNomeRevendaZoom" class="form-group col-md-5" align="left" style="display:none;">
+							<label for="revNomeRevendaZoom">Nome Revenda*</label>
+							<input type="zoom" name="revNomeRevendaZoom" id="revNomeRevendaZoom"
+											  data-zoom="{
+								                              'displayKey':'REVNOME', 
+								                              'datasetId':'dsCompOSConsultaRevendas', 
+								                              'fields':[ 
+									                              { 
+										                              'field':'REVNOME', 
+										                              'label':'Nome' 
+									                              },{ 
+										                              'field':'REVCIDADEUF', 
+										                              'label':'Cidade' 
+									                              }
+								                              ] 
+							                              	}" /> 
+                        </div>	
+			            <div id="divRevNomeRevenda" class="form-group col-md-5 " align="left">
+			            	<label for="revNomeRevenda">Nome Revenda*</label>
+							<input type="text" name="revNomeRevenda" id="revNomeRevenda" class="form-control" readonly  maxlength="150"  />
+			            </div>
+			       		<div class="col-md-2 col-xs-8" align="left">
+							<label for="revCodigo ">Código</label>
+							<input type="text" name="revCodigo" id="revCodigo" class="form-control" readonly />
+			       		</div>
+			       		<div class="col-md-1 col-xs-4" align="left">
+							<label for="revLoja">Loja</label>
+							<input type="text" name="revLoja" id="revLoja" class="form-control"  readonly />
+			       		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="revCEP">CEP</label>
+							<input type="text" name="revCEP" id="revCEP" class="form-control"  readonly/>
+			       		</div>
+						<div class="col-md-4" align="left">
+							<label for="revEndereco">Endereço</label>
+							<input type="text" name="revEndereco" id="revEndereco" class="form-control"  readonly maxlength="150" />
+			       		</div>
+			       		<div class="col-md-3" align="left">
+							<label for="revBairro">Bairro</label>
+							<input type="text" name="revBairro" id="revBairro" class="form-control" readonly maxlength="150" />
+			       		</div>
+			       		<div class="col-md-3" align="left">
+							<label for="revComplemento">Complemento</label>
+							<input type="text" name="revComplemento" id="revComplemento" class="form-control" readonly maxlength="150" />
+			       		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4" align="left">
+							<label for="revCidade">Cidade*</label>
+							<input type="text" name="revCidade" id="revCidade" class="form-control" readonly maxlength="150"/>
+			       		</div>
+						<div class="col-md-2" align="left">
+							<label for="revEstado">Estado*</label>
+							<input type="hidden" name="revEstadoHidden" id="revEstadoHidden" />
+							<select name="revEstado" id="revEstado" class="form-control" disabled >
+			      				<option value=""></option>
+			      				<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="EX">Exterior</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+			       		</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="revTelefone">Telefone*</label>
+							<input type="text" name="revTelefone" id="revTelefone" class="form-control"  readonly maxlength="50"
+								data-protection="revTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato da revenda" />
+			       		</div>
+			       		<div class="col-md-4" align="left">
+							<label for="revEmail">E-mail</label>
+							<input type="text" name="revEmail" id="revEmail" class="form-control" readonly maxlength="150"
+								data-protection="revEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato da revenda" />
+			       		</div>
+					</div>
+					<div class="row">
+			       		<div class="col-md-4">
+			            	<h5>Técnico da Revenda acompanhou o atendimento?*</h5>
+							<div class="radio" >
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="revTecAcompAtendimento" value="sim" id="revTecAcompAtendimentoSim">
+									<label for="revTecAcompAtendimentoSim">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="revTecAcompAtendimento" value="nao" id="revTecAcompAtendimentoNao">
+									<label for="revTecAcompAtendimentoNao">Não</label>
+								</div>
+							</div>
+						</div>
+			       	</div>
+					<div id="divTecAcompanhouAtendimento" class="row" style="display:none">		
+			       		<div class="col-md-4" align="left">
+							<label for="atdNomePessoaAcompAtend">Nome*</label>
+							<input type="text" name="revTecAcompAtendimentoNome" id="revTecAcompAtendimentoNome" class="form-control" maxlength="150" 
+								data-protection="revTecAcompAtendimentoNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para saber o técnico que acompanhou o atendimento" />
+			       		</div>
+			       		<div class="col-md-2 col-xs-6" align="left">
+							<label for="revTecAcompAtendimentoCPF">CPF*</label>
+							<input type="text" name="revTecAcompAtendimentoCPF" id="revTecAcompAtendimentoCPF" class="form-control" 
+								data-protection="revTecAcompAtendimentoCPF" data-protection-anonymizable="true"  data-protection-cpf data-protection-class-legitimate-interests="Necessário para contato do técnico que acompanhou o atendimento" />
+			       		</div>			
+			       		<div class="col-md-2 col-xs-6" align="left">
+							<label for="atdTelPessoaAcompAtend">Telefone*</label>
+							<input type="text" name="revTecAcompAtendimentoTel" id="revTecAcompAtendimentoTel" class="form-control" 
+								data-protection="revTecAcompAtendimentoTel" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do técnico que acompanhou o atendimento" />
+			       		</div>			
+					</div>
+					
+		       	</div>
+			</div>
+			<div id="divAtendimento" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Atendimento</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div  id="divAddAtendimento">
+						<div class="row">
+							<div class="col-md-2 " align="left">
+								<label for="atdDataAtendimento">Data do Atendimento*</label>
+								<div class="input-group">
+									<input type="text" name="atdDataAtendimento" id="atdDataAtendimento"  class="form-control" />				
+									<span class="input-group-addon">
+					                          <span class="fluigicon fluigicon-calendar"></span>
+					                   </span>
+								</div>
+							</div>
+							<div class="col-md-2" align="left">
+								<label for="atdHoraInicial">Hora Inicial*</label>
+								<input type="text" name="atdHoraInicial" id="atdHoraInicial"  class="form-control" />				
+							</div>
+							<div class="col-md-2" align="left">
+								<label for="atdHoraFinal">Hora Final*</label>
+								<input type="text" name="atdHoraFinal" id="atdHoraFinal"  class="form-control" />				
+							</div>
+							<div class="col-md-2" align="left">
+								<label for="atdDeslocamento">Horas em Deslocamento*</label>
+								<input type="text" name="atdDeslocamento" id="atdDeslocamento"  class="form-control" />				
+							</div>
+							<div class="col-md-2" align="left">
+								<label for="atdIntervalo">Tempo de Intervalo*</label>
+								<input type="text" name="atdIntervalo" id="atdIntervalo"  class="form-control" />				
+							</div>
+							<div class="col-md-1" align="left">
+								<label for="atdKmInicial">KM Inicial*</label>
+								<input type="text" name="atdKmInicial" id="atdKmInicial" class="form-control"  maxlength="15" onKeyPress="validafunctions.setNumero(this.id, 0, false)"/>
+				       		</div>
+							<div class="col-md-1" align="left">
+								<label for="atdKmFinal">KM Final*</label>
+								<input type="text" name="atdKmFinal" id="atdKmFinal" class="form-control"  maxlength="15" onKeyPress="validafunctions.setNumero(this.id, 0, false)"/>
+				       		</div>
+						</div>
+						<div class="row">
+							<div id="divBtnAddAtendimento" class="col-md-2 col-md-offset-10">
+								<br>
+								<button type="button" class="btn btn-primary  btn-block" id="btnAddAtendimento">Adicionar Atendimento</button>
+							</div>
+						</div>
+					</div>
+					<div id="divTabelaAtendimentos" class="row"  >
+			       		<div class="col-md-12">
+			       			<table class="table table-condensed table-nonfluid table-striped" id="atdTbAtendimentos" tablename="atdTbAtendimentos" nodeletebutton="true" noaddbutton="true" >
+								<thead>
+									<tr>	
+
+										<th class="col-md-2">Data Atendimento</th>
+										<th class="col-md-1">Hora Inicial</th>
+										<th class="col-md-1">Hora Final</th>
+										<th class="col-md-1">Deslocamento</th>
+										<th class="col-md-1">Intervalo</th>
+										<th class="col-md-1">Saldo Horas</th>
+										<th class="col-md-1">KM Inicial</th>
+										<th class="col-md-1">KM Final</th>
+										<th class="col-md-1">Saldo KM</th>
+										<th class="tdDeleteRow" style="display:none;"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr detail="true" detailname="atdTbAtendimentos" >
+
+										<td>	
+											<input type="text" name="atdDataAtendimentoItem" id="atdDataAtendimentoItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="atdHoraInicialItem" id="atdHoraInicialItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="atdHoraFinalItem" id="atdHoraFinalItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="atdDeslocamentoItem" id="atdDeslocamentoItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="atdIntervaloItem" id="atdIntervaloItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="atdSaldoHorasItem" id="atdSaldoHorasItem" class="form-control" readonly />
+											<input type="text" name="atdSaldoHorasTrabalhadasItem" id="atdSaldoHorasTrabalhadasItem" class="form-control" style="display:none;" />
+										</td>
+										<td>	
+											<input type="text" name="atdKmInicialItem" id="atdKmInicialItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="atdKmFinalItem" id="atdKmFinalItem" class="form-control" readonly />
+										</td>
+										<td>	
+											<input type="text" name="atdSaldoKmItem" id="atdSaldoKmItem" class="form-control" readonly />
+										</td>
+										
+										<td class="fs-v-align-middle fs-text-center tdDeleteRow" style="width: 1%;">
+											<div class="tdDeleteRow" style="display:none;" >
+												<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Atendimento" onclick="removeAtendimento(this)"></i>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+							
+					<div id="divTotalAtendimentos" >
+					    <div class="row">
+					        <div id="divTotaisLinha" class="col-md-4 col-md-offset-8" style="text-align:center">
+					       		<h2 class="totais" ><strong>Totais</strong></h2>
+					       		<hr />  
+					        </div>
+					    </div>
+					    <div class="row">
+							<div class="col-md-1 col-md-offset-8 " align="left">
+								<label for="atdTotalHoras">Horas em Deslocamento</label>
+								<input type="text" name="atdTotalHorasDeslocamento" id="atdTotalHorasDeslocamento" class="form-control" readonly/>
+				       		</div>
+							<div class="col-md-1 " align="left">
+								<label for="atdTotalHoras">Intervalo</label>
+								<input type="text" name="atdTotalHorasIntervalo" id="atdTotalHorasIntervalo" class="form-control" readonly/>
+				       		</div>
+				       		<div class="col-md-1 " align="left">
+								<label for="atdTotalHoras">Horas Trabalhadas</label>
+								<input type="text" name="atdTotalHorasTrabalhadas" id="atdTotalHorasTrabalhadas" class="form-control" readonly/>
+				       		</div>
+							<div class="col-md-1" align="left">
+								<label for="atdTotalKM">KM</label>
+								<input type="text" name="atdTotalKM" id="atdTotalKM" class="form-control"  readonly />
+				       		</div>
+			       		</div>
+					</div>	
+					<br>
+					<div class="row">		
+			       		<div class="col-md-4" align="left">
+							<label for="atdNomePessoaAcompAtend">Nome de quem acompanhou o atendimento*</label>
+							<input type="text" name="atdNomePessoaAcompAtend" id="atdNomePessoaAcompAtend" class="form-control" maxlength="150" 
+								data-protection="atdNomePessoaAcompAtend" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para saber quem acompanhou o atendimento" />
+			       		</div>
+			       		<div class="col-md-2" align="left">
+							<label for="atdTelPessoaAcompAtend">Telefone*</label>
+							<input type="text" name="atdTelPessoaAcompAtend" id="atdTelPessoaAcompAtend" class="form-control" 
+								data-protection="atdTelPessoaAcompAtend" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato da pessoa que acompanhou o atendimento" />
+			       		</div>			
+					</div>	
+					
+					<div class="row">		
+						<div class="col-md-4" align="left">
+							<label for="atdFazenda">Fazenda</label>
+							<input type="text" name="atdFazenda" id="atdFazenda" class="form-control" maxlength="150" />
+			       		</div>
+						<div class="col-md-2" align="left">
+							<label for="atdEstado">Estado</label>
+							<select name="atdEstado" id="atdEstado" class="form-control" >
+			      				<option value=""></option>
+			      				<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+			       		</div>
+						<div class="col-md-3" align="left">
+							<label for="atdCidade">Cidade</label>
+							<input type="text" name="atdCidade" id="atdCidade" class="form-control" maxlength="150" />
+			       		</div>
+					</div>
+					<div class="row">
+			       		<div class="col-md-4">
+			            	<h5>Atendimento foi finalizado?*</h5>
+							<div class="radio" >
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="atdAtendimentoFinalizado" value="sim" id="atdAtendimentoFinalizadoSim">
+									<label for="atdAtendimentoFinalizadoSim">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="atdAtendimentoFinalizado" value="nao" id="atdAtendimentoFinalizadoNao">
+									<label for="atdAtendimentoFinalizadoNao">Não</label>
+								</div>
+							</div>
+						</div>
+			       	</div>		
+		       	</div>		
+			</div>
+			<div id="divFalha" style="display:none" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Descrição da Falha</h4>
+				    </div>
+				</div>
+				
+				<div class="row" >
+			    	<div class="col-md-12">
+		    			<table class="table table-condensed table-nonfluid table-striped" id="falTbFalha" tablename="falTbFalha" nodeletebutton="true" noaddbutton="true" >
+							<thead>
+								<tr>
+									<th></th>
+									<th></th>
+									<th class="tdDeleteRowFalha" style="display:none;"></th>
+						        </tr>
+							</thead>
+							<tbody>
+								<tr detail="true" detailname="falTbFalha" >
+									<td class="col-md-2" >
+										<div class="col-md-12" align="left">
+											<label for="falCodigoFalhaItem">Código de Falha</label>
+											<input type="text" name="falCodigoFalhaItem" id="falCodigoFalhaItem" class="form-control" readonly />
+										</div>
+									</td>
+									<td class="col-md-10">
+										<div class="row">     
+								    		<div class="form-group col-md-3" align="left">
+												<label for="falFamiliaItem">Família</label>
+												<input type="hidden" name="falCodFamiliaItem" id="falCodFamiliaItem" class="form-control" />
+												<input type="hidden" name="falCodFalhaFamiliaItem" id="falCodFalhaFamiliaItem" class="form-control" />
+												<input type="text" name="falFamiliaItem" id="falFamiliaItem" class="form-control" readonly />
+							        		</div>
+											<div class="form-group col-md-3" align="left">
+												<label for="falModeloMaquina">Modelo da Máquina</label>
+												<input type="hidden" name="falCodFalhaModeloMaquinaItem" id="falCodFalhaModeloMaquinaItem" class="form-control" />
+												<input type="text" name="falModeloMaquinaItem" id="falModeloMaquinaItem" class="form-control" readonly/>
+											</div>
+											<div class="form-group col-md-3" align="left">
+												<label for="falGrupoMaquina">Grupo*</label>
+												<input type="hidden" name="falCodFalhaGrupoMaquinaItem" id="falCodFalhaGrupoMaquinaItem" />
+												<input type="zoom" name="falGrupoMaquinaItem" id="falGrupoMaquinaItem"
+																data-zoom="{
+																				'displayKey':'GRUPOCODFALHADESC', 
+																				'datasetId':'dsCompOSSubconjuntos',
+																				'fields':[ 
+																					{ 
+																						'field':'GRUPOCODFALHA', 
+																						'label':'Codigo' 
+																					},{ 
+																						'field':'GRUPODESC', 
+																						'label':'Descrição' 
+																					} 
+																				] 
+																				}" />
+											</div>
+											<div class="form-group col-md-3" align="left">
+												<label for="falDescFalhaFalhaItem">Falha*</label>
+												<input type="hidden" name="falCodFalhaFalhaItem" id="falCodFalhaFalhaItem" />
+												<input type="zoom" name="falDescFalhaFalhaItem" id="falDescFalhaFalhaItem"
+																data-zoom="{
+																				'displayKey':'FALHACODFALHADESC', 
+																				'datasetId':'dsCompOSSubconjuntos',
+																				'fields':[ 
+																					{ 
+																						'field':'FALHACODFALHA', 
+																						'label':'Codigo' 
+																					},{ 
+																						'field':'FALHADESC', 
+																						'label':'Descrição' 
+																					} 
+																				] 
+																				}" />
+											</div>
+											
+										</div>
+										<div class="row" >
+											<div class="col-md-12 " align="left">
+												<label for="falPendenciaItem">Pendência*</label>
+												<textarea rows="2" cols="6" name="falPendenciaItem" id="falPendenciaItem" class="form-control " ></textarea>
+											</div>
+										</div>
+									</td>
+									<td class="fs-v-align-middle fs-text-center tdDeleteRowFalha" style="width: 1%;">
+										<div class="tdDeleteRowFalha" style="display:none;" >
+											<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Falha" onclick="removeFalha(this)"></i>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="row">
+					<div id="divBtnAddFalha" class="col-md-2 col-md-offset-10" style="display: none;">
+						<br>
+						<button type="button" class="btn btn-primary  btn-block" id="btnAddFalha">Adicionar Falha</button>
+					</div>
+				</div>
+
+			</div>
+			<div id="divObsGerais" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Observações Gerais</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row" >
+						<div class="col-md-12 " align="left">
+							<label for="obsObservacoesGerais">Observações Gerais</label>
+							<textarea rows="3" cols="6" name="obsObservacoesGerais" id="obsObservacoesGerais" class="form-control " ></textarea>
+				    	</div>
+					</div> 
+				</div> 
+			</div> 
+		</div> 
+		
+		<div class="tab-pane fade " id="divTabComunicacao">
+			<div class="col-md-12">
+				<div id="divDefinicoesSuporteGTS" class="row">
+		       		<div class="col-md-2" align="left">
+						<label for="solStatus">Status*</label>
+						<select name="solStatus" id="solStatus" class="form-control" >
+		      				<option value=""></option>
+		      				<option value="Em Preenchimento">Em Preenchimento</option>
+		      				<option value="Recebido">Recebido</option>
+							<option value="Em Análise">Em Análise</option>
+							<option value="Finalizado">Finalizado</option>
+						</select>
+		       		</div>
+		       		<div id="divSolFinalizarSolicitacao" class="col-md-2" align="left" style="display:none;">
+		            	<br>
+		            	<label class="checkbox-inline">
+						    <input type="checkbox" name="solFinalizarSolicitacao" id="solFinalizarSolicitacao" value="finalizar"> Finalizar Solicitação
+						</label>
+			        </div>
+			        
+		       		<div class="form-group col-md-2 " align="left" >
+						<label for="solDescSetor">Setor*</label>
+						<input type="hidden" name="solCodSetor" id="solCodSetor" >
+						<input type="hidden" name="solCodGrupoSetor" id="solCodGrupoSetor" >
+						<input type="zoom" name="solDescSetor" id="solDescSetor"
+										  data-zoom="{
+							                              'displayKey':'DESCSETOR', 
+							                              'datasetId':'dsCompOSConsultaSetores', 
+							                              'fields':[ 
+								                              { 
+									                              'field':'DESCSETOR',
+									                              'label':' ' 
+								                              } 
+							                              ] 
+						                              	}" /> 
+		            </div>
+		       		<div id="divSolEncaminharSolicitacao" class="col-md-2" align="left"  style="display:none;">
+						<label for="solEncaminharSolicitacao">Encaminhar Solicitação*</label>
+						<select name="solEncaminharSolicitacao" id="solEncaminharSolicitacao" class="form-control" >
+		      				<option value=""></option>
+		      				<option value="Tecnico">Técnico GTS</option>
+							<option value="Interno">Interno</option>
+						</select>
+		       		</div>
+		       		
+				</div>
+				
+		        
+		        <div class="row">
+					<div class="col-md-12">
+				        &nbsp;
+				    </div>
+				</div>
+				
+				<div id="divComunicacao" >
+				    <div class="col-md-12">
+					    <div class="row sub-titulo">
+					        <h4>Comunicação</h4>
+					    </div>
+					</div>
+				    
+				    <div class="row">
+			    		<div class="col-md-12" align="left">
+			            	<table class="table table-condensed table-nonfluid table-striped" id="comTbComunicacao" tablename="comTbComunicacao" noaddbutton="true" nodeletebutton="true" >
+								<thead>
+									<tr>	
+										<th style="width: 20%">Usuário</th>
+										<th style="width: 10%">Tipo Usuário</th>
+										<th style="width: 12%">Data</th>
+										<th style="width: 10%">Status</th>		
+										<th id="thComComInterna" style="display:none; width: 24%" ></th>		
+										<th style="width: 24%">Comunicação Técnico GTS</th>		
+									</tr>
+								</thead>
+								<tbody>
+									<tr detail="true" detailname="comTbComunicacao" >
+										<td >	
+											<input type="hidden" name="comIdItem" id="comIdItem" class="form-control"  readonly >
+											<input type="hidden" name="comUsuarioWKUserItem" id="comUsuarioWKUserItem" class="form-control"  readonly >
+											<input type="text" name="comUsuarioItem" id="comUsuarioItem" class="form-control"  readonly >
+										</td>
+										<td  >	
+											<input type="text" name="comTipoUsuarioItem" id="comTipoUsuarioItem" class="form-control" readonly/> 
+										</td>
+										<td  >	
+											<input type="text" name="comDataItem" id="comDataItem" class="form-control" readonly/> 
+										</td>
+										<td  >	
+											<input type="text" name="comStatusItem" id="comStatusItem" class="form-control" readonly >
+										</td>
+										<td class="tdComComInterna" style="display:none;">	
+											<textarea rows="5" cols="6" name="comComInternaItem" id="comComInternaItem" class="form-control" style="display:none;" ></textarea>
+										</td>
+										<td >	
+											<textarea rows="5" cols="6" name="comComTecnicoItem" id="comComTecnicoItem" class="form-control" ></textarea>
+										</td>
+									</tr>
+								</tbody>
+			            	</table>
+			            </div>
+		            </div>
+				
+				</div>
+			</div>
+			
+		</div> 
+	</div> 
+	
+	
+	
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+</form>
+</div>
+</body>
+</html>

@@ -92,8 +92,7 @@ var funcoes = (function() {
 		},
 
 		outraDespesa : function() {
-			let
-			solTipoDespesa = $('#solTipoDespesa').val();
+			let	solTipoDespesa = $('#solTipoDespesa').val();
 			console.log(solTipoDespesa)
 			if (solTipoDespesa == 'Outro') {
 				$('#divOutraDespesa').show();

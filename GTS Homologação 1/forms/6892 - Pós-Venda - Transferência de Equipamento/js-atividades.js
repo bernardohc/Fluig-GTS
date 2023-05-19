@@ -1,0 +1,5 @@
+var INICIO_0 = 0;
+var INICIO = 4;
+var GTS_ANALISA_DEMANDA = 5;
+var REVENDA_VERIFICA_RETORNO = 7;
+var FIM = 9;

@@ -1,10 +1,21 @@
 function injetarFuncoesUteisJS(form, customHTML) {
 	log.info("#### INICIO injetarFuncoesUteisJS...");
+//	var customJS = "<script>";
+//		customJS += " function getWKUser(){return " + "'" + getValue("WKUser") + "';}";
+//		customJS += " function getWKCompany(){return " + getValue("WKCompany") + ";}";
+//		customJS += " function getWKNumState(){return " + getValue("WKNumState") + ";}";
+//		customJS += " function getWKNumProces(){return " + getValue("WKNumProces") + ";}";
+//		customJS += " function getMode(){ return '" + form.getFormMode() + "'};";
+//		customJS += " var CURRENT_STATE = '" + getValue("WKNumState") + "';";
+//		customJS += " var isMobile = '" + isMobile(form) + "';";
+//	customJS += "</script>";
+//	customHTML.append(customJS);
 	
 	customHTML.append("<script>function getWKUser(){return " + "'" + getValue("WKUser") + "'" + ";}</script>");
 	customHTML.append("<script>function getWKCompany(){return " + getValue("WKCompany") + ";}</script>");
 	customHTML.append("<script>function getWKNumState(){return " + getValue("WKNumState") + ";}</script>");
 	customHTML.append("<script>function getWKNumProces(){return " + getValue("WKNumProces") + ";}</script>");
+	customHTML.append("<script>function getMode(){return '" + form.getFormMode() + "'};</script>");
 	customHTML.append("<script> var FORM_MODE = '" + form.getFormMode() + "';</script>");
 	customHTML.append("<script> var CURRENT_STATE = '" + getValue("WKNumState") + "';</script>");
 	customHTML.append("<script> var isMobile = '" + isMobile(form) + "';</script>");
@@ -45,7 +56,7 @@ function getValorDataSet(nomeDataSet, campoIdDataSet, valorIdDataSet, nomeCampo)
 
 function isEmpty(campo, form) {
     var valor = form.getValue(campo);
-    return valor == null || valor.trim().length() == 0 || typeof valor === undefined || valor.trim() == '0' || valor.trim() == '0,00';
+    return valor == null || valor.trim().length() == 0 || typeof valor === undefined || valor.trim() == '' || valor.trim() == '0' || valor.trim() == '0,00';
 }
 
 function isMobile(form) {
@@ -137,33 +148,62 @@ function setPercentual(valor, casasDecimais){
 	return novoValor;
 }
 
+/*
+ * Formatação Valores
+ */
+function formatValor(valor) {
+    //Entrada do valor 12.345,678
+	//Saída do valor 12345.678
+	
+	//Vai trocar o . por nada
+	valor = valor.replace('.', '');
+	//Vai trocar a , e . para as casas decimais
+	valor = valor.replace(',', '.');
+	valor = parseFloat(valor);
+	
+    return valor;
+}
+
+function formatMoney(valor) {
+    //Entrada do valor 00000,00
+	//Saída do valor 00.000,00
+    var localeBR = new java.util.Locale("pt","BR");
+//    var dinheiro = new java.text.NumberFormat.getCurrencyInstance(localeBR);
+    var numberFormat = new java.text.NumberFormat.getNumberInstance(localeBR);    
+    numberFormat.setMinimumFractionDigits(2);
+    numberFormat.setMaximumFractionDigits(2);
+    valor = numberFormat.format(parseFloat(valor));
+
+    
+    return valor;
+}
 
 /*
  * Datas
  */
-// function dataAtual(formato){
-//     var retornoData = "";
-// 	var data = new Date();
+function dataAtual(formato){
+    var retornoData = "";
+	var data = new Date();
     
-//     var dia = addZero(data.getDate());
-//     var mes = addZero(data.getMonth()+1);
-//     var ano = data.getFullYear(); 
+    var dia = addZero(data.getDate());
+    var mes = addZero(data.getMonth()+1);
+    var ano = data.getFullYear(); 
     
-//     var hora = addZero(data.getHours());
-//     var minuto = addZero(data.getMinutes());
+    var hora = addZero(data.getHours());
+    var minuto = addZero(data.getMinutes());
     
-//     if(formato == "dd/mm/yyyy"){
-//     	retornoData = dia + "/" + mes + "/" + ano;
-//     }else if(formato == "yyyymmdd"){
-//     	retornoData = ano + "" + mes + "" + dia;
-//     }else if(formato == "yyyy-mm-dd"){
-//     	retornoData = ano + "-" + mes + "-" + dia;
-//     }else if(formato == "dd/mm/yyyy hh:mm"){
-//     	retornoData = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto ;
-//     }
+    if(formato == "dd/mm/yyyy"){
+    	retornoData = dia + "/" + mes + "/" + ano;
+    }else if(formato == "yyyymmdd"){
+    	retornoData = ano + "" + mes + "" + dia;
+    }else if(formato == "yyyy-mm-dd"){
+    	retornoData = ano + "-" + mes + "-" + dia;
+    }else if(formato == "dd/mm/yyyy hh:mm"){
+    	retornoData = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto ;
+    }
     
-//     return retornoData;
-// }
+    return retornoData;
+}
 
 function formataData(data, formato){
 	
@@ -226,3 +266,31 @@ function addDiasAPartirHoje(formato, qtdDias){
 	
 }
 
+function retornaPais(){
+	var WKUser = getValue("WKUser");
+	
+	var siglaUFUser = WKUser.substring(0, 2);
+	var paisUser = "";
+	
+	if(siglaUFUser == "EX"){
+		paisUser = WKUser.substring(2, 5);
+	}else{
+		paisUser = "BRA";
+	}
+	return paisUser;
+}
+
+/**
+ * Função para quando da erro de carregamento das informações e é necessário não apresentar nada do formulário
+ * @param form
+ * @param customHTML
+ */
+function ocultaCabecalhosForm(form, customHTML){
+	
+	customHTML.append("<script>$('form').hide();</script>");
+	customHTML.append("<script>window.parent.$('#breadcrumb').remove();</script>");
+	customHTML.append("<script>window.parent.$('#textActivity').remove();</script>");
+	customHTML.append("<script>window.parent.$('#processTabs').remove();</script>");
+	customHTML.append("<script>window.parent.$('#workflowActions').remove();</script>");
+	
+}

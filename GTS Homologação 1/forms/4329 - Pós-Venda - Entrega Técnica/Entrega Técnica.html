@@ -11,18 +11,10 @@
 	<script>
 		$(document).ready(function() {
 			window.parent.$("#breadcrumb").remove();
-			//Aba Anexo
-			window.parent.$("#processTabs").find("li").first().hide();
-			window.parent.$("#processTabs").find("li").last().hide();
-			window.parent.$("#textActivity").remove();
-			//Se não conseguir encontrar o tipo de solicitante, mostra mensagem de usuário incorreto
-			//Ou se for Revenda e não ter os dados adicionais (A1_COD e A1_LOJA)
-			if($('#tipoSolicitante').val().trim() == '' || ( $('#tipoSolicitante').val().trim() == 'Revenda' && $('#A1_COD').val().trim() == ''  )){
-		 		window.parent.$("#collapse-tabs").remove();
-		 		window.parent.$("#textActivity").remove();
-		 		window.parent.$("#workflowActions").remove();
-		 		window.parent.$("#breadcrumb").remove();
-			}
+			window.parent.$("#textActivity").text('');
+			window.parent.$("#informationsTab").remove();
+			// window.parent.$("#tab-attachments").remove();
+			window.parent.$("#tab-attachments").css("display","none");
 			
 			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
 			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
@@ -165,7 +157,7 @@
 				<div class="col-md-12">
 					<div id="divRevendaEquip">
 						<div class="row">
-							<div class="col-md-2" align="left">
+							<div class="col-md-2 camposBra" align="left">
 								<label for="revEquipCpfCnpj">CPF/CNPJ*</label>
 								<input type="text" name="revEquipCpfCnpj" id="revEquipCpfCnpj" class="form-control" readonly maxlength="20" 
 										data-protection="revEquipCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir a revenda da entrega técnica" />
@@ -263,7 +255,7 @@
 					<div id="divRevendaEntTec">
 						<div class="row">
 							<input type="text" name="revCodBaseDeAtendimento" id="revCodBaseDeAtendimento" class="form-control" style="display:none;"/>
-							<div class="col-md-2" align="left">
+							<div class="col-md-2 camposBra" align="left">
 								<label for="revCpfCnpj">CPF/CNPJ*</label>
 								<input type="text" name="revCpfCnpj" id="revCpfCnpj" class="form-control" readonly maxlength="20" 
 										data-protection="revCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir a revenda da entrega técnica" />
@@ -425,10 +417,14 @@
 								<input type="text" name="revEntTecTelefone" id="revEntTecTelefone" class="form-control"
 									data-protection="revEntTecTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do entregador técnico da revenda" />
 			        		</div>
-							<div class="col-md-2" align="left">
+							<div class="col-md-2 camposBra" align="left">
 								<label for="revEntTecCpf">CPF*</label>
 								<input type="text" name="revEntTecCpf" id="revEntTecCpf" class="form-control" maxlength="20" 
 									data-protection="revEntTecCpf" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o entregador técnico da revenda" />
+			        		</div>
+							<div class="col-md-2 camposPar" align="left" style="display: none;">
+								<label for="revEntTecRUC">RUC*</label>
+								<input type="text" name="revEntTecRUC" id="revEntTecRUC" class="form-control" maxlength="20" />
 			        		</div>
 		        		</div>
 	        		</div>
@@ -569,13 +565,31 @@
 				<div class="col-md-12">
 					<div class="row">
 						<div class="col-md-2" align="left">
+							<label for="cliPais">País*</label>
+							<input type="hidden" name="cliPaisHidden" id="cliPaisHidden" />
+							<select name="cliPais" id="cliPais" class="form-control" disabled>
+			      				<option value="BRA">Brasil</option>
+			      				<option value="PAR">Paraguai</option>
+							</select>
+						</div>
+						<div id="divSolicCadCliente" class="col-md-2" align="left" style="display:none">
+							<br>
+							<button type="button" class="btn btn-primary" id="btnSolicCadCliente">Solicitar Cadastro de Cliente</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 camposBra" align="left">
 							<label for="cliCpfCnpj">CPF/CNPJ*</label>
 							<input type="text" name="cliCpfCnpj" id="cliCpfCnpj" class="form-control" maxlength="20" 
 								data-protection="cliCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o cliente da entrega técnica" />
 		        		</div>
-		        		<div class="col-md-2" align="left">
+		        		<div class="col-md-2 camposBra" align="left">
 							<label for="cliInscricaoEstadual">Inscrição Estadual*</label>
 							<input type="text" name="cliInscricaoEstadual" id="cliInscricaoEstadual" class="form-control" />
+		        		</div>
+		        		<div class="col-md-2 camposPar" align="left" style="display: none;">
+							<label for="cliRUC">RUC*</label>
+							<input type="text" name="cliRUC" id="cliRUC" class="form-control" maxlength="20" />
 		        		</div>
 		        		<div class="col-md-4" align="left">
 							<label for="cliNomeCliente">Nome Cliente*</label>
@@ -592,7 +606,7 @@
 		        		</div>
 					</div>
 					<div class="row">
-						<div class="col-md-2" align="left">
+						<div class="col-md-2 camposBra" align="left">
 							<label for="cliCEP">CEP*</label>
 							<input type="text" name="cliCEP" id="cliCEP" class="form-control"  readonly/>
 		        		</div>
@@ -604,7 +618,7 @@
 							<label for="cliBairro">Bairro*</label>
 							<input type="text" name="cliBairro" id="cliBairro" class="form-control" readonly />
 		        		</div>
-		        		<div class="col-md-2" align="left">
+		        		<div class="col-md-3" align="left">
 							<label for="cliComplemento">Complemento</label>
 							<input type="text" name="cliComplemento" id="cliComplemento" class="form-control" readonly />
 		        		</div>
@@ -614,7 +628,7 @@
 							<label for="cliCidade">Cidade*</label>
 							<input type="text" name="cliCidade" id="cliCidade" class="form-control"  readonly/>
 		        		</div>
-		        		<div class="col-md-2" align="left">
+		        		<div class="col-md-2 camposBra" align="left">
 							<label for="cliEstado">Estado*</label>
 							<input type="hidden" name="cliEstadoHidden" id="cliEstadoHidden"  />
 							<select name="cliEstado" id="cliEstado" class="form-control" disabled>
@@ -627,6 +641,7 @@
 								<option value="CE">Ceará</option>
 								<option value="DF">Distrito Federal</option>
 								<option value="ES">Espírito Santo</option>
+								<option value="EX">Exterior</option>
 								<option value="GO">Goiás</option>
 								<option value="MA">Maranhão</option>
 								<option value="MT">Mato Grosso</option>
@@ -734,7 +749,7 @@
 								<label for="propRuralCidade">Cidade</label>
 								<input type="text" name="propRuralCidade" id="propRuralCidade" class="form-control" />
 			        		</div>
-							<div class="col-md-2" align="left">
+							<div class="col-md-2 camposBra" align="left">
 								<label for="propRuralEstado">Estado</label>
 								<select name="propRuralEstado" id="propRuralEstado" class="form-control">
 				      				<option value=""></option>
@@ -746,6 +761,7 @@
 									<option value="Ceará">Ceará</option>
 									<option value="Distrito Federal">Distrito Federal</option>
 									<option value="Espírito Santo">Espírito Santo</option>
+									<option value="Exterior">Exterior</option>
 									<option value="Goiás">Goiás</option>
 									<option value="Maranhão">Maranhão</option>
 									<option value="Mato Grosso">Mato Grosso</option>
@@ -792,7 +808,7 @@
 										<th class="tdDeleteRow" ></th>
 										<th class="col-md-1" style="text-align:center;">Entrega de Equipamento</th>
 										<th class="col-md-4">Cidade</th>
-										<th class="col-md-2">Estado</th>
+										<th class="col-md-2 camposBra">Estado</th>
 										<th class="col-md-4">Nome da Propriedade</th>
 										<th class="col-md-1">Km até a Propriedade</th>
 									</tr>
@@ -810,7 +826,7 @@
 										<td>	
 											<input type="text" name="propRuralCidadeItem" id="propRuralCidadeItem" class="form-control" readonly />
 										</td>
-										<td>	
+										<td class="camposBra">	
 											<input type="text" name="propRuralEstadoItem" id="propRuralEstadoItem" class="form-control"  readonly />
 										</td>
 										<td>	
@@ -1312,7 +1328,7 @@
 					<div class="row">
 						<div class="col-md-8" align="left">
 							<label for="OCEmailRecebimentoOC">E-mails para recebimento da OC (separados por ;)*</label>
-							<input type="text" name="OCEmailRecebimentoOC" id="OCEmailRecebimentoOC" class="form-control" value="keroly@gts.com.br;fernanda@gtsdobrasil.com.br"/>
+							<input type="text" name="OCEmailRecebimentoOC" id="OCEmailRecebimentoOC" class="form-control" value="bruno.correa@gtsdobrasil.com.br;giulia.duraes@gtsdobrasil.com.br;jessica.santos@gtsdobrasil.com.br;adm.posvendas@gtsdobrasil.com.br"/>
 		        		</div>
 	        		</div>
 	        		<div class="row">

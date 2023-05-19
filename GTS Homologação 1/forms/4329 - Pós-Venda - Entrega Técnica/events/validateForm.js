@@ -15,6 +15,11 @@ function validateForm(form){
                 hasErros = true;
 			}
         	
+			if (isEmpty("A1_PAIS", form)) {
+    			message += getMessage("País", 1, form);
+    			hasErros = true;
+    		}
+
         	/*
 			 * Cadastro de Equipamento
 			 */
@@ -120,20 +125,18 @@ function validateForm(form){
 	    			/*
 	    			 * Cadastro da Loja (Revenda Vinculada no Equipamento)
 	    			 */
-	    			if (isEmpty("revEquipCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
-		    			hasErros = true;
-		    		}
+					if( form.getValue("A1_PAIS") == "BRA" ){
+						if (isEmpty("revEquipCpfCnpj", form)) {
+							message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
+							hasErros = true;
+						}
+					}
 	    			if (isEmpty("revEquipRazaoSocialRevenda", form)) {
 		    			message += getMessage("Razão Social da Loja vinculada no Equipamento", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revEquipNomeFantasiaRevenda", form)) {
 		    			message += getMessage("Nome Fantasia da Loja vinculada no Equipamento", 1, form);
-		    			hasErros = true;
-		    		}
-		    		if (isEmpty("revEquipCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revEquipCodigo", form)) {
@@ -157,9 +160,11 @@ function validateForm(form){
 	    			/*
 	    			 * Cadastro da Loja (Revenda que está realizando a Entrega Técnica)
 	    			 */
-		    		if (isEmpty("revCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
-		    			hasErros = true;
+					if( form.getValue("A1_PAIS") == "BRA" ){
+						if (isEmpty("revCpfCnpj", form)) {
+							message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
+							hasErros = true;
+						}
 		    		}
 		    		if (isEmpty("revRazaoSocialRevenda", form)) {
 		    			message += getMessage("Razão Social da Loja que está realizando a Entrega Técnica", 1, form);
@@ -167,10 +172,6 @@ function validateForm(form){
 		    		}
 		    		if (isEmpty("revNomeFantasiaRevenda", form)) {
 		    			message += getMessage("Nome Fantasia da Loja que está realizando a Entrega Técnica", 1, form);
-		    			hasErros = true;
-		    		}
-		    		if (isEmpty("revCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revCodigo", form)) {
@@ -259,10 +260,17 @@ function validateForm(form){
 	    			message += getMessage("Telefone do Entregador Técnico", 2, form);
 	    			hasErros = true;
 	    		}
-	    		if (isEmpty("revEntTecCpf", form)) {
-	    			message += getMessage("CPF do Entregador Técnico", 1, form);
-	    			hasErros = true;
-	    		}
+				if( form.getValue("A1_PAIS") == "BRA" ){
+					if (isEmpty("revEntTecCpf", form)) {
+						message += getMessage("CPF do Entregador Técnico", 1, form);
+						hasErros = true;
+					}
+				}else if(form.getValue("A1_PAIS") == "PAR"){
+					if (isEmpty("revEntTecRUC", form)) {
+						message += getMessage("RUC do Entregador Técnico", 1, form);
+						hasErros = true;
+					}
+				}
 		    		
     		
 	    		/*
@@ -335,45 +343,57 @@ function validateForm(form){
 	    		/*
 	    		 * Cliente
 	    		 */
-	    		if (isEmpty("cliCpfCnpj", form)) {
-	    			message += getMessage("CPF/CNPJ do Cliente", 1, form);
+				if (isEmpty("cliPaisHidden", form)) {
+					message += getMessage("País do Cliente", 1, form);
 	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliNomeCliente", form)) {
-	    			message += getMessage("Nome do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliInscricaoEstadual", form)) {
-	    			message += getMessage("Inscrição Estadual do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliCEP", form)) {
-	    			message += getMessage("CEP do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliEndereco", form)) {
-	    			message += getMessage("Endereço do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliBairro", form)) {
-	    			message += getMessage("Bairro do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliCidade", form)) {
-	    			message += getMessage("Cidade do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliEstadoHidden", form)) {
-	    			message += getMessage("Estado do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
-	    			message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
-	    			hasErros = true;
-	    		}else if( form.getValue("cliTelefonePesqSatisfacao").length() < 10 ){
-    				message += getMessage("Telefone para Pesquisa de Satisfação", 2, form);
-    				hasErros = true;
-	    		}
+				}else if(form.getValue("cliPaisHidden") == 'BRA'){
+					if (isEmpty("cliCpfCnpj", form)) {
+						message += getMessage("CPF/CNPJ do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliInscricaoEstadual", form)) {
+						message += getMessage("Inscrição Estadual do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliCEP", form)) {
+						message += getMessage("CEP do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliEstadoHidden", form)) {
+						message += getMessage("Estado do Cliente", 1, form);
+						hasErros = true;
+					}
+				}else if(form.getValue("cliPaisHidden") == 'PAR'){
+					if (isEmpty("cliRUC", form)) {
+						message += getMessage("RUC do Cliente", 1, form);
+						hasErros = true;
+					}
+				}
+
+				if (isEmpty("cliNomeCliente", form)) {
+					message += getMessage("Nome do Cliente", 1, form);
+					hasErros = true;
+				}
+				if (isEmpty("cliEndereco", form)) {
+					message += getMessage("Endereço do Cliente", 1, form);
+					hasErros = true;
+				}
+				if (isEmpty("cliBairro", form)) {
+					message += getMessage("Bairro do Cliente", 1, form);
+					hasErros = true;
+				}
+				if (isEmpty("cliCidade", form)) {
+					message += getMessage("Cidade do Cliente", 1, form);
+					hasErros = true;
+				}
+				if (isEmpty("cliTelefonePesqSatisfacao", form)){
+					message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+					hasErros = true;
+				}else if( form.getValue("cliTelefonePesqSatisfacao").length() < 10 ){
+					message += getMessage("Telefone para Pesquisa de Satisfação", 2, form);
+					hasErros = true;
+				}
+	    		
 	    		if (isEmpty("cliPossuiEquipamentoGTS", form)) {
 	    			message += getMessage("Possui Equipamento da GTS", 1, form);
 	    			hasErros = true;
@@ -458,7 +478,7 @@ function validateForm(form){
 							message += getMessage("Cidade" , 5, form, "Tabela de Propriedade Rural");
 				           	hasErros = true;
 						}
-						if (isEmpty("propRuralEstadoItem___"+ indexesPropRuralTbPropriedadesRurais[i], form) ){
+						if (isEmpty("propRuralEstadoItem___"+ indexesPropRuralTbPropriedadesRurais[i], form) && form.getValue("A1_PAIS") == "BRA" ){
 							message += getMessage("Estado" , 5, form, "Tabela de Propriedade Rural");
 							hasErros = true;
 						}
@@ -599,20 +619,18 @@ function validateForm(form){
 	    			/*
 					 * Cadastro da Loja (Revenda Vinculada no Equipamento)
 					 */
-	    			if (isEmpty("revEquipCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
-		    			hasErros = true;
-		    		}
+					if( form.getValue("A1_PAIS") == "BRA" ){
+						if (isEmpty("revEquipCpfCnpj", form)) {
+							message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
+							hasErros = true;
+						}
+					}
 	    			if (isEmpty("revEquipRazaoSocialRevenda", form)) {
 		    			message += getMessage("Razão Social da Loja vinculada no Equipamento", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revEquipNomeFantasiaRevenda", form)) {
 		    			message += getMessage("Nome Fantasia da Loja vinculada no Equipamento", 1, form);
-		    			hasErros = true;
-		    		}
-		    		if (isEmpty("revEquipCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revEquipCodigo", form)) {
@@ -636,9 +654,11 @@ function validateForm(form){
 		    		/*
 	    			 * Cadastro da Loja (Revenda que está realizando a Entrega Técnica)
 	    			 */
-		    		if (isEmpty("revCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
-		    			hasErros = true;
+					if( form.getValue("A1_PAIS") == "BRA" ){
+						if (isEmpty("revCpfCnpj", form)) {
+							message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
+							hasErros = true;
+						}
 		    		}
 		    		if (isEmpty("revRazaoSocialRevenda", form)) {
 		    			message += getMessage("Razão Social da Loja que está realizando a Entrega Técnica", 1, form);
@@ -646,10 +666,6 @@ function validateForm(form){
 		    		}
 		    		if (isEmpty("revNomeFantasiaRevenda", form)) {
 		    			message += getMessage("Nome Fantasia da Loja que está realizando a Entrega Técnica", 1, form);
-		    			hasErros = true;
-		    		}
-		    		if (isEmpty("revCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revCodigo", form)) {
@@ -737,10 +753,17 @@ function validateForm(form){
 	    			message += getMessage("Telefone do Entregador Técnico", 2, form);
 	    			hasErros = true;
 	    		}
-	    		if (isEmpty("revEntTecCpf", form)) {
-	    			message += getMessage("CPF do Entregador Técnico", 1, form);
-	    			hasErros = true;
-	    		}
+	    		if( form.getValue("A1_PAIS") == "BRA" ){
+					if (isEmpty("revEntTecCpf", form)) {
+						message += getMessage("CPF do Entregador Técnico", 1, form);
+						hasErros = true;
+					}
+				}else if(form.getValue("A1_PAIS") == "PAR"){
+					if (isEmpty("revEntTecRUC", form)) {
+						message += getMessage("RUC do Entregador Técnico", 1, form);
+						hasErros = true;
+					}
+				}
 		    		
     		
 	    		/*
@@ -813,20 +836,34 @@ function validateForm(form){
 	    		/*
 	    		 * Cliente
 	    		 */
-	    		if (isEmpty("cliCpfCnpj", form)) {
-	    			message += getMessage("CPF/CNPJ do Cliente", 1, form);
+				if (isEmpty("cliPaisHidden", form)) {
+					message += getMessage("País do Cliente", 1, form);
 	    			hasErros = true;
-	    		}
+				}else if(form.getValue("cliPaisHidden") == 'BRA'){
+					if (isEmpty("cliCpfCnpj", form)) {
+						message += getMessage("CPF/CNPJ do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliInscricaoEstadual", form)) {
+						message += getMessage("Inscrição Estadual do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliCEP", form)) {
+						message += getMessage("CEP do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliEstadoHidden", form)) {
+						message += getMessage("Estado do Cliente", 1, form);
+						hasErros = true;
+					}
+				}else if(form.getValue("cliPaisHidden") == 'PAR'){
+					if (isEmpty("cliRUC", form)) {
+						message += getMessage("RUC do Cliente", 1, form);
+						hasErros = true;
+					}
+				}
 	    		if (isEmpty("cliNomeCliente", form)) {
 	    			message += getMessage("Nome do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliInscricaoEstadual", form)) {
-	    			message += getMessage("Inscrição Estadual do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliCEP", form)) {
-	    			message += getMessage("CEP do Cliente", 1, form);
 	    			hasErros = true;
 	    		}
 	    		if (isEmpty("cliEndereco", form)) {
@@ -839,10 +876,6 @@ function validateForm(form){
 	    		}
 	    		if (isEmpty("cliCidade", form)) {
 	    			message += getMessage("Cidade do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliEstadoHidden", form)) {
-	    			message += getMessage("Estado do Cliente", 1, form);
 	    			hasErros = true;
 	    		}
 	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
@@ -936,7 +969,7 @@ function validateForm(form){
 							message += getMessage("Cidade" , 5, form, "Tabela de Propriedade Rural");
 				           	hasErros = true;
 						}
-						if (isEmpty("propRuralEstadoItem___"+ indexesPropRuralTbPropriedadesRurais[i], form) ){
+						if (isEmpty("propRuralEstadoItem___"+ indexesPropRuralTbPropriedadesRurais[i], form) && form.getValue("A1_PAIS") == "BRA" ){
 							message += getMessage("Estado" , 5, form, "Tabela de Propriedade Rural");
 							hasErros = true;
 						}
@@ -995,16 +1028,34 @@ function validateForm(form){
         	/*
     		 * Cliente
     		 */
-    		if (isEmpty("cliCpfCnpj", form)) {
-    			message += getMessage("CPF/CNPJ do Cliente", 1, form);
-    			hasErros = true;
-    		}
+			if (isEmpty("cliPaisHidden", form)) {
+				message += getMessage("País do Cliente", 1, form);
+				hasErros = true;
+			}else if(form.getValue("cliPaisHidden") == 'BRA'){
+				if (isEmpty("cliCpfCnpj", form)) {
+					message += getMessage("CPF/CNPJ do Cliente", 1, form);
+					hasErros = true;
+				}
+				if (isEmpty("cliInscricaoEstadual", form)) {
+					message += getMessage("Inscrição Estadual do Cliente", 1, form);
+					hasErros = true;
+				}
+				if (isEmpty("cliCEP", form)) {
+					message += getMessage("CEP do Cliente", 1, form);
+					hasErros = true;
+				}
+				if (isEmpty("cliEstadoHidden", form)) {
+					message += getMessage("Estado do Cliente", 1, form);
+					hasErros = true;
+				}
+			}else if(form.getValue("cliPaisHidden") == 'PAR'){
+				if (isEmpty("cliRUC", form)) {
+					message += getMessage("RUC do Cliente", 1, form);
+					hasErros = true;
+				}
+			}
     		if (isEmpty("cliNomeCliente", form)) {
     			message += getMessage("Nome do Cliente", 1, form);
-    			hasErros = true;
-    		}
-    		if (isEmpty("cliInscricaoEstadual", form)) {
-    			message += getMessage("Inscrição Estadual do Cliente", 1, form);
     			hasErros = true;
     		}
     		if (isEmpty("cliCodigo", form)) {
@@ -1013,10 +1064,6 @@ function validateForm(form){
     		}
     		if (isEmpty("cliLoja", form)) {
     			message += getMessage("Loja do Cliente", 1, form);
-    			hasErros = true;
-    		}
-    		if (isEmpty("cliCEP", form)) {
-    			message += getMessage("CEP do Cliente", 1, form);
     			hasErros = true;
     		}
     		if (isEmpty("cliEndereco", form)) {
@@ -1029,10 +1076,6 @@ function validateForm(form){
     		}
     		if (isEmpty("cliCidade", form)) {
     			message += getMessage("Cidade do Cliente", 1, form);
-    			hasErros = true;
-    		}
-    		if (isEmpty("cliEstadoHidden", form)) {
-    			message += getMessage("Estado do Cliente", 1, form);
     			hasErros = true;
     		}
     		if (isEmpty("cliTelefonePesqSatisfacao", form)){
@@ -1170,20 +1213,18 @@ function validateForm(form){
 	    			/*
 	    			 * Cadastro da Loja (Revenda Vinculada no Equipamento)
 	    			 */
-	    			if (isEmpty("revEquipCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
-		    			hasErros = true;
-		    		}
+					if( form.getValue("A1_PAIS") == "BRA" ){
+						if (isEmpty("revEquipCpfCnpj", form)) {
+							message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
+							hasErros = true;
+						}
+					}
 	    			if (isEmpty("revEquipRazaoSocialRevenda", form)) {
 		    			message += getMessage("Razão Social da Loja vinculada no Equipamento", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revEquipNomeFantasiaRevenda", form)) {
 		    			message += getMessage("Nome Fantasia da Loja vinculada no Equipamento", 1, form);
-		    			hasErros = true;
-		    		}
-		    		if (isEmpty("revEquipCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja vinculada no Equipamento", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revEquipCodigo", form)) {
@@ -1207,9 +1248,11 @@ function validateForm(form){
 	    			/*
 	    			 * Cadastro da Loja (Revenda que está realizando a Entrega Técnica)
 	    			 */
-		    		if (isEmpty("revCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
-		    			hasErros = true;
+					if( form.getValue("A1_PAIS") == "BRA" ){
+						if (isEmpty("revCpfCnpj", form)) {
+							message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
+							hasErros = true;
+						}
 		    		}
 		    		if (isEmpty("revRazaoSocialRevenda", form)) {
 		    			message += getMessage("Razão Social da Loja que está realizando a Entrega Técnica", 1, form);
@@ -1217,10 +1260,6 @@ function validateForm(form){
 		    		}
 		    		if (isEmpty("revNomeFantasiaRevenda", form)) {
 		    			message += getMessage("Nome Fantasia da Loja que está realizando a Entrega Técnica", 1, form);
-		    			hasErros = true;
-		    		}
-		    		if (isEmpty("revCpfCnpj", form)) {
-		    			message += getMessage("CPF/CNPJ da Loja que está realizando a Entrega Técnica", 1, form);
 		    			hasErros = true;
 		    		}
 		    		if (isEmpty("revCodigo", form)) {
@@ -1309,10 +1348,17 @@ function validateForm(form){
 	    			message += getMessage("Telefone do Entregador Técnico", 2, form);
 	    			hasErros = true;
 	    		}
-	    		if (isEmpty("revEntTecCpf", form)) {
-	    			message += getMessage("CPF do Entregador Técnico", 1, form);
-	    			hasErros = true;
-	    		}
+	    		if( form.getValue("A1_PAIS") == "BRA" ){
+					if (isEmpty("revEntTecCpf", form)) {
+						message += getMessage("CPF do Entregador Técnico", 1, form);
+						hasErros = true;
+					}
+				}else if(form.getValue("A1_PAIS") == "PAR"){
+					if (isEmpty("revEntTecRUC", form)) {
+						message += getMessage("RUC do Entregador Técnico", 1, form);
+						hasErros = true;
+					}
+				}
 		    		
     		
 	    		/*
@@ -1385,20 +1431,34 @@ function validateForm(form){
 	    		/*
 	    		 * Cliente
 	    		 */
-	    		if (isEmpty("cliCpfCnpj", form)) {
-	    			message += getMessage("CPF/CNPJ do Cliente", 1, form);
+				if (isEmpty("cliPaisHidden", form)) {
+					message += getMessage("País do Cliente", 1, form);
 	    			hasErros = true;
-	    		}
+				}else if(form.getValue("cliPaisHidden") == 'BRA'){
+					if (isEmpty("cliCpfCnpj", form)) {
+						message += getMessage("CPF/CNPJ do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliInscricaoEstadual", form)) {
+						message += getMessage("Inscrição Estadual do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliCEP", form)) {
+						message += getMessage("CEP do Cliente", 1, form);
+						hasErros = true;
+					}
+					if (isEmpty("cliEstadoHidden", form)) {
+						message += getMessage("Estado do Cliente", 1, form);
+						hasErros = true;
+					}
+				}else if(form.getValue("cliPaisHidden") == 'PAR'){
+					if (isEmpty("cliRUC", form)) {
+						message += getMessage("RUC do Cliente", 1, form);
+						hasErros = true;
+					}
+				}
 	    		if (isEmpty("cliNomeCliente", form)) {
 	    			message += getMessage("Nome do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliInscricaoEstadual", form)) {
-	    			message += getMessage("Inscrição Estadual do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliCEP", form)) {
-	    			message += getMessage("CEP do Cliente", 1, form);
 	    			hasErros = true;
 	    		}
 	    		if (isEmpty("cliEndereco", form)) {
@@ -1411,10 +1471,6 @@ function validateForm(form){
 	    		}
 	    		if (isEmpty("cliCidade", form)) {
 	    			message += getMessage("Cidade do Cliente", 1, form);
-	    			hasErros = true;
-	    		}
-	    		if (isEmpty("cliEstadoHidden", form)) {
-	    			message += getMessage("Estado do Cliente", 1, form);
 	    			hasErros = true;
 	    		}
 	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
@@ -1508,7 +1564,7 @@ function validateForm(form){
 							message += getMessage("Cidade" , 5, form, "Tabela de Propriedade Rural");
 				           	hasErros = true;
 						}
-						if (isEmpty("propRuralEstadoItem___"+ indexesPropRuralTbPropriedadesRurais[i], form) ){
+						if (isEmpty("propRuralEstadoItem___"+ indexesPropRuralTbPropriedadesRurais[i], form) && form.getValue("A1_PAIS") == "BRA" ){
 							message += getMessage("Estado" , 5, form, "Tabela de Propriedade Rural");
 							hasErros = true;
 						}

@@ -54,6 +54,7 @@ function enableFields(form){
 		form.setEnabled("revEntTecNome", false);
 		form.setEnabled("revEntTecTelefone", false);
 		form.setEnabled("revEntTecCpf", false);
+		form.setEnabled("revEntTecRUC", false);
 		form.setEnabled("revCienteTransfEquipRev", false);
 		//Protocolo de Recebimento do Cliente Final
 		form.setEnabled("protoRecResponsavel", false);
@@ -147,6 +148,7 @@ function enableFields(form){
 		form.setEnabled("revEntTecNome", false);
 		form.setEnabled("revEntTecTelefone", false);
 		form.setEnabled("revEntTecCpf", false);
+		form.setEnabled("revEntTecRUC", false);
 		form.setEnabled("revCienteTransfEquipRev", false);
 		//Protocolo de Recebimento do Cliente Final
 		form.setEnabled("protoRecResponsavel", false);
@@ -163,7 +165,9 @@ function enableFields(form){
 		    }
 		}
 		//Cliente
+		form.setEnabled("cliPais", false);
 		form.setEnabled("cliCpfCnpj", false);
+		form.setEnabled("cliRUC", false);
 		form.setEnabled("cliNomeCliente", false);
 		form.setEnabled("cliInscricaoEstadual", false);
 		form.setEnabled("cliTelefonePesqSatisfacao", false);
@@ -245,6 +249,7 @@ function enableFields(form){
 		form.setEnabled("revEntTecNome", false);
 		form.setEnabled("revEntTecTelefone", false);
 		form.setEnabled("revEntTecCpf", false);
+		form.setEnabled("revEntTecRUC", false);
 		form.setEnabled("revCienteTransfEquipRev", false);
 		//Protocolo de Recebimento do Cliente Final
 		form.setEnabled("protoRecResponsavel", false);
@@ -261,7 +266,9 @@ function enableFields(form){
 		    }
 		}
 		//Cliente
+		form.setEnabled("cliPais", false);
 		form.setEnabled("cliCpfCnpj", false);
+		form.setEnabled("cliRUC", false);
 		form.setEnabled("cliNomeCliente", false);
 		form.setEnabled("cliInscricaoEstadual", false);
 		form.setEnabled("cliCEP", false);
@@ -319,6 +326,9 @@ function enableFields(form){
 		form.setEnabled("entTecAprov", false);
 		form.setEnabled("entTecAprovObservacao", false);
 		
+		//Cliente
+		form.setEnabled("cliRUC", false);
+		
 		
 	}else if( atv_atual == REVENDA_NF_PGTO){
 		
@@ -368,6 +378,7 @@ function enableFields(form){
 		form.setEnabled("revEntTecNome", false);
 		form.setEnabled("revEntTecTelefone", false);
 		form.setEnabled("revEntTecCpf", false);
+		form.setEnabled("revEntTecRUC", false);
 		form.setEnabled("revCienteTransfEquipRev", false);
 		//Protocolo de Recebimento do Cliente Final
 		form.setEnabled("protoRecResponsavel", false);
@@ -384,7 +395,9 @@ function enableFields(form){
 		    }
 		}
 		//Cliente
+		form.setEnabled("cliPais", false);
 		form.setEnabled("cliCpfCnpj", false);
+		form.setEnabled("cliRUC", false);
 		form.setEnabled("cliNomeCliente", false);
 		form.setEnabled("cliInscricaoEstadual", false);
 		form.setEnabled("cliCEP", false);
@@ -489,6 +502,7 @@ function enableFields(form){
 		form.setEnabled("revEntTecNome", false);
 		form.setEnabled("revEntTecTelefone", false);
 		form.setEnabled("revEntTecCpf", false);
+		form.setEnabled("revEntTecRUC", false);
 		form.setEnabled("revCienteTransfEquipRev", false);
 		//Protocolo de Recebimento do Cliente Final
 		form.setEnabled("protoRecResponsavel", false);
@@ -505,7 +519,9 @@ function enableFields(form){
 		    }
 		}
 		//Cliente
+		form.setEnabled("cliPais", false);
 		form.setEnabled("cliCpfCnpj", false);
+		form.setEnabled("cliRUC", false);
 		form.setEnabled("cliNomeCliente", false);
 		form.setEnabled("cliInscricaoEstadual", false);
 		form.setEnabled("cliCEP", false);
@@ -615,6 +631,7 @@ function enableFields(form){
 		form.setEnabled("revEntTecNome", false);
 		form.setEnabled("revEntTecTelefone", false);
 		form.setEnabled("revEntTecCpf", false);
+		form.setEnabled("revEntTecRUC", false);
 		form.setEnabled("revCienteTransfEquipRev", false);
 		//Protocolo de Recebimento do Cliente Final
 		form.setEnabled("protoRecResponsavel", false);
@@ -631,7 +648,9 @@ function enableFields(form){
 		    }
 		}
 		//Cliente
+		form.setEnabled("cliPais", false);
 		form.setEnabled("cliCpfCnpj", false);
+		form.setEnabled("cliRUC", false);
 		form.setEnabled("cliNomeCliente", false);
 		form.setEnabled("cliInscricaoEstadual", false);
 		form.setEnabled("cliCEP", false);
@@ -753,6 +772,7 @@ function enableFields(form){
 		form.setEnabled("revEntTecNome", false);
 		form.setEnabled("revEntTecTelefone", false);
 		form.setEnabled("revEntTecCpf", false);
+		form.setEnabled("revEntTecRUC", false);
 		form.setEnabled("revCienteTransfEquipRev", false);
 		//Protocolo de Recebimento do Cliente Final
 		form.setEnabled("protoRecResponsavel", false);
@@ -769,7 +789,9 @@ function enableFields(form){
 		    }
 		}
 		//Cliente
+		form.setEnabled("cliPais", false);
 		form.setEnabled("cliCpfCnpj", false);
+		form.setEnabled("cliRUC", false);
 		form.setEnabled("cliNomeCliente", false);
 		form.setEnabled("cliInscricaoEstadual", false);
 		form.setEnabled("cliCEP", false);
@@ -890,6 +912,7 @@ function enableFields(form){
 		form.setEnabled("revEntTecNome", false);
 		form.setEnabled("revEntTecTelefone", false);
 		form.setEnabled("revEntTecCpf", false);
+		form.setEnabled("revEntTecRUC", false);
 		form.setEnabled("revCienteTransfEquipRev", false);
 		//Protocolo de Recebimento do Cliente Final
 		form.setEnabled("protoRecResponsavel", false);
@@ -906,7 +929,9 @@ function enableFields(form){
 		    }
 		}
 		//Cliente
+		form.setEnabled("cliPais", false);
 		form.setEnabled("cliCpfCnpj", false);
+		form.setEnabled("cliRUC", false);
 		form.setEnabled("cliNomeCliente", false);
 		form.setEnabled("cliInscricaoEstadual", false);
 		form.setEnabled("cliCEP", false);

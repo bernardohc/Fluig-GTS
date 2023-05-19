@@ -1,0 +1,254 @@
+<html>
+<head>
+
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+	<script>
+		$(document).ready(function() {
+			window.parent.$("#breadcrumb").remove();
+			window.parent.$("#textActivity").text('');
+			window.parent.$("#informationsTab").remove();
+			window.parent.$("#tab-attachments").remove();
+			
+			//Botões de movimentação
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+
+			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").css("display","none");
+			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").removeAttr("data-cancel-workflow-request");
+		});
+	</script>
+	
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<class="col-md-10 col-md-offset-1">
+		<div id="mensagemInteracao"></div>
+		<div class="panel panel-primary" id="divSolicitacao">
+			<div class="panel-heading">
+				<h3 class="panel-title">Solicitação de Veículos</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="solUsuarioFluig">Usuário Fluig:</label>
+						<input type="text" name="solUsuarioFluig" id="solUsuarioFluig" class="form-control" data-protection="solSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante" readonly>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="solSolicitante">Solicitante:</label>
+						<input type="text" name="solSolicitante" id="solSolicitante" class="form-control" data-protection="solSolicitante" data-protection-anonymizable data-protection-name data-protection-class-consent="Identifica o solicitante">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="solSetor">Setor:</label>
+						<input type="text" name="solSetor" id="solSetor" class="form-control">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="solDataSol">Data da Solicitação:</label>
+						<div class="input-group">
+							<input type="text" name="solDataSol" id="solDataSol" style="pointer-events:none" class="form-control" readonly>
+							<span class="input-group-addon">
+								<span class="fluigicon fluigicon-calendar"></span>
+							</span>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="solObjetivo">Objetivo:</label>
+							<select name="solObjetivo" id="solObjetivo" class="form-control">
+								<option value=""></option>
+								<option value="movimentaInterna">1 - Movimentação Interna</option>
+								<option value="feira">2 - Feira</option>
+								<option value="viagem">3 - Viagem</option>
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="solMotivo">Motivo:</label>
+						<input type="text" name="solMotivo" id="solMotivo" class="form-control">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="solTipo">Tipo:</label>
+						<input type="text" name="solTipo" id="solTipo" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="solMotorista">Motorista:</label>
+						<input type="text" name="solMotorista" id="solMotorista" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="solDestino">Destino:</label>
+						<input type="text" name="solDestino" id="solDestino" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="solDataSaida">Data de Saída:</label>
+						<div class="input-group">
+							<input type="text" name="solDataSaida" id="solDataSaida" class="form-control">
+							<span class="input-group-addon">
+								<span class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="solHoraSaida">Hora de Saída:</label>
+						<div class="input-group">
+							<input type="text" name="solHoraSaida" id="solHoraSaida" class="form-control">
+							<span class="input-group-addon">
+								<span class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-2">
+						<label for="solPrevRetorno">Previsão de Retorno:</label>
+						<div class="input-group">
+							<input type="text" name="solPrevRetorno" id="solPrevRetorno" class="form-control">
+							<span class="input-group-addon">
+								<span class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="solQuantPessoas">Qtde. de Pessoas:</label>
+						<input type="number" name="solQuantPessoas" id="solQuantPessoas" class="form-control">
+					</div>
+					<div class="form-group col-md-8" id="divOutrosMotoristas" outrosMotoristas>
+						<label for="solOutMotorista">Outros Motoristas:</label>
+						<input type="text" name="solOutMotorista" id="solOutMotorista" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label for="solObservacao">Observação:</label>
+						<textarea rows="3" cols="12" name="solObservacao" id="solObservacao" class="form-control " ></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-primary" id="divAprovacao">
+			<div class="panel-heading">
+				<h3 class="panel-title">Aprovação</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-4" align="left" >
+						<label for="aprovaSolicitacao">Aprovação</label>
+						<div class="radio input-group">
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="aprovaSolicitacao" value="aprovado" id="aprovaSolicitacaoAprovada" />
+								<label for="aprovaSolicitacaoAprovada">Solicitação Aprovada</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="aprovaSolicitacao" value="reprovado" id="aprovaSolicitacaoReprovada" />
+								<label for="aprovaSolicitacaoReprovada">Solicitação Reprovada</label>
+							</div>
+						</div>
+				   </div>
+					<div class="form-group col-md-4">
+						<label for="libVeiculoLiberado">Veículo Liberado:</label>
+						<input type="text" name="libVeiculoLiberado" id="libVeiculoLiberado" class="form-control">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="libPlaca">Placa:</label>
+						<input type="text" name="libPlaca" id="libPlaca" class="form-control" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label for="libObservacao">Observação:</label>
+						<textarea rows="3" cols="12" name="libObservacao" id="libObservacao" class="form-control " ></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-primary" id="divEntregaGuarita">
+			<div class="panel-heading">
+				<h3 class="panel-title">Entrega Guarita</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="entDataEntrega">Data da Entrega:</label>
+						<div class="input-group">
+							<input type="text" name="entDataEntrega" id="entDataEntrega" class="form-control">
+							<span class="input-group-addon">
+								<span class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="entHoraEntrega">Hora da entrega:</label>
+						<div class="input-group">
+							<input type="text" name="entHoraEntrega" id="entHoraEntrega" class="form-control">
+							<span class="input-group-addon">
+								<span class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="entColaboradorReti">Colaborador que Retirou:</label>
+						<input type="text" name="entColaboradorReti" id="entColaboradorReti" class="form-control">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-primary" id="divDevolucaoGuarita">
+			<div class="panel-heading">
+				<h3 class="panel-title">Devolução Guarita</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="devDataDevolucao">Data Devolução:</label>
+						<div class="input-group">
+							<input type="text" name="devDataDevolucao" id="devDataDevolucao" class="form-control">
+							<span class="input-group-addon">
+								<span class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="devHorarioDevolucao">Horário da Devolução:</label>
+						<div class="input-group">
+							<input type="text" name="devHorarioDevolucao" id="devHorarioDevolucao" class="form-control">
+							<span class="input-group-addon">
+								<span class="fluigicon fluigicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="devKM">KM:</label>
+						<input type="number" name="devKM" id="devKM" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="devColabEntrega">Colaborador que Entregou:</label>
+						<input type="text" name="devColabEntrega" id="devColabEntrega" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="devObs">Observação:</label>
+						<textarea rows="1" cols="12" name="devObs" id="devObs" class="form-control " ></textarea>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>
+</form>
+</div>
+</body>
+</html>

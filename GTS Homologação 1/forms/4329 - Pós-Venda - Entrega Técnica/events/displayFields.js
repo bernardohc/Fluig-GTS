@@ -10,6 +10,8 @@ function displayFields(form,customHTML){
 	/*
 	 * INICIO PARA TODAS AS ATIVIDADES
 	 */
+	displayCamposPais(form,customHTML);
+
 	//ABA-CADASTRAMENTO
 	form.setValue("equipTipoNota", form.getValue("equipTipoNotaHidden"));
 	form.setValue("revEquipEstado", form.getValue("revEquipEstadoHidden"));
@@ -28,6 +30,7 @@ function displayFields(form,customHTML){
 		form.setVisibleById("divCienteSemAvarias", true);
 	}
 	//Cliente
+	form.setValue("cliPais", form.getValue("cliPaisHidden"));
 	form.setValue("cliEstado", form.getValue("cliEstadoHidden"));
 	if(form.getValue("cliPossuiEquipamentoGTS") == "sim"){
 		form.setVisibleById("divTabelaEquipamentos", true);
@@ -77,10 +80,11 @@ function displayFields(form,customHTML){
 					dsDadosAdicionais.getValue(0, "A1_GERENTE") != '' && dsDadosAdicionais.getValue(0, "A1_GERENTE") !== undefined && dsDadosAdicionais.getValue(0, "A1_GERENTE") != 'undefined' &&
 					dsDadosAdicionais.getValue(0, "A1_TIPO") != '' && dsDadosAdicionais.getValue(0, "A1_TIPO") !== undefined && dsDadosAdicionais.getValue(0, "A1_TIPO") != 'undefined' ){ 
 						
-					
+					var A1_PAIS = retornaPais();
 					form.setValue("A1_COD", dsDadosAdicionais.getValue(0, "A1_COD"));
 					form.setValue("A1_LOJA", dsDadosAdicionais.getValue(0, "A1_LOJA"));
 					form.setValue("A1_TIPO", dsDadosAdicionais.getValue(0, "A1_TIPO"));
+					form.setValue("A1_PAIS", A1_PAIS);
 					form.setValue("gerenteRevenda",  dsDadosAdicionais.getValue(0, "A1_GERENTE"));
 					form.setValue("gerenteSolicitante",  dsDadosAdicionais.getValue(0, "A1_GERENTE"));
 					
@@ -108,6 +112,7 @@ function displayFields(form,customHTML){
 						}
 					}
 					
+					displayCamposPais(form,customHTML);
 					
 				} else{
 					//Se não encontrou o código e loja nos dados adicionais
@@ -119,7 +124,9 @@ function displayFields(form,customHTML){
 		}else if(tipoUsuario == 'Administrativo GTS'){
 			
 			form.setValue("gerenteSolicitante",  usuarioCorrente.getCode());
-			
+			form.setValue("A1_PAIS", "BRA");
+			form.setValue("cliPaisHidden", "BRA" );
+			form.setValue("cliPais", "BRA" );
 			
 		}else {
 			//Se não encontrou o código e loja nos dados adicionais
@@ -232,9 +239,13 @@ function displayFields(form,customHTML){
 		controleAbas(form, customHTML, 'Cadastramento', 'disponivel', 'indisponivel', 'indisponivel');
 		
 		if(form.getFormMode() == 'MOD'){
+			//Deixa visível o botão para disparar email de solicitação de Cadastro de Cliente
+			form.setVisibleById("divSolicCadCliente", true);
+
 			//Deixa como readonly o campo de cliCpfCnpj e cliInscricaoEstadual
 			customHTML.append("<script>$('#cliCpfCnpj').prop('readonly', true);</script>");
 			customHTML.append("<script>$('#cliInscricaoEstadual').prop('readonly', true);</script>");
+			customHTML.append("<script>$('#cliRUC').prop('readonly', true);</script>");
 			//Abre o campo código e loja do cliente
 			customHTML.append("<script>$('#cliCodigo').prop('readonly', false);</script>");
 			customHTML.append("<script>$('#cliLoja').prop('readonly', false);</script>");
@@ -763,4 +774,57 @@ function getStatusOC(form,customHTML){
 	}
 	
 }
+/**  
+* Função para exibir os campos conforme o País
+*/
+function displayCamposPais(form,customHTML){
+	var A1_PAIS = form.getValue("A1_PAIS").trim();
+	var atv_atual = getValue("WKNumState");
 
+	if( A1_PAIS == "BRA"){
+		customHTML.append("<script>$('.camposBra').show();</script>");
+		customHTML.append("<script>$('.camposPar').hide();</script>");
+		form.setValue("cliPaisHidden", "BRA" );
+		form.setValue("cliPais", "BRA" );
+	}else if( A1_PAIS == "PAR" ){
+		customHTML.append("<script>$('.camposPar').show();</script>");
+		customHTML.append("<script>$('.camposBra').hide();</script>");
+
+		form.setValue("cliPaisHidden", "PAR" );
+		form.setValue("cliPais", "PAR" );
+		form.setValue("cliEstadoHidden", "EX" );
+		switch (parseInt(atv_atual)) {
+			case INICIO_0 :
+			case INICIO :
+			case FORMALIZA :
+				customHTML.append("<script>$('#cliNomeCliente').prop('readonly', false);</script>");
+				customHTML.append("<script>$('#cliEndereco').prop('readonly', false);</script>");
+				customHTML.append("<script>$('#cliBairro').prop('readonly', false);</script>");
+				customHTML.append("<script>$('#cliComplemento').prop('readonly', false);</script>");
+				customHTML.append("<script>$('#cliCidade').prop('readonly', false);</script>");
+				customHTML.append("<script>$('#cliTelefone').prop('readonly', false);</script>");
+				customHTML.append("<script>$('#cliEmail').prop('readonly', false);</script>");
+			break;
+
+		}
+		
+	}
+
+}
+
+/**
+ * Função que retorna o País do usuário logado
+ */
+function retornaPais(){
+	var WKUser = getValue("WKUser");
+	
+	var siglaUFUser = WKUser.substring(0, 2);
+	var paisUser = "";
+	
+	if(siglaUFUser == "EX"){
+		paisUser = WKUser.substring(2, 5);
+	}else{
+		paisUser = "BRA";
+	}
+	return paisUser;
+}

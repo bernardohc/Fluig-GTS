@@ -1,0 +1,6 @@
+var INICIO_0 = 0;
+var INICIO = 4;
+var APROVA_SOLICITACAO = 20;
+var ENTREGA = 14;
+var RECEBE = 16;
+var FIM = 18;
