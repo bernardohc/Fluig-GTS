@@ -1,6 +1,0 @@
-var INICIO_0 = 0;
-var INICIO = 4;
-var ANALISA_RELATORIO = 5;
-var AJUSTA_RELATORIO = 9;
-var REVISA_RELATORIO = 13;
-var FIM = 18;

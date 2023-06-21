@@ -7,9 +7,65 @@ var funcoes = (function() {
 			eventsFuncoes.setup();
 		},
 		
-		/*
-		 * Formulário
-		 */			
+		//limpar campos ao sair
+		limpaCamposItem: function(indexItem){
+			$("#libVeiculoLiberado___"+indexItem).val('');
+			$("#libPlaca___"+indexItem).val('');
+		},
+
+		consultaProduto : function(indexItem){
+			
+			let veiculoLiberado = $("#libVeiculoLiberado___"+indexItem).val();
+
+			if( veiculoLiberado.trim() == "" ){
+				return;
+			}
+			
+			var loading = FLUIGC.loading(window);
+			loading.show();
+			
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				async: true,
+				url: "/api/public/ecm/dataset/search?datasetId=dsConsultaVeiculo&filterFields=cPROD,"+veiculoLiberado,
+				
+				success: function (data, status, xhr) {
+					if (data != null && data.content != null && data.content.length > 0) {
+						const records = data.content;
+						if( records[0].CODRET == "1"){
+							var record = records[0];
+							var placaVeiculo = record.CDESC;
+							
+							$("#libPlaca___"+indexItem).val(placaVeiculo);
+							
+						}else if (records[0].CODRET == "2"){		
+							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
+							funcoes.limpaCamposItem(indexItem);
+						}
+						
+					}else{
+							FLUIGC.toast({ title: '', message: 'Erro ao consultar o Veículo, comunicar o Administrador do Sistema!', type: 'danger' });
+							funcoes.limpaCamposItem(indexItem);
+						}
+					setTimeout(function(){ 
+						loading.hide();
+					}, 1000);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+					FLUIGC.toast({
+						title: '',
+						message: 'Erro na consulta o Veículo, comunicar Administrador do Sistema' ,
+						type: 'danger'
+					});
+					funcoes.limpaCamposItem(indexItem)
+					loading.hide();
+				}
+			});
+			
+		},
 
 		//Condição para ocultar campo outros motoristas
 		liberOutrosMotoristas : function(){
@@ -29,6 +85,19 @@ var funcoes = (function() {
 var eventsFuncoes = (function() {
 	return {
 		setup : function() {	
+
+			//data set consulta de produtos
+			$(document).on("change", ".libVeiculoLiberado", function() {
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				
+				if( $(this).val().trim() == ""){
+					funcoes.limpaCamposItem(index);
+					
+				}else{
+					funcoes.consultaProduto(index);	
+				}
+				
+			});
 
 		}
 	}

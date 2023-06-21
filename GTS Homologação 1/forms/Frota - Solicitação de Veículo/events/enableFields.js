@@ -72,6 +72,7 @@ function enableFields(form){
 		form.setEnabled("entDataEntrega", false);
 		form.setEnabled("entHoraEntrega", false);
 		form.setEnabled("entColaboradorReti", false);
+		form.setEnabled("entVigilante", false);
 
 	}
 	else if(atv_atual == FIM){
@@ -100,12 +101,14 @@ function enableFields(form){
 		form.setEnabled("entDataEntrega", false);
 		form.setEnabled("entHoraEntrega", false);
 		form.setEnabled("entColaboradorReti", false);
+		form.setEnabled("entVigilante", false);
 
 		//Recebe
 		form.setEnabled("devDataDevolucao", false);
 		form.setEnabled("devHorarioDevolucao", false);
 		form.setEnabled("devKM", false);
 		form.setEnabled("devColabEntrega", false);
+		form.setEnabled("devVigilante", false);
 		form.setEnabled("devObs", false);
 	
 	}

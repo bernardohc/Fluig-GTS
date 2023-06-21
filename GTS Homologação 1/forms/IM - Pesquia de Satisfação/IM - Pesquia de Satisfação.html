@@ -1,0 +1,328 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+	<script>
+		$(document).ready(function() {
+			window.parent.$("#breadcrumb").remove();
+			window.parent.$("#textActivity").text('');
+			window.parent.$("#informationsTab").remove();
+			window.parent.$("#tab-attachments").remove();
+			
+			//Botões de movimentação
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+
+			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").css("display","none");
+			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").removeAttr("data-cancel-workflow-request");
+		});
+	</script>
+
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<div id="navegacao">
+		<ul id="myTab"  class="nav nav-tabs nav-justified" role="tablist">
+			<li class="active" ><a href="#divPesquisa" role="tab" data-toggle="tab" >Pesquisa de Satisfação</a></li>
+			<li><a href="#divPesquisaPosSafra" role="tab" data-toggle="tab">Pesquisa de Satisfação Pós Safra</a></li><!--class="disabled"-->
+		</ul>
+	</div>
+
+	<div class="tab-content">
+		<div class="col-md-12 tab-pane active" id="divPesquisa">
+			<div class="panel panel-primary" id="divPesquisaDeSatisfacao">
+				<div class="panel-heading">
+					<h3 class="panel-title">Pesquisa de Satisfação - Revenda </h3>
+				</div>
+				<div class="panel-body"> 
+					<div class="row">
+						<div class="form-group col-md-3">
+							<label for="pesqData">Data da Pesquisa:</label>
+							<div class="input-group">
+								<input type="text" name="pesqData" id="pesqData" style="pointer-events:none" class="form-control">
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>	
+							</div>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="pesqNumSerie">Número de Série:</label>
+							<input type="text" name="pesqNumSerie" id="pesqNumSerie" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqModelo">Modelo:</label>
+							<input type="text" name="pesqModelo" id="pesqModelo" class="form-control">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="pesqRevenda">Revenda:</label>
+							<input type="text" name="pesqRevenda" id="pesqRevenda" class="form-control">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="pesqCidadeRevenda">Cidade da Revenda:</label>
+							<input type="text" name="pesqCidadeRevenda" id="pesqCidadeRevenda" class="form-control">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-3">
+							<label for="pesqCliente">Cliente:</label>
+							<input type="text" name="pesqCliente" id="pesqCliente" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqCidadeCliente">Cidade do cliente:</label>
+							<input type="text" name="pesqCidadeCliente" id="pesqCidadeCliente" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqAcompanhouEntrega">Quem acompanhou a entrega:</label>
+							<input type="text" name="pesqAcompanhouEntrega" id="pesqAcompanhouEntrega" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqTelefone">Telefone:</label>
+							<input type="text" name="pesqTelefone" id="pesqTelefone" class="form-control">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-4">
+							<label for="pesqNotaAtendimento">Como foi o atendimento?</label>
+							<select name="pesqNotaAtendimento" id="pesqNotaAtendimento" class="form-control">
+								<option value=""></option>
+								<option value="10"> 10 </option>
+								<option value="8"> 8 </option>
+								<option value="6"> 6 </option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="pesqNotaDesempenho">Como está o desempenho do equipamento?</label>
+							<select name="pesqNotaDesempenho" id="pesqNotaDesempenho" class="form-control">
+								<option value=""></option>
+								<option value="10"> 10 </option>
+								<option value="8"> 8 </option>
+								<option value="6"> 6 </option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="pesqFeedback">Feedback:</label>
+							<textarea rows="1" cols="12" name="pesqFeedback" id="pesqFeedback" class="form-control " ></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-3">
+							<label for="pesqPrevColheita">Previsão de Término da Colheita:</label>
+							<div class="input-group">
+								<input type="text" name="pesqPrevColheita" id="pesqPrevColheita" style="pointer-events:none" class="form-control">
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>	
+							</div>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqOcorrencia">Teve Ocorrência</label>
+							<select name="pesqOcorrencia" id="pesqOcorrencia" class="form-control">
+								<option value=""></option>
+								<option value="sim"> Sim </option>
+								<option value="nao"> Não </option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="row">
+					<div class="panel panel-primary" id="divPesqOcorrencia">
+						<div class="panel-heading">
+							<h3 class="panel-title">Ocorrência </h3>
+						</div>
+						<div class="panel-body">
+							
+							
+
+						</div>
+					</div>
+				</div>	
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-primary" id="divPesquisaDeSatisfacaoTec">
+						<div class="panel-heading">
+							<h3 class="panel-title">Pesquisa de Satisfação - Técnico </h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="form-group col-md-3">
+									<label for="pesqTecDataResposta">Data da resposta:</label>
+									<div class="input-group">
+										<input type="text" name="pesqTecDataResposta" id="pesqTecDataResposta" style="pointer-events:none" class="form-control">
+										<span class="input-group-addon">
+											<span class="fluigicon fluigicon-calendar"></span>
+										</span>	
+									</div>
+								</div>
+								<div class="form-group col-md-3">
+									<label for="pesqTecTecnico">Técnico:</label>
+									<input type="text" name="pesqTecTecnico" id="pesqTecTecnico" class="form-control">
+								</div>
+								<div class="form-group col-md-3">
+									<label for="pesqTecNota">Como foi o atentimento do técnico?</label>
+									<select name="pesqTecNota" id="pesqTecNota" class="form-control">
+										<option value=""></option>
+										<option value="10"> 10 </option>
+										<option value="8"> 8 </option>
+										<option value="6"> 6 </option>
+									</select>
+								</div>
+								<div class="form-group col-md-3">
+									<label for="pesqTecNotaDesempenho">Como está o equipamento?</label>
+									<select name="pesqTecNotaDesempenho" id="pesqTecNotaDesempenho" class="form-control">
+										<option value=""></option>
+										<option value="10"> 10 </option>
+										<option value="8"> 8 </option>
+										<option value="6"> 6 </option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="pesqTecFeedback">Feedback:</label>
+									<textarea rows="1" cols="12" name="pesqTecFeedback" id="pesqTecFeedback" class="form-control " ></textarea>
+								</div>
+								<div class="form-group col-md-3">
+									<label for="pesqTecOcorrencia">Teve Ocorrência</label>
+									<select name="pesqTecOcorrencia" id="pesqTecOcorrencia" class="form-control">
+										<option value=""></option>
+										<option value="sim"> Sim </option>
+										<option value="nao"> Não </option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-primary" id="divPesqTecOcorrencia">
+						<div class="panel-heading">
+							<h3 class="panel-title">Ocorrência </h3>
+						</div>
+						<div class="panel-body">
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+
+		<div id="divPesquisaPosSafra" class="tab-pane" id="divPesquisaPosSafra">
+			
+			<div class="panel panel-primary" id="divPesquisaDeSatisfacaoPosSafre">
+				<div class="panel-heading">
+					<h3 class="panel-title">Pesquisa de Satisfação - Revenda Pós Safra </h3>
+				</div>
+				<div class="panel-body"> 
+					<div class="row">
+						<div class="form-group col-md-3">
+							<label for="pesqPosData">Data da Pesquisa:</label>
+							<div class="input-group">
+								<input type="text" name="pesqPosData" id="pesqPosData" style="pointer-events:none" class="form-control">
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>	
+							</div>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="pesqPosNumSerie">Número de Série:</label>
+							<input type="text" name="pesqPosNumSerie" id="pesqPosNumSerie" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqPosModelo">Modelo:</label>
+							<input type="text" name="pesqPosModelo" id="pesqPosModelo" class="form-control">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="pesqPosRevenda">Revenda:</label>
+							<input type="text" name="pesqPosRevenda" id="pesqPosRevenda" class="form-control">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="pesqPosCidadeRevenda">Cidade da Revenda:</label>
+							<input type="text" name="pesqPosCidadeRevenda" id="pesqPosCidadeRevenda" class="form-control">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-3">
+							<label for="pesqPosCliente">Cliente:</label>
+							<input type="text" name="pesqPosCliente" id="pesqPosCliente" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqPosCidadeCliente">Cidade do cliente:</label>
+							<input type="text" name="pesqPosCidadeCliente" id="pesqPosCidadeCliente" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqPosAcompanhouEntrega">Quem acompanhou a entrega:</label>
+							<input type="text" name="pesqPosAcompanhouEntrega" id="pesqPosAcompanhouEntrega" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqPosTelefone">Telefone:</label>
+							<input type="text" name="pesqPosTelefone" id="pesqPosTelefone" class="form-control">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-4">
+							<label for="pesqPosNotaAtendimento">Como foi o atendimento?</label>
+							<select name="pesqPosNotaAtendimento" id="pesqPosNotaAtendimento" class="form-control">
+								<option value=""></option>
+								<option value="10"> 10 </option>
+								<option value="8"> 8 </option>
+								<option value="6"> 6 </option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="pesqPosNotaDesempenho">Como está o desempenho do equipamento?</label>
+							<select name="pesqPosNotaDesempenho" id="pesqPosNotaDesempenho" class="form-control">
+								<option value=""></option>
+								<option value="10"> 10 </option>
+								<option value="8"> 8 </option>
+								<option value="6"> 6 </option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="pesqPosFeedback">Feedback:</label>
+							<textarea rows="1" cols="12" name="pesqPosFeedback" id="pesqPosFeedback" class="form-control " ></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-3">
+							<label for="pesqPosPrevColheita">Previsão de Término da Colheita:</label>
+							<div class="input-group">
+								<input type="text" name="pesqPosPrevColheita" id="pesqPosPrevColheita" style="pointer-events:none" class="form-control">
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>	
+							</div>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="pesqPosOcorrencia">Teve Ocorrência</label>
+							<select name="pesqPosOcorrencia" id="pesqPosOcorrencia" class="form-control">
+								<option value=""></option>
+								<option value="sim"> Sim </option>
+								<option value="nao"> Não </option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>	
+
+	</div>
+	
+</form>
+</div>
+</body>
+</html>

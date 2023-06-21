@@ -33,7 +33,7 @@
 <body onload="loadForm()">
 <div class="fluig-style-guide">
 <form name="form" role="form">
-	<class="col-md-10 col-md-offset-1">
+	<class="col-md-10 col-md-offset-1"> <!-- Verificar-->
 		<div id="mensagemInteracao"></div>
 		<div class="panel panel-primary" id="divSolicitacao">
 			<div class="panel-heading">
@@ -66,20 +66,24 @@
 				<div class="row">
 					<div class="form-group col-md-4">
 						<label for="solObjetivo">Objetivo:</label>
-							<select name="solObjetivo" id="solObjetivo" class="form-control">
-								<option value=""></option>
-								<option value="movimentaInterna">1 - Movimentação Interna</option>
-								<option value="feira">2 - Feira</option>
-								<option value="viagem">3 - Viagem</option>
-							</select>
+						<select name="solObjetivo" id="solObjetivo" class="form-control">
+							<option value=""></option>
+							<option value="movimentaInterna">1 - Movimentação Interna</option>
+							<option value="feira">2 - Feira</option>
+							<option value="viagem">3 - Viagem</option>
+						</select>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="solMotivo">Motivo:</label>
 						<input type="text" name="solMotivo" id="solMotivo" class="form-control">
 					</div>
 					<div class="form-group col-md-4">
-						<label for="solTipo">Tipo:</label>
-						<input type="text" name="solTipo" id="solTipo" class="form-control">
+						<label for="solTipo">Tipo de Veículo:</label>
+						<select name="solTipo" id="solTipo" class="form-control">
+							<option value=""></option>
+							<option value="passeio">Passeio</option>
+							<option value="utilitario">Utilitário (Carroceria)</option>
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -204,6 +208,12 @@
 						<input type="text" name="entColaboradorReti" id="entColaboradorReti" class="form-control">
 					</div>
 				</div>
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="entVigilante">Vigilante da entrega:</label>
+						<input type="text" name="entVigilante" id="entVigilante" class="form-control">
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-primary" id="divDevolucaoGuarita">
@@ -236,11 +246,15 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-4">
 						<label for="devColabEntrega">Colaborador que Entregou:</label>
 						<input type="text" name="devColabEntrega" id="devColabEntrega" class="form-control">
 					</div>
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-4">
+						<label for="devVigilante">Vigilante da Devolução:</label>
+						<input type="text" name="devVigilante" id="devVigilante" class="form-control">
+					</div>
+					<div class="form-group col-md-4">
 						<label for="devObs">Observação:</label>
 						<textarea rows="1" cols="12" name="devObs" id="devObs" class="form-control " ></textarea>
 					</div>

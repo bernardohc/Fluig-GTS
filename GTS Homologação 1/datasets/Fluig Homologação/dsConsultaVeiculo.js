@@ -6,18 +6,18 @@ function createDataset(fields, constraints, sortFields) {
 
 	try{
 			
-		var cPROD  = '';
+		var cVEICULO  = '';
 
 		for (var i in constraints){
-			if ( constraints[i].getFieldName().toString() == 'cPROD' ) {
-				cPROD = constraints[i].initialValue;
+			if ( constraints[i].getFieldName().toString() == 'cVEICULO' ) {
+				cVEICULO = constraints[i].initialValue;
 			}
 		}
 		
 		var camposValidos = true;
-		if(cPROD == ''){
+		if(cVEICULO == ''){
 			camposValidos = false;
-			newDataset.addRow(new Array('2', 'Código do produto não preenchido'));
+			newDataset.addRow(new Array('2', 'Código do Veículo não preenchido'));
 		}
 		
 		if(!camposValidos){
@@ -28,7 +28,7 @@ function createDataset(fields, constraints, sortFields) {
 		var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'PROTHEUSGTS_REST',
-	            endpoint : '/rest/ws_gts_fluig/getMaquina?CPROD='+ cPROD,
+	            endpoint : '/rest/WSFROTASOLVEICULO/getPlaca?CBEM='+ cVEICULO,
 	            method : 'get',
 	            timeoutService: '100', // segundos
             	headers: {

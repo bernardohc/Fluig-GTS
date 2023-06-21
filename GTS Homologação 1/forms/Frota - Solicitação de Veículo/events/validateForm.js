@@ -28,6 +28,10 @@ function validateForm(form){
                     message += getMessage("Motivo", 1, form);
                     hasErros = true;
                 }
+                if (isEmpty("solTipo", form)) {
+                    message += getMessage("Tipo de Veículo", 1, form);
+                    hasErros = true;
+                }
                 if (isEmpty("solMotorista", form)) {
                     message += getMessage("Motorista", 1, form);
                     hasErros = true;
@@ -95,6 +99,10 @@ function validateForm(form){
                     message += getMessage("Colaborador que Retirou", 1, form);
                     hasErros = true;
                 } 
+                if (isEmpty("entVigilante", form)) {
+                    message += getMessage("Vigilante da entrega", 1, form);
+                    hasErros = true;
+                }
             }
         break;
 
@@ -115,6 +123,10 @@ function validateForm(form){
                 }
                 if (isEmpty("devColabEntrega", form)) {
                     message += getMessage("Colaborador que entregou", 1, form);
+                    hasErros = true;
+                }
+                if (isEmpty("devVigilante", form)) {
+                    message += getMessage("Vigilante da Devolução", 1, form);
                     hasErros = true;
                 }
             }

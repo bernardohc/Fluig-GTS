@@ -15,21 +15,6 @@ function injetarFuncoesUteisJS(form, customHTML) {
 	log.info("#### FIM injetarFuncoesUteisJS...");
 }
 
-/*
- * Método para retornar os Dados do dataSet selecionado
- */
-function getValorDataSet(nomeDataSet, campoIdDataSet, valorIdDataSet, nomeCampo) {
-	var dataSet = DatasetFactory.getDataset(nomeDataSet, null, null, null);
-	var valorCampo = false;
-
-	for ( var i = 0; i < dataSet.rowsCount; i++) {
-		if (dataSet.getValue(i, valorIdDataSet) == valorIdDataSet) {
-			valorCampo = dataSet.getValue(i, nomeCampo);
-		}
-	}
-	return valorCampo;
-}
-
 function isEmpty(campo, form) {
     var valor = form.getValue(campo);
     return valor == null || valor.trim().length() == 0 || typeof valor === undefined || valor.trim() == '0' || valor.trim() == '0,00';
