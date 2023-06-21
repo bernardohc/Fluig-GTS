@@ -1,6 +1,0 @@
-var INICIO_0 = 0;
-var INICIO = 4;
-var REPRESENTANTE = 5;
-var GESTOR_TERRITORIAL = 11;
-var GESTOR_COMERCIAL = 13;
-var FIM = 24;

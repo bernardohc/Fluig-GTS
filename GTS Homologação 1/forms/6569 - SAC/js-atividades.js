@@ -1,5 +1,0 @@
-var INICIO_0 = 0;
-var INICIO = 4;
-var CADASTRA_SAC = 13;
-var ATENDIMENTO_SETOR = 5;
-var FIM = 11;
