@@ -1409,6 +1409,107 @@
    </array>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 6509</string>
+   <array class="java.lang.String" length="32">
+    <void index="0">
+     <string>aprovReembolsoObs</string>
+    </void>
+    <void index="1">
+     <string>aprovRelatorio</string>
+    </void>
+    <void index="2">
+     <string>aprovRevisaoObs</string>
+    </void>
+    <void index="3">
+     <string>codigoID</string>
+    </void>
+    <void index="4">
+     <string>dataAbertura</string>
+    </void>
+    <void index="5">
+     <string>grupoAnalisaRelatorio</string>
+    </void>
+    <void index="6">
+     <string>itSolCentroCusto</string>
+    </void>
+    <void index="7">
+     <string>itSolObsDespesaItem</string>
+    </void>
+    <void index="8">
+     <string>itSolTipoDespesaItem</string>
+    </void>
+    <void index="9">
+     <string>itSolTipoPagamento</string>
+    </void>
+    <void index="10">
+     <string>itSolValorDespesa</string>
+    </void>
+    <void index="11">
+     <string>nomeAnexo</string>
+    </void>
+    <void index="12">
+     <string>numFluig</string>
+    </void>
+    <void index="13">
+     <string>processoId</string>
+    </void>
+    <void index="14">
+     <string>revisaoRelatorio</string>
+    </void>
+    <void index="15">
+     <string>salvarEnviar</string>
+    </void>
+    <void index="16">
+     <string>setor</string>
+    </void>
+    <void index="17">
+     <string>solDataDocumento</string>
+    </void>
+    <void index="18">
+     <string>solDataRelatorio</string>
+    </void>
+    <void index="19">
+     <string>solDataRetorno</string>
+    </void>
+    <void index="20">
+     <string>solDataSaida</string>
+    </void>
+    <void index="21">
+     <string>solDocumento</string>
+    </void>
+    <void index="22">
+     <string>solEstabelecimento</string>
+    </void>
+    <void index="23">
+     <string>solMatSolicitante</string>
+    </void>
+    <void index="24">
+     <string>solMoeda</string>
+    </void>
+    <void index="25">
+     <string>solNomeSolicitante</string>
+    </void>
+    <void index="26">
+     <string>solNumColaboradores</string>
+    </void>
+    <void index="27">
+     <string>solSaldo</string>
+    </void>
+    <void index="28">
+     <string>solTbDespesas</string>
+    </void>
+    <void index="29">
+     <string>solTotalDespesas</string>
+    </void>
+    <void index="30">
+     <string>solValorAdiantamento</string>
+    </void>
+    <void index="31">
+     <string>solValorDiaria</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>mecanismoPapel</string>
    <object class="java.util.ArrayList">
     <void method="add">

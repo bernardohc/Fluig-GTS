@@ -2,7 +2,7 @@ function createDataset(fields, constraints, sortFields) {
 	var newDataset = DatasetBuilder.newDataset();
 	newDataset.addColumn("CODRET");
 	newDataset.addColumn("CMSG");
-	newDataset.addColumn("CDESC");
+	newDataset.addColumn("CBEM");
 
 	try{
 			
@@ -49,7 +49,7 @@ function createDataset(fields, constraints, sortFields) {
             	newDataset.addRow( new Array( 
             				CODRET, 
 							'Sucesso', 
-							result.CDESC
+							result.CBEM
 							));
             }else{
 				var CMSG    = result.CMSG;
