@@ -1,10 +1,73 @@
 //Aqui cria as funcioes
 var funcoes = (function() {
 	var loading = FLUIGC.loading(window);
+	var index = 0;
 
 	return {
 		start : function() {
 			eventsFuncoes.setup();
+		},
+
+		limpaCamposLibVeiculo: function(indexItem){
+			$("#libVeiculoLiberado").val('');
+			$("#libPlaca").val('');
+		},
+
+		//Dataset consulta veiculos
+		consultaVeiculo : function(indexItem){
+			
+			let codVeiculo = $("#libVeiculoLiberado").val();
+
+			if( codVeiculo.trim() == "" ){
+				return;
+			}
+
+			var loading = FLUIGC.loading(window);
+			loading.show();
+			
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				async: true,
+				url: "/api/public/ecm/dataset/search?datasetId=dsConsultaVeiculo&filterFields=CBEM,"+codVeiculo,
+				
+				success: function (data, status, xhr) {
+					if (data != null && data.content != null && data.content.length > 0) {
+						const records = data.content;
+						if( records[0].CODRET == "1"){
+							var record = records[0];
+							var placaVeiculo = record.CDESC;
+
+							$("#libPlaca").val(placaVeiculo);
+							console.log("Placa do Veiculo " + placaVeiculo);
+							
+						}else if (records[0].CODRET == "2"){
+							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
+							funcoes.limpaCamposLibVeiculo(indexItem);
+							
+						}
+						
+					}else{
+							FLUIGC.toast({ title: '', message: 'Erro ao consultar o item, comunicar o Administrador do Sistema!', type: 'danger' });
+							funcoes.limpaCamposLibVeiculo(indexItem);
+						}
+					setTimeout(function(){ 
+						loading.hide();
+					}, 1000);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+					FLUIGC.toast({
+						title: '',
+						message: 'Erro na consulta do Veiculo, comunicar Administrador do Sistema' ,
+						type: 'danger'
+					});
+					funcoes.limpaCamposLibVeiculo(indexItem)
+					loading.hide();
+				}
+			});
+			
 		},
 
 		//Condição para ocultar campo outros motoristas
@@ -26,12 +89,24 @@ var eventsFuncoes = (function() {
 	return {
 		setup : function() {	
 
-			
-
 		}
 	}
 });
 
+//Gatilho data set consulta veiculos
+$(document).on("change", "#libVeiculoLiberado", function() {
+	var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				
+	if( $(this).val().trim() == ""){
+		funcoes.limpaCamposLibVeiculo(index);
+		console.log("Limpou campo")
+
+	}else{
+		console.log("Acionou gatilho")
+		funcoes.consultaVeiculo(index);	
+	}
+
+});
 
 //Chama função para liberar campo outros motoristas
 $(document).on("change", "#solQuantPessoas", function() {

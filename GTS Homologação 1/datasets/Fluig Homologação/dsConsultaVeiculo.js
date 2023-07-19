@@ -2,20 +2,20 @@ function createDataset(fields, constraints, sortFields) {
 	var newDataset = DatasetBuilder.newDataset();
 	newDataset.addColumn("CODRET");
 	newDataset.addColumn("CMSG");
-	newDataset.addColumn("CBEM");
+	newDataset.addColumn("CDESC");
 
 	try{
 			
-		var cVEICULO  = '';
+		var CBEM  = '';
 
 		for (var i in constraints){
-			if ( constraints[i].getFieldName().toString() == 'cVEICULO' ) {
-				cVEICULO = constraints[i].initialValue;
+			if ( constraints[i].getFieldName().toString() == 'CBEM' ) {
+				CBEM = constraints[i].initialValue;
 			}
 		}
 		
 		var camposValidos = true;
-		if(cVEICULO == ''){
+		if(CBEM == ''){
 			camposValidos = false;
 			newDataset.addRow(new Array('2', 'Código do Veículo não preenchido'));
 		}
@@ -28,7 +28,7 @@ function createDataset(fields, constraints, sortFields) {
 		var data = {
 	            companyId : getValue("WKCompany") + '',
 	            serviceCode : 'PROTHEUSGTS_REST',
-	            endpoint : '/rest/WSFROTASOLVEICULO/getPlaca?CBEM='+ cVEICULO,
+	            endpoint : '/rest/WSFROTASOLVEICULO/getPlaca?CBEM='+ CBEM,
 	            method : 'get',
 	            timeoutService: '100', // segundos
             	headers: {
@@ -49,7 +49,7 @@ function createDataset(fields, constraints, sortFields) {
             	newDataset.addRow( new Array( 
             				CODRET, 
 							'Sucesso', 
-							result.CBEM
+							result.CDESC
 							));
             }else{
 				var CMSG    = result.CMSG;

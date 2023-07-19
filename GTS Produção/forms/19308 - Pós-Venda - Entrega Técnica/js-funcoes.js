@@ -1,10 +1,7 @@
-
 $(document).ready(function() {
 	setTimeout(function() {
 		funcoes.start();
 	}, 100)
-	
-	
 });
 //Aqui cria as funcioes
 var funcoes = (function() {
@@ -157,9 +154,6 @@ var funcoes = (function() {
 	    				}else if (records[0].CODRET == "2"){
 		    	    		FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
 		    	    		
-//		    	    		$('#equipTipoNotaHidden').val("ND");
-//		    	    		$('#equipTipoNota').val("ND");
-//		    	    		$('#equipNumNotaFiscal').prop('readonly', false);
 		    				$('#equipFilialNotaFiscal').val('');
 		    				$('#equipNumNotaFiscal').val('');
 		    				$('#equipCodProduto').val('');
@@ -405,6 +399,68 @@ var funcoes = (function() {
 			validafunctions.setMoeda("NFvalValorTotal", 2, false , '');
 
 		},
+		
+		/*
+		 * CONSULTA REVENDA PARA PAGAMENTO
+		 */
+		consultaRevendaPagamento : function(){
+			
+			let OCCpfCnpj = $('#OCCpfCnpj').val().replace(/[^0-9]/g, "").trim();
+			
+			var loading = FLUIGC.loading(window);
+			loading.show();
+			
+			$.ajax({
+	    		type: "GET",
+	    		dataType: "json",
+	    		async: true,
+	    		url: "/api/public/ecm/dataset/search?datasetId=dsEntTecConsultaFornecedor&filterFields=CNPJFornecedor,"+OCCpfCnpj,
+	    		data: "",
+	    	    success: function (data, status, xhr) {
+	    	    	
+	    	    	if (data != null && data.content != null && data.content.length > 0) {
+	    	    		const records = data.content;
+	    	    		console.log(records)
+	    	    		if( records[0].CODRET == "1"){
+	    		            let record = records[0];
+	    					let FORNRAZAOSOCIAL = record.FORNRAZAOSOCIAL;
+	    					let FORNNFANTASIA = record.FORNNFANTASIA;
+	    					
+	    					$("#OCRazaoSocialRevenda").val(FORNRAZAOSOCIAL);
+	    					$("#OCNomeFantasiaRevenda").val(FORNNFANTASIA);
+    			    		
+	    	    		}else if (records[0].CODRET == "2"){
+	    	    			
+    	    				FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+    	    				$("#OCRazaoSocialRevenda").val('');
+	    					$("#OCNomeFantasiaRevenda").val('');
+		    	    	}
+	    	    		
+	    	    		
+	    	    	}else{
+	    	    		
+    	    			FLUIGC.toast({ title: '', message: 'CNPJ do Fornecedor não localizado.', type: 'warning' });
+    	    			$("#OCRazaoSocialRevenda").val('');
+    					$("#OCNomeFantasiaRevenda").val('');
+    					
+	    	    	}
+	    	    	setTimeout(function(){ 
+	    	    		loading.hide();
+	    	    	}, 1000);
+	    	    },
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+	    	    	console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+	    	    	FLUIGC.toast({
+			    		title: '',
+			    		message: 'Erro na consulta do fornecedor, comunicar o Administrador do Sistema!' ,
+			    		type: 'danger'
+			    	});
+	    	    	loading.hide();
+				}
+			});
+			
+		},
+		
 		/*
 		 * Utils
 		 */
@@ -417,13 +473,26 @@ var funcoes = (function() {
 			}
 		},
 		
-		mascaraTelefone : function(idCampo){
+		mascaraTelefone : function(idCampo, event){
 			$('#'+idCampo).unmask();
-			//11 dígitos de somente número ddd + numero
-			if($('#'+idCampo).val().replace(/[^0-9]/g, "").trim().length == 11){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
-				$('#'+idCampo).mask('(00) 00000-0009');
-			} else {
-				$('#'+idCampo).mask('(00) 0000-00009');
+			if($('#A1_PAIS').val() == 'PAR'){
+				let incluiCodArea = true;
+				if(event){
+					if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9){
+						//46 backspace 8 delete 9 tab
+						incluiCodArea = false;
+					}
+				}
+				if($('#'+idCampo).val().trim() == '' && incluiCodArea ){
+					$('#'+idCampo).val( '(595) ' +  $('#'+idCampo).val());
+				}
+			}else{
+				//11 dígitos de somente número ddd + numero
+				if($('#'+idCampo).val().replace(/[^0-9]/g, "").trim().length == 11){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+					$('#'+idCampo).mask('(00) 00000-0009');
+				} else {
+					$('#'+idCampo).mask('(00) 0000-00009');
+				}
 			}
 		},
 		
@@ -552,24 +621,24 @@ var eventsFuncoes = (function() {
 			/*
 			 * Cadastro da Loja (Revenda)
 			 */
-			$(document).on("keyup blur", "#revContVendasTelefone", function() {	
-				funcoes.mascaraTelefone('revContVendasTelefone');
+			$(document).on("keydown", "#revContVendasTelefone", function(event) {	
+				funcoes.mascaraTelefone('revContVendasTelefone', event);
 			});
-			$(document).on("keyup blur", "#revContPecasTelefone", function() {	
-				funcoes.mascaraTelefone('revContPecasTelefone');
+			$(document).on("keydown", "#revContPecasTelefone", function(event) {	
+				funcoes.mascaraTelefone('revContPecasTelefone', event);
 			});
-			$(document).on("keyup blur", "#revContServicoTelefone", function() {	
-				funcoes.mascaraTelefone('revContServicoTelefone');
+			$(document).on("keydown", "#revContServicoTelefone", function(event) {	
+				funcoes.mascaraTelefone('revContServicoTelefone', event);
 			});
-			$(document).on("keyup blur", "#revEntTecTelefone", function() {	
-				funcoes.mascaraTelefone('revEntTecTelefone');
+			$(document).on("keydown", "#revEntTecTelefone", function(event) {	
+				funcoes.mascaraTelefone('revEntTecTelefone', event);
 			});
 			
 			/*
 			 * Protocolo de Recebimento do Cliente Final
 			 */
-			$(document).on("keyup blur", "#protoRecTelefone", function() {	
-				funcoes.mascaraTelefone('protoRecTelefone');
+			$(document).on("keydown", "#protoRecTelefone", function(event) {	
+				funcoes.mascaraTelefone('protoRecTelefone', event);
 			});
 			
 			$(document).on("change", "input:radio[name='protoRecPossuiAvarias']", function() {
@@ -632,6 +701,205 @@ var eventsFuncoes = (function() {
 			 * CLIENTE
 			 */
 			/**
+			 * E-mail de solicitação para cadastro de cliente na base do Protheus
+			 */
+			 $(document).on("click", "#btnSolicCadCliente", function() {
+				
+				let html =  "<div class='fluig-style-guide'>" +
+								"<div class='row'>"+
+									"<div class='col-md-9' align='left'>"+
+										"<label for='emailDestinatariosCadCliente'>E-mails destinatários (separados por ;)</label>" +
+										"<input type='text' class='form-control' id='emailDestinatariosCadCliente' value='cadastros@gtsdobrasil.com.br;adm.posvendas@gtsdobrasil.com.br' />" +
+									"</div>" +
+									"<div class='col-md-3' align='left'>"+
+										"<label >&nbsp;</label>" +
+										"<button type='button' class='btn btn-primary btn-block' id='btnEnvEmailSolicCadCliente'>Solicitar Cadastro</button>"+
+									"</div>" +
+								"</div>"+
+							"</div>";
+
+				const modalEmailSolicitacaoCadCliente = FLUIGC.modal({
+						title: 'Solicitação de Cadastro de Cliente',
+						content: html,
+						formModal: false,
+						size: 'large',
+						id: 'modal-EmailSolicitacaoCadCliente',
+						actions: [{
+									'label': 'Fechar',
+									'autoClose': true
+									}]
+						}, function(err, data) {
+							if(err) {
+								FLUIGC.toast({ title: 'Erro:', message: err, type: 'danger' });
+								loading.hide();
+							} else {
+
+								$('#btnEnvEmailSolicCadCliente').click(function() {
+
+									let loading = FLUIGC.loading(window);
+									loading.show();
+									
+									let emailDestinatarios = $('#emailDestinatariosCadCliente').val();
+									let numFluig = $('#numFluig').val();
+									let cliPais = '';
+									if( $('#cliPais').val() == 'BRA' ){
+										cliPais = 'Brasil';
+									}else if( $('#cliPais').val() == 'PAR' ){
+										cliPais = 'Paraguai';
+									}
+									let cliCpfCnpj = $('#cliCpfCnpj').val();
+									let cliInscricaoEstadual = $('#cliInscricaoEstadual').val();
+									let cliRUC = $('#cliRUC').val();
+									let cliNomeCliente = $('#cliNomeCliente').val();
+									let cliCEP = $('#cliCEP').val();
+									let cliEndereco = $('#cliEndereco').val();
+									let cliBairro = $('#cliBairro').val();
+									let cliComplemento = $('#cliComplemento').val();
+									let cliCidade = $('#cliCidade').val();
+									let cliEstado = $('#cliEstadoHidden').val();
+									let cliTelefone = $('#cliTelefone').val();
+									let cliEmail = $('#cliEmail').val();
+
+									const cstEmailSolicCadCliente = [
+											{
+												"_field": "emailDestinatarios",
+												"_initialValue": emailDestinatarios,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "numFluig",
+												"_initialValue": numFluig,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliPais",
+												"_initialValue": cliPais,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliCpfCnpj",
+												"_initialValue": cliCpfCnpj,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliInscricaoEstadual",
+												"_initialValue": cliInscricaoEstadual,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliRUC",
+												"_initialValue": cliRUC,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliNomeCliente",
+												"_initialValue": cliNomeCliente,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliCEP",
+												"_initialValue": cliCEP,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliEndereco",
+												"_initialValue": cliEndereco,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliBairro",
+												"_initialValue": cliBairro,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliComplemento",
+												"_initialValue": cliComplemento,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliCidade",
+												"_initialValue": cliCidade,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliEstado",
+												"_initialValue": cliEstado,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliTelefone",
+												"_initialValue": cliTelefone,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											},{
+												"_field": "cliEmail",
+												"_initialValue": cliEmail,
+												"_finalValue": "",
+												"_type": 1,
+												"_likeSearch": false
+											}
+										];
+
+									const dataRequest = {
+											"name": "dsEntTecEmailSolicCadCliente",
+											"fields": [] ,
+											"constraints": cstEmailSolicCadCliente,
+											"order": []
+									}	
+
+									$.ajax({
+										async: true,
+										type: "POST",
+										url: "/api/public/ecm/dataset/datasets",
+										data: JSON.stringify(dataRequest),
+										contentType: 'application/json',
+										success: function (data, status, xhr) {
+											if (data != null && data.content != null && data.content.values.length > 0) {
+												const record = data.content.values[0];
+												if(record.CODRET.trim() == '1'){
+													FLUIGC.toast({message: record.MSGRET.trim() , type: 'success'});
+
+													setTimeout(function(){ 
+														modalEmailSolicitacaoCadCliente.remove();
+													}, 900);
+													
+												}else{
+													FLUIGC.toast({message: record.MSGRET.trim() , type: 'danger'});
+												}
+
+												setTimeout(function(){ 
+													loading.hide();
+												}, 1000);
+											}
+										},
+										error: function(XMLHttpRequest, textStatus, errorThrown) {
+											console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+											FLUIGC.toast({message: 'Erro ao disparar e-mail, comunique o Administrador do Sistema!', type: 'danger'});
+											setTimeout(function(){ 
+												loading.hide();
+											}, 1000);
+										}
+									});
+								});
+							}
+					});
+			});
+			
+			/**
 			 * Tira a mascara de CPF/CNPJ quando coloca o focos e estiver vazio
 			 */
 			$(document).on("focusin", "#cliCpfCnpj", function(e) {
@@ -652,7 +920,7 @@ var eventsFuncoes = (function() {
 					funcoes.mascaraCpfCnpj('cliCpfCnpj');
 					
 					//Se limpar tudo, tira mascara
-					if (event.keyCode == 46 || event.keyCode == 8){
+					if (e.keyCode == 46 || e.keyCode == 8){
 						if($('#cliCpfCnpj').val().trim() == ''){
 							$("#cliCpfCnpj").unmask();
 						}
@@ -802,11 +1070,11 @@ var eventsFuncoes = (function() {
 			/**
 			 * Gatilho para mascara de Telefone
 			 */
-			$(document).on("keyup blur", "#cliTelefone", function() {	
-				funcoes.mascaraTelefone('cliTelefone');
+			$(document).on("keydown", "#cliTelefone", function(event) {	
+				funcoes.mascaraTelefone('cliTelefone', event);
 			});
-			$(document).on("keyup blur", "#cliTelefonePesqSatisfacao", function() {	
-				funcoes.mascaraTelefone('cliTelefonePesqSatisfacao');
+			$(document).on("keydown", "#cliTelefonePesqSatisfacao", function(event) {	
+				funcoes.mascaraTelefone('cliTelefonePesqSatisfacao', event);
 			});
 			
 			/**
@@ -874,7 +1142,7 @@ var eventsFuncoes = (function() {
 				
 				if(propRuralCidade.trim() == ''){
 					FLUIGC.toast({ title: '', message: "É preciso preecher o campo 'Cidade' para adicionar uma 'Propriedade Rural'.", type: 'warning' });
-				}else if(propRuralEstado.trim() == ''){
+				}else if(propRuralEstado.trim() == '' && $('#A1_PAIS').val() == "BRA" ){
 					FLUIGC.toast({ title: '', message: "É preciso preecher o campo 'Estado' para adicionar uma 'Propriedade Rural'.", type: 'warning' });
 				}else if(propRuralNomePropriedade.trim() == ''){
 					FLUIGC.toast({ title: '', message: "É preciso preecher o campo 'Nome da Propriedade' para adicionar uma 'Propriedade Rural'.", type: 'warning' });
@@ -914,6 +1182,25 @@ var eventsFuncoes = (function() {
 				$("#propRuralEntrega___"+indexChange).prop('checked', true);
 			});
 			
+			/**
+			 * Gatilho para quando aprova a Entrega Técnica, e define se vai gerar o pagamento.
+			 */
+			$(document).on("change", "input:radio[name='entTecAprov']", function() {
+				var entTecAprov = $("input:radio[name='entTecAprov']:checked").val();
+				
+				if(entTecAprov == 'aprovado'){
+					//Só pode ter a opção de pagamento se o Solicitante foi Revenda e não for equipamento GreenSystem
+					if( $('#tipoSolicitante').val() == 'Revenda' && $('#equipNumSerie').val().substring(0, 3) != 'FGS'){
+						$('#divConfirmaGeracaoPagto').show();
+					}
+				}else if(entTecAprov == 'reprovado'){
+					$('#divConfirmaGeracaoPagto').hide();
+					$("input:radio[name='entTecGeracaoPagto']").prop( "checked", false );
+				}
+				
+			});
+			
+			
 			/*
 			 * EMISSÃO NOTA FISCAL
 			 */
@@ -939,25 +1226,6 @@ var eventsFuncoes = (function() {
 			/*
 			 * Nota Fiscal/Forma de Pagamento
 			 */
-			/**
-			 * Quando seleciona a forma de pagamento (Boleto ou Transferência)
-			 */
-			$(document).on("change", "input:radio[name='NFPagtoFormaPagamento']", function() {
-				var NFPagtoFormaPagamento = $("input:radio[name='NFPagtoFormaPagamento']:checked").val();
-				
-				if(NFPagtoFormaPagamento == 'boleto'){
-					
-					$('#divPagtoBoleto').show();
-					$('#divPagtoTranferencia').hide();
-					
-				}else if(NFPagtoFormaPagamento == 'transferencia'){
-					
-					$('#divPagtoBoleto').hide();
-					$('#divPagtoTranferencia').show();
-					
-				}
-				
-			});
 			/**
 			 * Transforma a mascara da forma de pagamento de Transferencia
 			 */
@@ -1013,7 +1281,7 @@ var eventsFuncoes = (function() {
 					funcoes.mascaraCpfCnpj('OCCpfCnpj');
 					
 					//Se limpar tudo, tira mascara
-					if (event.keyCode == 46 || event.keyCode == 8){
+					if (e.keyCode == 46 || e.keyCode == 8){
 						if($('#OCCpfCnpj').val().trim() == ''){
 							$("#OCCpfCnpj").unmask();
 						}
@@ -1025,13 +1293,8 @@ var eventsFuncoes = (function() {
 			 * 
 			 */
 			$(document).on("change", "#OCCpfCnpj", function() {
-				if($("#OCCpfCnpj").val().trim().length == 0){
-					
-					funcoes.limpaCamposCliente();
-					funcoes.somenteLeituraCamposCliente(true);
-					
-				}else if($("#OCCpfCnpj").val().trim().length == 14 || $("#OCCpfCnpj").val().trim().length == 18){
-//					funcoes.consultaRevendaPagamento('cpfCnpj');
+				if($("#OCCpfCnpj").val().trim().length == 14 || $("#OCCpfCnpj").val().trim().length == 18){
+					funcoes.consultaRevendaPagamento('cpfCnpj');
 					
 				}else{
 					FLUIGC.toast({ title: '', message: 'O CPF/CNPJ não está preenchido corretamente!', type: 'warning' });
@@ -1195,6 +1458,47 @@ function loadForm(){
 		}
 		
 	}else if(CURRENT_STATE == FORMALIZA){
+		
+		/*
+		 * Cadastro do Equipamento
+		 */
+		FLUIGC.calendar('#equipDataEntrega',{
+			  language: 'pt-br',
+			  maxDate: today,
+			  pickDate: true,
+			  pickTime: false,
+			  showToday: true
+
+		});
+		
+		/*
+		 * Cadastro da Loja (Revenda)
+		 */
+		$("#revEntTecCpf").mask("000.000.000-00");
+		
+		/*
+		 * Protocolo de Recebimento do Cliente Final
+		 */
+		FLUIGC.calendar('#protoRecDataRecebimento',{
+			  language: 'pt-br',
+			  maxDate: today,
+			  pickDate: true,
+			  pickTime: false,
+			  showToday: true
+
+		});
+		
+		/*
+		 * CLIENTE
+		 */
+		funcoes.mascaraCpfCnpj('cliCpfCnpj');
+		funcoes.mascaraCep('cliCEP');
+		if($('#cliCpfCnpj').val().trim() != '' && $('#cliInscricaoEstadual').val().trim() != ''
+			&& $('#cliCodigo').val().trim() == ''){
+			funcoes.somenteLeituraCamposCliente(false);
+		}
+		
+	}else if(CURRENT_STATE == ANALISA_RETORNO_GTS){
 		
 		/*
 		 * Cadastro do Equipamento

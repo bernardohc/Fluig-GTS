@@ -39,7 +39,7 @@ var funcoes = (function() {
 				type: "GET",
 				dataType: "json",
 				async: true,
-				url: "/api/public/ecm/dataset/search?datasetId=dsPCPConsultaMaquina&filterFields=cPROD,"+codProduto,
+				url: "/api/public/ecm/dataset/search?datasetId=dsPCPConsultaMaquina&filterFields=cBEM,"+codProduto,
 				
 				success: function (data, status, xhr) {
 					if (data != null && data.content != null && data.content.length > 0) {
@@ -48,6 +48,7 @@ var funcoes = (function() {
 							var record = records[0];
 							var DescricaoItem = record.CDESC;
 							
+							console.log(DescricaoItem);
 							$("#solDescAtual___"+indexItem).val(DescricaoItem);
 							
 						}else if (records[0].CODRET == "2"){

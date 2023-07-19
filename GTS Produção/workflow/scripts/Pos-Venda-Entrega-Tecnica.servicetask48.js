@@ -28,9 +28,10 @@ function servicetask48(attempt, message) {
 		var formaPagtoTransfCodIdentificador = DatasetFactory.createConstraint("formaPagtoTransfCodIdentificador",hAPI.getCardValue("NFPagtoCodIdentificador"), "", ConstraintType.MUST); 
 		var formaPagtoTransfNome = DatasetFactory.createConstraint("formaPagtoTransfNome",hAPI.getCardValue("NFPagtoNome"), "", ConstraintType.MUST); 
 		var formaPagtoTransfCpfCnpj = DatasetFactory.createConstraint("formaPagtoTransfCpfCnpj",hAPI.getCardValue("NFPagtoCpfCnpj"), "", ConstraintType.MUST); 
-			
+		var dataPrevPagto = DatasetFactory.createConstraint("dataPrevPagto", hAPI.getCardValue("NFAprovDataPrevPagto"), "", ConstraintType.MUST); 
+	
 
-		var constraints = new Array(destinatarios, cstIdAnexoNotaFiscal, cstIdAnexoBoleto, numOC, numFluig, formaPagto, formaPagtoTransfBanco, formaPagtoTransfAgencia, formaPagtoTransfConta, formaPagtoTransfCodIdentificador, formaPagtoTransfNome, formaPagtoTransfCpfCnpj);
+		var constraints = new Array(destinatarios, cstIdAnexoNotaFiscal, cstIdAnexoBoleto, numOC, numFluig, formaPagto, formaPagtoTransfBanco, formaPagtoTransfAgencia, formaPagtoTransfConta, formaPagtoTransfCodIdentificador, formaPagtoTransfNome, formaPagtoTransfCpfCnpj, dataPrevPagto);
 		 
 		var dataset = DatasetFactory.getDataset("dsEntTecEmailInternoOC", null, constraints, null);
 		if(dsTemValor(dataset)){
