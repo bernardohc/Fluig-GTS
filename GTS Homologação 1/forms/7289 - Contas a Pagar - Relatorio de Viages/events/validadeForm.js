@@ -43,25 +43,22 @@ function validateForm(form){
             //Se for clicado em Enviar 
             if (getValue("WKCompletTask") == "true" ){
 
-                /*if (isEmpty("setor", form)) {
-                    message += getMessage("Setor", 1, form);
-                    hasErros = true;
-                }else if (isEmpty("grupoAnalisaRelatorio", form)) {
-                    message += getMessage("Grupo Analisa Relatório", 1, form);
+                if (isEmpty("solSetor", form)) {
+                    message += getMessage("Campo - Setor", 1, form);
                     hasErros = true;
                 }
-                if (!isEmpty("solValorAdiantamento", form) & isEmpty("solMoeda", form)) {
-                    message += getMessage("Tipo de Moeda", 1, form);
+                if (!isEmpty("solAdianta", form) & isEmpty("solMoeda", form)) {
+                    message += getMessage("Campo - Tipo de Moeda", 1, form);
                     hasErros = true;
                 }
                 if (isEmpty("solDataSaida", form)) {
-                    message += getMessage("Data de Saída", 1, form);
+                    message += getMessage("Campo - Data de Saída", 1, form);
                     hasErros = true;
                 }
-                if (isEmpty("solDataRetorno", form)) {
-                    message += getMessage("Data de Retorno", 1, form);
+                if (isEmpty("solDataRet", form)) {
+                    message += getMessage("Campo - Data de Retorno", 1, form);
                     hasErros = true;
-                }*/ 
+                }
                 
                 
                 //Despesas da Viagem
@@ -102,7 +99,7 @@ function validateForm(form){
                         message += getMessage("Número do Documento", 1, form, "Itens de despesa");
                         hasErros = true;
                         }
-                         if (isEmpty("solDataDocumento___" + indexesSolTbDespesas[i], form)) {
+                        if (isEmpty("solDataDocumento___" + indexesSolTbDespesas[i], form)) {
                         message += getMessage("Data do Documento", 1, form, "Itens de despesa");
                         hasErros = true;
                         }                   
@@ -113,11 +110,11 @@ function validateForm(form){
                         if (isEmpty("itSolTipoDespesaItem___" + indexesSolTbDespesas[i], form)) {
                         message += getMessage("Classificação de Despesa", 1, form, "Itens de despesa");
                         hasErros = true;
-                           }
-                          if (isEmpty("itSolValorDespesa___" + indexesSolTbDespesas[i], form)) {
+                        }
+                        if (isEmpty("itSolValorDespesa___" + indexesSolTbDespesas[i], form)) {
                         message += getMessage("Valor da Despesa", 1, form, "Itens de despesa");
-                           hasErros = true;
-                           }
+                        hasErros = true;
+                        }
                         if (isEmpty("itSolCentroCusto___" + indexesSolTbDespesas[i], form)) {
                         message += getMessage("Centro de Custo", 1, form, "Itens de despesa");
                         hasErros = true;

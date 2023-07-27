@@ -20,6 +20,7 @@ var funcoes = (function() {
 		addLinhaDespesa: function(){
 			const tablename = "solTbDespesas"
 			const indice = wdkAddChild(tablename);
+			
 			//Insere calendario no formulario filho a ao criar nova linha
 			FLUIGC.calendar('.data')	
 			//Inicia as mascaras  

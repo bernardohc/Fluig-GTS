@@ -135,6 +135,17 @@ var validafunctions = (function(){
 			    allowNegative: negatives
 			});
 		},
+		soNumero: function(id, decimals, negatives) {
+			//validafunctions.loadJs(3);
+			$("#" + id).priceFormat({
+				clearPrefix: true,
+				prefix: '',
+			    centsSeparator: '',
+			    thousandsSeparator: '',
+			    centsLimit: decimals,
+			    allowNegative: negatives
+			});
+		},
 		setMoeda: function(id, decimals, negatives , prefixo) {
 			//validafunctions.loadJs(3);
 			$("#" + id).priceFormat({

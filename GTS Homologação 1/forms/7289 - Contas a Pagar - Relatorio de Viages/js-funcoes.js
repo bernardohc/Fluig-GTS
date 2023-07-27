@@ -26,6 +26,11 @@ var funcoes = (function() {
 			let message = '';
 			let addRvDespEstabelecimento = $('#addRvDespEstabelecimento').val().trim();
 			let addRvDespDocumento = $('#addRvDespDocumento').val().trim();
+			let addRvDespData = $('#addRvDespData').val().trim();
+			let addRvDespTpPag = $('#addRvDespTpPag').val().trim();
+			let addRvDespClassi = $('#addRvDespClassi').val().trim();
+			let addRvDespValor = $('#addRvDespValor').val().trim();
+			let addRvDespCCusto = $('#addRvDespCCusto').val().trim();
 
 			if( addRvDespEstabelecimento == '' ){
 				message += getMessage("Estabelecimento", 1, form);
@@ -35,6 +40,26 @@ var funcoes = (function() {
 				message += getMessage("Documento", 1, form);
 				hasErros = true
 			}
+			if( addRvDespData == '' ){
+				message += getMessage("Data", 1, form);
+				hasErros = true
+			}
+			if( addRvDespTpPag == '' ){
+				message += getMessage("Tipo Pagamento", 1, form);
+				hasErros = true
+			}
+			if( addRvDespClassi == '' ){
+				message += getMessage("Classificação", 1, form);
+				hasErros = true
+			}
+			if( addRvDespValor == '' ){
+				message += getMessage("Valor", 1, form);
+				hasErros = true
+			}
+			if( addRvDespCCusto == '' ){
+				message += getMessage("Centro de Custo", 1, form);
+				hasErros = true
+			}
 
 			if( hasErros ){
 				messageToast({message: message}, 'warning')
@@ -42,6 +67,9 @@ var funcoes = (function() {
 			}	
 			return true;
 		},
+
+		
+
 		addDespesa : function(){
 			const tablename = "tbRelDespesas"
 			const indice = wdkAddChild(tablename);
@@ -96,17 +124,10 @@ var funcoes = (function() {
 			limpaaddRvDespCCusto.value = '';
 			const limpaaddRvDespAnexo = document.querySelector('#addRvDespAnexo');
 			limpaaddRvDespAnexo.value = '';
-
-			$('#tbRelDespesas').show();
 		},
-		
-				
+			
 	}
 })();
-
-
-
-
 
 //Aqui colocar os gatilhos
 var eventsFuncoes = (function() {
@@ -146,12 +167,23 @@ function loadForm(){
 	//Carrega a data atual 
 	$(`#solDataSol`).val(dataAtual);
 
-	var psSolDataPesq = FLUIGC.calendar('#addRvDespData', {
+	var psSolDataPesq = FLUIGC.calendar('#solDataSaida', {
 		language: 'pt-br',
 		pickDate: true,
 		pickTime: false,
 	});
-	
+
+	var psSolDataPesq = FLUIGC.calendar('#solDataRet', {
+		language: 'pt-br',
+		pickDate: true,
+		pickTime: false,
+	});
+
+	var psSolDataPesq = FLUIGC.calendar('#addRvDespData', {
+		language: 'pt-br',
+		pickDate: true,
+		pickTime: false,
+	});	
 };
 
 function getDataAtual() {
@@ -161,21 +193,7 @@ function getDataAtual() {
 	const ano = today.getFullYear();
 	return dia + '/' + mes + '/' + ano;
 }
-  
-function soNumero(event) {
-	const input = event.target;
-	const valorDigitado = input.value;
-  
-	// Remove todos os caracteres não numéricos, exceto o ponto (casas decimais)
-	const valorNumerico = valorDigitado.replace(/[^0-9.]/g, '');
-  
-	// Verifica se o valor digitado é diferente do valor numérico
-	// Isso evita que letras e outros caracteres indesejados sejam inseridos no input
-	if (valorDigitado !== valorNumerico) {
-	  // Atualiza o valor do input com o valor numérico válido
-	  input.value = valorNumerico;
-	}
-};	
+
 function getMessage(texto, tipoMensagem, tabpaifilho) {
 	if(isMobile == 'true'){
         switch (tipoMensagem) {
@@ -222,7 +240,7 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
     }
 } 
 
-  // //Remove ocorrencias do pai e filho
+//Remove ocorrencias do pai e filho
 function removeDespesa(oElement){
 
 	try {
@@ -263,12 +281,20 @@ function showCamera(oElement) {
 	let solEstabelecimento = "";
 	let solDocumento = "";
 	let nomeAnexo = "";
+	let addRvDespData = "";
+	let addRvDespTpPag = "";
+	let addRvDespClassi = "";
+	let addRvDespValor = "";
+	let addRvDespCCusto = "";
 
 	valorID = $('#addRvDespCodiID').val();
-	
 	solEstabelecimento = $('#addRvDespEstabelecimento').val();
-
 	solDocumento = $('#addRvDespDocumento').val();
+	addRvDespData = $('#addRvDespData').val();
+	addRvDespTpPag = $('#addRvDespTpPag').val();
+	addRvDespClassi = $('#addRvDespClassi').val();
+	addRvDespValor = $('#addRvDespValor').val();
+	addRvDespCCusto = $('#addRvDespCCusto').val();
 	
 	let hasErros = false;
 	let message = '';
@@ -286,8 +312,26 @@ function showCamera(oElement) {
 		message += getMessage("Documento", 1, form);
 		hasErros = true;
 	}
-	
-	
+	if(addRvDespData == ''){
+		message += getMessage("Data", 1, form);
+		hasErros = true;
+	}
+	if(addRvDespTpPag == ''){
+		message += getMessage("Tipo Pagamento", 1, form);
+		hasErros = true;
+	}
+	if(addRvDespClassi == ''){
+		message += getMessage("Classificação", 1, form);
+		hasErros = true;
+	}
+	if(addRvDespValor == ''){
+		message += getMessage("Valor", 1, form);
+		hasErros = true;
+	}
+	if(addRvDespCCusto == ''){
+		message += getMessage("Centro de Custo", 1, form);
+		hasErros = true;
+	}
 	if( hasErros ){
 		messageToast({message: message}, 'warning')
 		return;
