@@ -609,9 +609,9 @@ var validafunctions = (function(){
 })();
 
 
-function testeadicionalinha(){
-		alert("entrou");
-		lastLinhaNota = wdkAddChild('testelinha');
-   		linhasCriadas++;
+// function testeadicionalinha(){
+// 		alert("entrou");
+// 		lastLinhaNota = wdkAddChild('testelinha');
+//    		linhasCriadas++;
 
-}
+// }

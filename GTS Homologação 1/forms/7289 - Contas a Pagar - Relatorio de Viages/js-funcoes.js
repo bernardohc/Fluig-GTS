@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function() {wdkAddChild
 	setTimeout(function() {
 		funcoes.start();
 	}, 100)	
@@ -60,15 +60,12 @@ var funcoes = (function() {
 				message += getMessage("Centro de Custo", 1, form);
 				hasErros = true
 			}
-
 			if( hasErros ){
 				messageToast({message: message}, 'warning')
 				return;
 			}	
 			return true;
 		},
-
-		
 
 		addDespesa : function(){
 			const tablename = "tbRelDespesas"
@@ -154,10 +151,14 @@ var eventsFuncoes = (function() {
 			});
 			
 			$(document).on("click", "#addRvDespesa", function() {
-				if(funcoes.validaAddDespesa()){
-					funcoes.addDespesa();
-				}
+				funcoes.addDespesa();				
 			});
+
+			// $(document).on("click", "#addRvDespesa", function() {
+			// 	if(funcoes.validaAddDespesa()){
+			// 		funcoes.addDespesa();
+			// 	}
+			// });
 		
 		}
 	}
@@ -240,37 +241,37 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
     }
 } 
 
-//Remove ocorrencias do pai e filho
-function removeDespesa(oElement){
+// //Remove ocorrencias do pai e filho
+// function removeDespesa(oElement){
 
-	try {
-		const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
-        const rvDespData = $(`#rvDespData___${indice}`).val() || "";
-        FLUIGC.message.confirm({
-            message: `Deseja remover o registro de despesa do dia <b>${rvDespData}</b>?`,
-            title: 'Confirmação',
-            labelYes: 'Sim, quero remover',
-            labelNo: 'Não, quero cancelar',
-        }, function (result) {
-            if (result) {
-            	fnWdkRemoveChild(oElement);
+// 	try {
+// 		const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
+//         const rvDespData = $(`#rvDespData___${indice}`).val() || "";
+//         FLUIGC.message.confirm({
+//             message: `Deseja remover o registro de despesa do dia <b>${rvDespData}</b>?`,
+//             title: 'Confirmação',
+//             labelYes: 'Sim, quero remover',
+//             labelNo: 'Não, quero cancelar',
+//         }, function (result) {
+//             if (result) {
+//             	fnWdkRemoveChild(oElement);
 				
-				let temRegistro = false;
-				$("input[name*=rvDespCodiID___]").each(function(){
-					temRegistro = true;
-				});
-				if(!temRegistro){
-					$('#tbRelDespesas').hide();
-				}
-			}
-        });
-    } catch (e) {
-        console.error("Houve um erro inesperado na função removeDespesa")
-        console.error(e)
-    }
+// 				let temRegistro = false;
+// 				$("input[name*=rvDespCodiID___]").each(function(){
+// 					temRegistro = true;
+// 				});
+// 				if(!temRegistro){
+// 					$('#tbRelDespesas').hide();
+// 				}
+// 			}
+//         });
+//     } catch (e) {
+//         console.error("Houve um erro inesperado na função removeDespesa")
+//         console.error(e)
+//     }
 
 	
-};
+// };
 
 //Função que habilita o upload no formulário pai e filho e seta a a descrição conforme as funções
 function showCamera(oElement) {

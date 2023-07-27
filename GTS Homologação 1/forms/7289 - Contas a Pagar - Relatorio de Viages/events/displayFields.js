@@ -17,7 +17,7 @@ function displayFields(form, customHTML) {
 		form.setValue('solIdSol', getValue('WKNumProces'));
 		form.setValue("solMatSol",  usuarioCorrente.getCode() );
 
-		form.setVisibleById("tbRelDespesas", false);
+		form.setVisibleById("tbRelDespesas", true);
 
 		form.setVisibleById("divAprovacao", false);
 		form.setVisibleById("divRevisao", false);
