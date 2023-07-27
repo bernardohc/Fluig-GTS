@@ -57,9 +57,12 @@ function displayFields(form, customHTML) {
 
 	}else if (atv_atual == FIM) {
 		controleAbas(form, customHTML, 'disponivel');
-		
+		//disableCampo(form, customHTML);
+	
 		form.setVisibleById("divAddOcorrencia", false);
-		form.setVisibleById("divAddOcorrenciaPs", false);		
+		form.setVisibleById("divAddOcorrenciaPs", false);	
+
+
 	}
 }
 
@@ -72,4 +75,14 @@ function controleAbas(form, customHTML, tabNavegacao){
 	}
 
 }
+
+// function disableCampo(form, customHTML){
+// 	customHTML.append("<script>$('#pesqAcompanhouEntrega').prop('readonly', true);</script>");
+// 	customHTML.append("<script>$('#pesqTelefone').prop('readonly', true);</script>");
+// 	//customHTML.append("<script>$('#pesqNotaAtendimento').prop('readonly', true);</script>");
+// 	//customHTML.append("<script>$('#pesqNotaDesempenho').prop('readonly', true);</script>");
+// 	customHTML.append("<script>$('#pesqPrevColheita').prop('readonly', true);</script>");
+// }
+
+
 

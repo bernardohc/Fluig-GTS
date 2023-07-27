@@ -12,7 +12,6 @@ function removeCampoObrigatorio(id){
 	$("#lbl_" + id).removeClass('required');
 }
 
-
 /**
  * Funcao para retornar o indice do elemento obj dentro de um pai x filho
  * @param obj
@@ -343,4 +342,17 @@ function mTel(tel) {
 		tel=tel.replace(/(.{4})$/,"-$1")
 	}
 	return tel;
+}
+function messageToast(message, tipo){
+
+	if(isMobile == 'true'){
+		FLUIGC.message.alert({
+			title: ' ',
+			message: message.message,
+			label: 'Ok'
+		}, function(el, ev) {});
+	}else{
+		FLUIGC.toast({ title: message.title, message: message.message, type: tipo });
+	}
+
 }

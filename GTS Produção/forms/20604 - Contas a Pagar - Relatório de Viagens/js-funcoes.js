@@ -40,7 +40,7 @@ var funcoes = (function() {
 			
 			index = parseInt(contador) + parseInt(indiceFilho);
 
-			$(`#codigoID___${indice}`).val(index).prop("readonly", true);
+			$(`#addRvDespCodiID`).val(index).prop("readonly", true);
 			}
 			
 		},
