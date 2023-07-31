@@ -95,7 +95,7 @@
         <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="60" height="42" y="60" style="/0/@styles.13" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="Aprova&#xA;do&#xA;"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="60" height="42" y="60" style="/0/@styles.13" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="Aprovad&#xA;o&#xA;"/>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -147,7 +147,7 @@
         <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="60" height="56" y="60" style="/0/@styles.19" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="Revis&#xe3;&#xA;o_Apro&#xA;vada?&#xA;"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" filled="false" lineVisible="true" transparency="0.0" width="60" height="56" y="60" style="/0/@styles.19" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="Revis&#xe3;o&#xA;_Aprova&#xA;da?&#xA;"/>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
