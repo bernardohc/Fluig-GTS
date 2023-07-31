@@ -9,9 +9,6 @@ function injetarFuncoesUteisJS(form, customHTML) {
 	customHTML.append("<script> var CURRENT_STATE = '" + getValue("WKNumState") + "';</script>");
 	customHTML.append("<script> var isMobile = '" + isMobile(form) + "';</script>");
 		
-	var processo = getValue("WKNumProces");
-	form.setValue("processoId",processo);
-	
 	log.info("#### FIM injetarFuncoesUteisJS...");
 }
 

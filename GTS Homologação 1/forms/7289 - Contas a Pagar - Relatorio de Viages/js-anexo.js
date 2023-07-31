@@ -18,16 +18,11 @@ function anexo(event) {
         // const fileDescription = $(event.currentTarget).parent().parent().find(".descAnexo").val()
         const fileDescription = $(event.currentTarget).parent().parent().find(".rvDespAnexo").val()
         // const indice = validafunctions.getPosicaoFilho($(event).closest('tr').find("input")[0].id);
-        // rvDespAnexo
-        if (acao == "upload") {
-            uploadFile(fileDescription, inputFile.id)
-        }
         if (acao == "viewer") {
-            // viewerFile(fileDescription)
             viewerFile(fileDescription)
         }
         if (acao == "download") {
-            downloadFile(fileDescription, inputFile.id)
+            downloadFile(fileDescription)
         }
         if (acao == "delete") {
             removeFileConfirm(fileDescription, inputFile.id)
@@ -37,45 +32,6 @@ function anexo(event) {
         console.error(e)
     }
 }
-
-
-/**
- * Envia arquivos para a aba Anexos do Fluig
- * Função adaptada por Sérgio Machado
- * @param {String} fileDescription Parâmetro obrigatório, Descrição do arquivo que ficará na aba anexos do Fluig
- * @param {String} idInput Parâmetro obrigatório, Id do campo em que o nome do arquivo fisico é gravado
- * @return {void} 
- */
-function uploadFile(fileDescription, idInput) {
-    try {
-        var tabAttachments = parent.document.getElementById("tab-attachments");
-        if (tabAttachments) {
-            //Verifica se o navegador é o Ie9 para realizar o devido tratamento
-            if (parent.WCMAPI.isIe9()) {
-                $(".ecm-navigation-silverlight", parent.document).show("fade").css("top", 0);
-                $("#ecm-navigation-silverlight", parent.document).attr({
-                    "data-on-camera": "true", "data-file-name-camera": fileDescription, "data-inputNameFile": idInput
-                });
-                $(parent.document).on("keyup", this.actionKeyup)
-            } else {
-                var element = parent.document.getElementById("ecm-navigation-inputFile-clone");
-                if (element && document.createEvent) {
-                    element.setAttribute("data-on-camera", "true");
-                    if (fileDescription && idInput) {
-                        element.setAttribute("data-file-name-camera", fileDescription)
-                        element.setAttribute("data-inputNameFile", idInput)
-                    }
-                    //Realiza o click no botão "Carregar arquivos" que tem na aba de anexos
-                    element.click();
-                }
-            }
-        }
-    } catch (e) {
-        console.error("Houve um erro inesperado na função uploadFile")
-        console.error(e)
-    }
-}
-
 
 
 /**
@@ -168,8 +124,7 @@ function viewerFile(fileDescription) {
             
         } else {
             
-            // let idFluig = $('#numFluig').val().trim();
-            let idFluig = '9066';
+            let idFluig =  $('#processoId').val().trim();
             let filterFields = "idFluig,"+ idFluig + ",fileDescription," + fileDescription;
             
             var loading = FLUIGC.loading(window);
@@ -224,27 +179,6 @@ function viewerFile(fileDescription) {
         }
     });
 
-    // try {
-    //     if (hasFileFluig(fileDescription)) {
-    //         const anexos = parent.ECM.attachmentTable.getData();
-    //         for (let i = 0; i < anexos.length; i++) {
-    //             var descricao = anexos[i].description;
-    //             if (fileDescription == descricao) {
-    //                 parent.WKFViewAttachment.openAttachmentView('adm', anexos[i].documentId);
-    //                 return
-    //             }
-    //         }
-    //     } else {
-    //         FLUIGC.toast({
-    //             title: "Atenção",
-    //             message: "Anexo não encontrado",
-    //             type: "warning"
-    //         });
-    //     }
-    // } catch (e) {
-    //     console.error("Houve um erro inesperado na função viewerFile")
-    //     console.error(e)
-    // }
 }
 
 
@@ -254,11 +188,10 @@ function viewerFile(fileDescription) {
  * @param {String} fileDescription Parâmetro obrigatório, Descrição do arquivo que esta na aba anexos do Fluig
  * @return {void} 
  */
-function downloadFile(fileDescription, idInput) {
+ function downloadFile(fileDescription) {
     try {
-        const filename = getMode() == "VIEW" ? $(`#${idInput}`).text() : $(`#${idInput}`).val()
         FLUIGC.message.confirm({
-            message: `Deseja baixar o anexo <b>${filename}</b>?`,
+            message: `Deseja baixar o anexo <b>${fileDescription}</b>?`,
             title: 'Confirmação',
             labelYes: 'Sim, quero baixar',
             labelNo: 'Não, quero cancelar',

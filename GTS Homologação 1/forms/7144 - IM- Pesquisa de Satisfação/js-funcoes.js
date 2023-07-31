@@ -111,6 +111,32 @@ var funcoes = (function() {
 			limpaPesqPsFimOcorrencia.value = '';
 		},
 
+		//Condição para ocultar Observações
+		liberaObs : function(){
+			let pesqEfetivoCont = "";
+			pesqEfetivoCont = document.getElementById("pesqEfetivoCont").value;
+			if(pesqEfetivoCont == "nao"){
+				$("[temObs]").show();
+			}else if(pesqEfetivoCont == ""){
+				$("[temObs]").hide();
+			}else{
+				$("[temObs]").hide();
+			}
+		},
+
+		//Condição para ocultar Observações PS
+		liberaObsPs : function(){
+			let psPesqEfetivoCont = "";
+			psPesqEfetivoCont = document.getElementById("psPesqEfetivoCont").value;
+			if(psPesqEfetivoCont == "nao"){
+				$("[temObsPs]").show();
+			}else if(psPesqEfetivoCont == ""){
+				$("[temObsPs]").hide();
+			}else{
+				$("[temObsPs]").hide();
+			}
+		},
+
 		//Condição para ocultar div ocorrencias Pesquisa e campo fim ocorrencia
 		liberaOcorrencias : function(){
 			let pesqOcorrencia = "";
@@ -270,11 +296,17 @@ $(document).on("click", "#addOcorrenciaPS", function() {
 //Bloqueia campos não efetivou contato 
 $(document).on("change", "#pesqEfetivoCont", function() {
 	funcoes.efetivouContato();
+	funcoes.liberaObs();
 });
 
 //Bloqueia campos não fetivou contato pos safra
 $(document).on("change", "#psPesqEfetivoCont", function() {
 	funcoes.efetivouContatoFs();
+	funcoes.liberaObsPs();
+});
+
+$(document).on("change", "#pesqFeedbackEquipamento", function() {
+	funcoes.bloqueiaNota();
 });
 
 //Gatilhos preenche campos do pos safra
@@ -334,6 +366,8 @@ function loadForm(){
 	funcoes.limpaRet();
 	funcoes.efetivouContato();
 	funcoes.efetivouContatoFs();
+	funcoes.liberaObs();
+	funcoes.liberaObsPs();
 	
 	var today = new Date();
 	var solDataPesq = FLUIGC.calendar('#solDataPesq', {

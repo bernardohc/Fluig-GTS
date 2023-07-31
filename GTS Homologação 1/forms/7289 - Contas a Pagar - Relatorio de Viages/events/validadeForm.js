@@ -44,19 +44,19 @@ function validateForm(form){
             if (getValue("WKCompletTask") == "true" ){
 
                 if (isEmpty("solSetor", form)) {
-                    message += getMessage("Campo - Setor", 1, form);
+                    message += getMessage("Setor", 1, form);
                     hasErros = true;
                 }
                 if (!isEmpty("solAdianta", form) & isEmpty("solMoeda", form)) {
-                    message += getMessage("Campo - Tipo de Moeda", 1, form);
+                    message += getMessage("Tipo de Moeda", 1, form);
                     hasErros = true;
                 }
                 if (isEmpty("solDataSaida", form)) {
-                    message += getMessage("Campo - Data de Saída", 1, form);
+                    message += getMessage("Data de Saída", 1, form);
                     hasErros = true;
                 }
                 if (isEmpty("solDataRet", form)) {
-                    message += getMessage("Campo - Data de Retorno", 1, form);
+                    message += getMessage("Data de Retorno", 1, form);
                     hasErros = true;
                 }
                 
@@ -75,6 +75,54 @@ function validateForm(form){
                         message += getMessage('Campo "Documento" precisa estar inserido na Tabela de Despesa\n' , 6, form);
                     }else{
                         message += getMessage('Campo <b>Documento</b> precisa estar inserido na <b>Tabela de Despesa</b>' , 6, form);
+                    }
+                    hasErros = true;
+                }
+                if (!isEmpty("addRvDespData", form) ){
+                    if (isMobile(form)) {
+                        message += getMessage('Campo "Data" precisa estar inserido na Tabela de Despesa\n' , 6, form);
+                    }else{
+                        message += getMessage('Campo <b>Data</b> precisa estar inserido na <b>Tabela de Despesa</b>' , 6, form);
+                    }
+                    hasErros = true;
+                }
+                if (!isEmpty("addRvDespTpPag", form) ){
+                    if (isMobile(form)) {
+                        message += getMessage('Campo "Tp. Pagamento" precisa estar inserido na Tabela de Despesa\n' , 6, form);
+                    }else{
+                        message += getMessage('Campo <b>Tp. Pagamento</b> precisa estar inserido na <b>Tabela de Despesa</b>' , 6, form);
+                    }
+                    hasErros = true;
+                }
+                if (!isEmpty("addRvDespClassi", form) ){
+                    if (isMobile(form)) {
+                        message += getMessage('Campo "Classificação" precisa estar inserido na Tabela de Despesa\n' , 6, form);
+                    }else{
+                        message += getMessage('Campo <b>Classificação</b> precisa estar inserido na <b>Tabela de Despesa</b>' , 6, form);
+                    }
+                    hasErros = true;
+                }
+                if (!isEmpty("addRvDespValor", form) ){
+                    if (isMobile(form)) {
+                        message += getMessage('Campo "Valor" precisa estar inserido na Tabela de Despesa\n' , 6, form);
+                    }else{
+                        message += getMessage('Campo <b>Valor</b> precisa estar inserido na <b>Tabela de Despesa</b>' , 6, form);
+                    }
+                    hasErros = true;
+                }
+                if (!isEmpty("addRvDespCCusto", form) ){
+                    if (isMobile(form)) {
+                        message += getMessage('Campo "Centro de Custo" precisa estar inserido na Tabela de Despesa\n' , 6, form);
+                    }else{
+                        message += getMessage('Campo <b>Centro de Custo</b> precisa estar inserido na <b>Tabela de Despesa</b>' , 6, form);
+                    }
+                    hasErros = true;
+                }
+                if (!isEmpty("addRvDespAnexo", form) ){
+                    if (isMobile(form)) {
+                        message += getMessage('"Anexo" precisa estar inserido na Tabela de Despesa\n' , 6, form);
+                    }else{
+                        message += getMessage('<b>Anexo</b> precisa estar inserido na <b>Tabela de Despesa</b>' , 6, form);
                     }
                     hasErros = true;
                 }

@@ -2,7 +2,7 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>IM-PesquisadeSatisfação</processId>
+      <processId>IM - Pesquisa de Satisfação</processId>
     </processDefinitionPK>
     <processDescription>IM - Pesquisa de Satisfação</processDescription>
     <instruction></instruction>
@@ -50,7 +50,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -100,7 +100,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>10</sequence>
       </processStatePK>
@@ -152,7 +152,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>18</sequence>
       </processStatePK>
@@ -204,7 +204,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>26</sequence>
       </processStatePK>
@@ -256,32 +256,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
-        <version>1</version>
-        <sequence>7</sequence>
-      </processStatePK>
-      <stateName>Teve_Ocorrencia?</stateName>
-      <stateDescription>Teve_Ocorrencia?</stateDescription>
-      <joint>false</joint>
-      <initialState>false</initialState>
-      <transferAttachments>false</transferAttachments>
-      <subProcessId></subProcessId>
-      <formFolder>0</formFolder>
-      <automatic>true</automatic>
-      <positionX>350</positionX>
-      <positionY>171</positionY>
-      <inhibitTransfer>false</inhibitTransfer>
-      <stateType>1</stateType>
-      <bpmnType>120</bpmnType>
-      <signalId>0</signalId>
-      <openInstances>0</openInstances>
-      <destinationStates/>
-      <digitalSignature>false</digitalSignature>
-    </ProcessState>
-    <ProcessState>
-      <processStatePK>
-        <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>12</sequence>
       </processStatePK>
@@ -306,7 +281,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>20</sequence>
       </processStatePK>
@@ -331,7 +306,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>30</sequence>
       </processStatePK>
@@ -356,7 +331,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>34</sequence>
       </processStatePK>
@@ -368,8 +343,8 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>80</positionX>
-      <positionY>175</positionY>
+      <positionX>230</positionX>
+      <positionY>178</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
       <bpmnType>120</bpmnType>
@@ -381,7 +356,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>28</sequence>
       </processStatePK>
@@ -430,31 +405,7 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
-        <expressionOrder>1</expressionOrder>
-        <version>17</version>
-        <sequence>7</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;pesqOcorrencia&quot;) == &quot;sim&quot;</condition>
-      <destinationSequenceId>18</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>17</version>
-        <sequence>7</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;pesqOcorrencia&quot;) == &quot;nao&quot;</condition>
-      <destinationSequenceId>10</destinationSequenceId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <expressionOrder>1</expressionOrder>
         <version>17</version>
         <sequence>12</sequence>
@@ -466,7 +417,7 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <expressionOrder>2</expressionOrder>
         <version>17</version>
         <sequence>12</sequence>
@@ -480,7 +431,7 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <expressionOrder>1</expressionOrder>
         <version>17</version>
         <sequence>20</sequence>
@@ -492,7 +443,7 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <expressionOrder>2</expressionOrder>
         <version>17</version>
         <sequence>20</sequence>
@@ -504,8 +455,20 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <expressionOrder>1</expressionOrder>
+        <version>17</version>
+        <sequence>30</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;pesqPsFimOcorrencia&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>26</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>IM - Pesquisa de Satisfação</processId>
+        <expressionOrder>2</expressionOrder>
         <version>17</version>
         <sequence>30</sequence>
       </conditionProcessStatePK>
@@ -516,33 +479,19 @@
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
-        <expressionOrder>2</expressionOrder>
-        <version>17</version>
-        <sequence>30</sequence>
-      </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;pesqPsFimOcorrencia&quot;) == &quot;nao&quot;</condition>
-      <destinationSequenceId>26</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;26&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
-      <engineAllocationId>Executor Atividade</engineAllocationId>
-      <conditionType>0</conditionType>
-    </ConditionProcessState>
-    <ConditionProcessState>
-      <conditionProcessStatePK>
-        <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <expressionOrder>1</expressionOrder>
         <version>17</version>
         <sequence>34</sequence>
       </conditionProcessStatePK>
-      <condition>hAPI.getCardValue(&quot;pesqEfetivoCont&quot;) == &quot;sim&quot;</condition>
-      <destinationSequenceId>7</destinationSequenceId>
+      <condition>hAPI.getCardValue(&quot;pesqEfetivoCont&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;pesqOcorrencia&quot;) == &quot;sim&quot;</condition>
+      <destinationSequenceId>18</destinationSequenceId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
       <conditionProcessStatePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <expressionOrder>2</expressionOrder>
         <version>17</version>
         <sequence>34</sequence>
@@ -553,29 +502,24 @@
       <engineAllocationId>Executor Atividade</engineAllocationId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>IM - Pesquisa de Satisfação</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>17</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;pesqEfetivoCont&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;pesqOcorrencia&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>10</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
   </list>
   <list>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
-        <version>1</version>
-        <linkSequence>11</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>7</initialStateSequence>
-      <finalStateSequence>10</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>Não</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>13</linkSequence>
       </processLinkPK>
@@ -592,24 +536,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
-        <version>1</version>
-        <linkSequence>19</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>7</initialStateSequence>
-      <finalStateSequence>18</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name>Sim</name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>21</linkSequence>
       </processLinkPK>
@@ -626,7 +553,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>22</linkSequence>
       </processLinkPK>
@@ -643,7 +570,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>23</linkSequence>
       </processLinkPK>
@@ -660,7 +587,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>27</linkSequence>
       </processLinkPK>
@@ -677,7 +604,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>29</linkSequence>
       </processLinkPK>
@@ -694,7 +621,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>31</linkSequence>
       </processLinkPK>
@@ -711,7 +638,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>32</linkSequence>
       </processLinkPK>
@@ -728,7 +655,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>33</linkSequence>
       </processLinkPK>
@@ -745,7 +672,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>35</linkSequence>
       </processLinkPK>
@@ -762,24 +689,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
-        <version>1</version>
-        <linkSequence>36</linkSequence>
-      </processLinkPK>
-      <actionLabel></actionLabel>
-      <returnPermited>false</returnPermited>
-      <initialStateSequence>34</initialStateSequence>
-      <finalStateSequence>7</finalStateSequence>
-      <returnLabel></returnLabel>
-      <name></name>
-      <automaticLink>false</automaticLink>
-      <defaultLink>false</defaultLink>
-      <type>0</type>
-    </ProcessLink>
-    <ProcessLink>
-      <processLinkPK>
-        <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <linkSequence>37</linkSequence>
       </processLinkPK>
@@ -793,6 +703,40 @@
       <defaultLink>false</defaultLink>
       <type>0</type>
     </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>IM - Pesquisa de Satisfação</processId>
+        <version>1</version>
+        <linkSequence>38</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>10</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>IM - Pesquisa de Satisfação</processId>
+        <version>1</version>
+        <linkSequence>39</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>18</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
   </list>
   <list/>
   <list>
@@ -800,7 +744,7 @@
       <workflowProcessEventPK>
         <companyId>1</companyId>
         <eventId>startconditional41</eventId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
       </workflowProcessEventPK>
       <eventDescription>function startconditional41() {
@@ -820,7 +764,7 @@
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
@@ -836,7 +780,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
@@ -852,7 +796,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>1</version>
         <sequence>3</sequence>
       </swimLanePK>
@@ -864,7 +808,7 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>17</version>
         <linkSequence>22</linkSequence>
         <bendSequence>1</bendSequence>
@@ -875,7 +819,7 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>17</version>
         <linkSequence>23</linkSequence>
         <bendSequence>1</bendSequence>
@@ -886,7 +830,7 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>17</version>
         <linkSequence>32</linkSequence>
         <bendSequence>1</bendSequence>
@@ -897,7 +841,7 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>17</version>
         <linkSequence>33</linkSequence>
         <bendSequence>1</bendSequence>
@@ -908,13 +852,35 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>IM-PesquisadeSatisfação</processId>
+        <processId>IM - Pesquisa de Satisfação</processId>
+        <version>17</version>
+        <linkSequence>35</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>107</positionX>
+      <positionY>228</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>IM - Pesquisa de Satisfação</processId>
         <version>17</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>176</positionX>
+      <positionX>259</positionX>
       <positionY>83</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>IM - Pesquisa de Satisfação</processId>
+        <version>17</version>
+        <linkSequence>39</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>383</positionX>
+      <positionY>179</positionY>
     </ProcessLinkBend>
   </list>
   <list/>

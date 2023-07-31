@@ -41,7 +41,6 @@
 <form name="form" role="form">
 
 	<!-- Campos para usos internos  -->
-	<input type="hidden" name="numFluig" id="numFluig" >
 	<input type="hidden" name="dataAbertura" id="dataAbertura" >
 	<input type="hidden" name="grupoAnalisaRelatorio" id="grupoAnalisaRelatorio" >
 
@@ -59,15 +58,15 @@
 				<div class="panel-body"> 
 					<div class="row">
 						<div class="form-group col-md-2">
-							<label for="solMatSol">Matrícula do Solicitante:</label>
+							<label for="solMatSol">Matrícula do Solicitante</label>
 							<input type="text" name="solMatSol" id="solMatSol" class="form-control" readonly>
 						</div>
 						<div class="form-group col-md-2">
-							<label for="solNomeSol">Nome do Solicitante:</label>
+							<label for="solNomeSol">Nome do Solicitante</label>
 							<input type="text" name="solNomeSol" id="solNomeSol" class="form-control" readonly>
 						</div>
-						<div class="form-group col-md-2">
-							<label for="solDataSol">Data do Relatório:</label>
+						<div class="form-group col-md-2 col-xs-6">
+							<label for="solDataSol">Data do Relatório</label>
 							<div class="input-group">
 								<input type="text" name="solDataSol" id="solDataSol" class="form-control" readonly>
 								<span class="input-group-addon">
@@ -75,12 +74,12 @@
 								</span>
 							</div>
 						</div>
-						<div class="form-group col-md-2">
-							<label for="solIdSol">Id Solicitação:</label>
+						<div class="form-group col-md-2 col-xs-6">
+							<label for="solIdSol">Id Solicitação</label>
 							<input type="text" name="solIdSol" id="solIdSol" class="form-control" readonly>
 						</div>
 						<div class="form-group col-md-2">
-							<label for="solSetor">Setor:</label>
+							<label for="solSetor">Setor</label>
 							<select name="solSetor" id="solSetor" class="form-control">
 								<option value=""></option>
 								<option value="motorista"> Motorista </option>
@@ -95,7 +94,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-2 col-md-offset-2">
-							<label for="solMoeda">Moeda:</label>
+							<label for="solMoeda">Moeda</label>
 							<div class="radio input-group">
 								<div class="custom-radio custom-radio-inline custom-radio-primary">
 									<input type="radio" name="solMoeda" value="real" id="solMoedaReal" />
@@ -107,8 +106,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group col-md-2">
-							<label for="solDataSaida">Data de Saída:</label>
+						<div class="form-group col-md-2 ">
+							<label for="solDataSaida">Data de Saída</label>
 							<div class="input-group">
 								<input type="text" name="solDataSaida" id="solDataSaida" class="form-control">
 								<span class="input-group-addon">
@@ -116,8 +115,8 @@
 								</span>
 							</div>
 						</div>
-						<div class="form-group col-md-2">
-							<label for="solDataRet">Data de Retorno:</label>
+						<div class="form-group col-md-2 ">
+							<label for="solDataRet">Data de Retorno</label>
 							<div class="input-group">
 								<input type="text" name="solDataRet" id="solDataRet" class="form-control">
 								<span class="input-group-addon">
@@ -126,7 +125,7 @@
 							</div>
 						</div>
 						<div class="form-group col-md-2">
-							<label for="solNumColab">Nº De Colaboradores:</label>
+							<label for="solNumColab">Nº De Colaboradores</label>
 							<input type="text" name="solNumColab" id="solNumColab" class="form-control" oninput="validafunctions.soNumero(this.id, 0, false , '')">
 						</div>
 					</div>
@@ -139,7 +138,7 @@
 					<h3 class="panel-title">Despesas da Viagem</h3>
 				</div>
 				<div class="panel-body">
-					<div id="divAddDespesa">
+					<div id="divAddDespesa" style="display:none;">
 						<div class="row" >
 							<div class="form-group col-md-1 col-md-offset-1">
 								<label for="addRvDespCodiID">Código*</label>
@@ -165,7 +164,7 @@
 						</div>
 						<div class="row" >
 							<div class="col-md-2 col-md-offset-1" align="left">
-								<label for="addRvDespTpPag">Tp. Pagamento</label>
+								<label for="addRvDespTpPag">Tp. Pagamento*</label>
 								<select name="addRvDespTpPag" id="addRvDespTpPag" class="form-control">
 									<option value=""></option>
 									<option value="Dinheiro"> Dinheiro </option>
@@ -173,7 +172,7 @@
 								</select>
 							</div>
 							<div class="col-md-2" align="left">
-								<label for="addRvDespClassi">Classificação</label>
+								<label for="addRvDespClassi">Classificação*</label>
 								<select name="addRvDespClassi" id="addRvDespClassi" class="form-control">
 									<option value=""></option>
 									<option value="Acomodacao"> Acomodação </option>
@@ -185,25 +184,24 @@
 								</select>
 							</div>
 							<div class="form-group col-md-2">
-								<label for="addRvDespValor">Valor</label>
+								<label for="addRvDespValor">Valor*</label>
 								<input type="text" name="addRvDespValor" id="addRvDespValor" class="form-control" oninput="validafunctions.setMoeda(this.id, 2, false , '')">
 							</div>
 							<div class="form-group col-md-2">
-								<label for="addRvDespCCusto">Centro de Custo</label>
+								<label for="addRvDespCCusto">Centro de Custo*</label>
 								<input type="text" name="addRvDespCCusto" id="addRvDespCCusto" class="form-control" >
 							</div>
 							<div class="form-group col-md-2">
-								<label for="addRvDespAnexo">Anexo</label>
-								<input type="text" name="addRvDespAnexo" id="addRvDespAnexo" class="form-control" style="display: non;" readonly>
 								<div id="divInserirImagens" >
-									<label >&nbsp;</label>
+									<label id="labelInserirImagem" style="display: none;">&nbsp;</label>
 									<input type="button" class="btn btn-default btn-block" value="Inserir Imagens" onclick="showCamera('');"/>
+									<input type="text" name="addRvDespAnexo" id="addRvDespAnexo" class="form-control" style="display: none;" readonly>
 								</div>
 							</div>
 						</div>	
 						<div class="row">
-							<div class="col-md-2 col-md-offset-10">
-								<button type="button" class="btn btn-success btn-block" id="addRvDespesa" data-toggle="button" align="center">Adicionar despesa</button>	
+							<div class="col-md-3 col-md-offset-9">
+								<button type="button" class="btn btn-success btn-block" id="addRvDespesa" data-toggle="button" align="center" >Adicionar despesa</button>	
 							</div>
 						</div>	
 					</div>	
@@ -257,12 +255,12 @@
 												<!-- <button type="button" class="btnUpFile btn btn-success btn-sm" data-acao="upload" onclick="anexo(event)" title="Selecionar">
 													<i class="fluigicon fluigicon-file-upload icon-sm"></i>
 												</button> -->
-												<button style="display: non;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disable>
+												<button style="display: none;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disabled>
 													<i class="fluigicon fluigicon-eye-open icon-sm"></i>
 												</button>
-												<!-- <button style="display: none;" type="button" class="btnDownloadFile btn btn-info btn-sm" data-acao="download" onclick="anexo(event)" title="Download" disabled>
+												<button style="display: none;" type="button" class="btnDownloadFile btn btn-info btn-sm" data-acao="download" onclick="anexo(event)" title="Download" disabled>
 													<i class="fluigicon fluigicon-download icon-sm"></i>
-												</button> -->
+												</button>
 											</div>
 										</td>
 									</tr>

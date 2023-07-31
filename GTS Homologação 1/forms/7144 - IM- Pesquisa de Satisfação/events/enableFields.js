@@ -3,8 +3,11 @@ function enableFields(form){
     var atv_atual = getValue("WKNumState");
 	
 	if(atv_atual == INICIO_0){	 
-		//form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);        
-	}else if(atv_atual == Registro_Ocorrências){
+		//form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);
+        
+    }else if(atv_atual == INICIO){	 
+        //form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);        
+    }else if(atv_atual == Registro_Ocorrências){
         //Inicio pesquisa 
         form.setEnabled("pesqEfetivoCont", false);
         form.setEnabled("pesqEntregaPor", false);

@@ -1,4 +1,4 @@
-$(document).ready(function() {wdkAddChild
+$(document).ready(function() {
 	setTimeout(function() {
 		funcoes.start();
 	}, 100)	
@@ -24,6 +24,7 @@ var funcoes = (function() {
 
 			let hasErros = false;
 			let message = '';
+			let addRvDespCodiID = $('#addRvDespCodiID').val().trim();
 			let addRvDespEstabelecimento = $('#addRvDespEstabelecimento').val().trim();
 			let addRvDespDocumento = $('#addRvDespDocumento').val().trim();
 			let addRvDespData = $('#addRvDespData').val().trim();
@@ -31,7 +32,12 @@ var funcoes = (function() {
 			let addRvDespClassi = $('#addRvDespClassi').val().trim();
 			let addRvDespValor = $('#addRvDespValor').val().trim();
 			let addRvDespCCusto = $('#addRvDespCCusto').val().trim();
+			let addRvDespAnexo = $('#addRvDespAnexo').val().trim();
 
+			if( addRvDespCodiID == '' ){
+				message += getMessage("Código", 1, form);
+				hasErros = true
+			}
 			if( addRvDespEstabelecimento == '' ){
 				message += getMessage("Estabelecimento", 1, form);
 				hasErros = true
@@ -60,6 +66,10 @@ var funcoes = (function() {
 				message += getMessage("Centro de Custo", 1, form);
 				hasErros = true
 			}
+			if( addRvDespAnexo == '' ){
+				message += getMessage("É obrigatório inserir a imagem.", 6, form);
+				hasErros = true
+			}
 			if( hasErros ){
 				messageToast({message: message}, 'warning')
 				return;
@@ -81,46 +91,57 @@ var funcoes = (function() {
 			let addRvDespAnexo = document.getElementById("addRvDespAnexo").value;
 			let addRvDespCodiID = document.getElementById("addRvDespCodiID").value;
 
-			$('[name^="rvDespEstabelecimento___"]'); //trará todos os campos filhos deste formulário. 
+			// $('[name^="rvDespEstabelecimento___"]'); //trará todos os campos filhos deste formulário. 
 			//Aqui percorrerá todos os itens.
-			for(var i = 0; i < $('[name^="rvDespEstabelecimento___"]').length; i++){
-				// $(`#rvDespEstabelecimento___${indice}`).val(addRvDespEstabelecimento).prop("readonly", true);
-				// $(`#rvDespDocumento___${indice}`).val(addRvDespDocumento).prop("readonly", true);
-				// $(`#rvDespData___${indice}`).val(addRvDespData).prop("readonly", true);
-				// $(`#rvDespTpPag___${indice}`).val(addRvDespTpPag).prop("readonly", true);
-				// $(`#rvDespClassi___${indice}`).val(addRvDespClassi).prop("readonly", true);
-				// $(`#rvDespValor___${indice}`).val(addRvDespValor).prop("readonly", true);
-				// $(`#rvDespCCusto___${indice}`).val(addRvDespCCusto).prop("readonly", true);
-				// $(`#rvDespAnexo___${indice}`).val(addRvDespAnexo).prop("readonly", true);
-				// $(`#rvDespCodiID___${indice}`).val(addRvDespCodiID).prop("readonly", true);
-				$(`#rvDespEstabelecimento___${indice}`).val(addRvDespEstabelecimento)
-				$(`#rvDespDocumento___${indice}`).val(addRvDespDocumento)
-				$(`#rvDespData___${indice}`).val(addRvDespData)
-				$(`#rvDespTpPag___${indice}`).val(addRvDespTpPag)
-				$(`#rvDespClassi___${indice}`).val(addRvDespClassi)
-				$(`#rvDespValor___${indice}`).val(addRvDespValor)
-				$(`#rvDespCCusto___${indice}`).val(addRvDespCCusto)
-				$(`#rvDespAnexo___${indice}`).val(addRvDespAnexo)
-				$(`#rvDespCodiID___${indice}`).val(addRvDespCodiID)
-			}	
+			// for(var i = 0; i < $('[name^="rvDespEstabelecimento___"]').length; i++){
+			$(`#rvDespEstabelecimento___${indice}`).val(addRvDespEstabelecimento)
+			$(`#rvDespDocumento___${indice}`).val(addRvDespDocumento)
+			$(`#rvDespData___${indice}`).val(addRvDespData)
+			$(`#rvDespTpPag___${indice}`).val(addRvDespTpPag)
+			$(`#rvDespClassi___${indice}`).val(addRvDespClassi)
+			$(`#rvDespValor___${indice}`).val(addRvDespValor)
+			$(`#rvDespCCusto___${indice}`).val(addRvDespCCusto)
+			$(`#rvDespAnexo___${indice}`).val(addRvDespAnexo)
+			$(`#rvDespCodiID___${indice}`).val(addRvDespCodiID)
+			// }	
 
-			// //limpa campos ao enviar ocorrencia
-			const limpaaddRvDespEstabelecimento = document.querySelector('#addRvDespEstabelecimento');
-			limpaaddRvDespEstabelecimento.value = '';	
-			const limpaaddRvDespDocumento = document.querySelector('#addRvDespDocumento');
-			limpaaddRvDespDocumento.value = '';
-			const limpaaddRvDespData = document.querySelector('#addRvDespData');
-			limpaaddRvDespData.value = '';
-			const limpaaddRvDespTpPag = document.querySelector('#addRvDespTpPag');
-			limpaaddRvDespTpPag.value = '';
-			const limpaaddRvDespClassi = document.querySelector('#addRvDespClassi');
-			limpaaddRvDespClassi.value = '';
-			const limpaaddRvDespValor = document.querySelector('#addRvDespValor');
-			limpaaddRvDespValor.value = '';
-			const limpaaddRvDespCCusto = document.querySelector('#addRvDespCCusto');
-			limpaaddRvDespCCusto.value = '';
-			const limpaaddRvDespAnexo = document.querySelector('#addRvDespAnexo');
-			limpaaddRvDespAnexo.value = '';
+			funcoes.limpaAddDespesa();
+
+			//Adiciona o Id de código de despesa
+			let AddRvDespCodiIDNext = parseInt($("#addRvDespCodiID").val()) + 1;
+			$("#addRvDespCodiID").val(AddRvDespCodiIDNext);
+			
+			//Mostra a tabela de despesa
+			$('#tbRelDespesas').show();
+			
+		},
+		
+		limpaAddDespesa(){
+
+			$('#addRvDespEstabelecimento').val('');
+			$('#addRvDespDocumento').val('');
+			$('#addRvDespData').val('');
+			$('#addRvDespTpPag').val('');
+			$('#addRvDespClassi').val('');
+			$('#addRvDespValor').val('');
+			$('#addRvDespCCusto').val('');
+			$('#addRvDespAnexo').val('');
+			// const limpaaddRvDespEstabelecimento = document.querySelector('#addRvDespEstabelecimento');
+			// limpaaddRvDespEstabelecimento.value = '';	
+			// const limpaaddRvDespDocumento = document.querySelector('#addRvDespDocumento');
+			// limpaaddRvDespDocumento.value = '';
+			// const limpaaddRvDespData = document.querySelector('#addRvDespData');
+			// limpaaddRvDespData.value = '';
+			// const limpaaddRvDespTpPag = document.querySelector('#addRvDespTpPag');
+			// limpaaddRvDespTpPag.value = '';
+			// const limpaaddRvDespClassi = document.querySelector('#addRvDespClassi');
+			// limpaaddRvDespClassi.value = '';
+			// const limpaaddRvDespValor = document.querySelector('#addRvDespValor');
+			// limpaaddRvDespValor.value = '';
+			// const limpaaddRvDespCCusto = document.querySelector('#addRvDespCCusto');
+			// limpaaddRvDespCCusto.value = '';
+			// const limpaaddRvDespAnexo = document.querySelector('#addRvDespAnexo');
+			// limpaaddRvDespAnexo.value = '';
 		},
 			
 	}
@@ -151,18 +172,15 @@ var eventsFuncoes = (function() {
 			});
 			
 			$(document).on("click", "#addRvDespesa", function() {
-				funcoes.addDespesa();				
+				if(funcoes.validaAddDespesa()){
+					funcoes.addDespesa();
+				}
 			});
-
-			// $(document).on("click", "#addRvDespesa", function() {
-			// 	if(funcoes.validaAddDespesa()){
-			// 		funcoes.addDespesa();
-			// 	}
-			// });
 		
 		}
 	}
 })();
+
 
 function loadForm(){	
 	//Carrega a data atual 
@@ -195,150 +213,104 @@ function getDataAtual() {
 	return dia + '/' + mes + '/' + ano;
 }
 
-function getMessage(texto, tipoMensagem, tabpaifilho) {
-	if(isMobile == 'true'){
-        switch (tipoMensagem) {
-            case 1:
-                return 'Campo "' + texto + '" não pode estar vazio.\n';
-            case 2:
-                return 'Campo "' + texto + '" está inválido.\n';    
-            case 3:
-                return 'Selecione uma opção em "' + texto + '".\n';
-            case 4:
-                return 'Campo "' + texto + '" não pode ser zero.\n'; 
-            case 5:
-                    return 'A tabela de  "' + tabpaifilho + '" possui um ou mais campos de "' + texto + '" inválido.\n'; 
-            case 6:
-                    return texto; 
-            case 7:
-                    return "Campo: "+texto+" precisa estar marcado."; 
-            case 8:
-                return "Campo: "+texto+" não pode ser menor que a data de saída";  	 	
-            case 9:
-                return "Atenção! Selecione a opção: " +texto;    
-        }
-    } else {
-        switch (tipoMensagem) {
-            case 1:
-                return "<li>Campo: <b>" + texto + "</b> não pode estar vazio.</li>";
-            case 2:
-                return '<li>Campo: <b>"' + texto + '"</b> está inválido.\n';    
-            case 3:
-                return "<li>Selecione uma opção em: <b>" + texto + "</b></li>";
-            case 4:
-                return "<li>Campo: <b>" + texto + "</b> não pode ser zero.</li>";
-            case 5:
-                return "<li>A tabela de <b>" + tabpaifilho + "</b> possui um ou mais campos de <b>" + texto + "</b> inválido.</li>";  
-            case 6:
-                    return "<li>"+texto+"</li>";     
-            case 7:
-                    return "<li>Campo: <b>"+texto+"</b> precisa estar marcado.</li>";
-            case 8:
-                return "<li>Campo: <b>"+texto+"</b> não pode ser menor que a data de saída </li>";   
-            case 9:
-                return "<li>Atenção! Selecione a opção: <b>"+texto+"</b></li>";  
-        }
-    }
-} 
-
 // //Remove ocorrencias do pai e filho
-// function removeDespesa(oElement){
+function removeDespesa(oElement){
 
-// 	try {
-// 		const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
-//         const rvDespData = $(`#rvDespData___${indice}`).val() || "";
-//         FLUIGC.message.confirm({
-//             message: `Deseja remover o registro de despesa do dia <b>${rvDespData}</b>?`,
-//             title: 'Confirmação',
-//             labelYes: 'Sim, quero remover',
-//             labelNo: 'Não, quero cancelar',
-//         }, function (result) {
-//             if (result) {
-//             	fnWdkRemoveChild(oElement);
+	try {
+		const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
+        const rvDespData = $(`#rvDespData___${indice}`).val() || "";
+        FLUIGC.message.confirm({
+            message: `Deseja remover o registro de despesa do dia <b>${rvDespData}</b>?`,
+            title: 'Confirmação',
+            labelYes: 'Sim, quero remover',
+            labelNo: 'Não, quero cancelar',
+        }, function (result) {
+            if (result) {
+            	fnWdkRemoveChild(oElement);
 				
-// 				let temRegistro = false;
-// 				$("input[name*=rvDespCodiID___]").each(function(){
-// 					temRegistro = true;
-// 				});
-// 				if(!temRegistro){
-// 					$('#tbRelDespesas').hide();
-// 				}
-// 			}
-//         });
-//     } catch (e) {
-//         console.error("Houve um erro inesperado na função removeDespesa")
-//         console.error(e)
-//     }
+				let temRegistro = false;
+				$("input[name*=rvDespCodiID___]").each(function(){
+					temRegistro = true;
+				});
+				if(!temRegistro){
+					$('#tbRelDespesas').hide();
+				}
+			}
+        });
+    } catch (e) {
+        console.error("Houve um erro inesperado na função removeDespesa")
+        console.error(e)
+    }
 
 	
-// };
+};
 
 //Função que habilita o upload no formulário pai e filho e seta a a descrição conforme as funções
 function showCamera(oElement) {
 	
 	// const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
 	
-	let valorID = "";
-	let solEstabelecimento = "";
-	let solDocumento = "";
+	let addRvDespCodiID = "";
+	let addRvDespEstabelecimento = "";
+	let addRvDespDocumento = "";
 	let nomeAnexo = "";
-	let addRvDespData = "";
-	let addRvDespTpPag = "";
-	let addRvDespClassi = "";
-	let addRvDespValor = "";
-	let addRvDespCCusto = "";
+	// let addRvDespData = "";
+	// let addRvDespTpPag = "";
+	// let addRvDespClassi = "";
+	// let addRvDespValor = "";
+	// let addRvDespCCusto = "";
 
-	valorID = $('#addRvDespCodiID').val();
-	solEstabelecimento = $('#addRvDespEstabelecimento').val();
-	solDocumento = $('#addRvDespDocumento').val();
-	addRvDespData = $('#addRvDespData').val();
-	addRvDespTpPag = $('#addRvDespTpPag').val();
-	addRvDespClassi = $('#addRvDespClassi').val();
-	addRvDespValor = $('#addRvDespValor').val();
-	addRvDespCCusto = $('#addRvDespCCusto').val();
+	addRvDespCodiID = $('#addRvDespCodiID').val();
+	addRvDespEstabelecimento = $('#addRvDespEstabelecimento').val();
+	addRvDespDocumento = $('#addRvDespDocumento').val();
+	// addRvDespData = $('#addRvDespData').val();
+	// addRvDespTpPag = $('#addRvDespTpPag').val();
+	// addRvDespClassi = $('#addRvDespClassi').val();
+	// addRvDespValor = $('#addRvDespValor').val();
+	// addRvDespCCusto = $('#addRvDespCCusto').val();
 	
 	let hasErros = false;
 	let message = '';
 
 	//Validação só anexa se os campos estiverem preenchidos para gerar o nome
-	/*if(valorID == ''){
+	if(addRvDespCodiID == ''){
 		message += getMessage("Código", 1, form);
 		hasErros = true;
-	}*/ 
-	if(solEstabelecimento == ''){
+	}
+	if(addRvDespEstabelecimento == ''){
 		message += getMessage("Estabelecimento", 1, form);
 		hasErros = true;
 	}
-	if(solDocumento == ''){
+	if(addRvDespDocumento == '' || addRvDespDocumento == '0' ){
 		message += getMessage("Documento", 1, form);
 		hasErros = true;
 	}
-	if(addRvDespData == ''){
-		message += getMessage("Data", 1, form);
-		hasErros = true;
-	}
-	if(addRvDespTpPag == ''){
-		message += getMessage("Tipo Pagamento", 1, form);
-		hasErros = true;
-	}
-	if(addRvDespClassi == ''){
-		message += getMessage("Classificação", 1, form);
-		hasErros = true;
-	}
-	if(addRvDespValor == ''){
-		message += getMessage("Valor", 1, form);
-		hasErros = true;
-	}
-	if(addRvDespCCusto == ''){
-		message += getMessage("Centro de Custo", 1, form);
-		hasErros = true;
-	}
+	// if(addRvDespData == ''){
+	// 	message += getMessage("Data", 1, form);
+	// 	hasErros = true;
+	// }
+	// if(addRvDespTpPag == ''){
+	// 	message += getMessage("Tipo Pagamento", 1, form);
+	// 	hasErros = true;
+	// }
+	// if(addRvDespClassi == ''){
+	// 	message += getMessage("Classificação", 1, form);
+	// 	hasErros = true;
+	// }
+	// if(addRvDespValor == ''){
+	// 	message += getMessage("Valor", 1, form);
+	// 	hasErros = true;
+	// }
+	// if(addRvDespCCusto == ''){
+	// 	message += getMessage("Centro de Custo", 1, form);
+	// 	hasErros = true;
+	// }
 	if( hasErros ){
 		messageToast({message: message}, 'warning')
 		return;
 	}
 
-	nomeAnexo = (valorID+ "_" + solEstabelecimento + "_" + solDocumento);
+	nomeAnexo = (addRvDespCodiID+ "_" + addRvDespEstabelecimento + "_" + addRvDespDocumento);
 
 	JSInterface.showCamera(nomeAnexo); 	
 	

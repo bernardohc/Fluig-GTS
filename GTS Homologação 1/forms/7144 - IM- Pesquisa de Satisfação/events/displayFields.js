@@ -22,12 +22,19 @@ function displayFields(form, customHTML) {
 		form.setVisibleById("divFimOcorrencia", false);
         form.setVisibleById("divPsPesqOcorrencia", false);
         form.setVisibleById("divPsFimOcorrencia", false);
+		
 	}else if (atv_atual == INICIO) {
+		
 		if (form.getFormMode() == 'MOD') {
+			if(form.getValue("pesqOcorrencia") == "sim"){
+				form.setVisibleById("divPesqOcorrencia", true);
+				form.setVisibleById("divFimOcorrencia", true);
+			}else{
 			form.setVisibleById("divPesqOcorrencia", false);
 			form.setVisibleById("divFimOcorrencia", false);
-        	form.setVisibleById("divPsPesqOcorrencia", false);
-        	form.setVisibleById("divPsFimOcorrencia", false);
+			form.setVisibleById("divPsPesqOcorrencia", false);
+			form.setVisibleById("divPsFimOcorrencia", false);
+			}
 		}
 
 	}else if (atv_atual == Registro_Ocorrências) {
@@ -56,33 +63,41 @@ function displayFields(form, customHTML) {
 		}
 
 	}else if (atv_atual == FIM) {
+
 		controleAbas(form, customHTML, 'disponivel');
-		//disableCampo(form, customHTML);
 	
 		form.setVisibleById("divAddOcorrencia", false);
 		form.setVisibleById("divAddOcorrenciaPs", false);	
 
-
+		disableCampo(form, customHTML);
+		disableCampoPs(form, customHTML);
+		
 	}
-}
+};
 
 function controleAbas(form, customHTML, tabNavegacao){
-	
-	
 	if(tabNavegacao == 'disponivel'){
 		customHTML.append("<script>$('#tabPesquisaPosSfra').removeClass('disabled');</script>");
 		customHTML.append("<script>$('#tabPesquisaPosSfra a').prop('href', '#divPesquisaPosSafra');</script>");
 	}
+};
 
-}
+function disableCampo(form, customHTML){
+	customHTML.append("<script>$('#pesqAcompanhouEntrega').prop('readonly', true);</script>");
+	customHTML.append("<script>$('#pesqTelefone').prop('readonly', true);</script>");
+	customHTML.append("<script>$('#pesqPrevColheita').prop('readonly', true);</script>");
+	customHTML.append("<script>$('#pesqNotaAtendimento').attr('readonly', true);</script>");
+	customHTML.append("<script>$('#pesqNotaDesempenho').attr('readonly', true);</script>");
+	
+};
 
-// function disableCampo(form, customHTML){
-// 	customHTML.append("<script>$('#pesqAcompanhouEntrega').prop('readonly', true);</script>");
-// 	customHTML.append("<script>$('#pesqTelefone').prop('readonly', true);</script>");
-// 	//customHTML.append("<script>$('#pesqNotaAtendimento').prop('readonly', true);</script>");
-// 	//customHTML.append("<script>$('#pesqNotaDesempenho').prop('readonly', true);</script>");
-// 	customHTML.append("<script>$('#pesqPrevColheita').prop('readonly', true);</script>");
-// }
-
+function disableCampoPs(form, customHTML){
+	customHTML.append("<script>$('#psPesqAcompanhouEntrega').prop('readonly', true);</script>");
+	customHTML.append("<script>$('#psPesqTelefone').prop('readonly', true);</script>");
+	customHTML.append("<script>$('#psPesqDispRevenda').prop('readonly', true);</script>");	
+	customHTML.append("<script>$('#psPesqNotaAtendimento').attr('readonly', true);</script>");
+	customHTML.append("<script>$('#psPesqNotaDesempenho').attr('readonly', true);</script>");
+	customHTML.append("<script>$('#psPesqDispRevenda').attr('readonly', true);</script>");
+};
 
 
