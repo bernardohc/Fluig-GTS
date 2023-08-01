@@ -168,18 +168,18 @@
 								<select name="addRvDespTpPag" id="addRvDespTpPag" class="form-control">
 									<option value=""></option>
 									<option value="Dinheiro"> Dinheiro </option>
-									<option value="Cartao"> Cartão </option>
+									<option value="Cartão"> Cartão </option>
 								</select>
 							</div>
 							<div class="col-md-2" align="left">
 								<label for="addRvDespClassi">Classificação*</label>
 								<select name="addRvDespClassi" id="addRvDespClassi" class="form-control">
 									<option value=""></option>
-									<option value="Acomodacao"> Acomodação </option>
-									<option value="Combustivel"> Combustível </option>
-									<option value="Refeicao"> Refeição </option>
+									<option value="Acomodação"> Acomodação </option>
+									<option value="Combustível"> Combustível </option>
+									<option value="RefRefeiçãoeicao"> Refeição </option>
 									<option value="Transporte"> Transporte </option>
-									<option value="Pedagio"> Pedágio </option>
+									<option value="Pedágio"> Pedágio </option>
 									<option value="Outros"> Outros </option>
 								</select>
 							</div>
@@ -211,24 +211,24 @@
 							<table class="table table-condensed table-nonfluid table-striped" id="tbRelDespesas" tablename="tbRelDespesas" name="tbRelDespesas" noaddbutton="true" customFnDelete="removeDespesa(this)">
 								<thead>
 									<tr>
-										<!-- <th class="col-md-1">Código</th> -->
-										<th class="col-md-2">Estabelecimento</th>
-										<th class="col-md-1">Documento</th>
-										<th class="col-md-2">Data</th>
-										<th class="col-md-1">Pagamento</th>		
-										<th class="col-md-2">Classificação</th>		
-										<th class="col-md-2">Valor</th>		
-										<th class="col-md-2">Centro de Custo</th>		
-										<th class="col-md-1">Anexo</th>		
+										<th style="width: 9%">Código</th>
+										<th style="width: 19%">Estabelecimento</th>
+										<th style="width: 10%">Documento</th>
+										<th style="width: 10%">Data</th>
+										<th style="width: 8%">Pagamento</th>		
+										<th style="width: 10%">Classificação</th>		
+										<th style="width: 10%">Valor</th>		
+										<th style="width: 18%">Centro de Custo</th>		
+										<th style="width: 6%">Anexo</th>		
 									</tr>
 								</thead>
 								<tbody>
 									<tr detail="true" detailname="tbRelDespesas">
-										<!-- <td>
-											<input type="hidden" id="rvDespCodiID"  name="rvDespCodiID" class="form-control" readonly>
-										</td> -->
 										<td>
-											<input type="hidden" id="rvDespCodiID"  name="rvDespCodiID" class="form-control" readonly>
+											<input type="text" id="rvDespCodiID"  name="rvDespCodiID" class="form-control" readonly>
+										</td>
+										<td>
+											<!-- <input type="hidden" id="rvDespCodiID"  name="rvDespCodiID" class="form-control" readonly> -->
 											<input type="text" id="rvDespEstabelecimento"  name="rvDespEstabelecimento" class="form-control" readonly>
 										</td>
 										<td>
@@ -272,12 +272,8 @@
 					<hr />
 					<div class="row">
 						<div class="form-group col-md-2 col-md-offset-2">
-							<label for="rvDiaria">Diaria:</label>
+							<label for="rvDiaria">Diária:</label>
 							<input type="text" name="rvDiaria" id="rvDiaria" class="form-control">
-						</div>
-						<div class="form-group col-md-2">
-							<label for="rvSaldo">Saldo:</label>
-							<input type="text" name="rvSaldo" id="rvSaldo" class="form-control">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="rvTotalComb">Total combustível:</label>
@@ -285,7 +281,11 @@
 						</div>
 						<div class="form-group col-md-2">
 							<label for="rvTotal">Total de despesas:</label>
-							<input type="text" name="rvTotal" id="rvTotal" class="form-control">
+							<input type="text" name="rvTotal" id="rvTotal" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="rvSaldo">Saldo:</label>
+							<input type="text" name="rvSaldo" id="rvSaldo" class="form-control" readonly>
 						</div>
 					</div>
 					<div class="row">

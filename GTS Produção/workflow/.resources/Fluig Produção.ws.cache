@@ -6498,5 +6498,142 @@
     </void>
    </array>
   </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 6569</string>
+   <array class="java.lang.String" length="44">
+    <void index="0">
+     <string>A1CODLOJARevenda</string>
+    </void>
+    <void index="1">
+     <string>A1CODRevenda</string>
+    </void>
+    <void index="2">
+     <string>A1LOJARevenda</string>
+    </void>
+    <void index="3">
+     <string>assuntoSolicitacao</string>
+    </void>
+    <void index="4">
+     <string>atendComExterna</string>
+    </void>
+    <void index="5">
+     <string>atendComInterna</string>
+    </void>
+    <void index="6">
+     <string>atendData</string>
+    </void>
+    <void index="7">
+     <string>atendId</string>
+    </void>
+    <void index="8">
+     <string>atendStatus</string>
+    </void>
+    <void index="9">
+     <string>atendUsuario</string>
+    </void>
+    <void index="10">
+     <string>chkStatusFinalizadoCiente</string>
+    </void>
+    <void index="11">
+     <string>cidadeRequisitante</string>
+    </void>
+    <void index="12">
+     <string>cidadeRevenda</string>
+    </void>
+    <void index="13">
+     <string>codCidadeRequisitante</string>
+    </void>
+    <void index="14">
+     <string>codCidadeRevenda</string>
+    </void>
+    <void index="15">
+     <string>codGrupoSetor</string>
+    </void>
+    <void index="16">
+     <string>codSetor</string>
+    </void>
+    <void index="17">
+     <string>cpfCnpjRequisitante</string>
+    </void>
+    <void index="18">
+     <string>cpfCnpjRevenda</string>
+    </void>
+    <void index="19">
+     <string>dataAbertura</string>
+    </void>
+    <void index="20">
+     <string>dataEncerramento</string>
+    </void>
+    <void index="21">
+     <string>descricaoSolicitacao</string>
+    </void>
+    <void index="22">
+     <string>emailRequisitante</string>
+    </void>
+    <void index="23">
+     <string>emailRequisitanteCodRetorno</string>
+    </void>
+    <void index="24">
+     <string>emailRequisitanteFimCodRetorno</string>
+    </void>
+    <void index="25">
+     <string>emailRequisitanteFimMsgRetorno</string>
+    </void>
+    <void index="26">
+     <string>emailRequisitanteMsgRetorno</string>
+    </void>
+    <void index="27">
+     <string>estadoRequisitante</string>
+    </void>
+    <void index="28">
+     <string>estadoRevenda</string>
+    </void>
+    <void index="29">
+     <string>modeloEquipamento</string>
+    </void>
+    <void index="30">
+     <string>nomeRequisitante</string>
+    </void>
+    <void index="31">
+     <string>numProtocoloFluig</string>
+    </void>
+    <void index="32">
+     <string>numProtocoloTelefonico</string>
+    </void>
+    <void index="33">
+     <string>numSerie</string>
+    </void>
+    <void index="34">
+     <string>obsInterna</string>
+    </void>
+    <void index="35">
+     <string>revenda</string>
+    </void>
+    <void index="36">
+     <string>setor</string>
+    </void>
+    <void index="37">
+     <string>statusAtendimento</string>
+    </void>
+    <void index="38">
+     <string>statusAtendimentoDesc</string>
+    </void>
+    <void index="39">
+     <string>telRequisitante</string>
+    </void>
+    <void index="40">
+     <string>tipoPessoaRequisitante</string>
+    </void>
+    <void index="41">
+     <string>tipoPessoaRevenda</string>
+    </void>
+    <void index="42">
+     <string>tipoSolicitacao</string>
+    </void>
+    <void index="43">
+     <string>tipoSolicitacaoDesc</string>
+    </void>
+   </array>
+  </void>
  </object>
 </java>

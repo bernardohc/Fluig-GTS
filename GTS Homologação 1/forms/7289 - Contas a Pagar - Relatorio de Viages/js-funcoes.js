@@ -11,6 +11,7 @@ var funcoes = (function() {
 	var loading = FLUIGC.loading(window);
 	var index = 0;
 	let contador = 1000;
+	let totalSoma = 0;
 
 	return {
 		start : function() {
@@ -143,7 +144,52 @@ var funcoes = (function() {
 			// const limpaaddRvDespAnexo = document.querySelector('#addRvDespAnexo');
 			// limpaaddRvDespAnexo.value = '';
 		},
+
+		calculaTotal : function(){
+			let totalSoma = 0;
+
+			$("input[name*=rvDespValor___]").each(function(index){
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				
+				let rvDespValor = validafunctions.getFloatValue("rvDespValor___"+index);
+
+				if (!isNaN(rvDespValor) ) {
+					totalSoma = totalSoma + rvDespValor;
+				}
+			});
+			$("#rvTotal").val(totalSoma.toFixed(2));
+			validafunctions.setMoeda("rvTotal", 2, false , '');
+		},	
+		
+		calculaSaldo : function(){
+			let rvSaldo = 0;
+			let solAdianta = validafunctions.getFloatValue("solAdianta");
+			let rvTotal = validafunctions.getFloatValue("rvTotal");
 			
+			if(solAdianta > 0){
+				rvSaldo = solAdianta - rvTotal;
+			}else{
+				rvSaldo = 0;
+			}
+			$("#rvSaldo").val(rvSaldo.toFixed(2));
+			validafunctions.setMoeda("rvSaldo", 2, false , '');
+		},
+
+		// calculaCombustivel : function(){
+		// 	let totalComb = 0;
+
+		// 	$("input[name*=rvDespValor___]").each(function(index){
+		// 		var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				
+		// 		let rvDespClassi = validafunctions.getValue("rvDespClassi___"+index);
+
+		// 		if(rvDespClassi = "Combustível") {
+		// 			alert(rvDespClassi);
+		// 		}
+		// 	});
+		// 	// $("#rvTotal").val(totalSoma.toFixed(2));
+		// 	// validafunctions.setMoeda("rvTotal", 2, false , '');
+		// },
 	}
 })();
 
@@ -174,6 +220,9 @@ var eventsFuncoes = (function() {
 			$(document).on("click", "#addRvDespesa", function() {
 				if(funcoes.validaAddDespesa()){
 					funcoes.addDespesa();
+					funcoes.calculaTotal();
+					funcoes.calculaSaldo();
+					
 				}
 			});
 		
@@ -227,7 +276,8 @@ function removeDespesa(oElement){
         }, function (result) {
             if (result) {
             	fnWdkRemoveChild(oElement);
-				
+				funcoes.calculaTotal();
+				funcoes.calculaSaldo();
 				let temRegistro = false;
 				$("input[name*=rvDespCodiID___]").each(function(){
 					temRegistro = true;

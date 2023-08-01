@@ -12,34 +12,6 @@ function validateForm(form){
         case INICIO :  
         case SALVAR_RELATORIO :
 
-            if (isEmpty("salvarEnviar", form)) {
-                if (isMobile(form)){
-                    message += getMessage("É preciso selecionar a ação ('Salvar' ou 'Enviar')", 6, form);
-                }else{
-                    message += getMessage("É preciso selecionar a ação (<b>Salvar</b> ou <b>Enviar</b>)", 6, form);
-                }
-                   hasErros = true;
-            }else{
-                if( form.getValue("salvarEnviar") == 'Enviar' ){
-                    if( WKNumState == WKNextState ){
-                        if (isMobile(form)){
-                        message += getMessage("Você selecionou a opção 'Enviar' e está salvando a solicitação.", 6, form);
-                    }else{
-                        message += getMessage("Você selecionou a opção <b>Enviar</b> e está salvando a solicitação.", 6, form);
-                    }
-                        hasErros = true;
-                    }
-                }
-            }
-            /*if (isEmpty("solMatSolicitante", form)) {
-                message += getMessage("Matricula do Solicitante", 1, form);
-                hasErros = true;
-            }
-            if (isEmpty("solNomeSolicitante", form)) {
-                message += getMessage("Nome do Solicitante", 1, form);
-                hasErros = true;
-            }*/
-
             //Se for clicado em Enviar 
             if (getValue("WKCompletTask") == "true" ){
 
@@ -59,8 +31,30 @@ function validateForm(form){
                     message += getMessage("Data de Retorno", 1, form);
                     hasErros = true;
                 }
+                if (isEmpty("solNumColab", form)) {
+                    message += getMessage("Número de colaboradores", 1, form);
+                    hasErros = true;
+                }
                 
-                
+                if (isEmpty("salvarEnviar", form)) {
+                    if (isMobile(form)){
+                        message += getMessage("É preciso selecionar a ação ('Salvar' ou 'Enviar')", 6, form);
+                    }else{
+                        message += getMessage("É preciso selecionar a ação (<b>Salvar</b> ou <b>Enviar</b>)", 6, form);
+                    }
+                        hasErros = true;
+                }else{
+                    if( form.getValue("salvarEnviar") == 'Enviar' ){
+                        if( WKNumState == WKNextState ){
+                            if (isMobile(form)){
+                            message += getMessage("Você selecionou a opção 'Enviar' e está salvando a solicitação.", 6, form);
+                        }else{
+                            message += getMessage("Você selecionou a opção <b>Enviar</b> e está salvando a solicitação.", 6, form);
+                        }
+                            hasErros = true;
+                        }
+                    }
+                }
                 //Despesas da Viagem
                 if (!isEmpty("addRvDespEstabelecimento", form) ){
                     if (isMobile(form)) {

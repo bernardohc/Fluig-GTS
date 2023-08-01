@@ -28,7 +28,7 @@ function displayFields(form, customHTML) {
 		form.setValue("solMatSol",  usuarioCorrente.getCode() );
 
 		form.setVisibleById("divAddDespesa", true);
-		form.setValue("addRvDespCodiID",  "1000" );
+		form.setValue("addRvDespCodiID",  "1001" );
 
 		form.setVisibleById("tbRelDespesas", false);
 		if(!isMobile(form)){
