@@ -175,21 +175,49 @@ var funcoes = (function() {
 			validafunctions.setMoeda("rvSaldo", 2, false , '');
 		},
 
-		// calculaCombustivel : function(){
-		// 	let totalComb = 0;
+		calculaCombustivel : function(){
 
-		// 	$("input[name*=rvDespValor___]").each(function(index){
-		// 		var index = validafunctions.getPosicaoFilho($(this).attr("id"));
-				
-		// 		let rvDespClassi = validafunctions.getValue("rvDespClassi___"+index);
+			let totalComb = 0;
 
-		// 		if(rvDespClassi = "Combustível") {
-		// 			alert(rvDespClassi);
-		// 		}
-		// 	});
-		// 	// $("#rvTotal").val(totalSoma.toFixed(2));
-		// 	// validafunctions.setMoeda("rvTotal", 2, false , '');
-		// },
+			$("input[name*=rvDespValor___]").each(function(index){
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				let rvDespClassi = $("#rvDespClassi___"+index).val();
+				let rvDespValor = parseFloat($("#rvDespValor___"+index).val());
+
+				if(rvDespClassi === "Combustível") {
+					totalComb = totalComb + rvDespValor;
+				}
+			});
+			$("#rvTotalComb").val(totalComb.toFixed(2));
+			validafunctions.setMoeda("rvTotalComb", 2, false , '');
+		},
+
+		calculaDiaria : function(){
+
+			let somaDiaria = 0;
+			// const dataIncialInput = $("solDataSaida").val();
+			// const dataFinalInput = $("solDataRet").val();
+
+			// const dataInicial = new Date(dataIncialInput);
+			// const dataFinal = new Date(dataFinalInput);
+
+			// const diferencaMilissegundos = Math.abs(dataFinal - dataInicial);
+
+			// console.log(diferencaMilissegundos);
+			
+			$("input[name*=rvDespValor___]").each(function(index){
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				let rvDespClassi = $("#rvDespClassi___"+index).val();
+				let rvDespValor = parseFloat($("#rvDespValor___"+index).val());
+
+				if(rvDespClassi === "Acomodação" || rvDespClassi === "Refeição" ) {
+					somaDiaria += rvDespValor;
+				}
+			});
+			$("#rvDiaria").val(somaDiaria.toFixed(2));
+			validafunctions.setMoeda("rvDiaria", 2, false , '');
+
+		},
 	}
 })();
 
@@ -222,6 +250,8 @@ var eventsFuncoes = (function() {
 					funcoes.addDespesa();
 					funcoes.calculaTotal();
 					funcoes.calculaSaldo();
+					funcoes.calculaCombustivel();
+					funcoes.calculaDiaria();
 					
 				}
 			});
@@ -278,6 +308,8 @@ function removeDespesa(oElement){
             	fnWdkRemoveChild(oElement);
 				funcoes.calculaTotal();
 				funcoes.calculaSaldo();
+				funcoes.calculaCombustivel();
+				funcoes.calculaDiaria();
 				let temRegistro = false;
 				$("input[name*=rvDespCodiID___]").each(function(){
 					temRegistro = true;
