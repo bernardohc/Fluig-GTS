@@ -4,6 +4,8 @@ $(document).ready(function() {wdkAddChild
 	}, 100)	
 });
 
+const dataAtual = getDataAtual();
+
 //Aqui cria as funcioes
 var funcoes = (function() {
 	var loading = FLUIGC.loading(window);
@@ -55,8 +57,14 @@ var funcoes = (function() {
 							$("#pesqCidadeCliente").val(record.cliCidade);
 							$("#pesqAcompanhouEntrega").val(record.protoRecResponsavel);
 							$("#pesqTelefone").val(record.protoRecTelefone);
-
-							$("#psPesqTelefone").val(record.protoRecResponsavel);
+							//pose safra
+							$("#psPesqModelo").val(record.equipModelo);
+							$("#psPesqRevenda").val(record.revRazaoSocialRevenda);
+							$("#psPesqCidadeRevenda").val(record.revCidade);
+							$("#psPesqCliente").val(record.cliNomeCliente);
+							$("#psPesqCidadeCliente").val(record.cliCidade);
+							$("#psPesqAcompanhouEntrega").val(record.protoRecResponsavel);
+							$("#psPesqTelefone").val(record.protoRecTelefone);
 							
 						}else if (records[0].CODRET == "2"){		
 							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
@@ -131,8 +139,8 @@ var funcoes = (function() {
 
 		efetivouContatoFs : function(){
 			let psPesqEfetivoCont = document.getElementById("psPesqEfetivoCont").value;
-			let psPesqAcompanhouEntrega = document.getElementById("psPesqAcompanhouEntrega");
-			let psPesqTelefone = document.getElementById("psPesqTelefone");
+			//let psPesqAcompanhouEntrega = document.getElementById("psPesqAcompanhouEntrega");
+			//let psPesqTelefone = document.getElementById("psPesqTelefone");
 			let psPesqNotaAtendimento = document.getElementById("psPesqNotaAtendimento");
 			let psPesqFeedbackAtendimento = document.getElementById("psPesqFeedbackAtendimento");
 			let psPesqNotaDesempenho = document.getElementById("psPesqNotaDesempenho");
@@ -142,8 +150,8 @@ var funcoes = (function() {
 			let psPesqOcorrencia = document.getElementById("psPesqOcorrencia");
 
 			if (psPesqEfetivoCont === "nao" || psPesqEfetivoCont === "") {
-				psPesqAcompanhouEntrega.disabled = true;
-				psPesqTelefone.disabled = true;
+				//psPesqAcompanhouEntrega.disabled = true;
+				//psPesqTelefone.disabled = true;
 				psPesqNotaAtendimento.disabled = true;
 				psPesqFeedbackAtendimento.disabled = true;
 				psPesqNotaDesempenho.disabled = true;
@@ -152,8 +160,8 @@ var funcoes = (function() {
 				psPesqFeedbackPecas.disabled = true;
 				psPesqOcorrencia.disabled = true;
 			}else{
-				psPesqAcompanhouEntrega.disabled = false;
-				psPesqTelefone.disabled = false;
+				//psPesqAcompanhouEntrega.disabled = false;
+				//psPesqTelefone.disabled = false;
 				psPesqNotaAtendimento.disabled = false;
 				psPesqFeedbackAtendimento.disabled = false;
 				psPesqNotaDesempenho.disabled = false;
@@ -168,29 +176,29 @@ var funcoes = (function() {
 		preencheCampos : function(){
 			let pesqEntregaPor = document.getElementById("pesqEntregaPor").value;
 			let pesqNumSerie = document.getElementById("pesqNumSerie").value;
-			let pesqModelo = document.getElementById("pesqModelo").value;
-			let pesqRevenda = document.getElementById("pesqRevenda").value;
-			let pesqCidadeRevenda = document.getElementById("pesqCidadeRevenda").value;
-			let pesqRepresentante = document.getElementById("pesqRepresentante").value;
-			let pesqCliente = document.getElementById("pesqCliente").value;
-			let pesqCidadeCliente = document.getElementById("pesqCidadeCliente").value;
-			let pesqNotaAtendimento = document.getElementById("pesqNotaAtendimento").value;
-			let pesqFeedbackAtendimento = document.getElementById("pesqFeedbackAtendimento").value;
+			// let pesqModelo = document.getElementById("pesqModelo").value;
+			// let pesqRevenda = document.getElementById("pesqRevenda").value;
+			// let pesqCidadeRevenda = document.getElementById("pesqCidadeRevenda").value;
+			// let pesqRepresentante = document.getElementById("pesqRepresentante").value;
+			// let pesqCliente = document.getElementById("pesqCliente").value;
+			// let pesqCidadeCliente = document.getElementById("pesqCidadeCliente").value;
+			// let pesqNotaAtendimento = document.getElementById("pesqNotaAtendimento").value;
+			// let pesqFeedbackAtendimento = document.getElementById("pesqFeedbackAtendimento").value;
 			// let pesqAcompanhouEntrega = document.getElementById("pesqAcompanhouEntrega").value;
 			// let pesqTelefone = document.getElementById("pesqTelefone").value;
 
 			$(`#psPesqEntregaPor`).val(pesqEntregaPor).prop("readonly", true);
 			$(`#psPesqNumSerie`).val(pesqNumSerie).prop("readonly", true);
-			$(`#psPesqModelo`).val(pesqModelo).prop("readonly", true);
-			$(`#psPesqRevenda`).val(pesqRevenda).prop("readonly", true);
-			$(`#psPesqCidadeRevenda`).val(pesqCidadeRevenda).prop("readonly", true);
-			$(`#psPesqRepresentante`).val(pesqRepresentante).prop("readonly", true);
-			$(`#psPesqCliente`).val(pesqCliente).prop("readonly", true);
-			$(`#psPesqCidadeCliente`).val(pesqCidadeCliente).prop("readonly", true);
-			$(`#psPesqNotaAtendimento`).val(pesqNotaAtendimento).prop("readonly", true);
-			$(`#psPesqFeedbackAtendimento`).val(pesqFeedbackAtendimento).prop("readonly", true);
-			// $(`#psPesqAcompanhouEntrega`).val(pesqAcompanhouEntrega).prop("readonly", true);
-			// $(`#psPesqTelefone`).val(pesqTelefone).prop("readonly", true);
+			// $(`#psPesqModelo`).val(pesqModelo).prop("readonly", true);
+			// $(`#psPesqRevenda`).val(pesqRevenda).prop("readonly", true);
+			// $(`#psPesqCidadeRevenda`).val(pesqCidadeRevenda).prop("readonly", true);
+			// $(`#psPesqRepresentante`).val(pesqRepresentante).prop("readonly", true);
+			// $(`#psPesqCliente`).val(pesqCliente).prop("readonly", true);
+			// $(`#psPesqCidadeCliente`).val(pesqCidadeCliente).prop("readonly", true);
+			// $(`#psPesqNotaAtendimento`).val(pesqNotaAtendimento).prop("readonly", true);
+			// $(`#psPesqFeedbackAtendimento`).val(pesqFeedbackAtendimento).prop("readonly", true);
+			// $(`#psPesqAcompanhouEntrega`).val(pesqAcompanhouEntrega);//.prop("readonly", true)
+			// $(`#psPesqTelefone`).val(pesqTelefone);//.prop("readonly", true)
 
 		},
 
@@ -232,12 +240,15 @@ var funcoes = (function() {
 			if(psPesqEfetivoCont == "nao"){
 				$("[temObsPs]").show();
 				$("[psFimSemRet]").show();
+				$("[sugestMelhoria]").hide();
 			}else if(psPesqEfetivoCont == ""){
 				$("[temObsPs]").hide();
 				$("[psFimSemRet]").hide();
+				$("[sugestMelhoria]").hide();
 			}else{
 				$("[temObsPs]").hide();
 				$("[psFimSemRet]").hide();
+				$("[sugestMelhoria]").show();
 			}
 		},
 
@@ -375,6 +386,14 @@ var funcoes = (function() {
 	}
 })();
 
+function getDataAtual() {
+	const today = new Date();
+	const dia = String(today.getDate()).padStart(2, '0');
+	const mes = String(today.getMonth() + 1).padStart(2, '0'); // Os meses começam do zero (janeiro é 0)
+	const ano = today.getFullYear();
+	return dia + '/' + mes + '/' + ano;
+}
+
 //Aqui colocar os gatilhos
 var eventsFuncoes = (function() {
 	return {
@@ -462,36 +481,36 @@ $(document).on("change", "#psPesqEfetivoCont", function() {
 // });
 
 //Gatilhos preenche campos do pos safra
-$(document).on("change", "#pesqEntregaPor", function() {
-	funcoes.preencheCampos();
-});
+// $(document).on("change", "#pesqTelefone", function() {
+// 	funcoes.preencheCampos();
+// });
 $(document).on("change", "#pesqNumSerie", function() {
 	funcoes.preencheCampos();
 });
-$(document).on("change", "#pesqModelo", function() {
-	funcoes.preencheCampos();
-});
-$(document).on("change", "#pesqRevenda", function() {
-	funcoes.preencheCampos();
-});
-$(document).on("change", "#pesqCidadeRevenda", function() {
-	funcoes.preencheCampos();
-});
-$(document).on("change", "#pesqCliente", function() {
-	funcoes.preencheCampos();
-});
-$(document).on("change", "#pesqCidadeCliente", function() {
-	funcoes.preencheCampos();
-});
-$(document).on("change", "#pesqRepresentante", function() {
-	funcoes.preencheCampos();
-});
-$(document).on("change", "#pesqAcompanhouEntrega", function() {
-	funcoes.preencheCampos();
-});
-$(document).on("change", "#pesqTelefone", function() {
-	funcoes.preencheCampos();
-});
+// $(document).on("change", "#pesqModelo", function() {
+// 	funcoes.preencheCampos();
+// });
+// $(document).on("change", "#pesqRevenda", function() {
+// 	funcoes.preencheCampos();
+// });
+// $(document).on("change", "#pesqCidadeRevenda", function() {
+// 	funcoes.preencheCampos();
+// });
+// $(document).on("change", "#pesqCliente", function() {
+// 	funcoes.preencheCampos();
+// });
+// $(document).on("change", "#pesqCidadeCliente", function() {
+// 	funcoes.preencheCampos();
+// });
+// $(document).on("change", "#pesqRepresentante", function() {
+// 	funcoes.preencheCampos();
+// });
+// $(document).on("change", "#pesqAcompanhouEntrega", function() {
+// 	funcoes.preencheCampos();
+// });
+// $(document).on("change", "#pesqTelefone", function() {
+// 	funcoes.preencheCampos();
+// });
 $(document).on("change", "#pesqTermColheita", function() {
 	funcoes.blocCalendar();
 });
@@ -532,21 +551,18 @@ function loadForm(){
 	funcoes.efetivouContatoFs();
 	funcoes.liberaObs();
 	funcoes.liberaObsPs();
+	//Carrega data atual
+	$(`#solDataPesq`).val(dataAtual);
+	$(`#psSolDataPesq`).val(dataAtual);
 	
-	var today = new Date();
-	var solDataPesq = FLUIGC.calendar('#solDataPesq', {
-		language: 'pt-br',
-		minDate: today,
-		pickDate: true,
-		pickTime: false,
-	});
-
-	var psSolDataPesq = FLUIGC.calendar('#psSolDataPesq', {
-		language: 'pt-br',
-		minDate: today,
-		pickDate: true,
-		pickTime: false,
-	});
+	//var today = new Date();
+	
+	// var psSolDataPesq = FLUIGC.calendar('#psSolDataPesq', {
+	// 	language: 'pt-br',
+	// 	minDate: today,
+	// 	pickDate: true,
+	// 	pickTime: false,
+	// });
 	
 }
 	

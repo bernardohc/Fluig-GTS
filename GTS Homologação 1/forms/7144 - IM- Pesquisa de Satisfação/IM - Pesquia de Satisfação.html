@@ -74,7 +74,7 @@
 						<div class="form-group col-md-2">
 							<label for="solDataPesq">Data da pesquisa:</label>
 							<div class="input-group">
-								<input type="text" name="solDataPesq" id="solDataPesq" class="form-control" oninput="formatarData(this)" maxlength="10">
+								<input type="text" name="solDataPesq" id="solDataPesq" class="form-control" oninput="formatarData(this)" maxlength="10" readonly>
 								<span class="input-group-addon">
 									<span class="fluigicon fluigicon-calendar"></span>
 								</span>
@@ -112,11 +112,11 @@
 						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqAcompanhouEntrega">Quem acompanhou a entrega:</label>
-							<input type="text" name="pesqAcompanhouEntrega" id="pesqAcompanhouEntrega" class="form-control" readonly>
+							<input type="text" name="pesqAcompanhouEntrega" id="pesqAcompanhouEntrega" class="form-control">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqTelefone">Telefone:</label>
-							<input type="text" name="pesqTelefone" id="pesqTelefone" class="form-control pesqTelefone" oninput="aplicaMascaraTelefone(this)" readonly> 
+							<input type="text" name="pesqTelefone" id="pesqTelefone" class="form-control pesqTelefone" oninput="aplicaMascaraTelefone(this)"> 
 						</div>
 					</div>
 					<div class="row">
@@ -140,6 +140,7 @@
 								<option value="10"> 10 </option>
 								<option value="8"> 8 </option>
 								<option value="6"> 6 </option>
+								<option value="Nao Utilizou"> Não utilizou </option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -486,7 +487,7 @@
 						<div class="form-group col-md-2">
 							<label for="psSolDataPesq">Data da pesquisa:</label><!--Verificar nome-->
 							<div class="input-group">
-								<input type="text" name="psSolDataPesq" id="psSolDataPesq" class="form-control" oninput="formatarData(this)" maxlength="10">
+								<input type="text" name="psSolDataPesq" id="psSolDataPesq" class="form-control" oninput="formatarData(this)" maxlength="10" readonly>
 								<span class="input-group-addon">
 									<span class="fluigicon fluigicon-calendar"></span>
 								</span>
@@ -539,6 +540,7 @@
 								<option value="10"> 10 </option>
 								<option value="8"> 8 </option>
 								<option value="6"> 6 </option>
+								<option value="Nao Utilizou"> Não utilizou </option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -552,6 +554,7 @@
 								<option value="10"> 10 </option>
 								<option value="8"> 8 </option>
 								<option value="6"> 6 </option>
+								<option value="Nao Utilizou"> Não utilizou </option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">
@@ -566,6 +569,7 @@
 								<option value=""></option>
 								<option value="sim"> Sim </option>
 								<option value="nao"> Não </option>
+								<option value="Nao Precisou"> Não Precisou </option>
 							</select>
 						</div>
 						<div class="form-group col-md-4">

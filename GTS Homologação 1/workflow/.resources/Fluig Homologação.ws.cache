@@ -10,6 +10,98 @@
    </array>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 7017</string>
+   <array class="java.lang.String" length="29">
+    <void index="0">
+     <string>aprovaSolicitacao</string>
+    </void>
+    <void index="1">
+     <string>devColabEntrega</string>
+    </void>
+    <void index="2">
+     <string>devDataDevolucao</string>
+    </void>
+    <void index="3">
+     <string>devHorarioDevolucao</string>
+    </void>
+    <void index="4">
+     <string>devKM</string>
+    </void>
+    <void index="5">
+     <string>devObs</string>
+    </void>
+    <void index="6">
+     <string>devVigilante</string>
+    </void>
+    <void index="7">
+     <string>entColaboradorReti</string>
+    </void>
+    <void index="8">
+     <string>entDataEntrega</string>
+    </void>
+    <void index="9">
+     <string>entHoraEntrega</string>
+    </void>
+    <void index="10">
+     <string>entVigilante</string>
+    </void>
+    <void index="11">
+     <string>libObservacao</string>
+    </void>
+    <void index="12">
+     <string>libPlaca</string>
+    </void>
+    <void index="13">
+     <string>libVeiculoLiberado</string>
+    </void>
+    <void index="14">
+     <string>solDataSaida</string>
+    </void>
+    <void index="15">
+     <string>solDataSol</string>
+    </void>
+    <void index="16">
+     <string>solDestino</string>
+    </void>
+    <void index="17">
+     <string>solHoraSaida</string>
+    </void>
+    <void index="18">
+     <string>solMotivo</string>
+    </void>
+    <void index="19">
+     <string>solMotorista</string>
+    </void>
+    <void index="20">
+     <string>solObjetivo</string>
+    </void>
+    <void index="21">
+     <string>solObservacao</string>
+    </void>
+    <void index="22">
+     <string>solOutMotorista</string>
+    </void>
+    <void index="23">
+     <string>solPrevRetorno</string>
+    </void>
+    <void index="24">
+     <string>solQuantPessoas</string>
+    </void>
+    <void index="25">
+     <string>solSetor</string>
+    </void>
+    <void index="26">
+     <string>solSolicitante</string>
+    </void>
+    <void index="27">
+     <string>solTipo</string>
+    </void>
+    <void index="28">
+     <string>solUsuarioFluig</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>mecanismoGrupo</string>
    <object class="java.util.ArrayList">
     <void method="add">
