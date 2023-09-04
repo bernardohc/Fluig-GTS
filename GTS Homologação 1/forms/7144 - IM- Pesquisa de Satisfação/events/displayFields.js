@@ -62,7 +62,7 @@ function displayFields(form, customHTML) {
 			form.setVisibleById("divAddOcorrencia", false);
 		}
 
-	}else if (atv_atual == FIM) {
+	}else if (atv_atual == FIM_1 || FIM_2 || FIM_3) {
 
 		controleAbas(form, customHTML, 'disponivel');
 	
@@ -83,12 +83,19 @@ function controleAbas(form, customHTML, tabNavegacao){
 };
 
 function disableCampo(form, customHTML){
-	customHTML.append("<script>$('#pesqAcompanhouEntrega').prop('readonly', true);</script>");
-	customHTML.append("<script>$('#pesqTelefone').prop('readonly', true);</script>");
+	//customHTML.append("<script>$('#pesqAcompanhouEntrega').prop('readonly', true);</script>");
+	//customHTML.append("<script>$('#pesqTelefone').prop('readonly', true);</script>");
 	customHTML.append("<script>$('#pesqPrevColheita').prop('readonly', true);</script>");
 	customHTML.append("<script>$('#pesqNotaAtendimento').attr('readonly', true);</script>");
+	customHTML.append("<script>$('#pesqNotaAtendimento').prop('style', 'pointer-events:none');</script>");
 	customHTML.append("<script>$('#pesqNotaDesempenho').attr('readonly', true);</script>");
-	
+	customHTML.append("<script>$('#pesqNotaDesempenho').prop('style', 'pointer-events:none');</script>");
+	customHTML.append("<script>$('#pesqTermColheita').attr('readonly', true);</script>");
+	customHTML.append("<script>$('#pesqTermColheita').prop('style', 'pointer-events:none');</script>");
+	customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
+	customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
+	customHTML.append("<script>$('#pesqOcorrencia').attr('readonly', true);</script>");	
+	customHTML.append("<script>$('#pesqOcorrencia').prop('style', 'pointer-events:none');</script>");	
 };
 
 function disableCampoPs(form, customHTML){
@@ -96,8 +103,13 @@ function disableCampoPs(form, customHTML){
 	customHTML.append("<script>$('#psPesqTelefone').prop('readonly', true);</script>");
 	customHTML.append("<script>$('#psPesqDispRevenda').prop('readonly', true);</script>");	
 	customHTML.append("<script>$('#psPesqNotaAtendimento').attr('readonly', true);</script>");
+	customHTML.append("<script>$('#psPesqNotaAtendimento').prop('style', 'pointer-events:none');</script>");
 	customHTML.append("<script>$('#psPesqNotaDesempenho').attr('readonly', true);</script>");
+	customHTML.append("<script>$('#psPesqNotaDesempenho').prop('style', 'pointer-events:none');</script>");
 	customHTML.append("<script>$('#psPesqDispRevenda').attr('readonly', true);</script>");
+	customHTML.append("<script>$('#psPesqDispRevenda').prop('style', 'pointer-events:none');</script>");
+	customHTML.append("<script>$('#psPesqOcorrencia').attr('readonly', true);</script>");	
+	customHTML.append("<script>$('#psPesqOcorrencia').prop('style', 'pointer-events:none');</script>");	
 };
 
 

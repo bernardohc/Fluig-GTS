@@ -29,34 +29,38 @@ function validateForm(form){
                         message += getMessage("Pesquisa de Satisfação - Número de série:", 1, form);
                         hasErros = true;
                     }
-                    if (isEmpty("pesqModelo", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Modelo:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqRevenda", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Revenda:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqCidadeRevenda", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cidade da revenda:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqCliente", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cliente:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqCidadeCliente", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cidade do cliente:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqAcompanhouEntrega", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Quem acompanhou a entrega:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqTelefone", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Telefone:", 1, form);
-                        hasErros = true;
-                    }
+                    // if (isEmpty("pesqModelo", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Modelo:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqRevenda", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Revenda:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqCidadeRevenda", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Cidade da revenda:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqRepresentante", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Representante:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqCliente", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Cliente:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqCidadeCliente", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Cidade do cliente:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqAcompanhouEntrega", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Quem acompanhou a entrega:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqTelefone", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Telefone:", 1, form);
+                    //     hasErros = true;
+                    // }
                     if (isEmpty("pesqNotaAtendimento", form)) {
                         message += getMessage("Pesquisa de Satisfação - Como foi o Atendimento:", 1, form);
                         hasErros = true;
@@ -73,9 +77,15 @@ function validateForm(form){
                         message += getMessage("Pesquisa de Satisfação - Feedback do equipamento:", 1, form);
                         hasErros = true;
                     }
-                    if (isEmpty("pesqPrevColheita", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Previsão de término da colheita:", 1, form);
+                    if (isEmpty("pesqTermColheita", form)) {
+                        message += getMessage("Pesquisa de Satisfação - Colheita Finalizada:", 1, form);
                         hasErros = true;
+                    }
+                    if  (form.getValue("pesqTermColheita") == 'nao'){
+                        if (isEmpty("pesqPrevColheita", form)) {
+                            message += getMessage("Pesquisa de Satisfação - Previsão de término da colheita:", 1, form);
+                            hasErros = true;
+                        }
                     }
                     if(isEmpty("pesqOcorrencia", form)){
                         message += getMessage("Pesquisa de Satisfação - Teve ocorrência:", 1, form);
@@ -109,44 +119,52 @@ function validateForm(form){
                         message += getMessage("Pesquisa de Satisfação - Número de série:", 1, form);
                         hasErros = true;
                     }
-                    if (isEmpty("pesqModelo", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Modelo:", 1, form);
+                    // if (isEmpty("pesqModelo", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Modelo:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqRevenda", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Revenda:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqCidadeRevenda", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Cidade da revenda:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqRepresentante", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Representante:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqCliente", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Cliente:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("pesqCidadeCliente", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Cidade do cliente:", 1, form);
+                    //     hasErros = true;
+                    // } 
+                    // if(isEmpty("pesqOcorrencia", form)){
+                    //     message += getMessage("Pesquisa de Satisfação - Teve ocorrência:", 1, form);
+                    //     hasErros = true;
+                    // } 
+                    if(isEmpty("pesqFimSemRet", form)){
+                        message += getMessage("Pesquisa de Satisfação - Finalizar sem retorno:", 1, form);
                         hasErros = true;
                     }
-                    if (isEmpty("pesqRevenda", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Revenda:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqCidadeRevenda", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cidade da revenda:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqCliente", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cliente:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("pesqCidadeCliente", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cidade do cliente:", 1, form);
-                        hasErros = true;
-                    } 
-                    if(isEmpty("pesqOcorrencia", form)){
-                        message += getMessage("Pesquisa de Satisfação - Teve ocorrência:", 1, form);
-                        hasErros = true;
-                    } 
-                    if (form.getValue("pesqOcorrencia") == 'sim') {
-                        var indexTbPesqOcorrencia = form.getChildrenIndexes("tbPesqOcorrencias");
-                        if(indexTbPesqOcorrencia.length == 0){
-                            if (isMobile(form)) {
-                                message += getMessage("Registro de ocorrências não possui nenhum item.", 6, form);
-                            }else{
-                                message += getMessage("Registro <b>Ocorrencias</b> não possui nenhum item.", 6, form);
-                            }
-                            hasErros = true;
-                        }if (isEmpty("pesqFimOcorrencia", form)) {
-                            message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
-                            hasErros = true;
-                        }
-                    } 
+                    // if (form.getValue("pesqOcorrencia") == 'sim') {
+                    //     var indexTbPesqOcorrencia = form.getChildrenIndexes("tbPesqOcorrencias");
+                    //     if(indexTbPesqOcorrencia.length == 0){
+                    //         if (isMobile(form)) {
+                    //             message += getMessage("Registro de ocorrências não possui nenhum item.", 6, form);
+                    //         }else{
+                    //             message += getMessage("Registro <b>Ocorrencias</b> não possui nenhum item.", 6, form);
+                    //         }
+                    //         hasErros = true;
+                    //     }if (isEmpty("pesqFimOcorrencia", form)) {
+                    //         message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
+                    //         hasErros = true;
+                    //     }
+                    // } 
                 }                
             }         
         break;
@@ -224,24 +242,28 @@ function validateForm(form){
                         message += getMessage("Pesquisa de Satisfação Pós Safra - Data da pesquisa:", 1, form);
                         hasErros = true;
                     }
-                    if(isEmpty("psPesqOcorrencia", form)){
-                        message += getMessage("Pesquisa de Satisfação Pós Safra - Teve ocorrência:", 1, form);
+                    if(isEmpty("pesqPsFimSemRet", form)){
+                        message += getMessage("Pesquisa de Satisfação Pós Safra - Finalizar sem retorno:", 1, form);
                         hasErros = true;
-                    } 
-                    if (form.getValue("psPesqOcorrencia") == 'sim') {
-                        var tbPSPesqOcorrencias = form.getChildrenIndexes("tbPSPesqOcorrencias");
-                        if(tbPSPesqOcorrencias.length == 0){
-                            if (isMobile(form)) {
-                                message += getMessage("Registro de ocorrências Pós Safra não possui nenhum item.", 6, form);
-                            }else{
-                                message += getMessage("Registro <b>Ocorrencias</b> Pós Safra não possui nenhum item.", 6, form);
-                            }
-                            hasErros = true;
-                        }if (isEmpty("pesqPsFimOcorrencia", form)) {
-                            message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
-                            hasErros = true;
-                        }
                     }
+                    // if(isEmpty("psPesqOcorrencia", form)){
+                    //     message += getMessage("Pesquisa de Satisfação Pós Safra - Teve ocorrência:", 1, form);
+                    //     hasErros = true;
+                    // } 
+                    // if (form.getValue("psPesqOcorrencia") == 'sim') {
+                    //     var tbPSPesqOcorrencias = form.getChildrenIndexes("tbPSPesqOcorrencias");
+                    //     if(tbPSPesqOcorrencias.length == 0){
+                    //         if (isMobile(form)) {
+                    //             message += getMessage("Registro de ocorrências Pós Safra não possui nenhum item.", 6, form);
+                    //         }else{
+                    //             message += getMessage("Registro <b>Ocorrencias</b> Pós Safra não possui nenhum item.", 6, form);
+                    //         }
+                    //         hasErros = true;
+                    //     }if (isEmpty("pesqPsFimOcorrencia", form)) {
+                    //         message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
+                    //         hasErros = true;
+                    //     }
+                    // }
                 }                
             }         
         break;

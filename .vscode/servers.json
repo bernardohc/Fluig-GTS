@@ -2,14 +2,14 @@
 	"version": "0.0.1",
 	"configurations": [
 		{
-			"id": "kyg4je40jsjlbl3ayds0gxi8ekuxz5r",
-			"name": "Teste Fluig",
-			"host": "192.168.0.233",
+			"id": "c4x9kaf8iu6lku5ndk6ptdnikd6m1k",
+			"name": "Fluig Homologação",
+			"host": "177.101.121.27",
 			"ssl": false,
-			"port": 8080,
-			"username": "bernardo.correa",
-			"password": "U2FsdGVkX1/eEun0jm993YuwQGNmSD4wgrexdTlz7oY=",
-			"userCode": "bernardo.correa",
+			"port": 8887,
+			"username": "admin",
+			"password": "U2FsdGVkX1+rzgoDZgoDynb5tqz58mQsqUM1XUdWRa4=",
+			"userCode": "admin",
 			"confirmExporting": false,
 			"companyId": 1
 		}

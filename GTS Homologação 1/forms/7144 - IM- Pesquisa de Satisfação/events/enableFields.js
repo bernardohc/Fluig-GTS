@@ -16,6 +16,7 @@ function enableFields(form){
         form.setEnabled("pesqModelo", false);
         form.setEnabled("pesqRevenda", false);
         form.setEnabled("pesqCidadeRevenda", false);
+        form.setEnabled("pesqRepresentante", false);
         form.setEnabled("pesqCliente", false);
         form.setEnabled("pesqCidadeCliente", false);
         form.setEnabled("pesqAcompanhouEntrega", false);
@@ -24,6 +25,7 @@ function enableFields(form){
         form.setEnabled("pesqFeedbackAtendimento", false);
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
+        form.setEnabled("pesqTermColheita", false);
         form.setEnabled("pesqPrevColheita", false);
         form.setEnabled("pesqOcorrencia", false);
         //Pos Safra
@@ -40,6 +42,7 @@ function enableFields(form){
         form.setEnabled("pesqModelo", false);
         form.setEnabled("pesqRevenda", false);
         form.setEnabled("pesqCidadeRevenda", false);
+        form.setEnabled("pesqRepresentante", false);
         form.setEnabled("pesqCliente", false);
         form.setEnabled("pesqCidadeCliente", false);
         form.setEnabled("pesqAcompanhouEntrega", false);
@@ -48,6 +51,7 @@ function enableFields(form){
         form.setEnabled("pesqFeedbackAtendimento", false);
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
+        form.setEnabled("pesqTermColheita", false);
         form.setEnabled("pesqPrevColheita", false);
         form.setEnabled("pesqOcorrencia", false);
 
@@ -57,6 +61,7 @@ function enableFields(form){
         form.setEnabled("psPesqModelo", false);
         form.setEnabled("psPesqRevenda", false);
         form.setEnabled("psPesqCidadeRevenda", false);
+        form.setEnabled("psPesqRepresentante", false);
         form.setEnabled("psPesqCliente", false);
         form.setEnabled("psPesqCidadeCliente", false);
 
@@ -69,6 +74,7 @@ function enableFields(form){
         form.setEnabled("pesqModelo", false);
         form.setEnabled("pesqRevenda", false);
         form.setEnabled("pesqCidadeRevenda", false);
+        form.setEnabled("pesqRepresentante", false);
         form.setEnabled("pesqCliente", false);
         form.setEnabled("pesqCidadeCliente", false);
         form.setEnabled("pesqAcompanhouEntrega", false);
@@ -77,6 +83,7 @@ function enableFields(form){
         form.setEnabled("pesqFeedbackAtendimento", false);
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
+        form.setEnabled("pesqTermColheita", false);
         form.setEnabled("pesqPrevColheita", false);
         form.setEnabled("pesqOcorrencia", false);
 
@@ -88,6 +95,7 @@ function enableFields(form){
         form.setEnabled("psPesqModelo", false);
         form.setEnabled("psPesqRevenda", false);
         form.setEnabled("psPesqCidadeRevenda", false);
+        form.setEnabled("psPesqRepresentante", false);
         form.setEnabled("psPesqCliente", false);
         form.setEnabled("psPesqCidadeCliente", false);
         form.setEnabled("psPesqAcompanhouEntrega", false);

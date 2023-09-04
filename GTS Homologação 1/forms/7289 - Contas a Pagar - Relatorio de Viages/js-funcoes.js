@@ -147,7 +147,7 @@ var funcoes = (function() {
 
 		calculaTotal : function(){
 			let totalSoma = 0;
-
+			//Soma todas as despesas
 			$("input[name*=rvDespValor___]").each(function(index){
 				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
 				
@@ -162,21 +162,25 @@ var funcoes = (function() {
 		},	
 		
 		calculaSaldo : function(){
+			//Subtrai do valo do adiantemento somente se for pago em dinheiro.
 			let rvSaldo = 0;
 			let solAdianta = validafunctions.getFloatValue("solAdianta");
 			let rvTotal = validafunctions.getFloatValue("rvTotal");
+			let addRvDespTpPag = validafunctions.getFloatValue("addRvDespTpPag");
 			
-			if(solAdianta > 0){
+			
+			if(solAdianta > 0 && addRvDespTpPag == "Dinheiro"){
 				rvSaldo = solAdianta - rvTotal;
+				console.log(rvSaldo + " Saldo IF");
 			}else{
 				rvSaldo = 0;
 			}
 			$("#rvSaldo").val(rvSaldo.toFixed(2));
-			validafunctions.setMoeda("rvSaldo", 2, false , '');
+			validafunctions.setMoeda("rvSaldo", 2, true , '');
 		},
 
 		calculaCombustivel : function(){
-
+			//soma somente combustivel
 			let totalComb = 0;
 
 			$("input[name*=rvDespValor___]").each(function(index){
@@ -193,17 +197,20 @@ var funcoes = (function() {
 		},
 
 		calculaDiaria : function(){
-
+			//Diaria, considera acomodação e alimentação, divide pela quantidade de dias da viagem
+			//se houver mais de colaborador, dividide pela quantidade de colaboradores
 			let somaDiaria = 0;
-			// const dataIncialInput = $("solDataSaida").val();
-			// const dataFinalInput = $("solDataRet").val();
+			let totalSaldo = 0;
+			var dataInicial = document.getElementById("solDataSaida").value;
+			var dataFinal = document.getElementById("solDataRet").value;
+			var solNumColab = document.getElementById("solNumColab").value;
+			var difData = ""; 
 
-			// const dataInicial = new Date(dataIncialInput);
-			// const dataFinal = new Date(dataFinalInput);
+			var dataInicialInt = parseInt(dataInicial);
+			var dataFinalInt = parseInt(dataFinal);
 
-			// const diferencaMilissegundos = Math.abs(dataFinal - dataInicial);
-
-			// console.log(diferencaMilissegundos);
+			difData = dataFinalInt - dataInicialInt + 1 ;
+			console.log(difData + "Dif data");
 			
 			$("input[name*=rvDespValor___]").each(function(index){
 				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
@@ -214,9 +221,15 @@ var funcoes = (function() {
 					somaDiaria += rvDespValor;
 				}
 			});
-			$("#rvDiaria").val(somaDiaria.toFixed(2));
-			validafunctions.setMoeda("rvDiaria", 2, false , '');
 
+			if(solNumColab > 1){
+				totalSaldo = (somaDiaria / difData)/solNumColab;
+			}else{
+				totalSaldo = somaDiaria / difData;
+			}
+						
+			$("#rvDiaria").val(totalSaldo.toFixed(2));
+			validafunctions.setMoeda("rvDiaria", 2, false , '');
 		},
 	}
 })();
@@ -254,8 +267,7 @@ var eventsFuncoes = (function() {
 					funcoes.calculaDiaria();
 					
 				}
-			});
-		
+			});	
 		}
 	}
 })();
@@ -281,7 +293,10 @@ function loadForm(){
 		language: 'pt-br',
 		pickDate: true,
 		pickTime: false,
-	});	
+	});
+
+		
+
 };
 
 function getDataAtual() {
@@ -350,7 +365,10 @@ function showCamera(oElement) {
 	// addRvDespClassi = $('#addRvDespClassi').val();
 	// addRvDespValor = $('#addRvDespValor').val();
 	// addRvDespCCusto = $('#addRvDespCCusto').val();
-	
+	addRvDespData = $('#addRvDespData').val();
+	addRvDespData = $('#addRvDespData').val();
+	addRvDespData = $('#addRvDespData').val();
+
 	let hasErros = false;
 	let message = '';
 

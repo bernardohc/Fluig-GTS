@@ -4,10 +4,10 @@ function beforeCancelProcess(colleagueId,processId){
 	var hasErros = false;
 	var ehGestorSAC = false;
 	
-	//Se o usuário logado for gestor do processo, no papel gestorOrcamento, vai conseguir cancelar a solicitação
+	//Se o usuário logado for gestor do processo, no papel 000029 - SAC Gestor Processo, vai conseguir cancelar a solicitação
 	var c1 = DatasetFactory.createConstraint('workflowColleagueRolePK.colleagueId', getValue("WKUser"), getValue("WKUser"), ConstraintType.MUST);
 	var c2 = DatasetFactory.createConstraint('workflowColleagueRolePK.companyId', getValue("WKCompany"), getValue("WKCompany"), ConstraintType.MUST);
-	var c3 = DatasetFactory.createConstraint('workflowColleagueRolePK.roleId', "gestorSAC", "gestorSAC", ConstraintType.MUST);
+	var c3 = DatasetFactory.createConstraint('workflowColleagueRolePK.roleId', "000029", "000029", ConstraintType.MUST);
 	
 	var constraints = new Array(c1, c2, c3);
 	var datasetWorkflowColleagueRole = DatasetFactory.getDataset('workflowColleagueRole', null, constraints, null);

@@ -273,7 +273,7 @@
 					<div class="row">
 						<div class="form-group col-md-2 col-md-offset-2">
 							<label for="rvDiaria">Diária:</label>
-							<input type="text" name="rvDiaria" id="rvDiaria" class="form-control">
+							<input type="text" name="rvDiaria" id="rvDiaria" class="form-control" readonly>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="rvTotalComb">Total combustível:</label>
@@ -294,8 +294,12 @@
 							<textarea rows="3" cols="6" name="rvDespObs" id="rvDespObs" class="form-control " ></textarea>
 						</div>
 					</div>
-					<div class="row" id="divSalvarEnviar"><!--style="display:none;"-->
-						<div  class="col-md-2  col-md-offset-10" >
+					<div class="row" id="divSalvarEnviar"><!--style="display:none;"-->	
+						<div class="col-md-2 col-md-offset-5">
+							<br>
+							<button type="button" class="btn btn-default" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="flaticon flaticon-print icon-md" aria-hidden="true"></i></button>					
+						</div>
+						<div class="col-md-2 col-md-offset-3"><!--col-md-offset-10-->
 							<label for="salvarEnviar">Deseja Salvar ou Enviar?</label>
 							<select name="salvarEnviar" id="salvarEnviar" class="form-control salvarEnviar">
 								<option value=""></option>

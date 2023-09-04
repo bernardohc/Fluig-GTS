@@ -13,34 +13,111 @@ var funcoes = (function() {
 		start : function() {
 			//eventsFuncoes.setup();
 		},
-		//Add Calendarios
+		limpaCamposItem: function(indexItem){
+			$("#pesqNumSerie").val('');
+			$("#pesqModelo").val('');
+			$("#pesqRevenda").val('');
+			$("#pesqCidadeRevenda").val('');
+			$("#pesqCliente").val('');
+			$("#pesqCidadeCliente").val('');
+			$("#pesqAcompanhouEntrega").val('');
+			$("#pesqTelefone").val('');
+		},
+		
+		consultaProduto : function(indexItem){
+			
+			let numSerie = $("#pesqNumSerie").val();
+			
+			if( numSerie.trim() == "" ){
+				return;
+			}
+			
+			var loading = FLUIGC.loading(window);
+			loading.show();
+			
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				async: true,
+				url: "/api/public/ecm/dataset/search?datasetId=dsImConsultaInfMaqDb&filterFields=numSerie,"+numSerie,
+				
+				success: function (data, status, xhr) {
+					//console.log(data)
+					if (data != null && data.content != null && data.content.length > 0) {
+						const records = data.content;
+						if( records[0].CODRET == "1"){
+							var record = records[0];
+							
+							$("#pesqModelo").val(record.equipModelo);
+							$("#pesqRevenda").val(record.revRazaoSocialRevenda);
+							$("#pesqCidadeRevenda").val(record.revCidade);
+							$("#pesqCliente").val(record.cliNomeCliente);
+							$("#pesqCidadeCliente").val(record.cliCidade);
+							$("#pesqAcompanhouEntrega").val(record.protoRecResponsavel);
+							$("#pesqTelefone").val(record.protoRecTelefone);
+
+							$("#psPesqTelefone").val(record.protoRecResponsavel);
+							
+						}else if (records[0].CODRET == "2"){		
+							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
+							funcoes.limpaCamposItem(indexItem);
+						}
+						
+					}else{
+							FLUIGC.toast({ title: '', message: 'Erro ao consultar o item, comunicar o Administrador do Sistema!', type: 'danger' });
+							funcoes.limpaCamposItem(indexItem);
+						}
+					setTimeout(function(){ 
+						loading.hide();
+					}, 1000);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+					FLUIGC.toast({
+						title: '',
+						message: 'Erro na consulta do Item, comunicar Administrador do Sistema' ,
+						type: 'danger'
+					});
+					funcoes.limpaCamposItem(indexItem)
+					loading.hide();
+				}
+			});
+			
+		},
 
 		efetivouContato : function(){
 			let pesqEfetivoCont = document.getElementById("pesqEfetivoCont").value;
-			let pesqAcompanhouEntrega = document.getElementById("pesqAcompanhouEntrega");
-			let pesqTelefone = document.getElementById("pesqTelefone");
+			//let pesqAcompanhouEntrega = document.getElementById("pesqAcompanhouEntrega");
+			//let pesqTelefone = document.getElementById("pesqTelefone");
 			let pesqNotaAtendimento = document.getElementById("pesqNotaAtendimento");
 			let pesqFeedbackAtendimento = document.getElementById("pesqFeedbackAtendimento");
 			let pesqNotaDesempenho = document.getElementById("pesqNotaDesempenho");
 			let pesqFeedbackEquipamento = document.getElementById("pesqFeedbackEquipamento");
+			let pesqTermColheita = document.getElementById("pesqTermColheita");
 			let pesqPrevColheita = document.getElementById("pesqPrevColheita");
+			let pesqOcorrencia = document.getElementById("pesqOcorrencia");
 
 			if (pesqEfetivoCont === "nao" || pesqEfetivoCont === "") {
-				pesqAcompanhouEntrega.disabled = true;
-				pesqTelefone.disabled = true;
+				// pesqAcompanhouEntrega.disabled = true;
+				// pesqTelefone.disabled = true;
 				pesqNotaAtendimento.disabled = true;
 				pesqFeedbackAtendimento.disabled = true;
 				pesqNotaDesempenho.disabled = true;
 				pesqFeedbackEquipamento.disabled = true;
+				pesqTermColheita.disabled = true;
 				pesqPrevColheita.disabled = true;
+				pesqOcorrencia.disabled = true;
 			}else{
-				pesqAcompanhouEntrega.disabled = false;
-				pesqTelefone.disabled = false;
+				// pesqAcompanhouEntrega.disabled = false;
+				// pesqTelefone.disabled = false;
 				pesqNotaAtendimento.disabled = false;
 				pesqFeedbackAtendimento.disabled = false;
 				pesqNotaDesempenho.disabled = false;
 				pesqFeedbackEquipamento.disabled = false;
+				pesqTermColheita.disabled = false;
 				pesqPrevColheita.disabled = false;
+				pesqOcorrencia.disabled = false;
 
 				var today = new Date();
 				var calpesqPrevColheita = FLUIGC.calendar('#pesqPrevColheita', {
@@ -62,6 +139,7 @@ var funcoes = (function() {
 			let psPesqFeedbackEquipamento = document.getElementById("psPesqFeedbackEquipamento");
 			let psPesqDispRevenda = document.getElementById("psPesqDispRevenda");
 			let psPesqFeedbackPecas = document.getElementById("psPesqFeedbackPecas");
+			let psPesqOcorrencia = document.getElementById("psPesqOcorrencia");
 
 			if (psPesqEfetivoCont === "nao" || psPesqEfetivoCont === "") {
 				psPesqAcompanhouEntrega.disabled = true;
@@ -72,6 +150,7 @@ var funcoes = (function() {
 				psPesqFeedbackEquipamento.disabled = true;
 				psPesqDispRevenda.disabled = true;
 				psPesqFeedbackPecas.disabled = true;
+				psPesqOcorrencia.disabled = true;
 			}else{
 				psPesqAcompanhouEntrega.disabled = false;
 				psPesqTelefone.disabled = false;
@@ -81,6 +160,7 @@ var funcoes = (function() {
 				psPesqFeedbackEquipamento.disabled = false;
 				psPesqDispRevenda.disabled = false;
 				psPesqFeedbackPecas.disabled = false;
+				psPesqOcorrencia.disabled = false;
 			}
 		},
 
@@ -91,24 +171,42 @@ var funcoes = (function() {
 			let pesqModelo = document.getElementById("pesqModelo").value;
 			let pesqRevenda = document.getElementById("pesqRevenda").value;
 			let pesqCidadeRevenda = document.getElementById("pesqCidadeRevenda").value;
+			let pesqRepresentante = document.getElementById("pesqRepresentante").value;
 			let pesqCliente = document.getElementById("pesqCliente").value;
 			let pesqCidadeCliente = document.getElementById("pesqCidadeCliente").value;
+			let pesqNotaAtendimento = document.getElementById("pesqNotaAtendimento").value;
+			let pesqFeedbackAtendimento = document.getElementById("pesqFeedbackAtendimento").value;
+			// let pesqAcompanhouEntrega = document.getElementById("pesqAcompanhouEntrega").value;
+			// let pesqTelefone = document.getElementById("pesqTelefone").value;
 
 			$(`#psPesqEntregaPor`).val(pesqEntregaPor).prop("readonly", true);
 			$(`#psPesqNumSerie`).val(pesqNumSerie).prop("readonly", true);
 			$(`#psPesqModelo`).val(pesqModelo).prop("readonly", true);
 			$(`#psPesqRevenda`).val(pesqRevenda).prop("readonly", true);
 			$(`#psPesqCidadeRevenda`).val(pesqCidadeRevenda).prop("readonly", true);
+			$(`#psPesqRepresentante`).val(pesqRepresentante).prop("readonly", true);
 			$(`#psPesqCliente`).val(pesqCliente).prop("readonly", true);
 			$(`#psPesqCidadeCliente`).val(pesqCidadeCliente).prop("readonly", true);
+			$(`#psPesqNotaAtendimento`).val(pesqNotaAtendimento).prop("readonly", true);
+			$(`#psPesqFeedbackAtendimento`).val(pesqFeedbackAtendimento).prop("readonly", true);
+			// $(`#psPesqAcompanhouEntrega`).val(pesqAcompanhouEntrega).prop("readonly", true);
+			// $(`#psPesqTelefone`).val(pesqTelefone).prop("readonly", true);
+
 		},
 
 		limpaRet : function(){
+			const limpaPesqpesqEfetivoCont = document.querySelector('#pesqEfetivoCont');
+			limpaPesqpesqEfetivoCont.value = '';
+
 			const limpaPesqFimOcorrencia = document.querySelector('#pesqFimOcorrencia');
 			limpaPesqFimOcorrencia.value = '';
 
 			const limpaPesqPsFimOcorrencia = document.querySelector('#pesqPsFimOcorrencia');
 			limpaPesqPsFimOcorrencia.value = '';
+
+			const limpaPesqpesqFimSemRet = document.querySelector('#pesqFimSemRet');
+			limpaPesqpesqFimSemRet.value = '';
+			
 		},
 
 		//Condição para ocultar Observações
@@ -117,10 +215,13 @@ var funcoes = (function() {
 			pesqEfetivoCont = document.getElementById("pesqEfetivoCont").value;
 			if(pesqEfetivoCont == "nao"){
 				$("[temObs]").show();
+				$("[fimSemRet]").show();
 			}else if(pesqEfetivoCont == ""){
 				$("[temObs]").hide();
+				$("[fimSemRet]").hide();
 			}else{
 				$("[temObs]").hide();
+				$("[fimSemRet]").hide();
 			}
 		},
 
@@ -130,10 +231,13 @@ var funcoes = (function() {
 			psPesqEfetivoCont = document.getElementById("psPesqEfetivoCont").value;
 			if(psPesqEfetivoCont == "nao"){
 				$("[temObsPs]").show();
+				$("[psFimSemRet]").show();
 			}else if(psPesqEfetivoCont == ""){
 				$("[temObsPs]").hide();
+				$("[psFimSemRet]").hide();
 			}else{
 				$("[temObsPs]").hide();
+				$("[psFimSemRet]").hide();
 			}
 		},
 
@@ -141,12 +245,19 @@ var funcoes = (function() {
 		liberaOcorrencias : function(){
 			let pesqOcorrencia = "";
 			pesqOcorrencia = document.getElementById("pesqOcorrencia").value;
+			const limpPesqOcorrenciaFeedback = document.querySelector('#pesqOcorrenciaFeedback');
+			const limpaPesqOcorrenciaApontamento = document.querySelector('#pesqOcorrenciaApontamento');
+
 			if(pesqOcorrencia == "nao"){
 				$("[teveOcorrencia]").hide();
 				$("[fimOcorrencia]").hide();
+				limpPesqOcorrenciaFeedback.value = '';
+				limpaPesqOcorrenciaApontamento.value = '';
 			}else if(pesqOcorrencia == ""){
 				$("[teveOcorrencia]").hide();
 				$("[fimOcorrencia]").hide();
+				limpPesqOcorrenciaFeedback.value = '';
+				limpaPesqOcorrenciaApontamento.value = '';
 			}else{
 				$("[teveOcorrencia]").show();
 				$("[fimOcorrencia]").show();
@@ -157,15 +268,38 @@ var funcoes = (function() {
 		liberaOcorrenciasPs : function(){
 			let pesqOcorrenciaPs = "";
 			pesqOcorrenciaPs = document.getElementById("psPesqOcorrencia").value;
+			const limpaPsPesqOcorrenciaFeedback = document.querySelector('#psPesqOcorrenciaFeedback');
+			const limpaPsPesqOcorrenciaApontamento = document.querySelector('#psPesqOcorrenciaApontamento');
+			
 			if(pesqOcorrenciaPs == "nao"){
 				$("[teveOcorrenciaPs]").hide();
 				$("[psFimOcorrencia]").hide();
+				limpaPsPesqOcorrenciaFeedback.value = '';
+				limpaPsPesqOcorrenciaApontamento.value = '';
 			}else if(pesqOcorrenciaPs == ""){
 				$("[teveOcorrenciaPs]").hide();
 				$("[psFimOcorrencia]").hide();
+				limpaPsPesqOcorrenciaFeedback.value = '';
+				limpaPsPesqOcorrenciaApontamento.value = '';
 			}else{
 				$("[teveOcorrenciaPs]").show();
 				$("[psFimOcorrencia]").show();
+			}
+		},
+
+		//Condição para desabilitar calendario
+		blocCalendar : function(){
+			let pesqTermColheita = "";
+			pesqTermColheita = document.getElementById("pesqTermColheita").value;
+			if(pesqTermColheita == "nao"){
+				$(`#pesqPrevColheita`).prop("readonly", false);
+				$(`#pesqPrevColheita`).prop('style', 'pointer-events:all');
+			}else if(pesqTermColheita == ""){
+				$(`#pesqPrevColheita`).prop("readonly", true);
+				$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
+			}else{
+				$(`#pesqPrevColheita`).prop("readonly", true);
+				$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
 			}
 		},
 
@@ -237,8 +371,7 @@ var funcoes = (function() {
 			
 			const limpaPsPesqOcorrenciaApontamento = document.querySelector('#psPesqOcorrenciaApontamento');
 			limpaPsPesqOcorrenciaApontamento.value = '';
-		},
-		
+		},		
 	}
 })();
 
@@ -247,9 +380,28 @@ var eventsFuncoes = (function() {
 	return {
 		setup : function() {	
 
+			
+
 		}
 	}
 });
+
+//data set consulta de produtos
+$(document).on("change", ".infPesqNumSerie", function() {			
+	if( $(this).val().trim() == ""){
+		funcoes.limpaCamposItem();
+	}else{
+		funcoes.consultaProduto();	
+	}
+	
+});
+
+function formatarData(input) {
+	const inputValue = input.value;
+	const cleanedInput = inputValue.replace(/[^\d]/g, ''); // Remove caracteres não numéricos
+	const formattedInput = cleanedInput.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3'); // Adiciona Barra
+	input.value = formattedInput;
+};
 
 //Validação para adiconar nova ocorrencia, não pode estar vazio
 $(document).on("click", "#addOcorrencia", function() {
@@ -305,9 +457,9 @@ $(document).on("change", "#psPesqEfetivoCont", function() {
 	funcoes.liberaObsPs();
 });
 
-$(document).on("change", "#pesqFeedbackEquipamento", function() {
-	funcoes.bloqueiaNota();
-});
+// $(document).on("change", "#pesqFeedbackEquipamento", function() {
+// 	funcoes.bloqueiaNota();
+// });
 
 //Gatilhos preenche campos do pos safra
 $(document).on("change", "#pesqEntregaPor", function() {
@@ -330,6 +482,18 @@ $(document).on("change", "#pesqCliente", function() {
 });
 $(document).on("change", "#pesqCidadeCliente", function() {
 	funcoes.preencheCampos();
+});
+$(document).on("change", "#pesqRepresentante", function() {
+	funcoes.preencheCampos();
+});
+$(document).on("change", "#pesqAcompanhouEntrega", function() {
+	funcoes.preencheCampos();
+});
+$(document).on("change", "#pesqTelefone", function() {
+	funcoes.preencheCampos();
+});
+$(document).on("change", "#pesqTermColheita", function() {
+	funcoes.blocCalendar();
 });
 
 
@@ -363,7 +527,7 @@ function removeOcorrencia(oElement){
 
 function loadForm(){	
 
-	funcoes.limpaRet();
+	//funcoes.limpaRet();
 	funcoes.efetivouContato();
 	funcoes.efetivouContatoFs();
 	funcoes.liberaObs();

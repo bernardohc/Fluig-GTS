@@ -8,8 +8,8 @@
 
 	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js-validafunctions.js"></script>
-	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<!-- <script type="text/javascript" src="js-validafunctions.js"></script>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/> -->
 
 	<script>
 		$(document).ready(function() {
@@ -74,7 +74,7 @@
 						<div class="form-group col-md-2">
 							<label for="solDataPesq">Data da pesquisa:</label>
 							<div class="input-group">
-								<input type="text" name="solDataPesq" id="solDataPesq" class="form-control">
+								<input type="text" name="solDataPesq" id="solDataPesq" class="form-control" oninput="formatarData(this)" maxlength="10">
 								<span class="input-group-addon">
 									<span class="fluigicon fluigicon-calendar"></span>
 								</span>
@@ -82,37 +82,41 @@
 						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqNumSerie">Número de série:</label>
-							<input type="text" name="pesqNumSerie" id="pesqNumSerie" class="form-control">
+							<input type="text" name="pesqNumSerie" id="pesqNumSerie" class="form-control infPesqNumSerie">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqModelo">Modelo:</label>
-							<input type="text" name="pesqModelo" id="pesqModelo" class="form-control">
+							<input type="text" name="pesqModelo" id="pesqModelo" class="form-control" readonly>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqRevenda">Revenda:</label>
-							<input type="text" name="pesqRevenda" id="pesqRevenda" class="form-control">
+							<input type="text" name="pesqRevenda" id="pesqRevenda" class="form-control" readonly>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="pesqCidadeRevenda">Cidade da revenda:</label>
-							<input type="text" name="pesqCidadeRevenda" id="pesqCidadeRevenda" class="form-control">
+							<input type="text" name="pesqCidadeRevenda" id="pesqCidadeRevenda" class="form-control" readonly>
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-2">
+							<label for="pesqRepresentante">Representante:</label>
+							<input type="text" name="pesqRepresentante" id="pesqRepresentante" class="form-control">
+						</div>
+						<div class="form-group col-md-2">
 							<label for="pesqCliente">Cliente:</label>
-							<input type="text" name="pesqCliente" id="pesqCliente" class="form-control">
+							<input type="text" name="pesqCliente" id="pesqCliente" class="form-control" readonly>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqCidadeCliente">Cidade do cliente:</label>
-							<input type="text" name="pesqCidadeCliente" id="pesqCidadeCliente" class="form-control">
+							<input type="text" name="pesqCidadeCliente" id="pesqCidadeCliente" class="form-control" readonly>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqAcompanhouEntrega">Quem acompanhou a entrega:</label>
-							<input type="text" name="pesqAcompanhouEntrega" id="pesqAcompanhouEntrega" class="form-control">
+							<input type="text" name="pesqAcompanhouEntrega" id="pesqAcompanhouEntrega" class="form-control" readonly>
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-2">
 							<label for="pesqTelefone">Telefone:</label>
-							<input type="text" name="pesqTelefone" id="pesqTelefone" class="form-control pesqTelefone" oninput="aplicaMascaraTelefone(this)"> 
+							<input type="text" name="pesqTelefone" id="pesqTelefone" class="form-control pesqTelefone" oninput="aplicaMascaraTelefone(this)" readonly> 
 						</div>
 					</div>
 					<div class="row">
@@ -144,10 +148,18 @@
 						</div>
 					</div>
 					<div class="row">
+						<div class="form-group col-md-2">
+							<label for="pesqTermColheita">Colheita Finalizada:</label>
+							<select name="pesqTermColheita" id="pesqTermColheita" class="form-control">
+								<option value=""></option>
+								<option value="sim"> Sim </option>
+								<option value="nao"> Não </option>
+							</select>
+						</div>
 						<div class="form-group col-md-3">
 							<label for="pesqPrevColheita">Previsão de término da colheita:</label>
 							<div class="input-group">
-								<input type="text" name="pesqPrevColheita" id="pesqPrevColheita" class="form-control">
+								<input type="text" name="pesqPrevColheita" id="pesqPrevColheita" class="form-control" oninput="formatarData(this)" maxlength="10">
 								<span class="input-group-addon">
 									<span class="fluigicon fluigicon-calendar"></span>
 								</span>
@@ -169,11 +181,19 @@
 								<option value="nao"> Não </option>
 							</select>
 						</div>
+						<div class="form-group col-md-2" fimSemRet>
+							<label for="pesqFimSemRet">Finalizar sem retorno:</label>
+							<select name="pesqFimSemRet" id="pesqFimSemRet" class="form-control">
+								<option value=""></option>
+								<option value="sim"> Sim </option>
+								<option value="nao"> Não </option>
+							</select>
+						</div>
 					</div>
 					<div class="row">
 						<div class="row">
 							<div class="form-group col-md-4 col-md-offset-4" temObs>
-								<label for="pesqSatisfacaoOBS">Observação</label>
+								<label for="pesqSatisfacaoOBS">Observação:</label>
 								<textarea rows="2" cols="12" name="pesqSatisfacaoOBS" id="pesqSatisfacaoOBS" class="form-control " ></textarea>
 							</div>
 						</div>
@@ -400,7 +420,7 @@
 							<!-- Inicio Tabela Pai Filho-->
 							<div class="row">								
 								<div class="col-md-12">
-									<table class="table table-condensed table-nonfluid table-striped "  id="tbPesqOcorrencias" tablename="tbPesqOcorrencias" name="tbPesqOcorrencias" noaddbutton="true" customFnDelete="removeOcorrencia(this)">
+									<table class="table table-condensed table-nonfluid table-striped "  id="tbPesqOcorrencias" tablename="tbPesqOcorrencias" name="tbPesqOcorrencias" noaddbutton="true" nodeletebutton="true">
 										<thead>
 											<tr>
 												<th class="col-md-2">Data</th>
@@ -466,7 +486,7 @@
 						<div class="form-group col-md-2">
 							<label for="psSolDataPesq">Data da pesquisa:</label><!--Verificar nome-->
 							<div class="input-group">
-								<input type="text" name="psSolDataPesq" id="psSolDataPesq" class="form-control">
+								<input type="text" name="psSolDataPesq" id="psSolDataPesq" class="form-control" oninput="formatarData(this)" maxlength="10">
 								<span class="input-group-addon">
 									<span class="fluigicon fluigicon-calendar"></span>
 								</span>
@@ -490,7 +510,11 @@
 							<label for="psPesqCidadeRevenda">Cidade da revenda:</label>
 							<input type="text" name="psPesqCidadeRevenda" id="psPesqCidadeRevenda" class="form-control">
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-2">
+							<label for="psPesqRepresentante">Representante:</label>
+							<input type="text" name="psPesqRepresentante" id="psPesqRepresentante" class="form-control">
+						</div>
+						<div class="form-group col-md-2">
 							<label for="psPesqCliente">Cliente:</label>
 							<input type="text" name="psPesqCliente" id="psPesqCliente" class="form-control">
 						</div>
@@ -500,11 +524,11 @@
 						</div>
 						<div class="form-group col-md-2">
 							<label for="psPesqAcompanhouEntrega">Quem acompanhou a entrega:</label>
-							<input type="text" name="psPesqAcompanhouEntrega" id="psPesqAcompanhouEntrega" class="form-control">
+							<input type="text" name="psPesqAcompanhouEntrega" id="psPesqAcompanhouEntrega" class="form-control" >
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-2">
 							<label for="psPesqTelefone">Telefone:</label>
-							<input type="text" name="psPesqTelefone" id="psPesqTelefone" class="form-control psPesqTelefone" oninput="aplicaMascaraTelefone(this)"> 
+							<input type="text" name="psPesqTelefone" id="psPesqTelefone" class="form-control psPesqTelefone" oninput="aplicaMascaraTelefone(this)" > 
 						</div>
 					</div>
 					<div class="row">
@@ -536,7 +560,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-2">
 							<label for="psPesqDispRevenda">Disponibilidade peças na revenda:</label>
 							<select name="psPesqDispRevenda" id="psPesqDispRevenda" class="form-control">
 								<option value=""></option>
@@ -548,7 +572,7 @@
 							<label for="psPesqFeedbackPecas">Feedback:</label>
 							<textarea rows="1" cols="12" name="psPesqFeedbackPecas" id="psPesqFeedbackPecas" class="form-control " ></textarea>
 						</div>
-						<div class="form-group col-md-3">
+						<div class="form-group col-md-2">
 							<label for="psPesqOcorrencia">Teve ocorrência?</label>
 							<select name="psPesqOcorrencia" id="psPesqOcorrencia" class="form-control">
 								<option value=""></option>
@@ -564,11 +588,25 @@
 								<option value="nao"> Não </option>
 							</select>
 						</div>
+						<div class="form-group col-md-2" psFimSemRet>
+							<label for="pesqPsFimSemRet">Finalizar sem retorno</label>
+							<select name="pesqPsFimSemRet" id="pesqPsFimSemRet" class="form-control">
+								<option value=""></option>
+								<option value="sim"> Sim </option>
+								<option value="nao"> Não </option>
+							</select>
+						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-4 col-md-offset-4" temObsPs>
 							<label for="pesqPsSatisfacaoOBS">Observação</label>
 							<textarea rows="2" cols="12" name="pesqPsSatisfacaoOBS" id="pesqPsSatisfacaoOBS" class="form-control " ></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-4 col-md-offset-4" sugestMelhoria>
+							<label for="pesqPsSatisfacaoSGM">Sugestão de Melhoria</label>
+							<textarea rows="2" cols="12" name="pesqPsSatisfacaoSGM" id="pesqPsSatisfacaoSGM" class="form-control " ></textarea>
 						</div>
 					</div>
 				</div>
@@ -793,7 +831,7 @@
 							<!-- Inicio Tabela Pai Filho-->
 							<div class="row">								
 								<div class="col-md-12">
-									<table class="table table-condensed table-nonfluid table-striped "  id="tbPSPesqOcorrencias" tablename="tbPSPesqOcorrencias" name="tbPSPesqOcorrencias" noaddbutton="true" customFnDelete="removeOcorrencia(this)">
+									<table class="table table-condensed table-nonfluid table-striped "  id="tbPSPesqOcorrencias" tablename="tbPSPesqOcorrencias" name="tbPSPesqOcorrencias" noaddbutton="true" nodeletebutton="true">
 										<thead>
 											<tr>
 												<th class="col-md-2">Data</th>
