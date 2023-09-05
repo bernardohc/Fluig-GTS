@@ -6,7 +6,8 @@ function enableFields(form){
 		//form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);
         
     }else if(atv_atual == INICIO){	 
-        //form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);        
+        //form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);  
+        form.setEnabled("pesqNumSerie", false);      
     }else if(atv_atual == Registro_Ocorrências){
         //Inicio pesquisa 
         form.setEnabled("pesqEfetivoCont", false);

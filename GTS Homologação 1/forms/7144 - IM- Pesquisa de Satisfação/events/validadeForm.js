@@ -53,14 +53,14 @@ function validateForm(form){
                     //     message += getMessage("Pesquisa de Satisfação - Cidade do cliente:", 1, form);
                     //     hasErros = true;
                     // }
-                    // if (isEmpty("pesqAcompanhouEntrega", form)) {
-                    //     message += getMessage("Pesquisa de Satisfação - Quem acompanhou a entrega:", 1, form);
-                    //     hasErros = true;
-                    // }
-                    // if (isEmpty("pesqTelefone", form)) {
-                    //     message += getMessage("Pesquisa de Satisfação - Telefone:", 1, form);
-                    //     hasErros = true;
-                    // }
+                    if (isEmpty("pesqAcompanhouEntrega", form)) {
+                        message += getMessage("Pesquisa de Satisfação - Quem acompanhou a entrega:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("pesqTelefone", form)) {
+                        message += getMessage("Pesquisa de Satisfação - Telefone:", 1, form);
+                        hasErros = true;
+                    }
                     if (isEmpty("pesqNotaAtendimento", form)) {
                         message += getMessage("Pesquisa de Satisfação - Como foi o Atendimento:", 1, form);
                         hasErros = true;
