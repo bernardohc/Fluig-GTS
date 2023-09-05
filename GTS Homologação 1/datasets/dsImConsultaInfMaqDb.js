@@ -33,9 +33,10 @@ function createDataset(fields, constraints, sortFields) {
 	}
 	
 	var SQL =	"SELECT equipModelo, revRazaoSocialRevenda, revCidade, cliNomeCliente, cliCidade, protoRecResponsavel, protoRecTelefone" +
-				" FROM ML001031 ML (NOLOCK) " +
-				" WHERE 1=1 AND ML.version = (SELECT max(version) FROM ML001031 MLTB WHERE MLTB.documentid = ML.documentid )";
-		
+				" FROM ML001027 ML (NOLOCK) " +
+				" WHERE 1=1 AND ML.version = (SELECT max(version) FROM ML001027 MLTB WHERE MLTB.documentid = ML.documentid )";
+				//Tabela PRD ML001027
+				//Tabela HML ML001031
 				//Cabeçalho
 		if( numSerieParam != ""  ){
 			SQL += " AND equipNumSerie = '" + numSerieParam + "'";

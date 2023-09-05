@@ -90,7 +90,7 @@ function validateForm(form){
                     if(isEmpty("pesqOcorrencia", form)){
                         message += getMessage("Pesquisa de Satisfação - Teve ocorrência:", 1, form);
                         hasErros = true;
-                    }  
+                    }   
                     if (form.getValue("pesqOcorrencia") == 'sim') {
                         var indexTbPesqOcorrencia = form.getChildrenIndexes("tbPesqOcorrencias");
                         if(indexTbPesqOcorrencia.length == 0){
@@ -151,6 +151,10 @@ function validateForm(form){
                         message += getMessage("Pesquisa de Satisfação - Finalizar sem retorno:", 1, form);
                         hasErros = true;
                     }
+                    if(isEmpty("pesqSatisfacaoOBS", form)){
+                        message += getMessage("Pesquisa de Satisfação - Observações:", 1, form);
+                        hasErros = true;
+                    } 
                     // if (form.getValue("pesqOcorrencia") == 'sim') {
                     //     var indexTbPesqOcorrencia = form.getChildrenIndexes("tbPesqOcorrencias");
                     //     if(indexTbPesqOcorrencia.length == 0){
@@ -246,6 +250,10 @@ function validateForm(form){
                         message += getMessage("Pesquisa de Satisfação Pós Safra - Finalizar sem retorno:", 1, form);
                         hasErros = true;
                     }
+                    if(isEmpty("pesqPsSatisfacaoOBS", form)){
+                        message += getMessage("Pesquisa de Satisfação - Observações:", 1, form);
+                        hasErros = true;
+                    } 
                     // if(isEmpty("psPesqOcorrencia", form)){
                     //     message += getMessage("Pesquisa de Satisfação Pós Safra - Teve ocorrência:", 1, form);
                     //     hasErros = true;
