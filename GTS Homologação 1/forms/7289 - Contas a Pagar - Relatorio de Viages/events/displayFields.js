@@ -18,10 +18,10 @@ function displayFields(form, customHTML) {
 	if(form.getFormMode() != 'ADD'){
 		//Botão de visualizar imagem, só não exibe na atividade 0
 		//Se for na 0 e Web, exibe botão de download
+		customHTML.append("<script>$('.divVisualizaAnexo').show()</script>");
 		customHTML.append("<script>$('.btnViewerFile').prop('disabled', false);</script>");
 		customHTML.append("<script>$('.btnViewerFile').show()</script>");
 	}
-
 
 	if(atv_atual == INICIO_0) {
 		form.setValue("solNomeSol",  usuarioCorrente.getFullName() );
@@ -31,6 +31,8 @@ function displayFields(form, customHTML) {
 		form.setValue("addRvDespCodiID",  "1001" );
 
 		form.setVisibleById("tbRelDespesas", false);
+		
+		customHTML.append("<script>$('.divVisualizaAnexo').show()</script>");
 		if(!isMobile(form)){
 			//Somente mostra botão de download se for Web
 			customHTML.append("<script>$('.btnDownloadFile').prop('disabled', false);</script>");
@@ -55,7 +57,6 @@ function displayFields(form, customHTML) {
 
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divAddDespesa", true);
-
 		}else{
 		}
 

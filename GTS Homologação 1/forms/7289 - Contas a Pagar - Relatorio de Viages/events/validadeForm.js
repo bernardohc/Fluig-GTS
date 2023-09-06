@@ -121,16 +121,16 @@ function validateForm(form){
                     hasErros = true;
                 }
 
-                /*
-                var indexesSolTbDespesas = form.getChildrenIndexes("solTbDespesas");
-                if(indexesSolTbDespesas.length == 0){
+                
+                var indexesRelTbDespesas = form.getChildrenIndexes("tbRelDespesas");
+                if(indexesRelTbDespesas.length == 0){
                     if (isMobile(form)) {
                         message += getMessage("Tabela de itens de despesas não possui nenhum item.", 6, form);
                     }else{
                         message += getMessage("Tabela <b>itens de despesas</b> não possui nenhum item.", 6, form);
                     }
                     hasErros = true;
-                }else{
+                }/*else{
                     for (var i = 0; i < indexesSolTbDespesas.length; i++) {
 
                         if (isEmpty("solEstabelecimento___" + indexesSolTbDespesas[i], form)) {

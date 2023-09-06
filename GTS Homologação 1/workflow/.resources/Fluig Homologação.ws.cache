@@ -1467,6 +1467,143 @@
    </object>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 7289</string>
+   <array class="java.lang.String" length="44">
+    <void index="0">
+     <string>addRvDespAnexo</string>
+    </void>
+    <void index="1">
+     <string>addRvDespCCusto</string>
+    </void>
+    <void index="2">
+     <string>addRvDespClassi</string>
+    </void>
+    <void index="3">
+     <string>addRvDespCodiID</string>
+    </void>
+    <void index="4">
+     <string>addRvDespData</string>
+    </void>
+    <void index="5">
+     <string>addRvDespDocumento</string>
+    </void>
+    <void index="6">
+     <string>addRvDespEstabelecimento</string>
+    </void>
+    <void index="7">
+     <string>addRvDespTpPag</string>
+    </void>
+    <void index="8">
+     <string>addRvDespValor</string>
+    </void>
+    <void index="9">
+     <string>aprovRelatorio</string>
+    </void>
+    <void index="10">
+     <string>dataAbertura</string>
+    </void>
+    <void index="11">
+     <string>dataAtual</string>
+    </void>
+    <void index="12">
+     <string>grupoAnalisaRelatorio</string>
+    </void>
+    <void index="13">
+     <string>pesNomePesquisador</string>
+    </void>
+    <void index="14">
+     <string>processoId</string>
+    </void>
+    <void index="15">
+     <string>revisaoRelatorio</string>
+    </void>
+    <void index="16">
+     <string>rvAproObs</string>
+    </void>
+    <void index="17">
+     <string>rvDespAnexo</string>
+    </void>
+    <void index="18">
+     <string>rvDespCCusto</string>
+    </void>
+    <void index="19">
+     <string>rvDespClassi</string>
+    </void>
+    <void index="20">
+     <string>rvDespCodiID</string>
+    </void>
+    <void index="21">
+     <string>rvDespData</string>
+    </void>
+    <void index="22">
+     <string>rvDespDocumento</string>
+    </void>
+    <void index="23">
+     <string>rvDespEstabelecimento</string>
+    </void>
+    <void index="24">
+     <string>rvDespObs</string>
+    </void>
+    <void index="25">
+     <string>rvDespTpPag</string>
+    </void>
+    <void index="26">
+     <string>rvDespValor</string>
+    </void>
+    <void index="27">
+     <string>rvDiaria</string>
+    </void>
+    <void index="28">
+     <string>rvRevisaoObs</string>
+    </void>
+    <void index="29">
+     <string>rvSaldo</string>
+    </void>
+    <void index="30">
+     <string>rvTotal</string>
+    </void>
+    <void index="31">
+     <string>rvTotalComb</string>
+    </void>
+    <void index="32">
+     <string>salvarEnviar</string>
+    </void>
+    <void index="33">
+     <string>solAdianta</string>
+    </void>
+    <void index="34">
+     <string>solDataRet</string>
+    </void>
+    <void index="35">
+     <string>solDataSaida</string>
+    </void>
+    <void index="36">
+     <string>solDataSol</string>
+    </void>
+    <void index="37">
+     <string>solIdSol</string>
+    </void>
+    <void index="38">
+     <string>solMatSol</string>
+    </void>
+    <void index="39">
+     <string>solMoeda</string>
+    </void>
+    <void index="40">
+     <string>solNomeSol</string>
+    </void>
+    <void index="41">
+     <string>solNumColab</string>
+    </void>
+    <void index="42">
+     <string>solSetor</string>
+    </void>
+    <void index="43">
+     <string>tbRelDespesas</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>expediente</string>
    <array class="java.lang.String" length="3">
     <void index="0">

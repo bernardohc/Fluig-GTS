@@ -33,70 +33,6 @@ function anexo(event) {
     }
 }
 
-
-/**
- * Função executada após a escolha do arquivo a ser enviado para o Fluig.
- * Verifica se o anexo já existe, seta o valor do arquivo fisico no campo e altera o estado dos botões
- * @return {void} 
- */
-$(function () {
-    try {
-        window.parent.$("#ecm-navigation-inputFile-clone").on('change', function (e) {
-            const inputNameFile = this.getAttribute("data-inputNameFile");
-            const fileDescription = this.getAttribute("data-file-name-camera");
-            const filePhisical = this.files[0].name;
-            
-            if (fileDescription && fileDescription) {
-                let hasFilePhisical = false;
-            	/**
-                 * O trecho de código abaixo percorre os anexos do Fluig e caso já exista um anexo com a mesma descrição, ele será removido. 
-                 * Em seguida limpa o campo onde é armazenado o nome fisico do arquivo
-                 */
-                $.each(parent.ECM.attachmentTable.getData(), function (i, attachment) {
-                    var descricao = attachment.description;
-                    var name = attachment.name;
-                    
-                    if (fileDescription == descricao) {
-                        parent.WKFViewAttachment.removeAttach([i]);
-                        setFilePhisicalName(inputNameFile, "");
-                    }
-                    
-                    //confere se já tem pelo nome de arquivo fisíco já inserido (Fluig só impede de inserir quando esta ADD)
-                    if (filePhisical == name) {
-                    	hasFilePhisical = true;
-                    }
-                });
-                
-                if(getMode() == "ADD"){
-                	if(hasFilePhisical){
-                		//Se já existe o arquivo fisico inserido, não vai conseguir inserir o arquivo com o mesmo nome quando for mode ADD
-                    	setFilePhisicalName(inputNameFile, "");
-                    	FLUIGC.toast({
-                            title: "Atenção",
-                            message: "Arquivo duplicado. Você tentou enviar um arquivo já anexado com este nome.",
-                            type: "warning"
-                        });
-                    }else{
-                    	setFilePhisicalName(inputNameFile, filePhisical)
-                        if (getMode() == "ADD") {
-                        	btnState(inputNameFile, 'delete', 'download');
-                        }
-                    }
-                }else if(getMode() == "MOD"){
-                	setFilePhisicalName(inputNameFile, filePhisical)
-                	btnState(inputNameFile, 'delete', 'viewer');
-                }
-                
-                
-            }
-        });
-    } catch (e) {
-        console.error("Houve um erro inesperado ao selecionar o arquivo")
-        console.error(e)
-    }
-});
-
-
 /**
  * Visualizar arquivos que esta na aba Anexos do Fluig
  * @param {String} fileDescription Parâmetro obrigatório, Descrição do anexo
@@ -104,83 +40,94 @@ $(function () {
  */
 function viewerFile(fileDescription) {
 
-    var html =  '<div class="row" >'+
-                    '<div class="col-md-12" align="center">'+
-                        '<div id="carousel-modal"></div>'+
-                    '</div>'+
-                '</div>'
-					
-    var modalImgOS = FLUIGC.modal({
-        title: '',
-        content: html,
-        id: 'fluig-modal',
-        size: 'full',
-        actions: [{
-            'label': 'Fechar',
-            'autoClose': true
-        }]
-    }, function(err, data) {
-        if(err) {
+    let idFluig =  $('#processoId').val().trim();
+    let filterFields = "idFluig,"+ idFluig + ",fileDescription," + fileDescription;
             
-        } else {
-            
-            let idFluig =  $('#processoId').val().trim();
-            let filterFields = "idFluig,"+ idFluig + ",fileDescription," + fileDescription;
-            
-            var loading = FLUIGC.loading(window);
-            loading.show();
-            
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                async: true,
-                url: "/api/public/ecm/dataset/search?datasetId=dsRelViagConsultaAnexo&filterFields="+filterFields,
-                success: function (data, status, xhr) {
-                    if (data != null && data.content != null && data.content.length > 0) {
-                        const record = data.content[0];
-                        if( record.CODRET == "1"){
-                           
-                            let arrImagens = [];
-                            let objImagem = {
-                                src: record.downloadUrl, 
-                                alt: record.fileName};
-                            arrImagens.push(objImagem);
-                            
-                            let settingsCarousel = {
-                                    id: 'myCarouselImgOS',
-                                    images: arrImagens,
-                                    indicators: false,
-                                    startIndex: 0,
-                                    interval: 6000
-                            }
-                                
-                            FLUIGC.carousel('#carousel-modal', settingsCarousel);
-                            
-                            //Oculta botões de ir para o lado
-                            $('#myCarouselImgOS .carousel-control').hide()
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        async: true,
+        url: "/api/public/ecm/dataset/search?datasetId=dsRelViagConsultaAnexo&filterFields="+filterFields,
+        success: function (data, status, xhr) {
+            if (data != null && data.content != null && data.content.length > 0) {
+                console.log(data)
+                const record = data.content[0];
+                if( record.CODRET == "1"){
 
-                        }else if (records[0].CODRET == "2"){
-                            $('#carousel-modal').html('<p><b>'+record[0].MSGRET+'</b></p>');
-                        }
-                    }else{
-                        messageToast({message: 'Erro ao consultar as imagens, comunicar o Administrador do Sistema!'}, 'danger')
+                    const document = {
+                        documentId : record.documentId
+                        ,downloadUrl : record.downloadUrl
+                        ,extension : record.extension
                     }
-                    setTimeout(function(){ 
-                        loading.hide();
-                    }, 1000);
-                
-                },error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
-                    messageToast({message: 'Erro na consulta das imagens, comunicar o Administrador do Sistema!'}, 'danger')
-                    loading.hide();
+                    openDocument(document)
+
+                }else if (records[0].CODRET == "2"){
+                    messageToast({message: record[0].MSGRET}, 'danger')
                 }
-            });
+            }else{
+                messageToast({message: 'Erro ao consultar imagem, comunicar o Administrador do Sistema!'}, 'danger')
+            }
             
+        },error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+            messageToast({message: 'Erro na consulta imagem, comunicar o Administrador do Sistema!'}, 'danger')
+            loading.hide();
         }
     });
 
 }
+function openDocument(document) {
 
+    console.log(document)
+    if(isMobile == 'true'){
+
+        var html =  '<div class="row" >'+
+                        '<div id="div-pdf-viewer" class="col-md-12" align="center" style="display:none;" >'+
+                            '<div class="pdfjs-viewer"></div>'+
+                        '</div>'+
+
+                        '<div id="div-img-viewer" class="col-md-12" align="center" style="display:none; border: 1px solid rgb(209, 211, 212);" >'+
+                            '<div id="img-viewer" style="min-height:380px; "></div>'+
+                        '</div>'+
+                    '</div>'
+        
+        var modalImgOS = FLUIGC.modal({
+            title: '',
+            content: html,
+            id: 'fluig-modal',
+            size: 'full',
+            actions: [{
+                'label': 'Fechar',
+                'autoClose': true
+            }]
+        }, function(err, data) {
+            if(err) {
+                
+            } else {
+
+                if(document.extension == "pdf"){
+                    $("#div-pdf-viewer").show();
+                    let pdfViewer = new PDFjsViewer($('.pdfjs-viewer'));
+                    
+                    pdfViewer.loadDocument( document.downloadUrl).then(function () {
+                        pdfViewer.setZoom("out");
+                    });
+                }else{
+                    $("#div-img-viewer").show();
+                    // let content = `<embed src="${document.downloadUrl}" type="application/pdf" width="100%" height="100%"  />`
+                    let content = `<object data="${document.downloadUrl}" height="100%" width="100%" style="object-fit: contain;"></object>`
+                    $("#img-viewer").append(content);
+                }
+
+            }
+        });
+        
+    }else{
+
+        parent.WKFViewAttachment.openAttachmentView('adm', document.documentId);
+
+    }
+}
 
 /**
  * Realiza o download do arquivo que esta na aba Anexos do Fluig

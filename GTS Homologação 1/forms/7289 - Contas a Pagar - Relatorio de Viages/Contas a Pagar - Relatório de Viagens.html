@@ -16,8 +16,17 @@
 	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-anexo.js" charset="utf-8"></script>
 
+	<script type="text/javascript" src="js-pdf.min.js"></script>
+	<script type="text/javascript" src="js-pdfjs-viewer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css-pdfjs-viewer.css">
+
 	<script>
 		$(document).ready(function() {
+			// Let's initialize the PDFjs library
+			var pdfjsLib = window['pdfjs-dist/build/pdf'];
+			pdfjsLib.GlobalWorkerOptions.workerSrc = 'js-pdf.worker.min.js';
+
+
 			window.parent.$("#breadcrumb").remove();
 			window.parent.$("#textActivity").text('');
 			// window.parent.$("#informationsTab").remove();
@@ -65,7 +74,7 @@
 							<label for="solNomeSol">Nome do Solicitante</label>
 							<input type="text" name="solNomeSol" id="solNomeSol" class="form-control" readonly>
 						</div>
-						<div class="form-group col-md-2 col-xs-6">
+						<div class="form-group col-md-2 ">
 							<label for="solDataSol">Data do Relatório</label>
 							<div class="input-group">
 								<input type="text" name="solDataSol" id="solDataSol" class="form-control" readonly>
@@ -74,7 +83,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="form-group col-md-2 col-xs-6">
+						<div class="form-group col-md-2">
 							<label for="solIdSol">Id Solicitação</label>
 							<input type="text" name="solIdSol" id="solIdSol" class="form-control" readonly>
 						</div>
@@ -211,50 +220,46 @@
 							<table class="table table-condensed table-nonfluid table-striped" id="tbRelDespesas" tablename="tbRelDespesas" name="tbRelDespesas" noaddbutton="true" customFnDelete="removeDespesa(this)">
 								<thead>
 									<tr>
-										<th style="width: 9%">Código</th>
-										<th style="width: 19%">Estabelecimento</th>
-										<th style="width: 10%">Documento</th>
-										<th style="width: 10%">Data</th>
-										<th style="width: 8%">Pagamento</th>		
-										<th style="width: 10%">Classificação</th>		
-										<th style="width: 10%">Valor</th>		
-										<th style="width: 18%">Centro de Custo</th>		
-										<th style="width: 6%">Anexo</th>		
+										<th style="width: 7%; padding-left: 3px !important; padding-right: 2px !important;">Código</th>
+										<th style="width: 19%; padding-left: 3px !important; padding-right: 2px !important;">Estabelecimento</th>
+										<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Documento</th>
+										<th style="width: 11%; padding-left: 3px !important; padding-right: 2px !important;">Data</th>
+										<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Pagamento</th>		
+										<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Classificação</th>		
+										<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Valor</th>		
+										<th style="width: 18%; padding-left: 3px !important; padding-right: 2px !important;">Centro de Custo</th>		
+										<th style="width: 5%; padding-left: 3px !important; padding-right: 2px !important;">Anexo</th>		
 									</tr>
 								</thead>
 								<tbody>
 									<tr detail="true" detailname="tbRelDespesas">
-										<td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;" >
 											<input type="text" id="rvDespCodiID"  name="rvDespCodiID" class="form-control" readonly>
 										</td>
-										<td>
-											<!-- <input type="hidden" id="rvDespCodiID"  name="rvDespCodiID" class="form-control" readonly> -->
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">
 											<input type="text" id="rvDespEstabelecimento"  name="rvDespEstabelecimento" class="form-control" readonly>
 										</td>
-										<td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">
 											<input type="text" id="rvDespDocumento"  name="rvDespDocumento" class="form-control" readonly>
 										</td>
-										<td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">
 											<input type="text" id="rvDespData"  name="rvDespData" class="form-control" readonly>
 										</td>
-										<td>													
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">												
 											<input type="text" id="rvDespTpPag"  name="rvDespTpPag" class="form-control"readonly>
 										</td>
-										<td>													
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">												
 											<input type="text" id="rvDespClassi"  name="rvDespClassi" class="form-control"readonly>
 										</td>
-										<td>													
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">												
 											<input type="text" id="rvDespValor"  name="rvDespValor" class="form-control"readonly>
 										</td>
-										<td>													
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">												
 											<input type="text" id="rvDespCCusto"  name="rvDespCCusto" class="form-control"readonly>
 										</td>
-										<td>													
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">											
 											<input type="hidden" id="rvDespAnexo"  name="rvDespAnexo" class="form-control rvDespAnexo" readonly>
 											<div class="icones">
-												<!-- <button type="button" class="btnUpFile btn btn-success btn-sm" data-acao="upload" onclick="anexo(event)" title="Selecionar">
-													<i class="fluigicon fluigicon-file-upload icon-sm"></i>
-												</button> -->
 												<button style="display: none;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disabled>
 													<i class="fluigicon fluigicon-eye-open icon-sm"></i>
 												</button>
@@ -262,7 +267,7 @@
 													<i class="fluigicon fluigicon-download icon-sm"></i>
 												</button>
 											</div>
-										</td>
+										</td> 
 									</tr>
 								</tbody>
 							</table>

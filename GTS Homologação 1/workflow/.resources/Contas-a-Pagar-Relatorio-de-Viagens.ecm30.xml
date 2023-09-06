@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Contas a Pagar - Relatorio de Viagens</processId>
-      <version>15</version>
+      <version>28</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>7289</formId>
@@ -112,7 +112,7 @@
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
       <engineAllocationId>Campo Formulário</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;solSetor&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;grupoAnalisaRelatorio&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -127,7 +127,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>420</positionX>
+      <positionX>380</positionX>
       <positionY>120</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -179,7 +179,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>640</positionX>
+      <positionX>550</positionX>
       <positionY>24</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -320,7 +320,7 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>580</positionX>
+      <positionX>560</positionX>
       <positionY>104</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
@@ -434,7 +434,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>28</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;reprovado&quot;</condition>
@@ -446,7 +446,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>28</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;aprovado&quot;</condition>
@@ -458,7 +458,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>28</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoReprovado&quot;</condition>
@@ -470,7 +470,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>28</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoAprovado&quot;</condition>
@@ -482,12 +482,11 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>15</version>
+        <version>28</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
       <destinationSequenceId>20</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;20&lt;/BaseActivity&gt;&lt;Returns&gt;First&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -495,12 +494,11 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>15</version>
+        <version>28</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
       <destinationSequenceId>5</destinationSequenceId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;grupoAnalisaRelatorio&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -706,7 +704,282 @@
       <editionMode>false</editionMode>
     </ProcessAttachmentSecurity>
   </list>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>atividades</eventId>
+        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>var INICIO_0 = 0;&#xd;
+var INICIO = 4;&#xd;
+var SALVAR_RELATORIO = 20;&#xd;
+var ANALISA_RELATORIO = 5;&#xd;
+var AJUSTA_RELATORIO = 9;&#xd;
+var REVISA_RELATORIO = 13;&#xd;
+var FIM = 18;</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId){&#xd;
+	var WKNumProces = processId+&quot;&quot;;&#xd;
+	hAPI.setCardValue(&quot;processoId&quot;, WKNumProces);&#xd;
+	hAPI.setCardValue(&quot;solIdSol&quot;, WKNumProces);&#xd;
+	hAPI.setCardValue(&quot;dataAbertura&quot;, dataAtual(&apos;dd/mm/yyyy hh:mm&apos;));&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeTaskSave</eventId>
+        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeTaskSave(colleagueId,nextSequenceId,userList){&#xd;
+	&#xd;
+	var atv_atual = getValue(&quot;WKNumState&quot;);&#xd;
+	var WKCompletTask = getValue(&quot;WKCompletTask&quot;);&#xd;
+    &#xd;
+    if(atv_atual == INICIO_0 || atv_atual == INICIO || atv_atual == SALVAR_RELATORIO || AJUSTA_RELATORIO){&#xd;
+        &#xd;
+        var message = &quot;.\n&quot;;&#xd;
+        var hasErros = false;&#xd;
+        var attachments = hAPI.listAttachments();&#xd;
+        &#xd;
+        var indexesTbRelDespesas = hAPI.getChildrenIndexes(&quot;tbRelDespesas&quot;);&#xd;
+					&#xd;
+        var hasAttachDespesa = false;&#xd;
+        for (var i = 0; i &lt; indexesTbRelDespesas.length; i++) {&#xd;
+            &#xd;
+            hasAttachDespesa = false;&#xd;
+            for(var j = 0; j &lt; attachments.size(); j++ ){&#xd;
+                var docDtoDespesa = attachments.get(j);&#xd;
+                var documentDescription = docDtoDespesa.getDocumentDescription();&#xd;
+                &#xd;
+                if(documentDescription.contains(&quot;.&quot;) ){&#xd;
+                    //Se tiver extensão no arquivo, remove para validar pelo nome do arquivo&#xd;
+                    //Isso estava ocorrendo no mobile, que insere sempre a extensão.&#xd;
+                    // extensaoDoArquivo = documentDescription.substring(documentDescription.lastIndexOf(46) + 1);&#xd;
+                    documentDescription = documentDescription.substring(0, documentDescription.lastIndexOf(46));&#xd;
+                }&#xd;
+                if(documentDescription == hAPI.getCardValue(&quot;rvDespAnexo___&quot;+indexesTbRelDespesas[i]) ){&#xd;
+                    hasAttachDespesa = true;&#xd;
+                }&#xd;
+            }&#xd;
+            &#xd;
+            if(!hasAttachDespesa){&#xd;
+                hasErros = true;&#xd;
+                message +=  &quot;\n-Não foi localizado o anexo da despesa código &quot; + hAPI.getCardValue(&quot;rvDespCodiID___&quot;+indexesTbRelDespesas[i]) + &quot;, favor anexar.&quot;;&#xd;
+            }&#xd;
+        }&#xd;
+&#xd;
+&#xd;
+        if(hasErros){&#xd;
+            throw message + &quot;\n\n&quot;;&#xd;
+        }&#xd;
+&#xd;
+    }&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>utils</eventId>
+        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function dataAtual(formato){&#xd;
+    var retornoData = &quot;&quot;;&#xd;
+	var data = new Date();&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    var hora = addZero(data.getHours());&#xd;
+    var minuto = addZero(data.getMinutes());&#xd;
+    &#xd;
+    if(formato == &quot;dd/mm/yyyy&quot;){&#xd;
+    	retornoData = dia + &quot;/&quot; + mes + &quot;/&quot; + ano;&#xd;
+    }else if(formato == &quot;yyyymmdd&quot;){&#xd;
+    	retornoData = ano + &quot;&quot; + mes + &quot;&quot; + dia;&#xd;
+    }else if(formato == &quot;yyyy-mm-dd&quot;){&#xd;
+    	retornoData = ano + &quot;-&quot; + mes + &quot;-&quot; + dia;&#xd;
+    }else if(formato == &quot;dd/mm/yyyy hh:mm&quot;){&#xd;
+    	retornoData = dia + &quot;/&quot; + mes + &quot;/&quot; + ano + &quot; &quot; + hora + &quot;:&quot; + minuto ;&#xd;
+    }&#xd;
+    &#xd;
+    return retornoData;&#xd;
+}&#xd;
+&#xd;
+function dataAtualAddDays(days){&#xd;
+    var data = new Date();&#xd;
+    &#xd;
+    data.setDate(data.getDate()+days);&#xd;
+    &#xd;
+    var dia = addZero(data.getDate());&#xd;
+    var mes = addZero(data.getMonth()+1);&#xd;
+    var ano = data.getFullYear(); &#xd;
+    &#xd;
+    return ano + &quot;&quot; + mes + &quot;&quot; + dia;&#xd;
+}&#xd;
+&#xd;
+function addZero(i) {&#xd;
+    if (i &lt; 10) {&#xd;
+        i = &quot;0&quot; + i;&#xd;
+    }&#xd;
+    return i;&#xd;
+}&#xd;
+&#xd;
+function temValor(valor){&#xd;
+	if(valor != null &amp;&amp; valor != undefined){&#xd;
+		valor = valor.toString().trim();&#xd;
+		&#xd;
+		if(valor != &quot;&quot;){&#xd;
+			return true;&#xd;
+		}else{&#xd;
+			return false;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	return false;&#xd;
+}&#xd;
+&#xd;
+function temValorArray(arrayValor){&#xd;
+	if(arrayValor != null &amp;&amp; arrayValor != undefined &amp;&amp; arrayValor.length &gt; 0){&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function dsTemValor(dataset){&#xd;
+	if(dataset != null &amp;&amp; dataset != undefined &amp;&amp; dataset.rowsCount &gt; 0){&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function buscarData(){&#xd;
+	return new Date();&#xd;
+}&#xd;
+&#xd;
+function buscarDiaAtual(){&#xd;
+	return buscarData().getDate().toString();&#xd;
+}&#xd;
+&#xd;
+function buscarMesAtual(){&#xd;
+	return (buscarData().getMonth()+1).toString();&#xd;
+}&#xd;
+&#xd;
+function buscarAnoAtual(){&#xd;
+	return buscarData().getFullYear().toString();&#xd;
+}&#xd;
+&#xd;
+function buscarDataAtualSistema(){&#xd;
+	return formatarData(buscarDiaAtual(), buscarMesAtual(), buscarAnoAtual());&#xd;
+}&#xd;
+&#xd;
+function formatarData(dia, mes, ano){&#xd;
+	if(dia.length == 1)&#xd;
+		dia = 0+dia;	&#xd;
+	if(mes.length == 1)&#xd;
+		mes = 0+mes;	&#xd;
+	return dia+&quot;/&quot;+mes+&quot;/&quot;+ano;&#xd;
+}&#xd;
+&#xd;
+function formataData(data, formato){&#xd;
+	&#xd;
+	var ano = &apos;&apos;;&#xd;
+	var mes = &apos;&apos;;&#xd;
+	var dia = &apos;&apos;;&#xd;
+	if(data.indexOf(&apos;-&apos;) &gt; -1){&#xd;
+		ano = data.substring(0, 4);&#xd;
+		mes = data.substring(5, 7);&#xd;
+		dia = data.substring(8, 10);&#xd;
+	}else if(data.indexOf(&apos;/&apos;) &gt; -1){&#xd;
+		dia = data.substring(0, 2);&#xd;
+		mes = data.substring(3, 5);&#xd;
+		ano = data.substring(6, 10);&#xd;
+	}&#xd;
+	&#xd;
+	if(formato == &quot;dd/mm/yyyy&quot;){&#xd;
+		retornoData = dia + &quot;/&quot; + mes + &quot;/&quot; + ano;&#xd;
+	}else if(formato == &quot;yyyymmdd&quot;){&#xd;
+		retornoData = ano + &quot;&quot; + mes + &quot;&quot; + dia;&#xd;
+	}else if(formato == &quot;yyyy-mm-dd&quot;){&#xd;
+		retornoData = ano + &quot;-&quot; + mes + &quot;-&quot; + dia;&#xd;
+	}&#xd;
+	&#xd;
+	return retornoData;&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+function buscarIdSolicitacao(){&#xd;
+	return getValue(&quot;WKNumProces&quot;);&#xd;
+}&#xd;
+&#xd;
+function buscarUsuarioLogado(){&#xd;
+	return getValue(&quot;WKUser&quot;);&#xd;
+}&#xd;
+&#xd;
+function buscarEmpresa(){&#xd;
+	return getValue(&quot;WKCompany&quot;);&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Retorna o Valor do Campo&#xd;
+ */&#xd;
+function buscarValorCampo(nomeCampo) {&#xd;
+	return hAPI.getCardValue(nomeCampo);&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Método para retornar os Dados do dataSet selecionado&#xd;
+ */&#xd;
+function getValorDataSet(nomeDataSet, campoIdDataSet, valorIdDataSet, nomeCampo) {&#xd;
+	var dataSet = DatasetFactory.getDataset(nomeDataSet, null, null, null);&#xd;
+	var valorCampo = false;&#xd;
+&#xd;
+	for ( var i = 0; i &lt; dataSet.rowsCount; i++) {&#xd;
+		if (dataSet.getValue(i, codigoDataSet) == valorIdDataSet) {&#xd;
+			valorCampo = dataSet.getValue(i, nomeCampo);&#xd;
+		}&#xd;
+	}&#xd;
+	return valorCampo;&#xd;
+}&#xd;
+&#xd;
+/*&#xd;
+ * Debug&#xd;
+ */&#xd;
+function debug(string){&#xd;
+	log.info(string);	&#xd;
+	throw string;&#xd;
+}&#xd;
+&#xd;
+function gravarLog(string){&#xd;
+	log.info(string);&#xd;
+}&#xd;
+&#xd;
+function completeToLeft(value, caracter, size) {&#xd;
+	&#xd;
+	var result = value;&#xd;
+	&#xd;
+	while (result.length &lt; size) {&#xd;
+		result = caracter + result;&#xd;
+	}&#xd;
+&#xd;
+	return result;&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
@@ -727,10 +1000,10 @@
     </SwimLane>
     <SwimLane>
       <color>9F9F9F</color>
-      <height>98</height>
+      <height>96</height>
       <width>1001</width>
       <positionX>40</positionX>
-      <positionY>202</positionY>
+      <positionY>10</positionY>
       <stateName>Gestor</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -743,10 +1016,10 @@
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>96</height>
+      <height>98</height>
       <width>1001</width>
       <positionX>40</positionX>
-      <positionY>10</positionY>
+      <positionY>202</positionY>
       <stateName>Solicitante</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -781,18 +1054,29 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>15</version>
+        <version>28</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>692</positionX>
+      <positionX>673</positionX>
       <positionY>154</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>15</version>
+        <version>28</version>
+        <linkSequence>10</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>673</positionX>
+      <positionY>82</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
+        <version>28</version>
         <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -803,7 +1087,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>15</version>
+        <version>28</version>
         <linkSequence>14</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -814,7 +1098,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>15</version>
+        <version>28</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -825,7 +1109,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>15</version>
+        <version>28</version>
         <linkSequence>17</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -836,7 +1120,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>15</version>
+        <version>28</version>
         <linkSequence>23</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -847,7 +1131,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>15</version>
+        <version>28</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -858,7 +1142,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>15</version>
+        <version>28</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

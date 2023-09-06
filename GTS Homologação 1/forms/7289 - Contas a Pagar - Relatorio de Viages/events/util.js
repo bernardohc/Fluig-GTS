@@ -5,6 +5,7 @@ function injetarFuncoesUteisJS(form, customHTML) {
 	customHTML.append("<script>function getWKCompany(){return " + getValue("WKCompany") + ";}</script>");
 	customHTML.append("<script>function getWKNumState(){return " + getValue("WKNumState") + ";}</script>");
 	customHTML.append("<script>function getWKNumProces(){return " + getValue("WKNumProces") + ";}</script>");
+	customHTML.append("<script>function getMode(){return '" + form.getFormMode() + "'};</script>");
 	customHTML.append("<script> var FORM_MODE = '" + form.getFormMode() + "';</script>");
 	customHTML.append("<script> var CURRENT_STATE = '" + getValue("WKNumState") + "';</script>");
 	customHTML.append("<script> var isMobile = '" + isMobile(form) + "';</script>");

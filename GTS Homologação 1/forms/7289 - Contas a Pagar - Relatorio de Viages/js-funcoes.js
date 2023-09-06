@@ -79,8 +79,7 @@ var funcoes = (function() {
 		},
 
 		addDespesa : function(){
-			const tablename = "tbRelDespesas"
-			const indice = wdkAddChild(tablename);
+			const indice = wdkAddChild("tbRelDespesas");
 
 			let addRvDespEstabelecimento = document.getElementById("addRvDespEstabelecimento").value;
 			let addRvDespDocumento = document.getElementById("addRvDespDocumento").value;
@@ -92,9 +91,6 @@ var funcoes = (function() {
 			let addRvDespAnexo = document.getElementById("addRvDespAnexo").value;
 			let addRvDespCodiID = document.getElementById("addRvDespCodiID").value;
 
-			// $('[name^="rvDespEstabelecimento___"]'); //trará todos os campos filhos deste formulário. 
-			//Aqui percorrerá todos os itens.
-			// for(var i = 0; i < $('[name^="rvDespEstabelecimento___"]').length; i++){
 			$(`#rvDespEstabelecimento___${indice}`).val(addRvDespEstabelecimento)
 			$(`#rvDespDocumento___${indice}`).val(addRvDespDocumento)
 			$(`#rvDespData___${indice}`).val(addRvDespData)
@@ -104,7 +100,6 @@ var funcoes = (function() {
 			$(`#rvDespCCusto___${indice}`).val(addRvDespCCusto)
 			$(`#rvDespAnexo___${indice}`).val(addRvDespAnexo)
 			$(`#rvDespCodiID___${indice}`).val(addRvDespCodiID)
-			// }	
 
 			funcoes.limpaAddDespesa();
 
@@ -115,6 +110,14 @@ var funcoes = (function() {
 			//Mostra a tabela de despesa
 			$('#tbRelDespesas').show();
 			
+			if(isMobile == 'true'){
+				//Oculta o botão de visualizar no mobile, pelo arquivo ainda não estar publicado no Fluig
+				// $(`#rvDespAnexo___${indice}`).prev().hide();
+				// $(`#rvDespAnexo___${indice}`).next().hide()
+
+				$(`#rvDespAnexo___${indice}`).next().find('.btnViewerFile').prop('disabled', true);
+				$('.btnViewerFile').show()
+			}
 		},
 		
 		limpaAddDespesa(){
@@ -231,6 +234,69 @@ var funcoes = (function() {
 			$("#rvDiaria").val(totalSaldo.toFixed(2));
 			validafunctions.setMoeda("rvDiaria", 2, false , '');
 		},
+
+		removeAnexo : function(index){
+			
+			const idFluig = getWKNumProces();
+			const fileDescription = $(`#rvDespAnexo___${index}`).val();
+			const wkUser = getWKUser();
+			
+			if(isMobile == 'true'){
+				if(CURRENT_STATE == INICIO_0){
+					//Na atividade 0 os anexos ainda não estão salvos no servidor.
+					messageToast({message: `Não foi possível deletar o anexo, por favor delete manualmente o arquivo <b>${fileDescription}</b>!`}, 'danger')
+				}else{
+					var loading = FLUIGC.loading(window);
+					loading.show();
+
+					$.ajax({
+						type: "GET",
+						dataType: "json",
+						async: true,
+						url: `/api/public/ecm/dataset/search?datasetId=dsRelViagDeletaAnexo&filterFields=idFluig,${idFluig},fileDescription,${fileDescription},wkUser,${wkUser}`,
+						data: "",
+						success: function (data, status, xhr) {
+							if (data != null && data.content != null && data.content.length > 0) {
+								const record = data.content[0];
+								if( record.CODRET == "1"){
+									messageToast({message: "Anexo removido com sucesso!"}, 'success')
+								}else {
+									messageToast({message: `${record.MSGRET} Por favor delete manualmente o arquivo <b>${fileDescription}</b>!`}, 'danger')
+								}	
+							}else{
+								messageToast({message: `Erro ao deletar anexo, por favor delete manualmente o arquivo <b>${fileDescription}</b>!`}, 'danger')
+							}
+							setTimeout(function(){ 
+								loading.hide();
+							}, 1000);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+							messageToast({message: `Erro ao deletar anexo, por favor delete manualmente o arquivo <b>${fileDescription}</b>!`}, 'danger')
+							loading.hide();
+						}
+					});
+				}
+			}else{
+
+				try {
+					$.each(parent.ECM.attachmentTable.getData(), function (i, attachment) {
+						let attachmentDescription = attachment.description;
+						if(attachmentDescription.includes(".")){
+							attachmentDescription = attachmentDescription.substring(0, attachmentDescription.lastIndexOf('.'));
+						}
+						if (attachmentDescription == fileDescription) {
+							parent.WKFViewAttachment.removeAttach([i]);
+						}
+					});
+				} catch (e) {
+					console.error("Houve um erro inesperado na função removeFile")
+					console.error(e)
+					messageToast({message: `Erro ao deletar anexo, por favor delete manualmente o arquivo <b>${fileDescription}</b>!`}, 'danger')
+				}
+
+			}
+		},
 	}
 })();
 
@@ -312,14 +378,15 @@ function removeDespesa(oElement){
 
 	try {
 		const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
-        const rvDespData = $(`#rvDespData___${indice}`).val() || "";
+        const rvDespCodiID = $(`#rvDespCodiID___${indice}`).val() || "";
         FLUIGC.message.confirm({
-            message: `Deseja remover o registro de despesa do dia <b>${rvDespData}</b>?`,
+            message: `Deseja remover o registro de despesa código <b>${rvDespCodiID}</b>?`,
             title: 'Confirmação',
             labelYes: 'Sim, quero remover',
-            labelNo: 'Não, quero cancelar',
+            labelNo: 'Não   ',
         }, function (result) {
             if (result) {
+				funcoes.removeAnexo(indice);
             	fnWdkRemoveChild(oElement);
 				funcoes.calculaTotal();
 				funcoes.calculaSaldo();
