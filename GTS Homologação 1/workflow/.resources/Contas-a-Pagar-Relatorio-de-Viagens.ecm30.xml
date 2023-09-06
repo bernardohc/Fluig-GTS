@@ -19,17 +19,17 @@
     <uniqueCardVersion>false</uniqueCardVersion>
     <keyWord></keyWord>
     <complementsLevel>1</complementsLevel>
-    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyRequisitionerComplements>false</notifyRequisitionerComplements>
     <notifyManagerComplements>false</notifyManagerComplements>
     <deadlineTime>28800</deadlineTime>
     <warningDeadlineTime>7200</warningDeadlineTime>
-    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+    <notifyAuthorityComplements>false</notifyAuthorityComplements>
   </ProcessDefinition>
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Contas a Pagar - Relatorio de Viagens</processId>
-      <version>28</version>
+      <version>31</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>7289</formId>
@@ -104,8 +104,8 @@
         <version>1</version>
         <sequence>5</sequence>
       </processStatePK>
-      <stateName>ANALISA_RELATORIO</stateName>
-      <stateDescription>ANALISA_RELATORIO</stateDescription>
+      <stateName>Analisa Relatório</stateName>
+      <stateDescription>Analisa Relatório</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -127,7 +127,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>380</positionX>
+      <positionX>420</positionX>
       <positionY>120</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -156,8 +156,8 @@
         <version>1</version>
         <sequence>9</sequence>
       </processStatePK>
-      <stateName>AJUSTA_RELATORIO</stateName>
-      <stateDescription>AJUSTA_RELATORIO</stateDescription>
+      <stateName>Ajusta Relatório</stateName>
+      <stateDescription>Ajusta Relatório</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -179,7 +179,7 @@
       <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>550</positionX>
+      <positionX>640</positionX>
       <positionY>24</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -208,8 +208,8 @@
         <version>1</version>
         <sequence>13</sequence>
       </processStatePK>
-      <stateName>REVISA_RELATORIO</stateName>
-      <stateDescription>REVISA_RELATORIO</stateDescription>
+      <stateName>Revisa Relatório</stateName>
+      <stateDescription>Revisa Relatório</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -260,8 +260,8 @@
         <version>1</version>
         <sequence>20</sequence>
       </processStatePK>
-      <stateName>SALVAR_RELATORIO</stateName>
-      <stateDescription>SALVAR_RELATORIO</stateDescription>
+      <stateName>Salvar Relatório</stateName>
+      <stateDescription>Salvar Relatório</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -320,7 +320,7 @@
       <subProcessId></subProcessId>
       <formFolder>0</formFolder>
       <automatic>true</automatic>
-      <positionX>560</positionX>
+      <positionX>580</positionX>
       <positionY>104</positionY>
       <inhibitTransfer>false</inhibitTransfer>
       <stateType>1</stateType>
@@ -337,8 +337,8 @@
         <version>1</version>
         <sequence>15</sequence>
       </processStatePK>
-      <stateName>Revisão_Aprovada?</stateName>
-      <stateDescription>Revisão_Aprovada?</stateDescription>
+      <stateName>Revisão Aprovada?</stateName>
+      <stateDescription>Revisão Aprovada?</stateDescription>
       <joint>false</joint>
       <initialState>false</initialState>
       <transferAttachments>false</transferAttachments>
@@ -434,7 +434,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>28</version>
+        <version>31</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;reprovado&quot;</condition>
@@ -446,7 +446,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>28</version>
+        <version>31</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;aprovado&quot;</condition>
@@ -458,7 +458,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>28</version>
+        <version>31</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoReprovado&quot;</condition>
@@ -470,7 +470,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>28</version>
+        <version>31</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoAprovado&quot;</condition>
@@ -482,11 +482,13 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>28</version>
+        <version>31</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
       <destinationSequenceId>20</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;4&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
     <ConditionProcessState>
@@ -494,7 +496,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>28</version>
+        <version>31</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
@@ -1054,29 +1056,18 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
+        <version>31</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
-      <positionX>673</positionX>
+      <positionX>692</positionX>
       <positionY>154</positionY>
     </ProcessLinkBend>
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
-        <linkSequence>10</linkSequence>
-        <bendSequence>2</bendSequence>
-      </processLinkBendPK>
-      <positionX>673</positionX>
-      <positionY>82</positionY>
-    </ProcessLinkBend>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
+        <version>31</version>
         <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1087,7 +1078,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
+        <version>31</version>
         <linkSequence>14</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1098,7 +1089,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
+        <version>31</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1109,7 +1100,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
+        <version>31</version>
         <linkSequence>17</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1120,7 +1111,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
+        <version>31</version>
         <linkSequence>23</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1131,7 +1122,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
+        <version>31</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1142,7 +1133,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>28</version>
+        <version>31</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>

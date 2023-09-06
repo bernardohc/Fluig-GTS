@@ -6870,7 +6870,16 @@ com.fluig.sdk.service.DocumentService.prototype = {
 	* @param {boolean} fluigViewer 
 	* @returns {boolean} 
 	*/
-	"isCanDownloadDocument": function(tenantId, documentId, version, userCode, fluigViewer) {}
+	"isCanDownloadDocument": function(tenantId, documentId, version, userCode, fluigViewer) {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @param {long} tenantId 
+	* @param {int} documentId 
+	* @param {int} version 
+	* @returns {boolean} 
+	*/
+	"isDocumentDeleted": function(tenantId, documentId, version) {}
 };
 DocumentService.prototype = {
 	/**
@@ -7029,7 +7038,16 @@ DocumentService.prototype = {
 	* @param {boolean} fluigViewer 
 	* @returns {boolean} 
 	*/
-	"isCanDownloadDocument": function(tenantId, documentId, version, userCode, fluigViewer) {}
+	"isCanDownloadDocument": function(tenantId, documentId, version, userCode, fluigViewer) {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @param {long} tenantId 
+	* @param {int} documentId 
+	* @param {int} version 
+	* @returns {boolean} 
+	*/
+	"isDocumentDeleted": function(tenantId, documentId, version) {}
 };
 com.fluig.sdk.api.document.FolderVO.prototype = {
 	/**
@@ -19651,7 +19669,15 @@ com.fluig.sdk.service.CollaborationSDKService.prototype = {
 	* @param {long} collaborationId 
 	* @returns {com.fluig.sdk.api.ecm.CollaborationVO} 
 	*/
-	"findCollaborationById": function(collaborationId) {}
+	"findCollaborationById": function(collaborationId) {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @param {int} documentId 
+	* @param {int} documentVersion 
+	* @param {String} userCode 
+	*/
+	"validateUserPermissionToEdit": function(documentId, documentVersion, userCode) {}
 };
 CollaborationSDKService.prototype = {
 	/**
@@ -19745,7 +19771,15 @@ CollaborationSDKService.prototype = {
 	* @param {long} collaborationId 
 	* @returns {com.fluig.sdk.api.ecm.CollaborationVO} 
 	*/
-	"findCollaborationById": function(collaborationId) {}
+	"findCollaborationById": function(collaborationId) {}, 
+	/**
+	* 
+	* @memberOf fluigAPI
+	* @param {int} documentId 
+	* @param {int} documentVersion 
+	* @param {String} userCode 
+	*/
+	"validateUserPermissionToEdit": function(documentId, documentVersion, userCode) {}
 };
 com.fluig.sdk.identity.UserAuthTokenSessionVO.prototype = {
 	/**

@@ -1,0 +1,407 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide-carousel.min.css">
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide-carousel.min.js"></script>
+
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-anexo.js" charset="utf-8"></script>
+
+	<script type="text/javascript" src="js-pdf.min.js"></script>
+	<script type="text/javascript" src="js-pdfjs-viewer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css-pdfjs-viewer.css">
+
+	<script>
+		$(document).ready(function() {
+			// Let's initialize the PDFjs library
+			var pdfjsLib = window['pdfjs-dist/build/pdf'];
+			pdfjsLib.GlobalWorkerOptions.workerSrc = 'js-pdf.worker.min.js';
+
+
+			window.parent.$("#breadcrumb").remove();
+			window.parent.$("#textActivity").text('');
+			// window.parent.$("#informationsTab").remove();
+			// window.parent.$("#tab-attachments").remove();
+			
+			//Botões de movimentação
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+
+			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").css("display","none");
+			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").removeAttr("data-cancel-workflow-request");
+		});
+	</script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<!-- Campos para usos internos  -->
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+	<input type="hidden" name="grupoAnalisaRelatorio" id="grupoAnalisaRelatorio" >
+
+	<input type="hidden" name="dataAtual" id="dataAtual" >
+	<input type="hidden" name="pesNomePesquisador" id="pesNomePesquisador">
+	<input type="hidden" name="processoId" id="processoId" >
+
+	<div class="tab-content" id="divRelatorioViagens">
+		<div class="col-md-12 tab-pane active" id="divRelViagensDados">
+			<!--Inicio Cabeçalho-->
+			<div class="panel panel-primary" id="divCabecalho">
+				<div class="panel-heading">
+					<h3 class="panel-title">Viagem</h3>
+				</div>
+				<div class="panel-body"> 
+					<div class="row">
+						<div class="form-group col-md-2">
+							<label for="solMatSol">Matrícula do Solicitante</label>
+							<input type="text" name="solMatSol" id="solMatSol" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="solNomeSol">Nome do Solicitante</label>
+							<input type="text" name="solNomeSol" id="solNomeSol" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2 ">
+							<label for="solDataSol">Data do Relatório</label>
+							<div class="input-group">
+								<input type="text" name="solDataSol" id="solDataSol" class="form-control" readonly>
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="solIdSol">Id Solicitação</label>
+							<input type="text" name="solIdSol" id="solIdSol" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="solSetor">Setor</label>
+							<select name="solSetor" id="solSetor" class="form-control">
+								<option value=""></option>
+								<option value="motorista"> Motorista </option>
+								<option value="tecnico"> Técnico </option>
+								<option value="outro"> Outro </option>
+							</select>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="solAdianta">Valor adiantamento:</label>
+							<input type="text" name="solAdianta" id="solAdianta" class="form-control" oninput="validafunctions.setMoeda(this.id, 2, false , '')">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-md-offset-2">
+							<label for="solMoeda">Moeda</label>
+							<div class="radio input-group">
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="solMoeda" value="real" id="solMoedaReal" />
+									<label for="solMoedaReal">Real</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="solMoeda" value="estrangeira" id="solMoedaEstrangeira" />
+									<label for="solMoedaEstrangeira">Moeda Estrangeira</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-md-2 ">
+							<label for="solDataSaida">Data de Saída</label>
+							<div class="input-group">
+								<input type="text" name="solDataSaida" id="solDataSaida" class="form-control">
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-2 ">
+							<label for="solDataRet">Data de Retorno</label>
+							<div class="input-group">
+								<input type="text" name="solDataRet" id="solDataRet" class="form-control">
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="solNumColab">Nº De Colaboradores</label>
+							<input type="text" name="solNumColab" id="solNumColab" class="form-control" oninput="validafunctions.soNumero(this.id, 0, false , '')">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Fim Cabeçalho-->
+			<!-- inicio despesas-->
+			<div class="panel panel-primary" id="divDespesas">
+				<div class="panel-heading">
+					<h3 class="panel-title">Despesas da Viagem</h3>
+				</div>
+				<div class="panel-body">
+					<div id="divAddDespesa" style="display:none;">
+						<div class="row" >
+							<div class="form-group col-md-1 col-md-offset-1">
+								<label for="addRvDespCodiID">Código*</label>
+								<input type="text" name="addRvDespCodiID" id="addRvDespCodiID" class="form-control" readonly>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="addRvDespEstabelecimento">Estabelecimento*</label>
+								<input type="text" name="addRvDespEstabelecimento" id="addRvDespEstabelecimento" class="form-control" >
+							</div>
+							<div class="form-group col-md-2">
+								<label for="addRvDespDocumento">Documento*</label>
+								<input type="text" name="addRvDespDocumento" id="addRvDespDocumento" class="form-control" oninput="validafunctions.soNumero(this.id, 0, false , '')">
+							</div>
+							<div class="col-md-2 " align="left">
+								<label for="addRvDespData">Data*</label>
+								<div class="input-group">
+									<input type="text" name="addRvDespData" id="addRvDespData"  class="form-control" />				
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row" >
+							<div class="col-md-2 col-md-offset-1" align="left">
+								<label for="addRvDespTpPag">Tp. Pagamento*</label>
+								<select name="addRvDespTpPag" id="addRvDespTpPag" class="form-control">
+									<option value=""></option>
+									<option value="Dinheiro"> Dinheiro </option>
+									<option value="Cartão"> Cartão </option>
+								</select>
+							</div>
+							<div class="col-md-2" align="left">
+								<label for="addRvDespClassi">Classificação*</label>
+								<select name="addRvDespClassi" id="addRvDespClassi" class="form-control">
+									<option value=""></option>
+									<option value="Acomodação"> Acomodação </option>
+									<option value="Combustível"> Combustível </option>
+									<option value="Refeição"> Refeição </option>
+									<option value="Transporte"> Transporte </option>
+									<option value="Pedágio"> Pedágio </option>
+									<option value="Outros"> Outros </option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label for="addRvDespValor">Valor*</label>
+								<input type="text" name="addRvDespValor" id="addRvDespValor" class="form-control" oninput="validafunctions.setMoeda(this.id, 2, false , '')">
+							</div>
+							<div class="form-group col-md-2">
+								<label for="addRvDespCCusto">Centro de Custo*</label>
+								<input type="text" name="addRvDespCCusto" id="addRvDespCCusto" class="form-control" >
+							</div>
+							<div class="form-group col-md-2">
+								<div id="divInserirImagens" >
+									<label id="labelInserirImagem" style="display: none;">&nbsp;</label>
+									<input type="button" class="btn btn-default btn-block" value="Inserir Imagens" onclick="showCamera('');"/>
+									<input type="text" name="addRvDespAnexo" id="addRvDespAnexo" class="form-control" style="display: none;" readonly>
+								</div>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="col-md-3 col-md-offset-9">
+								<button type="button" class="btn btn-success btn-block" id="addRvDespesa" data-toggle="button" align="center" >Adicionar despesa</button>	
+							</div>
+						</div>	
+					</div>	
+					<!-- Inicio Tabela Pai Filho-->
+					<div  class="row" >								
+						<div class="col-md-12">
+							<table class="table table-condensed table-nonfluid table-striped" id="tbRelDespesas" tablename="tbRelDespesas" name="tbRelDespesas" noaddbutton="true" customFnDelete="removeDespesa(this)">
+								<thead>
+									<tr>
+										<th style="width: 7%; padding-left: 3px !important; padding-right: 2px !important;">Código</th>
+										<th style="width: 19%; padding-left: 3px !important; padding-right: 2px !important;">Estabelecimento</th>
+										<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Documento</th>
+										<th style="width: 11%; padding-left: 3px !important; padding-right: 2px !important;">Data</th>
+										<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Pagamento</th>		
+										<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Classificação</th>		
+										<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Valor</th>		
+										<th style="width: 18%; padding-left: 3px !important; padding-right: 2px !important;">Centro de Custo</th>		
+										<th style="width: 5%; padding-left: 3px !important; padding-right: 2px !important;">Anexo</th>		
+									</tr>
+								</thead>
+								<tbody>
+									<tr detail="true" detailname="tbRelDespesas">
+										<td style="padding-left: 3px !important; padding-right: 2px !important;" >
+											<input type="text" id="rvDespCodiID"  name="rvDespCodiID" class="form-control" readonly>
+										</td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">
+											<input type="text" id="rvDespEstabelecimento"  name="rvDespEstabelecimento" class="form-control" readonly>
+										</td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">
+											<input type="text" id="rvDespDocumento"  name="rvDespDocumento" class="form-control" readonly>
+										</td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">
+											<input type="text" id="rvDespData"  name="rvDespData" class="form-control" readonly>
+										</td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">												
+											<input type="text" id="rvDespTpPag"  name="rvDespTpPag" class="form-control"readonly>
+										</td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">												
+											<input type="text" id="rvDespClassi"  name="rvDespClassi" class="form-control"readonly>
+										</td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">												
+											<input type="text" id="rvDespValor"  name="rvDespValor" class="form-control"readonly>
+										</td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">												
+											<input type="text" id="rvDespCCusto"  name="rvDespCCusto" class="form-control"readonly>
+										</td>
+										<td style="padding-left: 3px !important; padding-right: 2px !important;">											
+											<input type="hidden" id="rvDespAnexo"  name="rvDespAnexo" class="form-control rvDespAnexo" readonly>
+											<div class="icones">
+												<button style="display: none;" type="button" class="btnViewerFile btn btn-info btn-sm" data-acao="viewer" onclick="anexo(event)" title="Visualizar" disabled>
+													<i class="fluigicon fluigicon-eye-open icon-sm"></i>
+												</button>
+												<button style="display: none;" type="button" class="btnDownloadFile btn btn-info btn-sm" data-acao="download" onclick="anexo(event)" title="Download" disabled>
+													<i class="fluigicon fluigicon-download icon-sm"></i>
+												</button>
+											</div>
+										</td> 
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--Fim Tabela Pai Filho-->
+					<hr />
+					<div class="row">
+						<div class="form-group col-md-2 col-md-offset-2">
+							<label for="rvDiaria">Diária:</label>
+							<input type="text" name="rvDiaria" id="rvDiaria" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="rvTotalComb">Total combustível:</label>
+							<input type="text" name="rvTotalComb" id="rvTotalComb" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="rvTotal">Total de despesas:</label>
+							<input type="text" name="rvTotal" id="rvTotal" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="rvSaldo">Saldo:</label>
+							<input type="text" name="rvSaldo" id="rvSaldo" class="form-control" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<label for="rvDespObs">Observação*</label>
+							<textarea rows="3" cols="6" name="rvDespObs" id="rvDespObs" class="form-control " ></textarea>
+						</div>
+					</div>
+					<div class="row" id="divSalvarEnviar"><!--style="display:none;"-->	
+						<div class="col-md-2 col-md-offset-5">
+							<br>
+							<button type="button" class="btn btn-default" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="flaticon flaticon-print icon-md" aria-hidden="true"></i></button>					
+						</div>
+						<div class="col-md-2 col-md-offset-3"><!--col-md-offset-10-->
+							<label for="salvarEnviar">Deseja Salvar ou Enviar?</label>
+							<select name="salvarEnviar" id="salvarEnviar" class="form-control salvarEnviar">
+								<option value=""></option>
+								<option value="Salvar">Salvar</option>
+								<option value="Enviar">Enviar</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Fim despesas-->
+			<!-- Inicio Aprovação-->
+			<div class="panel panel-primary" id="divAprovacao">
+				<div class="panel-heading">
+					<h3 class="panel-title">Aprovação</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row" id="divAprovacao">
+						<div class="row">
+							<div class="col-md-4 col-md-offset-4" align="left" >
+								<div class="radio input-group">
+									<div class="custom-radio custom-radio-inline custom-radio-primary">
+										<input type="radio" name="aprovRelatorio" value="aprovado" id="aprovRelatorioAprovado" />
+										<label for="aprovRelatorioAprovado">Relatório Aprovado</label>
+									</div>
+									<div class="custom-radio custom-radio-inline custom-radio-primary">
+										<input type="radio" name="aprovRelatorio" value="reprovado" id="aprovRelatorioReprovado" />
+										<label for="aprovRelatorioReprovado">Relatório Reprovado</label>
+									</div>
+								</div>
+						   </div>
+						</div>
+						<div class="row" >
+							<div class="col-md-6 col-md-offset-3" align="left">
+								<label for="rvAproObs">Observação*</label>
+								<textarea rows="3" cols="6" name="rvAproObs" id="rvAproObs" class="form-control " ></textarea>
+							</div>
+						</div>
+						<div class="row">		
+							<div class="col-md-2 col-md-offset-5">			
+								<div id="divImprimir" >
+									<br>
+									<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
+									<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
+												<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatÃ³rio</div>"></i>		
+								</div>
+							</div>		
+						</div> 
+					</div>
+				</div>
+			</div>
+			<!--Fim Aprovação-->
+			<!--Inicio Revisão-->
+			<div class="panel panel-primary" id="divRevisao">
+				<div class="panel-heading">
+					<h3 class="panel-title">Revisão</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="row">
+							<div class="col-md-4 col-md-offset-4" align="left" >
+								<div class="radio input-group">
+									<div class="custom-radio custom-radio-inline custom-radio-primary">
+										<input type="radio" name="revisaoRelatorio" value="revisaoAprovado" id="revisaoRelatorioAprovado" />
+										<label for="revisaoRelatorioAprovado">Revisão Aprovada</label>
+									</div>
+									<div class="custom-radio custom-radio-inline custom-radio-primary">
+										<input type="radio" name="revisaoRelatorio" value="revisaoReprovado" id="revisaoRelatorioReprovado" />
+										<label for="revisaoRelatorioReprovado">Revisão Reprovada</label>
+									</div> 						
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" >
+						<div class="col-md-6 col-md-offset-3" align="left">
+							<label for="rvRevisaoObs">Observação*</label>
+							<textarea rows="3" cols="6" name="rvRevisaoObs" id="rvRevisaoObs" class="form-control " ></textarea>
+						</div>
+					</div>	
+					<div class="row">		
+						<div class="col-md-2 col-md-offset-5" align="left" >			
+							<div id="divImprimir" >
+								<br>
+								<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
+								<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
+											<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatÃ³rio</div>"></i>		
+							</div>
+						</div>		
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Fim Revisão-->
+	</div>
+	
+</form>
+</div>
+</body>
+</html>
