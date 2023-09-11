@@ -35,6 +35,12 @@ function validateForm(form){
                     message += getMessage("Número de colaboradores", 1, form);
                     hasErros = true;
                 }
+                if (!isEmpty("solAdianta", form)) {
+                    if (isEmpty("solMoeda", form)) {
+                        message += getMessage("Moeda", 1, form);
+                        hasErros = true;
+                    } 
+                }
                 
                 if (isEmpty("salvarEnviar", form)) {
                     if (isMobile(form)){
@@ -173,120 +179,50 @@ function validateForm(form){
             }         
         break;
 
-       /* case Registro_Ocorrências :
+        case ANALISA_RELATORIO  :
+            if (getValue("WKCompletTask") == "true" ){
+                if (isEmpty("aprovRelatorio", form)) {
+                    message += getMessage("Aprovação:", 1, form);
+                    hasErros = true;
+                }
+                if (form.getValue("aprovRelatorio") == 'reprovado') {
+                    if (isEmpty("rvAproObs", form)) {
+                        message += getMessage("Observação:", 1, form);
+                        hasErros = true;
+                    }                    
+                }
+                
+            }
         
         break;
 
-        case Pesquisa_Pos_Safra  :
+        case AJUSTA_RELATORIO  :
             if (getValue("WKCompletTask") == "true" ){
-                if(form.getValue("psPesqEfetivoCont") == 'sim'){
-                    if (isEmpty("psPesqEntregaPor", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Entrega relizada por:", 1, form);
-                        hasErros = true;
-                    } 
-                    if (isEmpty("psSolDataPesq", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Data da pesquisa:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqNumSerie", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Númerio de Série:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqModelo", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Modelo:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqRevenda", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Revenda:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqCidadeRevenda", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cidade da revenda:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqCliente", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cliente:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqCidadeCliente", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Cidade do cliente:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqAcompanhouEntrega", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Quem acompanhou a entrega:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqTelefone", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Telefone:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqNotaAtendimento", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Como foi o Atendimento:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqFeedbackAtendimento", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Feedback do atendimento:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqNotaDesempenho", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Desempenho do equipamento:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqFeedbackEquipamento", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Feedback do equipamento:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqDispRevenda", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Disponibilidade peças:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqFeedbackPecas", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Disponibilidade peças:", 1, form);
-                        hasErros = true;
-                    }
-                    if (form.getValue("psPesqOcorrencia") == 'sim') {
-                        var tbPSPesqOcorrencias = form.getChildrenIndexes("tbPSPesqOcorrencias");
-                        if(tbPSPesqOcorrencias.length == 0){
-                            if (isMobile(form)) {
-                                message += getMessage("Ocorrências não possuem nenhum item.", 6, form);
-                            }else{
-                                message += getMessage("<b>Ocorrencias</b> não possuem nenhum item.", 6, form);
-                            }
-                            hasErros = true;
-                        }
-                    }else if(isEmpty("psPesqOcorrencia", form)){
-                        message += getMessage("Teve ocorrência:", 1, form);
-                        hasErros = true;
-                    }if (isEmpty("pesqPsFimOcorrencia", form)) {
-                        message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
-                        hasErros = true;
-                    }   
+                if (isEmpty("salvarEnviar", form)) {
+                    message += getMessage("Deseja salvar ou enviar?", 1, form);
+                    hasErros = true;
                 }
             }
         
         break;
-            
-        case Ocorrência_Pos_Safra  :
+
+        case REVISA_RELATORIO  :
             if (getValue("WKCompletTask") == "true" ){
-                if (form.getValue("psPesqOcorrencia") == 'sim') {
-                    var tbPSPesqOcorrencias = form.getChildrenIndexes("tbPSPesqOcorrencias");
-                    if(tbPSPesqOcorrencias.length == 0){
-                        if (isMobile(form)) {
-                            message += getMessage("Ocorrências não possuem nenhum item.", 6, form);
-                        }else{
-                            message += getMessage("<b>Ocorrencias</b> não possuem nenhum item.", 6, form);
-                        }
-                        hasErros = true;
-                    }
-                }else if(isEmpty("psPesqOcorrencia", form)){
-                    message += getMessage("Teve ocorrência:", 1, form);
-                    hasErros = true;
-                }if (isEmpty("pesqPsFimOcorrencia", form)) {
-                    message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
+                if (isEmpty("revisaoRelatorio", form)) {
+                    message += getMessage("Revisão:", 1, form);
                     hasErros = true;
                 }
+                if (form.getValue("revisaoRelatorio") == 'revisaoReprovado') {
+                    if (isEmpty("rvRevisaoObs", form)) {
+                        message += getMessage("Observação:", 1, form);
+                        hasErros = true;
+                    }                    
+                }
+                
             }
-        break;*/
+        
+        break;
+
     }
     
     if (hasErros) {

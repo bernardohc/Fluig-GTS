@@ -3,17 +3,40 @@ function enableFields(form){
     var atv_atual = getValue("WKNumState");
 	
 	if(atv_atual == INICIO_0){	 
-		//form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);        
-	}/*else if(atv_atual == Registro_Ocorrências){
+		
+	}else if(atv_atual == ANALISA_RELATORIO){
+        //Cabeçalho
+        form.setEnabled("solSetor", false);
+        form.setEnabled("solAdianta", false);
+        form.setEnabled("solMoeda", false);
+        form.setEnabled("solDataSaida", false);
+        form.setEnabled("solDataRet", false);
+        form.setEnabled("solNumColab", false);
+        //Despesas
+        form.setEnabled("rvDespObs", false);
+        form.setEnabled("salvarEnviar", false);
         
-
-    }else if(atv_atual == Pesquisa_Pos_Safra){
-        
-
-    }else if(atv_atual == Ocorrência_Pos_Safra){
-       
+    }else if(atv_atual == AJUSTA_RELATORIO){
+        form.setEnabled("aprovRelatorio", false);
+        form.setEnabled("rvAproObs", false);
+        form.setEnabled("revisaoRelatorio", false);
+        form.setEnabled("rvRevisaoObs", false);
+    }else if(atv_atual == REVISA_RELATORIO){
+        //Cabeçalho
+        form.setEnabled("solSetor", false);
+        form.setEnabled("solAdianta", false);
+        form.setEnabled("solMoeda", false);
+        form.setEnabled("solDataSaida", false);
+        form.setEnabled("solDataRet", false);
+        form.setEnabled("solNumColab", false);
+        //Despesas
+        form.setEnabled("rvDespObs", false);
+        form.setEnabled("salvarEnviar", false);
+        //
+        form.setEnabled("aprovRelatorio", false);
+        form.setEnabled("rvAproObs", false);
     }else if(atv_atual == FIM){
         
-    }*/
+    }
 };
 

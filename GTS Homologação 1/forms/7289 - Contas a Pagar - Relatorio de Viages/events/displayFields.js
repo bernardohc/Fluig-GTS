@@ -5,17 +5,17 @@ function displayFields(form, customHTML) {
 	form.setShowDisabledFields(true);
 	form.setHidePrintLink(true);
 	injetarFuncoesUteisJS(form, customHTML);
-	
+
 	var usuarioCorrente = fluigAPI.getUserService().getCurrent();
 
 	/*
 	 * Globais
 	 */
-	if(!isMobile(form)){
+	if (!isMobile(form)) {
 		form.setVisibleById("labelInserirImagem", true);
 	}
-	
-	if(form.getFormMode() != 'ADD'){
+
+	if (form.getFormMode() != 'ADD') {
 		//Botão de visualizar imagem, só não exibe na atividade 0
 		//Se for na 0 e Web, exibe botão de download
 		customHTML.append("<script>$('.divVisualizaAnexo').show()</script>");
@@ -23,69 +23,67 @@ function displayFields(form, customHTML) {
 		customHTML.append("<script>$('.btnViewerFile').show()</script>");
 	}
 
-	if(atv_atual == INICIO_0) {
-		form.setValue("solNomeSol",  usuarioCorrente.getFullName() );
-		form.setValue("solMatSol",  usuarioCorrente.getCode() );
+	if (atv_atual == INICIO_0) {
+		form.setValue("solNomeSol", usuarioCorrente.getFullName());
+		form.setValue("solMatSol", usuarioCorrente.getCode());
 
 		form.setVisibleById("divAddDespesa", true);
-		form.setValue("addRvDespCodiID",  "1001" );
+		form.setValue("addRvDespCodiID", "1001");
 
 		form.setVisibleById("tbRelDespesas", false);
-		
+
 		customHTML.append("<script>$('.divVisualizaAnexo').show()</script>");
-		if(!isMobile(form)){
+		if (!isMobile(form)) {
 			//Somente mostra botão de download se for Web
 			customHTML.append("<script>$('.btnDownloadFile').prop('disabled', false);</script>");
 			customHTML.append("<script>$('.btnDownloadFile').show()</script>");
 		}
-		
 
 		form.setVisibleById("divAprovacao", false);
 		form.setVisibleById("divRevisao", false);
-	}else if (atv_atual == INICIO) {
-
+	} else if (atv_atual == INICIO) {
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divAddDespesa", true);
-		}else{
-			
+		} else {
+
 		}
 
 		form.setVisibleById("divAprovacao", false);
 		form.setVisibleById("divRevisao", false);
-		
-	}else if (atv_atual == SALVAR_RELATORIO) {
-
+	} else if (atv_atual == SALVAR_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divAddDespesa", true);
-		}else{
-		}
+		} else {
 
+		}
 		form.setVisibleById("divAprovacao", false);
 		form.setVisibleById("divRevisao", false);
-
-	}else if (atv_atual == ANALISA_RELATORIO) {
-
-
+	} else if (atv_atual == ANALISA_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
-
+			form.setVisibleById("divRevisao", false);
+			form.setVisibleById("divSalvarEnviar", false);
 		}
-
-	}else if (atv_atual == AJUSTA_RELATORIO) {
-
-
+	} else if (atv_atual == AJUSTA_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divAddDespesa", false);
+			form.setVisibleById("divImprimirAprov", false);
+			form.setVisibleById("divImprimirRev", false);
+			form.setVisibleById("divAddDespesa", true);
 		}
-
-	}else if (atv_atual == REVISA_RELATORIO) {
-
-
+		if(form.getValue("revisaoRelatorio") == '' ){
+			form.setVisibleById("divRevisao", false);
+		}
+	} else if (atv_atual == REVISA_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
-			
+			form.setVisibleById("divImprimirSol", false);
+			form.setVisibleById("divImprimirAprov", false);
+			form.setVisibleById("divSalvarEnviar", false);
 		}
-
-	}else if (atv_atual == FIM) {
-
+	} else if (atv_atual == FIM) {
+		form.setVisibleById("divImprimirSol", false);
+		form.setVisibleById("divImprimirAprov", false);
+		form.setVisibleById("divImprimirRev", false);
+		form.setVisibleById("divSalvarEnviar", false);
 	}
 }
 
