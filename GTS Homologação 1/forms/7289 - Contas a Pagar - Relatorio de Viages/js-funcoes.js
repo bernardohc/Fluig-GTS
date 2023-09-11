@@ -306,16 +306,16 @@ var eventsFuncoes = (function() {
 		setup : function() {	
 
 			//Itens para atribuição da tarefa por campo.
-			$(document).on("change", "#setor", function() {
-				let setor = $("#setor").val();
+			$(document).on("change", "#solSetor", function() {
+				let setor = $("#solSetor").val();
 				
-				if(setor == 'Motorista'){
+				if(setor == 'motorista'){
 					//Grupo Relatório de Viagens - Analisa Motorista
 					$('#grupoAnalisaRelatorio').val('Pool:Group:000003');
-				}else if(setor == 'Técnico'){
+				}else if(setor == 'tecnico'){
 					//Grupo Relatório de Viagens - Analisa Técnico
 					$('#grupoAnalisaRelatorio').val('Pool:Group:000004');
-				}else if(setor == 'Outro'){
+				}else if(setor == 'outro'){
 					//Grupo Relatório de Viagens - Analisa Outro
 					$('#grupoAnalisaRelatorio').val('Pool:Group:000005');
 				}else{
@@ -342,6 +342,7 @@ var eventsFuncoes = (function() {
 function loadForm(){	
 	//Carrega a data atual 
 	$(`#solDataSol`).val(dataAtual);
+	$(`#salvarEnviar`).val('');
 
 	var psSolDataPesq = FLUIGC.calendar('#solDataSaida', {
 		language: 'pt-br',
@@ -387,7 +388,7 @@ function removeDespesa(oElement){
         }, function (result) {
             if (result) {
 				funcoes.removeAnexo(indice);
-            	fnWdkRemoveChild(oElement);
+        		fnWdkRemoveChild(oElement);
 				funcoes.calculaTotal();
 				funcoes.calculaSaldo();
 				funcoes.calculaCombustivel();

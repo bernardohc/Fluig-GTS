@@ -302,9 +302,16 @@
 					<div class="row" id="divSalvarEnviar"><!--style="display:none;"-->	
 						<div class="col-md-2 col-md-offset-5">
 							<br>
-							<button type="button" class="btn btn-default" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="flaticon flaticon-print icon-md" aria-hidden="true"></i></button>					
+							<div class="row">		
+								<div class="col-md-2 col-md-offset-4">			
+									<div id="divImprimirSol" >
+										<br>
+										<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>		
+									</div>
+								</div>		
+							</div> 					
 						</div>
-						<div class="col-md-2 col-md-offset-3"><!--col-md-offset-10-->
+						<div class="col-md-2 col-md-offset-3" id="divSalvarEnviar"><!--col-md-offset-10-->
 							<label for="salvarEnviar">Deseja Salvar ou Enviar?</label>
 							<select name="salvarEnviar" id="salvarEnviar" class="form-control salvarEnviar">
 								<option value=""></option>
@@ -335,7 +342,7 @@
 										<label for="aprovRelatorioReprovado">Relatório Reprovado</label>
 									</div>
 								</div>
-						   </div>
+							</div>
 						</div>
 						<div class="row" >
 							<div class="col-md-6 col-md-offset-3" align="left">
@@ -345,11 +352,9 @@
 						</div>
 						<div class="row">		
 							<div class="col-md-2 col-md-offset-5">			
-								<div id="divImprimir" >
+								<div id="divImprimirAprov" >
 									<br>
-									<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
-									<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
-												<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatÃ³rio</div>"></i>		
+									<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>		
 								</div>
 							</div>		
 						</div> 
@@ -387,11 +392,9 @@
 					</div>	
 					<div class="row">		
 						<div class="col-md-2 col-md-offset-5" align="left" >			
-							<div id="divImprimir" >
+							<div id="divImprimirRev" >
 								<br>
-								<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
-								<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
-											<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatÃ³rio</div>"></i>		
+								<button type="button" class="btn btn-primary" id="imprimirRelatorio" style="min-width: 130px;" >Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>		
 							</div>
 						</div>		
 					</div>
