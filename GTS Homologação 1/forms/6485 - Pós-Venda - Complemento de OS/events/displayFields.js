@@ -10,6 +10,7 @@ function displayFields(form,customHTML){
 	/*
 	 * INÍCIO PARA TODAS AS ATIVIDADES
 	 */
+	form.setValue("gerEstado", form.getValue("gerEstadoHidden"));
 	//Status
 	customHTML.append("<script>$('#getStatus').text('"+form.getValue("solStatus")+"');</script>");
 	

@@ -4,7 +4,11 @@ function enableFields(form){
 	
 	if(atv_atual == INICIO_0){	 
 		
-	}else if(atv_atual == ANALISA_RELATORIO){
+	}else if(atv_atual == SALVAR_RELATORIO){
+        form.setEnabled("solDataSaida", false);
+        form.setEnabled("solDataRet", false);
+        form.setEnabled("solSetor", false);
+    }else if(atv_atual == ANALISA_RELATORIO){
         //Cabeçalho
         form.setEnabled("solSetor", false);
         form.setEnabled("solAdianta", false);
@@ -21,6 +25,7 @@ function enableFields(form){
         form.setEnabled("rvAproObs", false);
         form.setEnabled("revisaoRelatorio", false);
         form.setEnabled("rvRevisaoObs", false);
+        
     }else if(atv_atual == REVISA_RELATORIO){
         //Cabeçalho
         form.setEnabled("solSetor", false);
@@ -35,6 +40,7 @@ function enableFields(form){
         //
         form.setEnabled("aprovRelatorio", false);
         form.setEnabled("rvAproObs", false);
+        
     }else if(atv_atual == FIM){
         
     }

@@ -294,6 +294,19 @@ function somenteNumerosInteiros(num, qtdCaracteres, def) {
 
 }
 
+function somenteNumerosInteirosComSeparador(campo) {
+
+	$("#" + campo.id).priceFormat({
+		clearPrefix: true,
+		prefix: '',
+	    centsSeparator: ',',
+	    thousandsSeparator: '.',
+	    centsLimit: 0
+//	    allowNegative: negatives
+	});
+	
+}
+
 function fMasc(objeto,mascara) {
 	obj=objeto
 	masc=mascara
@@ -343,16 +356,8 @@ function mTel(tel) {
 	}
 	return tel;
 }
-function messageToast(message, tipo){
 
-	if(isMobile == 'true'){
-		FLUIGC.message.alert({
-			title: ' ',
-			message: message.message,
-			label: 'Ok'
-		}, function(el, ev) {});
-	}else{
-		FLUIGC.toast({ title: message.title, message: message.message, type: tipo });
-	}
-
+function isEmpty(idCampo) {
+    var valor = $('#'+idCampo).val();
+    return valor == null || valor.trim().length == 0 || typeof valor === undefined || valor.trim() == '' || valor.trim() == '0' || valor.trim() == '0,00';
 }

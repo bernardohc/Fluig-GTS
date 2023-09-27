@@ -9,9 +9,14 @@ function injetarFuncoesUteisJS(form, customHTML) {
 	customHTML.append("<script> var FORM_MODE = '" + form.getFormMode() + "';</script>");
 	customHTML.append("<script> var CURRENT_STATE = '" + getValue("WKNumState") + "';</script>");
 	customHTML.append("<script> var isMobile = '" + isMobile(form) + "';</script>");
+
+	var processo = getValue("WKNumProces");
+	form.setValue("processoId",processo);
 		
 	log.info("#### FIM injetarFuncoesUteisJS...");
 }
+
+
 
 function isEmpty(campo, form) {
     var valor = form.getValue(campo);

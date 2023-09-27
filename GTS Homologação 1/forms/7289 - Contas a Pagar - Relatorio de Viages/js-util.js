@@ -378,6 +378,8 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
                 return "Campo: "+texto+" não pode ser menor que a data de saída";  	 	
             case 9:
                 return "Atenção! Selecione a opção: " +texto;    
+			case 10:
+				return 'Campo "' + texto + '" está fora do período da viagem.\n';   
         }
     } else {
         switch (tipoMensagem) {
@@ -399,6 +401,8 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
                 return "<li>Campo: <b>"+texto+"</b> não pode ser menor que a data de saída </li>";   
             case 9:
                 return "<li>Atenção! Selecione a opção: <b>"+texto+"</b></li>";  
+            case 10:
+                return '<li>Campo: <b>"' + texto + '"</b> está fora do período da viagem.\n';    
         }
     }
 } 

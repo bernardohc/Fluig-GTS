@@ -17,6 +17,7 @@ function enableFields(form){
 	}else if( atv_atual == SUPORTE_GTS){
 		//Dados Gerais
 		form.setEnabled("gerTecnicoGTS", false);
+		form.setEnabled("gerEstado", false);
 		form.setEnabled("codigoTecnicoGTS", false);
 		form.setEnabled("gerNumeroOS", false);
 		form.setEnabled("gerModalidade", false);
@@ -123,6 +124,7 @@ function enableFields(form){
 	}else if( atv_atual == TECNICO_GTS){
 		//Dados Gerais
 		form.setEnabled("gerTecnicoGTS", false);
+		form.setEnabled("gerEstado", false);
 		form.setEnabled("codigoTecnicoGTS", false);
 		form.setEnabled("gerNumeroOS", false);
 		form.setEnabled("gerModalidade", false);
@@ -236,6 +238,7 @@ function enableFields(form){
 	}else if( atv_atual == SETOR_GTS){
 		//Dados Gerais
 		form.setEnabled("gerTecnicoGTS", false);
+		form.setEnabled("gerEstado", false);
 		form.setEnabled("codigoTecnicoGTS", false);
 		form.setEnabled("gerNumeroOS", false);
 		form.setEnabled("gerModalidade", false);

@@ -137,11 +137,20 @@ function validateForm(form){
 		    			hasErros = true;
 		    		}
 	    			
+					if (isEmpty("gerEstado", form)) {
+	        			message += getMessage("Estado do Atendimento", 1, form);
+	        			hasErros = true;
+	        		}
 	    			if (isEmpty("matFluigSuporteGTS", form)) {
 	        			message += getMessage("Matrícula Fluig do Suporte GTS", 1, form);
 	        			hasErros = true;
 	        		}
-    			
+					
+					if (isEmpty("gerLaudo", form)) {
+						message += getMessage("Laudo", 1, form);
+						hasErros = true;
+					}
+
 	    			//Dados Gerais
 	    			if (isEmpty("maqDescFamilia", form)) {
 	    				message += getMessage("Família", 1, form);

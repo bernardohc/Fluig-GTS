@@ -11,6 +11,8 @@ function displayFields(form, customHTML) {
 	/*
 	 * Globais
 	 */
+	showAbast(form, customHTML);
+
 	if (!isMobile(form)) {
 		form.setVisibleById("labelInserirImagem", true);
 	}
@@ -41,9 +43,13 @@ function displayFields(form, customHTML) {
 
 		form.setVisibleById("divAprovacao", false);
 		form.setVisibleById("divRevisao", false);
+		form.setVisibleById("divImprimirSol", false);
+
 	} else if (atv_atual == INICIO) {
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divAddDespesa", true);
+			form.setVisibleById("divImprimirSol", false);
+			
 		} else {
 
 		}
@@ -52,17 +58,33 @@ function displayFields(form, customHTML) {
 		form.setVisibleById("divRevisao", false);
 	} else if (atv_atual == SALVAR_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
-			form.setVisibleById("divAddDespesa", true);
-		} else {
+			form.setVisibleById("divImprimirSol", true);
+			form.setVisibleById("divAprovacao", false);
+			form.setVisibleById("divRevisao", false);
 
-		}
-		form.setVisibleById("divAprovacao", false);
-		form.setVisibleById("divRevisao", false);
+			form.setVisibleById("divAddDespesa", true);
+			
+			// if(form.getValue("solSetor") == "tecnico"){
+			// 	customHTML.append("<script>");
+			// 	customHTML.append("$(document).ready(function(){ "); 
+			// 	customHTML.append(" $('.divAbastecimento').hide();");
+			// 	customHTML.append(" });");
+			// 	customHTML.append("</script>");
+			// }else if(form.getValue("solSetor") == "motorista"){
+			// 	customHTML.append("<script>");
+			// 	customHTML.append("$(document).ready(function(){ "); 
+			// 	customHTML.append(" $('.divAbastecimento').hide();");
+			// 	customHTML.append(" });");
+			// 	customHTML.append("</script>");
+			// }
+	
+		} 
 	} else if (atv_atual == ANALISA_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divRevisao", false);
 			form.setVisibleById("divSalvarEnviar", false);
 		}
+		form.setVisibleById("divAddDespesa", false);
 	} else if (atv_atual == AJUSTA_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divAddDespesa", false);
@@ -87,6 +109,30 @@ function displayFields(form, customHTML) {
 	}
 }
 
+function showAbast(form, customHTML){
+	var atv_atual = getValue("WKNumState");
+	var showAbast = false;
+	if(atv_atual == INICIO_0 || atv_atual == INICIO || atv_atual == SALVAR_RELATORIO){
+		if(form.getValue("solSetor") == "outro"){
+			showAbast = true;
+		}
+	}else if(atv_atual == ANALISA_RELATORIO || atv_atual == FIM || atv_atual == REVISA_RELATORIO){
+		showAbast = true;
+	}
+	var index = form.getChildrenIndexes("tbRelDespesas");
+		if(index.length > 0){
+		    for (var i = 0; i < index.length; i++) { 
+				if(form.getValue("rvDespClassi___"+index[i]) == "Combustível" && showAbast){
+					customHTML.append("<script>$('input[name*=rvDespCnpj___"+index[i]+"]').closest('.abast').show();</script>");
+					customHTML.append("<script>$('input[name*=rvDespNomePosto___"+index[i]+"]').closest('.abast').show();</script>");
+					customHTML.append("<script>$('input[name*=rvDespTpComb___"+index[i]+"]').closest('.abast').show();</script>");
+					customHTML.append("<script>$('input[name*=rvDespKmAbast___"+index[i]+"]').closest('.abast').show();</script>");
+					customHTML.append("<script>$('input[name*=rvDespQtdL___"+index[i]+"]').closest('.abast').show();</script>");
+					customHTML.append("<script>$('input[name*=rvDespValorL___"+index[i]+"]').closest('.abast').show();</script>");
+				}
+		    }
+		}
+}
 
 
 

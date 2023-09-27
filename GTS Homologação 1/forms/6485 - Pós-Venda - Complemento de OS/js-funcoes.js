@@ -60,27 +60,20 @@ var funcoes = (function() {
 				type: 'POST',
 				data: JSON.stringify(dataRequest),
 				contentType: 'application/json',
-				
-			}).fail(function(e, data) {
-				console.log('fail', data);
-				console.log(data);
-				if(isMobile == 'true'){
-					alert('Erro ao consultar a OS, comunicar o Administrador do Sistema!');
-				}else{
-					FLUIGC.toast({ title: '', message: 'Erro ao consultar a OS, comunicar o Administrador do Sistema!', type: 'warning' });
-				}
+			
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log('fail', errorThrown);
+				console.log(errorThrown);
+				messageToast({message:'Erro ao consultar a OS, comunicar o Administrador do Sistema!'}, 'warning')
 				
 				setTimeout(function(){ 
     	    		loading.hide();
     	    	}, 1000);
-			}).success(function(data) {
+			},
+			success: function (data, status, xhr) {
 				if (data != null && data.content != null && data.content.values.length > 0) {	
 					
-					if(isMobile == 'true'){
-						alert( 'Número de Ordem de Serviço já utilizado.')
-					}else{
-						FLUIGC.toast({ title: '', message: 'Número de Ordem de Serviço já utilizado.', type: 'warning' });
-					}
+					messageToast({message:'Número de Ordem de Serviço já utilizado.'}, 'warning')
 					
 					setTimeout(function(){ 
 	    	    		loading.hide();
@@ -133,150 +126,123 @@ var funcoes = (function() {
 			    					let revTelefone = record.ATDREVTELEFONE;
 			    					let revEmail = record.ATDREVEMAIL;
 			    					
-			    					
-			    					$("#gerModalidade").val(gerModalidade);
-			    					$("#gerNumSerie").val(gerNumSerie);
-			    					$("#gerModeloEquipamento").val(gerModeloEquipamento);
-			    					$("#gerLaudo").val(gerLaudo);
-			    					
-			    					if(cliCodigo.trim() != ''){
-			    						funcoes.somenteLeituraCamposCliente(true);
-			    						
-			    						$("#cliCpfCnpj").val(cliCpfCnpj);
-				    					$("#cliInscricaoEstadual").val(cliInscricaoEstadual);
-				    					$("#cliNomeCliente").val(cliNomeCliente);
-				    					$("#cliCodigo").val(cliCodigo);
-				    					$("#cliLoja").val(cliLoja);
-				    					$("#cliCEP").val(cliCEP);
-				    					$("#cliEndereco").val(cliEndereco);
-				    					$("#cliBairro").val(cliBairro);
-				    					$("#cliComplemento").val(cliComplemento);
-				    					$("#cliCidade").val(cliCidade);
-				    					$("#cliEstadoHidden").val(cliEstado);
-				    					$("#cliEstado").val(cliEstado);
-				    					$("#cliTelefone").val(cliTelefone);
-				    					$("#cliEmail").val(cliEmail);
-				    					
-				    					var dsParametroSuporteEstado = DatasetFactory.getDataset( 'ds_parametro_compOS_suporte_estado' , null, null , null);
-				    					
-				    					if (dsParametroSuporteEstado != null && dsParametroSuporteEstado.values != null && dsParametroSuporteEstado.values.length > 0) {
-				    						const recordsSuporteEstado = dsParametroSuporteEstado.values;
-					    			        let setouSuporteEstado = false;
-				    						for ( var index in recordsSuporteEstado) {
-					    			            var recordSuporteEstado = recordsSuporteEstado[index];
-					    			            if (recordSuporteEstado.siglaEstado == cliEstado.trim() ) {
-					    			            	setouSuporteEstado = true;
-					    			            	var WKUserSuporteGTS = recordSuporteEstado.WKUserSuporteGTS;
-					    			            	$("#matFluigSuporteGTS").val(WKUserSuporteGTS);
-					    			            }
-					    			        }
-				    						if(!setouSuporteEstado){
-				    							if(isMobile == 'true'){
-				    								alert('Não foi localizado o usuário Suporte GTS para este estado.');
-				    							}else{
-				    								FLUIGC.toast({ title: '', message: 'Não foi localizado o usuário Suporte GTS para este estado.', type: 'warning' });
-				    							}
-							    	    		funcoes.limpaCamposAtendimento();
-				    						}
-				    					}
-			    					}else{
-			    						//Não tem cliente associado a esta OS, abre campos para usuário digitar.
-			    						funcoes.somenteLeituraCamposCliente(false);
-			    						
-			    					}
-			    					
-			    					if(revCodigo.trim() != ''){
-			    						//Se tem mais de uma Revenda, não é retornado no Dataset
-			    						funcoes.somenteLeituraCamposRevenda(true);
-			    						
-			    						$("#revCpfCnpj").val(revCpfCnpj);
-				    					$("#revInscricaoEstadual").val(revInscricaoEstadual);
-				    					$("#revNomeRevenda").val(revNomeRevenda);
-				    					$("#revCodigo").val(revCodigo);
-				    					$("#revLoja").val(revLoja);
-				    					$("#revCEP").val(revCEP);
-				    					$("#revEndereco").val(revEndereco);
-				    					$("#revBairro").val(revBairro);
-				    					$("#revComplemento").val(revComplemento);
-				    					$("#revCidade").val(revCidade);
-				    					$("#revEstadoHidden").val(revEstado);
-				    					$("#revEstado").val(revEstado);
-				    					$("#revTelefone").val(revTelefone);
-				    					$("#revEmail").val(revEmail);
-			    						
-			    					}else{
-			    						
-			    						//Consulta de tem Revenda associada, se não tiver libera os campos.
-				    					var cstRev1 = DatasetFactory.createConstraint("codigoTecnicoGTS", codigoTecnicoGTS, codigoTecnicoGTS, ConstraintType.MUST);
-				    					var cstRev2 = DatasetFactory.createConstraint("numeroOS", gerNumeroOS, gerNumeroOS, ConstraintType.MUST);
-				    					var cstRev   = new Array(cstRev1, cstRev2);
-				    					var dsCompOSConsultaRevendas = DatasetFactory.getDataset( 'dsCompOSConsultaRevendas' , null, cstRev , null) 
-				    					
-				    					if (dsCompOSConsultaRevendas != null && dsCompOSConsultaRevendas.values != null && dsCompOSConsultaRevendas.values.length > 0) {
-				    				        var revRecords = dsCompOSConsultaRevendas.values;
-				    				        var revRecord = revRecords[0];
-				    			            
-				    			            if( revRecord.CODRET == "1"){
-				    			            	funcoes.somenteLeituraCamposRevenda(true);
-				    			            	
-				    			            	//Se retornar somente 1 Revenda, já define ela no formulário, se não, mostra pelo campo zoom.
-				    			            	if(revRecords.length == 1){
-				    			            		$('#divRevNomeRevenda').show();
-					    			            	$('#divRevNomeRevendaZoom').hide();
-					    			            	
-					    			            	$("#revCpfCnpj").val(revRecord.REVCGC);
-							    					$("#revInscricaoEstadual").val(revRecord.REVINSCEST);
-							    					$("#revNomeRevenda").val(revRecord.REVNOME);
-							    					$("#revCodigo").val(revRecord.REVCODIGO);
-							    					$("#revLoja").val(revRecord.REVLOJA);
-							    					$("#revCEP").val(revRecord.REVCEP);
-							    					$("#revEndereco").val(revRecord.REVEND);
-							    					$("#revBairro").val(revRecord.REVBAIRRO);
-							    					$("#revComplemento").val(revRecord.REVCOMPLEMENTO);
-							    					$("#revCidade").val(revRecord.REVCIDADE);
-							    					$("#revEstadoHidden").val(revRecord.REVESTADO);
-							    					$("#revEstado").val(revRecord.REVESTADO);
-							    					$("#revTelefone").val(revRecord.REVTELEFONE);
-							    					$("#revEmail").val(revRecord.REVEMAIL);
-					    			            	
-				    			            	}else{
-				    			            		$('#divRevNomeRevenda').hide();
-					    			            	$('#divRevNomeRevendaZoom').show();
-					    			            	reloadZoomFilterValues('revNomeRevendaZoom', 'codigoTecnicoGTS,'+codigoTecnicoGTS+',numeroOS,'+gerNumeroOS );
-					    			            	
-				    			            	}
-				    			            	
-				    			            	
-				    			            	
-				    			            }else if(revRecords[0].CODRET == "2"){
-				    			            	$('#divRevNomeRevenda').show();
-				    			            	$('#divRevNomeRevendaZoom').hide();
-				    			            	funcoes.somenteLeituraCamposRevenda(false);
-				    			            }
-				    					}else{
-				    						
-				    						$('#divRevNomeRevenda').show();
-			    			            	$('#divRevNomeRevendaZoom').hide();
-			    			            	funcoes.somenteLeituraCamposRevenda(false);
-				    						
-				    					}
-			    						
-			    					}
-				    				
+									if(gerLaudo.trim() == ''){
+										messageToast({message: 'É obrigatório ter o Laudo preenchido para abrir uma solicitação de Complemento de OS.'}, 'warning')
+										funcoes.limpaCamposAtendimento();
+									}else{
+										$("#gerModalidade").val(gerModalidade);
+										$("#gerNumSerie").val(gerNumSerie);
+										$("#gerModeloEquipamento").val(gerModeloEquipamento);
+										$("#gerLaudo").val(gerLaudo);
+										
+										if(cliCodigo.trim() != ''){
+											funcoes.somenteLeituraCamposCliente(true);
+											
+											$("#cliCpfCnpj").val(cliCpfCnpj);
+											$("#cliInscricaoEstadual").val(cliInscricaoEstadual);
+											$("#cliNomeCliente").val(cliNomeCliente);
+											$("#cliCodigo").val(cliCodigo);
+											$("#cliLoja").val(cliLoja);
+											$("#cliCEP").val(cliCEP);
+											$("#cliEndereco").val(cliEndereco);
+											$("#cliBairro").val(cliBairro);
+											$("#cliComplemento").val(cliComplemento);
+											$("#cliCidade").val(cliCidade);
+											$("#cliEstadoHidden").val(cliEstado);
+											$("#cliEstado").val(cliEstado);
+											$("#cliTelefone").val(cliTelefone);
+											$("#cliEmail").val(cliEmail);
+											
+										}else{
+											//Não tem cliente associado a esta OS, abre campos para usuário digitar.
+											funcoes.somenteLeituraCamposCliente(false);
+											
+										}
+										
+										if(revCodigo.trim() != ''){
+											//Se tem mais de uma Revenda, não é retornado no Dataset
+											funcoes.somenteLeituraCamposRevenda(true);
+											
+											$("#revCpfCnpj").val(revCpfCnpj);
+											$("#revInscricaoEstadual").val(revInscricaoEstadual);
+											$("#revNomeRevenda").val(revNomeRevenda);
+											$("#revCodigo").val(revCodigo);
+											$("#revLoja").val(revLoja);
+											$("#revCEP").val(revCEP);
+											$("#revEndereco").val(revEndereco);
+											$("#revBairro").val(revBairro);
+											$("#revComplemento").val(revComplemento);
+											$("#revCidade").val(revCidade);
+											$("#revEstadoHidden").val(revEstado);
+											$("#revEstado").val(revEstado);
+											$("#revTelefone").val(revTelefone);
+											$("#revEmail").val(revEmail);
+											
+										}else{
+											
+											//Consulta de tem Revenda associada, se não tiver libera os campos.
+											var cstRev1 = DatasetFactory.createConstraint("codigoTecnicoGTS", codigoTecnicoGTS, codigoTecnicoGTS, ConstraintType.MUST);
+											var cstRev2 = DatasetFactory.createConstraint("numeroOS", gerNumeroOS, gerNumeroOS, ConstraintType.MUST);
+											var cstRev   = new Array(cstRev1, cstRev2);
+											var dsCompOSConsultaRevendas = DatasetFactory.getDataset( 'dsCompOSConsultaRevendas' , null, cstRev , null) 
+											
+											if (dsCompOSConsultaRevendas != null && dsCompOSConsultaRevendas.values != null && dsCompOSConsultaRevendas.values.length > 0) {
+												var revRecords = dsCompOSConsultaRevendas.values;
+												var revRecord = revRecords[0];
+												
+												if( revRecord.CODRET == "1"){
+													funcoes.somenteLeituraCamposRevenda(true);
+													
+													//Se retornar somente 1 Revenda, já define ela no formulário, se não, mostra pelo campo zoom.
+													if(revRecords.length == 1){
+														$('#divRevNomeRevenda').show();
+														$('#divRevNomeRevendaZoom').hide();
+														
+														$("#revCpfCnpj").val(revRecord.REVCGC);
+														$("#revInscricaoEstadual").val(revRecord.REVINSCEST);
+														$("#revNomeRevenda").val(revRecord.REVNOME);
+														$("#revCodigo").val(revRecord.REVCODIGO);
+														$("#revLoja").val(revRecord.REVLOJA);
+														$("#revCEP").val(revRecord.REVCEP);
+														$("#revEndereco").val(revRecord.REVEND);
+														$("#revBairro").val(revRecord.REVBAIRRO);
+														$("#revComplemento").val(revRecord.REVCOMPLEMENTO);
+														$("#revCidade").val(revRecord.REVCIDADE);
+														$("#revEstadoHidden").val(revRecord.REVESTADO);
+														$("#revEstado").val(revRecord.REVESTADO);
+														$("#revTelefone").val(revRecord.REVTELEFONE);
+														$("#revEmail").val(revRecord.REVEMAIL);
+														
+													}else{
+														$('#divRevNomeRevenda').hide();
+														$('#divRevNomeRevendaZoom').show();
+														reloadZoomFilterValues('revNomeRevendaZoom', 'codigoTecnicoGTS,'+codigoTecnicoGTS+',numeroOS,'+gerNumeroOS );
+														
+													}
+													
+													
+													
+												}else if(revRecords[0].CODRET == "2"){
+													$('#divRevNomeRevenda').show();
+													$('#divRevNomeRevendaZoom').hide();
+													funcoes.somenteLeituraCamposRevenda(false);
+												}
+											}else{
+												
+												$('#divRevNomeRevenda').show();
+												$('#divRevNomeRevendaZoom').hide();
+												funcoes.somenteLeituraCamposRevenda(false);
+												
+											}
+											
+										}
+									}
 			    				}else if (records[0].CODRET == "2"){
-			    					if(isMobile == 'true'){
-	    								alert(records[0].MSGRET);
-	    							}else{
-	    								FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
-	    							}
+									messageToast({message: records[0].MSGRET}, 'warning')
 				    	    		funcoes.limpaCamposAtendimento();
 				    	    	}
 			    	    	}else{
-			    	    		if(isMobile == 'true'){
-    								alert('Erro ao consultar o atendimento, comunicar o Administrador do Sistema!');
-    							}else{
-    								FLUIGC.toast({ title: '', message: 'Erro ao consultar o atendimento, comunicar o Administrador do Sistema!', type: 'danger' });
-    							}
+								messageToast({message: 'Erro ao consultar o atendimento, comunicar o Administrador do Sistema!'}, 'danger')
 			    	    		funcoes.limpaCamposAtendimento();
 			    	    	}
 			    	    	setTimeout(function(){ 
@@ -285,12 +251,13 @@ var funcoes = (function() {
 			    	    },
 						error: function(XMLHttpRequest, textStatus, errorThrown) {
 			    	    	console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
-			    	    	FLUIGC.toast({title: '', message: 'Erro na consulta do atendimento, comunicar o Administrador do Sistema!', type: 'danger'});
+							messageToast({message: 'Erro na consulta do atendimento, comunicar o Administrador do Sistema!'}, 'danger')
 			    	    	loading.hide();
 						}
 					});
 					
 				}
+			}	
 			});
 			
 		},
@@ -474,11 +441,7 @@ var funcoes = (function() {
 				camposValidados = false;
 			}
 			if(!camposValidados){
-				if(isMobile == 'true'){
-					alert(msgValidado)
-				}else{
-					FLUIGC.toast({title: '', message: msgValidado, type: 'warning'});
-				}
+				messageToast({message: msgValidado}, 'warning')
 				return;
 			}
 			
@@ -630,6 +593,36 @@ var eventsFuncoes = (function() {
 			 * DADOS GERAIS
 			 */
 			/**
+			 * Gatilho para alimentar o estado no campo hidden e pesquisar o usuário de Suporte do Estado
+			 */
+			 $(document).on("change", "#gerEstado", function() {
+				let gerEstado = $('#gerEstado').val();
+				$('#gerEstadoHidden').val( gerEstado );
+				
+				if(  gerEstado.trim() != ''){
+					var dsParametroSuporteEstado = DatasetFactory.getDataset( 'ds_parametro_compOS_suporte_estado' , null, null , null);
+					
+					if (dsParametroSuporteEstado != null && dsParametroSuporteEstado.values != null && dsParametroSuporteEstado.values.length > 0) {
+						const recordsSuporteEstado = dsParametroSuporteEstado.values;
+				        let setouSuporteEstado = false;
+						for ( var index in recordsSuporteEstado) {
+				            var recordSuporteEstado = recordsSuporteEstado[index];
+				            if (recordSuporteEstado.siglaEstado == gerEstado.trim() ) {
+				            	setouSuporteEstado = true;
+				            	var WKUserSuporteGTS = recordSuporteEstado.WKUserSuporteGTS;
+				            	$("#matFluigSuporteGTS").val(WKUserSuporteGTS);
+				            }
+				        }
+						if(!setouSuporteEstado){
+							messageToast({message: 'Não foi localizado o usuário Suporte GTS para este estado.'}, 'warning')
+						}
+					}
+				}else{
+					$("#matFluigSuporteGTS").val('');
+				}
+				
+			});
+			/**
 			 * Busca as informações de atendimento
 			 */
 			$(document).on("change", "#gerNumeroOS", function() {
@@ -642,11 +635,7 @@ var eventsFuncoes = (function() {
 					funcoes.limpaCamposAtendimento();
 					funcoes.somenteLeituraCamposCliente(true);
 					funcoes.somenteLeituraCamposRevenda(true);
-					if(isMobile == 'true'){
-						alert('Número da OS está preenchido incorretamente.');
-					}else{
-						FLUIGC.toast({ title: '', message: 'Número da OS está preenchido incorretamente.', type: 'warning' });
-					}
+					messageToast({message: 'Número da OS está preenchido incorretamente.'}, 'warning')
 				}else{
 					funcoes.consultaAtendimento();
 				}
@@ -659,8 +648,7 @@ var eventsFuncoes = (function() {
 				let gerNumeroOS = $('#gerNumeroOS').val().trim();
 				
 				if(gerNumeroOS == ''){
-					FLUIGC.toast({ title: '', message: 'Favor preencher o Número da OS.', type: 'warning' });
-					
+					messageToast({message: 'Favor preencher o Número da OS.'}, 'warning')
 				}else{
 					var html =  '<div class="row" >'+
 						       		'<div class="col-md-12" align="center">'+
@@ -723,7 +711,7 @@ var eventsFuncoes = (function() {
 											$('#carousel-modal').html('<p><b>'+records[0].MSGRET+'</b></p>');
 						    	    	}
 							    	}else{
-							    		FLUIGC.toast({ title: '', message: 'Erro ao consultar as imagens, comunicar o Administrador do Sistema!', type: 'danger' });
+										messageToast({message: 'Erro ao consultar as imagens, comunicar o Administrador do Sistema!'}, 'danger')
 							    		
 							    	}
 							    	setTimeout(function(){ 
@@ -732,11 +720,7 @@ var eventsFuncoes = (function() {
 					    	    
 					    	    },error: function(XMLHttpRequest, textStatus, errorThrown) {
 							    	console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
-							    	FLUIGC.toast({
-							    		title: '',
-							    		message: 'Erro na consulta das imagens, comunicar o Administrador do Sistema!' ,
-							    		type: 'danger'
-							    	});
+									messageToast({message: 'Erro na consulta das imagens, comunicar o Administrador do Sistema!'}, 'danger')
 							    	loading.hide();
 					    	    }
 							});
@@ -783,7 +767,7 @@ var eventsFuncoes = (function() {
 			    					$('#cliBairro').val(bairroCliente);
 				    					
 				    	    	}else{
-				    	    		FLUIGC.toast({ title: '', message: 'O CEP não existe na base de dados!', type: 'warning' });
+									messageToast({message: 'O CEP não existe na base de dados!'}, 'warning')
 				    	    		$('#cliEstado').val('');
 				    	    		$('#cliEstadoHidden').val('');
 			    					$('#cliCidade').val('');
@@ -795,11 +779,7 @@ var eventsFuncoes = (function() {
 				    	    },
 							error: function(XMLHttpRequest, textStatus, errorThrown) {
 				    	    	console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
-				    	    	FLUIGC.toast({
-						    		title: '',
-						    		message: 'Erro ao consultar CEP, servidor indisponível!' ,
-						    		type: 'danger'
-						    	});
+								messageToast({message: 'Erro ao consultar CEP, servidor indisponível!'}, 'danger')
 				    	    	
 				    	    	$('#cliEstado').val('');
 			    	    		$('#cliEstadoHidden').val('');
@@ -826,33 +806,6 @@ var eventsFuncoes = (function() {
 			$(document).on("change", "#cliEstado", function() {
 				let cliEstado = $('#cliEstado').val();
 				$('#cliEstadoHidden').val( cliEstado );
-				
-				if(  cliEstado.trim() != ''){
-					var dsParametroSuporteEstado = DatasetFactory.getDataset( 'ds_parametro_compOS_suporte_estado' , null, null , null);
-					
-					if (dsParametroSuporteEstado != null && dsParametroSuporteEstado.values != null && dsParametroSuporteEstado.values.length > 0) {
-						const recordsSuporteEstado = dsParametroSuporteEstado.values;
-				        let setouSuporteEstado = false;
-						for ( var index in recordsSuporteEstado) {
-				            var recordSuporteEstado = recordsSuporteEstado[index];
-				            if (recordSuporteEstado.siglaEstado == cliEstado.trim() ) {
-				            	setouSuporteEstado = true;
-				            	var WKUserSuporteGTS = recordSuporteEstado.WKUserSuporteGTS;
-				            	$("#matFluigSuporteGTS").val(WKUserSuporteGTS);
-				            }
-				        }
-						if(!setouSuporteEstado){
-							if(isMobile == 'true'){
-								alert('Não foi localizado o usuário Suporte GTS para este estado.');
-							}else{
-								FLUIGC.toast({ title: '', message: 'Não foi localizado o usuário Suporte GTS para este estado.', type: 'warning' });
-							}
-						}
-					}
-				}else{
-					$("#matFluigSuporteGTS").val('');
-				}
-				
 			});
 			$(document).on("keyup blur", "#cliTelefone", function() {	
 				funcoes.mascaraTelefone('cliTelefone');
@@ -864,11 +817,7 @@ var eventsFuncoes = (function() {
 			 */
 			$(document).on("change", "#revCpfCnpj", function() {
 				if( $("#revCpfCnpj").val().trim() == '' && $("#revCpfCnpj").val().trim().length != 18) {
-					if(isMobile == 'true'){
-						alert('CNPJ da Revenda está preenchido incorretamente.');
-					}else{
-						FLUIGC.toast({ title: '', message: 'CNPJ da Revenda está preenchido incorretamente.', type: 'warning' });
-					}
+					messageToast({message: 'CNPJ da Revenda está preenchido incorretamente.'}, 'warning')
 				}
 			});
 			/**
@@ -921,7 +870,7 @@ var eventsFuncoes = (function() {
 			    					$('#revBairro').val(bairroCliente);
 				    					
 				    	    	}else{
-				    	    		FLUIGC.toast({ title: '', message: 'O CEP não existe na base de dados!', type: 'warning' });
+									messageToast({message: 'O CEP não existe na base de dados!'}, 'warning')
 				    	    		$('#revEstado').val('');
 				    	    		$('#revEstadoHidden').val('');
 			    					$('#revCidade').val('');
@@ -933,11 +882,7 @@ var eventsFuncoes = (function() {
 				    	    },
 							error: function(XMLHttpRequest, textStatus, errorThrown) {
 				    	    	console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
-				    	    	FLUIGC.toast({
-						    		title: '',
-						    		message: 'Erro ao consultar CEP, servidor indisponível!' ,
-						    		type: 'danger'
-						    	});
+				    	    	messageToast({message: 'Erro ao consultar CEP, servidor indisponível!'}, 'danger')
 				    	    	
 				    	    	$('#revEstado').val('');
 			    	    		$('#revEstadoHidden').val('');

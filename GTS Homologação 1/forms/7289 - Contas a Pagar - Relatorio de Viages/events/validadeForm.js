@@ -15,19 +15,19 @@ function validateForm(form){
             //Se for clicado em Enviar 
             if (getValue("WKCompletTask") == "true" ){
 
-                if (isEmpty("solSetor", form)) {
+                if (getValue("solSetor") == "") {
                     message += getMessage("Setor", 1, form);
                     hasErros = true;
                 }
-                if (!isEmpty("solAdianta", form) & isEmpty("solMoeda", form)) {
+                if (!isEmpty("solAdianta", form) && isEmpty("solMoeda", form)) {
                     message += getMessage("Tipo de Moeda", 1, form);
                     hasErros = true;
                 }
-                if (isEmpty("solDataSaida", form)) {
+                if (getValue("solDataSaida") == "") {
                     message += getMessage("Data de Saída", 1, form);
                     hasErros = true;
                 }
-                if (isEmpty("solDataRet", form)) {
+                if (getValue("solDataRet") == "") {
                     message += getMessage("Data de Retorno", 1, form);
                     hasErros = true;
                 }
