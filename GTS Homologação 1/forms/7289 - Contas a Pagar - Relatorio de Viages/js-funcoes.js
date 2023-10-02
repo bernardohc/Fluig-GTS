@@ -43,29 +43,30 @@ var funcoes = (function() {
 						const records = data.content;
 					
 						if( records[0].CODRET == "1"){
-						let record = records[0];
-						let NOMEVEICULO = record.NOMEVEICULO;
+							let record = records[0];
+							let NOMEVEICULO = record.NOMEVEICULO;
 						
-						$("#geraisVeiculo").val(NOMEVEICULO);
-						// //Adiciona Tipo de Combustível referente a aquele veículo
-						// let combustivel = JSON.parse(record.COMBUSTIVEL);
-						// $.each(combustivel, function(index, value){
-						//     $('#abastTpCombustivel').append($('<option>', { 
-						//         value: value['Combustivel'],
-						//         text : value['Descricao']
-						//     }));
-						// });
+							$("#geraisVeiculo").val(NOMEVEICULO);
+						 	//Adiciona Tipo de Combustível referente a aquele veículo
+							let combustivel = JSON.parse(record.COMBUSTIVEL);
+							$.each(combustivel, function(index, value){
+								$('#abastTpCombustivel').append($('<option>', { 
+									value: value['Combustivel'],
+									text : value['Descricao']
+								}));
+							});
 						
 						}else if (records[0].CODRET == "2"){
 							//Se retornar como não encontrado, insere o nome do posto manualmente
 							FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+							$("#geraisVeiculo").val('');
 						}
 				
 				
 					}else{
 					//Se retornar como não encontrado, insere o nome do posto manualmente
 						FLUIGC.toast({ title: '', message: 'O Veículo não foi localizado na base de dados.', type: 'warning' });
-					
+						$("#geraisVeiculo").val('');
 					}
 					setTimeout(function(){ 
 						loading.hide();
@@ -396,7 +397,7 @@ var funcoes = (function() {
 			$('#solSetor').attr('readonly', true);
 			$('#solSetor').prop('style', 'pointer-events:none');
 
-			$('#geraisPlaca').prop("disabled", true);
+			$('#geraisPlaca').prop("readonly", true);
 		},
 		
 		limpaAddDespesa(){
@@ -653,6 +654,10 @@ var eventsFuncoes = (function() {
 		setup : function() {	
 
 			$(document).on("change", "#geraisPlaca", function() {
+				var geraisPlaca = document.getElementById("geraisPlaca");
+				var geraisPlacaMaiusculo = geraisPlaca.value.toUpperCase();
+				$('#geraisPlaca').val(geraisPlacaMaiusculo);
+				
 				 if( $("#geraisPlaca").val().trim().length == 7 ){
 					
 					funcoes.consultaVeiculo();
@@ -678,24 +683,35 @@ var eventsFuncoes = (function() {
 				funcoes.liberaPagamentos();
 			});	
 
+			$(document).on("change", "#addRvDespValor", function() {
+				if($('#addRvDespClassi').val() == 'Combustível'){
+					funcoes.calculaValorLitro();
+				}
+			});
+
 			$(document).on("change", "#abastQtdLitros", function() {
 				funcoes.calculaValorLitro();
 			});	
 
-			// $(document).on("change", "#abastQtdLitros", function() {
+			// $(document).on("change", "#geraisPlaca", function() {
 			// 	funcoes.calculaValorLitro();
 			// });	
 			
 			$(document).on("change", "#abastCNPJPosto", function() {
-				let abastCNPJPosto = $('#abastCNPJPosto').val().replace(/[^0-9]/g, "").trim();
-			
-				if(abastCNPJPosto.length != 14 ){
-					$('#abastNomePosto').val('');
-					FLUIGC.toast({ title: '', message: 'O número de CNPJ está inválido!', type: 'warning' });
-					return;
-				}
 
-				funcoes.consultaPostoCombustivel();
+				if($("#abastCNPJPosto").val().trim().length == 0){
+					$('#abastNomePosto').val('');
+				}else{
+					let abastCNPJPosto = $('#abastCNPJPosto').val().replace(/[^0-9]/g, "").trim();
+				
+					if(abastCNPJPosto.length != 14 ){
+						$('#abastNomePosto').val('');
+						FLUIGC.toast({ title: '', message: 'O número de CNPJ está inválido!', type: 'warning' });
+						return;
+					}
+	
+					funcoes.consultaPostoCombustivel();
+				}
 			});
 
 			//Itens para atribuição da tarefa por campo.
@@ -760,8 +776,22 @@ function loadForm(){
 		});
 
 
-	}
-	if(CURRENT_STATE == ANALISA_RELATORIO){
+	}else if(CURRENT_STATE == INICIO){
+
+		if(FORM_MODE == "MOD"){
+			if($('#geraisPlaca').val() != ''){
+				funcoes.consultaVeiculo()
+			}
+		}
+	}else if(CURRENT_STATE == SALVAR_RELATORIO){
+		
+		if(FORM_MODE == "MOD"){
+			if($('#geraisPlaca').val() != ''){
+				funcoes.consultaVeiculo()
+			}
+		}
+
+	}else if(CURRENT_STATE == ANALISA_RELATORIO){
 		if(FORM_MODE == "MOD"){
 			//Liberar campos abastecimento
 			var setAbast = false;
@@ -786,8 +816,15 @@ function loadForm(){
 				}
 			});
 		}
-	}
-	if(CURRENT_STATE == REVISA_RELATORIO){
+	}else if(CURRENT_STATE == AJUSTA_RELATORIO){
+
+		if(FORM_MODE == "MOD"){
+			if($('#geraisPlaca').val() != ''){
+				funcoes.consultaVeiculo()
+			}
+		}
+
+	}else if(CURRENT_STATE == REVISA_RELATORIO){
 		if(FORM_MODE == "MOD"){
 			//Liberar campos abastecimento  
 			$("input[name*=rvDespValor___]").each(function(index){
@@ -796,6 +833,10 @@ function loadForm(){
 				$("#rvDespTpComb___"+index).attr('readonly', true);
 				$("#rvDespTpComb___"+index).prop('style', 'pointer-events:none');
 			});
+		}
+	}else if(CURRENT_STATE == ANALISA_ERRO_INTEGRACAO_ABASTECIMENTO){
+		if(FORM_MODE == "MOD"){
+			$('#geraisCPFMotorista').mask("000.000.000-00");
 		}
 	}
 };

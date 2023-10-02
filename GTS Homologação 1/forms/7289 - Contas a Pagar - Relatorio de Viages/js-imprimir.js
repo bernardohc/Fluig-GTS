@@ -116,7 +116,7 @@ function imprimeRelatorio() {
                         //Dados Relatório
                         '<table class="table-section"  style="width:  100%; border-bottom: 1px solid #4F4F4F;">' +
                         '	<tr>' +
-                        '		<td align="left" class="header-section-relatorio">' +
+                        '		<td align="left" class="header-section-totais">' +
                         '			<b>Viagem</b>' +
                         '		</td>' +
                         '	</tr>' +
@@ -186,32 +186,66 @@ function imprimeRelatorio() {
                         });
                     HTML += '</table>'+
                         //Totais do relatório
-                        '<table class="table-section"  style="width:  100%; border-bottom: 1px solid #4F4F4F; border-top: 1px solid #4F4F4F; ">' +
+                        '<table class="table-section"  style="width:  100%; border-bottom: 1px solid #4F4F4F;">' +
                         '	<tr>' +
                         '		<td align="left" class="header-section-relatorio">' +
-                        '			<b>Totais</b>' +
+                        '			<b>Viagem</b>' +
                         '		</td>' +
                         '	</tr>' +
                         '</table>'+
                         '<table style="width:  100%;" >' +
                         '	<tr>' +
-                        '		<th class="fonte-pedido" style="width:25%; text-align:left;">Diária</th>' +
-                        '		<th class="fonte-pedido" style="width:33%; text-align:left;">Total combustível</th>' +
-                        '		<th class="fonte-pedido" style="width:33%; text-align:left;">Total de Despesas</th>' +
-                        '		<th class="fonte-pedido" style="width:25%; text-align:left;">Saldo</th>' +  
+                        '		<th class="fonte-pedido" style="width:12%; text-align:left;">Diária</th>' +
+                        '		<th class="fonte-pedido" style="width:20%; text-align:left;">Total de Despesas</th>' +
+                        '		<th class="fonte-pedido" style="width:12%; text-align:left;">Saldo</th>' +
+                        '		<th class="fonte-pedido" style="width:20%; text-align:left;">Total de Combustível</th>' +  
+                        '		<th class="fonte-pedido" style="width:20%; text-align:left;">Total de Combustível Faturado</th>' +  
                         '	</tr>' +
                         '	<tr>' +
                         '		<td class="fonte-pedido" valign="top">' + $("#rvDiaria").val() +'</td>' +
+                        '		<td class="fonte-pedido" valign="top">' + $("#rvTotal").val() +'</td>' +
+                        '		<td class="fonte-pedido" valign="top">' + $("#rvSaldo").val() +'</td>' +
                         '		<td class="fonte-pedido" valign="top">' + $("#rvTotalComb").val() +'</td>' +
-                        '		<td class="fonte-pedido" valign="top">' + $("#solTotalDespesas").val() +'</td>' +
-                        '		<td class="fonte-pedido" valign="top">' + $("#solSaldo").val() +'</td>' +
+                        '		<td class="fonte-pedido" valign="top">' + $("#rvTotalCombFat").val() +'</td>' +
+                        '	</tr>' +
+                        '	<br>' +
                         '	<tr>' +
-                        '		<th class="fonte-pedido" style="width:50%; text-align:left;">Observação</th>' +
+                        '		<th class="fonte-pedido" style="width:30%; text-align:left;">Observação</th>' +
                         '	</tr>' +
                         '	<tr>' +
-                        '		<td class="fonte-pedido" valign="top">' + $("#itSolObsDespesaItem").val() +'</td>' +
+                        '		<td class="fonte-pedido" valign="top">' + $("#rvDespObs").val() +'</td>' +
                         '	</tr>' +
                         '</table>'+
+                        // '<table class="table-section"  style="width:  100%; border-bottom: 1px solid #4F4F4F; border-top: 1px solid #4F4F4F; ">' +
+                        // '	<tr>' +
+                        // '		<td align="left" class="header-section-relatorio">' +
+                        // '			<b>Totais</b>' +
+                        // '		</td>' +
+                        // '	</tr>' +
+                        // '</table>'+
+                        // '<table style="width:  100%;" >' +
+                        // '	<tr>' +
+                        // '		<th class="fonte-pedido" style="width:19%; text-align:left;">Diária</th>' +
+                        // '		<th class="fonte-pedido" style="width:19%; text-align:left;">Total de Despesas</th>' +
+                        // '		<th class="fonte-pedido" style="width:19%; text-align:left;">Saldo</th>' +
+                        // '		<th class="fonte-pedido" style="width:19%; text-align:left;">Total de Combustível</th>' +  
+                        // '		<th class="fonte-pedido" style="width:19%; text-align:left;">Total de Combustível Faturado</th>' +  
+                        // '	</tr>' +
+                        // '	<tr>' +
+                        // '		<td class="fonte-pedido" valign="top">' + $("#rvDiaria").val() +'</td>' +
+                        // '		<td class="fonte-pedido" valign="top">' + $("#rvTotal").val() +'</td>' +
+                        // '		<td class="fonte-pedido" valign="top">' + $("#rvSaldo").val() +'</td>' +
+                        // '		<td class="fonte-pedido" valign="top">' + $("#rvTotalComb").val() +'</td>' +
+                        // '		<td class="fonte-pedido" valign="top">' + $("#rvTotalCombFat").val() +'</td>' +
+                        // '	</tr>' +
+                        // '	<tr>' +
+                        // '		<th class="fonte-pedido" style="width:50%; text-align:left;">Observação</th>' +
+                        // '	</tr>' +
+                        // '	<br>' +
+                        // '	<tr>' +
+                        // '		<td class="fonte-pedido" valign="top">' + $("#itSolObsDespesaItem").val() +'</td>' +
+                        // '	</tr>' +
+                        // '</table>'+
 
                         //Fim tbody Principal
                         '</td></tr>'+

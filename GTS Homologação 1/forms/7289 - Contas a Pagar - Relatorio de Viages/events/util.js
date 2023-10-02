@@ -16,7 +16,21 @@ function injetarFuncoesUteisJS(form, customHTML) {
 	log.info("#### FIM injetarFuncoesUteisJS...");
 }
 
+function dsTemValor(dataset){
+	if(dataset != null && dataset != undefined && dataset.rowsCount > 0){
+		return true;
+	}else{
+		return false;
+	}
+}
 
+function temValor(valor){
+	if(valor != null && valor != undefined && valor.trim() != ""){
+		return true;
+	}else{
+		return false;
+	}
+}
 
 function isEmpty(campo, form) {
     var valor = form.getValue(campo);

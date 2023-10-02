@@ -1,0 +1,969 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-modal-zoom.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-valor-extenso.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-imprimir.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm();">
+<form name="form" role="form" >
+<div class="fluig-style-guide">
+<div class="col-md-12"  >
+	
+	<input type="hidden" name="WKNumProces" id="WKNumProces" >
+	<input type="hidden" name="cancelamentoAutomatico" id="cancelamentoAutomatico" >
+	<input type="hidden" name="origemSolicitacao" id="origemSolicitacao" >
+
+	<div id="banner-header" class="row">
+		<div  class="col-md-12"  >
+        	<font color="000" >Pedido de Máquina</font>
+    	</div>
+    </div>
+	
+	<div id="divPedidoInicial" class="col-md-12 text-center" style="display:none;" >
+		<div class="row">
+			<div class="col-md-12 ">
+            	<h3 >O que você deseja realizar?*</h3>
+				<div class="radio " >
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="defineGeracaoPedidoInicio" value="GerarPedido" id="defineGerarPedido">
+						<label id="lbDefineGerarPedido" for="defineGerarPedido">Gerar pedido para GTS</label>
+					</div>
+					<div id="divDefineRetornarRevenda" class="custom-radio custom-radio-inline custom-radio-primary" style="display:none">
+						<input type="radio" name="defineGeracaoPedidoInicio" value="RetornarRevenda" id="defineRetornarRevenda">
+						<label for="defineRetornarRevenda">Retornar para a Revenda</label>
+					</div>
+					<div id="divDefineCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="defineGeracaoPedidoInicio" value="Cancelar" id="defineCancelar">
+						<label for="defineCancelar">Cancelar</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 ">
+				<div id="divMotivoCancelamentoGeracaoPedido" class="row" style="display:none">
+					<div class="col-md-4 col-md-offset-4" align="left">
+						<label for="motCancelamentoGeracaoPedido">Motivo Cancelamento*</label>
+						<textarea rows="2" cols="5" name="motCancelamentoGeracaoPedido" id="motCancelamentoGeracaoPedido" class="form-control " ></textarea>
+		           	</div>
+		        </div>  
+			</div>
+		</div>
+		<div class="row sub-titulo"></div>
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+	
+	<div id="divRevChkCientePedido" class="col-md-12 text-center" style="display:none;" >
+		<div class="row">	
+			<br><br>
+			<div class="col-md-12" align="left">
+	          	<label class="checkbox-inline">
+			    <input type="checkbox" name="revChkCientePedido" id="revChkCientePedido" value="ciente" /> <b>Atenção!</b> Assinale que está ciente que um pedido de máquina está sendo gerado com seus dados de revenda.</b> 
+				</label>
+	        </div>
+		</div>
+		<div class="row sub-titulo"></div>
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+	
+	<div id="divRepChkCientePedido" class="col-md-12 text-center" style="display:none;" >
+		<div class="row">	
+			<br><br>
+			<div class="col-md-12" align="left">
+	          	<label class="checkbox-inline">
+			    <input type="checkbox" name="repChkCientePedido" id="repChkCientePedido" value="ciente" /> <b>Atenção!</b> Assinale que está ciente que um pedido de máquina está sendo gerado com seu dados de representante.</b> 
+				</label>
+	        </div>
+		</div>
+		<div class="row sub-titulo"></div>
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+	
+	<div id="divRepGesTerChkCientePedido" class="col-md-12 text-center" style="display:none;" >
+		<div class="row">	
+			<br><br>
+			<div class="col-md-12" align="left">
+	          	<label class="checkbox-inline">
+			    <input type="checkbox" name="repGesTerChkCientePedido" id="repGesTerChkCientePedido" value="ciente" /> <b>Atenção!</b> Assinale que está ciente que um pedido de máquina está sendo gerado com seu dados de gestor territorial.</b> 
+				</label>
+	        </div>
+		</div>
+		<div class="row sub-titulo"></div>
+		<div class="col-sm-12">
+		    <div class="row">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+	
+	<div id="divSolicitante">
+    	<div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Dados Solicitante</h4>
+		    </div>
+		</div>
+		<div class="row">  
+	        <div class="col-md-3 col-md-offset-1" align="left">
+				<label for="pedClienteRevenda">Consumidor Final/Revendedor*</label>
+				<select name="pedClienteRevenda" id="pedClienteRevenda" class="form-control" >
+					<option value=""></option>
+					<option value="Cliente">Consumidor Final</option>
+					<option value="Revenda">Revendedor</option>
+		      	</select>	
+            </div>
+	        <div class="col-md-2 col-xs-6" align="left">
+				<label for="solDataAbertura">Data Abertura</label>
+				<div class="input-group">
+					<input type="text" name="solDataAbertura" id="solDataAbertura"  class="form-control" readonly/>				
+					<span class="input-group-addon">
+                    	<span class="fluigicon fluigicon-calendar"></span>
+                    </span>			                    
+				</div>
+            </div>
+	        <div class="col-md-2 col-xs-6" align="left">
+				<label for="solDataValidadePedido">Validade Orçamento</label>
+				<div class="input-group">
+					<input type="text" name="solDataValidadePedido" id="solDataValidadePedido"  class="form-control" readonly/>				
+					<span class="input-group-addon">
+                    	<span class="fluigicon fluigicon-calendar"></span>
+                    </span>			                    
+				</div>
+            </div>
+            <div class="col-md-2 " align="left">
+				<label for="solTipoSolicitante">Tipo Solicitante</label>
+				<!-- Tipo Solicitante pode ser RepresentanteNacional, RepresentanteInternacional, Revenda, GestorTerritorial, AdministrativoComercialGTS -->
+				<input type="hidden" name="solTipoSolicitante" id="solTipoSolicitante" class="form-control" >
+				<input type="text" name="solTipoSolicitanteDesc" id="solTipoSolicitanteDesc" class="form-control" readonly />
+	        </div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-5 col-md-offset-1" align="left">
+				<label for="repNome">Solicitante</label>
+				<input type="hidden" name="solWKUser" id="solWKUser" >
+				<input type="hidden" name="solAcompanhaPedidoWKUser" id="solAcompanhaPedidoWKUser" >
+				<input type="hidden" name="solGerenteAprovaWKUser" id="solGerenteAprovaWKUser" >
+				<input type="hidden" name="solGerenteAprovaPapel" id="solGerenteAprovaPapel" />
+				<input type="text" name="solNome" id="solNome" class="form-control" readonly
+					data-protection="solNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir solicitante do pedido de máquina" />
+            </div>
+            
+            <div class="col-md-4 " align="left">
+				<label for="solEmail">E-mail Solicitante</label>
+				<input type="text" name="solEmail" id="solEmail" class="form-control" readonly 
+					data-protection="solEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do solicitante do pedido de máquina" />
+	        </div>
+	        
+	        <div class="col-md-1 " align="left" style="display:none;">
+				<label for="solTabPreco">Tab. Preço</label>
+				<input type="text" name="tabPreco" id="tabPreco" class="form-control" readonly  />
+	        </div>
+		</div>
+	</div>
+	
+	<div id="divRepresentante">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Dados Representante</h4>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-1 col-md-offset-1 col-xs-4" align="left" >
+				<label for="repA3COD">Código</label>
+				<input type="text" name="repA3COD" id="repA3COD" class="form-control" readonly />
+	        </div>
+			<div class="col-md-5 col-xs-8" align="left">
+				<label for="repNome">Representante</label>
+				<input type="hidden" name="repWKUser" id="repWKUser" class="form-control" >
+				<input type="hidden" name="repTipo" id="repTipo" class="form-control" >
+				<input type="zoom" name="repNome" id="repNome"
+								  data-zoom="{
+					                              'displayKey':'RepComNome', 
+					                              'datasetId':'dsPedMaqRepresentantesComerciais', 
+					                              'fields':[ 
+						                              { 
+							                              'field':'RepComNome', 
+							                              'label':' ' 
+						                              } 
+					                              ] 
+				                              	}"
+                   	data-protection="repNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir representante do pedido de máquina" /> 
+            </div>
+            
+            <div class="col-md-4 col-xs-12" align="left">
+				<label for="repEmail">E-mail Representante</label>
+				<input type="text" name="repEmail" id="repEmail" class="form-control" readonly 
+					data-protection="repEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do representante do pedido de máquina" />
+	        </div>
+	        
+		</div>
+		
+		<div class="row">
+			
+			<div class="col-md-1 col-md-offset-1 col-xs-4" align="left" >
+				<label for="repGesTerA3COD">Código</label>
+				<input type="text" name="repGesTerA3COD" id="repGesTerA3COD" class="form-control" readonly />
+	        </div>
+			<div class="col-md-5 col-xs-8" align="left">
+				<label for="repGestorTerritorial">Gestor Territorial</label>
+				<input type="hidden" name="repGestorTerritorialWKUser" id="repGestorTerritorialWKUser" class="form-control" />
+				<input type="text" name="repGestorTerritorial" id="repGestorTerritorial" class="form-control" readonly
+					data-protection="repGestorTerritorial" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir gestor territorial do pedido de máquina" />
+	        </div>
+	        
+	        <div class="col-md-4 col-xs-12" align="left">
+				<label for="repEmailGestorTerritorial">E-mail Gestor Territorial</label>
+				<input type="text" name="repEmailGestorTerritorial" id="repEmailGestorTerritorial" class="form-control"  readonly
+					data-protection="repEmailGestorTerritorial" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do gestor territorial do pedido de máquina" />
+	        </div>
+	        
+		</div>
+		<div class="row">
+			<div class="col-md-1 col-md-offset-1 col-xs-4" align="left">
+				<label for="repGesComA3COD">Código</label>
+				<input type="text" name="repGesComA3COD" id=repGesComA3COD class="form-control" readonly />
+	        </div>
+			<div class="col-md-5 col-xs-8" align="left">
+				<label for="repGestorTerritorial">Gestor Comercial</label>
+				<input type="hidden" name="repGestorComercialWKUser" id="repGestorComercialWKUser" class="form-control" />
+				<input type="text" name="repGestorComercial" id="repGestorComercial" class="form-control" readonly
+					data-protection="repGestorComercial" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir gestor comercial do pedido de máquina" />
+	        </div>
+	        
+	        <div class="col-md-4 col-xs-12" align="left">
+				<label for="repEmailGestorComercial">E-mail Gestor Comercial</label>
+				<input type="text" name="repEmailGestorComercial" id="repEmailGestorComercial" class="form-control"  readonly
+					data-protection="repEmailGestorComercial" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do gestor comercial do pedido de máquina" />
+	        </div>
+		</div>
+		<div class="row">
+			<div id="divVend1" class="col-md-1 col-md-offset-1" align="left" style="display:none;">
+				<label for="vendedor1">Vend. 1*</label>
+				<input type="text" name="vendedor1" id="vendedor1" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend2" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor2">Vend. 2</label>
+				<input type="text" name="vendedor2" id="vendedor2" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend3" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor3">Vend. 3</label>
+				<input type="text" name="vendedor3" id="vendedor3" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend4" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor4" id="vendedor4" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend5" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor5">Vend. 5*</label>
+				<input type="text" name="vendedor5" id="vendedor5" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend6" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor6">Vend. 6</label>
+				<input type="text" name="vendedor6" id="vendedor6" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend7" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor7" id="vendedor7" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend8" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor8" id="vendedor8" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend9" class="col-md-1" align="left" style="display:none;">
+				<label for="vendedor9">Vend. 9</label>
+				<input type="text" name="vendedor9" id="vendedor9" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+			<div id="divVend10" class="col-md-1" align="left" style="display:none;">
+				<input type="text" name="vendedor10" id="vendedor10" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+        </div>	        
+	</div>
+	
+	<div id="divRevenda">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Dados Revenda</h4>
+		    </div>
+		</div>
+	    <div class="row">
+	    	<div class="col-md-2 col-md-offset-1 col-xs-8" align="left">
+				<label for="revCpfCnpj">CPF/CNPJ</label>
+				<input type="text" name="revCpfCnpj" id="revCpfCnpj" class="form-control" maxlength="20" 
+					data-protection="revCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir revenda do pedido de máquina" />
+	        </div>
+	        <div class="col-md-1 col-xs-4" align="left">
+				<label for="revA3COD">Código</label>
+				<input type="text" name="revA3COD" id="revA3COD" class="form-control" readonly />
+				<!-- revA1COD e revA1LOJA puxa dos dados adicionais da Revenda quando ela está cadastrando o pedido -->
+				<input type="hidden" name="revA1COD" id="revA1COD" />
+				<input type="hidden" name="revA1LOJA" id="revA1LOJA" />
+	        </div>
+	    	<div class="col-md-4 col-xs-12" align="left">
+				<label for="revNome">Nome Revenda</label>
+				<input type="text" name="revNome" id="revNome" class="form-control" maxlength="100" readonly
+					data-protection="revNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir revenda do pedido de máquina" />
+	        </div>
+	        <div class="col-md-2 col-xs-6" align="left">
+				<label for="revFator">Fator Revenda</label>
+				<input type="text" name="revFator" id="revFator" class="form-control" maxlength="20" />
+	        </div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-md-2 col-md-offset-1 col-xs-6" align="left">
+				<label for="revMatFluig">Matrícula Revenda</label>
+				<input type="text" name="revMatFluig" id="revMatFluig" class="form-control" maxlength="20" readonly />
+	        </div>
+	        <div class="col-md-4 col-xs-12" align="left">
+				<label for="revNomeFluig">Nome Fluig Revenda</label>
+				<input type="text" name="revNomeFluig" id="revNomeFluig" class="form-control" readonly />
+	        </div>
+	    </div>
+	    
+    </div>
+	
+	
+	<div id="divCliente">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Dados Cliente</h4>
+		    </div>
+		</div>
+	    <div class="row">	
+	    	<div class="col-md-2 col-md-offset-1 col-xs-6" align="left">
+				<label for="cliCodigo">Código</label>
+				<input type="text" name="cliCodigo" id="cliCodigo" class="form-control" readonly maxlength="9" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+	        
+	        <div class="col-md-1 col-xs-6" align="left">
+				<label for="cliLoja">Loja</label>
+				<input type="text" name="cliLoja" id="cliLoja" class="form-control" readonly maxlength="4" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
+	        </div>
+	    </div>
+	    
+	    <div class="row">
+	    	<div class="col-md-2 col-md-offset-1 col-xs-7" align="left">
+				<label for="cliCpfCnpj">CPF/CNPJ/Código Exterior*</label>
+				<input type="text" name="cliCpfCnpj" id="cliCpfCnpj" class="form-control" readonly maxlength="20" 
+					data-protection="cliCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir cliente do pedido de máquina" />
+	        </div>
+	    	
+	    	<div class="col-md-2 col-xs-5" align="left">
+				<label for="cliInscricaoEstadual">Inscrição Estadual*</label>
+				<input type="text" name="cliInscricaoEstadual" id="cliInscricaoEstadual" readonly maxlength="20" class="form-control"/>
+	        </div>
+	    	
+	    	<div class="col-md-5 col-xs-12" align="left">
+				<label for="cliNome">Nome*</label>
+				<input type="text" name="cliNome" id="cliNome" class="form-control" 
+					data-protection="cliNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir cliente do pedido de máquina" />
+	        </div>
+        </div>
+	    <div class="row">
+	        <div class="col-md-6 col-md-offset-1" style="text-align:left">
+	       		<h4 ><strong>Endereço</strong></h4>
+	        </div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-md-2 col-md-offset-1 col-xs-5" align="left">
+				<label for="cepCliente">CEP*</label>
+				<input type="text" name="cliCEP" id="cliCEP" class="form-control"  />
+            </div>
+	    
+	    	<div class="col-md-2 col-xs-7" align="left">
+				<label for="cliUF">Estado*</label>
+				<input type="hidden" name="cliUFHidden" id="cliUFHidden"  />
+				<select name="cliUF" id="cliUF" class="form-control" >
+					<option value=""></option>
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espírito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI">Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP">São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>	        						        
+		      	</select>
+		      	
+            </div>
+			<div class="col-md-5 col-xs-12" align="left">
+				<label for="cliCidade">Cidade*</label>
+				<input type="text" name="cliCidade" id="cliCidade" class="form-control" />
+			</div>           
+	    </div> 
+	    
+	    <div  class="row">
+	    	<div class="col-md-4 col-md-offset-1 col-xs-12" align="left">
+				<label for="cliEndereco">Endereço*</label>
+				<input type="text" name="cliEndereco" id="cliEndereco" class="form-control" />
+            </div>	
+            <div class="col-md-2 col-xs-12" align="left">
+				<label for="cliBairro">Bairro*</label>
+				<input type="text" name="cliBairro" id="cliBairro" class="form-control" />
+            </div>
+            <div class="col-md-3 col-xs-12" align="left">
+				<label for="cliComplemento">Complemento</label>
+				<input type="text" name="cliComplemento" id="cliComplemento" class="form-control" />
+            </div>
+	    </div> 
+
+	    <div class="row">
+	    	<div class="col-md-5 col-md-offset-1 col-xs-12" align="left">
+				<label for="cliEmail">E-mail*</label>
+				<input type="text" name="cliEmail" id="cliEmail" class="form-control"
+					data-protection="cliEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do cliente do pedido de máquina" />
+            </div>	
+            <div class="col-md-1 col-xs-3" align="left">
+				<label for="cliDDDTelefone">DDD</label>
+				<input type="text" name="cliDDDTelefone" id="cliDDDTelefone" class="form-control" 
+					data-protection="cliDDDTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente do pedido de máquina" />
+            </div>
+            <div class="col-md-2 col-xs-9" align="left">
+				<label for="cliTelefone">Telefone</label>
+				<input type="text" name="cliTelefone" id="cliTelefone" class="form-control" 
+					data-protection="cliTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente do pedido de máquina" />
+            </div>
+	    </div> 
+	</div>
+			
+	
+	<div id="divPedido">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Dados Pedido</h4>
+		    </div>
+		</div>
+	    <div  class="row">
+	    	<div class="col-md-1 col-md-offset-1 col-xs-12" align="left">
+				<label for="pedVersao">Versão</label>
+				<input type="text" name="pedVersao" id="pedVersao" class="form-control" readonly />
+	        </div>
+	    	<div class="col-md-3 col-xs-12" align="left">
+				<label for="pedCondPagto">Condição de Pagamento*</label>
+				<input type="hidden" name="pedCodCondPagto" id="pedCodCondPagto" class="form-control" >
+				<input type="zoom" name="pedCondPagto" id="pedCondPagto"
+								  data-zoom="{
+					                              'displayKey':'DESCPAGTO', 
+					                              'datasetId':'dsPedMaqCondPagto', 
+					                              'fields':[ 
+						                              { 
+							                              'field':'DESCPAGTO', 
+							                              'label':' ' 
+						                              } 
+					                              ] 
+				                              	}" /> 
+			</div>
+       		<div class="col-md-2 col-xs-12" align="left">
+				<label for="pedOutraCodPagto">Outra Condição Pagamento*</label>
+				<input type="text" name="pedOutraCodPagto" id="pedOutraCodPagto" class="form-control" readonly />
+			</div>	
+            <div class="col-md-1 col-xs-5" align="left">
+				<label for="pedFrete">Frete*</label>
+				<select name="pedFrete" id="pedFrete" class="form-control">
+					<option value=""></option>
+					<option value="CIF">CIF</option>
+					<option value="FOB">FOB</option>
+				</select>	
+            </div>
+			<div class="col-md-2 col-xs-7" align="left">
+				<label for="dataVigenciaInicial">Data Prev. Embarque*</label>
+				<div class="input-group">
+					<input type="text" name="pedDataPrevEmbarque" id="pedDataPrevEmbarque"  class="form-control" />				
+					<span class="input-group-addon">
+                    	<span class="fluigicon fluigicon-calendar"></span>
+                    </span>			                    
+				</div>
+            </div>
+		</div>
+	    
+	    <div  class="row">
+			<div class="col-md-2 col-md-offset-1 col-xs-12" align="left">
+				<label for="pedTipoPedido">Tipo de Pedido*</label>
+				<select name="pedTipoPedido" id="pedTipoPedido" class="form-control">
+					<option value=""></option>
+					<option value="Faturamento">Faturamento</option>
+					<option value="Consignacao">Consignação</option>
+					<option value="Demonstracao">Demonstração</option>
+				</select>	
+            </div>
+	    	<div id="divTipoPreco" class="col-md-3  col-xs-12" align="left" >
+	    		<label for="pedTipoPreco">Tipo de Preço*</label>
+				<div class="radio input-group">
+					<div class="custom-radio custom-radio-primary">
+						<input type="radio" name="pedTipoPreco" value="pedTipoPrecoPreFixado" id="pedTipoPrecoPreFixado" />
+						<label for="pedTipoPrecoPreFixado">Pré-Fixado na Data do Pedido</label>
+					</div>
+					<div class="custom-radio custom-radio-primary">
+						<input type="radio" name="pedTipoPreco" value="pedTipoPrecoVariavel" id="pedTipoPrecoVariavel" />
+						<label for="pedTipoPrecoVariavel">Variável até o Faturamento</label>
+					</div>
+				</div>
+            </div>
+			<div class="col-md-4 col-xs-12" align="left">
+			    <label for="pedObservacao">Observação Relatório</label>
+				<textarea rows="3" cols="6" name="pedObservacao" id="pedObservacao" class="form-control " ></textarea>
+            </div>
+	    </div>
+	    <div id="divReservaMaquina" style="display:none;">
+		    <div  class="row">
+		    	<div class="col-md-10 col-md-offset-1" align="left" >
+					<div style="text-align:left; border-bottom: 1px solid rgb(209, 211, 212); margin-bottom:3px;">
+			       		<label >Reserva de Máquina</label>
+			       		<input type="hidden" name="pedMaqResWKUserReserva" id="pedMaqResWKUserReserva" class="form-control" />
+			    		<input type="hidden" name="pedMaqResDataReserva" id="pedMaqResDataReserva" class="form-control" />
+						<input type="hidden" name="pedMaqResWKUserCancelReserva" id="pedMaqResWKUserCancelReserva" class="form-control" />
+						<input type="hidden" name="pedMaqResDataCancelReserva" id="pedMaqResDataCancelReserva" class="form-control" />
+		       		</div>
+			    </div>
+		    </div>
+		    <div  class="row">
+		    	<div id="divMaquinaReservadaRemove" class="col-md-1" align="right" style="display:none;">
+		    		<br>
+		    		<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Máquina Reservada" onclick="removeMaquinaReservada(this)"></i>
+		    	</div>
+		    	<div id="divMaquinaReservadaDesc" class="col-md-4 col-md-offset-1" align="left" >
+		    		<label for="pedMaqResDesc">Máquina Reservada</label>
+			    	<div class="input-group">
+						<input type="text" name="pedMaqResDesc" id="pedMaqResDesc" class="form-control" readonly /> 
+						<span id="idSelecionaMaquinaReservada" class="input-group-addon group-zoom no-view modal-zoom zoom-click btn-search-maquina-reservada" data-event="selecionaMaquinaReservada" >
+							<span class="fluigicon fluigicon-zoom-in "></span>
+						</span> 
+			    	</div>
+		    	</div>
+		    	<div class="col-md-2" align="left">
+					<label for="pedMaqResModelo">Modelo</label>
+					<input type="text" name="pedMaqResModelo" id="pedMaqResModelo" class="form-control" readonly />
+		        </div>
+		    	<div class="col-md-1 col-xs-3" align="left">
+					<label for="pedMaqResEstoque">Estoque</label>
+					<input type="text" name="pedMaqResEstoque" id="pedMaqResEstoque" class="form-control" readonly />
+		        </div>
+		    	<div class="col-md-2 col-xs-5" align="left">
+					<label for="pedMaqResPrazoEnt">Prazo de Entrega</label>
+					<input type="text" name="pedMaqResPrazoEnt" id="pedMaqResPrazoEnt" class="form-control" readonly />
+		        </div>
+		    	<div class="col-md-1 col-xs-4" align="left">
+					<label for="pedMaqResNumPedidoTotvs">Nº Pedido</label>
+					<input type="text" name="pedMaqResFilialPedidoTotvs" id="pedMaqResFilialPedidoTotvs" class="form-control" readonly style="display: none;" />
+					<input type="text" name="pedMaqResNumPedidoTotvs" id="pedMaqResNumPedidoTotvs" class="form-control" readonly />
+		        </div>
+	    	</div>
+    	</div>
+
+	    
+	    <br><br><br>
+	    
+		<div class="row">
+    		<div class="col-md-12" align="left">
+    			<div style="overflow-x: auto; width: 100%">
+            	<table class="table table-condensed table-nonfluid table-striped" id="tbItensPedido" tablename="tbItensPedido" noaddbutton="true" nodeletebutton="true" >
+					<thead>
+						<tr>	
+							<th class="itPedFilial" style="display:none;">Filal</th>
+							<th class="itPedNumOrcTotvs" style="display:none;">Nº Orc.</th>
+							<th class="itPedQtd" >Qtd</th>
+							<th class="itPedCodItem" >Cod. Item</th>
+							<th class="itPedDescricaoItem" >Descrição</th>		
+							<th class="itPedPrecoListaItem" >Preço Lista <span class="tipoMoeda"></span></th>		
+							<th class="itPedDescontoItem" >% Desc.</th>		
+							<th class="itPedPrecoUnitItem" >Preço Unit. <span class="tipoMoeda"></span></th>	
+							<th class="itPedValorFreteItem" >Valor Frete <span class="tipoMoeda"></span></th>	
+							<th class="itPedTotalItem">Total <span class="tipoMoeda"></span></th>	
+							<th class="itPedNCMItem" >NCM</th>	
+							<th class="itPedFinameItem" >Finame</th>	
+							<th class="itPedIPIItem" >IPI</th>		
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="itPedFilial" style="display:none;">	
+								<input type="text" name="itPedFilialItem" id="itPedFilialItem" class="form-control"  style="width:75px !important; min-width:75px !important; max-width:75px !important;" maxlength="6" readonly/>
+							</td>
+							<td class="itPedNumOrcTotvs" style="display:none;">	
+								<input type="text" name="itPedNumOrcTotvsItem" id="itPedNumOrcTotvsItem" class="form-control"  style="width:75px !important; min-width:75px !important; max-width:75px !important;" readonly/>
+							</td>
+							<td class="itPedQtd" >	
+								<input type="text" name="itPedQtdItem" id="itPedQtdItem" value="1" class="form-control" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" style="width:50px !important; min-width:50px !important; max-width:50px !important;" readonly />
+							</td>
+							<td class="itPedCodItem" >									    	
+								<div class="input-group">
+									<input type="text" name="itPedCodItemItem" id="itPedCodItemItem" class="form-control inputItPedCodItem" style="width: 150px !important; min-width: 150px !important; max-width: 150px !important;" /> 
+									<span  class="input-group-addon group-zoom no-view btn-search-maquina" style="padding: 3px 10px !important; width: 40px !important; min-width: 40px !important; max-width: 40px !important;">
+										<input type="text" id="itPedImageBuscaMaqItem"  name="itPedImageBuscaMaqItem" readonly  class="transparent zoom-icon zoom-click" data-event="selecionaMaquina" style="margin: -10px; padding-left: 18px; padding-right: 18px" >
+									</span> 
+						    	</div>
+							</td>
+							<td class="itPedDescricaoItem" >
+								<input type="text" name="itPedDescricaoItemItem" id="itPedDescricaoItemItem" class="form-control" readonly style="width: 475px !important; min-width: 475px !important; max-width: 475px !important;" />
+							</td>
+							<td class="itPedPrecoListaItem" >
+								<input type="hidden" name="itPedPrecoTabelaItem" id="itPedPrecoTabelaItem" class="form-control" />
+								<input type="text" name="itPedPrecoListaItem" id="itPedPrecoListaItem" class="form-control" readonly  style="width: 160px !important; min-width:160px !important; max-width:160px !important;" />
+							</td>
+							<td class="itPedDescontoItem" >
+								<input type="hidden" name="itPedValorDescontoItem" id="itPedValorDescontoItem" class="form-control" />
+								<input type="hidden" name="itPedPorcDescontoCompletaItem" id="itPedPorcDescontoCompletaItem" class="form-control"   />
+								<input type="text" name="itPedPorcDescontoItem" id="itPedPorcDescontoItem" class="form-control" readonly style="width:75px !important; min-width:75px !important; max-width:75px !important;" />
+							</td>
+							<td class="itPedPrecoUnitItem" >
+								<input type="text" name="itPedPrecoUnitItem" id="itPedPrecoUnitItem" class="form-control inputItPedPrecoUnitItem" style="width: 160px !important; min-width:160px !important; max-width:160px !important;" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+							</td>
+							<td class="itPedValorFreteItem" >
+								<input type="text" name="itPedValorFreteItem" id="itPedValorFreteItem" class="form-control inputItPedValorFreteItem" readonly style="width: 160px !important; min-width:160px !important; max-width:160px !important;" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+							</td>
+							<td class="itPedTotalItem" >
+								<input type="text" name="itPedTotalCustoSemImpItem" id="itPedTotalCustoSemImpItem" class="form-control" readonly style="min-width:160px !important;" />
+								<input type="text" name="itPedTotalCustoComImpItem" id="itPedTotalCustoComImpItem" class="form-control" readonly style="min-width:160px !important; display:none;" />
+							</td>
+							<td class="itPedNCMItem" >
+								<input type="text" name="itPedNCMItem" id="itPedNCMItem" class="form-control" readonly style="width:100px !important; min-width:100px !important; max-width:100px !important;"/>
+							</td>
+							<td class="itPedFinameItem" >
+								<input type="text" name="itPedFinameItem" id="itPedFinameItem" class="form-control" readonly style="width:120px !important; min-width:120px !important; max-width:120px !important;"/>
+							</td>
+							<td class="itPedIPIItem" >
+								<input type="hidden" name="itPedIPIValorItem" id="itPedIPIValorItem" class="form-control"  />
+								<input type="text" name="itPedIPIAliqItem" id="itPedIPIAliqItem" class="form-control" readonly  style="width:75px !important; min-width:75px !important; max-width:75px !important;" />
+							</td>
+							
+						</tr>
+					</tbody>
+            	</table>
+            	</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-2 " align="left">
+				<div id="divImprimir" >
+	            	<br>
+					<button type="button" class="btn btn-primary" id="imprimirOrcamento" style="min-width: 130px;">Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
+					<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
+								<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatório</div>"></i>		
+				</div>
+			</div>
+			
+			<div class="col-md-4 " align="left">
+				<br>
+			    <label for="pedObservacaoProduto">Observação do Produto</label>
+				<textarea rows="3" cols="6" name="pedObservacaoProduto" id="pedObservacaoProduto" class="form-control " ></textarea>
+            </div>
+			
+		</div>
+	</div>
+	 
+	<div id="divPeca">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Peça</h4>
+		    </div>
+		</div>
+	    <div  class="row">
+	    	<div class="col-md-2 col-md-offset-1" align="left" >
+	    		<label for="pecaPossuiPeca">Possui Peça(s)?*</label>
+				<div class="radio input-group">
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="pecaPossuiPeca" value="pecaPossuiPecaSim" id="pecaPossuiPecaSim" />
+						<label for="pecaPossuiPecaSim">Sim</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="pecaPossuiPeca" value="pecaPossuiPecaNao" id="pecaPossuiPecaNao" />
+						<label for="pecaPossuiPecaNao">Não</label>
+					</div>
+				</div>
+            </div>
+         </div>
+		 <div  class="row">
+           	<div id="divPossuiPecaSim" style="display:none;">
+	            <div class="col-md-4 col-md-offset-1 col-xs-12" align="left">
+				    <label for="pecaDescricao">Descrição Peça(s)*</label>
+					<textarea rows="3" cols="6" name="pecaDescricao" id="pecaDescricao" class="form-control " ></textarea>
+	            </div>
+	            <div class="col-md-3 col-xs-12" align="left">
+					<label for="pecaCodPagto">Condição Pagamento Peça(s)*</label>
+					<input type="text" name="pecaCodPagto" id="pecaCodPagto" class="form-control" maxlength="50" />
+				</div>	
+	            <div class="col-md-2 col-xs-6" align="left">
+					<label for="pecaValor">Valor Peça(s) <span class="tipoMoeda"></span>*</label>
+					<input type="text" name="pecaValor" id="pecaValor" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')" />
+				</div>	
+			</div>
+	    </div>
+		
+		    	
+    </div> 
+	<div id="divTotais">
+	    <div class="row">
+	    	<div class="col-md-6 col-md-offset-6" align="left">	
+		        <div id="divTotaisLinha" style="text-align:center">
+		       		<h2 ><strong>Totais</strong></h2>
+		       		<hr />  
+	       		</div>
+	       		<div class="row">
+	       			<div class="col-md-3 col-xs-6" align="left"> 
+						<label for="pedTotalMaquina">Máquina<span class="tipoMoeda"></span>:</label>
+			      		<p id="pedTotalMaquina" class="form-control" readonly ></p>
+					</div>
+	       			<div class="col-md-3 col-xs-6" align="left"> 
+						<label for="pedTotalFrete">Frete<span class="tipoMoeda"></span>:</label>
+			      		<p id="pedTotalFrete" class="form-control" readonly ></p>
+					</div>
+					<div class="col-md-3 col-xs-6" align="left">
+						<label for="pedTotalIPI">IPI <span class="tipoMoeda"></span></label>
+				      	<input type="text" name="pedTotalIPI" id="pedTotalIPI" class="form-control" readonly />
+					</div>
+					<div class="col-md-3 col-xs-6" align="left"> 
+						<label for="pedTotalPeca">Peça<span class="tipoMoeda"></span>:</label>
+			      		<p id="pedTotalPeca" class="form-control" readonly ></p>
+					</div>
+				</div>
+				
+				<div class="row">	
+	       			<div  class="col-md-offset-3 col-md-6 col-xs-12" align="center">
+						<label for="pedTotalPedido">Valor Total <span class="tipoMoeda"></span></label>
+				      	<input type="text" name="pedTotalPedidoSemImposto" id="pedTotalPedidoSemImposto" class="form-control" readonly style="display:none;" />
+				      	<input type="text" name="pedTotalPedido" id="pedTotalPedido" class="form-control" style="font-size: 18px; font-weight: bold; color: #3F3F3C; text-align:center;" readonly />
+					</div>
+				</div>
+			</div>
+		</div>
+    </div> 
+	<div id="divComunicacaoInterna">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Comunicação Interna</h4>
+		    </div>
+		</div>
+    	<div id="divPreencheComInterna" class="row">
+            <div class="col-md-5 col-md-offset-1" align="left">
+			    <label for="pedObservacaoInterna">Descrição</label>
+				<textarea rows="3" cols="4" name="comIntComunicacaoInterna" id="comIntComunicacaoInterna" class="form-control " ></textarea>
+            </div>
+            <div class="col-md-2" align="left">
+            	<br><br><br>
+				<button type="button" class="btn btn-primary" id="addComunicacaoInterna" style="min-width: 130px;">Add Comunicação <i class="flaticon flaticon-message icon-sm"></i></button>
+			</div>
+        </div>
+        
+        <div id="divTbComInterna" class="row">	
+        	<div class="col-md-10 col-md-offset-1" align="left">
+	        	<table class="table table-condensed table-nonfluid table-striped" id="tbComunicacaoInterna" tablename="tbComunicacaoInterna" noaddbutton="true" nodeletebutton="true">
+					<thead>
+						<tr>
+							<th class="tdDeleteRowComunicacaoInterna" style="display:none;"></th>
+							<th class="col-md-3">Usuário</th>	
+							<th class="col-md-2">Data</th>
+							<th class="col-md-4">Observação</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr detail="true" detailname="tbComunicacaoInterna" >
+							<td class="fs-v-align-middle fs-text-center tdDeleteRowComunicacaoInterna" style="width: 1%; display:none;">
+								<div>
+									<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Comunicação Interna" onclick="removeComunicacaoInterna(this)"></i>
+								</div>
+							</td>
+							<td class="col-md-2" >
+								<input type="hidden" name="comIntOrdem" id="comIntOrdem" class="form-control" readonly>
+								<input type="hidden" name="comIntWKUserUsuario" id="comIntWKUserUsuario" class="form-control" readonly>
+								<input type="text" name="comIntNomeUsuario" id="comIntNomeUsuario" class="form-control" readonly>
+							</td>
+							<td class="col-md-2" >	
+								<input type="text" name="comIntDataHoraInteracao" id="comIntDataHoraInteracao" class="form-control" readonly>
+							</td>
+							<td class="col-md-5" >	
+					    		<textarea rows="3" cols="4" name="comIntObservacao" id="comIntObservacao" class="form-control " readonly></textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		
+        </div>
+        
+    </div>
+        
+	<div id="divAprovacaoGerTerritorial" style="display:none;">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Aprovação Gerente</h4>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 col-md-offset-1" align="left" >
+				<div class="radio input-group">
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="aprovGerTerritorial" value="aprovado" id="aprovacaoGerTerritorialAprovado" />
+						<label for="aprovacaoGerTerritorialAprovado">Aprovado</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="aprovGerTerritorial" value="reprovado" id="aprovacaoGerTerritorialReprovado" />
+						<label for="aprovacaoGerTerritorialReprovado">Reprovado</label>
+					</div>
+				</div>
+            </div>
+		</div>
+		<div id="divMotivoReprovadoGerTerritorial" class="row" >
+			<div class="col-md-5 col-md-offset-1" align="left">
+				<label for="aprovGerTerritorialMotivoRep">Motivo*</label>
+				<textarea rows="2" cols="6" name="aprovGerTerritorialMotivoRep" id="aprovGerTerritorialMotivoRep" class="form-control " ></textarea>
+           	</div>
+        </div>  
+	</div>
+		
+	<div id="divSolRevisaPedido" style="display:none;">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Solicitante Revisa Pedido</h4>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 col-md-offset-1" align="left" >
+				<div class="radio input-group">
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="revPedSolicitanteAcao" value="retornaGerTerritorial" id="revPedSolicitanteAcaoRetornaGerTerritorial" />
+						<label for="revPedSolicitanteAcaoRetornaGerTerritorial">Encaminhar para aprovação do Gerente</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="revPedSolicitanteAcao" value="cancelar" id="revPedSolicitanteAcaoCancelar" />
+						<label for="revPedSolicitanteAcaoCancelar">Cancelar</label>
+					</div>
+				</div>
+            </div>
+		</div>
+		<div class="row" >
+			<div class="col-md-5 col-md-offset-1" align="left">
+				<label for="revPedSolicitanteObs">Observação</label>
+				<textarea rows="2" cols="6" name="revPedSolicitanteObs" id="revPedSolicitanteObs" class="form-control " ></textarea>
+           	</div>
+        </div>  
+	</div>
+		
+		
+	<div id="divAprovacaoAdministrativoGTS" style="display:none;">
+	    <div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Administrativo GTS</h4>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-11 col-md-offset-1" align="left" >
+				<div class="radio input-group">
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="aprovAdmGTS" value="aprovado" id="aprovAdmGTSAprovado" />
+						<label for="aprovAdmGTSAprovado">Aprovar e Integrar Pedido no Protheus</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="aprovAdmGTS" value="reprovado" id="aprovAdmGTSReprovado" />
+						<label for="aprovAdmGTSReprovado">Reprovar e Cancelar Solicitação</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="aprovAdmGTS" value="retornadoSol" id="aprovAdmGTSRetornadoSol" />
+						<label for="aprovAdmGTSRetornadoSol">Retornar para solicitante</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="aprovAdmGTS" value="transferir" id="aprovAdmGTSTransferir" />
+						<label for="aprovAdmGTSTransferir">Transferir</label>
+					</div>
+				</div>
+            </div>
+		</div>
+		<div id="divMotivoReprovadoRetornadoAdmGTS" class="row" >
+			<div class="col-md-5 col-md-offset-1" align="left">
+				<label for="aprovAdmGTSMotivo">Motivo*</label>
+				<textarea rows="2" cols="6" name="aprovAdmGTSMotivo" id="aprovAdmGTSMotivo" class="form-control " ></textarea>
+           	</div>
+        </div>  
+	</div>	
+		
+	<div id="divAcompanhaAdministrativoGTS" style="display:none;">
+		<div class="row sub-titulo">
+	    	<div class="col-md-12">
+		        <h4>Administrativo GTS</h4>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-11 col-md-offset-1" align="left" >
+				<div class="radio input-group">
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="acompanhaAdmGTS" value="finalizar" id="acompanhaAdmGTSFinalizar" />
+						<label for="acompanhaAdmGTSFinalizar">Finalizar Pedido</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="acompanhaAdmGTS" value="retornaSolicitante" id="acompanhaAdmGTSRetornaSolicitante" />
+						<label for="acompanhaAdmGTSRetornaSolicitante">Retornar para Solicitante</label>
+					</div>
+				</div>
+            </div>
+		</div>
+		<div id="divMotivoAcompanhaAdmGTS" class="row" >
+			<div class="col-md-5 col-md-offset-1" align="left">
+				<label for="acompanhaAdmGTSObs">Observação*</label>
+				<textarea rows="2" cols="6" name="acompanhaAdmGTSObs" id="acompanhaAdmGTSObs" class="form-control " ></textarea>
+           	</div>
+        </div>  
+	</div>	
+	<div class="row">
+		<div class="col-md-12">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+	        &nbsp;
+	    </div>
+	</div>
+</div>
+</div>
+</form>
+</body>
+</html>

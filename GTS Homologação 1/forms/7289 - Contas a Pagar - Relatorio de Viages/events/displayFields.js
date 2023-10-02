@@ -29,6 +29,19 @@ function displayFields(form, customHTML) {
 		form.setValue("solNomeSol", usuarioCorrente.getFullName());
 		form.setValue("solMatSol", usuarioCorrente.getCode());
 
+		//Preenche nome do motorista com o nome de quem está abrindo a solicitação
+		var dsAbastConsultaMotorista = DatasetFactory.getDataset("dsAbastConsultaMotorista", null, null, null);
+		if(dsTemValor(dsAbastConsultaMotorista)){
+			//COD_MOTORISTA
+			if( dsAbastConsultaMotorista.getValue(0, "COD_MOTORISTA") != '' && dsAbastConsultaMotorista.getValue(0, "COD_MOTORISTA") !== undefined && dsAbastConsultaMotorista.getValue(0, "COD_MOTORISTA") != 'undefined' ){ 
+				form.setValue("geraisCodMotorista",  dsAbastConsultaMotorista.getValue(0, "COD_MOTORISTA") );
+			}
+			//CPF_MOTORISTA
+			if( dsAbastConsultaMotorista.getValue(0, "CPF_MOTORISTA") != '' && dsAbastConsultaMotorista.getValue(0, "CPF_MOTORISTA") !== undefined && dsAbastConsultaMotorista.getValue(0, "CPF_MOTORISTA") != 'undefined' ){ 
+				form.setValue("geraisCPFMotorista",  dsAbastConsultaMotorista.getValue(0, "CPF_MOTORISTA") );
+			}
+		}
+
 		form.setVisibleById("divAddDespesa", true);
 		form.setValue("addRvDespCodiID", "1001");
 
@@ -101,6 +114,15 @@ function displayFields(form, customHTML) {
 			form.setVisibleById("divImprimirAprov", false);
 			form.setVisibleById("divSalvarEnviar", false);
 		}
+	} else if (atv_atual == INTEGRACAO_ABASTECIMENTO) {
+	
+		
+	} else if (atv_atual == ANALISA_ERRO_INTEGRACAO_ABASTECIMENTO) {
+
+		form.setVisibleById("divCodMotorista", true);
+		form.setVisibleById("divCpfMotorista", true);
+		form.setVisibleById("divSalvarEnviar", false);
+	
 	} else if (atv_atual == FIM) {
 		form.setVisibleById("divImprimirSol", false);
 		form.setVisibleById("divImprimirAprov", false);
@@ -110,28 +132,32 @@ function displayFields(form, customHTML) {
 }
 
 function showAbast(form, customHTML){
+
+	
 	var atv_atual = getValue("WKNumState");
 	var showAbast = false;
-	if(atv_atual == INICIO_0 || atv_atual == INICIO || atv_atual == SALVAR_RELATORIO){
+	if(atv_atual == INICIO_0 || atv_atual == INICIO || atv_atual == SALVAR_RELATORIO || atv_atual == AJUSTA_RELATORIO ){
 		if(form.getValue("solSetor") == "outro"){
 			showAbast = true;
 		}
-	}else if(atv_atual == ANALISA_RELATORIO || atv_atual == FIM || atv_atual == REVISA_RELATORIO){
-		showAbast = true;
+	}else if(atv_atual == ANALISA_RELATORIO || atv_atual == REVISA_RELATORIO || atv_atual == INTEGRACAO_ABASTECIMENTO || atv_atual == ANALISA_ERRO_INTEGRACAO_ABASTECIMENTO || atv_atual == FIM){
+		// if(form.getValue("solSetor") == "outro"){
+			showAbast = true;
+		// }
 	}
 	var index = form.getChildrenIndexes("tbRelDespesas");
-		if(index.length > 0){
-		    for (var i = 0; i < index.length; i++) { 
-				if(form.getValue("rvDespClassi___"+index[i]) == "Combustível" && showAbast){
-					customHTML.append("<script>$('input[name*=rvDespCnpj___"+index[i]+"]').closest('.abast').show();</script>");
-					customHTML.append("<script>$('input[name*=rvDespNomePosto___"+index[i]+"]').closest('.abast').show();</script>");
-					customHTML.append("<script>$('input[name*=rvDespTpComb___"+index[i]+"]').closest('.abast').show();</script>");
-					customHTML.append("<script>$('input[name*=rvDespKmAbast___"+index[i]+"]').closest('.abast').show();</script>");
-					customHTML.append("<script>$('input[name*=rvDespQtdL___"+index[i]+"]').closest('.abast').show();</script>");
-					customHTML.append("<script>$('input[name*=rvDespValorL___"+index[i]+"]').closest('.abast').show();</script>");
-				}
-		    }
+	if(index.length > 0){
+		for (var i = 0; i < index.length; i++) { 
+			if(form.getValue("rvDespClassi___"+index[i]) == "Combustível" && showAbast){
+				customHTML.append("<script>$('input[name*=rvDespCnpj___"+index[i]+"]').closest('.abast').show();</script>");
+				customHTML.append("<script>$('input[name*=rvDespNomePosto___"+index[i]+"]').closest('.abast').show();</script>");
+				customHTML.append("<script>$('input[name*=rvDespTpComb___"+index[i]+"]').closest('.abast').show();</script>");
+				customHTML.append("<script>$('input[name*=rvDespKmAbast___"+index[i]+"]').closest('.abast').show();</script>");
+				customHTML.append("<script>$('input[name*=rvDespQtdL___"+index[i]+"]').closest('.abast').show();</script>");
+				customHTML.append("<script>$('input[name*=rvDespValorL___"+index[i]+"]').closest('.abast').show();</script>");
+			}
 		}
+	}
 }
 
 

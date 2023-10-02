@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-anexo.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-imprimir.js" charset="utf-8"></script>
-
+	
 	<script type="text/javascript" src="js-pdf.min.js"></script>
 	<script type="text/javascript" src="js-pdfjs-viewer.js"></script>
 	<link rel="stylesheet" type="text/css" href="css-pdfjs-viewer.css">
@@ -80,11 +80,22 @@
 						</div>
 						<div class="panel-body collapse in" id="collapseCabec">
 							<div class="row">
-								<div class="form-group col-md-2">
+								<div id="divCodMotorista" class="form-group col-md-2" align="left" style="display: none;">
+									<label for="geraisCodMotorista">Cod. Motorista*</label>
+									<input type="text" name="geraisCodMotorista" id="geraisCodMotorista" class="form-control"  />
+								</div>
+								<div id="divCpfMotorista" class="form-group col-md-2" align="left" style="display: none;">
+									<label for="geraisCPFMotorista">CPF Motorista*</label>
+									<input type="text" name="geraisCPFMotorista" id="geraisCPFMotorista" class="form-control" maxlength="14" 
+												data-protection="geraisCPFMotorista" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o cpf do motorista no abastecimento" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-2" style="display:none;">
 									<label for="solMatSol">Matrícula do Solicitante</label>
 									<input type="text" name="solMatSol" id="solMatSol" class="form-control" readonly>
 								</div>
-								<div class="form-group col-md-2">
+								<div class="form-group col-md-4">
 									<label for="solNomeSol">Nome do Solicitante</label>
 									<input type="text" name="solNomeSol" id="solNomeSol" class="form-control" readonly>
 								</div>
@@ -150,7 +161,7 @@
 									</div>
 								</div>
 								<div class="form-group col-md-2">
-									<label for="solNumColab">Nº De Colaboradores</label>
+									<label for="solNumColab">Nº de Colaboradores</label>
 									<input type="text" name="solNumColab" id="solNumColab" class="form-control"
 										oninput="validafunctions.soNumero(this.id, 0, false , '')">
 								</div>
@@ -240,7 +251,7 @@
 								<!-- Inicio Abastecimento -->
 								<div class="row" liberaComb>
 									<div class="col-md-2 col-md-offset-1" align="left">
-										<label for="abastCNPJPosto">Cnpj do Posto*</label>
+										<label for="abastCNPJPosto">CNPJ do Posto*</label>
 										<input type="text" name="abastCNPJPosto" id="abastCNPJPosto" class="form-control">
 									</div>
 									<div class="col-md-4" align="left">
@@ -251,11 +262,11 @@
 										<label for="abastTpCombustivel">Tipo de Combustível*</label>
 										<select name="abastTpCombustivel" id="abastTpCombustivel" class="form-control">
 											<option value=""></option>
-											<option value="Gasolina Comum"> Gasolina Comum </option>
+											<!-- <option value="Gasolina Comum"> Gasolina Comum </option>
 											<option value="Gasolina Aditivada"> Gasolina Aditivada </option>
 											<option value="S10"> S10 </option>
 											<option value="Arla"> Arla </option>
-											<option value="outro"> Outro </option>
+											<option value="outro"> Outro </option> -->
 										</select>
 									</div>
 								</div>
@@ -264,7 +275,7 @@
 										<label for="abastKmAbastecimento">Km Abastecimento*</label>
 										<input type="text" name="abastKmAbastecimento" id="abastKmAbastecimento"
 											class="form-control"
-											oninput="validafunctions.setNumero(this.id, 1, false , '')">
+											onKeyPress="validafunctions.setNumero(this.id, 0, false)" />
 									</div>
 									<div class="col-md-2" align="left">
 										<label for="abastQtdLitros">Qtd. Litros*</label>
@@ -376,14 +387,15 @@
 														</div>
 														<div class="col-md-2" align="left" readonly style="display:none">
 															<label for="rvDespTpComb">Tipo de Combustível*</label>
-															<select name="rvDespTpComb" id="rvDespTpComb" class="form-control" >
+															<input type="text" id="rvDespTpComb" name="rvDespTpComb" class="form-control" readonly />
+															<!-- <select name="rvDespTpComb" id="rvDespTpComb" class="form-control" >
 																<option value=""></option>
 																<option value="Gasolina Comum"> Gasolina Comum </option>
 																<option value="Gasolina Aditivada"> Gasolina Aditivada </option>
 																<option value="S10"> S10 </option>
 																<option value="Arla"> Arla </option>
 																<option value="outro"> Outro </option>
-															</select>
+															</select> -->
 														</div>
 														<div class="col-md-2 abast cust-table-fields cust-table-line cust-align-fields" style="display:none;"> 
 															<label for="rvDespKmAbast">Km Abastecimento</label>
