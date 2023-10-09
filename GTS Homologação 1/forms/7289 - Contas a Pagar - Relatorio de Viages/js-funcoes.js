@@ -18,9 +18,14 @@ var funcoes = (function() {
 			eventsFuncoes.setup();
 		},	
 		//Consulta Veiculo
-		consultaVeiculo : function() {
+		consultaVeiculo : function(index) {
 			
-			let geraisPlaca = $('#geraisPlaca').val();
+			let geraisPlaca = '';
+			if(index){
+				geraisPlaca = $(`#rvDespPlaca___${index}`).val();
+			}else{
+				geraisPlaca = $('#geraisPlaca').val();
+			}
 			
 			if(geraisPlaca.length != 7 ){
 				$('#geraisVeiculo').val('');
@@ -32,59 +37,79 @@ var funcoes = (function() {
 			loading.show();
 			
 			$.ajax({
-			type: "GET",
-			dataType: "json",
-			async: true,
-			url: "/api/public/ecm/dataset/search?datasetId=dsAbastConsultaVeiculo&filterFields=PLACA,"+geraisPlaca,
-			data: "",
+				type: "GET",
+				dataType: "json",
+				async: true,
+				url: "/api/public/ecm/dataset/search?datasetId=dsAbastConsultaVeiculo&filterFields=PLACA,"+geraisPlaca,
+				data: "",
 				success: function (data, status, xhr) {
 				
 					if (data != null && data.content != null && data.content.length > 0) {
 						const records = data.content;
-					
-						if( records[0].CODRET == "1"){
-							let record = records[0];
-							let NOMEVEICULO = record.NOMEVEICULO;
 						
-							$("#geraisVeiculo").val(NOMEVEICULO);
-						 	//Adiciona Tipo de Combustível referente a aquele veículo
-							let combustivel = JSON.parse(record.COMBUSTIVEL);
-							$.each(combustivel, function(index, value){
+						if(index){
+							//Para quando é na tabela de Despesa de Viagem
+							if( records[0].CODRET == "1"){
+								let record = records[0];
+								let NOMEVEICULO = record.NOMEVEICULO;
+							
+								$(`#rvDespVeiculo___${index}`).val(NOMEVEICULO);
+							
+							}else if (records[0].CODRET == "2"){
+								//Se retornar como não encontrado, insere o nome do posto manualmente
+								FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+								$(`#geraisVeiculo___${index}`).val('');
+							}
+						}else{
+							if( records[0].CODRET == "1"){
+								let record = records[0];
+								let NOMEVEICULO = record.NOMEVEICULO;
+							
+								$("#geraisVeiculo").val(NOMEVEICULO);
+								 //Adiciona Tipo de Combustível referente a aquele veículo
+								$("#abastTpCombustivel").empty();
 								$('#abastTpCombustivel').append($('<option>', { 
-									value: value['Combustivel'],
-									text : value['Descricao']
+									value: '',
+									text : ''
 								}));
-							});
-						
-						}else if (records[0].CODRET == "2"){
-							//Se retornar como não encontrado, insere o nome do posto manualmente
-							FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
-							$("#geraisVeiculo").val('');
+								let combustivel = JSON.parse(record.COMBUSTIVEL);
+								$.each(combustivel, function(indexComb, value){
+									$('#abastTpCombustivel').append($('<option>', { 
+										value: value['Combustivel'],
+										text : value['Descricao']
+									}));
+								});
+							
+							}else if (records[0].CODRET == "2"){
+								//Se retornar como não encontrado, insere o nome do posto manualmente
+								FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+								$("#geraisVeiculo").val('');
+							}
+
 						}
-				
-				
 					}else{
 					//Se retornar como não encontrado, insere o nome do posto manualmente
 						FLUIGC.toast({ title: '', message: 'O Veículo não foi localizado na base de dados.', type: 'warning' });
 						$("#geraisVeiculo").val('');
 					}
+					
 					setTimeout(function(){ 
 						loading.hide();
 					}, 1000);
 				},
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-				console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
-				FLUIGC.toast({
-					title: '',
-					message: 'Erro na consulta do veículo, comunicar o Administrador do Sistema!' ,
-					type: 'danger'
-				});
-				loading.hide();
+					console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+					FLUIGC.toast({
+						title: '',
+						message: 'Erro na consulta do veículo, comunicar o Administrador do Sistema!' ,
+						type: 'danger'
+					});
+					loading.hide();
 				}
 			});
 			
 		},
-		
+
 		//Consulta posto
 		consultaPostoCombustivel : function() {
 			
@@ -167,7 +192,8 @@ var funcoes = (function() {
 				$("[liberaComb]").hide();
 			}
 		},
-
+		
+		//Alterar os tipo de pagamentos quando for selecionado combustível
 		liberaPagamentos : function(){
 			const addRvDespClassi = document.getElementById('addRvDespClassi');
 			const addRvDespTpPag = document.getElementById('addRvDespTpPag');
@@ -188,6 +214,7 @@ var funcoes = (function() {
 			}
 		},
 
+		//Valida os dados da despesa antes de enviar pro pai x filho
 		validaAddDespesa : function(){
 
 			let hasErros = false;
@@ -319,25 +346,29 @@ var funcoes = (function() {
 			return true;
 		},
 
+		//Adiciona a despesa
 		addDespesa : function(){
 			const indice = wdkAddChild("tbRelDespesas");
 
-			let addRvDespEstabelecimento = document.getElementById("addRvDespEstabelecimento").value;
-			let addRvDespDocumento = document.getElementById("addRvDespDocumento").value;
-			let addRvDespData = document.getElementById("addRvDespData").value;
-			let addRvDespTpPag = document.getElementById("addRvDespTpPag").value;
-			let addRvDespClassi = document.getElementById("addRvDespClassi").value;
-			let addRvDespValor = document.getElementById("addRvDespValor").value;
-			let addRvDespCCusto = document.getElementById("addRvDespCCusto").value;
-			let addRvDespAnexo = document.getElementById("addRvDespAnexo").value;
-			let addRvDespCodiID = document.getElementById("addRvDespCodiID").value;
-			let abastCNPJPosto = document.getElementById("abastCNPJPosto").value;
-			let abastNomePosto = document.getElementById("abastNomePosto").value;
-			let abastTpCombustivel = document.getElementById("abastTpCombustivel").value;
-			let abastKmAbastecimento = document.getElementById("abastKmAbastecimento").value;
-			let abastQtdLitros = document.getElementById("abastQtdLitros").value;
-			let abastValorLitro = document.getElementById("abastValorLitro").value;
-			let solSetor = document.getElementById("solSetor").value;
+			let addRvDespEstabelecimento = $("#addRvDespEstabelecimento").val();
+			let addRvDespDocumento = $("#addRvDespDocumento").val();
+			let addRvDespData = $("#addRvDespData").val();
+			let addRvDespTpPag = $("#addRvDespTpPag").val();
+			let addRvDespClassi = $("#addRvDespClassi").val();
+			let addRvDespValor = $("#addRvDespValor").val();
+			let addRvDespCCusto = $("#addRvDespCCusto").val();
+			let addRvDespAnexo = $("#addRvDespAnexo").val();
+			let addRvDespCodiID = $("#addRvDespCodiID").val();
+			let abastCNPJPosto = $("#abastCNPJPosto").val();
+			let abastNomePosto = $("#abastNomePosto").val();
+			let abastTpCombustivel = $("#abastTpCombustivel").val();
+			let rvDespTpCombText = $(`#abastTpCombustivel option:selected`).text()
+			let abastKmAbastecimento = $("#abastKmAbastecimento").val();
+			let abastQtdLitros = $("#abastQtdLitros").val();
+			let abastValorLitro = $("#abastValorLitro").val();
+			let solSetor = $("#solSetor").val();
+			let geraisPlaca = $("#geraisPlaca").val();
+			let geraisVeiculo = $("#geraisVeiculo").val();
 
 
 			$(`#rvDespEstabelecimento___${indice}`).val(addRvDespEstabelecimento)
@@ -349,22 +380,27 @@ var funcoes = (function() {
 			$(`#rvDespCCusto___${indice}`).val(addRvDespCCusto)
 			$(`#rvDespAnexo___${indice}`).val(addRvDespAnexo)
 			$(`#rvDespCodiID___${indice}`).val(addRvDespCodiID)
-
+	
 			if( solSetor == "outro" && addRvDespClassi == "Combustível"){
 				$(`#rvDespCnpj___${indice}`).val(abastCNPJPosto)
 				$(`#rvDespNomePosto___${indice}`).val(abastNomePosto)
 				$(`#rvDespTpComb___${indice}`).val(abastTpCombustivel)
+				$(`#rvDespTpCombText___${indice}`).val(rvDespTpCombText)
 				$(`#rvDespKmAbast___${indice}`).val(abastKmAbastecimento)
 				$(`#rvDespQtdL___${indice}`).val(abastQtdLitros)
 				$(`#rvDespValorL___${indice}`).val(abastValorLitro)
+				$(`#rvDespPlaca___${indice}`).val(geraisPlaca)
+				$(`#rvDespVeiculo___${indice}`).val(geraisVeiculo)
 
 
 				$('input[name*=rvDespCnpj___'+indice+']').closest('.abast').show();
 				$('input[name*=rvDespNomePosto___'+indice+']').closest('.abast').show();
-				$('input[name*=rvDespTpComb___'+indice+']').closest('.abast').show();
+				$('input[name*=rvDespTpCombText___'+indice+']').closest('.abast').show();
 				$('input[name*=rvDespKmAbast___'+indice+']').closest('.abast').show();
 				$('input[name*=rvDespQtdL___'+indice+']').closest('.abast').show();
 				$('input[name*=rvDespValorL___'+indice+']').closest('.abast').show();
+				$('input[name*=rvDespPlaca___'+indice+']').closest('.abast').show();
+				$('input[name*=rvDespVeiculo___'+indice+']').closest('.abast').show();
 		
 			}
 			
@@ -391,13 +427,11 @@ var funcoes = (function() {
 			
 			$('#solDataSaida').prop('readonly', true);
 			$('#solDataSaida').prop('style', 'pointer-events:none');
-			$('#solDataRet').prop('readonly', true);
-			$('#solDataRet').prop('style', 'pointer-events:none');
 
 			$('#solSetor').attr('readonly', true);
 			$('#solSetor').prop('style', 'pointer-events:none');
 
-			$('#geraisPlaca').prop("readonly", true);
+			document.getElementById('addRvDespEstabelecimento').focus();
 		},
 		
 		limpaAddDespesa(){
@@ -417,6 +451,8 @@ var funcoes = (function() {
 			$(`#abastQtdLitros`).val("");
 			$(`#abastValorLitro`).val("");
 			$(`#abastFormaPagamento`).val("");
+			$(`#geraisPlaca`).val("");
+			$(`#geraisVeiculo`).val("");
 		
 		},
 
@@ -425,8 +461,10 @@ var funcoes = (function() {
 			const dia = dataAtual.getDate().toString().padStart(2, '0');
 			const mes = (dataAtual.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são base 0.
 			const ano = dataAtual.getFullYear();
-			const hora = dataAtual.getHours().toString().padStart(2, '0');
-			const minutos = dataAtual.getMinutes().toString().padStart(2, '0');
+			const hora = "08";
+			const minutos = "00";
+			// const hora = dataAtual.getHours().toString().padStart(2, '0');
+			// const minutos = dataAtual.getMinutes().toString().padStart(2, '0');
 		
 			const carimboDataHora = `${dia}/${mes}/${ano} ${hora}:${minutos}`;
 			
@@ -498,7 +536,7 @@ var funcoes = (function() {
 		},
 
 		calculaCombustivelFat : function(){
-			//soma somente combustivel
+			//soma somente combustivel que for faturado
 			let totalCombFat = 0;
 
 			$("input[name*=rvDespValor___]").each(function(index){
@@ -653,15 +691,16 @@ var eventsFuncoes = (function() {
 	return {
 		setup : function() {	
 
+			$(document).on("keyup", "#geraisPlaca", function() {
+				$("#geraisPlaca").val( $("#geraisPlaca").val().toUpperCase()   );
+			});
+
 			$(document).on("change", "#geraisPlaca", function() {
-				var geraisPlaca = document.getElementById("geraisPlaca");
-				var geraisPlacaMaiusculo = geraisPlaca.value.toUpperCase();
-				$('#geraisPlaca').val(geraisPlacaMaiusculo);
+				const geraisPlaca = $("#geraisPlaca").val().trim();
 				
-				 if( $("#geraisPlaca").val().trim().length == 7 ){
-					
+				if( geraisPlaca.length == 7 ){
 					funcoes.consultaVeiculo();
-					
+
 				}else{					
 					$('#geraisVeiculo').val('');
 					FLUIGC.toast({ title: '', message: 'A Placa não está preenchida corretamente!', type: 'warning' });
@@ -692,10 +731,6 @@ var eventsFuncoes = (function() {
 			$(document).on("change", "#abastQtdLitros", function() {
 				funcoes.calculaValorLitro();
 			});	
-
-			// $(document).on("change", "#geraisPlaca", function() {
-			// 	funcoes.calculaValorLitro();
-			// });	
 			
 			$(document).on("change", "#abastCNPJPosto", function() {
 
@@ -743,6 +778,101 @@ var eventsFuncoes = (function() {
 					funcoes.calculaCombustivelFat();
 					funcoes.calculaValorLitro();
 				}
+			});
+
+			/**
+			 * Gatilho para buscar posto de combustivel pelo CNPJ na tabela de despesas 
+			 */
+			$(document).on("change", ".rvDespCnpj", function() {
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				//Consulta posto Filho		
+				let abastCNPJPosto = $("#rvDespCnpj___"+index).val().replace(/[^0-9]/g, "").trim();
+				
+				var loading = FLUIGC.loading(window);
+				loading.show();
+				
+				$.ajax({
+					type: "GET",
+					dataType: "json",
+					async: true,
+					url: "/api/public/ecm/dataset/search?datasetId=dsAbastConsultaPosto&filterFields=CNPJPOSTO,"+abastCNPJPosto,
+					data: "",
+					success: function (data, status, xhr) {
+						
+						if (data != null && data.content != null && data.content.length > 0) {
+							const records = data.content;
+							if( records[0].CODRET == "1"){
+								let record = records[0];
+								let NOMEPOSTO = record.NOMEPOSTO;
+								
+								$("#rvDespNomePosto___"+index).val(NOMEPOSTO);
+								
+							}else if (records[0].CODRET == "2"){
+								
+								//Se retornar como não encontrado, insere o nome do posto manualmente
+								FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
+								$("#rvDespNomePosto___"+index).val('');
+							}
+						}else{
+							//Se retornar como não encontrado, insere o nome do posto manualmente
+							FLUIGC.toast({ title: '', message: 'O Posto de combustível não foi localizado na base de dados.', type: 'warning' });
+							$("#rvDespNomePosto___"+index).val('');
+						}
+						setTimeout(function(){ 
+							loading.hide();
+						}, 1000);
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+						FLUIGC.toast({
+							title: '',
+							message: 'Erro na consulta do posto de combustível, comunicar o Administrador do Sistema!' ,
+							type: 'danger'
+						});
+						loading.hide();
+					}
+				});
+			});
+
+			/**
+			 * Gatilho para quando insere a placa na tabela de relatório de viagens
+			 */
+			$(document).on("change", ".rvDespPlaca", function() {
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				
+				const geraisPlaca = $("#rvDespPlaca___"+index).val().trim();
+				
+				if( geraisPlaca.length == 7 ){
+					funcoes.consultaVeiculo(index);
+				}else{					
+					$('#rvDespVeiculo___'+index).val('');
+					FLUIGC.toast({ title: '', message: 'A Placa não está preenchida corretamente!', type: 'warning' });
+				}
+			});
+
+			/**
+			 * Gatilho para quando altera o tipo do combustível
+			 */
+			$(document).on("change", ".rvDespTpComb", function() {
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+
+				let rvDespTpCombText = $(`#rvDespTpComb___${index} option:selected`).text()
+				$(`#rvDespTpCombText___${index}`).val(rvDespTpCombText);					
+			});	
+
+			/**
+			 * Gatilho para quando altera a Qtd de Litros, para calcular o valor do litro
+			 */
+			$(document).on("change", ".rvDespQtdL", function() {
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				var rvDespValor = validafunctions.getFloatValue("rvDespValor___"+index);
+				var rvDespQtdL = validafunctions.getFloatValue("rvDespQtdL___"+index);
+				let valorLitroFilho = 0;
+				
+				valorLitroFilho = rvDespValor / rvDespQtdL;
+				
+				$("#rvDespValorL___"+index).val(valorLitroFilho.toFixed(2));		
+				validafunctions.setMoeda("rvDespValorL___"+index, 2, false , '');							
 			});	
 		}
 	}
@@ -754,6 +884,7 @@ function loadForm(){
 	$(`#salvarEnviar`).val('');
 	funcoes.validaClassificacao();
 	funcoes.liberaPagamentos();
+	funcoes.limpaAddDespesa();
 
 	var psSolDataPesq = FLUIGC.calendar('#addRvDespData', {
 		language: 'pt-br',
@@ -774,7 +905,10 @@ function loadForm(){
 			pickDate: true,
 			pickTime: false,
 		});
-
+		if(isMobile == 'true'){
+			$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
+			$('#imprimirRelatorio').hide();
+		}
 
 	}else if(CURRENT_STATE == INICIO){
 
@@ -782,48 +916,98 @@ function loadForm(){
 			if($('#geraisPlaca').val() != ''){
 				funcoes.consultaVeiculo()
 			}
+		}if(isMobile == 'true'){
+			$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
+			$('#imprimirRelatorio').hide();
 		}
+
 	}else if(CURRENT_STATE == SALVAR_RELATORIO){
 		
 		if(FORM_MODE == "MOD"){
 			if($('#geraisPlaca').val() != ''){
 				funcoes.consultaVeiculo()
 			}
+		}if(isMobile == 'true'){
+			$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
+			$('#imprimirRelatorio').hide();
 		}
 
 	}else if(CURRENT_STATE == ANALISA_RELATORIO){
 		if(FORM_MODE == "MOD"){
+
 			//Liberar campos abastecimento
 			var setAbast = false;
 			if($("#solSetor").val() == "tecnico" || $("#solSetor").val() == "motorista"){
 				setAbast = true;
-				
 			}  
 			$("input[name*=rvDespValor___]").each(function(index){
 				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
 				let rvDespClassi = $("#rvDespClassi___"+index).val();
 				
-				if(rvDespClassi === "Combustível" &&  setAbast) {
-					console.log("if for");
+				//Liberar data e valor analisa relatorio
+				$("#rvDespData___"+index).prop("readonly", false);
+				$("#rvDespValor___"+index).prop("readonly", false);
+
+				var psSolDataPesq = FLUIGC.calendar('#rvDespData___'+index, {
+					language: 'pt-br',
+					pickDate: true,
+					pickTime: false,
+				});
+
+				$(document).on("change", "#rvDespValor___"+index, function() {
+					funcoes.calculaTotal();
+					funcoes.calculaSaldo();
+					funcoes.calculaCombustivel();
+					funcoes.calculaDiaria();
+					funcoes.calculaCombustivelFat();
+					funcoes.calculaValorLitro();
+				});
+
+				//Bloqueia campos de abastecimento
+				if(rvDespClassi == "Combustível" &&  setAbast) {
 					$("#rvDespCnpj___"+index).prop("readonly", false);
 					$("#rvDespNomePosto___"+index).prop("readonly", false);
+					$("#rvDespPlaca___"+index).prop("readonly", false);
+					$("#rvDespVeiculo___"+index).prop("readonly", false);
 					$("#rvDespTpComb___"+index).prop("readonly", false);
 					$("#rvDespKmAbast___"+index).prop("readonly", false);
 					$("#rvDespQtdL___"+index).prop("readonly", false);
-					$("#rvDespValorL___"+index).prop("readonly", false);
-
+					//Mascara cnpj
 					$("#rvDespCnpj___"+index).mask("00.000.000/0000-00");
+
+				}
+
+
+			});
+
+			$(document).on("click", "#rvDespValorL", function() {
+				if(funcoes.validaAddDespesa()){
+					funcoes.addDespesa();
+					funcoes.calculaTotal();
+					funcoes.calculaSaldo();
+					funcoes.calculaCombustivel();
+					funcoes.calculaDiaria();
+					funcoes.calculaCombustivelFat();
+					funcoes.calculaValorLitro();
 				}
 			});
+
+			if(isMobile == 'true'){
+				$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
+				$('#imprimirRelatorio').hide();
+			}
+
 		}
 	}else if(CURRENT_STATE == AJUSTA_RELATORIO){
-
 		if(FORM_MODE == "MOD"){
 			if($('#geraisPlaca').val() != ''){
 				funcoes.consultaVeiculo()
 			}
 		}
-
+		if(isMobile == 'true'){
+			$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
+			$('#imprimirRelatorio').hide();
+		}
 	}else if(CURRENT_STATE == REVISA_RELATORIO){
 		if(FORM_MODE == "MOD"){
 			//Liberar campos abastecimento  
@@ -833,6 +1017,10 @@ function loadForm(){
 				$("#rvDespTpComb___"+index).attr('readonly', true);
 				$("#rvDespTpComb___"+index).prop('style', 'pointer-events:none');
 			});
+		}
+		if(isMobile == 'true'){
+			$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
+			$('#imprimirRelatorio').hide();
 		}
 	}else if(CURRENT_STATE == ANALISA_ERRO_INTEGRACAO_ABASTECIMENTO){
 		if(FORM_MODE == "MOD"){

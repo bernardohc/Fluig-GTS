@@ -184,12 +184,74 @@ function validateForm(form){
                 if (isEmpty("aprovRelatorio", form)) {
                     message += getMessage("Aprovação:", 1, form);
                     hasErros = true;
-                }
-                if (form.getValue("aprovRelatorio") == 'reprovado') {
-                    if (isEmpty("rvAproObs", form)) {
-                        message += getMessage("Observação:", 1, form);
-                        hasErros = true;
-                    }                    
+                }else{
+                    if(form.getValue("aprovRelatorio") == 'aprovado'){
+
+                        var indexTbRelDespesas = form.getChildrenIndexes("tbRelDespesas");
+                        var rvDespCnpj = false;
+                        var rvDespNomePosto = false;
+                        var rvDespKmAbast = false;
+                        var rvDespTpComb = false;
+                        var rvDespQtdL = false;
+                        var rvDespValorL = false;
+                        var rvDespValor = false;
+                        var rvDespTpPag = false;
+                        for (var i = 0; i < indexTbRelDespesas.length; i++) {
+                            if(form.getValue("rvDespClassi___"+indexTbRelDespesas[i]) == 'Combustível'){
+                                
+                                if ( !rvDespCnpj && isEmpty("rvDespCnpj___" + indexTbRelDespesas[i], form)) {
+                                    message += getMessage("CNPJ do Posto", 5, form, "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespCnpj = true;
+                                }else if(!rvDespCnpj && form.getValue("rvDespCnpj___"+ indexTbRelDespesas[i]).length() != 18 ){
+                                    message += getMessage("CNPJ do Posto", 5, form,  "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespCnpj = true;
+                                }
+                                if ( !rvDespNomePosto && isEmpty("rvDespNomePosto___" + indexTbRelDespesas[i], form)) {
+                                    message += getMessage("Nome do Posto", 5, form, "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespNomePosto = true;
+                                }
+                                if ( !rvDespKmAbast && isEmpty("rvDespKmAbast___" + indexTbRelDespesas[i], form)) {
+                                    message += getMessage("Km Abastecimento", 5, form, "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespKmAbast = true;
+                                }
+                                if ( !rvDespTpComb && isEmpty("rvDespTpComb___" + indexTbRelDespesas[i], form)) {
+                                    message += getMessage("Tipo de Combustível", 5, form, "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespTpComb = true;
+                                }
+                                if ( !rvDespQtdL && isEmpty("rvDespQtdL___" + indexTbRelDespesas[i], form)) {
+                                    message += getMessage("Qtd. Litros", 5, form, "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespQtdL = true;
+                                }
+                                if ( !rvDespValorL && isEmpty("rvDespValorL___" + indexTbRelDespesas[i], form)) {
+                                    message += getMessage("Valor Litro", 5, form, "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespValorL = true;
+                                }
+                                if ( !rvDespValor && isEmpty("rvDespValor___" + indexTbRelDespesas[i], form)) {
+                                    message += getMessage("Valor Total", 5, form, "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespValor = true;
+                                }
+                                if ( !rvDespTpPag && isEmpty("rvDespTpPag___" + indexTbRelDespesas[i], form)) {
+                                    message += getMessage("Forma de Pagamento", 5, form, "Despesa de Viagens");
+                                    hasErros = true;
+                                    rvDespTpPag = true;
+                                }
+                            }
+                        }
+
+                    }else if (form.getValue("aprovRelatorio") == 'reprovado') {
+                        if (isEmpty("rvAproObs", form)) {
+                            message += getMessage("Observação:", 1, form);
+                            hasErros = true;
+                        }                    
+                    }
                 }
                 
             }
@@ -234,43 +296,6 @@ function validateForm(form){
             }
             if (isEmpty("solNomeSol", form)) {
                 message += getMessage("Nome Solicitante", 1, form);
-                hasErros = true;
-            }
-            if (isEmpty("geraisCarimboDataHora", form)) {
-                message += getMessage("Carimbo de Data/Hora", 1, form);
-                hasErros = true;
-            }else{
-                
-                var sdf = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm");
-                
-                var geraisCarimboDataHora = form.getValue("geraisCarimboDataHora");
-                var geraisCarimboDataHoraParse = sdf.parse(geraisCarimboDataHora);
-                
-                var dataHoje = java.util.Calendar.getInstance();
-                
-                //Aqui primeiro converte a data hoje para dd/MM/yyyy, para posteriormente transformar em um campo date.
-                var dataHojeParse = sdf.parse( sdf.format(dataHoje.getTime() ));
-                
-                //Se a data de hoje antes que a data do Carimbo
-                if(dataHojeParse.before(geraisCarimboDataHoraParse)){
-                    if (isMobile(form)) {
-                        message += getMessage("Campo: 'Carimbo de Data/Hora' não pode ser maior que hoje e a hora atual.", 6, form);	
-                    }else{
-                        message += getMessage("Campo: <b>Carimbo de Data/Hora</b> não pode ser maior que hoje e a hora atual.", 6, form);	
-                    }
-                    hasErros = true;
-                }
-                
-            }
-            if (isEmpty("geraisPlaca", form)) {
-                message += getMessage("Placa", 1, form);
-                hasErros = true;
-            }else if( form.getValue("geraisPlaca").length() != 7 ){
-                message += getMessage("Placa", 2, form);
-                hasErros = true;
-            }
-            if (isEmpty("geraisVeiculo", form)) {
-                message += getMessage("Veículo", 1, form);
                 hasErros = true;
             }
             

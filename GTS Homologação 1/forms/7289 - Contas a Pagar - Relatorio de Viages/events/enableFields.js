@@ -6,7 +6,7 @@ function enableFields(form){
 		
 	}else if(atv_atual == SALVAR_RELATORIO){
         form.setEnabled("solDataSaida", false);
-        form.setEnabled("solDataRet", false);
+        //form.setEnabled("solDataRet", false);
         form.setEnabled("solSetor", false);
     }else if(atv_atual == ANALISA_RELATORIO){
         //Cabeçalho

@@ -11,8 +11,8 @@ function servicetask44(attempt, message) {
                 var geraisCodMotorista = DatasetFactory.createConstraint("geraisCodMotorista", hAPI.getCardValue("geraisCodMotorista"), "", ConstraintType.MUST); 
                 var geraisCPFMotorista = DatasetFactory.createConstraint("geraisCPFMotorista", hAPI.getCardValue("geraisCPFMotorista"), "", ConstraintType.MUST); 
                 var geraisNomeMotorista = DatasetFactory.createConstraint("geraisNomeMotorista", hAPI.getCardValue("solNomeSol"), "", ConstraintType.MUST); 
-                var geraisCarimboDataHora = DatasetFactory.createConstraint("geraisCarimboDataHora", hAPI.getCardValue("geraisCarimboDataHora"), "", ConstraintType.MUST); 
-                var geraisPlaca = DatasetFactory.createConstraint("geraisPlaca", hAPI.getCardValue("geraisPlaca"), "", ConstraintType.MUST); 
+                var geraisCarimboDataHora = DatasetFactory.createConstraint("geraisCarimboDataHora", hAPI.getCardValue("rvDespData___"+indexTbRelDespesas[i]) + " 08:00", "", ConstraintType.MUST); 
+                var geraisPlaca = DatasetFactory.createConstraint("geraisPlaca", hAPI.getCardValue("rvDespPlaca___"+indexTbRelDespesas[i]), "", ConstraintType.MUST); 
                 var abastCNPJPosto = DatasetFactory.createConstraint("abastCNPJPosto", hAPI.getCardValue("rvDespCnpj___"+indexTbRelDespesas[i]), "", ConstraintType.MUST); 
                 var abastNomePosto = DatasetFactory.createConstraint("abastNomePosto", hAPI.getCardValue("rvDespNomePosto___"+indexTbRelDespesas[i]), "", ConstraintType.MUST); 
                 var abastKmAbastecimento = DatasetFactory.createConstraint("abastKmAbastecimento", hAPI.getCardValue("rvDespKmAbast___"+indexTbRelDespesas[i]), "", ConstraintType.MUST); 

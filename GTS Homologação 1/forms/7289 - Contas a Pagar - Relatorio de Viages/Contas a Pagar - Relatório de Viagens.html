@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="js-pdf.min.js"></script>
 	<script type="text/javascript" src="js-pdfjs-viewer.js"></script>
 	<link rel="stylesheet" type="text/css" href="css-pdfjs-viewer.css">
+	<!-- <link rel="stylesheet" type="text/css" href="cssCustom.css"> -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
 		integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
@@ -66,14 +67,13 @@
 			<input type="hidden" name="pesNomePesquisador" id="pesNomePesquisador">
 			<input type="hidden" name="processoId" id="processoId">
 			<input type="hidden" name="solSetorHidden" id="solSetorHidden">
-			<input type="hidden" name="geraisCarimboDataHora" id="geraisCarimboDataHora">
+			
 
 			<div class="tab-content" id="divRelatorioViagens">
 				<div class="col-md-12 tab-pane active" id="divRelViagensDados">
 					<!-- Inicio Cabeçalho -->
 					<div class="panel panel-primary" id="divCabecalho">
 						<div class="panel-heading">
-							<!--<h3 class="panel-title">Viagem</h3>-->
 							<h3 class="panel-title">
 								<a class="collapse-icon up" data-toggle="collapse" data-parent="#divCabecalho" href="#collapseCabec">Viagem</a> 
 							</h3>
@@ -129,7 +129,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-2"><!-- col-md-offset-2 -->
+								<div class="col-md-2 col-md-offset-2">
 									<label for="solMoeda">Moeda</label>
 									<div class="radio input-group">										
 										<div class="custom-radio custom-radio-inline custom-radio-primary">
@@ -164,15 +164,7 @@
 									<label for="solNumColab">Nº de Colaboradores</label>
 									<input type="text" name="solNumColab" id="solNumColab" class="form-control"
 										oninput="validafunctions.soNumero(this.id, 0, false , '')">
-								</div>
-								<div class="col-md-2">
-									<label for="geraisPlaca">Placa*</label>
-									<input type="text" name="geraisPlaca" id="geraisPlaca" class="form-control" maxlength="7">
-								</div>
-								<div class="col-md-2">
-									<label for="geraisVeiculo">Veiculo*</label>
-									<input type="text" name="geraisVeiculo" id="geraisVeiculo" class="form-control" readonly>
-								</div>
+								</div>								
 							</div>
 						</div>
 					</div>
@@ -258,15 +250,20 @@
 										<label for="abastNomePosto">Nome do Posto*</label>
 										<input type="text" name="abastNomePosto" id="abastNomePosto" class="form-control">
 									</div>
+								</div>
+								<div class="row" liberaComb>
+									<div class="col-md-2 col-md-offset-1">
+										<label for="geraisPlaca">Placa*</label>
+										<input type="text" name="geraisPlaca" id="geraisPlaca" class="form-control" maxlength="7">
+									</div>
+									<div class="col-md-2">
+										<label for="geraisVeiculo">Veiculo*</label>
+										<input type="text" name="geraisVeiculo" id="geraisVeiculo" class="form-control" readonly>
+									</div>
 									<div class="col-md-2" align="left">
 										<label for="abastTpCombustivel">Tipo de Combustível*</label>
 										<select name="abastTpCombustivel" id="abastTpCombustivel" class="form-control">
 											<option value=""></option>
-											<!-- <option value="Gasolina Comum"> Gasolina Comum </option>
-											<option value="Gasolina Aditivada"> Gasolina Aditivada </option>
-											<option value="S10"> S10 </option>
-											<option value="Arla"> Arla </option>
-											<option value="outro"> Outro </option> -->
 										</select>
 									</div>
 								</div>
@@ -287,7 +284,7 @@
 										<input type="text" name="abastValorLitro" id="abastValorLitro" class="form-control"
 											oninput="validafunctions.setMoeda(this.id, 2, false , 'R$ ')" readonly>
 									</div>
-								</div>
+								</div>								
 								<!-- Fim Abastecimento -->
 								<div class="form-group col-md-2 col-md-offset-10">
 									<div id="divInserirImagens">
@@ -314,105 +311,102 @@
 										customFnDelete="removeDespesa(this)">
 										<thead>
 											<tr>
-												<th class="col-md-1"></th>
+												<!-- <th class="col-md-1"></th> -->
 												<th class="col-md-10"></th>
 												<th class="col-md-1"></th>
-												<!-- <th style="width: 7%; padding-left: 3px !important; padding-right: 2px !important;">Código</th>
-												<th style="width: 19%; padding-left: 3px !important; padding-right: 2px !important;">Estabelecimento</th>
-												<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Documento</th>
-												<th style="width: 11%; padding-left: 3px !important; padding-right: 2px !important;">Data</th>
-												<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Pagamento</th>		
-												<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Classificação</th>		
-												<th style="width: 10%; padding-left: 3px !important; padding-right: 2px !important;">Valor</th>		
-												<th style="width: 18%; padding-left: 3px !important; padding-right: 2px !important;">Centro de Custo</th>		
-												<th style="width: 5%; padding-left: 3px !important; padding-right: 2px !important;">Anexo</th> -->
 											</tr>
 										</thead>
 										<tbody class="cust-align-fields">
 											<tr detail="true" detailname="falTbRelDespesas" class="cust-table-row cust-align-fields">
-												<td class="col-md-1">
-														<label for="rvDespCodiID">Código</label>
-														<input type="text" id="rvDespCodiID" name="rvDespCodiID"
-															class="form-control" readonly>
-												</td>
-												<td class="col-md-10 cust-table-line cust-align-fields">
+												<td class="col-md-12 cust-table-line cust-align-fields">
+													<!-- Inicio despesas Gerais -->
 													<div class="row" id="divDespesas">
+														<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+															<label for="rvDespCodiID">Código</label>
+														<input type="text" id="rvDespCodiID" name="rvDespCodiID" class="form-control" readonly>
+														</div>
 														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields">
 															<label for="rvDespEstabelecimento">Estabelecimento</label>
-															<input type="text" id="rvDespEstabelecimento"
-																name="rvDespEstabelecimento" class="form-control" readonly>
+															<input type="text" id="rvDespEstabelecimento" name="rvDespEstabelecimento" class="form-control" readonly>
 														</div>
 														<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields"> 
 															<label for="rvDespDocumento">Documento</label>
-															<input type="text" id="rvDespDocumento" name="rvDespDocumento"
-																class="form-control" readonly>
+															<input type="text" id="rvDespDocumento" name="rvDespDocumento" class="form-control" readonly>
 														</div>
-														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields">
+														<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
 															<label for="rvDespData">Data</label>
-															<input type="text" id="rvDespData" name="rvDespData"
-																class="form-control" readonly>
+															<input type="text" id="rvDespData" name="rvDespData" class="form-control" readonly>
 														</div>
 														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields">
 															<label for="rvDespTpPag">Pagamento</label>
-															<input type="text" id="rvDespTpPag" name="rvDespTpPag"
-																class="form-control" readonly>
+															<input type="text" id="rvDespTpPag" name="rvDespTpPag" class="form-control" readonly>
 														</div>
-														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields"> 
+														<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields"> 
 															<label for="rvDespClassi">Classificação</label>
-															<input type="text" id="rvDespClassi" name="rvDespClassi"
-																class="form-control" readonly>
+															<input type="text" id="rvDespClassi" name="rvDespClassi" class="form-control" readonly>
 														</div>
 														<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields"> 
 															<label for="rvDespValor">Valor</label>
-															<input type="text" id="rvDespValor" name="rvDespValor"
-																class="form-control" readonly>
+															<input type="text" id="rvDespValor" name="rvDespValor" class="form-control" readonly oninput="validafunctions.setMoeda(this.id, 2, false , '')">
 														</div>
 														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields"> 
 															<label for="rvDespCCusto">Centro de Custo</label>
-															<input type="text" id="rvDespCCusto" name="rvDespCCusto"
-																class="form-control" readonly>
+															<input type="text" id="rvDespCCusto" name="rvDespCCusto" class="form-control" readonly>
 														</div>
-														
 													</div>
-													<div class="row" id="divAbastecimento" >
-														<div class="col-md-2 abast cust-table-fields cust-table-line cust-align-fields" style="display:none;"> 
+													<!-- Fim despesas Gerais -->
+													<!-- Inicio despesas Abastecimento -->
+													<div class="row" id="divAbastecimento">
+														<div class="col-md-2 abast cust-table-fields cust-table-line cust-align-fields"  style="display:none;">
 															<label for="rvDespCnpj">CNPJ do Posto</label>
-															<input type="text" id="rvDespCnpj" name="rvDespCnpj"
-																class="form-control" readonly>
+															<input type="text" id="rvDespCnpj" name="rvDespCnpj" class="form-control rvDespCnpj" readonly>
+															<input type="hidden" name="geraisCarimboDataHora" id="geraisCarimboDataHora">
 														</div>
 														<div class="col-md-3 abast cust-table-fields cust-table-line cust-align-fields" style="display:none;"> 
 															<label for="rvDespNomePosto">Posto</label>
-															<input type="text" id="rvDespNomePosto" name="rvDespNomePosto"
-																class="form-control" readonly>
+															<input type="text" id="rvDespNomePosto" name="rvDespNomePosto" class="form-control" readonly>
 														</div>
-														<div class="col-md-2" align="left" readonly style="display:none">
-															<label for="rvDespTpComb">Tipo de Combustível*</label>
-															<input type="text" id="rvDespTpComb" name="rvDespTpComb" class="form-control" readonly />
-															<!-- <select name="rvDespTpComb" id="rvDespTpComb" class="form-control" >
+														<div class="col-md-2 abast cust-table-fields cust-table-line cust-align-fields" style="display:none;"> 
+															<label for="rvDespPlaca">Placa</label>
+															<input type="text" id="rvDespPlaca" name="rvDespPlaca" class="form-control rvDespPlaca" readonly>
+														</div>
+														<div class="col-md-2 abast cust-table-fields cust-table-line cust-align-fields" style="display:none;"> 
+															<label for="rvDespVeiculo">Veiculo</label>
+															<input type="text" id="rvDespVeiculo" name="rvDespVeiculo" class="form-control" readonly>
+														</div>
+														<div class="col-md-2 abast" style="display:none;">
+															<label for="rvDespTpComb">Tipo de Combustível</label>
+															<select name="rvDespTpComb" id="rvDespTpComb" class="form-control rvDespTpComb" >
 																<option value=""></option>
-																<option value="Gasolina Comum"> Gasolina Comum </option>
-																<option value="Gasolina Aditivada"> Gasolina Aditivada </option>
-																<option value="S10"> S10 </option>
-																<option value="Arla"> Arla </option>
-																<option value="outro"> Outro </option>
-															</select> -->
+																<option value="GC">Gasolina Comum</option>
+																<option value="GA">Gasolina Aditivada</option>
+																<option value="ETA">Etanol</option>
+																<option value="ARL">Arla 32</option>
+																<option value="S10">Diesel S10</option>
+															</select>
 														</div>
+														<div class="col-md-2 abast" style="display:none;"> 
+															<label for="rvDespTpCombText">Tipo de Combustível</label>
+															<input type="text" id="rvDespTpCombText" name="rvDespTpCombText" class="form-control" readonly>
+														</div>
+													</div>
+													<div class="row" id="divAbastecimento">
 														<div class="col-md-2 abast cust-table-fields cust-table-line cust-align-fields" style="display:none;"> 
 															<label for="rvDespKmAbast">Km Abastecimento</label>
 															<input type="text" id="rvDespKmAbast" name="rvDespKmAbast"
-																class="form-control" readonly oninput="validafunctions.setNumero(this.id, 1, false , '')"> 
+																class="form-control" readonly onKeyPress="validafunctions.setNumero(this.id, 0, false)" > 
 														</div>
 														<div class="col-md-2 abast cust-table-fields cust-table-line cust-align-fields" style="display:none;"> 
 															<label for="rvDespQtdL">Qtd. Litros</label>
 															<input type="text" id="rvDespQtdL" name="rvDespQtdL"
-																class="form-control" readonly oninput="validafunctions.setNumero(this.id, 1, false , '')">
+																class="form-control rvDespQtdL" readonly oninput="validafunctions.setNumero(this.id, 2, false , '')" >
 														</div>
 														<div class="col-md-2 abast cust-table-fields cust-table-line cust-align-fields" style="display:none;"> 
 															<label for="rvDespValorL">Valor Litro</label>
-															<input type="text" id="rvDespValorL" name="rvDespValorL"
-																class="form-control" readonly oninput="validafunctions.setMoeda(this.id, 2, false , '')">
+															<input type="text" id="rvDespValorL" name="rvDespValorL" class="form-control" readonly >
 														</div>
 													</div>
+													<!-- Fim despesas Abastecimento -->
 												</td>
 												<td class="col-md-1" style="text-align: center; vertical-align: middle;">
 													<div class="row">
@@ -439,8 +433,7 @@
 										</tbody>
 									</table>
 								</div>
-							</div>
-							
+							</div>							
 							<!--Fim Tabela Pai Filho-->
 							<div class="row">
 								<div class="col-md-6 col-md-offset-3">
@@ -449,7 +442,7 @@
 										class="form-control "></textarea>
 								</div>
 							</div>
-							<div class="row" id="divSalvarEnviar"><!--style="display:none;"-->
+							<div class="row" id="divSalvarEnviar">
 								<div class="col-md-3 col-md-offset-4">
 									<br>
 									<div class="row">
@@ -463,7 +456,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-2 col-md-offset-3" id="divSalvarEnviar"><!--col-md-offset-10-->
+								<div class="col-md-2 col-md-offset-3" id="divSalvarEnviar">
 									<label for="salvarEnviar">Deseja Salvar ou Enviar?</label>
 									<select name="salvarEnviar" id="salvarEnviar" class="form-control salvarEnviar">
 										<option value=""></option>
@@ -484,35 +477,31 @@
 							</h3>
 						</div>
 						<div class="panel-collapse collapse" id="collapseTotais">
-						<div class="row">
-							<div class="form-group col-md-2 col-md-offset-3">
-								<label for="rvDiaria">Diária:</label>
-								<input type="text" name="rvDiaria" id="rvDiaria" class="form-control" readonly>
+							<div class="row">
+								<div class="form-group col-md-2 col-md-offset-3">
+									<label for="rvDiaria">Diária:</label>
+									<input type="text" name="rvDiaria" id="rvDiaria" class="form-control" readonly>
+								</div>
+								<div class="form-group col-md-2">
+									<label for="rvTotal">Total de despesas:</label>
+									<input type="text" name="rvTotal" id="rvTotal" class="form-control" readonly>
+								</div>
+								<div class="form-group col-md-2">
+									<label for="rvSaldo">Saldo:</label>
+									<input type="text" name="rvSaldo" id="rvSaldo" class="form-control" readonly>
+								</div>
 							</div>
-							<div class="form-group col-md-2">
-								<label for="rvTotal">Total de despesas:</label>
-								<input type="text" name="rvTotal" id="rvTotal" class="form-control" readonly>
+							<div class="row">
+								<div class="form-group col-md-2 col-md-offset-4">
+									<label for="rvTotalComb">Total combustível:</label>
+									<input type="text" name="rvTotalComb" id="rvTotalComb" class="form-control" readonly>
+								</div>
+								<div class="form-group col-md-2">
+									<label for="rvTotalCombFat">Total comb. faturado:</label>
+									<input type="text" name="rvTotalCombFat" id="rvTotalCombFat" class="form-control" readonly>
+								</div>
 							</div>
-							<div class="form-group col-md-2">
-								<label for="rvSaldo">Saldo:</label>
-								<input type="text" name="rvSaldo" id="rvSaldo" class="form-control" readonly>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group col-md-2 col-md-offset-4">
-								<label for="rvTotalComb">Total combustível:</label>
-								<input type="text" name="rvTotalComb" id="rvTotalComb" class="form-control" readonly>
-							</div>
-							<div class="form-group col-md-2">
-								<label for="rvTotalCombFat">Total comb. faturado:</label>
-								<input type="text" name="rvTotalCombFat" id="rvTotalCombFat" class="form-control" readonly>
-							</div>
-							<!-- <div class="form-group col-md-2">
-								<label for="rvTotalDespComb">Despesas e comb.:</label>
-								<input type="text" name="rvTotalDespComb" id="rvTotalDespComb" class="form-control"
-									readonly>
-							</div> -->
-						</div>
+						</div>	
 					</div>
 					<!-- Fim Totais -->
 					<!-- Inicio Aprovação-->
@@ -566,22 +555,20 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<!-- <div class="row"> -->
-									<div class="col-md-4 col-md-offset-4" align="left">
-										<div class="radio input-group">
-											<div class="custom-radio custom-radio-inline custom-radio-primary">
-												<input type="radio" name="revisaoRelatorio" value="revisaoAprovado"
-													id="revisaoRelatorioAprovado" />
-												<label for="revisaoRelatorioAprovado">Revisão Aprovada</label>
-											</div>
-											<div class="custom-radio custom-radio-inline custom-radio-primary">
-												<input type="radio" name="revisaoRelatorio" value="revisaoReprovado"
-													id="revisaoRelatorioReprovado" />
-												<label for="revisaoRelatorioReprovado">Revisão Reprovada</label>
-											</div>
+								<div class="col-md-4 col-md-offset-4" align="left">
+									<div class="radio input-group">
+										<div class="custom-radio custom-radio-inline custom-radio-primary">
+											<input type="radio" name="revisaoRelatorio" value="revisaoAprovado"
+												id="revisaoRelatorioAprovado" />
+											<label for="revisaoRelatorioAprovado">Revisão Aprovada</label>
+										</div>
+										<div class="custom-radio custom-radio-inline custom-radio-primary">
+											<input type="radio" name="revisaoRelatorio" value="revisaoReprovado"
+												id="revisaoRelatorioReprovado" />
+											<label for="revisaoRelatorioReprovado">Revisão Reprovada</label>
 										</div>
 									</div>
-								<!-- </div> -->
+								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-6 col-md-offset-3" align="left">
