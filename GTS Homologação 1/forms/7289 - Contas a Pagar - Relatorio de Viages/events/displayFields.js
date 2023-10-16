@@ -77,7 +77,7 @@ function displayFields(form, customHTML) {
 		} 
 		form.setVisibleById("divAprovacao", false);
 		form.setVisibleById("divRevisao", false);
-		form.setVisibleById("imprimirRelatorio", false);
+		//form.setVisibleById("imprimirRelatorio", false);
 	} else if (atv_atual == ANALISA_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divRevisao", false);
@@ -85,8 +85,8 @@ function displayFields(form, customHTML) {
 		}
 		form.setVisibleById("divAddDespesa", false);
 		form.setVisibleById("divRevisao", false);	
-		form.setVisibleById("imprimirRelatorio", false);	
-		form.setVisibleById("divImprimirAprov", false);	
+		//form.setVisibleById("imprimirRelatorio", false);	
+		//form.setVisibleById("divImprimirAprov", false);	
 	} else if (atv_atual == AJUSTA_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
 			form.setVisibleById("divAddDespesa", false);

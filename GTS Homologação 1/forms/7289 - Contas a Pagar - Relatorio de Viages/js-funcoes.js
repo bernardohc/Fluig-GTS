@@ -927,9 +927,10 @@ function loadForm(){
 			if($('#geraisPlaca').val() != ''){
 				funcoes.consultaVeiculo()
 			}
-		}if(isMobile == 'true'){
-			$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
-			$('#imprimirRelatorio').hide();
+			if(isMobile == 'true'){
+				$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
+				$('#imprimirRelatorio').hide();
+			}
 		}
 
 	}else if(CURRENT_STATE == ANALISA_RELATORIO){
@@ -992,10 +993,10 @@ function loadForm(){
 				}
 			});
 
-			if(isMobile == 'true'){
-				$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
-				$('#imprimirRelatorio').hide();
-			}
+			// if(isMobile == 'true'){
+			// 	$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
+			// 	$('#imprimirRelatorio').hide();
+			// }
 
 		}
 	}else if(CURRENT_STATE == AJUSTA_RELATORIO){
