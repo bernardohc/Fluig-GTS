@@ -85,7 +85,7 @@ function displayFields(form, customHTML) {
 		}
 		form.setVisibleById("divAddDespesa", false);
 		form.setVisibleById("divRevisao", false);	
-		//form.setVisibleById("imprimirRelatorio", false);	
+		form.setVisibleById("divImprimirSol", false);	
 		//form.setVisibleById("divImprimirAprov", false);	
 	} else if (atv_atual == AJUSTA_RELATORIO) {
 		if (form.getFormMode() == 'MOD') {
@@ -129,12 +129,18 @@ function showAbast(form, customHTML){
 	var atv_atual = getValue("WKNumState");
 	var showAbast = false;
 	if(atv_atual == INICIO_0 || atv_atual == INICIO || atv_atual == SALVAR_RELATORIO || atv_atual == AJUSTA_RELATORIO ){
-		if(form.getValue("solSetor") == "outro"){
+		if(form.getValue("solSetor") == "outro" || form.getValue("solSetor") == "tecnico" || form.getValue("solSetor") == "motorista"){
 			showAbast = true;
 		}
 	}else if(atv_atual == ANALISA_RELATORIO || atv_atual == REVISA_RELATORIO || atv_atual == INTEGRACAO_ABASTECIMENTO || atv_atual == ANALISA_ERRO_INTEGRACAO_ABASTECIMENTO || atv_atual == FIM){
 		//Nas próximas etapas, sempre vai mostrar os campos, qdo for do tipo 'Combustível'
 		showAbast = true;
+	}
+
+	if(atv_atual == ANALISA_ERRO_INTEGRACAO_ABASTECIMENTO){
+			
+		customHTML.append('<script>$(function () { $(".bpm-mobile-trash-column").hide(); }');	
+		
 	}
 	
 	var index = form.getChildrenIndexes("tbRelDespesas");
@@ -148,16 +154,19 @@ function showAbast(form, customHTML){
 				customHTML.append("<script>$('input[name*=rvDespKmAbast___"+index[i]+"]').closest('.abast').show();</script>");
 				customHTML.append("<script>$('input[name*=rvDespQtdL___"+index[i]+"]').closest('.abast').show();</script>");
 				customHTML.append("<script>$('input[name*=rvDespValorL___"+index[i]+"]').closest('.abast').show();</script>");
-				if(atv_atual == ANALISA_RELATORIO){
-					//Qdo for na atividade ANALISA_RELATORIO e o setor não for outro, pode editar o combustivel
-					if(form.getValue("solSetor") != "outro"){
-						customHTML.append("<script>$('select[name*=rvDespTpComb___"+index[i]+"]').closest('.abast').show();</script>");
-					}else{
-						customHTML.append("<script>$('input[name*=rvDespTpCombText___"+index[i]+"]').closest('.abast').show();</script>");
-					}
-				}else{
-					customHTML.append("<script>$('input[name*=rvDespTpCombText___"+index[i]+"]').closest('.abast').show();</script>");
-				}
+				customHTML.append("<script>$('input[name*=rvDespTpCombText___"+index[i]+"]').closest('.abast').show();</script>");
+
+				// if(atv_atual == ANALISA_RELATORIO){
+				// 	//Qdo for na atividade ANALISA_RELATORIO e o setor não for outro, pode editar o combustivel
+				// 	if(form.getValue("solSetor") != "outro"){
+				// 		//customHTML.append("<script>$('select[name*=rvDespTpComb___"+index[i]+"]').closest('.abast').show();</script>");
+				// 		customHTML.append("<script>$('input[name*=rvDespTpCombText___"+index[i]+"]').closest('.abast').show();</script>");
+				// 	}else{
+				// 		customHTML.append("<script>$('input[name*=rvDespTpCombText___"+index[i]+"]').closest('.abast').show();</script>");
+				// 	}
+				// }else{
+				// 	customHTML.append("<script>$('input[name*=rvDespTpCombText___"+index[i]+"]').closest('.abast').show();</script>");
+				// }
 			}
 		}
 	}

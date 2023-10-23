@@ -294,6 +294,19 @@ function somenteNumerosInteiros(num, qtdCaracteres, def) {
 
 }
 
+function somenteNumerosInteirosComSeparador(campo) {
+
+	$("#" + campo.id).priceFormat({
+		clearPrefix: true,
+		prefix: '',
+	    centsSeparator: ',',
+	    thousandsSeparator: '.',
+	    centsLimit: 0
+//	    allowNegative: negatives
+	});
+	
+}
+
 function fMasc(objeto,mascara) {
 	obj=objeto
 	masc=mascara
@@ -343,66 +356,8 @@ function mTel(tel) {
 	}
 	return tel;
 }
-function messageToast(message, tipo){
 
-	if(isMobile == 'true'){
-		FLUIGC.message.alert({
-			title: ' ',
-			message: message.message,
-			label: 'Ok'
-		}, function(el, ev) {});
-	}else{
-		FLUIGC.toast({ title: message.title, message: message.message, type: tipo });
-	}
-
+function isEmpty(idCampo) {
+    var valor = $('#'+idCampo).val();
+    return valor == null || valor.trim().length == 0 || typeof valor === undefined || valor.trim() == '' || valor.trim() == '0' || valor.trim() == '0,00';
 }
-
-function getMessage(texto, tipoMensagem, tabpaifilho) {
-	if(isMobile == 'true'){
-        switch (tipoMensagem) {
-            case 1:
-                return 'Campo "' + texto + '" não pode estar vazio.\n';
-            case 2:
-                return 'Campo "' + texto + '" está inválido.\n';    
-            case 3:
-                return 'Selecione uma opção em "' + texto + '".\n';
-            case 4:
-                return 'Campo "' + texto + '" não pode ser zero.\n'; 
-            case 5:
-                    return 'A tabela de  "' + tabpaifilho + '" possui um ou mais campos de "' + texto + '" inválido.\n'; 
-            case 6:
-                    return texto; 
-            case 7:
-                    return "Campo: "+texto+" precisa estar marcado."; 
-            case 8:
-                return "Campo: "+texto+" não pode ser menor que a data de saída";  	 	
-            case 9:
-                return "Atenção! Selecione a opção: " +texto;    
-			case 10:
-				return 'Campo "' + texto + '" está fora do período da viagem.\n';   
-        }
-    } else {
-        switch (tipoMensagem) {
-            case 1:
-                return "<li>Campo: <b>" + texto + "</b> não pode estar vazio.</li>";
-            case 2:
-                return '<li>Campo: <b>"' + texto + '"</b> está inválido.\n';    
-            case 3:
-                return "<li>Selecione uma opção em: <b>" + texto + "</b></li>";
-            case 4:
-                return "<li>Campo: <b>" + texto + "</b> não pode ser zero.</li>";
-            case 5:
-                return "<li>A tabela de <b>" + tabpaifilho + "</b> possui um ou mais campos de <b>" + texto + "</b> inválido.</li>";  
-            case 6:
-                    return "<li>"+texto+"</li>";     
-            case 7:
-                    return "<li>Campo: <b>"+texto+"</b> precisa estar marcado.</li>";
-            case 8:
-                return "<li>Campo: <b>"+texto+"</b> não pode ser menor que a data de saída </li>";   
-            case 9:
-                return "<li>Atenção! Selecione a opção: <b>"+texto+"</b></li>";  
-            case 10:
-                return '<li>Campo: <b>"' + texto + '"</b> está fora do período da viagem.\n';    
-        }
-    }
-} 

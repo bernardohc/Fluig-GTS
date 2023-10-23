@@ -20,8 +20,10 @@ function enableFields(form){
         //Despesas
         form.setEnabled("rvDespObs", false);
         form.setEnabled("salvarEnviar", false);
-        
+            
     }else if(atv_atual == AJUSTA_RELATORIO){
+        form.setEnabled("solSetor", false);
+        form.setEnabled("solDataSaida", false);
         form.setEnabled("aprovRelatorio", false);
         form.setEnabled("rvAproObs", false);
         form.setEnabled("revisaoRelatorio", false);
