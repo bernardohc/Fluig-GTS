@@ -100,16 +100,13 @@ var validafunctions = (function(){
 			//validafunctions.loadJs(1);
 			$("#" + id).jqxTabs({width: '98%', height: size, theme: theme, scrollable: true, scrollPosition: "both"});
 		},
-
 		setData: function(id, formato, desabilitarAnterior, desabilitarPosterior) {
 //			validafunctions.loadJs(6);
-//		validafunctions.loadJs(7);
+//			validafunctions.loadJs(7);
 
-			//if (formato == undefined || formato == null || formato == ""){ 
-			//	formato = "dd/mm/yyyy"; 
-		//	}
+			//if (formato == undefined || formato == null || formato == "") { formato = "dd/mm/yyyy"; }
 
-		//	var i = $("#" + id);
+			//var i = $("#" + id);
 			
 			var options = {
 				    language: "pt-br",
@@ -125,8 +122,7 @@ var validafunctions = (function(){
 
 			
 
-			$('.input-group.date').datepicker(options);
-
+//			$('.input-group.date').datepicker(options);
 		},
 		setNumero: function(id, decimals, negatives) {
 			//validafunctions.loadJs(3);
@@ -135,6 +131,17 @@ var validafunctions = (function(){
 				prefix: '',
 			    centsSeparator: ',',
 			    thousandsSeparator: '.',
+			    centsLimit: decimals,
+			    allowNegative: negatives
+			});
+		},
+		soNumero: function(id, decimals, negatives) {
+			//validafunctions.loadJs(3);
+			$("#" + id).priceFormat({
+				clearPrefix: true,
+				prefix: '',
+			    centsSeparator: '',
+			    thousandsSeparator: '',
 			    centsLimit: decimals,
 			    allowNegative: negatives
 			});
@@ -149,7 +156,6 @@ var validafunctions = (function(){
 			    allowNegative: negatives
 			});
 		},
-
 		moedanoprefix: function(id, decimals, negatives) {
 			//validafunctions.loadJs(3);
 			$("#" + id).priceFormat({
@@ -179,7 +185,6 @@ var validafunctions = (function(){
 	        	campo.value = "";
 	        }
 		},
-
 		setRequired: function(id) {
 			$("label[for=" + id + "]").addClass("required");
 		},
@@ -604,9 +609,9 @@ var validafunctions = (function(){
 })();
 
 
-function testeadicionalinha(){
-		alert("entrou");
-		lastLinhaNota = wdkAddChild('testelinha');
-   		linhasCriadas++;
+// function testeadicionalinha(){
+// 		alert("entrou");
+// 		lastLinhaNota = wdkAddChild('testelinha');
+//    		linhasCriadas++;
 
-}
+// }

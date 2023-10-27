@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Contas a Pagar - Relatorio de Viagens</processId>
-      <version>41</version>
+      <version>13</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>20604</formId>
@@ -634,7 +634,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;reprovado&quot;</condition>
@@ -646,7 +646,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;aprovado&quot;</condition>
@@ -658,7 +658,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoReprovado&quot;</condition>
@@ -670,7 +670,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoAprovado&quot;</condition>
@@ -682,7 +682,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
@@ -696,7 +696,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
@@ -708,7 +708,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>27</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
@@ -722,7 +722,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>27</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
@@ -734,7 +734,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>32</sequence>
       </conditionProcessStatePK>
       <condition>temAbastecimento() == &apos;false&apos;</condition>
@@ -746,7 +746,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>13</version>
         <sequence>32</sequence>
       </conditionProcessStatePK>
       <condition>temAbastecimento() == &apos;true&apos;</condition>
@@ -1524,7 +1524,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1535,7 +1535,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>16</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1546,7 +1546,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1557,7 +1557,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>23</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1568,7 +1568,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1579,7 +1579,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1590,7 +1590,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>25</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1601,7 +1601,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>29</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1612,7 +1612,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>30</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1623,7 +1623,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>45</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1634,7 +1634,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>49</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1645,7 +1645,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>41</version>
+        <version>13</version>
         <linkSequence>49</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>

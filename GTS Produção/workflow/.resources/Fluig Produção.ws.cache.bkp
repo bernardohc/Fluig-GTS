@@ -11,7 +11,7 @@
   </void>
   <void method="put">
    <string>mecanismo</string>
-   <array class="[Ljava.lang.Object;" length="10">
+   <array class="[Ljava.lang.Object;" length="9">
     <void index="0">
      <array class="java.lang.Object" length="2">
       <void index="0">
@@ -93,16 +93,6 @@
      </array>
     </void>
     <void index="8">
-     <array class="java.lang.Object" length="2">
-      <void index="0">
-       <string>Pos-Venda-Cham-de-Atendimento-Cad-Processo</string>
-      </void>
-      <void index="1">
-       <string>posVendaChamAtendCadProc</string>
-      </void>
-     </array>
-    </void>
-    <void index="9">
      <array class="java.lang.Object" length="2">
       <void index="0">
        <string>Atribuição por Usuário</string>

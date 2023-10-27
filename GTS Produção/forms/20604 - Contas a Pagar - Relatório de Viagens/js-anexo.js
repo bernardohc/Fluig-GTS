@@ -61,8 +61,8 @@ function viewerFile(fileDescription) {
                     }
                     openDocument(document)
 
-                }else if (record.CODRET == "2"){
-                    messageToast({message: record.MSGRET}, 'danger')
+                }else if (records[0].CODRET == "2"){
+                    messageToast({message: record[0].MSGRET}, 'danger')
                 }
             }else{
                 messageToast({message: 'Erro ao consultar imagem, comunicar o Administrador do Sistema!'}, 'danger')
