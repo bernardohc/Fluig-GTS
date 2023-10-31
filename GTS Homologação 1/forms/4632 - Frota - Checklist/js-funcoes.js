@@ -207,12 +207,14 @@ function loadForm(){
 	
 	// Ocultar Aba de anexos do workflow
 	window.parent.$("#breadcrumb").remove();
-	window.parent.$("#textActivity").remove();
+	window.parent.$("#textActivity").text('');
+	
+	window.parent.$("#informationsTab").remove();
 	
 	window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
 	window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
-	window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
-	window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
+	window.parent.$('#wcm_widget').find("[data-cancel-workflow-request]").css("display","none");
+	window.parent.$('#wcm_widget').find("[data-cancel-workflow-request]").removeAttr("data-cancel");
 	window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
 	window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
 	

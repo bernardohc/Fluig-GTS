@@ -11,7 +11,7 @@
     <volumeId>Default</volumeId>
     <categoryId>Contas a Pagar</categoryId>
     <managerEngineAllocationId>Papel</managerEngineAllocationId>
-    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000016&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;000023&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Contas a Pagar - Relatorio de Viagens</processId>
-      <version>14</version>
+      <version>16</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>20604</formId>
@@ -634,7 +634,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;reprovado&quot;</condition>
@@ -646,7 +646,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;aprovRelatorio&quot;) == &quot;aprovado&quot;</condition>
@@ -658,7 +658,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoReprovado&quot;</condition>
@@ -670,7 +670,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>15</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;revisaoRelatorio&quot;) == &quot;revisaoAprovado&quot;</condition>
@@ -682,7 +682,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
@@ -696,7 +696,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>22</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
@@ -708,7 +708,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>27</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Salvar&quot;</condition>
@@ -722,7 +722,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>27</sequence>
       </conditionProcessStatePK>
       <condition>hAPI.getCardValue(&quot;salvarEnviar&quot;) == &quot;Enviar&quot;</condition>
@@ -734,7 +734,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>1</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>32</sequence>
       </conditionProcessStatePK>
       <condition>temAbastecimento() == &apos;false&apos;</condition>
@@ -746,7 +746,7 @@
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
         <expressionOrder>2</expressionOrder>
-        <version>14</version>
+        <version>16</version>
         <sequence>32</sequence>
       </conditionProcessStatePK>
       <condition>temAbastecimento() == &apos;true&apos;</condition>
@@ -1134,12 +1134,18 @@ var FIM = 18;</eventDescription>
             for(var j = 0; j &lt; attachments.size(); j++ ){&#xd;
                 var docDtoDespesa = attachments.get(j);&#xd;
                 var documentDescription = docDtoDespesa.getDocumentDescription();&#xd;
-                &#xd;
+               &#xd;
                 if(documentDescription.contains(&quot;.&quot;) ){&#xd;
                     //Se tiver extensão no arquivo, remove para validar pelo nome do arquivo&#xd;
                     //Isso estava ocorrendo no mobile, que insere sempre a extensão.&#xd;
-                    // extensaoDoArquivo = documentDescription.substring(documentDescription.lastIndexOf(46) + 1);&#xd;
-                    documentDescription = documentDescription.substring(0, documentDescription.lastIndexOf(46));&#xd;
+                    var extensaoDoArquivo = documentDescription.substring(documentDescription.lastIndexOf(46) + 1, documentDescription.length() ).toLowerCase();&#xd;
+                    &#xd;
+                    //Tem caso de o nome do arquivo ter .(ponto), ocasionado uma inconsitencia &#xd;
+                    //Como aqui script de workflow não tem como saber se é web ou mobile, foi necessário verificar a extensão do arquivo&#xd;
+                    if( extensaoDoArquivo == &quot;pdf&quot; || extensaoDoArquivo == &quot;png&quot; || extensaoDoArquivo == &quot;jpg&quot; || extensaoDoArquivo == &quot;jpeg&quot; ){&#xd;
+                        //Se for a extensão do arquivo, vai cortar a extensão e retornar somente o nome do nome do arquivo&#xd;
+                        documentDescription = documentDescription.substring(0, documentDescription.lastIndexOf(46));&#xd;
+                    }&#xd;
                 }&#xd;
                 if(documentDescription == hAPI.getCardValue(&quot;rvDespAnexo___&quot;+indexesTbRelDespesas[i]) ){&#xd;
                     hasAttachDespesa = true;&#xd;
@@ -1524,7 +1530,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>10</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1535,7 +1541,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>16</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1546,7 +1552,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>17</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1557,7 +1563,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>23</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1568,7 +1574,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1579,7 +1585,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1590,7 +1596,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>25</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1601,7 +1607,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>29</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1612,7 +1618,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>30</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1623,7 +1629,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>45</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1634,7 +1640,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>49</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1645,7 +1651,7 @@ function completeToLeft(value, caracter, size) {&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Contas-a-Pagar-Relatorio-de-Viagens</processId>
-        <version>14</version>
+        <version>16</version>
         <linkSequence>49</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
