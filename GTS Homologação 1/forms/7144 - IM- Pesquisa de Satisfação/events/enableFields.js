@@ -1,6 +1,7 @@
 function enableFields(form){
 
     var atv_atual = getValue("WKNumState");
+    var visu = form.getFormMode();
 	
 	if(atv_atual == INICIO_0){	 
 		//form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);
@@ -27,12 +28,13 @@ function enableFields(form){
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
         form.setEnabled("pesqTermColheita", false);
-        form.setEnabled("pesqPrevColheita", false);
+        //form.setEnabled("pesqPrevColheita", false);
         form.setEnabled("pesqOcorrencia", false);
         //Pos Safra
         //form.setEnabled("psPesqEntregaPor", false);
 
     }else if(atv_atual == Pesquisa_Pos_Safra){
+
         //form.setEnabled("divPesquisaDeSatisfacaoPosSafra", false);
         form.setEnabled("divPesquisaDeSatisfacaoPosSafra", true);
         //Pesquisa de satisfação
@@ -53,7 +55,7 @@ function enableFields(form){
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
         form.setEnabled("pesqTermColheita", false);
-        form.setEnabled("pesqPrevColheita", false);
+        //form.setEnabled("pesqPrevColheita", true);
         form.setEnabled("pesqOcorrencia", false);
 
         //Pesquisa pos safra
@@ -85,7 +87,7 @@ function enableFields(form){
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
         form.setEnabled("pesqTermColheita", false);
-        form.setEnabled("pesqPrevColheita", false);
+        //form.setEnabled("pesqPrevColheita", false);
         form.setEnabled("pesqOcorrencia", false);
 
         //Pesquisa pós safra
@@ -109,7 +111,7 @@ function enableFields(form){
         form.setEnabled("psPesqFeedbackPecas", false);
         form.setEnabled("psPesqOcorrencia", false);
     }else if(atv_atual == FIM){
-        
+        form.setEnabled("psPesqFeedbackPecas", false);
     }
 };
 

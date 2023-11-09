@@ -35,14 +35,19 @@ function displayFields(form, customHTML) {
 			form.setVisibleById("divPsPesqOcorrencia", false);
 			form.setVisibleById("divPsFimOcorrencia", false);
 			}
+		}if (form.getFormMode() == 'VIEW') {
+			customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
+			customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
 		}
 
 	}else if (atv_atual == Registro_Ocorrências) {
 		if (form.getFormMode() == 'MOD') {
 			controleAbas(form, customHTML, 'indisponivel');
 
+		}if (form.getFormMode() == 'VIEW') {
+			customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
+			customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
 		}
-
 	}else if (atv_atual == Pesquisa_Pos_Safra) {
 		if (form.getFormMode() == 'MOD') {
 
@@ -52,7 +57,14 @@ function displayFields(form, customHTML) {
         	form.setVisibleById("divPsPesqOcorrencia", false);
         	form.setVisibleById("divPsFimOcorrencia", false);
         	form.setVisibleById("divAddOcorrencia", false);
+
+		}if (form.getFormMode() == 'VIEW') {
+			customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
+			customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
 		}
+
+		disableCampo(form, customHTML);
+		
 
 	}else if (atv_atual == Ocorrência_Pos_Safra) {
 		if (form.getFormMode() == 'MOD') {
@@ -60,6 +72,9 @@ function displayFields(form, customHTML) {
 
 			form.setVisibleById("divFimOcorrencia", false);
 			form.setVisibleById("divAddOcorrencia", false);
+		}if (form.getFormMode() == 'VIEW') {
+			customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
+			customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
 		}
 
 	}else if (atv_atual == FIM_1 || FIM_2 || FIM_3) {
@@ -71,6 +86,9 @@ function displayFields(form, customHTML) {
 
 		disableCampo(form, customHTML);
 		disableCampoPs(form, customHTML);
+
+		customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
+		customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
 		
 	}
 };
@@ -85,15 +103,14 @@ function controleAbas(form, customHTML, tabNavegacao){
 function disableCampo(form, customHTML){
 	//customHTML.append("<script>$('#pesqAcompanhouEntrega').prop('readonly', true);</script>");
 	//customHTML.append("<script>$('#pesqTelefone').prop('readonly', true);</script>");
-	customHTML.append("<script>$('#pesqPrevColheita').prop('readonly', true);</script>");
 	customHTML.append("<script>$('#pesqNotaAtendimento').attr('readonly', true);</script>");
 	customHTML.append("<script>$('#pesqNotaAtendimento').prop('style', 'pointer-events:none');</script>");
 	customHTML.append("<script>$('#pesqNotaDesempenho').attr('readonly', true);</script>");
 	customHTML.append("<script>$('#pesqNotaDesempenho').prop('style', 'pointer-events:none');</script>");
 	customHTML.append("<script>$('#pesqTermColheita').attr('readonly', true);</script>");
 	customHTML.append("<script>$('#pesqTermColheita').prop('style', 'pointer-events:none');</script>");
-	customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
-	customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
+	//customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
+	//customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
 	customHTML.append("<script>$('#pesqOcorrencia').attr('readonly', true);</script>");	
 	customHTML.append("<script>$('#pesqOcorrencia').prop('style', 'pointer-events:none');</script>");	
 };

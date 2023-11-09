@@ -4,7 +4,7 @@ $(document).ready(function() {wdkAddChild
 	}, 100)	
 });
 
-const dataAtual = getDataAtual();
+//const dataAtual = getDataAtual();
 
 //Aqui cria as funcioes
 var funcoes = (function() {
@@ -15,6 +15,37 @@ var funcoes = (function() {
 		start : function() {
 			//eventsFuncoes.setup();
 		},
+
+		gerarDataHora : function() {
+			const dataAtual = new Date();
+			const dia = dataAtual.getDate().toString().padStart(2, '0');
+			const mes = (dataAtual.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são base 0.
+			const ano = dataAtual.getFullYear();
+			//const hora = "08";
+			//const minutos = "00";
+			// const hora = dataAtual.getHours().toString().padStart(2, '0');
+			// const minutos = dataAtual.getMinutes().toString().padStart(2, '0');
+		
+			const carimboDataHora = `${dia}/${mes}/${ano} `;//${hora}:${minutos}
+			
+			$('#solDataPesq').val(carimboDataHora);			
+		},
+
+		gerarDataHoraPs : function() {
+			const dataAtual = new Date();
+			const dia = dataAtual.getDate().toString().padStart(2, '0');
+			const mes = (dataAtual.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são base 0.
+			const ano = dataAtual.getFullYear();
+			//const hora = "08";
+			//const minutos = "00";
+			// const hora = dataAtual.getHours().toString().padStart(2, '0');
+			// const minutos = dataAtual.getMinutes().toString().padStart(2, '0');
+		
+			const carimboDataHora = `${dia}/${mes}/${ano} `;//${hora}:${minutos}
+			
+			$('#psSolDataPesq').val(carimboDataHora);			
+		},
+
 		limpaCamposItem: function(indexItem){
 			$("#pesqNumSerie").val('');
 			$("#pesqModelo").val('');
@@ -50,21 +81,25 @@ var funcoes = (function() {
 						if( records[0].CODRET == "1"){
 							var record = records[0];
 							
-							$("#pesqModelo").val(record.equipModelo);
+							$("#pesqEntregaPor").val(record.tipoSolicitante);
+							$("#pesqModelo").val(record.equipDescricao);
 							$("#pesqRevenda").val(record.revRazaoSocialRevenda);
 							$("#pesqCidadeRevenda").val(record.revCidade);
 							$("#pesqCliente").val(record.cliNomeCliente);
 							$("#pesqCidadeCliente").val(record.cliCidade);
+							$("#pesqEstadoCliente").val(record.cliEstado);
+							$("#pesqEntregadorTec").val(record.revEntTecNome);
 							$("#pesqAcompanhouEntrega").val(record.protoRecResponsavel);
 							$("#pesqTelefone").val(record.protoRecTelefone);
-							//pose safra
-							$("#psPesqModelo").val(record.equipModelo);
+							//pos safra
+							$("#psPesqEntregaPor").val(record.tipoSolicitante);
+							$("#psPesqModelo").val(record.equipDescricao);
 							$("#psPesqRevenda").val(record.revRazaoSocialRevenda);
 							$("#psPesqCidadeRevenda").val(record.revCidade);
 							$("#psPesqCliente").val(record.cliNomeCliente);
 							$("#psPesqCidadeCliente").val(record.cliCidade);
-							$("#psPesqAcompanhouEntrega").val(record.protoRecResponsavel);
-							$("#psPesqTelefone").val(record.protoRecTelefone);
+							$("#psPesqEstadoCliente").val(record.cliEstado);							
+							$("#psPesqEntregadorTec").val(record.revEntTecNome);							
 							
 						}else if (records[0].CODRET == "2"){		
 							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
@@ -172,36 +207,6 @@ var funcoes = (function() {
 			}
 		},
 
-		//Função para preencher campos do pós safra
-		preencheCampos : function(){
-			let pesqEntregaPor = document.getElementById("pesqEntregaPor").value;
-			let pesqNumSerie = document.getElementById("pesqNumSerie").value;
-			// let pesqModelo = document.getElementById("pesqModelo").value;
-			// let pesqRevenda = document.getElementById("pesqRevenda").value;
-			// let pesqCidadeRevenda = document.getElementById("pesqCidadeRevenda").value;
-			// let pesqRepresentante = document.getElementById("pesqRepresentante").value;
-			// let pesqCliente = document.getElementById("pesqCliente").value;
-			// let pesqCidadeCliente = document.getElementById("pesqCidadeCliente").value;
-			// let pesqNotaAtendimento = document.getElementById("pesqNotaAtendimento").value;
-			// let pesqFeedbackAtendimento = document.getElementById("pesqFeedbackAtendimento").value;
-			// let pesqAcompanhouEntrega = document.getElementById("pesqAcompanhouEntrega").value;
-			// let pesqTelefone = document.getElementById("pesqTelefone").value;
-
-			$(`#psPesqEntregaPor`).val(pesqEntregaPor).prop("readonly", true);
-			$(`#psPesqNumSerie`).val(pesqNumSerie).prop("readonly", true);
-			// $(`#psPesqModelo`).val(pesqModelo).prop("readonly", true);
-			// $(`#psPesqRevenda`).val(pesqRevenda).prop("readonly", true);
-			// $(`#psPesqCidadeRevenda`).val(pesqCidadeRevenda).prop("readonly", true);
-			// $(`#psPesqRepresentante`).val(pesqRepresentante).prop("readonly", true);
-			// $(`#psPesqCliente`).val(pesqCliente).prop("readonly", true);
-			// $(`#psPesqCidadeCliente`).val(pesqCidadeCliente).prop("readonly", true);
-			// $(`#psPesqNotaAtendimento`).val(pesqNotaAtendimento).prop("readonly", true);
-			// $(`#psPesqFeedbackAtendimento`).val(pesqFeedbackAtendimento).prop("readonly", true);
-			// $(`#psPesqAcompanhouEntrega`).val(pesqAcompanhouEntrega);//.prop("readonly", true)
-			// $(`#psPesqTelefone`).val(pesqTelefone);//.prop("readonly", true)
-
-		},
-
 		limpaRet : function(){
 			const limpaPesqpesqEfetivoCont = document.querySelector('#pesqEfetivoCont');
 			limpaPesqpesqEfetivoCont.value = '';
@@ -252,6 +257,23 @@ var funcoes = (function() {
 			}
 		},
 
+		//Condição para ocultar Melhoria PS
+		liberaMelhoria : function(){
+			let pesqPsMelhoria = "";
+			pesqPsMelhoria = document.getElementById("pesqPsMelhoria").value;
+		
+			if(pesqPsMelhoria == "sim"){
+				$("[temMelhoria]").show();
+				console.log("mostrou");
+			}else if(pesqPsMelhoria == "" || pesqPsMelhoria == "nao"){
+				$("[temMelhoria]").hide();
+				console.log("Escondeu");
+			}else{
+				$("[temMelhoria]").hide();
+				console.log("Escondeu");
+			}
+		},
+
 		//Condição para ocultar div ocorrencias Pesquisa e campo fim ocorrencia
 		liberaOcorrencias : function(){
 			let pesqOcorrencia = "";
@@ -299,20 +321,20 @@ var funcoes = (function() {
 		},
 
 		//Condição para desabilitar calendario
-		blocCalendar : function(){
-			let pesqTermColheita = "";
-			pesqTermColheita = document.getElementById("pesqTermColheita").value;
-			if(pesqTermColheita == "nao"){
-				$(`#pesqPrevColheita`).prop("readonly", false);
-				$(`#pesqPrevColheita`).prop('style', 'pointer-events:all');
-			}else if(pesqTermColheita == ""){
-				$(`#pesqPrevColheita`).prop("readonly", true);
-				$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
-			}else{
-				$(`#pesqPrevColheita`).prop("readonly", true);
-				$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
-			}
-		},
+		// blocCalendar : function(){
+		// 	let pesqTermColheita = "";
+		// 	pesqTermColheita = document.getElementById("pesqTermColheita").value;
+		// 	if(pesqTermColheita == "nao"){
+		// 		$(`#pesqPrevColheita`).prop("readonly", false);
+		// 		$(`#pesqPrevColheita`).prop('style', 'pointer-events:all');
+		// 	}else if(pesqTermColheita == ""){
+		// 		$(`#pesqPrevColheita`).prop("readonly", true);
+		// 		$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
+		// 	}else{
+		// 		$(`#pesqPrevColheita`).prop("readonly", true);
+		// 		$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
+		// 	}
+		// },
 
 		/*
 		 * Formulário
@@ -383,6 +405,18 @@ var funcoes = (function() {
 			const limpaPsPesqOcorrenciaApontamento = document.querySelector('#psPesqOcorrenciaApontamento');
 			limpaPsPesqOcorrenciaApontamento.value = '';
 		},		
+
+		preencheCampos: function(){
+			let pesqTelefone = document.getElementById("pesqTelefone").value;
+			let pesqAcompanhouEntrega = document.getElementById("pesqAcompanhouEntrega").value;
+			let pesqRepresentante = document.getElementById("pesqRepresentante").value;
+			let pesqNumSerie = document.getElementById("pesqNumSerie").value;
+
+			$(`#psPesqTelefone`).val(pesqTelefone);
+			$(`#psPesqAcompanhouEntrega`).val(pesqAcompanhouEntrega);		
+			$(`#psPesqRepresentante`).val(pesqRepresentante).prop("readonly", true);			
+			$(`#psPesqNumSerie`).val(pesqNumSerie).prop("readonly", true);
+		},
 	}
 })();
 
@@ -476,43 +510,39 @@ $(document).on("change", "#psPesqEfetivoCont", function() {
 	funcoes.liberaObsPs();
 });
 
-// $(document).on("change", "#pesqFeedbackEquipamento", function() {
-// 	funcoes.bloqueiaNota();
+// $(document).on("input", "#pesqNumSerie", function() {
+// 	let pesqNumSerie = document.getElementById("pesqNumSerie").value;
+// 	$(`#psPesqNumSerie`).val(pesqNumSerie).prop("readonly", true);
+// 	console.log(pesqNumSerie);
 // });
 
-//Gatilhos preenche campos do pos safra
-// $(document).on("change", "#pesqTelefone", function() {
-// 	funcoes.preencheCampos();
+// $(document).on("input", "#pesqRepresentante", function() {
+// 	let pesqRepresentante = document.getElementById("pesqRepresentante").value;
+// 	$(`#psPesqRepresentante`).val(pesqRepresentante).prop("readonly", true);
+// 	console.log(pesqRepresentante);
 // });
-$(document).on("change", "#pesqNumSerie", function() {
+
+// $(document).on("change", "#pesqAcompanhouEntrega", function() {
+// 	let pesqAcompanhouEntrega = document.getElementById("pesqAcompanhouEntrega").value;
+// 	$(`#psPesqAcompanhouEntrega`).val(pesqAcompanhouEntrega);
+// 	console.log(pesqAcompanhouEntrega);
+// });
+
+// $(document).on("input", "#pesqTelefone", function() {
+// 	let pesqTelefone = document.getElementById("pesqTelefone").value;
+// 	$(`#psPesqTelefone`).val(pesqTelefone);
+// 	console.log(pesqTelefone);
+// });
+$(document).on("change", "#pesqNotaAtendimento", function() {
 	funcoes.preencheCampos();
 });
-// $(document).on("change", "#pesqModelo", function() {
-// 	funcoes.preencheCampos();
+
+// $(document).on("change", "#pesqTermColheita", function() {
+// 	funcoes.blocCalendar();
 // });
-// $(document).on("change", "#pesqRevenda", function() {
-// 	funcoes.preencheCampos();
-// });
-// $(document).on("change", "#pesqCidadeRevenda", function() {
-// 	funcoes.preencheCampos();
-// });
-// $(document).on("change", "#pesqCliente", function() {
-// 	funcoes.preencheCampos();
-// });
-// $(document).on("change", "#pesqCidadeCliente", function() {
-// 	funcoes.preencheCampos();
-// });
-// $(document).on("change", "#pesqRepresentante", function() {
-// 	funcoes.preencheCampos();
-// });
-// $(document).on("change", "#pesqAcompanhouEntrega", function() {
-// 	funcoes.preencheCampos();
-// });
-// $(document).on("change", "#pesqTelefone", function() {
-// 	funcoes.preencheCampos();
-// });
-$(document).on("change", "#pesqTermColheita", function() {
-	funcoes.blocCalendar();
+//Libera campo para preencher melhoria
+$(document).on("change", "#pesqPsMelhoria", function() {
+	funcoes.liberaMelhoria();
 });
 
 
@@ -539,10 +569,19 @@ $(document).on("change", "#pesqOcorrencia", function() {
 $(document).on("change", "#psPesqOcorrencia", function() {
 	funcoes.liberaOcorrenciasPs();
 });
+//Data atual
+$(document).on("change", "#pesqEfetivoCont", function() {
+	funcoes.gerarDataHora();
+});
+//Data atual PS
+$(document).on("change", "#psPesqEfetivoCont", function() {
+	funcoes.gerarDataHoraPs();
+});
 // //Remove ocorrencias do pai e filho
 function removeOcorrencia(oElement){
 	fnWdkRemoveChild(oElement);
 };
+
 
 function loadForm(){	
 
@@ -552,17 +591,9 @@ function loadForm(){
 	funcoes.liberaObs();
 	funcoes.liberaObsPs();
 	//Carrega data atual
-	$(`#solDataPesq`).val(dataAtual);
-	$(`#psSolDataPesq`).val(dataAtual);
-	
-	//var today = new Date();
-	
-	// var psSolDataPesq = FLUIGC.calendar('#psSolDataPesq', {
-	// 	language: 'pt-br',
-	// 	minDate: today,
-	// 	pickDate: true,
-	// 	pickTime: false,
-	// });
+	//$(`#solDataPesq`).val(dataAtual);
+	//$(`#psSolDataPesq`).val(dataAtual);
+
 	
 }
 	

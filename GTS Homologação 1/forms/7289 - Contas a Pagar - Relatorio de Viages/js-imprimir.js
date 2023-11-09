@@ -137,7 +137,7 @@ function imprimeRelatorio() {
                         '		<td class="fonte-pedido" valign="top">' + $("#solAdianta").val() +'</td>' +
                         '	</tr>' +
                         '	<tr>' +
-                        '		<th class="fonte-pedido" style="width:28%; text-align:left;">Modea</th>' +
+                        '		<th class="fonte-pedido" style="width:28%; text-align:left;">Moeda</th>' +
                         '		<th class="fonte-pedido" style="width:30%; text-align:left;">Data de Saída</th>' +
                         '		<th class="fonte-pedido" style="width:15%; text-align:left;">Data de Retorno</th>' + 
                         '		<th class="fonte-pedido" style="width:28%; text-align:left;">Nº de Colaboradores</th>' +

@@ -272,7 +272,7 @@ function somenteNumeros(num, qtdCaracteres) {
     er.lastIndex = 0;
 //    var campo = num;
     if (er.test(campo.value)) {
-      campo.value = "";
+    	campo.value = "";
     }
 
 }
@@ -282,14 +282,14 @@ function somenteNumerosInteiros(num, qtdCaracteres, def) {
 	var campo = num;
 
     if(campo.value.length > qtdCaracteres){
-    	var campoMenosUmCaracter = campo.value.substr(0,(campo.value.length - 1));
-    	campo.value = campoMenosUmCaracter;
+		var campoMenosUmCaracter = campo.value.substr(0,(campo.value.length - 1));
+		campo.value = campoMenosUmCaracter;
     }
     var er = /[^0-9]/;
     er.lastIndex = 0;
 //    var campo = num;
     if (er.test(campo.value)) {
-      campo.value = def;
+    campo.value = def;
     }
 
 }
@@ -305,7 +305,6 @@ function fMascEx() {
 function maskTelefone(tel) {
 	
 	var valTelefone = tel.value;
-	
 
 	
 	valTelefone=valTelefone.replace("-","");
@@ -379,7 +378,11 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
             case 9:
                 return "Atenção! Selecione a opção: " +texto;    
 			case 10:
-				return 'Campo "' + texto + '" está fora do período da viagem.\n';   
+				return 'Campo "' + texto + '" está fora do período da viagem.\n'; 
+			case 11:
+				return 'Campo "' + texto + '" tem que ser maior que zero.\n';   
+			case 12:
+				return ' " ' + texto + ' " \n';   
         }
     } else {
         switch (tipoMensagem) {
@@ -403,6 +406,10 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
                 return "<li>Atenção! Selecione a opção: <b>"+texto+"</b></li>";  
             case 10:
                 return '<li>Campo: <b>"' + texto + '"</b> está fora do período da viagem.\n';    
-        }
+			case 11:
+				return '<li>Campo: <b>"' + texto + '"</b> tem que ser maior que zero.\n';
+			case 12:
+				return '<b>"' + texto + '"</b> \n';
+        }	
     }
 } 

@@ -119,7 +119,7 @@ function displayFields(form, customHTML) {
 	} else if (atv_atual == FIM) {
 		form.setVisibleById("divImprimirSol", false);
 		form.setVisibleById("divImprimirAprov", false);
-		form.setVisibleById("divImprimirRev", false);
+		//form.setVisibleById("divImprimirRev", false);
 		form.setVisibleById("divSalvarEnviar", false);
 	}
 }

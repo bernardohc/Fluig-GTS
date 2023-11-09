@@ -12,11 +12,14 @@ function createDataset(fields, constraints, sortFields) {
 	
 	//Cabeçalho
 	dataset.addColumn("CODRET");
-	dataset.addColumn("equipModelo");
+	dataset.addColumn("tipoSolicitante");
+	dataset.addColumn("equipDescricao");
 	dataset.addColumn("revRazaoSocialRevenda");
 	dataset.addColumn("revCidade");
 	dataset.addColumn("cliNomeCliente");
 	dataset.addColumn("cliCidade");
+	dataset.addColumn("cliEstado");
+	dataset.addColumn("revEntTecNome");
 	dataset.addColumn("protoRecResponsavel");
 	dataset.addColumn("protoRecTelefone");
 	dataset.addColumn("MSGRET");
@@ -32,9 +35,9 @@ function createDataset(fields, constraints, sortFields) {
 		}		
 	}
 	
-	var SQL =	"SELECT equipModelo, revRazaoSocialRevenda, revCidade, cliNomeCliente, cliCidade, protoRecResponsavel, protoRecTelefone" +
-				" FROM ML001027 ML (NOLOCK) " +
-				" WHERE 1=1 AND ML.version = (SELECT max(version) FROM ML001027 MLTB WHERE MLTB.documentid = ML.documentid )";
+	var SQL =	"SELECT tipoSolicitante, equipDescricao, revRazaoSocialRevenda, revCidade, cliNomeCliente, cliCidade, cliEstado, revEntTecNome, protoRecResponsavel, protoRecTelefone" +
+				" FROM ML001031 ML (NOLOCK) " +
+				" WHERE 1=1 AND ML.version = (SELECT max(version) FROM ML001031 MLTB WHERE MLTB.documentid = ML.documentid )";
 				//Tabela PRD ML001027
 				//Tabela HML ML001031
 				//Cabeçalho
@@ -52,11 +55,14 @@ function createDataset(fields, constraints, sortFields) {
                 
 		            //Cabeçalho
 					"1"
-					,rsWD.getString("equipModelo")
+					,rsWD.getString("tipoSolicitante")
+					,rsWD.getString("equipDescricao")
 					,rsWD.getString("revRazaoSocialRevenda")
 					,rsWD.getString("revCidade")
 					,rsWD.getString("cliNomeCliente")
 					,rsWD.getString("cliCidade")
+					,rsWD.getString("cliEstado")
+					,rsWD.getString("revEntTecNome")
 					,rsWD.getString("protoRecResponsavel")
 					,rsWD.getString("protoRecTelefone")
 					

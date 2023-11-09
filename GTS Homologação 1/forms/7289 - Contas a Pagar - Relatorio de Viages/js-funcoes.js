@@ -226,6 +226,8 @@ var funcoes = (function() {
 		//Valida os dados da despesa antes de enviar pro pai x filho
 		validaAddDespesa : function(){
 
+			//funcoes.validaDataDespesa();
+
 			let hasErros = false;
 			let message = '';
 			let addRvDespCodiID = $('#addRvDespCodiID').val().trim();
@@ -268,6 +270,26 @@ var funcoes = (function() {
 			const dataInicialObj = new Date(dataInicialFormatada);
 			const dataFinalObj = new Date(dataFinalFormatada);
 			const dataDespesaObj = new Date(dataDespesaFormatada);
+
+			//let addRvDespData = $('#addRvDespData').val().trim();
+
+			//Validação data despesa
+			let dataMenor = false;
+			$("input[name*=rvDespValor___]").each(function(index){
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+			
+				let rvDespData = $("#rvDespData___"+index).val();
+
+				if(addRvDespData < rvDespData){
+					dataMenor = true;
+					return false;
+				}
+			});
+
+			if(dataMenor){
+				message += getMessage("A Nova despesa não pode ser mais antiga que a ultima despesa lançada.", 12, form);
+				hasErros = true
+			}
 			
 			if( solSetor == '' ){
 				message += getMessage("Setor", 1, form);
@@ -343,6 +365,10 @@ var funcoes = (function() {
 						message += getMessage("Km Abastecimento", 1, form);
 						hasErros = true
 					}
+					if( abastKmAbastecimento == '0' ){
+						message += getMessage("Km Abastecimento ", 11, form);
+						hasErros = true
+					}
 					if( abastQtdLitros == '' ){
 						message += getMessage("Quantidade de Litros", 1, form);
 						hasErros = true
@@ -365,6 +391,10 @@ var funcoes = (function() {
 					}
 					if( abastKmAbastecimento == '' ){
 						message += getMessage("Km Abastecimento", 1, form);
+						hasErros = true
+					}
+					if( abastKmAbastecimento == '0' ){
+						message += getMessage("Km Abastecimento ", 11, form);
 						hasErros = true
 					}
 					if( abastQtdLitros == '' ){
@@ -569,9 +599,6 @@ var funcoes = (function() {
 			let valorPg = validafunctions.getFloatValue("addRvDespValor");
 			let valorLitro = 0;
 
-			console.log(qdtLitros + " qtd litros")
-			console.log(valorPg + " valor pg")
-
 			valorLitro = valorPg / qdtLitros;
 
 			$("#abastValorLitro").val(valorLitro.toFixed(2));
@@ -673,8 +700,6 @@ var funcoes = (function() {
 			
 			// Converter a diferença em milissegundos para dias.
 			const difData = Math.floor(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
-
-			console.log(difData + " Dif data")
 			
 			$("input[name*=rvDespValor___]").each(function(index){
 				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
@@ -686,7 +711,6 @@ var funcoes = (function() {
 				}
 			});
 
-			console.log(solNumColab + " Colaboradores")
 			if(solNumColab > 1){
 				totalSaldo = (somaDiaria / difData)/solNumColab;
 			}else{
@@ -1121,11 +1145,23 @@ function loadForm(){
 				$("#rvDespTpComb___"+index).attr('readonly', true);
 				$("#rvDespTpComb___"+index).prop('style', 'pointer-events:none');
 
-				//Liberar data e valor analisa relatorio
+				//Liberar data, valor e tipo de pagamento revisa relatorio
 				$("#rvDespData___"+index).prop("readonly", false);
 				$("#rvDespValor___"+index).prop("readonly", false);
+				$("#rvDespTpPag___"+index).prop("readonly", false);
+
+				// Gatilho das somas
+				$(document).on("change", "#rvDespValor___"+index, function() {
+					funcoes.calculaTotal();
+					funcoes.calculaSaldo();
+					funcoes.calculaCombustivel();
+					funcoes.calculaDiaria();
+					funcoes.calculaCombustivelFat();
+					funcoes.calculaValorLitro();
+				});
 			});
 		}
+		
 		if(isMobile == 'true'){
 			$(`#imprimirRelatorio`).next().find('.btnViewerFile').prop('disabled', true);
 			$('#imprimirRelatorio').hide();

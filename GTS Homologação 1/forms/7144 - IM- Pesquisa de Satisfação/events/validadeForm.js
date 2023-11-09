@@ -201,10 +201,10 @@ function validateForm(form){
                         message += getMessage("Pesquisa de Satisfação Pós Safra - Telefone:", 1, form);
                         hasErros = true;
                     }
-                    if (isEmpty("psPesqNotaAtendimento", form)) {
-                        message += getMessage("Pesquisa de Satisfação Pós Safra - Como foi o Atendimento:", 1, form);
-                        hasErros = true;
-                    }
+                    // if (isEmpty("psPesqNotaAtendimento", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação Pós Safra - Como foi o Atendimento:", 1, form);
+                    //     hasErros = true;
+                    // }
                     if (isEmpty("psPesqFeedbackAtendimento", form)) {
                         message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do atendimento:", 1, form);
                         hasErros = true;
@@ -217,18 +217,28 @@ function validateForm(form){
                         message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do equipamento:", 1, form);
                         hasErros = true;
                     }
-                    if (isEmpty("psPesqDispRevenda", form)) {
-                        message += getMessage("Pesquisa de Satisfação Pós Safra - Disponibilidade da revenda:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqFeedbackPecas", form)) {
-                        message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback Disponibilidade da revenda:", 1, form);
-                        hasErros = true;
-                    }
+                    // if (isEmpty("psPesqDispRevenda", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação Pós Safra - Disponibilidade da revenda:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("psPesqFeedbackPecas", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback Disponibilidade da revenda:", 1, form);
+                    //     hasErros = true;
+                    // }
                     if(isEmpty("psPesqOcorrencia", form)){
                         message += getMessage("Pesquisa de Satisfação Pós Safra - Teve ocorrência:", 1, form);
                         hasErros = true;
                     }  
+                    if(isEmpty("pesqPsMelhoria", form)){
+                        message += getMessage("Pesquisa de Satisfação Pós Safra - Sugestão de melhoria:", 1, form);
+                        hasErros = true;
+                    }
+                    if(form.getValue("pesqPsMelhoria") == 'sim'){
+                        if(isEmpty("pesqPsSatisfacaoSGM", form)){
+                            message += getMessage("Pesquisa de Satisfação Pós Safra - Sugestão de melhoria:", 1, form);
+                        hasErros = true;
+                        }
+                    }
                     if (form.getValue("psPesqOcorrencia") == 'sim') {
                         var tbPSPesqOcorrencias = form.getChildrenIndexes("tbPSPesqOcorrencias");
                         if(tbPSPesqOcorrencias.length == 0){
