@@ -195,8 +195,7 @@ var funcoes = (function() {
 					$(`#abastFormaPagamento`).val("");
 					$(`#addRvDespTpPag`).val("");
 				}
-			}
-			else{
+			}else{
 				$("[liberaComb]").hide();
 				$("[liberaCnpj]").hide();
 			}
@@ -494,6 +493,7 @@ var funcoes = (function() {
 			
 			funcoes.limpaAddDespesa();
 			funcoes.gerarCarimboDataHora();
+			funcoes.validaClassificacao();
 
 			$("[liberaComb]").hide();
 
