@@ -226,8 +226,6 @@ var funcoes = (function() {
 		//Valida os dados da despesa antes de enviar pro pai x filho
 		validaAddDespesa : function(){
 
-			//funcoes.validaDataDespesa();
-
 			let hasErros = false;
 			let message = '';
 			let addRvDespCodiID = $('#addRvDespCodiID').val().trim();
@@ -271,16 +269,16 @@ var funcoes = (function() {
 			const dataFinalObj = new Date(dataFinalFormatada);
 			const dataDespesaObj = new Date(dataDespesaFormatada);
 
-			//let addRvDespData = $('#addRvDespData').val().trim();
-
 			//Validação data despesa
 			let dataMenor = false;
 			$("input[name*=rvDespValor___]").each(function(index){
 				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
 			
 				let rvDespData = $("#rvDespData___"+index).val();
+				const rvDespDataFormatada = formatarData(rvDespData);
+				const rvDespDataObj = new Date(rvDespDataFormatada);
 
-				if(addRvDespData < rvDespData){
+				if(dataDespesaObj < rvDespDataObj){
 					dataMenor = true;
 					return false;
 				}
