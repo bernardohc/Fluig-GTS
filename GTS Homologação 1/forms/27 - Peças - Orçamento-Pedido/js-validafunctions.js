@@ -270,6 +270,11 @@ var validafunctions = (function(){
 			s = s.replace(",", ".");
 			return parseFloat(s);
 		},
+		getFloatValueByValor: function(valor) {
+			var s = valor.replace(/[^\d,-]/g, '');
+			s = s.replace(",", ".");
+			return parseFloat(s);
+		},
 		getPosicaoFilho: function(id) {
 			return parseInt(id.substring(id.indexOf("___") + 3));
 		},

@@ -321,20 +321,21 @@ var funcoes = (function() {
 		},
 
 		//Condição para desabilitar calendario
-		// blocCalendar : function(){
-		// 	let pesqTermColheita = "";
-		// 	pesqTermColheita = document.getElementById("pesqTermColheita").value;
-		// 	if(pesqTermColheita == "nao"){
-		// 		$(`#pesqPrevColheita`).prop("readonly", false);
-		// 		$(`#pesqPrevColheita`).prop('style', 'pointer-events:all');
-		// 	}else if(pesqTermColheita == ""){
-		// 		$(`#pesqPrevColheita`).prop("readonly", true);
-		// 		$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
-		// 	}else{
-		// 		$(`#pesqPrevColheita`).prop("readonly", true);
-		// 		$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
-		// 	}
-		// },
+		blocCalendar : function(){
+			let pesqTermColheita = "";
+			pesqTermColheita = document.getElementById("pesqTermColheita").value;
+			if(pesqTermColheita == "sim" ){
+				$(`#pesqPrevColheita`).prop("readonly", true);
+				$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
+			}else if(pesqTermColheita == ""){
+				$(`#pesqPrevColheita`).prop("readonly", true);
+				$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
+			}
+			else{
+				$(`#pesqPrevColheita`).prop("readonly", false);
+				$(`#pesqPrevColheita`).prop('style', 'pointer-events:all');
+			}
+		},
 
 		/*
 		 * Formulário
@@ -537,9 +538,9 @@ $(document).on("change", "#pesqNotaAtendimento", function() {
 	funcoes.preencheCampos();
 });
 
-// $(document).on("change", "#pesqTermColheita", function() {
-// 	funcoes.blocCalendar();
-// });
+$(document).on("change", "#pesqTermColheita", function() {
+	funcoes.blocCalendar();
+});
 //Libera campo para preencher melhoria
 $(document).on("change", "#pesqPsMelhoria", function() {
 	funcoes.liberaMelhoria();

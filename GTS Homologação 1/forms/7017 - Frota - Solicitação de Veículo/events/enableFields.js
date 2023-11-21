@@ -1,6 +1,9 @@
 function enableFields(form){
 
     var atv_atual = getValue("WKNumState");
+    
+	
+	var entVistExt = getValue("entVistExt");
 	
 	if(atv_atual == INICIO_0){	 
 		//form.setEnabled("solOutMotorista", false);
@@ -45,6 +48,7 @@ function enableFields(form){
 		form.setEnabled("libVeiculoLiberado", false);
 		form.setEnabled("libObservacao", false);
 		
+		
 	}
 	else if(atv_atual == RECEBE){
 		// Solicitação
@@ -67,12 +71,22 @@ function enableFields(form){
 		form.setEnabled("aprovaSolicitacao", false);
 		form.setEnabled("libVeiculoLiberado", false);
 		form.setEnabled("libObservacao", false);
+		form.setEnabled("entVistExt", false);
+		form.setEnabled("entVistInt", false);
+		form.setEnabled("entPneus", false);
+		form.setEnabled("entLantFarois", false);
+		form.setEnabled("entLonaMar", false);
+		form.setEnabled("entOrgLimpe", false);
+		form.setEnabled("entObjVeiculos", false);
 
 		//Entrega
 		form.setEnabled("entDataEntrega", false);
 		form.setEnabled("entHoraEntrega", false);
 		form.setEnabled("entColaboradorReti", false);
 		form.setEnabled("entVigilante", false);
+		form.setEnabled("entObs", false);
+		
+		
 
 	}
 	else if(atv_atual == FIM){
@@ -102,6 +116,13 @@ function enableFields(form){
 		form.setEnabled("entHoraEntrega", false);
 		form.setEnabled("entColaboradorReti", false);
 		form.setEnabled("entVigilante", false);
+		form.setEnabled("entVistExt", false);
+		form.setEnabled("entVistInt", false);
+		form.setEnabled("entPneus", false);
+		form.setEnabled("entLantFarois", false);
+		form.setEnabled("entLonaMar", false);
+		form.setEnabled("entOrgLimpe", false);
+		form.setEnabled("entObjVeiculos", false);
 
 		//Recebe
 		form.setEnabled("devDataDevolucao", false);

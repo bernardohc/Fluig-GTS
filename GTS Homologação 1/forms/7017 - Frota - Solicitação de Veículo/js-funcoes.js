@@ -1,3 +1,4 @@
+
 //Aqui cria as funcioes
 var funcoes = (function() {
 	var loading = FLUIGC.loading(window);
@@ -39,7 +40,6 @@ var funcoes = (function() {
 							var placaVeiculo = record.CDESC;
 
 							$("#libPlaca").val(placaVeiculo);
-							console.log("Placa do Veiculo " + placaVeiculo);
 							
 						}else if (records[0].CODRET == "2"){
 							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
@@ -89,9 +89,152 @@ var eventsFuncoes = (function() {
 	return {
 		setup : function() {	
 
+			
 		}
 	}
 });
+// Gatilhos entrega
+$(document).on("change", "input:radio[name='entVistExt']", function() {	
+	let entVistExt = $("input:radio[name='entVistExt']:checked").val();
+	if( entVistExt == 'Não'){
+		$('#entVistExtObs').show();
+	}else{
+		$('#entVistExtObs').val('');
+		$('#entVistExtObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='entVistInt']", function() {	
+	let entVistInt = $("input:radio[name='entVistInt']:checked").val();
+	if( entVistInt == 'Não'){
+		$('#entVistIntObs').show();
+	}else{
+		$('#entVistIntObs').val('');
+		$('#entVistIntObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='entPneus']", function() {	
+	let entPneus = $("input:radio[name='entPneus']:checked").val();
+	if( entPneus == 'Não'){
+		$('#entPneusObs').show();
+	}else{
+		$('#entPneusObs').val('');
+		$('#entPneusObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='entLantFarois']", function() {	
+	let entLantFarois = $("input:radio[name='entLantFarois']:checked").val();
+	if( entLantFarois == 'Não'){
+		$('#entLantFaroisObs').show();
+	}else{
+		$('#entLantFaroisObs').val('');
+		$('#entLantFaroisObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='entLonaMar']", function() {	
+	let entLonaMar = $("input:radio[name='entLonaMar']:checked").val();
+	if( entLonaMar == 'Não'){
+		$('#entLonaMarObs').show();
+	}else{
+		$('#entLonaMarObs').val('');
+		$('#entLonaMarObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='entOrgLimpe']", function() {	
+	let entOrgLimpe = $("input:radio[name='entOrgLimpe']:checked").val();
+	if( entOrgLimpe == 'Não'){
+		$('#entOrgLimpeObs').show();
+	}else{
+		$('#entOrgLimpeObs').val('');
+		$('#entOrgLimpeObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='entObjVeiculos']", function() {	
+	let entObjVeiculos = $("input:radio[name='entObjVeiculos']:checked").val();
+	if( entObjVeiculos == 'Não'){
+		$('#entObjVeiculosObs').show();
+	}else{
+		$('#entObjVeiculosObs').val('');
+		$('#entObjVeiculosObs').hide();
+	}
+});
+
+//Gatilho Devolução
+$(document).on("change", "input:radio[name='devVistExt']", function() {	
+	let devVistExt = $("input:radio[name='devVistExt']:checked").val();
+	if( devVistExt == 'Não'){
+		$('#devVistExtObs').show();
+	}else{
+		$('#devVistExtObs').val('');
+		$('#devVistExtObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='devVistInt']", function() {	
+	let devVistInt = $("input:radio[name='devVistInt']:checked").val();
+	if( devVistInt == 'Não'){
+		$('#devVistIntObs').show();
+	}else{
+		$('#devVistIntObs').val('');
+		$('#devVistIntObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='devPneus']", function() {	
+	let devPneus = $("input:radio[name='devPneus']:checked").val();
+	if( devPneus == 'Não'){
+		$('#devPneusObs').show();
+	}else{
+		$('#devPneusObs').val('');
+		$('#devPneusObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='devLantFarois']", function() {	
+	let devLantFarois = $("input:radio[name='devLantFarois']:checked").val();
+	if( devLantFarois == 'Não'){
+		$('#devLantFaroisObs').show();
+	}else{
+		$('#devLantFaroisObs').val('');
+		$('#devLantFaroisObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='devLonaMar']", function() {	
+	let devLonaMar = $("input:radio[name='devLonaMar']:checked").val();
+	if( devLonaMar == 'Não'){
+		$('#devLonaMarObs').show();
+	}else{
+		$('#devLonaMarObs').val('');
+		$('#devLonaMarObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='devOrgLimpe']", function() {	
+	let devOrgLimpe = $("input:radio[name='devOrgLimpe']:checked").val();
+	if( devOrgLimpe == 'Não'){
+		$('#devOrgLimpeObs').show();
+	}else{
+		$('#devOrgLimpeObs').val('');
+		$('#devOrgLimpeObs').hide();
+	}
+});
+
+$(document).on("change", "input:radio[name='devObjVeiculos']", function() {	
+	let devObjVeiculos = $("input:radio[name='devObjVeiculos']:checked").val();
+	if( devObjVeiculos == 'Não'){
+		$('#devObjVeiculosObs').show();
+	}else{
+		$('#devObjVeiculosObs').val('');
+		$('#devObjVeiculosObs').hide();
+	}
+});
+
 
 //Gatilho data set consulta veiculos
 $(document).on("change", "#libVeiculoLiberado", function() {
@@ -99,10 +242,8 @@ $(document).on("change", "#libVeiculoLiberado", function() {
 				
 	if( $(this).val().trim() == ""){
 		funcoes.limpaCamposLibVeiculo(index);
-		console.log("Limpou campo")
 
 	}else{
-		console.log("Acionou gatilho")
 		funcoes.consultaVeiculo(index);	
 	}
 
@@ -110,7 +251,6 @@ $(document).on("change", "#libVeiculoLiberado", function() {
 
 //Chama função para liberar campo outros motoristas
 $(document).on("change", "#solQuantPessoas", function() {
-	console.log("Libera outros motoristas");
 	funcoes.liberOutrosMotoristas();
 });
 
@@ -127,9 +267,15 @@ function dataAtual() {
     var newData = dia+"/"+mes+"/"+ano;
 
     return newData;
-} 
+}; 
+
+function showCamera() {
+	console.log("Camera")
+	JSInterface.showCamera("Anexo");
+}
 
 function loadForm(){
+	
 	//Adiciona a dataAtual ao campo data da solicitação
 	$("#solDataSol").val(dataAtual);
 
@@ -181,8 +327,7 @@ function loadForm(){
 		pickDate: false,
 		pickTime: true,
 	});
-	
-}
-	
 
+
+};
 

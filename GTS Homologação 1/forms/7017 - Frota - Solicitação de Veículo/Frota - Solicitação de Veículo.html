@@ -1,18 +1,24 @@
 <html>
 <head>
 
-	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+	<link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide-carousel.min.css">
 	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
 	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
 	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide-carousel.min.js"></script>
 
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	
 	<script>
 		$(document).ready(function() {
 			window.parent.$("#breadcrumb").remove();
 			window.parent.$("#textActivity").text('');
 			window.parent.$("#informationsTab").remove();
-			window.parent.$("#tab-attachments").remove();
+			//window.parent.$("#tab-attachments").remove();
 			
 			//Botões de movimentação
 			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
@@ -26,11 +32,7 @@
 			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").removeAttr("data-cancel-workflow-request");
 		});
 	</script>
-	
-	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js-validafunctions.js"></script>
-	
+
 </head>
 <body onload="loadForm()">
 <div class="fluig-style-guide">
@@ -181,6 +183,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- Entrega Guarita -->
 		<div class="panel panel-primary" id="divEntregaGuarita">
 			<div class="panel-heading">
 				<h3 class="panel-title">Entrega Guarita</h3>
@@ -216,8 +219,138 @@
 						<input type="text" name="entVigilante" id="entVigilante" class="form-control">
 					</div>
 				</div>
+				<div class="row">
+					<div class="form-group col-md-4" align="left">						
+						<label for="entVistExt">Vistoria externa, está ok?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entVistExt" value="Sim" id="entVistExtSim" />
+								<label for="entVistExtSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entVistExt" value="Não"	id="entVistExtNao" />
+								<label for="entVistExtNao">Não</label>
+							</div>
+						</div>				
+						<div class="form-group" align="left">
+							<input type="text" name="entVistExtObs" id="entVistExtObs" class="form-control entVistExtObs" style="display: none;">
+						</div>					
+					</div>
+					<div class="form-group col-md-4" align="left">						
+						<label for="entVistInt">Vistoria interna, está ok?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entVistInt" value="Sim" id="entVistIntSim" />
+								<label for="entVistIntSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entVistInt" value="Não"	id="entVistIntNao" />
+								<label for="entVistIntNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="entVistIntObs" id="entVistIntObs" class="form-control entVistIntObs" style="display: none;">
+						</div>						
+					</div>
+					<div class="form-group col-md-4" align="left">						
+						<label for="entPneus">Pneus, está ok?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entPneus" value="Sim" id="entPneusSim" />
+								<label for="entPneusSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entPneus" value="Não"	id="entPneusNao" />
+								<label for="entPneusNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="entPneusObs" id="entPneusObs" class="form-control entPneusObs" style="display: none;">
+						</div>						
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-4" align="left">
+						<label for="entLantFarois">Lanternas e faróis?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entLantFarois" value="Sim" id="entLantFaroisSim" />
+								<label for="entLantFaroisSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entLantFarois" value="Não"	id="entLantFaroisNao" />
+								<label for="entLantFaroisNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="entLantFaroisObs" id="entLantFaroisObs" class="form-control entLantFaroisObs" style="display: none;">
+						</div>
+					</div>
+					<div class="form-group col-md-4" align="left">
+						<label for="entLonaMar">Possui lona marítima em boas condições?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entLonaMar" value="Sim" id="entLonaMarSim" />
+								<label for="entLonaMarSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entLonaMar" value="Não" id="entLonaMarNao" />
+								<label for="entLonaMarNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="entLonaMarObs" id="entLonaMarObs" class="form-control entLonaMarObs" style="display: none;">
+						</div>
+					</div>
+					<div class="form-group col-md-4" align="left">
+						<label for="entOrgLimpe">Organização e limpeza?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entOrgLimpe" value="Sim" id="entOrgLimpeSim" />
+								<label for="entOrgLimpeSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entOrgLimpe" value="Não"	id="entOrgLimpeNao" />
+								<label for="entOrgLimpeNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="entOrgLimpeObs" id="entOrgLimpeObs" class="form-control entOrgLimpeObs" style="display: none;">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-4" align="left">
+						<label for="entObjVeiculos">Existe objetos esquecidos no veículo?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entObjVeiculos" value="Sim" id="entObjVeiculosSim" />
+								<label for="entObjVeiculosSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="entObjVeiculos" value="Não"	id="entObjVeiculosNao" />
+								<label for="entObjVeiculosNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="entObjVeiculosObs" id="entObjVeiculosObs" class="form-control entObjVeiculosObs" style="display: none;">
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="entObs">Observação:</label>
+						<input type="text" name="entObs" id="entObs" class="form-control">
+					</div>					
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3 col-md-offset-4">
+						<div id="divEntInserirImagens">
+							<input type="button" class="btn btn-default btn-block" value="Insira Foto" onclick="showCamera();"/>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+		<!-- Devolução Guarita -->
 		<div class="panel panel-primary" id="divDevolucaoGuarita">
 			<div class="panel-heading">
 				<h3 class="panel-title">Devolução Guarita</h3>
@@ -256,14 +389,137 @@
 						<label for="devVigilante">Vigilante da Devolução:</label>
 						<input type="text" name="devVigilante" id="devVigilante" class="form-control">
 					</div>
+				</div><div class="row">
+					<div class="form-group col-md-4" align="left">						
+						<label for="devVistExt">Vistoria externa, está ok?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devVistExt" value="Sim" id="devVistExtSim" />
+								<label for="devVistExtSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devVistExt" value="Não"	id="devVistExtNao" />
+								<label for="devVistExtNao">Não</label>
+							</div>
+						</div>				
+						<div class="form-group" align="left">
+							<input type="text" name="devVistExtObs" id="devVistExtObs" class="form-control" style="display: none;">
+						</div>					
+					</div>
+					<div class="form-group col-md-4" align="left">						
+						<label for="devVistInt">Vistoria interna, está ok?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devVistInt" value="Sim" id="devVistIntSim" />
+								<label for="devVistIntSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devVistInt" value="Não"	id="devVistIntNao" />
+								<label for="devVistIntNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="devVistIntObs" id="devVistIntObs" class="form-control" style="display: none;">
+						</div>						
+					</div>
+					<div class="form-group col-md-4" align="left">						
+						<label for="devPneus">Pneus, está ok?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devPneus" value="Sim" id="devPneusSim" />
+								<label for="devPneusSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devPneus" value="Não"	id="devPneusNao" />
+								<label for="devPneusNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="devPneusObs" id="devPneusObs" class="form-control" style="display: none;">
+						</div>						
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-4" align="left">
+						<label for="devLantFarois">Lanternas e faróis?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devLantFarois" value="Sim" id="devLantFaroisSim" />
+								<label for="devLantFaroisSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devLantFarois" value="Não"	id="devLantFaroisNao" />
+								<label for="devLantFaroisNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="devLantFaroisObs" id="devLantFaroisObs" class="form-control" style="display: none;">
+						</div>
+					</div>
+					<div class="form-group col-md-4" align="left">
+						<label for="devLonaMar">Possui lona marítima em boas condições?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devLonaMar" value="Sim" id="devLonaMarSim" />
+								<label for="devLonaMarSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devLonaMar" value="Não" id="devLonaMarNao" />
+								<label for="devLonaMarNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="devLonaMarObs" id="devLonaMarObs" class="form-control" style="display: none;">
+						</div>
+					</div>
+					<div class="form-group col-md-4" align="left">
+						<label for="devOrgLimpe">Organização e limpeza?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devOrgLimpe" value="Sim" id="devOrgLimpeSim" />
+								<label for="devOrgLimpeSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devOrgLimpe" value="Não"	id="devOrgLimpeNao" />
+								<label for="devOrgLimpeNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="devOrgLimpeObs" id="devOrgLimpeObs" class="form-control" style="display: none;">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-4" align="left">
+						<label for="devObjVeiculos">Existe objetos esquecidos no veículo?</label>
+						<div class="radio input-group">										
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devObjVeiculos" value="Sim" id="devObjVeiculosSim" />
+								<label for="devObjVeiculosSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="devObjVeiculos" value="Não"	id="devObjVeiculosNao" />
+								<label for="devObjVeiculosNao">Não</label>
+							</div>
+						</div>
+						<div class="form-group" align="left">
+							<input type="text" name="devObjVeiculosObs" id="devObjVeiculosObs" class="form-control" style="display: none;">
+						</div>
+					</div>
 					<div class="form-group col-md-4">
 						<label for="devObs">Observação:</label>
-						<textarea rows="1" cols="12" name="devObs" id="devObs" class="form-control " ></textarea>
+						<input type="text" name="devObs" id="devObs" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3 col-md-offset-4">
+						<div id="divDevInserirImagens">
+							<input type="button" class="btn btn-default btn-block" value="Insira Foto" onclick="showCamera();"/>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>			
-	</div>
 </form>
 </div>
 </body>

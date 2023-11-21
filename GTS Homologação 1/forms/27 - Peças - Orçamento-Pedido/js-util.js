@@ -13,6 +13,17 @@ function removeCampoObrigatorio(id){
 }
 
 /**
+ * Função que retorno o resultado formatado, caso a terceira casa decimal seja 5, vai arredondar para cima.
+ * Ex: 2.390,325 -> retorna 2.390,33 e não 2.390,32
+ * @param number
+ * @param decimals
+ */
+function toFixed(number, decimals) {
+    var x = Math.pow(10, Number(decimals) + 1);
+    return (Number(number) + (1 / x)).toFixed(decimals)
+}
+
+/**
  * Funcao para retornar o indice do elemento obj dentro de um pai x filho
  * @param obj
  * @returns
@@ -342,14 +353,4 @@ function mTel(tel) {
 		tel=tel.replace(/(.{4})$/,"-$1")
 	}
 	return tel;
-}
-
-function isEmpty(idCampo, tipoCampo) {
-	var valor = '';
-    if(tipoCampo == 'radio'){
-    	valor = $("input:radio[name='"+idCampo+"']:checked").val();
-    }else{
-    	valor = $('#'+idCampo).val();
-    }
-    return valor == null || valor.trim().length == 0 || typeof valor === undefined || valor.trim() == '' || valor.trim() == '0' || valor.trim() == '0,00';
 }

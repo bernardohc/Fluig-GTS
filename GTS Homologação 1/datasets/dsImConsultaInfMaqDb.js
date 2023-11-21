@@ -37,7 +37,7 @@ function createDataset(fields, constraints, sortFields) {
 	
 	var SQL =	"SELECT tipoSolicitante, equipDescricao, revRazaoSocialRevenda, revCidade, cliNomeCliente, cliCidade, cliEstado, revEntTecNome, protoRecResponsavel, protoRecTelefone" +
 				" FROM ML001031 ML (NOLOCK) " +
-				" WHERE 1=1 AND ML.version = (SELECT max(version) FROM ML001031 MLTB WHERE MLTB.documentid = ML.documentid )";
+				" WHERE AND ML.version = (SELECT max(version) FROM ML001031 MLTB WHERE MLTB.documentid = ML.documentid )";
 				//Tabela PRD ML001027
 				//Tabela HML ML001031
 				//Cabeçalho

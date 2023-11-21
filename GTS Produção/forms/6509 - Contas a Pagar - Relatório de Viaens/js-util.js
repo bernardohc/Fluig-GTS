@@ -12,6 +12,7 @@ function removeCampoObrigatorio(id){
 	$("#lbl_" + id).removeClass('required');
 }
 
+
 /**
  * Funcao para retornar o indice do elemento obj dentro de um pai x filho
  * @param obj
@@ -342,14 +343,4 @@ function mTel(tel) {
 		tel=tel.replace(/(.{4})$/,"-$1")
 	}
 	return tel;
-}
-
-function isEmpty(idCampo, tipoCampo) {
-	var valor = '';
-    if(tipoCampo == 'radio'){
-    	valor = $("input:radio[name='"+idCampo+"']:checked").val();
-    }else{
-    	valor = $('#'+idCampo).val();
-    }
-    return valor == null || valor.trim().length == 0 || typeof valor === undefined || valor.trim() == '' || valor.trim() == '0' || valor.trim() == '0,00';
 }
