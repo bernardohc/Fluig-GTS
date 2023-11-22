@@ -205,18 +205,18 @@ function validateForm(form){
                     //     message += getMessage("Pesquisa de Satisfação Pós Safra - Como foi o Atendimento:", 1, form);
                     //     hasErros = true;
                     // }
-                    if (isEmpty("psPesqFeedbackAtendimento", form)) {
-                        message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do atendimento:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqNotaDesempenho", form)) {
-                        message += getMessage("Pesquisa de Satisfação Pós Safra - Desempenho do equipamento:", 1, form);
-                        hasErros = true;
-                    }
-                    if (isEmpty("psPesqFeedbackEquipamento", form)) {
-                        message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do equipamento:", 1, form);
-                        hasErros = true;
-                    }
+                    // if (isEmpty("psPesqFeedbackAtendimento", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do atendimento:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("psPesqNotaDesempenho", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação Pós Safra - Desempenho do equipamento:", 1, form);
+                    //     hasErros = true;
+                    // }
+                    // if (isEmpty("psPesqFeedbackEquipamento", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do equipamento:", 1, form);
+                    //     hasErros = true;
+                    // }
                     // if (isEmpty("psPesqDispRevenda", form)) {
                     //     message += getMessage("Pesquisa de Satisfação Pós Safra - Disponibilidade da revenda:", 1, form);
                     //     hasErros = true;
@@ -252,7 +252,24 @@ function validateForm(form){
                             message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
                             hasErros = true;
                         }
-                    } 
+                    } if(form.getValue("pesqPsFimOcorrencia") == 'sim'){
+                        if (isEmpty("psPesqNotaAtendimento", form)) {
+                            message += getMessage("Pesquisa de Satisfação Pós Safra - Como foi o Atendimento:", 1, form);
+                            hasErros = true;
+                        }
+                        if (isEmpty("psPesqFeedbackAtendimento", form)) {
+                            message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do atendimento:", 1, form);
+                            hasErros = true;
+                        }
+                        if (isEmpty("psPesqNotaDesempenho", form)) {
+                            message += getMessage("Pesquisa de Satisfação Pós Safra - Desempenho do equipamento:", 1, form);
+                            hasErros = true;
+                        }
+                        if (isEmpty("psPesqFeedbackEquipamento", form)) {
+                            message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do equipamento:", 1, form);
+                            hasErros = true;
+                        }
+                    }
                 }if(form.getValue("psPesqEfetivoCont") == 'nao'){
                     if (isEmpty("psSolDataPesq", form)) {
                         message += getMessage("Pesquisa de Satisfação Pós Safra - Data da pesquisa:", 1, form);
@@ -294,6 +311,23 @@ function validateForm(form){
             if (isEmpty("pesqPsFimOcorrencia", form)) {
                 message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
                 hasErros = true;
+            }if(form.getValue("pesqPsFimOcorrencia") == 'sim'){
+                if (isEmpty("psPesqNotaAtendimento", form)) {
+                    message += getMessage("Pesquisa de Satisfação Pós Safra - Como foi o Atendimento:", 1, form);
+                    hasErros = true;
+                }
+                if (isEmpty("psPesqFeedbackAtendimento", form)) {
+                    message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do atendimento:", 1, form);
+                    hasErros = true;
+                }
+                if (isEmpty("psPesqNotaDesempenho", form)) {
+                    message += getMessage("Pesquisa de Satisfação Pós Safra - Desempenho do equipamento:", 1, form);
+                    hasErros = true;
+                }
+                if (isEmpty("psPesqFeedbackEquipamento", form)) {
+                    message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do equipamento:", 1, form);
+                    hasErros = true;
+                }
             }
         break;
     }

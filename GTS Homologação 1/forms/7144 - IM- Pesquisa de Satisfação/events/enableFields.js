@@ -103,13 +103,13 @@ function enableFields(form){
         form.setEnabled("psPesqCidadeCliente", false);
         form.setEnabled("psPesqAcompanhouEntrega", false);
         form.setEnabled("psPesqTelefone", false);
-        form.setEnabled("psPesqNotaAtendimento", false);
-        form.setEnabled("psPesqFeedbackAtendimento", false);
-        form.setEnabled("psPesqNotaDesempenho", false);
-        form.setEnabled("psPesqFeedbackEquipamento", false);
-        form.setEnabled("psPesqDispRevenda", false);
-        form.setEnabled("psPesqFeedbackPecas", false);
-        form.setEnabled("psPesqOcorrencia", false);
+        //form.setEnabled("psPesqNotaAtendimento", false);
+        //form.setEnabled("psPesqFeedbackAtendimento", false);
+        //form.setEnabled("psPesqNotaDesempenho", false);
+        //form.setEnabled("psPesqFeedbackEquipamento", false);
+        //form.setEnabled("psPesqDispRevenda", false);
+        //form.setEnabled("psPesqFeedbackPecas", false);
+        //form.setEnabled("psPesqOcorrencia", false);
     }else if(atv_atual == FIM){
         form.setEnabled("psPesqFeedbackPecas", false);
     }
