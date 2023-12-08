@@ -6,7 +6,10 @@ function displayFields(form, customHTML) {
 	form.setHidePrintLink(true);
 
 	var usuarioCorrente = fluigAPI.getUserService().getCurrent();
+	console.log(usuarioCorrente);
 
+	var nome_completo = fluigAPI.getUserService().getCurrent().getFullName();
+	console.log(nome_completo);
 	/*
 	 * Globais
 	 */
@@ -24,8 +27,8 @@ function displayFields(form, customHTML) {
         form.setVisibleById("divPsFimOcorrencia", false);
 		
 	}else if (atv_atual == INICIO) {
-		
 		if (form.getFormMode() == 'MOD') {
+			form.setValue("pesNomePesquisador",  usuarioCorrente.getFullName() );
 			if(form.getValue("pesqOcorrencia") == "sim"){
 				form.setVisibleById("divPesqOcorrencia", true);
 				form.setVisibleById("divFimOcorrencia", true);
@@ -42,6 +45,7 @@ function displayFields(form, customHTML) {
 
 	}else if (atv_atual == Registro_Ocorrências) {
 		if (form.getFormMode() == 'MOD') {
+			form.setValue("pesNomePesquisador",  usuarioCorrente.getFullName() );
 			controleAbas(form, customHTML, 'indisponivel');
 
 		}if (form.getFormMode() == 'VIEW') {
@@ -50,7 +54,7 @@ function displayFields(form, customHTML) {
 		}
 	}else if (atv_atual == Pesquisa_Pos_Safra) {
 		if (form.getFormMode() == 'MOD') {
-
+			form.setValue("pesNomePesquisador",  usuarioCorrente.getFullName() );
 			controleAbas(form, customHTML, 'disponivel');
 
 			form.setVisibleById("divFimOcorrencia", false);
@@ -68,6 +72,7 @@ function displayFields(form, customHTML) {
 
 	}else if (atv_atual == Ocorrência_Pos_Safra) {
 		if (form.getFormMode() == 'MOD') {
+			form.setValue("pesNomePesquisador",  usuarioCorrente.getFullName() );
 			controleAbas(form, customHTML, 'disponivel');
 
 			form.setVisibleById("divFimOcorrencia", false);
@@ -78,7 +83,7 @@ function displayFields(form, customHTML) {
 		}
 
 	}else if (atv_atual == FIM_1 || FIM_2 || FIM_3) {
-
+		form.setValue("pesNomePesquisador",  usuarioCorrente.getFullName() );
 		controleAbas(form, customHTML, 'disponivel');
 	
 		form.setVisibleById("divAddOcorrencia", false);

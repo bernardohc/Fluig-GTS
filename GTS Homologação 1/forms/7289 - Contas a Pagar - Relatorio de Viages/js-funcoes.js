@@ -544,6 +544,16 @@ var funcoes = (function() {
 		
 		},
 
+		limpaAbast(){
+			$('#addRvDespTpPag').val('');
+			$('#geraisPlaca').val('');
+			$('#abastTpCombustivel').val('');
+			$('#abastKmAbastecimento').val('');
+			$('#abastQtdLitros').val('');
+			$('#geraisVeiculo').val('');
+			$('#abastValorLitro').val('');
+		},
+
 		gerarCarimboDataHora : function() {
 			const dataAtual = new Date();
 			const dia = dataAtual.getDate().toString().padStart(2, '0');
@@ -827,6 +837,7 @@ var eventsFuncoes = (function() {
 			$(document).on("change", "#addRvDespClassi", function() {
 				funcoes.validaClassificacao();
 				funcoes.liberaPagamentos();
+				funcoes.limpaAbast();
 			});
 			
 			$(document).on("change", "#solSetor", function() {

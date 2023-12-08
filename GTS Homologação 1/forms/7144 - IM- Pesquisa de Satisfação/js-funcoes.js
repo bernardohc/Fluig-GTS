@@ -351,7 +351,7 @@ var funcoes = (function() {
             var mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
             var ano = dataAtual.getFullYear();
             var dataFormatada = dia + '/' + mes + '/' + ano;	
-			
+
 			//Usuário logado
 			let pesNomePesquisador = document.getElementById("pesNomePesquisador").value;
 			let pesqOcorrenciaFeedback = document.getElementById("pesqOcorrenciaFeedback").value;
@@ -432,12 +432,33 @@ function getDataAtual() {
 //Aqui colocar os gatilhos
 var eventsFuncoes = (function() {
 	return {
-		setup : function() {	
-
-			
+		setup : function() {			
 
 		}
 	}
+});
+
+//Itens para atribuição da tarefa por campo.
+$(document).on("change", "#pesqOcorrencia", function() {
+	let estado = $("#pesqEstadoCliente").val();
+	console.log("pesqEstadoCliente" + pesqEstadoCliente);
+	
+	if(estado == "RS" || estado == "SC" || estado == "PR" || estado == "SP" || estado == "MS"){
+		//Inteligência de Mercado - Pesquisa de Satisfação - Registro de Ocorrências - Região 01
+		$('#grupoResponsavelRegiao').val('Pool:Group:000048');
+		console.log('Pool:Group:000048');
+	}else if(estado == "MT" || estado == "RO" || estado == "PA" || estado == "AC" || estado == "AM" || estado == "RR" || estado == "AP" || estado == "EX"){
+		//Inteligência de Mercado - Pesquisa de Satisfação - Registro de Ocorrências - Região 02
+		$('#grupoResponsavelRegiao').val('Pool:Group:000049');
+		console.log('Pool:Group:000049');
+	}else if(estado == "MG" || estado == "GO" || estado == "BA" || estado == "TO" || estado == "MA" || estado == "PI" || estado == "CE" || estado == "DF" || estado == "SE"){
+		//Inteligência de Mercado - Pesquisa de Satisfação - Registro de Ocorrências - Região 03
+		$('#grupoResponsavelRegiao').val('Pool:Group:000050');
+		console.log('Pool:Group:000049');
+	}else{
+		$('#grupoResponsavelRegiao').val('');
+	}
+	
 });
 
 //data set consulta de produtos

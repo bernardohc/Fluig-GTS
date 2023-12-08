@@ -11,18 +11,10 @@
 	<script>
 		$(document).ready(function() {
 			window.parent.$("#breadcrumb").remove();
-			//Aba Anexo
-			window.parent.$("#processTabs").find("li").first().hide();
-			window.parent.$("#processTabs").find("li").last().hide();
-			window.parent.$("#textActivity").remove();
-			//Se não conseguir encontrar o tipo de solicitante, mostra mensagem de usuário incorreto
-			//Ou se for Revenda e não ter os dados adicionais (A1_COD e A1_LOJA)
-			if($('#tipoSolicitante').val().trim() == '' || ( $('#tipoSolicitante').val().trim() == 'Revenda' && $('#A1_COD').val().trim() == ''  )){
-		 		window.parent.$("#collapse-tabs").remove();
-		 		window.parent.$("#textActivity").remove();
-		 		window.parent.$("#workflowActions").remove();
-		 		window.parent.$("#breadcrumb").remove();
-			}
+			window.parent.$("#textActivity").text('');
+			window.parent.$("#informationsTab").remove();
+			// window.parent.$("#tab-attachments").remove();
+			window.parent.$("#tab-attachments").css("display","none");
 			
 			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
 			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
@@ -431,7 +423,7 @@
 									data-protection="revEntTecCpf" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir o entregador técnico da revenda" />
 			        		</div>
 							<div class="col-md-2 camposPar" align="left" style="display: none;">
-								<label for="revEntTecRUC">RUC*</label>
+								<label for="revEntTecRUC">RUC</label>
 								<input type="text" name="revEntTecRUC" id="revEntTecRUC" class="form-control" maxlength="20" />
 			        		</div>
 		        		</div>
@@ -684,10 +676,15 @@
 								data-protection="cliEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do cliente da entrega técnica" />
 		        		</div>
 		        		<div class="col-md-3" align="left">
-							<label for="cliTelefone">Telefone para Pesquisa de Satisfação*</label>
+							<label for="cliTelefone">Celular para Pesquisa de Satisfação*</label>
 							<input type="text" name="cliTelefonePesqSatisfacao" id="cliTelefonePesqSatisfacao" class="form-control" 
 								data-protection="cliTelefonePesqSatisfacao" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente para pesquisa de satisfação de entrega técnica" />
-		        		</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-md-offset-6" align="left">
+							<p class="bg-yellow-gradient" style="color: rgb(88,89,91); font-weight: bold;">Preencher o contato correto do responsável que irá responder a pesquisa de satisfação</p>
+						</div>
 					</div>
 					<div class="row">
 		        		<div class="col-md-4">
