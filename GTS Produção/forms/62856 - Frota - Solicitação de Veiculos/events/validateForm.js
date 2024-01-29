@@ -103,6 +103,69 @@ function validateForm(form){
                     message += getMessage("Vigilante da entrega", 1, form);
                     hasErros = true;
                 }
+                if (isEmpty("entVistExt", form)) {
+                    message += getMessage("Vistoria externa", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("entVistExt")== 'Não'){
+                    if (isEmpty("entVistExtObs", form)) {	
+                        message += getMessage("Vistoria Externa", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("entVistInt", form)) {
+                    message += getMessage("Vistoria interna", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("entVistInt")== 'Não'){
+                    if (isEmpty("entVistIntObs", form)) {	
+                        message += getMessage("Vistoria interna", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("entPneus", form)) {
+                    message += getMessage("Pneus", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("entPneus")== 'Não'){
+                    if (isEmpty("entPneusObs", form)) {	
+                        message += getMessage("Pneus", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("entLantFarois", form)) {
+                    message += getMessage("Lanternas e faróis", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("entLantFarois")== 'Não'){
+                    if (isEmpty("entLantFaroisObs", form)) {	
+                        message += getMessage("Lanternas e faróis", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("entLonaMar", form)) {
+                    message += getMessage("Lona maritíma", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("entLonaMar")== 'Não'){
+                    if (isEmpty("entLonaMarObs", form)) {	
+                        message += getMessage("Lona maritíma", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("entOrgLimpe", form)) {
+                    message += getMessage("Organização e limpeza", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("entOrgLimpe")== 'Não'){
+                    if (isEmpty("entOrgLimpeObs", form)) {	
+                        message += getMessage("Organização e limpeza", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("entObjVeiculos", form)) {
+                    message += getMessage("Existe objetos esquecidos no veículo", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("entObjVeiculos")== 'Não'){
+                    if (isEmpty("entObjVeiculosObs", form)) {	
+                        message += getMessage("Existe objetos esquecidos no veículo", 1, form);
+                        hasErros = true;
+                    }  
+                }
             }
         break;
 
