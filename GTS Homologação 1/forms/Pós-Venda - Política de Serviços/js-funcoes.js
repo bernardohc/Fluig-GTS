@@ -54,7 +54,6 @@ var funcoes = (function() {
         
             const carimboDataHora = `${dia}/${mes}/${ano}-${hora}:${minutos} `;
             
-            console.log(carimboDataHora)
             $('#aberturaDoc').val(carimboDataHora);			
         },
 
@@ -87,7 +86,27 @@ var funcoes = (function() {
                 funcoes.gerarDataHora();
                 $('#dtConfirmaLeitura').val(carimboDataHora);
             }
-        }
+        },
+
+        dadosAdicionais : function(){
+            console.log("Dados adicionais");
+            $.ajax({
+                url: '/api/public/2.0/users/getCurrent', 
+                type: "GET",
+            }).done(function(data) {
+                var user_fluig     = data;
+                var A1_COD        = user_fluig.content.extData.A1_COD;
+                var A1_LOJA        = user_fluig.content.extData.A1_LOJA;
+                var A1_TIPO        = user_fluig.content.extData.A1_TIPO;
+            
+                $("#A1_COD").val(A1_COD);
+                $("#A1_LOJA").val(A1_LOJA);
+                $("#A1_TIPO").val(A1_TIPO);
+            });
+
+        },
+
+        //https://forum.fluig.com/1583-consultar-cadastro-de-dados-adicionais
 		
 	}
 })();
@@ -95,6 +114,7 @@ var funcoes = (function() {
 $(document).on("click", "#btnPolitica", function() {
     funcoes.openDocument(8778, 1000);
     funcoes.gerarDataHora();
+    funcoes.dadosAdicionais();
 });
 
 $(document).on("input", "#ckConfirma", function() {
@@ -113,8 +133,6 @@ var eventsFuncoes = (function() {
 
 function loadForm(){	
 
-	
-	
 }
 	
 

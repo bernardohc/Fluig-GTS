@@ -16,6 +16,7 @@ function displayFields(form, customHTML) {
 
 	if(atv_atual == INICIO_0) {
 		form.setVisibleById("divLeitura", true);
+		console.log("Load displayfields")
 
 	}
 };

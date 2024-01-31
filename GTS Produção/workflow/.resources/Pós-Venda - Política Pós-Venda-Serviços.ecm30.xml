@@ -2,7 +2,7 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>Pós-Venda-PolíticadeServiços</processId>
+      <processId>Pós-Venda - Política Pós-Venda-Serviços</processId>
     </processDefinitionPK>
     <processDescription>Pós-Venda - Política de Serviços</processDescription>
     <instruction></instruction>
@@ -49,7 +49,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Pós-Venda-PolíticadeServiços</processId>
+        <processId>Pós-Venda - Política Pós-Venda-Serviços</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -99,7 +99,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>Pós-Venda-PolíticadeServiços</processId>
+        <processId>Pós-Venda - Política Pós-Venda-Serviços</processId>
         <version>1</version>
         <sequence>7</sequence>
       </processStatePK>
@@ -149,7 +149,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>Pós-Venda-PolíticadeServiços</processId>
+        <processId>Pós-Venda - Política Pós-Venda-Serviços</processId>
         <version>1</version>
         <linkSequence>8</linkSequence>
       </processLinkPK>
@@ -179,7 +179,7 @@
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Pós-Venda-PolíticadeServiços</processId>
+        <processId>Pós-Venda - Política Pós-Venda-Serviços</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
@@ -195,7 +195,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>Pós-Venda-PolíticadeServiços</processId>
+        <processId>Pós-Venda - Política Pós-Venda-Serviços</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
