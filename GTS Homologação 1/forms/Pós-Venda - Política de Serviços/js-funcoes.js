@@ -105,8 +105,6 @@ var funcoes = (function() {
             });
 
         },
-
-        //https://forum.fluig.com/1583-consultar-cadastro-de-dados-adicionais
 		
 	}
 })();
