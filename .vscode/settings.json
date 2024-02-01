@@ -1,4 +1,5 @@
 {
     "totvsLanguageServer.welcomePage": false,
-    "indentRainbow.indicatorStyle": "light"
+    "indentRainbow.indicatorStyle": "light",
+    "totvsLanguageServer.editor.linter.includes": "C:\\Users\\bernardo.correa\\Documents\\Repositorio\\protheus-gts"
 }
