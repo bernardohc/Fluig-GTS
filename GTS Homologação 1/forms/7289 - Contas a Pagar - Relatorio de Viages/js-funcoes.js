@@ -342,6 +342,11 @@ var funcoes = (function() {
 			}
 			if(solSetor === "outro" || solSetor === "motorista"){
 				if( addRvDespClassi == "Combustível" ){
+					abastCNPJPosto = abastCNPJPosto.replace(/\D/g, '');					
+					if(abastCNPJPosto.length !== 14){
+						message += getMessage("Cnpj do Posto.", 13, form);
+						hasErros = true
+					}					
 					if( abastCNPJPosto == '' ){
 						message += getMessage("Cnpj do Posto.", 1, form);
 						hasErros = true

@@ -112,11 +112,24 @@ var funcoes = (function() {
 $(document).on("click", "#btnPolitica", function() {
     funcoes.openDocument(8778, 1000);
     funcoes.gerarDataHora();
-    funcoes.dadosAdicionais();
+   // funcoes.dadosAdicionais();
 });
+
+$(document).on("click", "#btnInicia", function() {
+    //funcoes.openDocument(8778, 1000);
+    funcoes.gerarDataHora();
+    //funcoes.dadosAdicionais();
+});
+
 
 $(document).on("input", "#ckConfirma", function() {
     funcoes.capturarValorCheckbox();
+});
+
+$(document).on("click", "#btnConfirma", function() {
+    
+    window.parent.$('button[data-send]').first().click();
+
 });
 
 //Aqui colocar os gatilhos
@@ -131,7 +144,28 @@ var eventsFuncoes = (function() {
 
 function loadForm(){	
 
+    console.log("load");
+    funcoes.gerarDataHora();
+    funcoes.dadosAdicionais();
+
 }
-	
+
+// salvarFormulario : function() {
+//     console.log("save")
+//     var form = document.forms['Pós-Venda - Política Pós-Venda-Serviços'];
+
+//     WCMAPI.Create({
+//         url: '/api/public/2.0/dataset/save',
+//         data: form,
+//         datasetId: 'dsFrmPoliticaDeServico',
+//         success: function(data) {
+//         console.log('Formulário salvo com sucesso');
+//         },
+//         error: function(error) {
+//         console.error('Erro ao salvar o formulário:', error);
+//         }
+//     });
+// }
+
 
 

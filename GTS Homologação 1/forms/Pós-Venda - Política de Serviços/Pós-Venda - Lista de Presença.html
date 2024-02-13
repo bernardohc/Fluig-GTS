@@ -16,6 +16,7 @@
 			window.parent.$("#textActivity").text('');
 			window.parent.$("#informationsTab").remove();
 			window.parent.$("#tab-attachments").remove();
+			window.parent.$("#historicTab").remove();
 			
 			//Botões de movimentação
 			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
@@ -25,13 +26,14 @@
 			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
 			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
 
+
 			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").css("display","none");
 			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").removeAttr("data-cancel-workflow-request");
 
 		});
 	</script>
 </head>
-<body>
+<body onload="loadForm()">
 <div class="fluig-style-guide">
 <form name="form" role="form">
 
@@ -41,6 +43,7 @@
 	<input type="hidden" name="A1_COD" id="A1_COD" class="form-control" >
 	<input type="hidden" name="A1_LOJA" id="A1_LOJA" class="form-control" >
 	<input type="hidden" name="A1_TIPO" id="A1_TIPO" class="form-control" >
+	<input type="hidden" name="usrVisu" id="usrVisu" class="form-control" >
 
 	<div class="tab-content">
 		<div class="col-md-12 tab-pane active" id="divLeitura">
@@ -59,12 +62,15 @@
 								Agradecemos pela sua colaboração!
 							</p>
 							<br>
-							<button type="button" class="btn btn-primary" data-toggle="button" id="btnPolitica">Política de Serviço</button>
+							<button type="button" class="btn btn-primary" data-toggle="button" id="btnInicia" onclick="$(document).ready(function(){top.$('[data-send]').trigger('click');});">Abrir política de Serviço</button> 
 
-							<div class="checkbox">
+							<div class="checkbox" id="btCheckbox">
 								<label>
 								<input type="checkbox" name="confAberturaDoc" id="ckConfirma" value="SIM"> Confirmo a leitura do documento. </label>
 							</div>
+							<button type="button" class="btn btn-primary" data-toggle="button" id="btnPolitica" >Política de Serviço</button> 
+							<br>
+							<button type="button" class="btn btn-primary" data-toggle="button" id="btnConfirma">Confirma Leitura</button> 
 						</div>
 					</div>
 				</div>
