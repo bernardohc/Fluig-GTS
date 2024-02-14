@@ -112,7 +112,7 @@ var funcoes = (function() {
 })();
 
 $(document).on("click", "#btnPolitica", function() {
-    funcoes.openDocument(82708, 1000);
+    funcoes.openDocument(86078, 1000);
     funcoes.gerarDataHora();
     funcoes.dadosAdicionais();
 });
