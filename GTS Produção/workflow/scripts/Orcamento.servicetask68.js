@@ -2,9 +2,12 @@ function servicetask68(attempt, message) {
 	try{
 		var tipoPedido = hAPI.getCardValue("tipoPedido");
 		var qtdCadastrosOrcamento = 1;
+		var moeda = '1';
 		if(tipoPedido == 'CP'){
 			//Se for Compra Programada, verifica quantos cadastros de Compra Programada serão realizados
 			qtdCadastrosOrcamento = hAPI.getCardValue("CPqtdOpcaoRecebimento");
+		}else if(tipoPedido == 'PEUSA'){
+			moeda = '2'
 		}
 		
 		for(var cadastro=1; cadastro<=qtdCadastrosOrcamento;cadastro++){
@@ -69,6 +72,35 @@ function servicetask68(attempt, message) {
 								orcTotalItem = campos.get(id).trim();
 							}
 						}
+
+						//item 3 Preço Tabela
+						if (id.trim() == 'orcPrecoTabelaItem___'+j){
+							orcPrecoTabelaItem = campos.get(id).trim();
+						}
+						//item 4 Preço Custo
+						if (id.trim() == 'orcPrecoCustoItem___'+j){
+							orcPrecoUnitItem = campos.get(id).trim();
+						}
+
+					}else if (tipoPedido == 'PEUSA'){
+						//Se não for Pedido de Estoque USA, envia os valores em Dolar
+						// Quantidade
+						if (id.trim() == 'orcQtdItem___'+j){
+							orcQtdItem = campos.get(id).trim();
+						}
+						//Total em Dolar
+						if (id.trim() == 'orcTotalCustoDolarItem___'+j){
+							orcTotalItem = campos.get(id).trim();
+						}
+						//item 3 Preço Tabela em Dolar
+						if (id.trim() == 'orcPrecoTabelaDolarItem___'+j){
+							orcPrecoTabelaItem = campos.get(id).trim();
+						}
+						//item 4 Preço Custo em Dolar
+						if (id.trim() == 'orcPrecoCustoDolarItem___'+j){
+							orcPrecoUnitItem = campos.get(id).trim();
+						}
+
 					}else{
 						//Se não for Compra Programada pega a Quantidade item e Total de Custo do Item
 						// Quantidade
@@ -79,14 +111,15 @@ function servicetask68(attempt, message) {
 						if (id.trim() == 'orcTotalCustoItem___'+j){
 							orcTotalItem = campos.get(id).trim();
 						}
-					}
-					//item 3 Preço Tabela
-					if (id.trim() == 'orcPrecoTabelaItem___'+j){
-						orcPrecoTabelaItem = campos.get(id).trim();
-					}
-					//item 4 Preço Custo
-					if (id.trim() == 'orcPrecoCustoItem___'+j){
-						orcPrecoUnitItem = campos.get(id).trim();
+
+						//item 3 Preço Tabela
+						if (id.trim() == 'orcPrecoTabelaItem___'+j){
+							orcPrecoTabelaItem = campos.get(id).trim();
+						}
+						//item 4 Preço Custo
+						if (id.trim() == 'orcPrecoCustoItem___'+j){
+							orcPrecoUnitItem = campos.get(id).trim();
+						}
 					}
 				}
 				//1-orcCodProdutoItem 			2-orcQtdItem	3-orcPrecoTabelaItem 	4-orcPrecoUnitItem		5-orcTotalItem			
@@ -177,8 +210,9 @@ function servicetask68(attempt, message) {
 			var cFRETE = DatasetFactory.createConstraint("FRETE", tpFrete, tpFrete, ConstraintType.MUST); 
 			var cCODTRANSPORTADORA = DatasetFactory.createConstraint("CODTRANSPORTADORA", hAPI.getCardValue("codTransportadora").trim(), hAPI.getCardValue("codTransportadora").trim(), ConstraintType.MUST); 
 			var cMSGNOTAREDESPACHO = DatasetFactory.createConstraint("MSGNOTAREDESPACHO", hAPI.getCardValue("redespachoMsgNotaFiscal").trim(), hAPI.getCardValue("redespachoMsgNotaFiscal").trim(), ConstraintType.MUST); 
+			var cMOEDA = DatasetFactory.createConstraint("MOEDA", moeda, moeda, ConstraintType.MUST); 
 			
-			var constraints = new Array(cA1COD, cA1LOJA, cCONDPG, cTABPRECO, cOBSORC, cPERCDESC, cTIPOPEDIDO, cIDFLUIG, cITENS, cCODORC, cMATADMREV, cCPRETIRADA, cCPDTRETIRADA, cVEND1, cVEND2, cVEND3, cVEND4, cVEND5, cVEND6, cVEND7, cVEND8, cVEND9, cVEND10, cFRETE, cCODTRANSPORTADORA, cMSGNOTAREDESPACHO);
+			var constraints = new Array(cA1COD, cA1LOJA, cCONDPG, cTABPRECO, cOBSORC, cPERCDESC, cTIPOPEDIDO, cIDFLUIG, cITENS, cCODORC, cMATADMREV, cCPRETIRADA, cCPDTRETIRADA, cVEND1, cVEND2, cVEND3, cVEND4, cVEND5, cVEND6, cVEND7, cVEND8, cVEND9, cVEND10, cFRETE, cCODTRANSPORTADORA, cMSGNOTAREDESPACHO, cMOEDA);
 			 
 			var dataset = DatasetFactory.getDataset("dsCadastraPedido", [], constraints, []);
 			var codRetorno = dataset.getValue(0, "CODRET");

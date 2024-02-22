@@ -37,6 +37,9 @@
 	<input type="hidden" name="A1_PAIS" id="A1_PAIS" class="form-control" >
 	<input type="hidden" name="gestorEstado" id="gestorEstado" class="form-control" >
 	<input type="hidden" name="matriculaValidaPedRiscoA" id="matriculaValidaPedRiscoA" class="form-control" >
+	<input type="hidden" name="matFluigSuporteGTS" id="matFluigSuporteGTS" >
+	<input type="hidden" name="matAnalisaPedidoGTS" id="matAnalisaPedidoGTS" >
+	<input type="hidden" name="tipoPedidoPosVenda" id="tipoPedidoPosVenda" >
 	<input type="hidden" name="codVendedorProtheus" id="codVendedorProtheus" class="form-control" >
 	<input type="hidden" name="gerenteRevenda" id="gerenteRevenda" class="form-control" >
 	<input type="hidden" name="tipoGS" id="tipoGS" class="form-control" >
@@ -722,6 +725,7 @@
 					<div id="divPrcSugerido" class="col-md-2 col-md-offset-1" align="left">
 						<label for="orcProdPrecoSugerido">Preço Sugerido</label>
 						<input type="hidden" name="orcPrecoTabela" id="orcPrecoTabela" class="form-control" readonly >
+						<input type="hidden" name="orcPrecoTabelaDolar" id="orcPrecoTabelaDolar" class="form-control" readonly >
 						<input type="text" name="orcProdPrecoSugerido" id="orcProdPrecoSugerido" class="form-control" maxlength="20" readonly onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')">
 		            </div>
 					<div id="divPrcVenda" class="col-md-2" align="left">
@@ -868,11 +872,12 @@
 							<td class="itPrcUnitReal divPrcUnitItem">
 								<input type="hidden" id="orcPrecoMinItem"  name="orcPrecoMinItem" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
 								<input type="hidden" id="orcPrecoTabelaItem"  name="orcPrecoTabelaItem" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+								<input type="hidden" id="orcPrecoTabelaDolarItem"  name="orcPrecoTabelaDolarItem" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
 								<input type="hidden" id="orcPrecoSugeItem"  name="orcPrecoSugeItem" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
 								<input type="text" id="orcPrecoUnitItem"  name="orcPrecoUnitItem" class="form-control change-val-venda" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')" style="min-width: 120px !important; max-width: 120px !important;"/>
 							</td>
 							<td class="itIPI">									    	
-								<input type="text" name="orcAlqIPIItem" id="orcAlqIPIItem" class="form-control" readonly style="min-width:70px; !important;">
+								<input type="text" name="orcAlqIPIItem" id="orcAlqIPIItem" class="form-control" readonly style="min-width:70px !important;">
 								<input type="hidden" name="orcIPIItem" id="orcIPIItem" class="form-control" readonly>
 							</td>
 							<td class="itICMS">									    	
@@ -1066,16 +1071,29 @@
 						</div>
 					</div>
 	            </div>	
-				
-<!-- 				<div id="divMotCancelGerarPed" class="col-md-5 col-md-offset-3" style="display:none"> -->
-<!-- 					<div class="row"> -->
-<!-- 						<label for="formalizarPedidoMotivoCancelamento">Motivo Cancelamento*</label> -->
-<!-- 						<textarea rows="3" cols="6" name="gerarPedidoMotCancel" id="gerarPedidoMotCancel" class="form-control " ></textarea> -->
-<!-- 	             	</div> -->
-<!-- 		        </div>  -->
-			        
 			</div>
 			
+			<div id="divPosVendaCientePedido" style="display:none">
+				<div class="col-md-12">	
+					<div class="row">	
+						<br><br><br>
+			            <div class="col-md-11 col-md-offset-1" align="left">
+			            	<label class="checkbox-inline">
+							    <input type="checkbox" name= "chkPosVendaCientePedido" id="chkPosVendaCientePedido" value="ciente"> Estou ciente do Pedido de Garantia realizado pela revenda.
+							</label>
+			            </div>
+		            </div>
+		       
+					<div class="row">
+						<div class="col-md-5 col-md-offset-1" >
+							<label >Observação Pós-Venda</label>
+							<textarea rows="3" cols="6" name="obsPosVendaCientePedido" id="obsPosVendaCientePedido" class="form-control " ></textarea>
+						</div>
+					</div> 
+				</div> 
+			
+		    </div>
+
 			<div id="divPartesCientePedido" style="display:none">
 				<div class="col-md-12">	
 					<div class="row">	

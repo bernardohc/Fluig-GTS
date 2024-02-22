@@ -27,6 +27,7 @@ var funcoes = (function() {
 			$("#orcProdPrecoSugerido").val('');
 			$("#orcProdPrecoVenda").val('');
 			$("#orcProdPrecoCusto").val('');
+			$("#orcPrecoTabelaDolar").val('');
 			$("#orcProdPrecoCustoDolar").val('');
 			$("#orcProdPrecoCustoCab").val('');
 			$("#orcProdPrecoCustoCabDolar").val('');
@@ -151,6 +152,9 @@ var funcoes = (function() {
 	    	
 	    	$("#orcPrecoTabelaItem___" + row ).val( $("#orcPrecoTabela" ).val() )
 	    	validafunctions.setMoeda("orcPrecoTabelaItem___" + row,6, false , '')   
+
+	    	$("#orcPrecoTabelaDolarItem___" + row ).val( $("#orcPrecoTabelaDolar" ).val() )
+	    	validafunctions.setMoeda("orcPrecoTabelaDolarItem___" + row,6, false , '')   
 	    	
 	    	$("#orcPrecoSugeItem___" + row ).val( $("#orcProdPrecoSugerido" ).val() )
 	    	validafunctions.setMoeda("orcPrecoSugeItem___" + row,2, false , '')   
@@ -251,6 +255,7 @@ var funcoes = (function() {
 	    					var ICMS = record.ICMS;
 	    					var ICMSRET = record.ICMSRET;
 	    					var TABELA= record.PRCTABELA;
+	    					var TABELADOLAR= record.PRCTABELADOL;
 	    					var SUGERIDO= record.PRCSUGE;
 	    					var PRECOVENDA = record.PRCSUGE;
 	    			    	var NCM = record.POSIPINCM;
@@ -314,6 +319,20 @@ var funcoes = (function() {
 	    			    		 */
 	    			    		TABELA = formatNumber(TABELA, 6, 3, '.', ',' )
 	    			    		$("#orcPrecoTabela").val(TABELA);
+	    			    		
+	    			    	}
+	    			    	if(TABELADOLAR != ""){
+	    			    		/**
+	    			    		 * formatNumber(number, n, x, s, c)
+	    			    		 * 
+	    			    		 * @param number: numero que se deseja formatar
+	    			    		 * @param integer n: quantidade de casas decimais
+	    			    		 * @param integer x: quantidade de casas milhar
+	    			    		 * @param mixed   s: separador de milhar
+	    			    		 * @param mixed   c: separador decimal
+	    			    		 */
+	    			    		TABELADOLAR = formatNumber(TABELADOLAR, 6, 3, '.', ',' )
+	    			    		$("#orcPrecoTabelaDolar").val(TABELADOLAR);
 	    			    		
 	    			    	}
 	    			    	if(SUGERIDO != ""){
@@ -504,6 +523,7 @@ var funcoes = (function() {
 	    			    		$("#orcProdPrecoCustoCab").val(PRECOCUSTO);
 	    			    	}
     			    		
+	    			    	$("#orcPrecoTabelaDolar").val('0,00');
 	    			    	$("#orcProdPrecoCustoDolar").val('0,00');
     			    		$("#orcProdPrecoCustoCabDolar").val('0,00');
 	    			    	
@@ -883,7 +903,11 @@ var funcoes = (function() {
 	    			    	
 	    			    	var TABELA = formatNumber(record.PRCTABELA, 6, 3, '.', ',' )
 	    			    	$("#orcPrecoTabelaItem___" + row ).val( TABELA )
-	    			    	validafunctions.setMoeda("orcPrecoTabelaItem___" + row,6, false , '')   
+	    			    	validafunctions.setMoeda("orcPrecoTabelaItem___" + row,6, false , '') 
+
+	    			    	var TABELADOLAR = formatNumber(record.PRCTABELADOL, 6, 3, '.', ',' )
+	    			    	$("#orcPrecoTabelaDolarItem___" + row ).val( TABELADOLAR )
+	    			    	validafunctions.setMoeda("orcPrecoTabelaDolarItem___" + row,6, false , '')   
 	    			    	
 	    			    	var SUGERIDO = record.PRCSUGE;
 	    			    	$("#orcPrecoSugeItem___" + row ).val( SUGERIDO )
