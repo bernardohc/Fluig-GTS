@@ -3078,5 +3078,238 @@
     </void>
    </array>
   </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 75643</string>
+   <array class="java.lang.String" length="76">
+    <void index="0">
+     <string>comComExternaItem</string>
+    </void>
+    <void index="1">
+     <string>comComInternaItem</string>
+    </void>
+    <void index="2">
+     <string>comComRevendaItem</string>
+    </void>
+    <void index="3">
+     <string>comDataItem</string>
+    </void>
+    <void index="4">
+     <string>comIdItem</string>
+    </void>
+    <void index="5">
+     <string>comStatusItem</string>
+    </void>
+    <void index="6">
+     <string>comTipoUsuarioItem</string>
+    </void>
+    <void index="7">
+     <string>comUsuarioItem</string>
+    </void>
+    <void index="8">
+     <string>comUsuarioWKUserItem</string>
+    </void>
+    <void index="9">
+     <string>dataAbertura</string>
+    </void>
+    <void index="10">
+     <string>dataEncerramento</string>
+    </void>
+    <void index="11">
+     <string>equipDataTerminoGarantia</string>
+    </void>
+    <void index="12">
+     <string>equipDescricao</string>
+    </void>
+    <void index="13">
+     <string>equipNumSerie</string>
+    </void>
+    <void index="14">
+     <string>falCodFalhaFalhaItem</string>
+    </void>
+    <void index="15">
+     <string>falCodFalhaFamiliaItem</string>
+    </void>
+    <void index="16">
+     <string>falCodFalhaGrupoMaquinaItem</string>
+    </void>
+    <void index="17">
+     <string>falCodFalhaModeloMaquinaItem</string>
+    </void>
+    <void index="18">
+     <string>falCodFamiliaItem</string>
+    </void>
+    <void index="19">
+     <string>falCodigoFalhaItem</string>
+    </void>
+    <void index="20">
+     <string>falDescFalhaFalhaItem</string>
+    </void>
+    <void index="21">
+     <string>falFamiliaItem</string>
+    </void>
+    <void index="22">
+     <string>falGrupoMaquinaItem</string>
+    </void>
+    <void index="23">
+     <string>falModeloMaquinaItem</string>
+    </void>
+    <void index="24">
+     <string>falRecorrenteItem</string>
+    </void>
+    <void index="25">
+     <string>gerNumProtocolo</string>
+    </void>
+    <void index="26">
+     <string>gerOrigemSolicitacao</string>
+    </void>
+    <void index="27">
+     <string>gerTipoSolicitante</string>
+    </void>
+    <void index="28">
+     <string>matFluigSuporteGTS</string>
+    </void>
+    <void index="29">
+     <string>numFluig</string>
+    </void>
+    <void index="30">
+     <string>revCidade</string>
+    </void>
+    <void index="31">
+     <string>revCod</string>
+    </void>
+    <void index="32">
+     <string>revEquipCidade</string>
+    </void>
+    <void index="33">
+     <string>revEquipCod</string>
+    </void>
+    <void index="34">
+     <string>revEquipEstado</string>
+    </void>
+    <void index="35">
+     <string>revEquipEstadoHidden</string>
+    </void>
+    <void index="36">
+     <string>revEquipLoja</string>
+    </void>
+    <void index="37">
+     <string>revEquipNomeFantasiaRevenda</string>
+    </void>
+    <void index="38">
+     <string>revEquipTelefone</string>
+    </void>
+    <void index="39">
+     <string>revEstado</string>
+    </void>
+    <void index="40">
+     <string>revEstadoHidden</string>
+    </void>
+    <void index="41">
+     <string>revLoja</string>
+    </void>
+    <void index="42">
+     <string>revNomeFantasiaRevenda</string>
+    </void>
+    <void index="43">
+     <string>revRevenda</string>
+    </void>
+    <void index="44">
+     <string>revSolicicaoVinculada</string>
+    </void>
+    <void index="45">
+     <string>revTelefone</string>
+    </void>
+    <void index="46">
+     <string>solCidade</string>
+    </void>
+    <void index="47">
+     <string>solCidadeHidden</string>
+    </void>
+    <void index="48">
+     <string>solCidadeSelect</string>
+    </void>
+    <void index="49">
+     <string>solCodGrupoSetor</string>
+    </void>
+    <void index="50">
+     <string>solCodSetor</string>
+    </void>
+    <void index="51">
+     <string>solDeAcordoLGPD</string>
+    </void>
+    <void index="52">
+     <string>solDescricaoGeral</string>
+    </void>
+    <void index="53">
+     <string>solDescSetor</string>
+    </void>
+    <void index="54">
+     <string>solEmail</string>
+    </void>
+    <void index="55">
+     <string>solEmailAbertura</string>
+    </void>
+    <void index="56">
+     <string>solEmailEncerramento</string>
+    </void>
+    <void index="57">
+     <string>solEmailEncerramentoRevAtend</string>
+    </void>
+    <void index="58">
+     <string>solEmailRevendaAtendimento</string>
+    </void>
+    <void index="59">
+     <string>solEncaminharSolicitacao</string>
+    </void>
+    <void index="60">
+     <string>solEncEmailRevendaFinalizado</string>
+    </void>
+    <void index="61">
+     <string>solEstado</string>
+    </void>
+    <void index="62">
+     <string>solEstadoHidden</string>
+    </void>
+    <void index="63">
+     <string>solFinalizarSolicitacao</string>
+    </void>
+    <void index="64">
+     <string>solicitante</string>
+    </void>
+    <void index="65">
+     <string>solMatFluigRevendaAtendimento</string>
+    </void>
+    <void index="66">
+     <string>solNome</string>
+    </void>
+    <void index="67">
+     <string>solRevendaAtendimento</string>
+    </void>
+    <void index="68">
+     <string>solStatus</string>
+    </void>
+    <void index="69">
+     <string>solTelefone</string>
+    </void>
+    <void index="70">
+     <string>solTipoInformacao</string>
+    </void>
+    <void index="71">
+     <string>solTipoInformacaoDesc</string>
+    </void>
+    <void index="72">
+     <string>solTipoSolicitacao</string>
+    </void>
+    <void index="73">
+     <string>solTipoSolicitacaoDesc</string>
+    </void>
+    <void index="74">
+     <string>solTipoSolicitacaoHidden</string>
+    </void>
+    <void index="75">
+     <string>solWKUserSolicitante</string>
+    </void>
+   </array>
+  </void>
  </object>
 </java>

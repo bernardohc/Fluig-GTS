@@ -839,17 +839,18 @@ var eventsFuncoes = (function() {
 				imprimeRelatorio();
 			});
 
-			$(document).on("change", "#addRvDespClassi", function() {
+			$(document).on("input", "#addRvDespClassi", function() {
 				funcoes.validaClassificacao();
 				funcoes.liberaPagamentos();
 				funcoes.limpaAbast();
 			});
 			
-			$(document).on("change", "#solSetor", function() {
+			$(document).on("input", "#solSetor", function() {
 				funcoes.validaClassificacao();
 				funcoes.liberaPagamentos();
 				funcoes.dataRelatorio();
 			});	
+
 
 			// $(document).on("change", "#addRvDespValor", function() {
 			// 	if($('#addRvDespClassi').val() == 'Combustível'){
@@ -1021,7 +1022,7 @@ function loadForm(){
 	
 	$(`#salvarEnviar`).val('');
 	funcoes.validaClassificacao();
-	funcoes.liberaPagamentos();
+	//funcoes.liberaPagamentos();
 	funcoes.limpaAddDespesa();
 
 	var psSolDataPesq = FLUIGC.calendar('#addRvDespData', {
