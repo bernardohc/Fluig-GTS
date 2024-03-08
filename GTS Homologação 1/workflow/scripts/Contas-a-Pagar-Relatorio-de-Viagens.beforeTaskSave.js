@@ -19,18 +19,11 @@ function beforeTaskSave(colleagueId,nextSequenceId,userList){
                 var docDtoDespesa = attachments.get(j);
                 var documentDescription = docDtoDespesa.getDocumentDescription();
                
-                log.info('documentDescription->'+documentDescription)
-
                 if(documentDescription.contains(".") ){
                     //Se tiver extensão no arquivo, remove para validar pelo nome do arquivo
                     //Isso estava ocorrendo no mobile, que insere sempre a extensão.
-                    // extensaoDoArquivo = documentDescription.substring(documentDescription.lastIndexOf(46) + 1);
-
                     var extensaoDoArquivo = documentDescription.substring(documentDescription.lastIndexOf(46) + 1, documentDescription.length() ).toLowerCase();
                     
-                    log.info('entrou if')
-                    log.info('extensaoDoArquivo->'+extensaoDoArquivo)
-
                     //Tem caso de o nome do arquivo ter .(ponto), ocasionado uma inconsitencia 
                     //Como aqui script de workflow não tem como saber se é web ou mobile, foi necessário verificar a extensão do arquivo
                     if( extensaoDoArquivo == "pdf" || extensaoDoArquivo == "png" || extensaoDoArquivo == "jpg" || extensaoDoArquivo == "jpeg" ){
