@@ -80,6 +80,19 @@ var funcoes = (function() {
 						const records = data.content;
 						if( records[0].CODRET == "1"){
 							var record = records[0];
+
+							//Campos Hidden
+							$("#idEntregaTec").val(record.numFluig);
+							$("#nfEquipamento").val(record.equipNumNotaFiscal);
+							$("#codRevenda").val(record.revCodigo);
+							$("#lojaRevenda").val(record.revLoja);
+							$("#revEstado").val(record.revEstado);
+							$("#codCliente").val(record.cliCodigo);
+							$("#lojaCliente").val(record.cliLoja);
+							$("#revEquipRazaoSocialRevenda").val(record.revEquipRazaoSocialRevenda);
+							$("#revEquipCodigo").val(record.revEquipCodigo);
+							$("#revEquipLoJa").val(record.revEquipLoJa);
+							$("#revEquipEstado").val(record.revEquipEstado);
 							
 							$("#pesqEntregaPor").val(record.tipoSolicitante);
 							$("#pesqModelo").val(record.equipDescricao);
