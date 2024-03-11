@@ -149,11 +149,11 @@ var eventsFuncoes = (function() {
 			/**
 			 * Gatilho para quando altera a Qtd de Litros, calcula o valor total
 			 */
-			$(document).on("change", "#abastQtdLitros", function() {
+			$(document).on("input", "#abastQtdLitros", function() {
 				funcoes.valorTotalAbastecimento();
 			});
 			if(isMobile == 'true'){
-				$(document).on("blur", "#abastQtdLitros", function() {
+				$(document).on("input", "#abastQtdLitros", function() {
 					funcoes.valorTotalAbastecimento();
 				});
 			}
@@ -161,11 +161,11 @@ var eventsFuncoes = (function() {
 			/**
 			 * Gatilho para quando altera o Valor do Litro, calcula o valor total
 			 */
-			$(document).on("change", "#abastValorLitro", function() {
+			$(document).on("input", "#abastValorLitro", function() {
 				funcoes.valorTotalAbastecimento();
 			});
 			if(isMobile == 'true'){
-				$(document).on("blur", "#abastValorLitro", function() {
+				$(document).on("input", "#abastValorLitro", function() {
 					funcoes.valorTotalAbastecimento();
 				});
 			}

@@ -99,7 +99,7 @@
         	<div class="row">
 				<div class="form-group col-md-2 col-md-offset-1 col-xs-8" align="left">
 					<label for="abastKmAbastecimento">Km Abastecimento*</label>
-					<input type="text" name="abastKmAbastecimento" id="abastKmAbastecimento" class="form-control" maxlength="15" onKeyPress="validafunctions.setNumero(this.id, 0, false)"/>
+					<input type="text" name="abastKmAbastecimento" id="abastKmAbastecimento" class="form-control" maxlength="15" oninput="validafunctions.setNumero(this.id, 0, false)"/>
         		</div>    
 				<div class="form-group col-md-2 col-xs-12" align="left" >
         			<label for="abastTpCombustivel">Tipo de Combustível*</label>
@@ -109,15 +109,15 @@
         		</div>
 				<div class="form-group col-md-2 col-xs-6 " align="left">
 					<label for="abastQtdLitros">Qtd. Litros*</label>
-					<input type="text" name="abastQtdLitros" id="abastQtdLitros" class="form-control" maxlength="15" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+					<input type="text" name="abastQtdLitros" id="abastQtdLitros" class="form-control" maxlength="15" oninput="validafunctions.setMoeda(this.id, 2, false , '')"/>
         		</div>
 				<div class="form-group col-md-2 col-xs-6 " align="left">
 					<label for="abastValorLitro">Valor Litro*</label>
-					<input type="text" name="abastValorLitro" id="abastValorLitro" class="form-control" maxlength="15" onKeyPress="validafunctions.setMoeda(this.id, 3, false , '')"/>
+					<input type="text" name="abastValorLitro" id="abastValorLitro" class="form-control" maxlength="15" oninput="validafunctions.setMoeda(this.id, 3, false , '')"/>
         		</div>
 				<div class="form-group col-md-2 col-xs-12 " align="left">
 					<label for="abastValorTotal">Valor Total*</label>
-					<input type="text" name="abastValorTotal" id="abastValorTotal" class="form-control" maxlength="15" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')"/>
+					<input type="text" name="abastValorTotal" id="abastValorTotal" class="form-control" maxlength="15" oninput="validafunctions.setMoeda(this.id, 2, false , '')"/>
         		</div>
         	</div>
         	<div class="row">
