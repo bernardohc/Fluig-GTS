@@ -32,7 +32,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("revEquipLoJa");
 	dataset.addColumn("revEquipEstado");
 	dataset.addColumn("numFluig");
-	dataset.addColumn("nuequipNumNotaFiscalFluig");
+	dataset.addColumn("equipNumNotaFiscal");
 	dataset.addColumn("MSGRET");
 	
 	//Cabeçalho
@@ -46,7 +46,7 @@ function createDataset(fields, constraints, sortFields) {
 		}		
 	}
 	
-	var SQL =	" SELECT STATUS,tipoSolicitante, equipDescricao, revRazaoSocialRevenda, revCidade, cliNomeCliente, cliCidade, cliEstado, revEntTecNome, protoRecResponsavel, protoRecTelefone " +
+	var SQL =	" SELECT STATUS,tipoSolicitante, equipDescricao, revRazaoSocialRevenda, revCodigo, revLoja, revCidade, revEstado, cliNomeCliente, cliCodigo, cliLoja, cliCidade, cliEstado, revEntTecNome, protoRecResponsavel, protoRecTelefone, numFluig, equipNumNotaFiscal, revEquipRazaoSocialRevenda, revEquipCodigo, revEquipLoja, revEquipEstado " +
 				" FROM ML001027 entrega (NOLOCK) " + 
 				" JOIN PROCES_WORKFLOW " + 
 				" ON entrega.companyid = PROCES_WORKFLOW.COD_EMPRESA " + 
@@ -98,7 +98,7 @@ function createDataset(fields, constraints, sortFields) {
 					,rsWD.getString("revEquipLoJa")
 					,rsWD.getString("revEquipEstado")
 					,rsWD.getString("numFluig")
-					,rsWD.getString("nuequipNumNotaFiscalFluig")
+					,rsWD.getString("equipNumNotaFiscal")
 					
 					]);
 	}
