@@ -81,15 +81,20 @@ var funcoes = (function() {
 						if( records[0].CODRET == "1"){
 							var record = records[0];
 
-							if (record.tipoSolicitante === "Administrativo GTS") {
-								$("#pesqEntregaPor").val("Técnico GTS");
-								$("#psPesqEntregaPor").val("Técnico GTS");
-							} else {
-								$("#pesqEntregaPor").val(record.tipoSolicitante);
-								$("#psPesqEntregaPor").val(record.tipoSolicitante);
-							}
+							//Campos Hidden
+							$("#idEntregaTec").val(record.numFluig);
+							$("#nfEquipamento").val(record.equipNumNotaFiscal);
+							$("#codRevenda").val(record.revCodigo);
+							$("#lojaRevenda").val(record.revLoja);
+							$("#revEstado").val(record.revEstado);
+							$("#codCliente").val(record.cliCodigo);
+							$("#lojaCliente").val(record.cliLoja);
+							$("#revEquipRazaoSocialRevenda").val(record.revEquipRazaoSocialRevenda);
+							$("#revEquipCodigo").val(record.revEquipCodigo);
+							$("#revEquipLoJa").val(record.revEquipLoJa);
+							$("#revEquipEstado").val(record.revEquipEstado);
 							
-							//$("#pesqEntregaPor").val(record.tipoSolicitante);												
+							$("#pesqEntregaPor").val(record.tipoSolicitante);
 							$("#pesqModelo").val(record.equipDescricao);
 							$("#pesqRevenda").val(record.revRazaoSocialRevenda);
 							$("#pesqCidadeRevenda").val(record.revCidade);
@@ -100,14 +105,14 @@ var funcoes = (function() {
 							$("#pesqAcompanhouEntrega").val(record.protoRecResponsavel);
 							$("#pesqTelefone").val(record.protoRecTelefone);
 							//pos safra
-							//$("#psPesqEntregaPor").val(record.tipoSolicitante);
+							$("#psPesqEntregaPor").val(record.tipoSolicitante);
 							$("#psPesqModelo").val(record.equipDescricao);
 							$("#psPesqRevenda").val(record.revRazaoSocialRevenda);
 							$("#psPesqCidadeRevenda").val(record.revCidade);
 							$("#psPesqCliente").val(record.cliNomeCliente);
 							$("#psPesqCidadeCliente").val(record.cliCidade);
 							$("#psPesqEstadoCliente").val(record.cliEstado);							
-							$("#psPesqEntregadorTec").val(record.revEntTecNome);	
+							$("#psPesqEntregadorTec").val(record.revEntTecNome);							
 							
 						}else if (records[0].CODRET == "2"){		
 							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
@@ -133,23 +138,8 @@ var funcoes = (function() {
 					funcoes.limpaCamposItem(indexItem)
 					loading.hide();
 				}
-
 			});
-		},
-
-		alteraSolicitante : function(){
-			let entRealizada = document.getElementById("entRealizada").value;
-			console.log("Entrega 1 " + entRealizada);
-		
-			//let entRealizada = document.getElementById("entRealizada");
-
-			if(entRealizada == "Administrativo GTS"){
-				$("#pesqEntregaPor").val("Técnico GTS");
-				console.log("Entrega 2 " + entRealizada);
-			}else{
-				$("#pesqEntregaPor").val(entRealizada);
-				console.log("Entrega 3 " + entRealizada);
-			}	
+			
 		},
 
 		efetivouContato : function(){

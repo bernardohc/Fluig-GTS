@@ -15,16 +15,28 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("tipoSolicitante");
 	dataset.addColumn("equipDescricao");
 	dataset.addColumn("revRazaoSocialRevenda");
+	dataset.addColumn("revCodigo");
+	dataset.addColumn("revLoja");
 	dataset.addColumn("revCidade");
+	dataset.addColumn("revEstado");
 	dataset.addColumn("cliNomeCliente");
+	dataset.addColumn("cliCodigo");
+	dataset.addColumn("cliLoja");
 	dataset.addColumn("cliCidade");
 	dataset.addColumn("cliEstado");
 	dataset.addColumn("revEntTecNome");
 	dataset.addColumn("protoRecResponsavel");
 	dataset.addColumn("protoRecTelefone");
+	dataset.addColumn("revEquipRazaoSocialRevenda");
+	dataset.addColumn("revEquipCodigo");
+	dataset.addColumn("revEquipLoJa");
+	dataset.addColumn("revEquipEstado");
+	dataset.addColumn("numFluig");
+	dataset.addColumn("equipNumNotaFiscal");
 	dataset.addColumn("MSGRET");
 	
 	//Cabeçalho
+	//var numSerieParam  = "";
 	var numSerieParam  = "";
 
 	var constraintsForm = new Array(); 
@@ -35,15 +47,15 @@ function createDataset(fields, constraints, sortFields) {
 		}		
 	}
 	
-	var SQL =	" SELECT STATUS,tipoSolicitante, equipDescricao, revRazaoSocialRevenda, revCidade, cliNomeCliente, cliCidade, cliEstado, revEntTecNome, protoRecResponsavel, protoRecTelefone " +
-				" FROM ML001027 entrega (NOLOCK) " + 
+	var SQL =	" SELECT STATUS,tipoSolicitante, equipDescricao, revRazaoSocialRevenda, revCodigo, revLoja, revCidade, revEstado, cliNomeCliente, cliCodigo, cliLoja, cliCidade, cliEstado, revEntTecNome, protoRecResponsavel, protoRecTelefone, numFluig, equipNumNotaFiscal, revEquipRazaoSocialRevenda, revEquipCodigo, revEquipLoja, revEquipEstado " +
+				" FROM ML001031 entrega (NOLOCK) " + 
 				" JOIN PROCES_WORKFLOW " + 
 				" ON entrega.companyid = PROCES_WORKFLOW.COD_EMPRESA " + 
 				" AND entrega.cardid = PROCES_WORKFLOW.NR_DOCUMENTO_CARD_INDEX " + 
 				" AND entrega.documentid = PROCES_WORKFLOW.NR_DOCUMENTO_CARD " + 
-				" AND entrega.version = (SELECT max(version) FROM ML001027 entrega_SUB WHERE entrega_SUB.documentid = entrega.documentid ) " + 
+				" AND entrega.version = (SELECT max(version) FROM ML001031 entrega_SUB WHERE entrega_SUB.documentid = entrega.documentid ) " + 
 				" WHERE PROCES_WORKFLOW.COD_DEF_PROCES = 'Pos-Venda-Entrega-Tecnica' " + 
-				" and entrega.version = (SELECT max(version) FROM ML001027 MLTB WHERE MLTB.documentid = entrega.documentid) and STATUS <> 1 "; 
+				" and entrega.version = (SELECT max(version) FROM ML001031 MLTB WHERE MLTB.documentid = entrega.documentid) and STATUS <> 1 "; 
 	
 	
 	
@@ -70,13 +82,24 @@ function createDataset(fields, constraints, sortFields) {
 					,rsWD.getString("tipoSolicitante")
 					,rsWD.getString("equipDescricao")
 					,rsWD.getString("revRazaoSocialRevenda")
+					,rsWD.getString("revCodigo")
+					,rsWD.getString("revLoja")
 					,rsWD.getString("revCidade")
+					,rsWD.getString("revEstado")
 					,rsWD.getString("cliNomeCliente")
+					,rsWD.getString("cliCodigo")
+					,rsWD.getString("cliLoja")
 					,rsWD.getString("cliCidade")
 					,rsWD.getString("cliEstado")
 					,rsWD.getString("revEntTecNome")
 					,rsWD.getString("protoRecResponsavel")
 					,rsWD.getString("protoRecTelefone")
+					,rsWD.getString("revEquipRazaoSocialRevenda")
+					,rsWD.getString("revEquipCodigo")
+					,rsWD.getString("revEquipLoJa")
+					,rsWD.getString("revEquipEstado")
+					,rsWD.getString("numFluig")
+					,rsWD.getString("equipNumNotaFiscal")
 					
 					]);
 	}
