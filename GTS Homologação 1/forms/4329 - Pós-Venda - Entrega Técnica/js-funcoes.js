@@ -1293,12 +1293,7 @@ var eventsFuncoes = (function() {
 			 * 
 			 */
 			$(document).on("change", "#OCCpfCnpj", function() {
-				if($("#OCCpfCnpj").val().trim().length == 0){
-					
-					funcoes.limpaCamposCliente();
-					funcoes.somenteLeituraCamposCliente(true);
-					
-				}else if($("#OCCpfCnpj").val().trim().length == 14 || $("#OCCpfCnpj").val().trim().length == 18){
+				if($("#OCCpfCnpj").val().trim().length == 14 || $("#OCCpfCnpj").val().trim().length == 18){
 					funcoes.consultaRevendaPagamento('cpfCnpj');
 					
 				}else{

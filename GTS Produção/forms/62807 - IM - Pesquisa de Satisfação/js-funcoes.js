@@ -94,7 +94,17 @@ var funcoes = (function() {
 							$("#revEquipLoJa").val(record.revEquipLoJa);
 							$("#revEquipEstado").val(record.revEquipEstado);
 							
-							$("#pesqEntregaPor").val(record.tipoSolicitante);
+							//$("#pesqEntregaPor").val(record.tipoSolicitante);
+							let entregaPor = record.tipoSolicitante;
+							console.log("1 " + entregaPor)
+							if(entregaPor === 'Administrativo GTS'){
+								$("#pesqEntregaPor").val("Técnico GTS");
+								console.log("2 " + entregaPor)
+							}else if(entregaPor === 'Revenda'){
+								$("#pesqEntregaPor").val("Revenda");
+								console.log("3 " + entregaPor)
+							};
+
 							$("#pesqModelo").val(record.equipDescricao);
 							$("#pesqRevenda").val(record.revRazaoSocialRevenda);
 							$("#pesqCidadeRevenda").val(record.revCidade);

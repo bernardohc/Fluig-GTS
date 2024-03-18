@@ -8,6 +8,7 @@
 
 	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
 	<!-- <script type="text/javascript" src="js-validafunctions.js"></script>
 	<link type="text/css" rel="stylesheet" href="css-custom.css"/> -->
 
@@ -90,6 +91,10 @@
 							<input type="text" name="pesqNumSerie" id="pesqNumSerie" class="form-control infPesqNumSerie">
 						</div>
 						<div class="form-group col-md-2">
+							<label for="pesqModelo">Modelo:</label>
+							<input type="text" name="pesqModelo" id="pesqModelo" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
 							<label for="pesqEntregaPor">Entrega realizada por:</label>
 							<input type="text" name="pesqEntregaPor" id="pesqEntregaPor" class="form-control" readonly>
 							<!-- <select name="pesqEntregaPor" id="pesqEntregaPor" class="form-control">
@@ -97,11 +102,7 @@
 								<option value="Revenda"> Revenda </option>
 								<option value="Técnico GTS"> Técnico GTS </option>
 							</select> -->
-						</div>
-						<div class="form-group col-md-2">
-							<label for="pesqModelo">Modelo:</label>
-							<input type="text" name="pesqModelo" id="pesqModelo" class="form-control" readonly>
-						</div>
+						</div>												
 						<div class="form-group col-md-2">
 							<label for="pesqRevenda">Revenda:</label>
 							<input type="text" name="pesqRevenda" id="pesqRevenda" class="form-control" readonly>
@@ -111,6 +112,14 @@
 						<div class="form-group col-md-2">
 							<label for="pesqCidadeRevenda">Cidade da revenda:</label>
 							<input type="text" name="pesqCidadeRevenda" id="pesqCidadeRevenda" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="pesqEstadoRevenda">Estado da revenda:</label>
+							<input type="text" name="pesqEstadoRevenda" id="pesqEstadoRevenda" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="pesqEntregadorTec">Entregador Técnico:</label>
+							<input type="text" name="pesqEntregadorTec" id="pesqEntregadorTec" class="form-control" readonly>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqRepresentante">Representante:</label>
@@ -123,17 +132,13 @@
 						<div class="form-group col-md-2">
 							<label for="pesqCidadeCliente">Cidade do cliente:</label>
 							<input type="text" name="pesqCidadeCliente" id="pesqCidadeCliente" class="form-control" readonly>
-						</div>
+						</div>												
+					</div>
+					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="pesqEstadoCliente">Estado:</label>
 							<input type="text" name="pesqEstadoCliente" id="pesqEstadoCliente" class="form-control" readonly>
 						</div>
-						<div class="form-group col-md-2">
-							<label for="pesqEntregadorTec">Entregador Técnico:</label>
-							<input type="text" name="pesqEntregadorTec" id="pesqEntregadorTec" class="form-control" readonly>
-						</div>
-					</div>
-					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="pesqAcompanhouEntrega">Quem acompanhou a entrega:</label>
 							<input type="text" name="pesqAcompanhouEntrega" id="pesqAcompanhouEntrega" class="form-control">
@@ -588,6 +593,10 @@
 							<input type="text" name="psPesqCidadeRevenda" id="psPesqCidadeRevenda" class="form-control">
 						</div>
 						<div class="form-group col-md-2">
+							<label for="psPesqEstadoRevenda">Estado da revenda:</label>
+							<input type="text" name="psPesqEstadoRevenda" id="psPesqEstadoRevenda" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
 							<label for="psPesqRepresentante">Representante:</label>
 							<input type="text" name="psPesqRepresentante" id="psPesqRepresentante" class="form-control">
 						</div>
@@ -602,13 +611,13 @@
 						<div class="form-group col-md-2">
 							<label for="psPesqEstadoCliente">Estado:</label>
 							<input type="text" name="psPesqEstadoCliente" id="psPesqEstadoCliente" class="form-control" readonly>
-						</div>
+						</div>						
+					</div>
+					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="psPesqEntregadorTec">Entregador Técnico:</label>
 							<input type="text" name="psPesqEntregadorTec" id="psPesqEntregadorTec" class="form-control" readonly>
 						</div>
-					</div>
-					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="psPesqAcompanhouEntrega">Quem acompanhou a entrega:</label>
 							<input type="text" name="psPesqAcompanhouEntrega" id="psPesqAcompanhouEntrega" class="form-control" >

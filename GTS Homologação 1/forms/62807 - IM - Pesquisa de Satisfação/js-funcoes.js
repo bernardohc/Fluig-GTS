@@ -80,6 +80,7 @@ var funcoes = (function() {
 						const records = data.content;
 						if( records[0].CODRET == "1"){
 							var record = records[0];
+							var entrepaPor = ''
 
 							//Campos Hidden
 							$("#idEntregaTec").val(record.numFluig);
@@ -94,10 +95,21 @@ var funcoes = (function() {
 							$("#revEquipLoJa").val(record.revEquipLoJa);
 							$("#revEquipEstado").val(record.revEquipEstado);
 							
-							$("#pesqEntregaPor").val(record.tipoSolicitante);
+							//$("#pesqEntregaPor").val(record.tipoSolicitante);
+							let entregaPor = record.tipoSolicitante;
+							console.log("1 " + entregaPor)
+							if(entregaPor === 'Administrativo GTS'){
+								$("#pesqEntregaPor").val("Técnico GTS");
+								console.log("2 " + entregaPor)
+							}else if(entregaPor === 'Revenda'){
+								$("#pesqEntregaPor").val("Revenda");
+								console.log("3 " + entregaPor)
+							};																					
+
 							$("#pesqModelo").val(record.equipDescricao);
 							$("#pesqRevenda").val(record.revRazaoSocialRevenda);
 							$("#pesqCidadeRevenda").val(record.revCidade);
+							$("#pesqEstadoRevenda").val(record.revEstado);
 							$("#pesqCliente").val(record.cliNomeCliente);
 							$("#pesqCidadeCliente").val(record.cliCidade);
 							$("#pesqEstadoCliente").val(record.cliEstado);
@@ -109,6 +121,7 @@ var funcoes = (function() {
 							$("#psPesqModelo").val(record.equipDescricao);
 							$("#psPesqRevenda").val(record.revRazaoSocialRevenda);
 							$("#psPesqCidadeRevenda").val(record.revCidade);
+							$("#psPesqEstadoRevenda").val(record.revEstado);
 							$("#psPesqCliente").val(record.cliNomeCliente);
 							$("#psPesqCidadeCliente").val(record.cliCidade);
 							$("#psPesqEstadoCliente").val(record.cliEstado);							
@@ -248,6 +261,13 @@ var funcoes = (function() {
 			
 		},
 
+		limpaCalendario : function(){
+
+			const limpapesqPrevColheita = document.querySelector('#pesqPrevColheita');
+			limpapesqPrevColheita.value = '';
+			
+		},
+	
 		//Condição para ocultar Observações
 		liberaObs : function(){
 			let pesqEfetivoCont = "";
@@ -587,6 +607,7 @@ $(document).on("change", "#pesqNotaAtendimento", function() {
 
 $(document).on("change", "#pesqTermColheita", function() {
 	funcoes.blocCalendar();
+	//funcoes.limpaCalendario();
 });
 //Libera campo para preencher melhoria
 $(document).on("change", "#pesqPsMelhoria", function() {
@@ -653,7 +674,23 @@ function loadForm(){
 	//$(`#psSolDataPesq`).val(dataAtual);
 
 	
-}
-	
+	if(CURRENT_STATE == INICIO_0 || CURRENT_STATE == INICIO){
+		$(document).on("change", "#pesqTermColheita", function() {
+			funcoes.blocCalendar();
+			funcoes.limpaCalendario();
+		});
+	}
+	if(CURRENT_STATE == Aguardando_Colheita){
 
+		$(document).on("change", "#pesqTermColheita", function() {
+			//funcoes.blocCalendar();
+			//funcoes.limpaCalendario();
+			$(`#pesqPrevColheita`).prop("readonly", true);
+			$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
+			
+		});
+	}
+
+	
+};
 

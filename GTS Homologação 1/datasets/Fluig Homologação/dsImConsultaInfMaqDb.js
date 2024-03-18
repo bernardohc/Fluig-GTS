@@ -36,7 +36,6 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("MSGRET");
 	
 	//Cabeçalho
-	//var numSerieParam  = "";
 	var numSerieParam  = "";
 
 	var constraintsForm = new Array(); 
@@ -48,14 +47,14 @@ function createDataset(fields, constraints, sortFields) {
 	}
 	
 	var SQL =	" SELECT STATUS,tipoSolicitante, equipDescricao, revRazaoSocialRevenda, revCodigo, revLoja, revCidade, revEstado, cliNomeCliente, cliCodigo, cliLoja, cliCidade, cliEstado, revEntTecNome, protoRecResponsavel, protoRecTelefone, numFluig, equipNumNotaFiscal, revEquipRazaoSocialRevenda, revEquipCodigo, revEquipLoja, revEquipEstado " +
-				" FROM ML001027 entrega (NOLOCK) " + 
+				" FROM ML001031 entrega (NOLOCK) " + 
 				" JOIN PROCES_WORKFLOW " + 
 				" ON entrega.companyid = PROCES_WORKFLOW.COD_EMPRESA " + 
 				" AND entrega.cardid = PROCES_WORKFLOW.NR_DOCUMENTO_CARD_INDEX " + 
 				" AND entrega.documentid = PROCES_WORKFLOW.NR_DOCUMENTO_CARD " + 
-				" AND entrega.version = (SELECT max(version) FROM ML001027 entrega_SUB WHERE entrega_SUB.documentid = entrega.documentid ) " + 
+				" AND entrega.version = (SELECT max(version) FROM ML001031 entrega_SUB WHERE entrega_SUB.documentid = entrega.documentid ) " + 
 				" WHERE PROCES_WORKFLOW.COD_DEF_PROCES = 'Pos-Venda-Entrega-Tecnica' " + 
-				" and entrega.version = (SELECT max(version) FROM ML001027 MLTB WHERE MLTB.documentid = entrega.documentid) and STATUS <> 1 "; 
+				" and entrega.version = (SELECT max(version) FROM ML001031 MLTB WHERE MLTB.documentid = entrega.documentid) and STATUS <> 1 "; 
 	
 	
 	

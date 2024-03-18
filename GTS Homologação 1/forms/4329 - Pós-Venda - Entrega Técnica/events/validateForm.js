@@ -266,10 +266,7 @@ function validateForm(form){
 						hasErros = true;
 					}
 				}else if(form.getValue("A1_PAIS") == "PAR"){
-					if (isEmpty("revEntTecRUC", form)) {
-						message += getMessage("RUC do Entregador Técnico", 1, form);
-						hasErros = true;
-					}
+					//Removido obrigatoriedade do RUC
 				}
 		    		
     		
@@ -387,10 +384,10 @@ function validateForm(form){
 					hasErros = true;
 				}
 				if (isEmpty("cliTelefonePesqSatisfacao", form)){
-					message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+					message += getMessage("Celular para Pesquisa de Satisfação", 1, form);
 					hasErros = true;
 				}else if( form.getValue("cliTelefonePesqSatisfacao").length() < 10 ){
-					message += getMessage("Telefone para Pesquisa de Satisfação", 2, form);
+					message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
 					hasErros = true;
 				}
 	    		
@@ -759,10 +756,7 @@ function validateForm(form){
 						hasErros = true;
 					}
 				}else if(form.getValue("A1_PAIS") == "PAR"){
-					if (isEmpty("revEntTecRUC", form)) {
-						message += getMessage("RUC do Entregador Técnico", 1, form);
-						hasErros = true;
-					}
+					//Removido obrigatoriedade do RUC
 				}
 		    		
     		
@@ -879,10 +873,10 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
-	    			message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+	    			message += getMessage("Celular para Pesquisa de Satisfação", 1, form);
 	    			hasErros = true;
 	    		}else if( form.getValue("cliTelefonePesqSatisfacao").length() < 10 ){
-    				message += getMessage("Telefone para Pesquisa de Satisfação", 2, form);
+    				message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
     				hasErros = true;
 	    		}
 	    		if (isEmpty("cliPossuiEquipamentoGTS", form)) {
@@ -1079,10 +1073,10 @@ function validateForm(form){
     			hasErros = true;
     		}
     		if (isEmpty("cliTelefonePesqSatisfacao", form)){
-    			message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+    			message += getMessage("Celular para Pesquisa de Satisfação", 1, form);
     			hasErros = true;
     		}else if( form.getValue("cliTelefonePesqSatisfacao").length() < 10 ){
-				message += getMessage("Telefone para Pesquisa de Satisfação", 2, form);
+				message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
 				hasErros = true;
     		}
         	break;
@@ -1354,10 +1348,7 @@ function validateForm(form){
 						hasErros = true;
 					}
 				}else if(form.getValue("A1_PAIS") == "PAR"){
-					if (isEmpty("revEntTecRUC", form)) {
-						message += getMessage("RUC do Entregador Técnico", 1, form);
-						hasErros = true;
-					}
+					//Removido obrigatoriedade do RUC
 				}
 		    		
     		
@@ -1474,10 +1465,10 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
-	    			message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+	    			message += getMessage("Celular para Pesquisa de Satisfação", 1, form);
 	    			hasErros = true;
 	    		}else if( form.getValue("cliTelefonePesqSatisfacao").length() < 10 ){
-    				message += getMessage("Telefone para Pesquisa de Satisfação", 2, form);
+    				message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
     				hasErros = true;
 	    		}
 	    		if (isEmpty("cliPossuiEquipamentoGTS", form)) {
