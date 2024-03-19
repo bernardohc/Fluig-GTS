@@ -28,6 +28,31 @@ function enableFields(form){
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
         form.setEnabled("pesqTermColheita", false);
+        form.setEnabled("pesqPrevColheita", false);
+        form.setEnabled("pesqOcorrencia", false);
+        //Pos Safra
+        //form.setEnabled("psPesqEntregaPor", false);
+
+    }else if(atv_atual == Aguardando_Colheita){
+        //Inicio pesquisa 
+        form.setEnabled("pesqEfetivoCont", false);
+        form.setEnabled("pesqEntregaPor", false);
+        form.setEnabled("solDataPesq", false);
+        form.setEnabled("pesqNumSerie", false);
+        form.setEnabled("pesqModelo", false);
+        form.setEnabled("pesqRevenda", false);
+        form.setEnabled("pesqCidadeRevenda", false);
+        form.setEnabled("pesqRepresentante", false);
+        form.setEnabled("pesqCliente", false);
+        form.setEnabled("pesqCidadeCliente", false);
+        form.setEnabled("pesqAcompanhouEntrega", false);
+        form.setEnabled("pesqTelefone", false);
+        form.setEnabled("pesqNotaAtendimento", false);
+        form.setEnabled("pesqFeedbackAtendimento", false);
+        form.setEnabled("pesqNotaDesempenho", false);
+        form.setEnabled("pesqFeedbackEquipamento", false);
+        form.setEnabled("pesqFimOcorrencia", false);
+        //form.setEnabled("pesqTermColheita", false);
         //form.setEnabled("pesqPrevColheita", false);
         form.setEnabled("pesqOcorrencia", false);
         //Pos Safra
@@ -55,7 +80,7 @@ function enableFields(form){
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
         form.setEnabled("pesqTermColheita", false);
-        //form.setEnabled("pesqPrevColheita", true);
+        form.setEnabled("pesqPrevColheita", false);
         form.setEnabled("pesqOcorrencia", false);
 
         //Pesquisa pos safra
@@ -87,7 +112,7 @@ function enableFields(form){
         form.setEnabled("pesqNotaDesempenho", false);
         form.setEnabled("pesqFeedbackEquipamento", false);
         form.setEnabled("pesqTermColheita", false);
-        //form.setEnabled("pesqPrevColheita", false);
+        form.setEnabled("pesqPrevColheita", false);
         form.setEnabled("pesqOcorrencia", false);
 
         //Pesquisa pós safra

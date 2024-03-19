@@ -60,19 +60,27 @@ function validateForm(form){
                     if (isEmpty("pesqTelefone", form)) {
                         message += getMessage("Pesquisa de Satisfação - Telefone:", 1, form);
                         hasErros = true;
-                    }
-                    if (isEmpty("pesqNotaAtendimento", form)) {
+                    }                    
+                    if (form.getValue("pesqNotaAtendimento") === '') {
                         message += getMessage("Pesquisa de Satisfação - Como foi o Atendimento:", 1, form);
                         hasErros = true;
                     }
+                    // if (isEmpty("pesqNotaAtendimento", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Como foi o Atendimento:", 1, form);
+                    //     hasErros = true;
+                    // }
                     if (isEmpty("pesqFeedbackAtendimento", form)) {
                         message += getMessage("Pesquisa de Satisfação - Feedback do atendimento:", 1, form);
                         hasErros = true;
                     }
-                    if (isEmpty("pesqNotaDesempenho", form)) {
+                    if (form.getValue("pesqNotaDesempenho") === '') {
                         message += getMessage("Pesquisa de Satisfação - Desempenho do equipamento:", 1, form);
                         hasErros = true;
                     }
+                    // if (isEmpty("pesqNotaDesempenho", form)) {
+                    //     message += getMessage("Pesquisa de Satisfação - Desempenho do equipamento:", 1, form);
+                    //     hasErros = true;
+                    // }
                     if (isEmpty("pesqFeedbackEquipamento", form)) {
                         message += getMessage("Pesquisa de Satisfação - Feedback do equipamento:", 1, form);
                         hasErros = true;
@@ -173,6 +181,17 @@ function validateForm(form){
                     // } 
                 }                
             }         
+        break;
+
+        case Aguardando_Colheita :
+            if (isEmpty("pesqTermColheita", form)) {
+                message += getMessage("Pesquisa de Satisfação - Colheita Finalizada:", 1, form);
+                hasErros = true;
+            }
+            if (isEmpty("pesqPrevColheita", form)) {
+                message += getMessage("Pesquisa de Satisfação - Previsão de término da colheita:", 1, form);
+                hasErros = true;
+            }
         break;
 
         case Registro_Ocorrências :

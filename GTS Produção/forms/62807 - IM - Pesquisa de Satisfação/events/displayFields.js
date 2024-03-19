@@ -4,6 +4,7 @@ function displayFields(form, customHTML) {
 
 	form.setShowDisabledFields(true);
 	form.setHidePrintLink(true);
+	injetarFuncoesUteisJS(form, customHTML);
 
 	var usuarioCorrente = fluigAPI.getUserService().getCurrent();
 	console.log(usuarioCorrente);
@@ -55,13 +56,45 @@ function displayFields(form, customHTML) {
 			customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
 
 			disableCampo(form, customHTML);
+			controleAbas(form, customHTML, 'indisponivel');
+		}
+	}else if (atv_atual == Aguardando_Colheita) {
+		if (form.getFormMode() == 'MOD') {
+			form.setValue("pesNomePesquisador",  usuarioCorrente.getFullName() );
+			controleAbas(form, customHTML, 'indisponivel');
+
+			if(form.getValue("pesqOcorrencia") == "sim"){
+				form.setVisibleById("divPesqOcorrencia", true);
+				form.setVisibleById("divFimOcorrencia", true);
+			}else{
+			form.setVisibleById("divPesqOcorrencia", false);
+			form.setVisibleById("divFimOcorrencia", false);
+			form.setVisibleById("divPsPesqOcorrencia", false);
+			form.setVisibleById("divPsFimOcorrencia", false);
+			}
+
+		}if (form.getFormMode() == 'VIEW') {
+			customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	
+			customHTML.append("<script>$('#pesqPrevColheita').prop('style', 'pointer-events:none');</script>");
+
+			disableCampo(form, customHTML);
 		}
 	}else if (atv_atual == Pesquisa_Pos_Safra) {
 		if (form.getFormMode() == 'MOD') {
 			form.setValue("pesNomePesquisador",  usuarioCorrente.getFullName() );
 			controleAbas(form, customHTML, 'disponivel');
 
+			if(form.getValue("pesqOcorrencia") == "sim"){
+				form.setVisibleById("divPesqOcorrencia", true);
+				form.setVisibleById("divFimOcorrencia", true);
+			}else{
+			form.setVisibleById("divPesqOcorrencia", false);
 			form.setVisibleById("divFimOcorrencia", false);
+			form.setVisibleById("divPsPesqOcorrencia", false);
+			form.setVisibleById("divPsFimOcorrencia", false);
+			}
+
+			// form.setVisibleById("divFimOcorrencia", false);
         	form.setVisibleById("divPsPesqOcorrencia", false);
         	form.setVisibleById("divPsFimOcorrencia", false);
         	form.setVisibleById("divAddOcorrencia", false);
