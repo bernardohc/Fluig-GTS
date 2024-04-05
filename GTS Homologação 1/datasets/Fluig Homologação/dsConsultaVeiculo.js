@@ -32,7 +32,7 @@ function createDataset(fields, constraints, sortFields) {
 	            method : 'get',
 	            timeoutService: '100', // segundos
             	headers: {
-            		"Content-Type": "application/json"
+            		"Content-Type": "application/json",
                 }
 	        }
 		

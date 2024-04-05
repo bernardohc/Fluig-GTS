@@ -17,6 +17,7 @@ function createDataset(fields, constraints, sortFields) {
         newDataset.addColumn("ORIGEM_ALIQ_ICMS");
         newDataset.addColumn("RECOMPRA");
         newDataset.addColumn("CURVAABC");
+        newDataset.addColumn("FAMILIA");
         
 
         var contextWD = new javax.naming.InitialContext();
@@ -25,7 +26,7 @@ function createDataset(fields, constraints, sortFields) {
 
         var SQL = " SELECT B1_COD CODPRODUTO, B1_ZDESCP ZDESCP, B1_POSIPI NCM, FORMAT( DA1.DA1_PRCVEN,'N', 'pt-br') PRCTABELA "  +
                 " ,CONVERT(VARCHAR, case when B1_ZQEMB = 0 then 1 else B1_ZQEMB end ) UNEMBALAGEM, B1_ZCRITIC CODCRITICO    "+
-                " ,B1_ORIGEM ORIGEM_CODIGO, B1_ZRECOMP RECOMPRA, B1_ZCLABC CURVAABC  "+
+                " ,B1_ORIGEM ORIGEM_CODIGO, B1_ZRECOMP RECOMPRA, B1_ZCLABC CURVAABC, B1_ZFAMILI  as FAMILIA "+
                 " ,case " +
                 "	when B1_ORIGEM = 0 then 'NACIONAL' " +
                 "	when B1_ORIGEM = 1 then 'IMPORTADO' " +
@@ -90,7 +91,8 @@ function createDataset(fields, constraints, sortFields) {
                         rsWD.getString("ORIGEM_PERC_CONTEUDO_IMPORTACAO").trim(),
                         rsWD.getString("ORIGEM_ALIQ_ICMS").trim(),
                         rsWD.getString("RECOMPRA").trim(),
-                        rsWD.getString("CURVAABC").trim()
+                        rsWD.getString("CURVAABC").trim(),
+                        rsWD.getString("FAMILIA").trim()
                         
                        )
             );

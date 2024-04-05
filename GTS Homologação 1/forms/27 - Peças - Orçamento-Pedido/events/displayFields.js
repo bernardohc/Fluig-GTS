@@ -277,6 +277,8 @@ function displayFields(form,customHTML){
 		}else{
 			if(form.getValue("A1_PAIS") == "USA"){
 				mostraPedidoUSA(form, customHTML, 'MOD');
+				mostraNumOrcamentoProtheus(form, customHTML);
+				mostraNumPedidoProtheus(form, customHTML);
 			}else{
 				mostraPrecoCusto(form, customHTML);	
 				mostraNumCatalogoPeca(form, customHTML);
@@ -328,7 +330,11 @@ function displayFields(form,customHTML){
 				customHTML.append("<script>$('#divObsPed').show();</script>");
 				customHTML.append("<script>$('#divIPI').removeClass('col-md-offset-6');</script>");
 				customHTML.append("<script>$('#divIPI').addClass('col-md-offset-2');</script>");
-				customHTML.append("<script>$('#divAcaoPartes').show();</script>");
+				if(form.getValue("tipoPedidoPosVenda") == "sim"){
+					customHTML.append("<script>$('#divPosVendaCientePedido').show();</script>");
+				}else{
+					customHTML.append("<script>$('#divAcaoPartes').show();</script>");
+				}
 				customHTML.append("<script>$('.descProdTabela').css({minWidth: '230px'});</script>");
 				
 				mostraNumCatalogoPeca(form, customHTML);
@@ -418,6 +424,10 @@ function displayFields(form,customHTML){
 			mostraNumCatalogoPeca(form, customHTML);
 			mostraNumOrcamentoProtheus(form, customHTML);
 			mostraNumPedidoProtheus(form, customHTML);
+
+			if(form.getValue("tipoPedidoPosVenda") == "sim"){
+				customHTML.append("<script>$('#divPosVendaCientePedido').show();</script>");
+			}
 		}
 
 	}else if ( atv_atual == CANCELAMENTOABERTURA){
@@ -534,6 +544,16 @@ function carregaGestorEstado(form,customHTML){
 			}
 		}
 		
+		//Seta o usuário de Suporte do Pós-Venda para visualização e registro de pedidos de garantia acima de R$15.000,00
+		var dsSuporteEstado = DatasetFactory.getDataset("ds_parametro_compOS_suporte_estado", null, null, null);
+		
+		for ( var i = 0; i < dsSuporteEstado.rowsCount; i++) {
+			if (dsSuporteEstado.getValue(i, "siglaEstado") == siglaUFUser) {
+				if(dsSuporteEstado.getValue(i, "WKUserSuporteGTS") != ""){
+					form.setValue("matFluigSuporteGTS", dsSuporteEstado.getValue(i, "WKUserSuporteGTS"));
+				}
+			}
+		}
 	}else{
 		customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente. Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
 		log.info('O seu usuário não está configurado corretamente: flLoginEstado false');
@@ -713,10 +733,10 @@ function carregaDadosSolicitante(form, customHTML, tipo){
 				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #5.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
 				log.info('O seu usuário não está configurado corretamente. Vendedor 5 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
 				ocultaCabecalhosForm(form, customHTML);
-			}else if(vendedor7 == ''){
-				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #7.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
-				log.info('O seu usuário não está configurado corretamente. Vendedor 7 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
-				ocultaCabecalhosForm(form, customHTML);
+			// }else if(vendedor7 == ''){
+			// 	customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #7.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
+			// 	log.info('O seu usuário não está configurado corretamente. Vendedor 7 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
+			// 	ocultaCabecalhosForm(form, customHTML);
 			}else if(vendedor8 == ''){
 				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #8.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
 				log.info('O seu usuário não está configurado corretamente. Vendedor 8 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));

@@ -254,10 +254,10 @@ function validateForm(form){
                     		message += getMessage("Field <b>Seller 5</b> can not be empty.", 6, form);
                     		hasErros = true;
                     	}
-                    	if (isEmpty("vendedor7", form)) {
-                    		message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
-                    		hasErros = true;
-                    	}
+                    	// if (isEmpty("vendedor7", form)) {
+                    	// 	message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
+                    	// 	hasErros = true;
+                    	// }
                     	if (isEmpty("vendedor8", form)) {
                     		message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
                     		hasErros = true;
@@ -355,10 +355,10 @@ function validateForm(form){
             		message += getMessage("Vendedor 5", 1, form);
             		hasErros = true;
             	}
-            	if (isEmpty("vendedor7", form)) {
-            		message += getMessage("Vendedor 7", 1, form);
-            		hasErros = true;
-            	}
+            	// if (isEmpty("vendedor7", form)) {
+            	// 	message += getMessage("Vendedor 7", 1, form);
+            	// 	hasErros = true;
+            	// }
             	if (isEmpty("vendedor8", form)) {
             		message += getMessage("Vendedor 8", 1, form);
             		hasErros = true;
@@ -479,10 +479,10 @@ function validateForm(form){
                     		message += getMessage("Vendedor 5", 1, form);
                     		hasErros = true;
                     	}
-                    	if (isEmpty("vendedor7", form)) {
-                    		message += getMessage("Vendedor 7", 1, form);
-                    		hasErros = true;
-                    	}
+                    	// if (isEmpty("vendedor7", form)) {
+                    	// 	message += getMessage("Vendedor 7", 1, form);
+                    	// 	hasErros = true;
+                    	// }
                     	if (isEmpty("vendedor8", form)) {
                     		message += getMessage("Vendedor 8", 1, form);
                     		hasErros = true;
@@ -990,10 +990,10 @@ function validateForm(form){
 	            		message += getMessage("Vendedor 5", 1, form);
 	            		hasErros = true;
 	            	}
-	            	if (isEmpty("vendedor7", form)) {
-	            		message += getMessage("Vendedor 7", 1, form);
-	            		hasErros = true;
-	            	}
+	            	// if (isEmpty("vendedor7", form)) {
+	            	// 	message += getMessage("Vendedor 7", 1, form);
+	            	// 	hasErros = true;
+	            	// }
 	            	if (isEmpty("vendedor8", form)) {
 	            		message += getMessage("Vendedor 8", 1, form);
 	            		hasErros = true;
@@ -1340,10 +1340,10 @@ function validateForm(form){
             		message += getMessage("Field <b>Seller 5</b> can not be empty.", 6, form);
             		hasErros = true;
             	}
-            	if (isEmpty("vendedor7", form)) {
-            		message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
-            		hasErros = true;
-            	}
+            	// if (isEmpty("vendedor7", form)) {
+            	// 	message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
+            	// 	hasErros = true;
+            	// }
             	if (isEmpty("vendedor8", form)) {
             		message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
             		hasErros = true;
@@ -1432,18 +1432,22 @@ function validateForm(form){
 			
         case GTSVERIFICAORCAMENTO:
         	
-        	if (isEmpty("partesTransformaOrcEmPed", form)) {	
-	           	 message += getMessage("É preciso selecionar a ação (<b>Transformar Orçamento em Pedido na GTS</b> ou <b>Cancelar</b>)", 6, form);
-	           	 hasErros = true;
-	       	}
+			if (form.getValue("tipoPedidoPosVenda") == "sim" ) {	
+				if ( form.getValue("chkPosVendaCientePedido") != 'ciente' ) {
+					message += getMessage("Ciencia do Pedido de Garantia", 7, form);
+					hasErros = true;
+				}
+				if ( isEmpty("obsPosVendaCientePedido", form) ) {
+					message += getMessage("Observação Pós-Venda", 1, form);
+					hasErros = true;
+				}
+			}else{
+				if (isEmpty("partesTransformaOrcEmPed", form)) {	
+					message += getMessage("É preciso selecionar a ação (<b>Transformar Orçamento em Pedido na GTS</b> ou <b>Cancelar</b>)", 6, form);
+					hasErros = true;
+				}
+			}
 	       	
-//	       	if( form.getValue("partesTransformaOrcEmPed") == 'Cancelar' ){
-//	       		if (isEmpty("gerarPedidoMotCancel", form)) {	
-//	       			message += getMessage("Motivo de Cancelamento", 1, form);
-//                  hasErros = true;
-//	       		}
-//	       	}
-        	
         	break;
         	
         case ANALISAERROINTEGRAPEDIDO:

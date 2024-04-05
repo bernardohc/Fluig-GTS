@@ -160,7 +160,7 @@ function validateForm(form){
                 if (isEmpty("entObjVeiculos", form)) {
                     message += getMessage("Existe objetos esquecidos no veículo", 1, form);
                     hasErros = true;
-                }else if( form.getValue("entObjVeiculos")== 'Não'){
+                }else if( form.getValue("entObjVeiculos")== 'Sim'){
                     if (isEmpty("entObjVeiculosObs", form)) {	
                         message += getMessage("Existe objetos esquecidos no veículo", 1, form);
                         hasErros = true;
@@ -191,6 +191,69 @@ function validateForm(form){
                 if (isEmpty("devVigilante", form)) {
                     message += getMessage("Vigilante da Devolução", 1, form);
                     hasErros = true;
+                }
+                if (isEmpty("devVistExt", form)) {
+                    message += getMessage("Vistoria externa", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("devVistExt")== 'Não'){
+                    if (isEmpty("devVistExtObs", form)) {	
+                        message += getMessage("Vistoria Externa", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("devVistInt", form)) {
+                    message += getMessage("Vistoria interna", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("devVistInt")== 'Não'){
+                    if (isEmpty("devVistIntObs", form)) {	
+                        message += getMessage("Vistoria interna", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("devPneus", form)) {
+                    message += getMessage("Pneus", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("devPneus")== 'Não'){
+                    if (isEmpty("devPneusObs", form)) {	
+                        message += getMessage("Pneus", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("devLantFarois", form)) {
+                    message += getMessage("Lanternas e faróis", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("devLantFarois")== 'Não'){
+                    if (isEmpty("devLantFaroisObs", form)) {	
+                        message += getMessage("Lanternas e faróis", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("devLonaMar", form)) {
+                    message += getMessage("Lona maritíma", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("devLonaMar")== 'Não'){
+                    if (isEmpty("devLonaMarObs", form)) {	
+                        message += getMessage("Lona maritíma", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("devOrgLimpe", form)) {
+                    message += getMessage("Organização e limpeza", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("devOrgLimpe")== 'Não'){
+                    if (isEmpty("devOrgLimpeObs", form)) {	
+                        message += getMessage("Organização e limpeza", 1, form);
+                        hasErros = true;
+                    }  
+                }
+                if (isEmpty("devObjVeiculos", form)) {
+                    message += getMessage("Existe objetos esquecidos no veículo", 1, form);
+                    hasErros = true;
+                }else if( form.getValue("devObjVeiculos")== 'Sim'){
+                    if (isEmpty("devObjVeiculosObs", form)) {	
+                        message += getMessage("Existe objetos esquecidos no veículo", 1, form);
+                        hasErros = true;
+                    }  
                 }
             }
         break;

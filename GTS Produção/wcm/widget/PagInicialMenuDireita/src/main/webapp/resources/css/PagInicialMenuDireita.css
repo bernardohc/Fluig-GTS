@@ -1,0 +1,20 @@
+.sub-titulo{
+	text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #f28425;
+}
+
+.banner-header{
+	background: #f28425; 
+	color: #000 !important;
+	text-align:center;
+    font-weight: bold;
+}
+
+.texto-link{
+	color: #000 !important;
+	text-align: left; 
+	font-family:Arial,Helvetica,sans-serif;
+	cursor: pointer;
+	opacity : 0.9;
+}

@@ -188,10 +188,10 @@ function validateForm(form){
                 message += getMessage("Pesquisa de Satisfação - Colheita Finalizada:", 1, form);
                 hasErros = true;
             }
-            if (isEmpty("pesqPrevColheita", form)) {
-                message += getMessage("Pesquisa de Satisfação - Previsão de término da colheita:", 1, form);
-                hasErros = true;
-            }
+            // if (isEmpty("pesqPrevColheita", form)) {
+            //     message += getMessage("Pesquisa de Satisfação - Previsão de término da colheita:", 1, form);
+            //     hasErros = true;
+            // }
         break;
 
         case Registro_Ocorrências :

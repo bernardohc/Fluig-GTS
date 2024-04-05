@@ -156,7 +156,6 @@ function validateForm(form){
 		    			hasErros = true;
 		    		}
 	    			
-	    			
 	    			/*
 	    			 * Cadastro da Loja (Revenda que está realizando a Entrega Técnica)
 	    			 */
@@ -381,6 +380,13 @@ function validateForm(form){
 				}
 				if (isEmpty("cliCidade", form)) {
 					message += getMessage("Cidade do Cliente", 1, form);
+					hasErros = true;
+				}
+				if (isEmpty("cliTelefone", form)){
+					message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+					hasErros = true;
+				}else if( form.getValue("cliTelefone").length() < 10 ){
+					message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
 					hasErros = true;
 				}
 				if (isEmpty("cliTelefonePesqSatisfacao", form)){
@@ -872,6 +878,13 @@ function validateForm(form){
 	    			message += getMessage("Cidade do Cliente", 1, form);
 	    			hasErros = true;
 	    		}
+				if (isEmpty("cliTelefone", form)){
+					message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+					hasErros = true;
+				}else if( form.getValue("cliTelefone").length() < 10 ){
+					message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
+					hasErros = true;
+				}
 	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
 	    			message += getMessage("Celular para Pesquisa de Satisfação", 1, form);
 	    			hasErros = true;
@@ -1072,6 +1085,13 @@ function validateForm(form){
     			message += getMessage("Cidade do Cliente", 1, form);
     			hasErros = true;
     		}
+			if (isEmpty("cliTelefone", form)){
+				message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+				hasErros = true;
+			}else if( form.getValue("cliTelefone").length() < 10 ){
+				message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
+				hasErros = true;
+			}
     		if (isEmpty("cliTelefonePesqSatisfacao", form)){
     			message += getMessage("Celular para Pesquisa de Satisfação", 1, form);
     			hasErros = true;
@@ -1464,6 +1484,13 @@ function validateForm(form){
 	    			message += getMessage("Cidade do Cliente", 1, form);
 	    			hasErros = true;
 	    		}
+				if (isEmpty("cliTelefone", form)){
+					message += getMessage("Telefone para Pesquisa de Satisfação", 1, form);
+					hasErros = true;
+				}else if( form.getValue("cliTelefone").length() < 10 ){
+					message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
+					hasErros = true;
+				}
 	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
 	    			message += getMessage("Celular para Pesquisa de Satisfação", 1, form);
 	    			hasErros = true;

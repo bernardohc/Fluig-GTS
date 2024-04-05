@@ -156,7 +156,7 @@ $(document).on("change", "input:radio[name='entOrgLimpe']", function() {
 
 $(document).on("change", "input:radio[name='entObjVeiculos']", function() {	
 	let entObjVeiculos = $("input:radio[name='entObjVeiculos']:checked").val();
-	if( entObjVeiculos == 'Não'){
+	if( entObjVeiculos == 'Sim'){
 		$('#entObjVeiculosObs').show();
 	}else{
 		$('#entObjVeiculosObs').val('');
@@ -227,7 +227,7 @@ $(document).on("change", "input:radio[name='devOrgLimpe']", function() {
 
 $(document).on("change", "input:radio[name='devObjVeiculos']", function() {	
 	let devObjVeiculos = $("input:radio[name='devObjVeiculos']:checked").val();
-	if( devObjVeiculos == 'Não'){
+	if( devObjVeiculos == 'Sim'){
 		$('#devObjVeiculosObs').show();
 	}else{
 		$('#devObjVeiculosObs').val('');

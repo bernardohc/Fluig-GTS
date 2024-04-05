@@ -155,6 +155,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 					//Pós-Venda - Chamado de Atendimento - Revenda (pode ser aberto pelo mobile)
 					$('#divPosVenda').show();
 					$('#chamadoDeAtendimento').show();
+					$('#politicaPosVenda').show();
 				}
 	            if(record['colleagueGroupPK.groupId'] == '000020' ){
 	            	//Pós-Venda - Complemento de OS
@@ -309,7 +310,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 									wb.SheetNames.push("Lista de Preço GTS");
 									
 									//Conteúdo
-									var dataExcel = [[ 'Cod. Produto', 'Desc. Produto', 'NCM', 'Preço Tabela', 'Unid./Embalagem', 'Cod. Crítico', 'Cod. Origem', 'Origem', 'Percentual Conteúdo de Importação', 'Alíquota ICMS', 'Curva ABC', 'Recompra']];
+									var dataExcel = [[ 'Cod. Produto', 'Desc. Produto', 'Família', 'NCM', 'Preço Tabela', 'Unid./Embalagem', 'Cod. Crítico', 'Cod. Origem', 'Origem', 'Percentual Conteúdo de Importação', 'Alíquota ICMS', 'Curva ABC', 'Recompra']];
 									
 									for( let index in records) {
 										const record = records[index];
@@ -319,9 +320,17 @@ var PagInicialMenuDireita = SuperWidget.extend({
 											ZDESCP = ZDESCP.replaceAll('–', '-');
 										}
 
+										// Definindo a variável reCompraText baseada no valor de record.RECOMPRA
+										let reCompraText = '';
+										if (record.RECOMPRA == 1) {
+											reCompraText = 'Sim';
+										} else if (record.RECOMPRA == 2) {
+											reCompraText = 'Não';
+										};
 										const newDatas = [
 												record.CODPRODUTO,
-												ZDESCP,
+												ZDESCP,	
+												record.FAMILIA,
 												record.NCM,
 												record.PRCTABELA,
 												record.UNEMBALAGEM,
@@ -330,8 +339,10 @@ var PagInicialMenuDireita = SuperWidget.extend({
 												record.ORIGEM_NACIONAL_IMPORTADO,
 												record.ORIGEM_PERC_CONTEUDO_IMPORTACAO,
 												record.ORIGEM_ALIQ_ICMS,
-												record.RECOMPRA,
-												record.CURVAABC
+												record.CURVAABC,
+												//record.RECOMPRA
+												reCompraText
+											
 												];
 										
 										dataExcel.push(newDatas)

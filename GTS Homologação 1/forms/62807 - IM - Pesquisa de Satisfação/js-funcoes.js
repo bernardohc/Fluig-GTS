@@ -373,13 +373,16 @@ var funcoes = (function() {
 			if(pesqTermColheita == "sim" ){
 				$(`#pesqPrevColheita`).prop("readonly", true);
 				$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
+				$("#pesqPrevColheita").prop("disabled", true);
 			}else if(pesqTermColheita == ""){
 				$(`#pesqPrevColheita`).prop("readonly", true);
 				$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
+				$("#pesqPrevColheita").prop("disabled", true);
 			}
 			else{
 				$(`#pesqPrevColheita`).prop("readonly", false);
 				$(`#pesqPrevColheita`).prop('style', 'pointer-events:all');
+				$("#pesqPrevColheita").prop("disabled", false);
 			}
 		},
 
