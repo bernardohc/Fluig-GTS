@@ -14,12 +14,13 @@ var PagInicialMenuDireita = SuperWidget.extend({
     	var constRoleColleagueId = DatasetFactory.createConstraint('workflowColleagueRolePK.colleagueId', matricula, matricula, ConstraintType.MUST);
 		var constColleagueRole = new Array(constRoleCompanyId, constRoleColleagueId)
     	var dsWorkflowColleagueRole = DatasetFactory.getDataset('workflowColleagueRole', null, constColleagueRole, null);
+
 		
 		if(dsTemValor(dsWorkflowColleagueRole)){
 	        var records = dsWorkflowColleagueRole.values;
 	        for ( var index in records) {
-	            let record = records[index];
-	            
+	            let record = records[index];         
+
 	            /*
 	             * Peças
 	             */
@@ -104,10 +105,21 @@ var PagInicialMenuDireita = SuperWidget.extend({
 		var constGroupColleagueId = DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", matricula, matricula, ConstraintType.MUST);
 		var constColleagueGroup = new Array(constGroupCompanyId, constGroupColleagueId);
 		var dsColleagueGroup = DatasetFactory.getDataset("colleagueGroup", null, constColleagueGroup, null);
+
 		if(dsTemValor(dsColleagueGroup)){
 			var records = dsColleagueGroup.values;
 	        for ( var index in records) {
 	            let record = records[index];
+
+				/*
+	             * Peças
+	             */
+				if(record['colleagueGroupPK.groupId'] == '000009'){
+	            	//Peças - Consulta Produto com Preço de Tabela
+					definiuMenu = true;
+	            	$('#divClassificacao').show();
+	            	$('#000009').show();
+	            }
 	            
 	            /*
 	             * Peça
@@ -227,10 +239,86 @@ var PagInicialMenuDireita = SuperWidget.extend({
 			}
 		}
 
-
 		if(!definiuMenu){
 			$('#divImgDefault').show();
 		}
+
+		//Pega os dados adicionais
+		// let codCli = '';
+		// let lojaCli = '';
+		console.log("Dados adicionais");
+		$.ajax({
+			url: '/api/public/2.0/users/getCurrent', 
+			type: "GET",
+		}).done(function(data) {
+			var user_fluig     = data;
+			var codCli        = user_fluig.content.extData.A1_COD;
+			var lojaCli       = user_fluig.content.extData.A1_LOJA;
+			//console.log(codCliente, lojaCliente + " Dados adicionais");
+			// let codCli = '';
+			// let lojaCli = '';
+			$('#codRev').val(codCli);
+			$('#lojaRev').val(lojaCli);
+			
+			//Dataset de consulta da classificação da revenda
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				async: true,
+				//url: "/api/public/ecm/dataset/search?datasetId=dsMenuConsultaClassRevenda&filterFields=codCli,022625036,lojaCli,0001",
+				url: "/api/public/ecm/dataset/search?datasetId=dsMenuConsultaClassRevenda&filterFields=codCli,"+codCli+",lojaCli,"+lojaCli,
+				
+				success: function (data, status, xhr) {
+					if (data != null && data.content != null && data.content.length > 0) {
+						const records = data.content;
+						if( records[0].CODRET == "1"){
+							var record = records[0];
+							var calassificacaoRev = record.CLASSREV;
+
+							if(calassificacaoRev == 'O'){
+								$("#classRev").text('Ouro');
+							}if(calassificacaoRev == 'P'){
+								$("#classRev").text('Prata');
+							}if(calassificacaoRev == 'B'){
+								$("#classRev").text('Bronze');
+							}if(calassificacaoRev == ''){
+								$("#classRev").text('Não Classificada');
+							}
+							//$("#classificacaoRev").val(calassificacaoRev);
+							
+						}else if (records[0].CODRET == "2"){
+							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
+							
+						}
+						
+					}else{
+							FLUIGC.toast({ title: '', message: 'Erro ao consultar revenda, comunicar o Administrador do Sistema!', type: 'danger' });
+						}
+					setTimeout(function(){ 
+						loading.hide();
+					}, 1000);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+					FLUIGC.toast({
+						title: '',
+						message: 'Erro na consulta do revenda, comunicar Administrador do Sistema' ,
+						type: 'danger'
+					});
+					//loading.hide();
+				}
+			});
+			
+
+		});		
+		
+			$(codCli).val('#codRev');
+			$(lojaCli).val('#lojaRev');
+			console.log(" Depois dos adicionais");
+			console.log(codCli, lojaCli);
+		
+		
 		
     },
   
@@ -238,10 +326,10 @@ var PagInicialMenuDireita = SuperWidget.extend({
     bindings: {
         local: {
             'lista_de_preco': ['click_listaDePreco'],
-            'checklist_entrega_tecnica': ['click_checklistEntregaTecnica']
+            'checklist_entrega_tecnica': ['click_checklistEntregaTecnica'],
         },
         global: {}
-    },
+    },	
 	
 	listaDePreco: function(){
 		
@@ -582,7 +670,8 @@ var PagInicialMenuDireita = SuperWidget.extend({
 	    } else {
 	        return "unknownnnnn";
 	    }                
-	}
+	},
+	
 });
 
 //Função necessário para exportação de excel
