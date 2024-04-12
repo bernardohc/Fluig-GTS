@@ -115,7 +115,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 	             * Peças
 	             */
 				if(record['colleagueGroupPK.groupId'] == '000009'){
-	            	//Peças - Consulta Produto com Preço de Tabela
+	            	//Pós-Venda - Consulta classificação de revenda
 					definiuMenu = true;
 	            	$('#divClassificacao').show();
 	            	$('#000009').show();
@@ -244,9 +244,6 @@ var PagInicialMenuDireita = SuperWidget.extend({
 		}
 
 		//Pega os dados adicionais
-		// let codCli = '';
-		// let lojaCli = '';
-		console.log("Dados adicionais");
 		$.ajax({
 			url: '/api/public/2.0/users/getCurrent', 
 			type: "GET",
@@ -254,9 +251,6 @@ var PagInicialMenuDireita = SuperWidget.extend({
 			var user_fluig     = data;
 			var codCli        = user_fluig.content.extData.A1_COD;
 			var lojaCli       = user_fluig.content.extData.A1_LOJA;
-			//console.log(codCliente, lojaCliente + " Dados adicionais");
-			// let codCli = '';
-			// let lojaCli = '';
 			$('#codRev').val(codCli);
 			$('#lojaRev').val(lojaCli);
 			
@@ -286,16 +280,18 @@ var PagInicialMenuDireita = SuperWidget.extend({
 							}
 							//$("#classificacaoRev").val(calassificacaoRev);
 							
-						}else if (records[0].CODRET == "2"){
-							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
-							
+						}
+						else if (records[0].CODRET == "2"){
+							//FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
+							console.log(records[0].CMSG);
 						}
 						
-					}else{
+					}
+					else{
 							FLUIGC.toast({ title: '', message: 'Erro ao consultar revenda, comunicar o Administrador do Sistema!', type: 'danger' });
 						}
 					setTimeout(function(){ 
-						loading.hide();
+						//loading.hide();
 					}, 1000);
 					
 				},
@@ -310,16 +306,8 @@ var PagInicialMenuDireita = SuperWidget.extend({
 				}
 			});
 			
-
 		});		
-		
-			$(codCli).val('#codRev');
-			$(lojaCli).val('#lojaRev');
-			console.log(" Depois dos adicionais");
-			console.log(codCli, lojaCli);
-		
-		
-		
+
     },
   
     //BIND de eventos

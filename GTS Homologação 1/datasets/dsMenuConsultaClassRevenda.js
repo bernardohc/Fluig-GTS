@@ -60,7 +60,7 @@ function createDataset(fields, constraints, sortFields) {
 							'Sucesso', 
 							result.CLASSREV
 							));
-            }else{
+            }			else{
 				var CMSG    = result.CMSG;
 				newDataset.addRow(new Array('2', CMSG));
             }

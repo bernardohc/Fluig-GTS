@@ -5,7 +5,7 @@
 		<div class="col-md-12">
 		    <div class="row">
 		    	<div class="col-md-offset-1 col-md-10 ">
-		        	<h2 class="banner-header">Classificação da Revenda</h2>
+		        	<h2 class="banner-header">Classificação da Revenda em Serviços</h2>
 			    </div>
 		    </div>
 
