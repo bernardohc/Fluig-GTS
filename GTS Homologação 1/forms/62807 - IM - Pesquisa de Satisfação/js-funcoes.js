@@ -330,16 +330,19 @@ var funcoes = (function() {
 			if(pesqOcorrencia == "nao"){
 				$("[teveOcorrencia]").hide();
 				$("[fimOcorrencia]").hide();
+				$("#divFalha").hide();
 				limpPesqOcorrenciaFeedback.value = '';
 				limpaPesqOcorrenciaApontamento.value = '';
 			}else if(pesqOcorrencia == ""){
 				$("[teveOcorrencia]").hide();
 				$("[fimOcorrencia]").hide();
+				$("#divFalha").hide();
 				limpPesqOcorrenciaFeedback.value = '';
 				limpaPesqOcorrenciaApontamento.value = '';
 			}else{
 				$("[teveOcorrencia]").show();
 				$("[fimOcorrencia]").show();
+				$("#divFalha").show();
 			}
 		},
 
@@ -466,6 +469,36 @@ var funcoes = (function() {
 			$(`#psPesqAcompanhouEntrega`).val(pesqAcompanhouEntrega);		
 			$(`#psPesqRepresentante`).val(pesqRepresentante).prop("readonly", true);			
 			$(`#psPesqNumSerie`).val(pesqNumSerie).prop("readonly", true);
+		},
+
+		copiaFamilia: function(){
+			//const indexTbFalha = wdkAddChild('falTbFalha');
+			//$("#falFamiliaItem___"+ indexTbFalha).val( $("#maqDescFamilia").val() );
+			$("#falFamiliaItem").val( $("#maqDescFamilia").val() );
+		},
+
+		copiaModelo: function(){
+			//const indexTbFalha = wdkAddChild('falTbFalha');
+			//$("#falFamiliaItem___"+ indexTbFalha).val( $("#maqDescFamilia").val() );
+			$("#falModeloMaquinaItem").val( $("#maqDescModeloMaquina").val() );
+		},
+
+		addFalha : function(){
+			
+			const indexTbFalha = wdkAddChild('falTbFalha');
+
+			//Família
+			$("#falCodFamiliaItem___"+ indexTbFalha).val( $("#maqCodFamilia").val() );
+			$("#falCodFalhaFamiliaItem___"+ indexTbFalha).val( $("#maqCodFalhaFamilia").val() );
+			$("#falFamiliaItem___"+ indexTbFalha).val( $("#maqDescFamilia").val() );
+			//Modelo Máquina
+			$("#falCodFalhaModeloMaquinaItem___"+ indexTbFalha).val( $("#maqCodFalhaModeloMaquina").val() );
+			$("#falModeloMaquinaItem___"+ indexTbFalha).val( $("#maqDescModeloMaquina").val() );
+
+			//Grupo
+			reloadZoomFilterValues('falGrupoMaquinaItem___'+ indexTbFalha, 'tipoFiltro,grupo,codFamilia,'+ $("#maqCodFamilia").val() );
+
+
 		},
 	}
 })();
@@ -664,6 +697,23 @@ $(document).on("change", "#psPesqOcorrencia", function() {
 	funcoes.limpaOcorrenciaPs();
 });
 
+//Copia Familia
+$(document).on("change", "#maqDescFamilia", function() {
+	funcoes.copiaFamilia();
+});
+
+//Copia Modelo
+$(document).on("change", "#maqDescModeloMaquina", function() {
+	funcoes.copiaModelo();
+	console.log("Modelo")
+}),
+
+//Add Falha
+$(document).on("click", "#divBtnAddFalha", function() {
+				
+	funcoes.addFalha();
+
+});
 
 function loadForm(){	
 

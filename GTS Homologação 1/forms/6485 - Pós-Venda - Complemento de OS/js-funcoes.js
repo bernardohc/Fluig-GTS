@@ -71,16 +71,16 @@ var funcoes = (function() {
     	    	}, 1000);
 			},
 			success: function (data, status, xhr) {
-				if (data != null && data.content != null && data.content.values.length > 0) {	
+				// if (data != null && data.content != null && data.content.values.length > 0) {	
 					
-					messageToast({message:'Número de Ordem de Serviço já utilizado.'}, 'warning')
+				// 	messageToast({message:'Número de Ordem de Serviço já utilizado.'}, 'warning')
 					
-					setTimeout(function(){ 
-	    	    		loading.hide();
-	    	    	}, 1000);
+				// 	setTimeout(function(){ 
+	    	    // 		loading.hide();
+	    	    // 	}, 1000);
 					
-					return;
-				}else{
+				// 	return;
+				// }else{
 					
 					$.ajax({
 			    		type: "GET",
@@ -256,7 +256,7 @@ var funcoes = (function() {
 						}
 					});
 					
-				}
+				// }
 			}	
 			});
 			

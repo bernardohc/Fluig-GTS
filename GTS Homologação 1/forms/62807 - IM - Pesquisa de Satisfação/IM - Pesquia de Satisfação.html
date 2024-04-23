@@ -9,8 +9,9 @@
 	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
-	<!-- <script type="text/javascript" src="js-validafunctions.js"></script>
-	<link type="text/css" rel="stylesheet" href="css-custom.css"/> -->
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+	<!-- <script type="text/javascript" src="js-validafunctions.js"></script> -->
 
 	<script>
 		$(document).ready(function() {
@@ -95,6 +96,49 @@
 							<label for="pesqModelo">Modelo:</label>
 							<input type="text" name="pesqModelo" id="pesqModelo" class="form-control" readonly>
 						</div>
+						<div class="form-group col-md-2" align="left">
+							<label for="maqFamilia">Família*</label>
+							<input type="hidden" name="maqCodFamilia" id="maqCodFamilia" />
+							<input type="hidden" name="maqCodFalhaFamilia" id="maqCodFalhaFamilia" />
+							<input type="zoom" name="maqDescFamilia" id="maqDescFamilia"
+											  data-zoom="{
+															  'displayKey':'FAMILIACODFALHADESC', 
+															  'datasetId':'dsCompOSSubconjuntos', 
+															  'filterValues':'tipoFiltro,familia',
+															  'fields':[ 
+																  { 
+																	  'field':'FAMILIACODFALHA', 
+																	  'label':'Código' 
+																  },
+																  { 
+																	  'field':'FAMILIADESC', 
+																	  'label':'Descrição' 
+																  } 
+															  ] 
+															  }" /> 
+						</div>
+						<div class="form-group col-md-2" align="left">
+							<label for="maqModeloMaquina">Modelo da Máquina*</label>
+							<input type="hidden" name="maqCodFalhaModeloMaquina" id="maqCodFalhaModeloMaquina" />
+							<input type="zoom" name="maqDescModeloMaquina" id="maqDescModeloMaquina"
+											  data-zoom="{
+															  'displayKey':'MODELOCODFALHADESC', 
+															  'datasetId':'dsCompOSSubconjuntos',
+															  'fields':[ 
+																  { 
+																	  'field':'MODELOCODFALHA', 
+																	  'label':'Código' 
+																  },
+																  { 
+																	  'field':'MODELODESC', 
+																	  'label':'Descrição' 
+																  }
+															  ] 
+															  }" /> 
+						</div>
+						
+					</div>
+					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="pesqEntregaPor">Entrega realizada por:</label>
 							<input type="text" name="pesqEntregaPor" id="pesqEntregaPor" class="form-control" readonly>
@@ -108,8 +152,6 @@
 							<label for="pesqRevenda">Revenda:</label>
 							<input type="text" name="pesqRevenda" id="pesqRevenda" class="form-control" readonly>
 						</div>
-					</div>
-					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="pesqCidadeRevenda">Cidade da revenda:</label>
 							<input type="text" name="pesqCidadeRevenda" id="pesqCidadeRevenda" class="form-control" readonly>
@@ -125,7 +167,9 @@
 						<div class="form-group col-md-2">
 							<label for="pesqRepresentante">Representante:</label>
 							<input type="text" name="pesqRepresentante" id="pesqRepresentante" class="form-control">
-						</div>
+						</div>																		
+					</div>
+					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="pesqCliente">Cliente:</label>
 							<input type="text" name="pesqCliente" id="pesqCliente" class="form-control" readonly>
@@ -133,9 +177,7 @@
 						<div class="form-group col-md-2">
 							<label for="pesqCidadeCliente">Cidade do cliente:</label>
 							<input type="text" name="pesqCidadeCliente" id="pesqCidadeCliente" class="form-control" readonly>
-						</div>												
-					</div>
-					<div class="row">
+						</div>
 						<div class="form-group col-md-2">
 							<label for="pesqEstadoCliente">Estado:</label>
 							<input type="text" name="pesqEstadoCliente" id="pesqEstadoCliente" class="form-control" readonly>
@@ -249,8 +291,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>			
 			</div>
+			
 			<div class="col-md-12">
 				<div class="row">
 					<div class="panel panel-primary" id="divPesqOcorrencia" teveOcorrencia>
@@ -260,48 +303,95 @@
 						<div class="panel-body">							
 							<div class="row">
 								<div class="col-md-12" id="divAddOcorrencia">
-									<!-- <div class="row">
-										<div class="col-md-12">
-											<div class="form-group col-md-3">
-												<label for="pesqNotaAtendOcorr">Como foi o atendimento da revenda?</label>
-												<select name="pesqNotaAtendOcorr" id="pesqNotaAtendOcorr" class="form-control">
-													<option value=""></option>
-													<option value="10"> 10 </option>
-													<option value="9"> 9 </option>
-													<option value="8"> 8 </option>
-													<option value="7"> 7 </option>
-													<option value="6"> 6 </option>
-													<option value="5"> 5 </option>
-													<option value="4"> 4 </option>
-													<option value="3"> 3 </option>
-													<option value="2"> 2 </option>
-													<option value="1"> 1 </option>
-													<option value="0"> 0 </option>
-													<option value="Nao Utilizou"> Não utilizou </option>
-													<option value="Não quis opinar"> Não quis opinar </option>
-												</select>
-											</div>
-											<div class="form-group col-md-3">
-												<label for="pesqFeedbackAtendOcorre">Feedback do atendimento da revenda:</label>
-												<textarea rows="1" cols="12" name="pesqFeedbackAtendOcorre" id="pesqFeedbackAtendOcorre" class="form-control " ></textarea>
-											</div>
-											<div class="form-group col-md-3">
-												<label for="pesqDispRevenda">Disponibilidade peças na revenda:</label>
-												<select name="pesqDispRevenda" id="pesqDispRevenda" class="form-control">
-													<option value=""></option>
-													<option value="sim"> Sim </option>
-													<option value="nao"> Não </option>
-													<option value="Algumas"> Algumas </option>
-													<option value="Nao Precisou"> Não Precisou </option>
-													<option value="Não sabe responder"> Não sabe responder </option>
-												</select>
-											</div>
-											<div class="form-group col-md-3">
-												<label for="pesqFeedbackPecas">Feedback:</label>
-												<textarea rows="1" cols="12" name="pesqFeedbackPecas" id="pesqFeedbackPecas" class="form-control " ></textarea>
+
+									<!-- INICIO MODOS DE FALHA-->
+									<div id="divFalha"  >
+										<table class="table table-condensed table-nonfluid col-md-12">
+											<thead>
+												<th>Modos de Falhas</th>
+											</thead>
+											<tbody>												
+												<tr detail="true" detailname="falTbFalha">
+																									
+													<td class="col-md-10">																					
+															<div class="col-md-2" align="left">
+																<label for="falCodigoFalhaItem">Código de Falha</label>
+																<input type="text" name="falCodigoFalhaItem" id="falCodigoFalhaItem" class="form-control" readonly />
+															</div>																																											 
+															<div class="form-group col-md-2" align="left">
+																<label for="falFamiliaItem">Família</label>
+																<input type="hidden" name="falCodFamiliaItem" id="falCodFamiliaItem" class="form-control" />
+																<input type="hidden" name="falCodFalhaFamiliaItem" id="falCodFalhaFamiliaItem" class="form-control" />
+																<input type="text" name="falFamiliaItem" id="falFamiliaItem" class="form-control" readonly />
+															</div>
+															<div class="form-group col-md-2" align="left">
+																<label for="falModeloMaquina">Modelo da Máquina</label>
+																<input type="hidden" name="falCodFalhaModeloMaquinaItem" id="falCodFalhaModeloMaquinaItem" class="form-control" />
+																<input type="text" name="falModeloMaquinaItem" id="falModeloMaquinaItem" class="form-control" readonly/>
+															</div>
+															<div class="form-group col-md-3" align="left">
+																<label for="falGrupoMaquina">Grupo*</label>
+																<input type="hidden" name="falCodFalhaGrupoMaquinaItem" id="falCodFalhaGrupoMaquinaItem" />
+																<input type="zoom" name="falGrupoMaquinaItem" id="falGrupoMaquinaItem"
+																				data-zoom="{
+																								'displayKey':'GRUPOCODFALHADESC', 
+																								'datasetId':'dsCompOSSubconjuntos',
+																								'fields':[ 
+																									{ 
+																										'field':'GRUPOCODFALHA', 
+																										'label':'Codigo' 
+																									},{ 
+																										'field':'GRUPODESC', 
+																										'label':'Descrição' 
+																									} 
+																								] 
+																								}" />
+															</div>
+															<div class="form-group col-md-3" align="left">
+																<label for="falDescFalhaFalhaItem">Falha*</label>
+																<input type="hidden" name="falCodFalhaFalhaItem" id="falCodFalhaFalhaItem" />
+																<input type="zoom" name="falDescFalhaFalhaItem" id="falDescFalhaFalhaItem"
+																				data-zoom="{
+																								'displayKey':'FALHACODFALHADESC', 
+																								'datasetId':'dsCompOSSubconjuntos',
+																								'fields':[ 
+																									{ 
+																										'field':'FALHACODFALHA', 
+																										'label':'Codigo' 
+																									},{ 
+																										'field':'FALHADESC', 
+																										'label':'Descrição' 
+																									} 
+																								] 
+																								}" />
+															</div>									
+														</div>
+														<div class="row" >
+															<div class="col-md-12 " align="left">
+																<label for="falPendenciaItem">Pendência*</label>
+																<textarea rows="2" cols="6" name="falPendenciaItem" id="falPendenciaItem" class="form-control " ></textarea>
+															</div>
+														</div>
+													</td>
+													<td class="fs-v-align-middle fs-text-center tdDeleteRowFalha" style="width: 1%;">
+														<div class="tdDeleteRowFalha" style="display:none;" >
+															<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Falha" onclick="removeFalha(this)"></i>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									
+										<div class="row">
+											<div id="divBtnAddFalha" class="col-md-2 col-md-offset-10" > <!-- style="display: none;" -->
+												<br>
+												<button type="button" class="btn btn-primary  btn-block" id="btnAddFalha">Adicionar Falha</button>
 											</div>
 										</div>
-									</div> -->
+
+									</div>
+									<!-- FIM MODOS DE FALHA-->
+
 									<table class="table table-condensed table-nonfluid col-md-12">
 										<thead>
 											<tr>

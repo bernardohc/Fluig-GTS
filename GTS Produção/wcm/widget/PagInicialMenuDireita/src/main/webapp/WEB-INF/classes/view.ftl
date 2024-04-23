@@ -1,5 +1,24 @@
 <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
 <div id="PagInicialMenuDireita_${instanceId}" class="super-widget wcm-widget-class fluig-style-guide" data-params="PagInicialMenuDireita.instance()">
+
+	<div id="divClassificacao" class="row" style="display:none;">
+		<div class="col-md-12">
+		    <div class="row">
+		    	<div class="col-md-offset-1 col-md-10 ">
+		        	<h2 class="banner-header">Classificação da Revenda em Serviços</h2>
+			    </div>
+		    </div>
+
+			<div id="000009" class="row" style="display:none; background-color: #f2842;" >
+				<div class="col-md-12 " align="center">
+					<h1 id="classRev"></h1>
+					<!-- <input type="text" name="classificacaoRev" id="classificacaoRev" class="form-control" align="center" readonly> -->
+					<input type="hidden" name="codRev" id="codRev">
+					<input type="hidden" name="lojaRev" id="lojaRev">
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<div id="divPecas" class="row" style="display:none;" >
 		<div class="col-md-12">
@@ -147,7 +166,7 @@
 		        	<h2 class="banner-header">Pós-Venda</h2>
 			    </div>
 		    </div>
-		    
+	    
 			<div id="cadastraEntregaTecnica" class="row" style="display:none; background-color: #f2842;" >
 				<div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " align="center">
 					<a href="/portal/p/GTS/pageworkflowview?processID=Pos-Venda-Entrega-Tecnica" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/entrega-tecnica/entrega_tecnica.png" /></a>
@@ -283,10 +302,10 @@
 			</div>
 			<div id="000011" class="row" style="display:none; background-color: #f2842;" >
 				<div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " align="center">
-					<a href="/portal/p/GTS/pageworkflowview?processID=PCP%20-%20Solicita%C3%A7%C3%A3o%20de%20Pe%C3%A7as" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/pcp/sol-pecas.png" /></a>
+					<a href="/portal/p/GTS/pageworkflowview?processID=Solicita%C3%A7%C3%A3o%20de%20Pe%C3%A7as" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/pcp/sol-pecas.png" /></a>
 				</div>
 				<div class="col-md-8 col-xs-8 " align="left">	
-					<a href="/portal/p/GTS/pageworkflowview?processID=PCP%20-%20Solicita%C3%A7%C3%A3o%20de%20Pe%C3%A7as"><h3 class="texto-link">Solicitação de Peças</h3></a>
+					<a href="/portal/p/GTS/pageworkflowview?processID=Solicita%C3%A7%C3%A3o%20de%20Pe%C3%A7as"><h3 class="texto-link">Solicitação de Peças</h3></a>
 				</div>
 			</div>
 	    </div>

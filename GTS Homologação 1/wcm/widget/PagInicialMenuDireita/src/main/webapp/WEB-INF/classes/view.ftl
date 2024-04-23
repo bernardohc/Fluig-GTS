@@ -48,10 +48,10 @@
 			
 			<div id="cadPedidoPeca" class="row" style="display:none; background-color: #f2842;" >
 				<div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " align="center">
-					<a href="/portal/p/GTS/pageworkflowview?processID=Orcamento" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/pecas/carrinho.png" /></a>
+					<a href="/portal/p/GTS/pageworkflowview?processID=Orcamento-Hml3" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/pecas/carrinho.png" /></a>
 				</div>
 				<div class="col-md-8 col-xs-8" align="center">	
-					<a href="/portal/p/GTS/pageworkflowview?processID=Orcamento"><h3 class="texto-link">Cadastro de Orçamento / Pedido</h3></a>
+					<a href="/portal/p/GTS/pageworkflowview?processID=Orcamento-Hml3"><h3 class="texto-link">Cadastro de Orçamento / Pedido</h3></a>
 				</div>
 			</div>
 			
@@ -112,10 +112,10 @@
 
 			<div id="cadPedidoPecaUSA" class="row" style="display:none; background-color: #f2842;" >
 				<div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " align="center">
-					<a href="/portal/p/GTS/pageworkflowview?processID=Orcamento" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/pecas/carrinho.png" /></a>
+					<a href="/portal/p/GTS/pageworkflowview?processID=Orcamento-Hml3" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/pecas/carrinho.png" /></a>
 				</div>
 				<div class="col-md-8 col-xs-8" align="center">	
-					<a href="/portal/p/GTS/pageworkflowview?processID=Orcamento"><h3 class="texto-link">Order Registration</h3></a>
+					<a href="/portal/p/GTS/pageworkflowview?processID=Orcamento-Hml3"><h3 class="texto-link">Order Registration</h3></a>
 				</div>
 			</div>
 			
