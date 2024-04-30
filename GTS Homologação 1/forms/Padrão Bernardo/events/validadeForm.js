@@ -1,7 +1,8 @@
 function validateForm(form){
 	
     var WKNumState = getValue('WKNumState');
-        
+    var WKNextState = getValue('WKNextState');
+
     var message = "";
     var hasErros = false;
 
@@ -9,23 +10,56 @@ function validateForm(form){
         //INICIAL
         case INICIO_0 : 
         case INICIO :  
+        case SALVAR_RELATORIO :
 
             //Se for clicado em Enviar 
             if (getValue("WKCompletTask") == "true" ){
-                if (isEmpty("pesqEfetivoCont", form)) {
-                    message += getMessage("Pesquisa de Satisfação - Efetivou contato:", 1, form);
+
+                if (getValue("solSetor") == "") {
+                    message += getMessage("Setor", 1, form);
                     hasErros = true;
                 }
-
+                
+                
+                if (isEmpty("salvarEnviar", form)) {
+                    if (isMobile(form)){
+                        message += getMessage("É preciso selecionar a ação ('Salvar' ou 'Enviar')", 6, form);
+                    }else{
+                        message += getMessage("É preciso selecionar a ação (<b>Salvar</b> ou <b>Enviar</b>)", 6, form);
+                    }
+                        hasErros = true;
+                }else{
+                    if( form.getValue("salvarEnviar") == 'Enviar' ){
+                        if( WKNumState == WKNextState ){
+                            if (isMobile(form)){
+                            message += getMessage("Você selecionou a opção 'Enviar' e está salvando a solicitação.", 6, form);
+                        }else{
+                            message += getMessage("Você selecionou a opção <b>Enviar</b> e está salvando a solicitação.", 6, form);
+                        }
+                            hasErros = true;
+                        }
+                    }
+                }
+                
             }         
         break;
 
-        case Registro_Ocorrências :
-            if (isEmpty("pesqFimOcorrencia", form)) {
-                message += getMessage("Pesquisa de Satisfação - Finalizou ocorrência:", 1, form);
-                hasErros = true;
-            }
+        case ANALISA_RELATORIO  :
+            if (getValue("WKCompletTask") == "true" ){
+                if (isEmpty("aprovRelatorio", form)) {
+                    message += getMessage("Aprovação:", 1, form);
+                    hasErros = true;
+                }else{
+                    
+                
+                    }
+                }
+                
+            
+        
         break;
+
+
 
     }
     

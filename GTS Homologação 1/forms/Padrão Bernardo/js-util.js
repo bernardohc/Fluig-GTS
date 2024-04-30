@@ -383,6 +383,8 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
 				return 'Campo "' + texto + '" tem que ser maior que zero.\n';   
 			case 12:
 				return ' " ' + texto + ' " \n';   
+			case 13:
+				return 'Campo "' + texto + '" está incompleto.\n';  
         }
     } else {
         switch (tipoMensagem) {
@@ -410,6 +412,8 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
 				return '<li>Campo: <b>"' + texto + '"</b> tem que ser maior que zero.\n';
 			case 12:
 				return '<b>"' + texto + '"</b> \n';
+			case 13:
+			return '<li>Campo: <b>"' + texto + '"</b> está incompleto.\n';
         }	
     }
 } 
