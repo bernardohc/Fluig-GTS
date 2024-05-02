@@ -1,0 +1,255 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+
+	<script>
+		$(document).ready(function () {
+			// //Alterar Visualização das abas
+			
+			// //Aba Anexo
+			// window.parent.$("#processTabs").find("li").first().hide();
+			// window.parent.$("#processTabs").find("li").last().hide();
+			// window.parent.$("#textActivity").remove();
+			
+
+			// //Botões de movimentação
+			// window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			// window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			// window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
+			// window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
+			// window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			// window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+
+			// window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").css("display", "none");
+			// window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").removeAttr("data-cancel-workflow-request");
+
+			window.parent.$("#breadcrumb").remove();
+			window.parent.$("#textActivity").text('');
+			window.parent.$("#informationsTab").remove();
+
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+
+			window.parent.$("#collapse-tabs").remove();		
+
+		});
+	</script>
+
+</head>
+<!-- Load para usuar na funções JS -->
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<!-- Campo oculto-->
+	<input type="hidden" name="dataSolicitacao" id="dataSolicitacao">
+
+	<!-- Inicial -->
+	<div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+		<div class="panel panel-primary" id="divCabecalho">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a class="collapse-icon up" data-toggle="collapse" data-parent="#divCabecalho">Solicitação SGQ</a>  <!-- href="#collapseCabec"-->
+				</h3>
+			</div>
+			<div class="panel-body collapse in" id="collapseCabec">
+				<div class="row">
+					<div class="form-group col-md-4 col-md-offset-2">
+						<label for="sgqSolNome">Nome Completo</label>
+						<input type="text" name="sgqSolNome" id="sgqSolNome" class="form-control">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="sgqEmail">E-mail</label>
+						<input type="text" name="sgqEmail" id="sgqEmail" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-4 col-md-offset-2">
+						<label for="sgqTpDocumento">Tipo de Documento</label>
+						<select name="sgqTpDocumento" id="sgqTpDocumento" class="form-control sgqTpDocumento">
+							<option value=""></option>
+							<option value="01. Políticas e Objetivos - PLO"> 01. Políticas e Objetivos - PLO </option>
+							<option value="02. Manual Padrão - MP"> 02. Manual Padrão - MP </option>
+							<option value="03. Procedimento Padrão - POP"> 03. Procedimento Padrão - POP </option>
+							<option value="04. Instrução de Trabalho - IT"> 04. Instrução de Trabalho - IT </option>
+							<option value="05. Registro Padrão - RP"> 05. Registro Padrão - RP </option>
+							<option value="06. Fluxograma Padrão - FP"> 06. Fluxograma Padrão - FP </option>
+							<option value="07. Organograma Padrão - OGP"> 07. Organograma Padrão - OGP </option>
+							<option value="08. Lição de um Ponto - LUP"> 08. Lição de um Ponto - LUP </option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="sgqSetor">Setor</label>
+						<select name="sgqSetor" id="sgqSetor" class="form-control sgqSetor">
+							<option value=""></option>
+							<option value="00. Sistema de Gestão da Qualidade - SGQ"> 00. Sistema de Gestão da Qualidade - SGQ </option>
+							<option value="02. Almoxarifado - AMX"> 02. Almoxarifado - AMX </option>
+							<option value="03. Caldeiraria - CAL"> 03. Caldeiraria - CAL </option>
+							<option value="04. Central de Peças - CPÇ"> 04. Central de Peças - CPÇ </option>
+							<option value="05. Comercial - COM"> 05. Comercial - COM </option>
+							<option value="06. Setor de RH - SRH"> 06. Setor de RH - SRH </option>
+							<option value="07. Engenharia - ENG"> 07. Engenharia - ENG </option>
+							<option value="08. Financeiro - FIN"> 08. Financeiro - FIN </option>
+							<option value="09. Logística - LOG"> 09. Logística - LOG </option>
+							<option value="10. Manutenção - MNT"> 10. Manutenção - MNT </option>
+							<option value="11. Marketing - MKT"> 11. Marketing - MKT </option>
+							<option value="12. Pós-Vendas - PVD"> 12. Pós-Vendas - PVD </option>
+							<option value="13. Processos - PRC"> 14. Produção - PRO </option>
+							<option value="15. Programação e Controle da Produção - PCP"> 15. Programação e Controle da Produção - PCP </option>
+							<option value="16. Projetos e Ferramentaria - P&F"> 16. Projetos e Ferramentaria - P&F </option>
+							<option value="18. Qualidade - QUA"> 18. Qualidade - QUA </option>
+							<option value="19. Suprimentos - SUP"> 19. Suprimentos - SUP </option>
+							<option value="20. Tec Informação - TEC"> 20. Tec Informação - TEC </option>
+							<option value="21. Auditorias Internas - ADI"> 21. Auditorias Internas - ADI </option>
+							<option value="22. Fiscal - FIS"> 22. Fiscal - FIS </option>						
+						</select>
+					</div>	
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<h5>Tipo de Solicitação*</h5>
+						<div class="radio" >
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="sgqTpSolicitacao" value="Cadastrar" id="sgqTpSolicitacao1">
+								<label for="sgqTpSolicitacao1">Cadastrar e validar novo documento</label> <!-- Ir seção 2 -->	
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="sgqTpSolicitacao" value="Validar" id="sgqTpSolicitacao2">
+								<label for="sgqTpSolicitacao2">Validar documento já cadastrado (inclui revisões)</label><!-- Ir seção 3 -->
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="sgqTpSolicitacao" value="Abrir" id="sgqTpSolicitacao3">
+								<label for="sgqTpSolicitacao3">Abrir revisão para documento validado</label><!-- Ir seção 4 -->
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="sgqTpSolicitacao" value="Descontinuar" id="sgqTpSolicitacao4">
+								<label for="sgqTpSolicitacao4">Descontinuar documento validado</label><!-- Ir seção 5 -->
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>	
+		</div>
+	</div>
+	<!-- Seção 2 -->
+	<div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+		<div class="panel panel-primary" id="divSecao2">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a class="collapse-icon up" data-toggle="collapse" data-parent="#divSecao2">Cadastrar e validar novo documento</a>  <!-- href="#collapseCabec"-->
+				</h3>
+			</div>
+			<div class="panel-body collapse in" id="collapseCabec">	
+				<div class="row">
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqCaDLinkDoc">Link do Documento </label>
+						<input type="text" name="sgqCaDLinkDoc" id="sgqCaDLinkDoc" class="form-control" placeholder="Cole o Link do endereço do documento, este deve estar no caminho conforme exemplo: G:\SGQ\Seu setor\Tipo do documento\EM DESENVOLVIMENTO\Pasta do documento\doc.docx">
+					</div>	
+				</div>
+				<div class="row">							
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqCadObjDoc">Objetivo do Documento </label>
+						<input type="text" name="sgqCadObjDoc" id="sgqCadObjDoc" class="form-control" placeholder="Porque o documento foi criado, qual problemática ele busca solucionar.">
+					</div>		
+				</div>
+				<div class="row">
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqCadPalChave">Palavras-Chave </label>
+						<input type="text" name="sgqCadPalChave" id="sgqCadPalChave" class="form-control" placeholder="Termos que se relacionem com o assunto, facilitando a pesquisa no TOTVS. EX: IT sobre solda em alumínio; palavras-chave: solda, alumínio, série S, X10.">
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<!-- Seção 3 -->
+	<div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+		<div class="panel panel-primary" id="divSecao3">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a class="collapse-icon up" data-toggle="collapse" data-parent="#divSecao3">Validar documento já cadastrado</a>  <!-- href="#collapseCabec"-->
+				</h3>
+			</div>
+			<div class="panel-body collapse in" id="collapseCabec">	
+				<div class="row">
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqValLinkDoc">Link do Documento </label>
+						<input type="text" name="sgqValLinkDoc" id="sgqValLinkDoc" class="form-control" placeholder="Cole o Link do endereço do documento, este deve estar no caminho conforme exemplo: G:\SGQ\Seu setor\Tipo do documento\EM DESENVOLVIMENTO\Pasta do documento\doc.docx">
+					</div>	
+				</div>
+				<div class="row">							
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqValObjDoc">Objetivo do Documento </label>
+						<input type="text" name="sgqValObjDoc" id="sgqValObjDoc" class="form-control" placeholder="Porque o documento foi criado, qual problemática ele busca solucionar.">
+					</div>		
+				</div>				
+			</div>	
+		</div>
+	</div>
+	<!-- Seção 4 -->
+	<div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+		<div class="panel panel-primary" id="divSecao4">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a class="collapse-icon up" data-toggle="collapse" data-parent="#divSecao4">Abrir revisão para documento validado</a>  <!-- href="#collapseCabec"-->
+				</h3>
+			</div>
+			<div class="panel-body collapse in" id="collapseCabec">	
+				<div class="row">
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqRevCodDoc">Nome do documento com código </label>
+						<input type="text" name="sgqRevCodDoc" id="sgqRevCodDoc" class="form-control" placeholder="Ex: IT-SGQ-002  Solicitações do SGQ">
+					</div>	
+				</div>
+				<div class="row">							
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqRevMotivoDoc">Motivo da Revisão </label>
+						<input type="text" name="sgqRevMotivoDoc" id="sgqRevMotivoDoc" class="form-control">
+					</div>		
+				</div>				
+			</div>	
+		</div>
+	</div>
+	<!-- Seção 5 -->
+	<div class="panel-group col-md-10 col-md-offset-1" id="accordion">
+		<div class="panel panel-primary" id="divSecao5">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a class="collapse-icon up" data-toggle="collapse" data-parent="#divSecao5">Descontinuar documento validado</a>  <!-- href="#collapseCabec"-->
+				</h3>
+			</div>
+			<div class="panel-body collapse in" id="collapseCabec">	
+				<div class="row">
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqDescCodDoc">Nome do documento com código </label>
+						<input type="text" name="sgqDescCodDoc" id="sgqDescCodDoc" class="form-control" placeholder="Ex: IT-SGQ-002  Solicitações do SGQ">
+					</div>	
+				</div>
+				<div class="row">							
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgqDescMotivoDoc">Motivo do Cancelamento </label>
+						<input type="text" name="sgqDescMotivoDoc" id="sgqDescMotivoDoc" class="form-control">
+					</div>		
+				</div>				
+			</div>	
+		</div>
+	</div>
+
+</form>
+</div>
+</body>
+</html>

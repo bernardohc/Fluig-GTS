@@ -17,16 +17,17 @@
 		$(document).ready(function () {
 			//Alterar Visualização das abas
 			window.parent.$("#breadcrumb").remove();
-			window.parent.$("#textActivity").text('');
-			// window.parent.$("#informationsTab").remove();
-			// window.parent.$("#tab-attachments").remove();
+			//Aba Anexo
+			window.parent.$("#processTabs").find("li").first().hide();
+			window.parent.$("#processTabs").find("li").last().hide();
+			window.parent.$("#textActivity").remove();
 
 			//Botões de movimentação
-			window.parent.$('#wcm_widget').find("[data-back]").css("display", "none");
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
 			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
-			window.parent.$('#wcm_widget').find("[data-cancel]").css("display", "none");
+			window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
 			window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
-			window.parent.$('#wcm_widget').find("[data-transfer]").css("display", "none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
 			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
 
 			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").css("display", "none");
