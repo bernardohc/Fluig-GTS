@@ -1,0 +1,7 @@
+var INICIO_0 = 0;
+var INICIO = 4;
+var PROCESSO_INFORMACOES = 24;
+var SUPORTE_GTS = 5;
+var REVENDA = 10;
+var SETOR_GTS = 13;
+var FIM = 16;

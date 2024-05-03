@@ -1,0 +1,694 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script>
+		$(document).ready(function() {
+			window.parent.$("#breadcrumb").remove();
+			window.parent.$("#textActivity").text('');
+			// window.parent.$("#informationsTab").remove();
+
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			// window.parent.$('#wcm_widget').find("[data-cancel-workflow-request]").css("display","none");
+			// window.parent.$('#wcm_widget').find("[data-cancel-workflow-request]").removeAttr("data-cancel");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+		});
+	</script>
+	
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-moment.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<input type="hidden" name="solicitante" id="solicitante" >
+	<input type="hidden" name="numFluig" id="numFluig" >
+	<input type="hidden" name="dataAbertura" id="dataAbertura" >
+	<input type="hidden" name="dataEncerramento" id="dataEncerramento" >
+	<input type="hidden" name="matFluigSuporteGTS" id="matFluigSuporteGTS" >
+
+
+	<div class="col-md-12">
+	    <div class="row banner-header">
+	        <h1>Chamado de Atendimento</h1>
+	    </div>
+	</div>
+	
+	<ul id="myTab"  class="nav nav-tabs nav-justified" role="tablist">
+	    <li id="tabSolicitacao" class="active" ><a href="#divTabSolicitacao" role="tab" data-toggle="tab" >Solicitação</a></li>
+	    <li id="tabComunicacao" class="disabled" style="display: none;" ><a href="#" role="tab" data-toggle="tab">Comunicação</a></li>
+	</ul>
+
+
+	<div class="tab-content">
+		<div class="tab-pane fade active in" id="divTabSolicitacao">
+			<div id="divDadosGerais" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Dados Gerais</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="gerTipoSolicitante">Tipo de Solicitante</label>
+							<input type="text" name="gerTipoSolicitante" id="gerTipoSolicitante" class="form-control" readonly/>
+			       		</div>
+						<div class="col-md-2" align="left">
+						   <label for="gerNumProtocolo">Protocolo</label>
+						   <input type="text" name="gerNumProtocolo" id="gerNumProtocolo" class="form-control" readonly/>
+						</div>
+						<div class="col-md-2 col-md-offset-4" align="left">
+							<label for="gerOrigemSolicitacao">Origem da Solicitação</label>
+							<input type="text" name="gerOrigemSolicitacao" id="gerOrigemSolicitacao" class="form-control" readonly/>
+						</div>
+						<div class="col-md-2" align="left"> 
+							<label for="status">Status</label>
+				      		<p id="gerStatus" class="form-control" readonly ></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="divDadosEquipamento" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Dados do Equipamento</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="equipNumSerie">Número de Série*</label>
+							<input type="text" name="equipNumSerie" id="equipNumSerie" class="form-control"  />
+			       		</div>
+						<div class="col-md-5" align="left">
+							<label for="equipDescricao">Descrição</label>
+							<input type="text" name="equipDescricao" id="equipDescricao" class="form-control" readonly />
+		        		</div>
+						<div class="col-md-2" align="left">
+							<label for="equipDataTerminoGarantia">Término Garantia</label>
+							<input type="text" name="equipDataTerminoGarantia" id="equipDataTerminoGarantia" class="form-control" readonly />
+		        		</div>
+					</div>
+				</div>	
+			</div>
+			<div id="divDadosRevenda" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Revenda</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-5" align="left">
+							<label for="revEquipNomeFantasiaRevenda">Nome Fantasia</label>
+							<input type="hidden" name="revEquipCod" id="revEquipCod" >
+							<input type="hidden" name="revEquipLoja" id="revEquipLoja" >
+							<input type="text" name="revEquipNomeFantasiaRevenda" id="revEquipNomeFantasiaRevenda" class="form-control" readonly />
+			       		</div>
+						<div class="col-md-2" align="left">
+							<label for="revEquipTelefone">Telefone</label>
+							<input type="text" name="revEquipTelefone" id="revEquipTelefone" class="form-control" readonly 
+								data-protection="revEquipTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato da revenda" />
+						</div>
+						<div class="col-md-3" align="left">
+							<label for="revEquipCidade">Cidade*</label>
+							<input type="text" name="revEquipCidade" id="revEquipCidade" class="form-control" readonly />
+						</div>
+						<div class="col-md-2" align="left">
+							<label for="revEquipEstado">Estado*</label>
+							<input type="hidden" name="revEquipEstadoHidden" id="revEquipEstadoHidden" />
+							<select name="revEquipEstado" id="revEquipEstado" class="form-control" disabled >
+								<option value=""></option>
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<h5>Esta solicitação é para a Revenda vinculada?*</h5>
+							<div class="radio" >
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="revSolicicaoVinculada" value="sim" id="revSolicicaoVinculadaSim">
+									<label for="revSolicicaoVinculadaSim">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-primary">
+									<input type="radio" name="revSolicicaoVinculada" value="nao" id="revSolicicaoVinculadaNao">
+									<label for="revSolicicaoVinculadaNao">Não</label>
+								</div>
+							</div>
+					 	</div>
+					</div>
+					<div id="divRevendaVinculada" style="display: none;">
+						<div class="row">
+							<div class="col-md-2" align="left">
+								<label for="revEstado">Estado*</label>
+								<input type="hidden" name="revEstadoHidden" id="revEstadoHidden" />
+								<select name="revEstado" id="revEstado" class="form-control"  >
+									<option value=""></option>
+									<option value="AC">Acre</option>
+									<option value="AL">Alagoas</option>
+									<option value="AP">Amapá</option>
+									<option value="AM">Amazonas</option>
+									<option value="BA">Bahia</option>
+									<option value="CE">Ceará</option>
+									<option value="DF">Distrito Federal</option>
+									<option value="ES">Espírito Santo</option>
+									<option value="GO">Goiás</option>
+									<option value="MA">Maranhão</option>
+									<option value="MT">Mato Grosso</option>
+									<option value="MS">Mato Grosso do Sul</option>
+									<option value="MG">Minas Gerais</option>
+									<option value="PA">Pará</option>
+									<option value="PB">Paraíba</option>
+									<option value="PR">Paraná</option>
+									<option value="PE">Pernambuco</option>
+									<option value="PI">Piauí</option>
+									<option value="RJ">Rio de Janeiro</option>
+									<option value="RN">Rio Grande do Norte</option>
+									<option value="RS">Rio Grande do Sul</option>
+									<option value="RO">Rondônia</option>
+									<option value="RR">Roraima</option>
+									<option value="SC">Santa Catarina</option>
+									<option value="SP">São Paulo</option>
+									<option value="SE">Sergipe</option>
+									<option value="TO">Tocantins</option>
+								</select>
+							</div>
+
+							<div class="form-group col-md-5 " align="left" >
+								<label for="revRevenda">Nome Fantasia*</label>
+								<input type="hidden" name="revCod" id="revCod" >
+								<input type="hidden" name="revLoja" id="revLoja" >
+								<input type="zoom" name="revRevenda" id="revRevenda"
+												  data-zoom="{
+																  'displayKey':'REVNOME', 
+																  'datasetId':'dsChamAtendRevendasAtendimento', 
+																  'filterValues':'tipoFiltro,limpar',
+																  'fields':[ 
+																		{ 
+																		  'field':'REVNOME',
+																		  'label':'Nome' 
+																		},{ 
+																			'field':'REVCIDADEUF',
+																			'label':'Cidade/UF' 
+																		}  
+																  ] 
+																  }" /> 
+							</div>
+
+							<div class="col-md-3" align="left" style="display: none;">
+								<label for="revNomeFantasiaRevenda">Nome Fantasia</label>
+								<input type="text" name="revNomeFantasiaRevenda" id="revNomeFantasiaRevenda" class="form-control" readonly />
+							</div>
+							<div class="col-md-3" align="left">
+								<label for="revCidade">Cidade*</label>
+								<input type="text" name="revCidade" id="revCidade" class="form-control" readonly />
+							</div>
+							<div class="col-md-2" align="left">
+								<label for="revTelefone">Telefone</label>
+								<input type="text" name="revTelefone" id="revTelefone" class="form-control" readonly 
+									data-protection="revTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato da revenda" />
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+			<div id="divSolicitacao" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Solicitação</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="solTipoSolicitacao">Tipo de Solicitação*</label>
+							<input type="hidden" name="solTipoSolicitacaoHidden" id="solTipoSolicitacaoHidden" />
+							<input type="hidden" name="solTipoSolicitacaoDesc" id="solTipoSolicitacaoDesc" />
+							<select name="solTipoSolicitacao" id="solTipoSolicitacao" class="form-control">
+								<option value=""></option>
+								<option value="IN">Informação</option>
+								<option value="MP">Máquina Parada</option>
+								<option value="PS">Pós-Safra</option>
+							</select>
+						</div>
+						<div id="divTipoInformacao" class="col-md-2" align="left" style="display: none;">
+							<label for="solTipoInformacao">Tipo de Informação*</label>
+							<input type="hidden" name="solTipoInformacaoDesc" id="solTipoInformacaoDesc" />
+							<select name="solTipoInformacao" id="solTipoInformacao" class="form-control">
+								<option value=""> </option>
+								<option value="LR">Localização de Revenda</option>
+								<option value="OM">Operação e Manutenção</option>
+								<option value="PG">Processo de Garantia</option>
+								<option value="ET">Solicitação de Entrega Técnica</option>
+								<option value="Outros">Outros</option>
+							</select>
+						</div>
+						<div id="divInserirImagens" class="col-md-3" align="left" style="display: none;" >
+							<label >&nbsp;</label>
+							<input type="button" class="btn btn-default btn-block" value="Inserir Imagens" onclick="showCamera();"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="row" >
+						<div class="col-md-12 " align="left">
+							<label for="solDescricaoGeral">Descrição Geral*</label>
+							<textarea rows="3" cols="6" name="solDescricaoGeral" id="solDescricaoGeral" class="form-control " ></textarea>
+				    	</div>
+					</div> 
+				</div> 
+				<div id="divFalha" style="display:none" >
+					<div class="col-md-12">
+						<div class="row" >
+							<div class="col-md-12">
+								<table class="table table-condensed table-nonfluid table-striped" id="falTbFalha" tablename="falTbFalha" nodeletebutton="true" noaddbutton="true" >
+									<thead>
+										<tr>
+											<th></th>
+											<th></th>
+											<th class="tdDeleteRowFalha" style="display:none;"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr detail="true" detailname="falTbFalha" >
+											<td class="col-md-12">
+												<div class="row" >
+													<div class="col-md-2" align="left">
+														<label for="falCodigoFalhaItem">Código de Falha</label>
+														<input type="text" name="falCodigoFalhaItem" id="falCodigoFalhaItem" class="form-control" readonly />
+													</div>
+												</div>
+												<div class="row">     
+													<div class="form-group col-md-3" align="left">
+														<label for="maqFamilia">Família*</label>
+														<input type="hidden" name="falCodFamiliaItem" id="falCodFamiliaItem" />
+														<input type="hidden" name="falCodFalhaFamiliaItem" id="falCodFalhaFamiliaItem" />
+														<input type="zoom" name="falFamiliaItem" id="falFamiliaItem"
+																		  data-zoom="{
+																						  'displayKey':'FAMILIACODFALHADESC', 
+																						  'datasetId':'dsCompOSSubconjuntos', 
+																						  'filterValues':'tipoFiltro,familia',
+																						  'fields':[ 
+																							  { 
+																								  'field':'FAMILIACODFALHA', 
+																								  'label':'Código' 
+																							  },
+																							  { 
+																								  'field':'FAMILIADESC', 
+																								  'label':'Descrição' 
+																							  } 
+																						  ] 
+																						  }" /> 
+													</div>
+													<div class="form-group col-md-3" align="left">
+														<label for="maqModeloMaquina">Modelo da Máquina*</label>
+														<input type="hidden" name="falCodFalhaModeloMaquinaItem" id="falCodFalhaModeloMaquinaItem" />
+														<input type="zoom" name="falModeloMaquinaItem" id="falModeloMaquinaItem"
+																		  data-zoom="{
+																						  'displayKey':'MODELOCODFALHADESC', 
+																						  'datasetId':'dsCompOSSubconjuntos',
+																						  'fields':[ 
+																							  { 
+																								  'field':'MODELOCODFALHA', 
+																								  'label':'Código' 
+																							  },
+																							  { 
+																								  'field':'MODELODESC', 
+																								  'label':'Descrição' 
+																							  }
+																						  ] 
+																						  }" /> 
+													</div>
+													<div class="form-group col-md-3" align="left">
+														<label for="falGrupoMaquina">Grupo*</label>
+														<input type="hidden" name="falCodFalhaGrupoMaquinaItem" id="falCodFalhaGrupoMaquinaItem" />
+														<input type="zoom" name="falGrupoMaquinaItem" id="falGrupoMaquinaItem"
+																		data-zoom="{
+																						'displayKey':'GRUPOCODFALHADESC', 
+																						'datasetId':'dsCompOSSubconjuntos',
+																						'fields':[ 
+																							{ 
+																								'field':'GRUPOCODFALHA', 
+																								'label':'Codigo' 
+																							},{ 
+																								'field':'GRUPODESC', 
+																								'label':'Descrição' 
+																							} 
+																						] 
+																						}" />
+													</div>
+													<div class="form-group col-md-3" align="left">
+														<label for="falDescFalhaFalhaItem">Falha*</label>
+														<input type="hidden" name="falCodFalhaFalhaItem" id="falCodFalhaFalhaItem" />
+														<input type="zoom" name="falDescFalhaFalhaItem" id="falDescFalhaFalhaItem"
+																		data-zoom="{
+																						'displayKey':'FALHACODFALHADESC', 
+																						'datasetId':'dsCompOSSubconjuntos',
+																						'fields':[ 
+																							{ 
+																								'field':'FALHACODFALHA', 
+																								'label':'Codigo' 
+																							},{ 
+																								'field':'FALHADESC', 
+																								'label':'Descrição' 
+																							} 
+																						] 
+																						}" />
+													</div>
+												</div>
+												<div class="row" >
+													<div class="col-md-3" align="left">
+														<label for="falRecorrenteItem">Este problema é recorrente?*</label>
+														<select name="falRecorrenteItem" id="falRecorrenteItem" class="form-control">
+															<option value=""> </option>
+															<option value="nao">Não</option>
+															<option value="sim">Sim</option>
+														</select>
+													</div>
+												</div>
+												
+											</td>
+											
+											<td class="fs-v-align-middle fs-text-center tdDeleteRowFalha" style="width: 1%;">
+												<div class="tdDeleteRowFalha" style="display:none;" >
+													<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Falha" onclick="removeFalha(this)"></i>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+		
+						<div class="row">
+							<div id="divBtnAddFalha" class="col-md-2 col-md-offset-10" style="display: none;">
+								<br>
+								<button type="button" class="btn btn-primary  btn-block" id="btnAddFalha">Adicionar Falha</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="divSolicitante" >
+				<div class="col-md-12">
+				    <div class="row sub-titulo">
+				        <h4>Solicitante</h4>
+				    </div>
+				</div>
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4" align="left">
+							<label for="solNome">Nome*</label>
+							<input type="hidden" name="solWKUserSolicitante" id="solWKUserSolicitante" />
+							<input type="text" name="solNome" id="solNome" class="form-control" readonly/>
+				   		</div>
+						<div class="col-md-4" align="left">
+							<label for="solEmail">E-mail*</label>
+							<input type="hidden" name="solEmailAbertura" id="solEmailAbertura" class="form-control"  >
+							<input type="hidden" name="solEmailEncerramento" id="solEmailEncerramento" class="form-control"  >
+							<input type="text" name="solEmail" id="solEmail" class="form-control" maxlength="150"
+								data-protection="solEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do solicitante" />
+			       		</div>
+						<div class="col-md-2" align="left">
+							<label for="solTelefone">Telefone*</label>
+							<input type="text" name="solTelefone" id="solTelefone" class="form-control"  
+								data-protection="solTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do solicitante" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2" align="left">
+							<label for="solEstado">Estado*</label>
+							<input type="hidden" name="solEstadoHidden" id="solEstadoHidden" />
+							<select name="solEstado" id="solEstado" class="form-control"  >
+								<option value=""></option>
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+						</div>
+						<div class="col-md-3" align="left">
+							<label for="solCidade">Cidade*</label>
+							<input type="hidden" name="solCidadeHidden" id="solCidadeHidden" />
+							<div id="divSolCidadeText" style="display: none;">
+								<input type="text" name="solCidade" id="solCidade" class="form-control" readonly />
+							</div>
+							<div id="divSolCidadeSelect">
+								<select name="solCidadeSelect" id="solCidadeSelect" class="form-control"  >
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div id="divDeAcordoLGPD" class="row" style="display: none;">
+						<br>
+						<div class="col-md-12" align="left">
+							<label class="checkbox-inline">
+								<input type="checkbox" name="solDeAcordoLGPD" id="solDeAcordoLGPD" value="deAcordo"> Estou de acordo com a <a href="https://gtsdobrasil.ind.br/br/politica_de_privacidade" target="_blank" class="link-lgpg" >Política de Privacidade de Dados</a>.
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-pane fade " id="divTabComunicacao">
+			<div class="col-md-12">
+				<div id="divDefinicoesSuporteGTS" class="row">
+		       		<div class="col-md-2 col-md-offset-3" align="left">
+						<label for="solStatus">Status*</label>
+						<select name="solStatus" id="solStatus" class="form-control" >
+		      				<option value=""></option>
+		      				<option value="Em Preenchimento">Em Preenchimento</option>
+		      				<option value="Recebido">Recebido</option>
+							<option value="Em Análise">Em Análise</option>
+							<option value="Finalizado">Finalizado</option>
+						</select>
+		       		</div>
+					<div id="divSolEncaminharSolicitacao" class="col-md-2" align="left"  style="display:none;">
+						<label for="solEncaminharSolicitacao">Encaminhar Solicitação*</label>
+						<select name="solEncaminharSolicitacao" id="solEncaminharSolicitacao" class="form-control" >
+		      				<option value=""></option>
+							<option value="Interno">Interno</option>
+		      				<option value="Revenda">Revenda</option>
+						</select>
+		       		</div>
+					<div id="divSolFinalizarSolicitacao" class="col-md-2" align="center" style="display:none;">
+						<label for="solFinalizarSolicitacao" >
+							Finalizar Solicitação
+							<input type="checkbox" name="solFinalizarSolicitacao"  id="solFinalizarSolicitacao" value="finalizar" style="width:100%; height: 30px; display: block;" >
+						</label>
+					</div>
+					<div id="divSolEncEmailRevendaFinalizado" class="col-md-4" align="left" style="display:none;">
+						<label for="solEncEmailRevendaFinalizado" >
+							Encaminhar e-mail de finalização para a Revenda?
+							<input type="checkbox" name="solEncEmailRevendaFinalizado"  id="solEncEmailRevendaFinalizado" value="sim" style="width:100%; height: 30px; display: block;" >
+						</label>
+					</div>
+				</div>
+				<div class="row">  
+		       		<div class="form-group col-md-2 col-md-offset-1" align="left" >
+						<label for="solDescSetor">Setor*</label>
+						<input type="hidden" name="solCodSetor" id="solCodSetor" >
+						<input type="hidden" name="solCodGrupoSetor" id="solCodGrupoSetor" >
+						<input type="zoom" name="solDescSetor" id="solDescSetor"
+										  data-zoom="{
+							                              'displayKey':'DESCSETOR', 
+							                              'datasetId':'dsCompOSConsultaSetores', 
+							                              'fields':[ 
+								                              { 
+									                              'field':'DESCSETOR',
+									                              'label':' ' 
+								                              } 
+							                              ] 
+						                              	}" /> 
+		            </div>
+					<div class="form-group col-md-4 " align="left" >
+						<label for="solRevendaAtendimento">Revenda*</label>
+						<input type="hidden" name="solMatFluigRevendaAtendimento" id="solMatFluigRevendaAtendimento" >
+						<input type="zoom" name="solRevendaAtendimento" id="solRevendaAtendimento"
+										  data-zoom="{
+							                              'displayKey':'REVNOME', 
+							                              'datasetId':'dsChamAtendRevendasAtendimento', 
+							                              'fields':[ 
+																{ 
+																	'field':'REVMATFLUIG',
+																	'label':'Login' 
+																},{ 
+									                              'field':'REVNOME',
+									                              'label':'Nome' 
+								                              	} 
+							                              ] 
+						                              	}" /> 
+		            </div>
+					<div class="col-md-4" align="left">
+						<label for="solEmail">E-mail Revenda</label>
+						<input type="hidden" name="solEmailEncerramentoRevAtend" id="solEmailEncerramentoRevAtend" class="form-control"  >
+						<input type="text" name="solEmailRevendaAtendimento" id="solEmailRevendaAtendimento" class="form-control" maxlength="150"
+							data-protection="solEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para envio de e-mail de encerramento para a revenda" />
+					</div>
+				</div>
+				
+		        
+		        <div class="row">
+					<div class="col-md-12">
+				        &nbsp;
+				    </div>
+				</div>
+				
+				<div id="divComunicacao" >
+				    <div class="col-md-12">
+					    <div class="row sub-titulo">
+					        <h4>Comunicação</h4>
+					    </div>
+					</div>
+				    
+				    <div class="row">
+			    		<div class="col-md-12" align="left">
+			            	<table class="table table-condensed table-nonfluid table-striped" id="comTbComunicacao" tablename="comTbComunicacao" noaddbutton="true" nodeletebutton="true" >
+								<thead>
+									<tr>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr detail="true" detailname="falTbFalha" >
+										<td class="col-md-12">
+											<div class="row" >
+												<div class="col-md-4" align="left">
+													<label for="comUsuarioItem">Usuário</label>
+													<input type="hidden" name="comIdItem" id="comIdItem" class="form-control"  readonly >
+													<input type="hidden" name="comUsuarioWKUserItem" id="comUsuarioWKUserItem" class="form-control"  readonly >
+													<input type="text" name="comUsuarioItem" id="comUsuarioItem" class="form-control"  readonly >
+												</div>
+												<div class="col-md-2" align="left">
+													<label for="comUsuarioItem">Tipo Usuário</label>
+													<input type="text" name="comTipoUsuarioItem" id="comTipoUsuarioItem" class="form-control" readonly/> 
+												</div>
+												<div class="col-md-2" align="left">
+													<label for="comUsuarioItem">Data</label>
+													<input type="text" name="comDataItem" id="comDataItem" class="form-control" readonly/> 
+												</div>
+												<div class="col-md-2" align="left">
+													<label for="comUsuarioItem">Status</label>
+													<input type="text" name="comStatusItem" id="comStatusItem" class="form-control" readonly >
+												</div>
+											</div>
+											<div class="row" >
+												<div class="col-md-4 tdComComInterna" style="display:none;" align="left">
+													<label for="comComInternaItem" class="lblComComInterna"></label>
+													<textarea rows="3" cols="6" name="comComInternaItem" id="comComInternaItem" class="form-control" style="display:none;" ></textarea>
+												</div>
+												<div class="col-md-4" align="left">
+													<label for="comComExternaItem">Comunicação Externa</label>
+													<textarea rows="3" cols="6" name="comComExternaItem" id="comComExternaItem" class="form-control" ></textarea>
+												</div>
+												<div class="col-md-4" align="left">
+													<label for="comComRevendaItem">Comunicação Revenda</label>
+													<textarea rows="3" cols="6" name="comComRevendaItem" id="comComRevendaItem" class="form-control" ></textarea>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+			            	</table>
+			            </div>
+		            </div>
+				
+				</div>
+			</div>
+			
+		</div> 
+	</div>
+
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+		        &nbsp;
+		    </div>
+		</div>
+	</div>
+</form>
+</div>
+</body>
+</html>

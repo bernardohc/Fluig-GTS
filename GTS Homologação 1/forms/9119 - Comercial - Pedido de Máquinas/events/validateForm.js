@@ -18,6 +18,15 @@ function validateForm(form){
         case INICIO : 
         case REP_VERIFICA_PED : 
         case REV_VERIFICA_PED : 
+        	
+        	//Se tiver preenchido o campo de Reserva de Máquina
+    		if( !isEmpty("pedMaqResDesc", form) ){
+    			if( isEmpty("pedMaqResNumPedidoTotvs", form) ){
+    				message += getMessage("Nº Pedido da Máquina Reservada", 1, form);
+    				hasErros = true;
+    			}
+    		}
+    		
         	if (getValue("WKCompletTask") == "true" ){
 	        	
         		var pedidoNoPrazo = true;
@@ -166,6 +175,37 @@ function validateForm(form){
 			    			message += getMessage("E-mail do Cliente está inválido.", 6, form);
 			    			hasErros = true;
 			    		}
+		    		}else{
+		    			
+//		    			if ( form.getValue("pedClienteRevenda") == 'Revenda' && form.getValue("solTipoSolicitante") != 'RepresentanteExportacao'){
+//		    				//Se encontrou o cliente e for definidor como 'Revendedor', é obrigatório ter os 'Dados da Revenda'
+//	    					if ( isEmpty("revCpfCnpj", form) ) {	
+//	        	       			message += getMessage("CPF/CNPJ da Revenda", 1, form);
+//	        	       			hasErros = true;
+//	        	       		}
+//	    					if ( isEmpty("revA3COD", form) ) {	
+//	        	       			message += getMessage("Código da Revenda", 1, form);
+//	        	       			hasErros = true;
+//	        	       		}
+//	    					if ( isEmpty("revNome", form) ) {	
+//	        	       			message += getMessage("Nome da Revenda", 1, form);
+//	        	       			hasErros = true;
+//	        	       		}
+//	    					if ( isEmpty("revMatFluig", form) ) {	
+//	        	       			message += getMessage("Matrícula da Revenda", 1, form);
+//	        	       			hasErros = true;
+//	        	       		}
+//	    				}
+		    			
+		    			//Se encontrou o cliente, precisa estar preenchido os campos de comissão
+		    			if (isEmpty("vendedor1", form)) {
+			    			message += getMessage("Vendedor 1", 1, form);
+			    			hasErros = true;
+			    		}
+			    		if (isEmpty("vendedor5", form)) {
+			    			message += getMessage("Vendedor 5", 1, form);
+			    			hasErros = true;
+			    		}
 			    		
 		    		}
 		    		
@@ -247,7 +287,11 @@ function validateForm(form){
          		    
 		    		}
 		    		
-		    		if ( form.getValue("pedTipoPreco") == '' ) {
+					if (isEmpty("pedTipoPedido", form)) {
+						message += getMessage("Tipo de Pedido", 3, form);
+						hasErros = true;
+					}
+		    		if( form.getValue("pedTipoPreco") == '' ) {
 		    			message += getMessage("Tipo de Preço", 3, form);
 		                hasErros = true;
 		            }
@@ -281,6 +325,25 @@ function validateForm(form){
 					           	 hasErros = true;
 							}
 		            	}
+		            }
+		    		
+		    		//Possui Peça?
+		    		if ( form.getValue("pecaPossuiPeca") == '' ) {
+		    			message += getMessage("Possui Peça(s)", 3, form);
+		                hasErros = true;
+		            }else if(form.getValue("pecaPossuiPeca") == 'pecaPossuiPecaSim'){
+		            	if ( isEmpty("pecaDescricao", form) ) {
+			    			message += getMessage("Descrição da(s) Peça(s)", 1, form);
+			                hasErros = true;
+			            }
+		            	if ( isEmpty("pecaCodPagto", form) ) {
+			    			message += getMessage("Condição de Pagamento da(s) Peça(s)", 1, form);
+			                hasErros = true;
+			            }
+		            	if ( isEmpty("pecaValor", form) ) {
+			    			message += getMessage("Valor da(s) Peça(s)", 1, form);
+			                hasErros = true;
+			            }
 		            }
         		}
         	}
@@ -435,6 +498,36 @@ function validateForm(form){
 			    			message += getMessage("E-mail do Cliente está inválido.", 6, form);
 			    			hasErros = true;
 			    		}
+		    		}else{
+		    			
+//		    			if ( form.getValue("pedClienteRevenda") == 'Revenda' ){
+//		    				//Se encontrou o cliente e for definidor como 'Revendedor', é obrigatório ter os 'Dados da Revenda'
+//	    					if ( isEmpty("revCpfCnpj", form) ) {	
+//	        	       			message += getMessage("CPF/CNPJ da Revenda", 1, form);
+//	        	       			hasErros = true;
+//	        	       		}
+//	    					if ( isEmpty("revA3COD", form) ) {	
+//	        	       			message += getMessage("Código da Revenda", 1, form);
+//	        	       			hasErros = true;
+//	        	       		}
+//	    					if ( isEmpty("revNome", form) ) {	
+//	        	       			message += getMessage("Nome da Revenda", 1, form);
+//	        	       			hasErros = true;
+//	        	       		}
+//	    					if ( isEmpty("revMatFluig", form) ) {	
+//	        	       			message += getMessage("Matrícula da Revenda", 1, form);
+//	        	       			hasErros = true;
+//	        	       		}
+//	    				}
+		    			//Se encontrou o cliente, precisa estar preenchido os campos de comissão
+		    			if (isEmpty("vendedor1", form)) {
+			    			message += getMessage("Vendedor 1", 1, form);
+			    			hasErros = true;
+			    		}
+			    		if (isEmpty("vendedor5", form)) {
+			    			message += getMessage("Vendedor 5", 1, form);
+			    			hasErros = true;
+			    		}
 		    		}
 		    		
 		    		//Dados Pedido
@@ -515,11 +608,15 @@ function validateForm(form){
          		    
 		    		}
 		    		
+					if (isEmpty("pedTipoPedido", form)) {
+						message += getMessage("Tipo de Pedido", 3, form);
+						hasErros = true;
+					}
 		    		if ( form.getValue("pedTipoPreco") == '' ) {
 		    			message += getMessage("Tipo de Preço", 3, form);
 		                hasErros = true;
 		            }
-		    		
+
 		    		//Itens Pedido
 		    		var indexesItensPedido = form.getChildrenIndexes("tbItensPedido");
 		    		if(indexesItensPedido.length == 0){
@@ -544,6 +641,25 @@ function validateForm(form){
 					           	 hasErros = true;
 							}
 		            	}
+		            }
+		    		
+		    		//Possui Peça?
+		    		if ( form.getValue("pecaPossuiPeca") == '' ) {
+		    			message += getMessage("Possui Peça(s)", 3, form);
+		                hasErros = true;
+		            }else if(form.getValue("pecaPossuiPeca") == 'pecaPossuiPecaSim'){
+		            	if ( isEmpty("pecaDescricao", form) ) {
+			    			message += getMessage("Descrição da(s) Peça(s)", 1, form);
+			                hasErros = true;
+			            }
+		            	if ( isEmpty("pecaCodPagto", form) ) {
+			    			message += getMessage("Condição de Pagamento da(s) Peça(s)", 1, form);
+			                hasErros = true;
+			            }
+		            	if ( isEmpty("pecaValor", form) ) {
+			    			message += getMessage("Valor da(s) Peça(s)", 1, form);
+			                hasErros = true;
+			            }
 		            }
         			
         		}
@@ -607,6 +723,34 @@ function validateForm(form){
     	       			hasErros = true;
     	       		}
         			
+        			//Campos de Comissão preenchidos
+	    			if (isEmpty("vendedor1", form)) {
+		    			message += getMessage("Vendedor 1", 1, form);
+		    			hasErros = true;
+		    		}else if( form.getValue("vendedor1").length() != 6 ){
+		    			message += getMessage("Campo: <b>Vendedor 1</b> não possui 6 caracteres.", 6, form);
+		    			hasErros = true;
+		    		}
+	    			if (!isEmpty("vendedor2", form) &&  form.getValue("vendedor2").length() != 6 ) {
+	    				message += getMessage("Campo: <b>Vendedor 2</b> não possui 6 caracteres.", 6, form);
+		    			hasErros = true;
+		    		}
+	    			if (!isEmpty("vendedor3", form) &&  form.getValue("vendedor3").length() != 6 ) {
+	    				message += getMessage("Campo: <b>Vendedor 3</b> não possui 6 caracteres.", 6, form);
+	    				hasErros = true;
+	    			}
+		    		if (isEmpty("vendedor5", form)) {
+		    			message += getMessage("Vendedor 5", 1, form);
+		    			hasErros = true;
+		    		}else if( form.getValue("vendedor5").length() != 6 ){
+		    			message += getMessage("Campo: <b>Vendedor 5</b> não possui 6 caracteres.", 6, form);
+		    			hasErros = true;
+		    		}
+		    		if (!isEmpty("vendedor6", form) &&  form.getValue("vendedor6").length() != 6 ) {
+	    				message += getMessage("Campo: <b>Vendedor 6</b> não possui 6 caracteres.", 6, form);
+	    				hasErros = true;
+	    			}
+		    		
         			var indexesItensPedido = form.getChildrenIndexes("tbItensPedido");
         			for (var i = 0; i < indexesItensPedido.length; i++) {
         				var itPedCodItemItem = form.getValue("itPedCodItemItem___"+ indexesItensPedido[i]);
@@ -615,6 +759,10 @@ function validateForm(form){
         				if (form.getValue("itPedFilialItem___"+indexesItensPedido[i]).trim() == ''){
 							message += getMessage("Filial do item " + itPedCodItemItem + " - " +itPedDescricaoItemItem, 1, form, "Itens do pedido");
 				           	hasErros = true;
+						}else if( form.getValue("itPedFilialItem___"+indexesItensPedido[i]).trim().length() != 6 ){
+//							message += getMessage("Filial do item " + itPedCodItemItem + " - " +itPedDescricaoItemItem, 1, form, "Itens do pedido");
+							message += getMessage("Campo: <b>Filial do item " + itPedCodItemItem + " - " + itPedDescricaoItemItem + "</b> não possui 6 caracteres.", 6, form);
+							hasErros = true;
 						}
         				
 	            	}
@@ -778,6 +926,36 @@ function validateForm(form){
 		    			message += getMessage("E-mail do Cliente está inválido.", 6, form);
 		    			hasErros = true;
 		    		}
+	    		}else{
+//	    			if ( form.getValue("pedClienteRevenda") == 'Revenda' ){
+//	    				//Se encontrou o cliente e for definidor como 'Revendedor', é obrigatório ter os 'Dados da Revenda'
+//    					if ( isEmpty("revCpfCnpj", form) ) {	
+//        	       			message += getMessage("CPF/CNPJ da Revenda", 1, form);
+//        	       			hasErros = true;
+//        	       		}
+//    					if ( isEmpty("revA3COD", form) ) {	
+//        	       			message += getMessage("Código da Revenda", 1, form);
+//        	       			hasErros = true;
+//        	       		}
+//    					if ( isEmpty("revNome", form) ) {	
+//        	       			message += getMessage("Nome da Revenda", 1, form);
+//        	       			hasErros = true;
+//        	       		}
+//    					if ( isEmpty("revMatFluig", form) ) {	
+//        	       			message += getMessage("Matrícula da Revenda", 1, form);
+//        	       			hasErros = true;
+//        	       		}
+//    				}
+	    			//Se encontrou o cliente, precisa estar preenchido os campos de comissão
+	    			if (isEmpty("vendedor1", form)) {
+		    			message += getMessage("Vendedor 1", 1, form);
+		    			hasErros = true;
+		    		}
+		    		if (isEmpty("vendedor5", form)) {
+		    			message += getMessage("Vendedor 5", 1, form);
+		    			hasErros = true;
+		    		}
+		    		
 	    		}
 	    		
 	    		//Dados Pedido
@@ -805,11 +983,15 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 	    		
+				if (isEmpty("pedTipoPedido", form)) {
+					message += getMessage("Tipo de Pedido", 3, form);
+					hasErros = true;
+				}
 	    		if ( form.getValue("pedTipoPreco") == '' ) {
 	    			message += getMessage("Tipo de Preço", 3, form);
 	                hasErros = true;
 	            }
-	    		
+
 	    		//Itens Pedido
 	    		var indexesItensPedido = form.getChildrenIndexes("tbItensPedido");
 	    		if(indexesItensPedido.length == 0){
@@ -839,6 +1021,25 @@ function validateForm(form){
 				           	 hasErros = true;
 						}
 	            	}
+	            }
+	    		
+	    		//Possui Peça?
+	    		if ( form.getValue("pecaPossuiPeca") == '' ) {
+	    			message += getMessage("Possui Peça(s)", 3, form);
+	                hasErros = true;
+	            }else if(form.getValue("pecaPossuiPeca") == 'pecaPossuiPecaSim'){
+	            	if ( isEmpty("pecaDescricao", form) ) {
+		    			message += getMessage("Descrição da(s) Peça(s)", 1, form);
+		                hasErros = true;
+		            }
+	            	if ( isEmpty("pecaCodPagto", form) ) {
+		    			message += getMessage("Condição de Pagamento da(s) Peça(s)", 1, form);
+		                hasErros = true;
+		            }
+	            	if ( isEmpty("pecaValor", form) ) {
+		    			message += getMessage("Valor da(s) Peça(s)", 1, form);
+		                hasErros = true;
+		            }
 	            }
         	}
         	
@@ -876,10 +1077,6 @@ function validateForm(form){
         		
         		if (isEmpty("acompanhaAdmGTS", form)) {	
 	       			 message += getMessage("Administrativo GTS", 3, form);
-	       			 hasErros = true;
-        		}
-        		if (isEmpty("acompanhaAdmGTSClas", form)) {	
-	       			 message += getMessage("Classificação", 3, form);
 	       			 hasErros = true;
         		}
 	       		
@@ -991,6 +1188,36 @@ function validateForm(form){
 		    			message += getMessage("E-mail do Cliente está inválido.", 6, form);
 		    			hasErros = true;
 		    		}
+	    		}else{
+//	    			if ( form.getValue("pedClienteRevenda") == 'Revenda' ){
+//	    				//Se encontrou o cliente e for definidor como 'Revendedor', é obrigatório ter os 'Dados da Revenda'
+//    					if ( isEmpty("revCpfCnpj", form) ) {	
+//        	       			message += getMessage("CPF/CNPJ da Revenda", 1, form);
+//        	       			hasErros = true;
+//        	       		}
+//    					if ( isEmpty("revA3COD", form) ) {	
+//        	       			message += getMessage("Código da Revenda", 1, form);
+//        	       			hasErros = true;
+//        	       		}
+//    					if ( isEmpty("revNome", form) ) {	
+//        	       			message += getMessage("Nome da Revenda", 1, form);
+//        	       			hasErros = true;
+//        	       		}
+//    					if ( isEmpty("revMatFluig", form) ) {	
+//        	       			message += getMessage("Matrícula da Revenda", 1, form);
+//        	       			hasErros = true;
+//        	       		}
+//    				}
+	    			//Se encontrou o cliente, precisa estar preenchido os campos de comissão
+	    			if (isEmpty("vendedor1", form)) {
+		    			message += getMessage("Vendedor 1", 1, form);
+		    			hasErros = true;
+		    		}
+		    		if (isEmpty("vendedor5", form)) {
+		    			message += getMessage("Vendedor 5", 1, form);
+		    			hasErros = true;
+		    		}
+		    		
 	    		}
 	    		
 	    		//Dados Pedido
@@ -1071,11 +1298,15 @@ function validateForm(form){
      		    
 	    		}*/
 	    		
+				if (isEmpty("pedTipoPedido", form)) {
+					message += getMessage("Tipo de Pedido", 3, form);
+					hasErros = true;
+				}
 	    		if ( form.getValue("pedTipoPreco") == '' ) {
 	    			message += getMessage("Tipo de Preço", 3, form);
 	                hasErros = true;
 	            }
-	    		
+
 	    		//Itens Pedido
 	    		var indexesItensPedido = form.getChildrenIndexes("tbItensPedido");
 	    		if(indexesItensPedido.length == 0){
@@ -1105,6 +1336,25 @@ function validateForm(form){
 				           	 hasErros = true;
 						}
 	            	}
+	            }
+	    		
+	    		//Possui Peça?
+	    		if ( form.getValue("pecaPossuiPeca") == '' ) {
+	    			message += getMessage("Possui Peça(s)", 3, form);
+	                hasErros = true;
+	            }else if(form.getValue("pecaPossuiPeca") == 'pecaPossuiPecaSim'){
+	            	if ( isEmpty("pecaDescricao", form) ) {
+		    			message += getMessage("Descrição da(s) Peça(s)", 1, form);
+		                hasErros = true;
+		            }
+	            	if ( isEmpty("pecaCodPagto", form) ) {
+		    			message += getMessage("Condição de Pagamento da(s) Peça(s)", 1, form);
+		                hasErros = true;
+		            }
+	            	if ( isEmpty("pecaValor", form) ) {
+		    			message += getMessage("Valor da(s) Peça(s)", 1, form);
+		                hasErros = true;
+		            }
 	            }
         	}
         	break;

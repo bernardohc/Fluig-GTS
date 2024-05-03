@@ -24,6 +24,26 @@ function beforeCancelProcess(colleagueId,processId){
 	 */
 	if(defineGeracaoPedidoInicio == "Cancelar" || revPedSolicitanteAcao == "cancelar" || aprovAdmGTS == "reprovado" || cancelamentoAutomatico == "cancelar" || ehGestorPedidoDeMaquina){
 		
+		if( hAPI.getCardValue("pedMaqResNumPedidoTotvs") != "" ){
+			
+			var cstResMaq1 = DatasetFactory.createConstraint("tipoRegistro", "CANCELA-RESERVA", "", ConstraintType.MUST); 
+			var cstResMaq2 = DatasetFactory.createConstraint("filialPedido", hAPI.getCardValue("pedMaqResFilialPedidoTotvs"), "", ConstraintType.MUST); 
+			var cstResMaq3 = DatasetFactory.createConstraint("codPedido", hAPI.getCardValue("pedMaqResNumPedidoTotvs"), "", ConstraintType.MUST); 
+			var cstResMaq = new Array(cstResMaq1, cstResMaq2, cstResMaq3);
+			var dsPedMaqRegistraReservaMaquina = DatasetFactory.getDataset("dsPedMaqRegistraReservaMaquina", [], cstResMaq, []);
+			var codRetorno = dsPedMaqRegistraReservaMaquina.getValue(0, "CODRET");
+			var msgRetorno = dsPedMaqRegistraReservaMaquina.getValue(0, "MSGRET");
+			
+			if(codRetorno == "1"){
+				hAPI.setCardValue("pedMaqResWKUserCancelReserva", getValue("WKUser"));
+				hAPI.setCardValue("pedMaqResDataCancelReserva", dataAtual("dd/mm/yyyy hh:mm"));
+			}else{
+				throw msgRetorno;
+			}
+			
+		}
+		
+		
 	}else{
 		
 		hasErros = true;

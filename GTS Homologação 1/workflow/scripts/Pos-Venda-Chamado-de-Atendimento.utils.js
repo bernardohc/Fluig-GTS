@@ -1,16 +1,3 @@
-function dataHoraAtual(){
-    var data = new Date();
-    
-    var dia = addZero(data.getDate());
-    var mes = addZero(data.getMonth()+1);
-    var ano = data.getFullYear(); 
-    
-    var hora = addZero(data.getHours());
-    var minuto = addZero(data.getMinutes());
-    var segundo = addZero(data.getSeconds());
-    
-    return dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto + ":" + segundo;
-}
 function dataAtual(formato){
     var retornoData = "";
 	var data = new Date();
@@ -34,6 +21,7 @@ function dataAtual(formato){
     
     return retornoData;
 }
+
 function dataAtualAddDays(days){
     var data = new Date();
     
@@ -182,4 +170,15 @@ function debug(string){
 
 function gravarLog(string){
 	log.info(string);
+}
+
+function completeToLeft(value, caracter, size) {
+	
+	var result = value;
+	
+	while (result.length < size) {
+		result = caracter + result;
+	}
+
+	return result;
 }
