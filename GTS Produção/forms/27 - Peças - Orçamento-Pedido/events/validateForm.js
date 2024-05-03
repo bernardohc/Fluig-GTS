@@ -258,10 +258,10 @@ function validateForm(form){
                     	// 	message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
                     	// 	hasErros = true;
                     	// }
-                    	if (isEmpty("vendedor8", form)) {
-                    		message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
-                    		hasErros = true;
-                    	}
+                    	// if (isEmpty("vendedor8", form)) {
+                    	// 	message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
+                    	// 	hasErros = true;
+                    	// }
                 		
 	            		var indexes = form.getChildrenIndexes("tbItensOrcamento");
 	    	            var itemOrcamentoCodProdItem = false;
@@ -359,10 +359,10 @@ function validateForm(form){
             	// 	message += getMessage("Vendedor 7", 1, form);
             	// 	hasErros = true;
             	// }
-            	if (isEmpty("vendedor8", form)) {
-            		message += getMessage("Vendedor 8", 1, form);
-            		hasErros = true;
-            	}
+            	// if (isEmpty("vendedor8", form)) {
+            	// 	message += getMessage("Vendedor 8", 1, form);
+            	// 	hasErros = true;
+            	// }
             	
             	
             	var indexes = form.getChildrenIndexes("tbItensOrcamento");
@@ -483,10 +483,10 @@ function validateForm(form){
                     	// 	message += getMessage("Vendedor 7", 1, form);
                     	// 	hasErros = true;
                     	// }
-                    	if (isEmpty("vendedor8", form)) {
-                    		message += getMessage("Vendedor 8", 1, form);
-                    		hasErros = true;
-                    	}
+                    	// if (isEmpty("vendedor8", form)) {
+                    	// 	message += getMessage("Vendedor 8", 1, form);
+                    	// 	hasErros = true;
+                    	// }
                 		
 		        		if (isEmpty("tipoPedido", form)) {
 			                message += getMessage("Tipo de pedido", 1, form);
@@ -994,10 +994,10 @@ function validateForm(form){
 	            	// 	message += getMessage("Vendedor 7", 1, form);
 	            	// 	hasErros = true;
 	            	// }
-	            	if (isEmpty("vendedor8", form)) {
-	            		message += getMessage("Vendedor 8", 1, form);
-	            		hasErros = true;
-	            	}
+	            	// if (isEmpty("vendedor8", form)) {
+	            	// 	message += getMessage("Vendedor 8", 1, form);
+	            	// 	hasErros = true;
+	            	// }
 	            	
 		        	if (isEmpty("tipoPedido", form)) {
 		                message += getMessage("Tipo de pedido", 1, form);
@@ -1344,10 +1344,10 @@ function validateForm(form){
             	// 	message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
             	// 	hasErros = true;
             	// }
-            	if (isEmpty("vendedor8", form)) {
-            		message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
-            		hasErros = true;
-            	}
+            	// if (isEmpty("vendedor8", form)) {
+            	// 	message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
+            	// 	hasErros = true;
+            	// }
 	       		
 	       		
 	        	var indexes = form.getChildrenIndexes("tbItensOrcamento");

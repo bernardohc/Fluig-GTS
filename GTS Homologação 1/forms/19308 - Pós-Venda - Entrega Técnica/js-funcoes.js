@@ -499,7 +499,64 @@ var funcoes = (function() {
 		mascaraCep : function(idCampo){
 			$('#'+idCampo).unmask();
 			$('#'+idCampo).mask('99999-999');
-		}
+		},
+
+		//Consulta nota da pesquisa de satisfação
+		consultaNotaPesq : function(indexItem){
+			
+			let numSerie = $("#equipNumSerie").val();
+			
+			if( numSerie.trim() == "" ){
+				return;
+			}
+			
+			var loading = FLUIGC.loading(window);
+			loading.show();
+			
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				async: true,
+				url: "/api/public/ecm/dataset/search?datasetId=dsNotaPesquisaDeSatisfacao&filterFields=numSerie,"+numSerie,
+				
+				success: function (data, status, xhr) {
+					//console.log(data)
+					if (data != null && data.content != null && data.content.length > 0) {
+						const records = data.content;
+						if( records[0].CODRET == "1"){
+							var record = records[0];
+							var entrepaPor = ''
+
+							$("#NFfNotaEntrega").val(record.pesqNotaAtendimento);
+							
+						}else if (records[0].CODRET == "2"){		
+							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
+							funcoes.limpaCamposItem(indexItem);
+						}
+						
+					}else{
+							FLUIGC.toast({ title: '', message: 'Erro ao consultar o item, comunicar o Administrador do Sistema!', type: 'danger' });
+							funcoes.limpaCamposItem(indexItem);
+						}
+					setTimeout(function(){ 
+						loading.hide();
+					}, 1000);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+					FLUIGC.toast({
+						title: '',
+						message: 'Erro na consulta do Item, comunicar Administrador do Sistema' ,
+						type: 'danger'
+					});
+					funcoes.limpaCamposItem(indexItem)
+					loading.hide();
+				}
+			});
+			
+		},
+
 	}
 })();
 
@@ -1499,6 +1556,8 @@ function loadForm(){
 		}
 		
 	}else if(CURRENT_STATE == ANALISA_RETORNO_GTS){
+
+		funcoes.consultaNotaPesq();
 		
 		/*
 		 * Cadastro do Equipamento

@@ -16,7 +16,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("MSGRET");
 	
 	//Cabeçalho
-	var numSerieParam  = "FPM0587250101";
+	var numSerieParam  = "";
 
 	var constraintsForm = new Array(); 
 	for (var i in constraints){
