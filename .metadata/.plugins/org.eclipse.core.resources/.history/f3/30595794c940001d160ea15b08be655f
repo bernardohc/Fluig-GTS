@@ -1,4 +1,0 @@
-var INICIO_0 = 0;
-var INICIO = 17;
-var ATIVIDADE_CENTRAL = 15;
-var FIM = 24;
