@@ -733,15 +733,16 @@ function carregaDadosSolicitante(form, customHTML, tipo){
 				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #5.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
 				log.info('O seu usuário não está configurado corretamente. Vendedor 5 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
 				ocultaCabecalhosForm(form, customHTML);
-			// }else if(vendedor7 == ''){
+			}
+			//else if(vendedor7 == ''){
 			// 	customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #7.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
 			// 	log.info('O seu usuário não está configurado corretamente. Vendedor 7 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
 			// 	ocultaCabecalhosForm(form, customHTML);
-			}else if(vendedor8 == ''){
-				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #8.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
-				log.info('O seu usuário não está configurado corretamente. Vendedor 8 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
-				ocultaCabecalhosForm(form, customHTML);
-			}
+			// }else if(vendedor8 == ''){
+			// 	customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #8.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
+			// 	log.info('O seu usuário não está configurado corretamente. Vendedor 8 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
+			// 	ocultaCabecalhosForm(form, customHTML);
+			// }
 			
 			form.setValue("endNomeCliente", endNomeCliente);
 			form.setValue("endCNPJ", endCNPJ);
