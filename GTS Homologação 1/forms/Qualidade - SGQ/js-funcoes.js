@@ -54,6 +54,61 @@ var eventsFuncoes = (function() {
 				funcoes.padraoNome();
 				funcoes.printData();
 			});	 
+
+			$(document).on("change", "input:radio[name='sgqTpSolicitacao']", function() {
+				var sgqTpSolicitacao = $("input:radio[name='sgqTpSolicitacao']:checked").val();
+				const limpaSgqCaDLinkDoc = document.querySelector('#sgqCaDLinkDoc');
+				const limpaSgqCadObjDoc = document.querySelector('#sgqCadObjDoc');
+				const limpaSgqCadPalChave = document.querySelector('#sgqCadPalChave');
+				const limpaSgqValLinkDoc = document.querySelector('#sgqValLinkDoc');
+				const limpaSgqValObjDoc = document.querySelector('#sgqValObjDoc');
+				const limpaSgqRevCodDoc = document.querySelector('#sgqRevCodDoc');
+				const limpaSgqRevMotivoDoc = document.querySelector('#sgqRevMotivoDoc');
+				const limpaSgqDescCodDoc = document.querySelector('#sgqDescCodDoc');
+				const limpaSgqDescMotivoDoc = document.querySelector('#sgqDescMotivoDoc');
+				console.log("Acionou gatilho");
+				
+				if(sgqTpSolicitacao == "Cadastrar"){
+					$("[cadastrar]").show();
+					$("[validar]").hide();
+					$("[abrir]").hide();
+					$("[descontinuar]").hide();
+				}else if(sgqTpSolicitacao == "Validar"){
+					$("[cadastrar]").hide();
+					$("[validar]").show();
+					$("[abrir]").hide();
+					$("[descontinuar]").hide();
+					//limpPesqOcorrenciaFeedback.value = '';
+				}else if(sgqTpSolicitacao == "Abrir"){
+					$("[cadastrar]").hide();
+					$("[validar]").hide();
+					$("[abrir]").show();
+					$("[descontinuar]").hide();
+					//limpPesqOcorrenciaFeedback.value = '';
+				}else if(sgqTpSolicitacao == "Descontinuar"){
+					$("[cadastrar]").hide();
+					$("[validar]").hide();
+					$("[abrir]").hide();
+					$("[descontinuar]").show();
+					//limpPesqOcorrenciaFeedback.value = '';
+				}else{
+					$("[cadastrar]").hide();
+					$("[validar]").hide();
+					$("[abrir]").hide();
+					$("[descontinuar]").hide();
+				}
+				
+				limpaSgqCaDLinkDoc.value = '';
+				limpaSgqCadObjDoc.value = '';
+				limpaSgqCadPalChave.value = '';
+				limpaSgqValLinkDoc.value = '';
+				limpaSgqValObjDoc.value = '';
+				limpaSgqRevCodDoc.value = '';
+				limpaSgqRevMotivoDoc.value = '';
+				limpaSgqDescCodDoc.value = '';
+				limpaSgqDescMotivoDoc.value = '';
+				
+			});
 			
 		}
 	}
@@ -61,7 +116,12 @@ var eventsFuncoes = (function() {
 	
 
 function loadForm(){	
-	
+
+	$("[cadastrar]").hide();
+	$("[validar]").hide();
+	$("[abrir]").hide();
+	$("[descontinuar]").hide();
+
 	if(CURRENT_STATE == INICIO_0){
 		
 	}else if(CURRENT_STATE == INICIO){
