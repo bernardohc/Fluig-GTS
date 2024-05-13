@@ -33,66 +33,72 @@ function validateForm(form){
                 if (isEmpty("sgqTpSolicitacao", form)) {
                     message += getMessage("Tipo de Solicitação:", 1, form);
                     hasErros = true;
-                }                
+                } 
+                if(form.getValue("sgqTpSolicitacao") == 'Cadastrar'){ 
+                    if (isEmpty("sgqCaDLinkDoc", form)) {
+                        message += getMessage("Link do Documento:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("sgqCadObjDoc", form)) {
+                        message += getMessage("Objetivo do Documento:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("sgqCadPalChave", form)) {
+                        message += getMessage("Palavras-Chave:", 1, form);
+                        hasErros = true;
+                    }
+                } 
+                if(form.getValue("sgqTpSolicitacao") == 'Validar'){ 
+                    if (isEmpty("sgqValLinkDoc", form)) {
+                        message += getMessage("Link do Documento:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("sgqValObjDoc", form)) {
+                        message += getMessage("Objetivo do Documento:", 1, form);
+                        hasErros = true;
+                    }
+                }             
+                if(form.getValue("sgqTpSolicitacao") == 'Abrir'){ 
+                    if (isEmpty("sgqRevCodDoc", form)) {
+                        message += getMessage("Nome do documento com código:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("sgqRevMotivoDoc", form)) {
+                        message += getMessage("Motivo da Revisão:", 1, form);
+                        hasErros = true;
+                    }
+                }             
+                if(form.getValue("sgqTpSolicitacao") == 'Descontinuar'){ 
+                    if (isEmpty("sgqDescCodDoc", form)) {
+                        message += getMessage("Nome do documento com código:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("sgqDescMotivoDoc", form)) {
+                        message += getMessage("Motivo do Cancelamento:", 1, form);
+                        hasErros = true;
+                    }
+                }             
             }         
         break;
 
-        case SECAO2  :
-            if (getValue("WKCompletTask") == "true" ){
-                if (isEmpty("sgqCaDLinkDoc", form)) {
-                    message += getMessage("Link do Documento:", 1, form);
+        case AGUARDANDO_ATENDIMENTO  :
+            if (getValue("WKCompletTask") == "true" ){                
+                if (isEmpty("sgqAtendente", form)) {
+                    message += getMessage("Atendente:", 1, form);
                     hasErros = true;
-                }
-                if (isEmpty("sgqCadObjDoc", form)) {
-                    message += getMessage("Objetivo do Documento:", 1, form);
-                    hasErros = true;
-                }
-                if (isEmpty("sgqCadPalChave", form)) {
-                    message += getMessage("Palavras-Chave:", 1, form);
-                    hasErros = true;
-                }
+                }                
             }        
         break;
-
-        case SECAO3  :
-            if (getValue("WKCompletTask") == "true" ){
-                if (isEmpty("sgqValLinkDoc", form)) {
-                    message += getMessage("Link do Documento:", 1, form);
+        
+        case ANALISE_DOCUMENTO  :
+            if (getValue("WKCompletTask") == "true" ){                
+                if (isEmpty("sgqAcao", form)) {
+                    message += getMessage("Ação:", 1, form);
                     hasErros = true;
-                }
-                if (isEmpty("sgqValObjDoc", form)) {
-                    message += getMessage("Objetivo do Documento:", 1, form);
-                    hasErros = true;
-                }
+                }                
             }        
         break;
-
-        case SECAO4  :
-            if (getValue("WKCompletTask") == "true" ){
-                if (isEmpty("sgqRevCodDoc", form)) {
-                    message += getMessage("Nome e Código do Documento:", 1, form);
-                    hasErros = true;
-                }
-                if (isEmpty("sgqRevMotivoDoc", form)) {
-                    message += getMessage("Motivo da Revisão do Documento:", 1, form);
-                    hasErros = true;
-                }
-            }        
-        break;
-
-        case SECAO5  :
-            if (getValue("WKCompletTask") == "true" ){
-                if (isEmpty("sgqDescCodDoc", form)) {
-                    message += getMessage("Nome e Código do Documento:", 1, form);
-                    hasErros = true;
-                }
-                if (isEmpty("sgqDescMotivoDoc", form)) {
-                    message += getMessage("Motivo do Cancelamento do Documento:", 1, form);
-                    hasErros = true;
-                }
-            }        
-        break;
-
+        
     }
     
     if (hasErros) {

@@ -55,8 +55,9 @@ var eventsFuncoes = (function() {
 				funcoes.printData();
 			});	 
 
-			$(document).on("change", "input:radio[name='sgqTpSolicitacao']", function() {
-				var sgqTpSolicitacao = $("input:radio[name='sgqTpSolicitacao']:checked").val();
+			$(document).on("change", "#sgqTpSolicitacao", function() {
+				let sgqTpSolicitacao = document.getElementById("sgqTpSolicitacao").value;
+				
 				const limpaSgqCaDLinkDoc = document.querySelector('#sgqCaDLinkDoc');
 				const limpaSgqCadObjDoc = document.querySelector('#sgqCadObjDoc');
 				const limpaSgqCadPalChave = document.querySelector('#sgqCadPalChave');
@@ -66,31 +67,97 @@ var eventsFuncoes = (function() {
 				const limpaSgqRevMotivoDoc = document.querySelector('#sgqRevMotivoDoc');
 				const limpaSgqDescCodDoc = document.querySelector('#sgqDescCodDoc');
 				const limpaSgqDescMotivoDoc = document.querySelector('#sgqDescMotivoDoc');
-				console.log("Acionou gatilho");
 				
 				if(sgqTpSolicitacao == "Cadastrar"){
 					$("[cadastrar]").show();
 					$("[validar]").hide();
 					$("[abrir]").hide();
 					$("[descontinuar]").hide();
+					
+					var myModal = FLUIGC.modal({
+						title: 'Cadastrar e validar novo documento',
+						content: 'Seção destinada ao cadastro e validação de novos documentos, se o seu documento já possuir númeração do SGQ,'+ 
+						'volte e selecione a opção validação de documentos já cadastrados. Se aplica a revisões de documentos,'+ 
+						'já que estes são cadastrados no momento que é aberta a revisão.',
+						id: 'fluig-modal',
+						actions: [{
+							'label': 'Fechar',
+							'autoClose': true
+						}]
+					}, function(err, data) {
+						if(err) {
+							// do error handling
+						} else {
+							// do something with data
+						}
+					});	
+
 				}else if(sgqTpSolicitacao == "Validar"){
 					$("[cadastrar]").hide();
 					$("[validar]").show();
 					$("[abrir]").hide();
 					$("[descontinuar]").hide();
-					//limpPesqOcorrenciaFeedback.value = '';
+					var myModal = FLUIGC.modal({
+						title: 'Validar documento já cadastrado',
+						content: 'Seção destinada à validação de documentos já cadastrados, que possuem numeração do SGQ.',
+						id: 'fluig-modal',
+						actions: [{
+							'label': 'Fechar',
+							'autoClose': true
+						}]
+					}, function(err, data) {
+						if(err) {
+							// do error handling
+						} else {
+							// do something with data
+						}
+					});
+
 				}else if(sgqTpSolicitacao == "Abrir"){
 					$("[cadastrar]").hide();
 					$("[validar]").hide();
 					$("[abrir]").show();
 					$("[descontinuar]").hide();
-					//limpPesqOcorrenciaFeedback.value = '';
+					
+					var myModal = FLUIGC.modal({
+						title: 'Abrir revisão para documento validado',
+						content: 'Seção destinada para abrir novas revisões de documentos já validados e concluídos. Ao abrir uma nova revisão,'+
+						'será enviada por e-mail uma cópia do documento para edição, a revisão já estará cadastra no TOTVS.',
+						id: 'fluig-modal',
+						actions: [{
+							'label': 'Fechar',
+							'autoClose': true
+						}]
+					}, function(err, data) {
+						if(err) {
+							// do error handling
+						} else {
+							// do something with data
+						}
+					});
+					
 				}else if(sgqTpSolicitacao == "Descontinuar"){
 					$("[cadastrar]").hide();
 					$("[validar]").hide();
 					$("[abrir]").hide();
 					$("[descontinuar]").show();
-					//limpPesqOcorrenciaFeedback.value = '';
+					
+					var myModal = FLUIGC.modal({
+						title: 'Descontinuar documento validado',
+						content: 'Seção destinada para descontinuar documentos já aprovados. Ao descontinuar um documento este será apagado PERMANEMENTE.',
+						id: 'fluig-modal',
+						actions: [{
+							'label': 'Fechar',
+							'autoClose': true
+						}]
+					}, function(err, data) {
+						if(err) {
+							// do error handling
+						} else {
+							// do something with data
+						}
+					});
+			
 				}else{
 					$("[cadastrar]").hide();
 					$("[validar]").hide();
@@ -109,13 +176,31 @@ var eventsFuncoes = (function() {
 				limpaSgqDescMotivoDoc.value = '';
 				
 			});
+
+			//Atirbuição para atendente.
+			$(document).on("change", "#sgqAtendente", function() {
+				let sgqAtendente = $("#sgqAtendente").val();
+				
+				if(sgqAtendente == "Bruno"){
+					//Atendente Bruno
+					$('#grupoResponsavelAtend').val('Pool:Group:000058');
+				}else if(sgqAtendente == "Fabio"){
+					//Atendente Fabio
+					$('#grupoResponsavelAtend').val('Pool:Group:000056');
+				}else if(sgqAtendente == "Maira"){
+					//Atendente Maira
+					$('#grupoResponsavelAtend').val('Pool:Group:000057');
+				}else{
+					$('#grupoResponsavelAtend').val('');
+				}
+			});
 			
 		}
 	}
 })();
-	
 
 function loadForm(){	
+	let sgqTpSolicitacao = document.getElementById("sgqTpSolicitacao").value;
 
 	$("[cadastrar]").hide();
 	$("[validar]").hide();
@@ -126,91 +211,58 @@ function loadForm(){
 		
 	}else if(CURRENT_STATE == INICIO){
 
-	}else if(CURRENT_STATE == SECAO2){
-
-		if(FORM_MODE == "MOD"){
-
-			var myModal = FLUIGC.modal({
-				title: 'Cadastrar e validar novo documento',
-				content: 'Seção destinada ao cadastro e validação de novos documentos, se o seu documento já possuir númeração do SGQ,'+ 
-				'volte e selecione a opção validação de documentos já cadastrados. Se aplica a revisões de documentos,'+ 
-				'já que estes são cadastrados no momento que é aberta a revisão.',
-				id: 'fluig-modal',
-				actions: [{
-					'label': 'Close',
-					'autoClose': true
-				}]
-			}, function(err, data) {
-				if(err) {
-					// do error handling
-				} else {
-					// do something with data
-				}
-			});	
-
+	}else if(CURRENT_STATE == AGUARDANDO_ATENDIMENTO){
+		
+		if(sgqTpSolicitacao == "Cadastrar"){
+			$("[cadastrar]").show();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Validar"){
+			$("[cadastrar]").hide();
+			$("[validar]").show();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Abrir"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").show();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Descontinuar"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").show();
 		}
-	}else if(CURRENT_STATE == SECAO3){
-		if(FORM_MODE == "MOD"){
 
-			var myModal = FLUIGC.modal({
-				title: 'Validar documento já cadastrado',
-				content: 'Seção destinada à validação de documentos já cadastrados, que possuem numeração do SGQ.',
-				id: 'fluig-modal',
-				actions: [{
-					'label': 'Close',
-					'autoClose': true
-				}]
-			}, function(err, data) {
-				if(err) {
-					// do error handling
-				} else {
-					// do something with data
-				}
-			});	
+	}else if(CURRENT_STATE == ANALISE_DOCUMENTO){
 
+		if(sgqTpSolicitacao == "Cadastrar"){
+			$("[cadastrar]").show();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Validar"){
+			$("[cadastrar]").hide();
+			$("[validar]").show();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Abrir"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").show();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Descontinuar"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").show();
 		}
+
+	}else if(CURRENT_STATE == AGUARDANDO){
 	
-	}else if(CURRENT_STATE == SECAO4){
-		if(FORM_MODE == "MOD"){
-
-			var myModal = FLUIGC.modal({
-				title: 'Abrir revisão para documento validado',
-				content: 'Seção destinada para abrir novas revisões de documentos já validados e concluídos. Ao abrir uma nova revisão,'+
-				'será enviada por e-mail uma cópia do documento para edição, a revisão já estará cadastra no TOTVS.',
-				id: 'fluig-modal',
-				actions: [{
-					'label': 'Close',
-					'autoClose': true
-				}]
-			}, function(err, data) {
-				if(err) {
-					// do error handling
-				} else {
-					// do something with data
-				}
-			});	
-
-		}
-	}else if(CURRENT_STATE == SECAO5){
-		if(FORM_MODE == "MOD"){
-
-			var myModal = FLUIGC.modal({
-				title: 'Descontinuar documento validado',
-				content: 'Seção destinada para descontinuar documentos já aprovados. Ao descontinuar um documento este será apagado PERMANEMENTE.',
-				id: 'fluig-modal',
-				actions: [{
-					'label': 'Close',
-					'autoClose': true
-				}]
-			}, function(err, data) {
-				if(err) {
-					// do error handling
-				} else {
-					// do something with data
-				}
-			});	
-
-		}
+	}else if(CURRENT_STATE == FIM){
+	
 	}
 
 };
