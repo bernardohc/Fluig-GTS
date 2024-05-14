@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Qualidade - SGQ</processId>
-      <version>26</version>
+      <version>35</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>9051</formId>
@@ -84,7 +84,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
       <bpmnType>10</bpmnType>
@@ -106,7 +106,7 @@
       </processStatePK>
       <stateName>Analise do Documento</stateName>
       <stateDescription>Analise do Documento</stateDescription>
-      <instruction>000057</instruction>
+      <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
@@ -135,7 +135,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
@@ -163,8 +163,8 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Executor Atividade</engineAllocationId>
-      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;17&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;grupoResponsavelAtend&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -187,7 +187,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
@@ -215,7 +215,7 @@
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
-      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationId>Pool Grupo</engineAllocationId>
       <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;000055&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
@@ -239,7 +239,7 @@
       <notifyManagerDelay>false</notifyManagerDelay>
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
-      <inhibitTransfer>false</inhibitTransfer>
+      <inhibitTransfer>true</inhibitTransfer>
       <periodId></periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
@@ -379,7 +379,7 @@
         <companyId>1</companyId>
         <processId>Qualidade-SGQ</processId>
         <expressionOrder>1</expressionOrder>
-        <version>26</version>
+        <version>35</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Finalizar&quot;</condition>
@@ -391,7 +391,7 @@
         <companyId>1</companyId>
         <processId>Qualidade-SGQ</processId>
         <expressionOrder>2</expressionOrder>
-        <version>26</version>
+        <version>35</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Cancelar&quot;</condition>
@@ -403,11 +403,13 @@
         <companyId>1</companyId>
         <processId>Qualidade-SGQ</processId>
         <expressionOrder>3</expressionOrder>
-        <version>26</version>
+        <version>35</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Aguardar&quot;</condition>
       <destinationSequenceId>17</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;11&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
       <conditionType>0</conditionType>
     </ConditionProcessState>
   </list>
@@ -576,7 +578,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Qualidade-SGQ</processId>
-        <version>26</version>
+        <version>35</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -589,7 +591,58 @@
   <list/>
   <list/>
   <list/>
-  <list/>
+  <list>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Qualidade-SGQ</processId>
+      <processVersion>35</processVersion>
+      <stateSequence>31</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Qualidade-SGQ</processId>
+      <processVersion>35</processVersion>
+      <stateSequence>31</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Qualidade-SGQ</processId>
+      <processVersion>35</processVersion>
+      <stateSequence>31</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Qualidade-SGQ</processId>
+      <processVersion>35</processVersion>
+      <stateSequence>31</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Qualidade-SGQ</processId>
+      <processVersion>35</processVersion>
+      <stateSequence>31</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+  </list>
   <list/>
   <list/>
 </list>
