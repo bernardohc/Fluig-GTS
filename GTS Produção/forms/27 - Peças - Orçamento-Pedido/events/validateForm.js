@@ -246,22 +246,26 @@ function validateForm(form){
         	       			message += getMessage("Field <b>Seller 1</b> can not be empty.", 6, form);
                             hasErros = true;
                         }
-                    	if (isEmpty("vendedor4", form)) {
-                    		message += getMessage("Field <b>Seller 4</b> can not be empty.", 6, form);
-                    		hasErros = true;
-                    	}
                     	if (isEmpty("vendedor5", form)) {
                     		message += getMessage("Field <b>Seller 5</b> can not be empty.", 6, form);
                     		hasErros = true;
                     	}
-                    	// if (isEmpty("vendedor7", form)) {
-                    	// 	message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
-                    	// 	hasErros = true;
-                    	// }
+                    	if (isEmpty("vendedor7", form)) {
+                    		message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
+                    		hasErros = true;
+                    	}
                     	// if (isEmpty("vendedor8", form)) {
                     	// 	message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
                     	// 	hasErros = true;
                     	// }
+                    	if (isEmpty("vendedor11", form)) {
+                    		message += getMessage("Field <b>Seller 11</b> can not be empty.", 6, form);
+                    		hasErros = true;
+                    	}
+                    	if (isEmpty("vendedor13", form)) {
+                    		message += getMessage("Field <b>Seller 13</b> can not be empty.", 6, form);
+                    		hasErros = true;
+                    	}
                 		
 	            		var indexes = form.getChildrenIndexes("tbItensOrcamento");
 	    	            var itemOrcamentoCodProdItem = false;
@@ -347,23 +351,40 @@ function validateForm(form){
                     message += getMessage("Vendedor 1", 1, form);
                     hasErros = true;
                 }
-            	if (isEmpty("vendedor4", form)) {
-            		message += getMessage("Vendedor 4", 1, form);
-            		hasErros = true;
-            	}
             	if (isEmpty("vendedor5", form)) {
             		message += getMessage("Vendedor 5", 1, form);
             		hasErros = true;
             	}
-            	// if (isEmpty("vendedor7", form)) {
-            	// 	message += getMessage("Vendedor 7", 1, form);
-            	// 	hasErros = true;
-            	// }
+            	if (isEmpty("vendedor7", form)) {
+            		message += getMessage("Vendedor 7", 1, form);
+            		hasErros = true;
+            	}
             	// if (isEmpty("vendedor8", form)) {
             	// 	message += getMessage("Vendedor 8", 1, form);
             	// 	hasErros = true;
             	// }
-            	
+				if ( form.getValue("revExportacao") != 'SIM' ) {
+					if (isEmpty("vendedor4", form)) {
+						message += getMessage("Vendedor 4", 1, form);
+						hasErros = true;
+					// }else if (isEmpty("vendedor9", form)) {
+					// 	message += getMessage("Vendedor 9", 1, form);
+					// 	hasErros = true;
+					}else if (isEmpty("vendedor12", form)) {
+						message += getMessage("Vendedor 12", 1, form);
+						hasErros = true;
+					}
+				}
+            	if (isEmpty("vendedor11", form)) {
+            		message += getMessage("Vendedor 11", 1, form);
+            		hasErros = true;
+            	}
+            	if ( form.getValue("revExportacao") == 'SIM' ) {
+					if (isEmpty("vendedor13", form)) {
+						message += getMessage("Vendedor 13", 1, form);
+						hasErros = true;
+					}
+				}
             	
             	var indexes = form.getChildrenIndexes("tbItensOrcamento");
                 var itemOrcamentoCodProdItem = false;
@@ -471,23 +492,41 @@ function validateForm(form){
                             message += getMessage("Vendedor 1", 1, form);
                             hasErros = true;
                         }
-                    	if (isEmpty("vendedor4", form)) {
-                    		message += getMessage("Vendedor 4", 1, form);
-                    		hasErros = true;
-                    	}
                     	if (isEmpty("vendedor5", form)) {
                     		message += getMessage("Vendedor 5", 1, form);
                     		hasErros = true;
                     	}
-                    	// if (isEmpty("vendedor7", form)) {
-                    	// 	message += getMessage("Vendedor 7", 1, form);
-                    	// 	hasErros = true;
-                    	// }
+                    	if (isEmpty("vendedor7", form)) {
+                    		message += getMessage("Vendedor 7", 1, form);
+                    		hasErros = true;
+                    	}
                     	// if (isEmpty("vendedor8", form)) {
                     	// 	message += getMessage("Vendedor 8", 1, form);
                     	// 	hasErros = true;
                     	// }
-                		
+						if ( form.getValue("revExportacao") != 'SIM' ) {
+							if (isEmpty("vendedor4", form)) {
+								message += getMessage("Vendedor 4", 1, form);
+								hasErros = true;
+							// }else if (isEmpty("vendedor9", form)) {
+							// 	message += getMessage("Vendedor 9", 1, form);
+							// 	hasErros = true;
+							}else if (isEmpty("vendedor12", form)) {
+								message += getMessage("Vendedor 12", 1, form);
+								hasErros = true;
+							}
+                    	}
+                		if (isEmpty("vendedor11", form)) {
+							message += getMessage("Vendedor 11", 1, form);
+							hasErros = true;
+						}
+						if ( form.getValue("revExportacao") == 'SIM' ) {
+							if (isEmpty("vendedor13", form)) {
+								message += getMessage("Vendedor 13", 1, form);
+								hasErros = true;
+							}
+						}
+
 		        		if (isEmpty("tipoPedido", form)) {
 			                message += getMessage("Tipo de pedido", 1, form);
 			                hasErros = true;
@@ -982,23 +1021,41 @@ function validateForm(form){
 	                    message += getMessage("Vendedor 1", 1, form);
 	                    hasErros = true;
 	                }
-	            	if (isEmpty("vendedor4", form)) {
-	            		message += getMessage("Vendedor 4", 1, form);
-	            		hasErros = true;
-	            	}
 	            	if (isEmpty("vendedor5", form)) {
 	            		message += getMessage("Vendedor 5", 1, form);
 	            		hasErros = true;
 	            	}
-	            	// if (isEmpty("vendedor7", form)) {
-	            	// 	message += getMessage("Vendedor 7", 1, form);
-	            	// 	hasErros = true;
-	            	// }
+	            	if (isEmpty("vendedor7", form)) {
+	            		message += getMessage("Vendedor 7", 1, form);
+	            		hasErros = true;
+	            	}
 	            	// if (isEmpty("vendedor8", form)) {
 	            	// 	message += getMessage("Vendedor 8", 1, form);
 	            	// 	hasErros = true;
 	            	// }
-	            	
+					if ( form.getValue("revExportacao") != 'SIM' ) {
+						if (isEmpty("vendedor4", form)) {
+							message += getMessage("Vendedor 4", 1, form);
+							hasErros = true;
+						// }else if (isEmpty("vendedor9", form)) {
+						// 	message += getMessage("Vendedor 9", 1, form);
+						// 	hasErros = true;
+						}else if (isEmpty("vendedor12", form)) {
+							message += getMessage("Vendedor 12", 1, form);
+							hasErros = true;
+						}
+					}
+	            	if (isEmpty("vendedor11", form)) {
+						message += getMessage("Vendedor 11", 1, form);
+						hasErros = true;
+					}
+					if ( form.getValue("revExportacao") == 'SIM' ) {
+						if (isEmpty("vendedor13", form)) {
+							message += getMessage("Vendedor 13", 1, form);
+							hasErros = true;
+						}
+					}
+					
 		        	if (isEmpty("tipoPedido", form)) {
 		                message += getMessage("Tipo de pedido", 1, form);
 		                hasErros = true;
@@ -1332,23 +1389,26 @@ function validateForm(form){
 	       			message += getMessage("Field <b>Seller 1</b> can not be empty.", 6, form);
                     hasErros = true;
                 }
-            	if (isEmpty("vendedor4", form)) {
-            		message += getMessage("Field <b>Seller 4</b> can not be empty.", 6, form);
-            		hasErros = true;
-            	}
             	if (isEmpty("vendedor5", form)) {
             		message += getMessage("Field <b>Seller 5</b> can not be empty.", 6, form);
             		hasErros = true;
             	}
-            	// if (isEmpty("vendedor7", form)) {
-            	// 	message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
-            	// 	hasErros = true;
-            	// }
+            	if (isEmpty("vendedor7", form)) {
+            		message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
+            		hasErros = true;
+            	}
             	// if (isEmpty("vendedor8", form)) {
             	// 	message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
             	// 	hasErros = true;
             	// }
-	       		
+	       		if (isEmpty("vendedor11", form)) {
+            		message += getMessage("Field <b>Seller 11</b> can not be empty.", 6, form);
+            		hasErros = true;
+            	}
+            	if (isEmpty("vendedor13", form)) {
+            		message += getMessage("Field <b>Seller 13</b> can not be empty.", 6, form);
+            		hasErros = true;
+            	}
 	       		
 	        	var indexes = form.getChildrenIndexes("tbItensOrcamento");
 	            var itemOrcamentoCodProdItem = false;

@@ -56,6 +56,11 @@
 
 	<!-- Campo oculto-->
 	<input type="hidden" name="dataSolicitacao" id="dataSolicitacao">
+	<input type="hidden" name="dataAtribuicao" id="dataAtribuicao">
+	<input type="hidden" name="dataAanalise" id="dataAanalise">
+	<input type="hidden" name="dataFinalizacao" id="dataFinalizacao">
+	<input type="hidden" name="dataCancelamento" id="dataCancelamento">
+	<input type="hidden" name="dataPendendcia" id="dataPendendcia">
 	<input type="hidden" name="grupoResponsavelAtend" id="grupoResponsavelAtend">
 
 	<!-- Inicial -->
@@ -121,7 +126,7 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-md-4 col-md-offset-4">
-						<label for="sgqTpSolicitacao">Setor</label>
+						<label for="sgqTpSolicitacao">Tipo de Solicitação</label>
 						<select name="sgqTpSolicitacao" id="sgqTpSolicitacao" class="form-control sgqTpSolicitacao">
 							<option value=""></option>
 							<option value="Cadastrar"> Cadastrar e validar novo documento </option>
@@ -254,7 +259,7 @@
 						<option value="Maira"> Maira </option>
 					</select>
 				</div>
-				<div class="form-group col-md-4" id="divSgqAcao">
+				<div class="form-group col-md-2" id="divSgqAcao">
 					<label for="sgqAcao">Selecione a Ação:</label>
 					<select name="sgqAcao" id="sgqAcao" class="form-control">
 						<option value=""></option>
@@ -263,6 +268,10 @@
 						<option value="Aguardar"> Aguardar Pendência </option>
 					</select>
 				</div>	
+				<div class="form-group col-md-4" id="divSgqObservacao">
+					<label for="sgqObservacao">Observação:</label>
+					<textarea rows="1" cols="12" name="sgqObservacao" id="sgqObservacao" class="form-control " ></textarea>
+				</div>
 			</div>
 		</div>
 	</div>

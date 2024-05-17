@@ -81,7 +81,7 @@ function displayFields(form,customHTML){
 			if(form.getValue("A1_PAIS") == "USA"){
 				mostraPedidoUSA(form, customHTML, 'VIEW');
 			}else{
-				var A1_TIPO = form.getValue("A1_TIPO");
+				var A1_TIPO = form.getValue("A1_TIPO").trim();
 				
 				if(A1_TIPO.toUpperCase() == "BALCONISTA"){
 					viewOrcamento(form, customHTML);
@@ -167,7 +167,7 @@ function displayFields(form,customHTML){
 			var dataset = DatasetFactory.getDataset("dsClienteViaDadosAdicionais", null, null, null);
 			if(dsTemValor(dataset)){
 				
-			var A1_TIPO = dataset.getValue(0, "A1_TIPO");
+			var A1_TIPO = dataset.getValue(0, "A1_TIPO").trim();
 			
 				if( dataset.getValue(0, "A1_TIPO") != '' && dataset.getValue(0, "A1_TIPO") !== undefined && dataset.getValue(0, "A1_TIPO") != 'undefined' ){ 
 							
@@ -301,7 +301,7 @@ function displayFields(form,customHTML){
 				var dataset = DatasetFactory.getDataset("dsClienteViaDadosAdicionais", null, null, null);
 				if(dsTemValor(dataset)){
 					
-				var A1_TIPO = dataset.getValue(0, "A1_TIPO");
+				var A1_TIPO = dataset.getValue(0, "A1_TIPO").trim();
 				
 					if( dataset.getValue(0, "A1_TIPO") != '' && dataset.getValue(0, "A1_TIPO") !== undefined && dataset.getValue(0, "A1_TIPO") != 'undefined' ){ 
 								
@@ -362,7 +362,7 @@ function displayFields(form,customHTML){
 				var dataset = DatasetFactory.getDataset("dsClienteViaDadosAdicionais", null, null, null);
 				if(dsTemValor(dataset)){
 					
-				var A1_TIPO = dataset.getValue(0, "A1_TIPO");
+				var A1_TIPO = dataset.getValue(0, "A1_TIPO").trim();
 				
 					if( dataset.getValue(0, "A1_TIPO") != '' && dataset.getValue(0, "A1_TIPO") !== undefined && dataset.getValue(0, "A1_TIPO") != 'undefined' ){ 
 								
@@ -715,6 +715,11 @@ function carregaDadosSolicitante(form, customHTML, tipo){
 			var vendedor8 = dataset.getValue(0, "A1_VEND8").trim();
 			var vendedor9 = dataset.getValue(0, "A1_VEND9").trim();
 			var vendedor10 = dataset.getValue(0, "A1_VEND10").trim();
+			var vendedor11 = dataset.getValue(0, "A1_VEND11").trim();
+			var vendedor12 = dataset.getValue(0, "A1_VEND12").trim();
+			var vendedor13 = dataset.getValue(0, "A1_VEND13").trim();
+			var vendedor14 = dataset.getValue(0, "A1_VEND14").trim();
+			var vendedor15 = dataset.getValue(0, "A1_VEND15").trim();
 			
 			//Valida campos de retorno
 			if(riscoRevenda == ''){
@@ -725,25 +730,48 @@ function carregaDadosSolicitante(form, customHTML, tipo){
 				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #1.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
 				log.info('O seu usuário não está configurado corretamente. Vendedor 1 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
 				ocultaCabecalhosForm(form, customHTML);
-			}else if(vendedor4 == ''){
-				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #4.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
-				log.info('O seu usuário não está configurado corretamente. Vendedor 4 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
-				ocultaCabecalhosForm(form, customHTML);
 			}else if(vendedor5 == ''){
 				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #5.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
 				log.info('O seu usuário não está configurado corretamente. Vendedor 5 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
 				ocultaCabecalhosForm(form, customHTML);
-			}
-			//else if(vendedor7 == ''){
-			// 	customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #7.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
-			// 	log.info('O seu usuário não está configurado corretamente. Vendedor 7 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
-			// 	ocultaCabecalhosForm(form, customHTML);
+			}else if(vendedor7 == ''){
+				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #7.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
+				log.info('O seu usuário não está configurado corretamente. Vendedor 7 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
+				ocultaCabecalhosForm(form, customHTML);
 			// }else if(vendedor8 == ''){
 			// 	customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #8.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
 			// 	log.info('O seu usuário não está configurado corretamente. Vendedor 8 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
 			// 	ocultaCabecalhosForm(form, customHTML);
-			// }
+			}else if(vendedor11 == ''){
+				customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #11.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
+				log.info('O seu usuário não está configurado corretamente. Vendedor 11 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
+				ocultaCabecalhosForm(form, customHTML);
+			} 
 			
+			if(form.getValue("revExportacao") != "SIM"){
+				if(vendedor4 == ''){
+					customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #4.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
+					log.info('O seu usuário não está configurado corretamente. Vendedor 4 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
+					ocultaCabecalhosForm(form, customHTML);
+				// }else if(vendedor9 == ''){
+				// 	customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #9.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
+				// 	log.info('O seu usuário não está configurado corretamente. Vendedor 9 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
+				// 	ocultaCabecalhosForm(form, customHTML);
+				}else if(vendedor12 == ''){
+					customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #12.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
+					log.info('O seu usuário não está configurado corretamente. Vendedor 12 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
+					ocultaCabecalhosForm(form, customHTML);
+				} 
+			}
+
+			if(form.getValue("revExportacao") == "SIM"){
+				if(vendedor13 == ''){
+					customHTML.append("<script>FLUIGC.toast({message: 'O seu usuário não está configurado corretamente #13.<br>Entre em contato com o administrador do sistema!', type: 'danger'});</script>");
+					log.info('O seu usuário não está configurado corretamente. Vendedor 13 não preenchido. Cod: ' + form.getValue("A1_COD") + ' - Loja:' + form.getValue("A1_LOJA"));
+					ocultaCabecalhosForm(form, customHTML);
+				}
+			}
+
 			form.setValue("endNomeCliente", endNomeCliente);
 			form.setValue("endCNPJ", endCNPJ);
 			form.setValue("endCidade", endCidade);
@@ -764,6 +792,11 @@ function carregaDadosSolicitante(form, customHTML, tipo){
 			form.setValue("vendedor8", vendedor8);
 			form.setValue("vendedor9", vendedor9);
 			form.setValue("vendedor10", vendedor10);
+			form.setValue("vendedor11", vendedor11);
+			form.setValue("vendedor12", vendedor12);
+			form.setValue("vendedor13", vendedor13);
+			form.setValue("vendedor14", vendedor14);
+			form.setValue("vendedor15", vendedor15);
 			
 			
 			
@@ -793,6 +826,7 @@ function dadosAdicionaisUsuario(form,customHTML){
 	var A1_GERENTE = "";
 	var A1_TIPO = "";
 	var A1_PAIS = "";
+	var revExportacao = "";
 	var cadCorreto = true;	
 	var textoCadErrado = "";
 	
@@ -802,7 +836,7 @@ function dadosAdicionaisUsuario(form,customHTML){
 		A1_COD = dataset.getValue(0, "A1_COD");
 		A1_LOJA = dataset.getValue(0, "A1_LOJA");
 		A1_GERENTE = dataset.getValue(0, "A1_GERENTE");
-		A1_TIPO = dataset.getValue(0, "A1_TIPO");
+		A1_TIPO = dataset.getValue(0, "A1_TIPO").trim();
 		
 		if( dataset.getValue(0, "A1_COD") != '' && dataset.getValue(0, "A1_COD") !== undefined && dataset.getValue(0, "A1_COD") != 'undefined' &&
 			dataset.getValue(0, "A1_LOJA") != '' && dataset.getValue(0, "A1_LOJA") !== undefined && dataset.getValue(0, "A1_LOJA") != 'undefined' &&
@@ -810,12 +844,17 @@ function dadosAdicionaisUsuario(form,customHTML){
 			dataset.getValue(0, "A1_TIPO") != '' && dataset.getValue(0, "A1_TIPO") !== undefined && dataset.getValue(0, "A1_TIPO") != 'undefined' ){ 
 			
 			A1_PAIS = retornaPais();
+			revExportacao = retornaRevExportacao();
+
+			
+			
 			//Seta o código do usuário, loja e gerente da revenda
 			form.setValue("A1_COD", A1_COD);
 			form.setValue("A1_LOJA", A1_LOJA);
 			form.setValue("A1_TIPO", A1_TIPO);
 			form.setValue("A1_PAIS", A1_PAIS);
 			form.setValue("gerenteRevenda", A1_GERENTE);
+			form.setValue("revExportacao", revExportacao);
 			
 			
 		}else{
@@ -840,7 +879,7 @@ function dadosIniciaisBalconistaGerente(form, customHTML){
 	
 	var A1_COD = form.getValue("A1_COD");
 	var A1_LOJA = form.getValue("A1_LOJA");
-	var A1_TIPO = form.getValue("A1_TIPO");
+	var A1_TIPO = form.getValue("A1_TIPO").trim();
 	
 	if(A1_TIPO.toUpperCase() == "GERENTE"){
 		
@@ -895,7 +934,7 @@ function mostraPedidoUSA(form, customHTML, modo){
 	var datasetDadosAdicionaisUsuario = DatasetFactory.getDataset("dsClienteViaDadosAdicionais", null, null, null);
 	if(dsTemValor(datasetDadosAdicionaisUsuario)){
 		
-		A1_TIPO_USUARIO_LOGADO = datasetDadosAdicionaisUsuario.getValue(0, "A1_TIPO");
+		A1_TIPO_USUARIO_LOGADO = datasetDadosAdicionaisUsuario.getValue(0, "A1_TIPO").trim();
 	}
 	
 	if(getValue('WKUserLocale') == 'en_US'){
@@ -1045,7 +1084,7 @@ function mostraPedidoUSA(form, customHTML, modo){
 
 function dadosIniciaisBalconistaGerenteINICIO(form, customHTML){
 	
-	var A1_TIPO = form.getValue("A1_TIPO");
+	var A1_TIPO = form.getValue("A1_TIPO").trim();
 	
 	if(A1_TIPO.toUpperCase() == "BALCONISTA"){
 		ocultaImpostos(form, customHTML);
@@ -1063,7 +1102,7 @@ function mostraPrecoCusto(form, customHTML){
 	var dataset = DatasetFactory.getDataset("dsClienteViaDadosAdicionais", null, null, null);
 	if(dsTemValor(dataset)){
 		
-		A1_TIPO = dataset.getValue(0, "A1_TIPO");
+		A1_TIPO = dataset.getValue(0, "A1_TIPO").trim();
 		
 		if( dataset.getValue(0, "A1_TIPO") != '' && dataset.getValue(0, "A1_TIPO") !== undefined && dataset.getValue(0, "A1_TIPO") != 'undefined' ){ 
 					
@@ -1488,7 +1527,7 @@ function finalizado(form, customHTML, etapaFinalizado){
 	var dataset = DatasetFactory.getDataset("dsClienteViaDadosAdicionais", null, null, null);
 	if(dsTemValor(dataset)){
 		
-		A1_TIPO = dataset.getValue(0, "A1_TIPO");
+		A1_TIPO = dataset.getValue(0, "A1_TIPO").trim();
 		
 		if( dataset.getValue(0, "A1_TIPO") != '' && dataset.getValue(0, "A1_TIPO") !== undefined && dataset.getValue(0, "A1_TIPO") != 'undefined' ){ 
 					
@@ -1644,4 +1683,18 @@ function retornaPais(){
 		paisUser = "BRA";
 	}
 	return paisUser;
+}
+
+function retornaRevExportacao(){
+	var WKUser = getValue("WKUser");
+	
+	var siglaUFUser = WKUser.substring(0, 2);
+	var revExportacao = "";
+
+	if(siglaUFUser == "EX"){
+		revExportacao = "SIM";
+	}else{
+		revExportacao = "NAO";
+	}
+	return revExportacao;
 }

@@ -22,6 +22,7 @@ function displayFields(form, customHTML) {
 	}else if (atv_atual == AGUARDANDO_ATENDIMENTO) {
 		form.setVisibleById("divAtendimento", true);
 		form.setVisibleById("divSgqAcao", false);
+		form.setVisibleById("divSgqObservacao", false);
 		if(form.getValue("sgqTpSolicitacao") == 'Cadastrar'){
 			form.setVisibleById("divSecao2", true);
 			form.setVisibleById("divSecao3", false);
@@ -75,7 +76,58 @@ function displayFields(form, customHTML) {
 		}
 
 	}else if (atv_atual == FIM) {
-			
+		form.setVisibleById("divAtendimento", true);
+		if(form.getValue("sgqTpSolicitacao") == 'Cadastrar'){
+			form.setVisibleById("divSecao2", true);
+			form.setVisibleById("divSecao3", false);
+			form.setVisibleById("divSecao4", false);
+			form.setVisibleById("divSecao5", false);
+		}
+		if(form.getValue("sgqTpSolicitacao") == 'Validar'){
+			form.setVisibleById("divSecao2", false);
+			form.setVisibleById("divSecao3", true);
+			form.setVisibleById("divSecao4", false);
+			form.setVisibleById("divSecao5", false);
+		}
+		if(form.getValue("sgqTpSolicitacao") == 'Abrir'){
+			form.setVisibleById("divSecao2", false);
+			form.setVisibleById("divSecao3", false);
+			form.setVisibleById("divSecao4", true);
+			form.setVisibleById("divSecao5", false);
+		}
+		if(form.getValue("sgqTpSolicitacao") == 'Descontinuar'){
+			form.setVisibleById("divSecao2", false);
+			form.setVisibleById("divSecao3", false);
+			form.setVisibleById("divSecao4", false);
+			form.setVisibleById("divSecao5", true);
+		}
+		
+	}else if (atv_atual == CANCELAMENTO) {
+		form.setVisibleById("divAtendimento", true);
+		if(form.getValue("sgqTpSolicitacao") == 'Cadastrar'){
+			form.setVisibleById("divSecao2", true);
+			form.setVisibleById("divSecao3", false);
+			form.setVisibleById("divSecao4", false);
+			form.setVisibleById("divSecao5", false);
+		}
+		if(form.getValue("sgqTpSolicitacao") == 'Validar'){
+			form.setVisibleById("divSecao2", false);
+			form.setVisibleById("divSecao3", true);
+			form.setVisibleById("divSecao4", false);
+			form.setVisibleById("divSecao5", false);
+		}
+		if(form.getValue("sgqTpSolicitacao") == 'Abrir'){
+			form.setVisibleById("divSecao2", false);
+			form.setVisibleById("divSecao3", false);
+			form.setVisibleById("divSecao4", true);
+			form.setVisibleById("divSecao5", false);
+		}
+		if(form.getValue("sgqTpSolicitacao") == 'Descontinuar'){
+			form.setVisibleById("divSecao2", false);
+			form.setVisibleById("divSecao3", false);
+			form.setVisibleById("divSecao4", false);
+			form.setVisibleById("divSecao5", true);
+		}
 	}
 
 }

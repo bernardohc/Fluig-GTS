@@ -41,7 +41,6 @@ var funcoes = (function() {
 			
 			campo.value = dataFormatada;
 		},
-
 	}
 })();
 
@@ -212,7 +211,7 @@ function loadForm(){
 	}else if(CURRENT_STATE == INICIO){
 
 	}else if(CURRENT_STATE == AGUARDANDO_ATENDIMENTO){
-		
+				
 		if(sgqTpSolicitacao == "Cadastrar"){
 			$("[cadastrar]").show();
 			$("[validar]").hide();
@@ -235,6 +234,20 @@ function loadForm(){
 			$("[descontinuar]").show();
 		}
 
+		$(document).on("input", "#sgqAtendente", function() {			
+			var campo = document.getElementById('dataAtribuicao');
+			var dataAtual = new Date();
+
+			// Formatar a data para o formato dd/mm/aaaa
+			var dia = String(dataAtual.getDate()).padStart(2, '0');
+			var mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); // +1 porque os meses são indexados a partir de 0
+			var ano = dataAtual.getFullYear();
+			
+			var dataFormatada = dia + '/' + mes + '/' + ano;
+			
+			campo.value = dataFormatada;	
+		});	 
+		
 	}else if(CURRENT_STATE == ANALISE_DOCUMENTO){
 
 		if(sgqTpSolicitacao == "Cadastrar"){
@@ -259,10 +272,115 @@ function loadForm(){
 			$("[descontinuar]").show();
 		}
 
+		$(document).on("input", "#sgqAcao", function() {
+			var sgqAcao = document.getElementById('sgqAcao').value;
+			var dataAtual = new Date();
+
+			// Formatar a data para o formato dd/mm/aaaa
+			var dia = String(dataAtual.getDate()).padStart(2, '0');
+			var mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); // +1 porque os meses são indexados a partir de 0
+			var ano = dataAtual.getFullYear();
+			
+			var dataFormatada = dia + '/' + mes + '/' + ano;
+			
+			if(sgqAcao == 'Finalizar'){
+				$('#dataFinalizacao').val(dataFormatada);
+			}else if(sgqAcao == 'Cancelar'){
+				$('#dataCancelamento').val(dataFormatada);
+			}else if(sgqAcao == 'Aguardar'){
+				$('#dataPendendcia').val(dataFormatada);
+			}				
+		});
+
+
 	}else if(CURRENT_STATE == AGUARDANDO){
-	
+		if(sgqTpSolicitacao == "Cadastrar"){
+			$("[cadastrar]").show();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Validar"){
+			$("[cadastrar]").hide();
+			$("[validar]").show();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Abrir"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").show();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Descontinuar"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").show();
+		}
+
+		$(document).on("input", "#sgqAcao", function() {
+			var sgqAcao = document.getElementById('sgqAcao').value;
+			var dataAtual = new Date();
+
+			// Formatar a data para o formato dd/mm/aaaa
+			var dia = String(dataAtual.getDate()).padStart(2, '0');
+			var mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); // +1 porque os meses são indexados a partir de 0
+			var ano = dataAtual.getFullYear();
+			
+			var dataFormatada = dia + '/' + mes + '/' + ano;
+			
+			if(sgqAcao == 'Finalizar'){
+				$('#dataFinalizacao').val(dataFormatada);
+			}else if(sgqAcao == 'Cancelar'){
+				$('#dataCancelamento').val(dataFormatada);
+			}else if(sgqAcao == 'Aguardar'){
+				$('#dataPendendcia').val(dataFormatada);
+			}				
+		});
+
 	}else if(CURRENT_STATE == FIM){
-	
+		if(sgqTpSolicitacao == "Cadastrar"){
+			$("[cadastrar]").show();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Validar"){
+			$("[cadastrar]").hide();
+			$("[validar]").show();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Abrir"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").show();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Descontinuar"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").show();
+		}
+		
+	}else if(CURRENT_STATE == CANCELAMENTO){
+		if(sgqTpSolicitacao == "Cadastrar"){
+			$("[cadastrar]").show();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Validar"){
+			$("[cadastrar]").hide();
+			$("[validar]").show();
+			$("[abrir]").hide();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Abrir"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").show();
+			$("[descontinuar]").hide();
+		}else if(sgqTpSolicitacao == "Descontinuar"){
+			$("[cadastrar]").hide();
+			$("[validar]").hide();
+			$("[abrir]").hide();
+			$("[descontinuar]").show();
+		}
 	}
 
 };
