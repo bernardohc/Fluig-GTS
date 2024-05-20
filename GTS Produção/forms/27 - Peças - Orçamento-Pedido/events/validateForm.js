@@ -254,10 +254,10 @@ function validateForm(form){
                     		message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
                     		hasErros = true;
                     	}
-                    	// if (isEmpty("vendedor8", form)) {
-                    	// 	message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
-                    	// 	hasErros = true;
-                    	// }
+                    	if (isEmpty("vendedor8", form)) {
+                    		message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
+                    		hasErros = true;
+                    	}
                     	if (isEmpty("vendedor11", form)) {
                     		message += getMessage("Field <b>Seller 11</b> can not be empty.", 6, form);
                     		hasErros = true;
@@ -359,10 +359,10 @@ function validateForm(form){
             		message += getMessage("Vendedor 7", 1, form);
             		hasErros = true;
             	}
-            	// if (isEmpty("vendedor8", form)) {
-            	// 	message += getMessage("Vendedor 8", 1, form);
-            	// 	hasErros = true;
-            	// }
+            	if (isEmpty("vendedor8", form)) {
+            		message += getMessage("Vendedor 8", 1, form);
+            		hasErros = true;
+            	}
 				if ( form.getValue("revExportacao") != 'SIM' ) {
 					if (isEmpty("vendedor4", form)) {
 						message += getMessage("Vendedor 4", 1, form);
@@ -500,10 +500,10 @@ function validateForm(form){
                     		message += getMessage("Vendedor 7", 1, form);
                     		hasErros = true;
                     	}
-                    	// if (isEmpty("vendedor8", form)) {
-                    	// 	message += getMessage("Vendedor 8", 1, form);
-                    	// 	hasErros = true;
-                    	// }
+                    	if (isEmpty("vendedor8", form)) {
+                    		message += getMessage("Vendedor 8", 1, form);
+                    		hasErros = true;
+                    	}
 						if ( form.getValue("revExportacao") != 'SIM' ) {
 							if (isEmpty("vendedor4", form)) {
 								message += getMessage("Vendedor 4", 1, form);
@@ -1029,10 +1029,10 @@ function validateForm(form){
 	            		message += getMessage("Vendedor 7", 1, form);
 	            		hasErros = true;
 	            	}
-	            	// if (isEmpty("vendedor8", form)) {
-	            	// 	message += getMessage("Vendedor 8", 1, form);
-	            	// 	hasErros = true;
-	            	// }
+	            	if (isEmpty("vendedor8", form)) {
+	            		message += getMessage("Vendedor 8", 1, form);
+	            		hasErros = true;
+	            	}
 					if ( form.getValue("revExportacao") != 'SIM' ) {
 						if (isEmpty("vendedor4", form)) {
 							message += getMessage("Vendedor 4", 1, form);
@@ -1397,10 +1397,10 @@ function validateForm(form){
             		message += getMessage("Field <b>Seller 7</b> can not be empty.", 6, form);
             		hasErros = true;
             	}
-            	// if (isEmpty("vendedor8", form)) {
-            	// 	message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
-            	// 	hasErros = true;
-            	// }
+            	if (isEmpty("vendedor8", form)) {
+            		message += getMessage("Field <b>Seller 8</b> can not be empty.", 6, form);
+            		hasErros = true;
+            	}
 	       		if (isEmpty("vendedor11", form)) {
             		message += getMessage("Field <b>Seller 11</b> can not be empty.", 6, form);
             		hasErros = true;
