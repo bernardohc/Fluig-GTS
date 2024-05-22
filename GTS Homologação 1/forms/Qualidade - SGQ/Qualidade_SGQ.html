@@ -250,27 +250,51 @@
 				</h3>
 			</div>
 			<div class="panel-body collapse in" id="collapseCabec">	
-				<div class="form-group col-md-4 col-md-offset-1">
-					<label for="sgqAtendente">Selecione o Atendente:</label>
-					<select name="sgqAtendente" id="sgqAtendente" class="form-control">
-						<option value=""></option>
-						<option value="Bruno"> Bruno </option>
-						<option value="Fabio"> Fabio </option>
-						<option value="Maira"> Maira </option>
-					</select>
+				<div class="row">
+					<div class="form-group col-md-4 col-md-offset-1">
+						<label for="sgqAtendente">Selecione o Atendente:</label>
+						<select name="sgqAtendente" id="sgqAtendente" class="form-control">
+							<option value=""></option>
+							<option value="Bruno"> Bruno </option>
+							<option value="Fabio"> Fabio </option>
+							<option value="Maira"> Maira </option>
+						</select>
+					</div>
+					<div class="form-group col-md-2" id="divSgqAcao">
+						<label for="sgqAcao">Selecione a Ação:</label>
+						<select name="sgqAcao" id="sgqAcao" class="form-control">
+							<option value=""></option>
+							<option value="Finalizar"> Finalizar </option>
+							<option value="Cancelar"> Cancelar </option>
+							<option value="Aguardar"> Aguardar Pendência </option>
+						</select>
+					</div>	
+					<div class="form-group col-md-4" id="divSgqObservacao">
+						<label for="sgqObservacao">Observação:</label>
+						<textarea rows="1" cols="12" name="sgqObservacao" id="sgqObservacao" class="form-control " ></textarea>
+					</div>
 				</div>
-				<div class="form-group col-md-2" id="divSgqAcao">
-					<label for="sgqAcao">Selecione a Ação:</label>
-					<select name="sgqAcao" id="sgqAcao" class="form-control">
-						<option value=""></option>
-						<option value="Finalizar"> Finalizar </option>
-						<option value="Cancelar"> Cancelar </option>
-						<option value="Aguardar"> Aguardar Pendência </option>
-					</select>
-				</div>	
-				<div class="form-group col-md-4" id="divSgqObservacao">
-					<label for="sgqObservacao">Observação:</label>
-					<textarea rows="1" cols="12" name="sgqObservacao" id="sgqObservacao" class="form-control " ></textarea>
+				<div class="row">
+					<div class="form-group col-md-2 col-md-offset-1">
+						<label for="sgqDtHoraIni">Data e Hora Início: </label>
+						<input type="text" name="sgqDtHoraIni" id="sgqDtHoraIni" class="form-control" readonly>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="sgqDtHoraAloca">Data e Hora Alocação: </label>
+						<input type="text" name="sgqDtHoraAloca" id="sgqDtHoraAloca" class="form-control" readonly>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="sgqDtHoraAguarda">Data e Hora Aguardando: </label>
+						<input type="text" name="sgqDtHoraAguarda" id="sgqDtHoraAguarda" class="form-control" readonly>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="sgqDtHoraFim">Data e Hora Finalização: </label>
+						<input type="text" name="sgqDtHoraFim" id="sgqDtHoraFim" class="form-control" readonly>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="sgqDtHoraCance">Data e Hora Cancelamento: </label>
+						<input type="text" name="sgqDtHoraCance" id="sgqDtHoraCance" class="form-control" readonly>
+					</div>
 				</div>
 			</div>
 		</div>
