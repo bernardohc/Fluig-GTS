@@ -55,7 +55,7 @@
       </processStatePK>
       <stateName>Início</stateName>
       <stateDescription>Início</stateDescription>
-      <instruction></instruction>
+      <instruction>Grupo 000060</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
@@ -105,11 +105,12 @@
       </processStatePK>
       <stateName>Pré Análise</stateName>
       <stateDescription>Pré Análise</stateDescription>
-      <instruction></instruction>
+      <instruction>Grupo 000061</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>
@@ -155,11 +156,12 @@
       </processStatePK>
       <stateName>Comite / Anlálise</stateName>
       <stateDescription>Comite / Anlálise</stateDescription>
-      <instruction></instruction>
+      <instruction>Grupo 0000062</instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
       <selectColleague>1</selectColleague>
       <initialState>false</initialState>
       <notifyAuthorityDelay>true</notifyAuthorityDelay>

@@ -54,7 +54,7 @@ var funcoes = (function() {
 			} else {					
 				FLUIGC.toast({
 				title: 'Link inválido: ',
-				message: ' Digite um link válido, que inicie com G:\SGQ',
+				message: ' Digite um link válido, que inicie com G:&#8726;SGQ',
 				type: 'danger'
 				});
 				
@@ -73,7 +73,7 @@ var funcoes = (function() {
 			} else {
 				FLUIGC.toast({
 				title: 'Link inválido: ',
-				message: ' Digite um link válido, que inicie com G:\SGQ',
+				message: ' Digite um link válido, que inicie com G:&#8726;SGQ',
 				type: 'danger'
 				});
 				

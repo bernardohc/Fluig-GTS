@@ -2843,12 +2843,12 @@
   <bpmn2:BpmnPool id="pool1" name="Solicita&#xe7;&#xe3;o de Garantias" cores="FFFFFF"/>
   <bpmn2:BpmnSwimLane id="swimlane2" name="Revanda" cores="9F9F9F"/>
   <bpmn2:BpmnSwimLane id="swimlane3" name="Garantia GTS" cores="C0C0C0"/>
-  <bpmn2:BpmnStartEvent id="startevent4" name="In&#xed;cio" outgoing="flow33" type="10" signalId="0" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
-  <bpmn2:BpmnTask id="task7" name="Pr&#xe9; An&#xe1;lise" incoming="flow28 flow33" outgoing="flow11" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
+  <bpmn2:BpmnStartEvent id="startevent4" name="In&#xed;cio" outgoing="flow33" type="10" signalId="0" instrucoes="Grupo 000060" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
+  <bpmn2:BpmnTask id="task7" name="Pr&#xe9; An&#xe1;lise" incoming="flow28 flow33" outgoing="flow11" type="80" managerMechanism="" loopType="0" authNotify="true" instrucoes="Grupo 000061" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
   <bpmn2:BpmnSwimLane id="swimlane9" name="Comite" cores="82b0b7"/>
   <bpmn2:BpmnGateway id="exclusivegateway10" name="Exclusivo" incoming="flow11" outgoing="flow13 flow19 flow29 flow32 flow35" type="120" condition="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow11" name="" sourceRef="task7" targetRef="exclusivegateway10" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
-  <bpmn2:BpmnTask id="task12" name="Comite / Anl&#xe1;lise" incoming="flow13 flow30" outgoing="flow15" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
+  <bpmn2:BpmnTask id="task12" name="Comite / Anl&#xe1;lise" incoming="flow13 flow30" outgoing="flow15" type="80" managerMechanism="" loopType="0" authNotify="true" instrucoes="Grupo 0000062" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
   <bpmn2:SequenceFlow id="flow13" name="" sourceRef="exclusivegateway10" targetRef="task12" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnGateway id="exclusivegateway14" name="Exclusivo" incoming="flow15" outgoing="flow18 flow27 flow30 flow40" type="120" condition="&lt;list/>"/>
   <bpmn2:SequenceFlow id="flow15" name="" sourceRef="task12" targetRef="exclusivegateway14" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>

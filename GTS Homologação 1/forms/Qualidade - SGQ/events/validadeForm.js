@@ -35,11 +35,22 @@ function validateForm(form){
                     hasErros = true;
                 } 
                 if(form.getValue("sgqTpSolicitacao") == 'Cadastrar'){ 
+                    
                     if (isEmpty("sgqCaDLinkDoc", form)) {
                         message += getMessage("Link do Documento:", 1, form);
                         hasErros = true;
-                    }
-                    if (isEmpty("sgqCadObjDoc", form)) {
+                    }else {
+                        // Obtém o valor do campo 'sgqCaDLinkDoc'
+                        var linkDoc = form.getValue("sgqCaDLinkDoc");
+                
+                        // Valida os primeiros seis caracteres
+                        if (!(linkDoc.startsWith("g:\\sgq") || linkDoc.startsWith("G:\\SGQ"))) {
+                            message += getMessage("Link do Documento:", 10, form);
+                            //message += "O link do documento deve começar com 'g:\\sgq' ou 'G:\\QGS'.\n";
+                            hasErros = true;
+                        }
+
+                    }if (isEmpty("sgqCadObjDoc", form)) {
                         message += getMessage("Objetivo do Documento:", 1, form);
                         hasErros = true;
                     }
@@ -49,11 +60,22 @@ function validateForm(form){
                     }
                 } 
                 if(form.getValue("sgqTpSolicitacao") == 'Validar'){ 
+                   
                     if (isEmpty("sgqValLinkDoc", form)) {
                         message += getMessage("Link do Documento:", 1, form);
                         hasErros = true;
-                    }
-                    if (isEmpty("sgqValObjDoc", form)) {
+                    }else {
+                        // Obtém o valor do campo 'sgqValLinkDoc'
+                        var linkDoc = form.getValue("sgqValLinkDoc");
+                
+                        // Valida os primeiros seis caracteres
+                        if (!(linkDoc.startsWith("g:\\sgq") || linkDoc.startsWith("G:\\SGQ"))) {
+                            message += getMessage("Link do Documento:", 10, form);
+                            //message += "O link do documento deve começar com 'g:\\sgq' ou 'G:\\QGS'.\n";
+                            hasErros = true;
+                        }
+
+                    }if (isEmpty("sgqValObjDoc", form)) {
                         message += getMessage("Objetivo do Documento:", 1, form);
                         hasErros = true;
                     }
@@ -91,7 +113,102 @@ function validateForm(form){
         break;
         
         case ANALISE_DOCUMENTO  :
-            if (getValue("WKCompletTask") == "true" ){                
+            if (getValue("WKCompletTask") == "true" ){   
+                
+                //Se for clicado em Enviar 
+            if (getValue("WKCompletTask") == "true" ){
+
+                if (isEmpty("sgqSolNome", form)) {
+                    message += getMessage("Nome:", 1, form);
+                    hasErros = true;
+                }
+                if (isEmpty("sgqEmail", form)) {
+                    message += getMessage("E-mail GTS:", 1, form);
+                    hasErros = true;
+                }
+                if (isEmpty("sgqTpDocumento", form)) {
+                    message += getMessage("Tipo de Documento:", 1, form);
+                    hasErros = true;
+                }
+                if (isEmpty("sgqSetor", form)) {
+                    message += getMessage("Setor:", 1, form);
+                    hasErros = true;
+                }
+                if (isEmpty("sgqTpSolicitacao", form)) {
+                    message += getMessage("Tipo de Solicitação:", 1, form);
+                    hasErros = true;
+                } 
+                if(form.getValue("sgqTpSolicitacao") == 'Cadastrar'){ 
+                    
+                    if (isEmpty("sgqCaDLinkDoc", form)) {
+                        message += getMessage("Link do Documento:", 1, form);
+                        hasErros = true;
+                    }else {
+                        // Obtém o valor do campo 'sgqCaDLinkDoc'
+                        var linkDoc = form.getValue("sgqCaDLinkDoc");
+                
+                        // Valida os primeiros seis caracteres
+                        if (!(linkDoc.startsWith("g:\\sgq") || linkDoc.startsWith("G:\\SGQ"))) {
+                            message += getMessage("Link do Documento:", 10, form);
+                            //message += "O link do documento deve começar com 'g:\\sgq' ou 'G:\\QGS'.\n";
+                            hasErros = true;
+                        }
+
+                    }
+                    if (isEmpty("sgqCadObjDoc", form)) {
+                        message += getMessage("Objetivo do Documento:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("sgqCadPalChave", form)) {
+                        message += getMessage("Palavras-Chave:", 1, form);
+                        hasErros = true;
+                    }
+                } 
+                if(form.getValue("sgqTpSolicitacao") == 'Validar'){ 
+                
+                    if (isEmpty("sgqValLinkDoc", form)) {
+                        message += getMessage("Link do Documento:", 1, form);
+                        hasErros = true;
+                    }else {
+                        // Obtém o valor do campo 'sgqValLinkDoc'
+                        var linkDoc = form.getValue("sgqValLinkDoc");
+                
+                        // Valida os primeiros seis caracteres
+                        if (!(linkDoc.startsWith("g:\\sgq") || linkDoc.startsWith("G:\\SGQ"))) {
+                            message += getMessage("Link do Documento:", 10, form);
+                            //message += "O link do documento deve começar com 'g:\\sgq' ou 'G:\\QGS'.\n";
+                            hasErros = true;
+                        }
+
+                    }
+                    if (isEmpty("sgqValObjDoc", form)) {
+                        message += getMessage("Objetivo do Documento:", 1, form);
+                        hasErros = true;
+                    }
+                }             
+                if(form.getValue("sgqTpSolicitacao") == 'Abrir'){ 
+                    if (isEmpty("sgqRevCodDoc", form)) {
+                        message += getMessage("Nome do documento com código:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("sgqRevMotivoDoc", form)) {
+                        message += getMessage("Motivo da Revisão:", 1, form);
+                        hasErros = true;
+                    }
+                }             
+                if(form.getValue("sgqTpSolicitacao") == 'Descontinuar'){ 
+                    if (isEmpty("sgqDescCodDoc", form)) {
+                        message += getMessage("Nome do documento com código:", 1, form);
+                        hasErros = true;
+                    }
+                    if (isEmpty("sgqDescMotivoDoc", form)) {
+                        message += getMessage("Motivo do Cancelamento:", 1, form);
+                        hasErros = true;
+                    }
+                }
+                
+            }         
+
                 if (isEmpty("sgqAcao", form)) {
                     message += getMessage("Ação:", 1, form);
                     hasErros = true;
@@ -128,7 +245,9 @@ function getMessage(texto, tipoMensagem, form, tabpaifilho) {
             case 8:
                 return "Campo: "+texto+" não pode ser menor que a data de saída";  	 	
             case 9:
-                return "Atenção! Selcione a opção: " +texto;    
+                return "Atenção! Selcione a opção: " +texto;
+            case 10:
+                return 'Campo "' + texto + '" deve começar com g:\\sgq ou G:\\SGQ.\n';   
         }
     } else {
         switch (tipoMensagem) {
@@ -149,7 +268,9 @@ function getMessage(texto, tipoMensagem, form, tabpaifilho) {
             case 8:
                 return "<li>Campo: <b>"+texto+"</b> não pode ser menor que a data de saída </li>";   
             case 9:
-                return "<li>Atenção! Selcione a opção: <b>"+texto+"</b></li>";  
+                return "<li>Atenção! Selcione a opção: <b>"+texto+"</b></li>";
+            case 10:
+                return "<li>Campo: <b>" + texto + "</b> deve começar com g:\\sgq ou G:\\SGQ.</li>";  
         }
     }
 } 
