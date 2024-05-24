@@ -117,6 +117,10 @@
 							<input type="radio" name="tpMaquina" value="terrus" id="tpTerrus">
 							<label for="tpTerrus"> Terrus </label>
 						</div>
+						<div id="divDefineCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="tpMaquina" value="outros" id="tpOutros">
+							<label for="tpOutros"> Terrus </label>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -214,7 +218,7 @@
 				<div class="row">
 					<div class="form-group col-md-2">
 						<label for="sgSolNumHastes">Número de Hastes:</label>
-						<select name="sgSolNumHastes" id="sgSolTsgSolNumHastesamanho" class="form-control sgSolNumHastes">
+						<select name="sgSolNumHastes" id="sgSolNumHastes" class="form-control sgSolNumHastes">
 							<option value=""></option>
 							<option value="4">4</option>
 							<option value="5">5</option>
@@ -242,6 +246,7 @@
 			<div class="form-group col-md-2">
 				<label for="sgSolMarca">Marca:</label>
 				<select name="sgSolMarca" id="sgSolMarca" class="form-control sgSolMarca">
+					<option value=""></option>
 					<option value="Agrale">Agrale</option>
 					<option value="Case">Case</option>
 					<option value="Claas">Claas</option>
@@ -341,11 +346,11 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label for="sgSolCnpjRev">CNPJ:</label>
-					<input type="text" name="sgSolCnpjRev" id="sgSolCnpjRev" class="form-control">
+					<input type="text" name="sgSolCnpjRev" id="sgSolCnpjRev" class="form-control" placeholder="00.000.000/0000-00">
 				</div>
 				<div class="form-group col-md-2">
 					<label for="sgSolTelRev">Tel Contato:</label>
-					<input type="text" name="sgSolTelRev" id="sgSolTelRev" class="form-control">
+					<input type="text" name="sgSolTelRev" id="sgSolTelRev" class="form-control phone-input" maxlength="15" placeholder="(00) 00000-0000">
 				</div>
 				<div class="form-group col-md-3">
 					<label for="sgSolEmailRev">E-mail:</label>
@@ -400,7 +405,7 @@
 				<h5><strong>Tipo de Atendimento:</strong></h5>
 				<hr>
 			</div>
-			<div class="col-md-12 ">			
+			<div class="col-md-12 ">
 				<div class="radio col-md-6" >
 					<div class="custom-radio custom-radio-inline custom-radio-primary">
 						<input type="radio" name="tpAtendimento" value="Substituição" id="tpsSbstitui">
@@ -425,25 +430,76 @@
 					<label for="sgSolDescProble">Descreva a operaçao no momento da falha (Coletar Informação com o operador):</label>
 					<textarea class="form-control" rows="3" name="sgSolDescProble"></textarea>
 				</div>
-			</div>
+			</div>			
 			<div class="row sub-titulo">
 				<h5><strong>Detalhes do Atendimento:</strong></h5>
 				<hr>
 			</div>
 			<div class="row">
+				<div class="form-group col-md-1">
+					<label for="sgSolAtend">Atendimento:</label>
+					<input type="text" name="sgSolAtend" id="sgSolAtend" class="form-control" readonly>
+				</div>
 				<div class="form-group col-md-3">
 					<label for="sgSolDtAtend">Data do Atendimento:</label>
 					<input type="text" name="sgSolDtAtend" id="sgSolDtAtend" class="form-control">
 				</div>
-				<div class="form-group col-md-3">
+				<div class="form-group col-md-2">
 					<label for="sgSolTpServico">Tempo de Serviço:</label>
-					<input type="text" name="sgSolTpServico" id="sgSolTpServico" class="form-control">
+					<input type="text" name="sgSolTpServico" id="sgSolTpServico" class="form-control" placeholder="000:00">
 				</div>
 				<div class="form-group col-md-3">
 					<label for="sgSolDeslocamento">Deslocamento:</label>
 					<input type="text" name="sgSolDeslocamento" id="sgSolDeslocamento" class="form-control">
 				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolObs">Observação:</label>
+					<input type="text" name="sgSolObs" id="sgSolObs" class="form-control">
+				</div>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-10">
+						<button type="button" class="btn btn-info" id="btnAddAtend">Adicionar Atendimento</button>
+					</div>
+				</div>
 			</div>
+			<!--Inicio Tabela Pai x Filho-->
+			<div class="row">			
+				<div class="col-md-12" align="left">				
+					<table class="table table-condensed table-nonfluid table-striped" id="tbServico"
+						tablename="tbServico" name="tbServico" noaddbutton="true"
+						customFnDelete="removeAtend(this)">
+						<thead>
+							<tr>										
+								<th class="col-md-1">  Atendimento</th>
+								<th class="col-md-3">Data do Atendimento</th>
+								<th class="col-md-2">Tempo de Seriviço</th>
+								<th class="col-md-3">Deslocamento</th>
+								<th class="col-md-3">Observação</th>								
+							</tr>
+						</thead>
+						<tbody class="cust-align-fields">
+							<tr detail="true" detailname="falTbServicos" class="cust-table-row cust-align-fields">
+								<td>
+									<input type="text" id="sgServAtendimento" name="sgServAtendimento" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="sgServData" name="sgServData" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="sgServTempo" name="sgServTempo" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="sgServDeslocamento" name="sgServDeslocamento" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="sgServObs" name="sgServObs" class="form-control" readonly>
+								</td>								
+							</tr>
+						</tbody>
+					</table>
+					<!--Fim Tabela Pai x Filho-->
+				</div>
+			</div>			
 		</div>	
 		<div class="panel-heading">
 			<h3 class="panel-title">Parecer Técnico:</h3>
@@ -476,7 +532,11 @@
 				</div>
 				<div id="divItens">
 					<div class="row">
-						<div class="form-group col-md-2 col-md-offset-1">
+						<div class="form-group col-md-1 col-md-offset-1">
+							<label for="sgAddItemOrdem">Ordem:</label>
+							<input type="text" name="sgAddItemOrdem" id="sgAddItemOrdem" class="form-control" readonly>
+						</div>
+						<div class="form-group col-md-2">
 							<label for="sgAddItemCodigo">Código do Item:</label>
 							<input type="text" name="sgAddItemCodigo" id="sgAddItemCodigo" class="form-control">
 						</div>
@@ -488,21 +548,45 @@
 							<label for="sgAddItemDesc">Descrição</label>
 							<input type="text" name="sgAddItemDesc" id="sgAddItemDesc" class="form-control">
 						</div>
-						<div class="form-group col-md-3">
-							<label for="sgAddItemModFalha">Modo de Falha</label>
-							<input type="text" name="sgAddItemModFalha" id="sgAddItemModFalha" class="form-control">
+						<div class="form-group col-md-2">
+							<label for="sgAddItemModFalha">Modo de Falha:</label>
+							<select name="sgAddItemModFalha" id="sgAddItemModFalha" class="form-control sgAddItemModFalha">
+								<option value=""></option>
+								<option value="Amassado">Amassado</option>
+								<option value="Componente faltante">Componente faltante</option>
+								<option value="Corte">Corte</option>
+								<option value="Desalinhamento">Desalinhamento</option>
+								<option value="Desgaste">Desgaste</option>
+								<option value="Desgaste">Desgaste</option>
+								<option value="Dimensão Incorreta">Dimensão Incorreta</option>
+								<option value="Empenamento">Empenamento</option>
+								<option value="Falha Elétrica">Falha Elétrica</option>
+								<option value="Falha na Fundição">Falha na Fundição</option>
+								<option value="Falha na Vulcanização">Falha na Vulcanização</option>
+								<option value="Falha no Acabamento">Falha no Acabamento</option>
+								<option value="Montagem incorreta">Montagem incorreta</option>
+								<option value="Oxidação">Oxidação</option>
+								<option value="Quebra">Quebra</option>
+								<option value="Risco">Risco</option>
+								<option value="Ruído">Ruído</option>
+								<option value="Ruptura">Ruptura</option>
+								<option value="Superaquecimento">Superaquecimento</option>
+								<option value="Trinca">Trinca</option>
+								<option value="Vazamento">Vazamento</option>
+							</select>
 						</div>						
 					</div>
 					<div class="row">
 						<div class="col-md-2 col-md-offset-10">
-							<button type="button" class="btn btn-info">Adicionar Item</button>
+							<button type="button" class="btn btn-info" id="btnAddItem">Adicionar Item</button>
 						</div>
 					</div>
 					<div class="row">
+						<!--Inicio Tabela Pai x Filho-->
 						<div class="col-md-12" align="left">
 							<table class="table table-condensed table-nonfluid table-striped" id="tbItens"
 								tablename="tbItens" name="tbItens" noaddbutton="true"
-								customFnDelete="removeDespesa(this)">
+								customFnDelete="removeItem(this)">
 								<thead>
 									<tr>										
 										<th class="col-md-1">Ordem</th>
@@ -516,56 +600,46 @@
 									</tr>
 								</thead>
 								<tbody class="cust-align-fields">
-									<tr detail="true" detailname="falTbRelDespesas" class="cust-table-row cust-align-fields">
-										<td class="col-md-12 cust-table-line cust-align-fields">
-											<!-- Inicio despesas Gerais -->
-											<div class="row" id="divItensSg">
-												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
-													<!-- <label for="sgItensOrdem">Código</label> -->
-													<input type="text" id="sgItensOrdem" name="sgItensOrdem" class="form-control" readonly>
-												</div>
-												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
-													<!-- <label for="sgItensOrdem">Código</label> -->
-													<input type="text" id="sgItensCod" name="sgItensCod" class="form-control" readonly>
-												</div>
-												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
-													<!-- <label for="sgItensOrdem">Código</label> -->
-													<input type="text" id="sgItensQtd" name="sgItensQtd" class="form-control" readonly>
-												</div>
-												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
-													<!-- <label for="sgItensOrdem">Código</label> -->
-													<input type="text" id="sgItensDesc" name="sgItensDesc" class="form-control" readonly>
-												</div>
-												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
-													<!-- <label for="sgItensOrdem">Código</label> -->
-													<input type="text" id="sgItensModFalha" name="sgItensModFalha" class="form-control" readonly>
-												</div>
-												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
-													<!-- <label for="sgItensOrdem">Código</label> -->
-													<input type="text" id="sgItensResultado" name="sgItensResultado" class="form-control" readonly>
-												</div>
-												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
-													<!-- <label for="sgItensOrdem">Código</label> -->
-													<input type="text" id="sgItensMotivo" name="sgItensMotivo" class="form-control" readonly>
-												</div>
-												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
-													<!-- <label for="sgItensOrdem">Código</label> -->
-													<input type="text" id="sgItensObs" name="sgItensObs" class="form-control" readonly>
-												</div>
-											</div>
+									<tr detail="true" detailname="falTbItens" class="cust-table-row cust-align-fields">
+										<td>
+											<input type="text" id="sgItensOrdem" name="sgItensOrdem" class="form-control" readonly>
+										</td>
+										<td>
+											<input type="text" id="sgItensCod" name="sgItensCod" class="form-control" readonly>
+										</td>
+										<td>
+											<input type="text" id="sgItensQtd" name="sgItensQtd" class="form-control" readonly>
+										</td>
+										<td>
+											<input type="text" id="sgItensDesc" name="sgItensDesc" class="form-control" readonly>
+										</td>
+										<td>
+											<input type="text" id="sgItensModFalha" name="sgItensModFalha" class="form-control" readonly>
+										</td>
+										<td>											
+											<select name="sgItensResultado" id="sgItensResultado" class="form-control sgSolsgItensResultadoEstRev" readonly>
+												<option value=""></option>
+												<option value="Indeferido">Indeferido</option>
+												<option value="Deferido Sem Retorno">Deferido Sem Retorno</option>
+												<option value="Deferido Com Retorno">Deferido Com Retorno</option>
+											</select>
+										</td>
+										<td>
+											<input type="text" id="sgItensMotivo" name="sgItensMotivo" class="form-control" readonly>
+										</td>
+										<td>
+											<input type="text" id="sgItensObs" name="sgItensObs" class="form-control" readonly>
 										</td>
 									</tr>
 								</tbody>
 							</table>
+							<!--Fim Tabela Pai x Filho-->
 						</div>
 					</div>
-
 				</div>		
 			</div>			
 		</div>
 	</div>
-
-
 </form>
 </div>
 </body>

@@ -6,16 +6,13 @@ function displayFields(form, customHTML) {
 	form.setHidePrintLink(true);
 	injetarFuncoesUteisJS(form, customHTML);
 
-	var usuarioCorrente = fluigAPI.getUserService().getCurrent();
-
 	/*
 	 * Globais
 	 */
 	
 
 	if(atv_atual == INICIO_0) {
-		form.setValue("solNomeSol", usuarioCorrente.getFullName());
-		form.setValue("solMatSol", usuarioCorrente.getCode());
+		form.setValue("sgSolUsuario", fluigAPI.getUserService().getCurrent().getFullName());
 
 		customHTML.append("<script>$('.divVisualizaAnexo').show()</script>");
 		if (!isMobile(form)) {
