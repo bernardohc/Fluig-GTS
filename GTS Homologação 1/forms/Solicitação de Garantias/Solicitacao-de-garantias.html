@@ -1,0 +1,572 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+	<script type="text/javascript" src="js-atividades.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+
+	<script>
+		$(document).ready(function () {
+			//Alterar Visualização das abas
+			window.parent.$("#breadcrumb").remove();
+			//Aba Anexo
+			window.parent.$("#processTabs").find("li").first().hide();
+			window.parent.$("#processTabs").find("li").last().hide();
+			window.parent.$("#textActivity").remove();
+
+			//Botões de movimentação
+			window.parent.$('#wcm_widget').find("[data-back]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
+			window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
+			window.parent.$('#wcm_widget').find("[data-transfer]").css("display","none");
+			window.parent.$('#wcm_widget').find("[data-transfer]").removeAttr("data-transfer");
+
+			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").css("display", "none");
+			window.parent.$('#workflowActions').find("[data-cancel-workflow-request]").removeAttr("data-cancel-workflow-request");
+		});
+	</script>
+
+</head>
+<!-- Load para usuar na funções JS -->
+<body onload="loadForm()">
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<!-- Campo oculto-->
+	<input type="hidden" name="dataAbertura" id="dataAbertura">
+	<input type="hidden" name="tipoMaqHidden" id="tipoMaqHidden">
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Dados do Solicitante</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row col-md-12">				
+				<div class="form-group col-md-2">
+					<label for="sgSolUsuario">Usuário:</label>
+					<input type="text" name="sgSolUsuario" id="sgSolUsuario" class="form-control" readonly>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolNome">Nome do Solicitante:</label>
+					<input type="text" name="sgSolNome" id="sgSolNome" class="form-control">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolEmail">E-mail:</label>
+					<input type="text" name="sgSolEmail" id="sgSolEmail" class="form-control">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolDataPre">Data do Preenchimento:</label>
+					<input type="text" name="sgSolDataPre" id="sgSolDataPre" class="form-control" readonly>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolNumero">Número da Solicitação:</label>
+					<input type="text" name="sgSolNumero" id="sgSolNumero" class="form-control" readonly>
+				</div>
+			</div>
+		</div>
+		<div class="panel-heading">
+			<h3 class="panel-title">Dados do Equipamento</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="form-group col-md-3">
+					<label for="sgSolNumeroSerie">Número de Série:</label>
+					<input type="text" name="sgSolNumeroSerie" id="sgSolNumeroSerie" class="form-control">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolModelo">Modelo:</label>
+					<input type="text" name="sgSolModelo" id="sgSolModelo" class="form-control" readonly>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolDtFat">Data do Faturamento:</label>
+					<input type="text" name="sgSolDtFat" id="sgSolDtFat" class="form-control" >
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolEntTec">Entrega Técnica:</label>
+					<input type="text" name="sgSolEntTec" id="sgSolEntTec" class="form-control">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolDtFabrica">Data de Fabricação:</label>
+					<input type="text" name="sgSolDtFabrica" id="sgSolDtFabrica" class="form-control">
+				</div>
+			</div>
+			<div id="selecionaMaq" >
+				<div class="row sub-titulo">
+					<h5><strong><u>Tipo de Máquina:</u></strong></h5>
+				</div>
+				<div class="col-md-12 ">			
+					<div class="radio col-md-6" id="divRadio">
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="tpMaquina" value="milho" id="tpMilho">
+							<label for="tpMilho"> Milho </label>
+						</div>
+						<div class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="tpMaquina" value="flexer" id="tpFlexer">
+							<label for="tpFlexer"> Flexer </label>
+						</div>
+						<div id="divDefineCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
+							<input type="radio" name="tpMaquina" value="terrus" id="tpTerrus">
+							<label for="tpTerrus"> Terrus </label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="divMilho" milho>
+				<div class="row sub-titulo">
+					<h5><strong><u>Plataforma de Milho</u></strong></h5>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-2">
+						<label for="sgSolNumLinhas">Número de Linhas:</label>
+						<select name="sgSolNumLinhas" id="sgSolNumLinhas" class="form-control sgSolNumLinhas">
+							<option value=""></option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>						
+						</select>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="sgSolEspacamento">Espaçamento (cm/pol):</label>
+						<select name="sgSolEspacamento" id="sgSolEspacamento" class="form-control sgSolEspacamento">
+							<option value=""></option>
+							<option value="45">45</option>
+							<option value="50">50</option>
+							<option value="52">52</option>
+							<option value="55">55</option>
+							<option value="60">60</option>
+							<option value="70">70</option>
+							<option value="75">75</option>
+							<option value="76">76</option>
+							<option value="80">80</option>
+							<option value="90">90</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div id="divFlexer" flexer> 
+				<div class="row sub-titulo">
+					<h5><strong><u>Plataforma Flexer</u></strong></h5>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-2">
+						<label for="sgSolModPlataforma">Modelo Plataforma:</label>
+						<select name="sgSolModPlataforma" id="sgSolModPlataforma" class="form-control sgSolModPlataforma">
+							<option value=""></option>
+							<option value="Serie S">Serie S</option>
+							<option value="Prime">Prime</option>
+							<option value="Seede Flex">Seed Flex</option>
+						</select>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="sgSolTamanho">Tamanho:</label>
+						<select name="sgSolTamanho" id="sgSolTamanho" class="form-control sgSolTamanho">
+							<option value=""></option>
+							<option value="12 Pes">12 Pés</option>
+							<option value="25 Pes">25 Pés</option>
+							<option value="30 Pes">30 Pés</option>
+							<option value="35 Pes">35 Pés</option>
+							<option value="40 Pes">40 Pés</option>
+							<option value="45 Pes">45 Pés</option>
+							<option value="50 Pes">50 Pés</option>
+							<option value="55 Pes">55 Pés</option>
+							<option value="62 Pes">62 Pés</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div id="divTerrus" terrus> 
+				<div class="row sub-titulo">
+					<h5><strong><u>Terrus</u></strong></h5>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-2">
+						<label for="sgSolNumHastes">Número de Hastes:</label>
+						<select name="sgSolNumHastes" id="sgSolTsgSolNumHastesamanho" class="form-control sgSolNumHastes">
+							<option value=""></option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row sub-titulo">
+				<h5><strong>Colheitadeira ou Trator:</strong></h5>
+				<hr>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="sgSolMarca">Marca:</label>
+				<select name="sgSolMarca" id="sgSolMarca" class="form-control sgSolMarca">
+					<option value="Agrale">Agrale</option>
+					<option value="Case">Case</option>
+					<option value="Claas">Claas</option>
+					<option value="John Deere">John Deere</option>
+					<option value="Landini">Landini</option>
+					<option value="Ls Tractor">Ls Tractor</option>
+					<option value="Massey Fergunson">Massey Fergunson</option>
+					<option value="New Holland">New Holland</option>
+					<option value="Stara">Stara</option>
+					<option value="Valtra">Valtra</option>
+					<option value="Outra Marca">Outra Marca</option>
+				</select>					
+			</div>
+			<div class="form-group col-md-2">
+				<label for="sgSolAno">Ano:</label>
+				<input type="text" name="sgSolAno" id="sgSolAno" class="form-control" maxlength="4" placeholder="0000">
+			</div>
+			<div class="form-group col-md-2">
+				<label for="sgSolModeloTrator">Modelo:</label>
+				<input type="text" name="sgSolModeloTrator" id="sgSolModeloTrator" class="form-control">
+			</div>
+		</div>
+		<div class="panel-heading">
+			<h3 class="panel-title">Dados do Cliente</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="sgSolNomeCli">Nome do Cliente (Contante na NF de Venda):</label>
+					<input type="text" name="sgSolNomeCli" id="sgSolNomeCli" class="form-control">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="sgSolFazenda">Fazenda onde o equipamento se encontra:</label>
+					<input type="text" name="sgSolFazenda" id="sgSolFazenda" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-2">
+					<label for="sgSolMunicipio">Munícipio:</label>
+					<input type="text" name="sgSolMunicipio" id="sgSolMunicipio" class="form-control">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolEstado">Estado:</label>
+					<select name="sgSolEstado" id="sgSolEstado" class="form-control sgSolEstado">
+						<option value=""></option>
+						<option value="AC">AC</option>
+						<option value="AL">AL</option>
+						<option value="AP">AP</option>
+						<option value="AM">AM</option>
+						<option value="BA">BA</option>
+						<option value="CE">CE</option>
+						<option value="DF">DF</option>
+						<option value="ES">ES</option>
+						<option value="GO">GO</option>
+						<option value="MA">MA</option>
+						<option value="MT">MT</option>
+						<option value="MS">MS</option>
+						<option value="MG">MG</option>
+						<option value="PA">PA</option>
+						<option value="PB">PB</option>
+						<option value="PR">PR</option>
+						<option value="PE">PE</option>
+						<option value="PI">PI</option>
+						<option value="RJ">RJ</option>
+						<option value="RN">RN</option>
+						<option value="RS">RS</option>
+						<option value="RO">RO</option>
+						<option value="RR">RR</option>
+						<option value="SC">SC</option>
+						<option value="SP">SP</option>
+						<option value="SE">SE</option>
+						<option value="TO">TO</option>
+					</select>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolCelCli">Celular:</label>
+					<input type="text" name="sgSolCelCli" id="sgSolCelCli" class="form-control phone-input" maxlength="15" placeholder="(00) 00000-0000">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolTelCli">Telefone Fixo:</label>
+					<input type="text" name="sgSolTelCli" id="sgSolTelCli" class="form-control phone-input" maxlength="15" placeholder="(00) 00000-0000">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolEmailCli">E-mail:</label>
+					<input type="text" name="sgSolEmailCli" id="sgSolEmailCli" class="form-control">
+				</div>
+			</div>
+		</div>
+		<div class="panel-heading">
+			<h3 class="panel-title">Dados da Revenda (Para qual, as peças serão enviadas, se a garantia for deferida)</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="form-group col-md-4">
+					<label for="sgSolNomeRev">Nome da Revenda:</label>
+					<input type="text" name="sgSolNomeRev" id="sgSolNomeRev" class="form-control">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolCnpjRev">CNPJ:</label>
+					<input type="text" name="sgSolCnpjRev" id="sgSolCnpjRev" class="form-control">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolTelRev">Tel Contato:</label>
+					<input type="text" name="sgSolTelRev" id="sgSolTelRev" class="form-control">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolEmailRev">E-mail:</label>
+					<input type="text" name="sgSolEmailRev" id="sgSolEmailRev" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-3">
+					<label for="sgSolMuncipioRev">Munícipio:</label>
+					<input type="text" name="sgSolMuncipioRev" id="sgSolMuncipioRev" class="form-control">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolEstRev">Estado:</label>
+					<select name="sgSolEstRev" id="sgSolEstRev" class="form-control sgSolEstRev">
+						<option value=""></option>
+						<option value="AC">AC</option>
+						<option value="AL">AL</option>
+						<option value="AP">AP</option>
+						<option value="AM">AM</option>
+						<option value="BA">BA</option>
+						<option value="CE">CE</option>
+						<option value="DF">DF</option>
+						<option value="ES">ES</option>
+						<option value="GO">GO</option>
+						<option value="MA">MA</option>
+						<option value="MT">MT</option>
+						<option value="MS">MS</option>
+						<option value="MG">MG</option>
+						<option value="PA">PA</option>
+						<option value="PB">PB</option>
+						<option value="PR">PR</option>
+						<option value="PE">PE</option>
+						<option value="PI">PI</option>
+						<option value="RJ">RJ</option>
+						<option value="RN">RN</option>
+						<option value="RS">RS</option>
+						<option value="RO">RO</option>
+						<option value="RR">RR</option>
+						<option value="SC">SC</option>
+						<option value="SP">SP</option>
+						<option value="SE">SE</option>
+						<option value="TO">TO</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="panel-heading">
+			<h3 class="panel-title">Descrição do Problema:</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row sub-titulo">
+				<h5><strong>Tipo de Atendimento:</strong></h5>
+				<hr>
+			</div>
+			<div class="col-md-12 ">			
+				<div class="radio col-md-6" >
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimento" value="Substituição" id="tpsSbstitui">
+						<label for="tpsSbstitui">Substituição dos itens danificados.</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimento" value="Paliativo" id="tpPaliativo">
+						<label for="tpPaliativo">Paliativo.</label>
+					</div>
+					<div id="divDefineCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimento" value="Máquina_parada" id="tpMp">
+						<label for="tpMp">Máquina parada </label>
+					</div>
+				</div>
+			</div>
+			<div class="row sub-titulo">
+				<h5><strong>Descrição do Problema:</strong></h5>
+				<hr>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-10 col-md-offset-1">
+					<label for="sgSolDescProble">Descreva a operaçao no momento da falha (Coletar Informação com o operador):</label>
+					<textarea class="form-control" rows="3" name="sgSolDescProble"></textarea>
+				</div>
+			</div>
+			<div class="row sub-titulo">
+				<h5><strong>Detalhes do Atendimento:</strong></h5>
+				<hr>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-3">
+					<label for="sgSolDtAtend">Data do Atendimento:</label>
+					<input type="text" name="sgSolDtAtend" id="sgSolDtAtend" class="form-control">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolTpServico">Tempo de Serviço:</label>
+					<input type="text" name="sgSolTpServico" id="sgSolTpServico" class="form-control">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="sgSolDeslocamento">Deslocamento:</label>
+					<input type="text" name="sgSolDeslocamento" id="sgSolDeslocamento" class="form-control">
+				</div>
+			</div>
+		</div>	
+		<div class="panel-heading">
+			<h3 class="panel-title">Parecer Técnico:</h3>
+		</div>		
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-10 col-md-offset-1">
+						<label for="sgSolParecerTec">Paracer Técnico (Descreva com base técnicas, seu parecer sobre a falha.):</label>
+						<textarea class="form-control" rows="3" name="sgSolParecerTec"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3 col-md-offset-1">
+						<label for="sgSolNomeTecnico">Nome Técnico:</label>
+						<input type="text" name="sgSolNomeTecnico" id="sgSolNomeTecnico" class="form-control">
+					</div>
+					<div class="col-md-3 ">								
+						<div class="radio col-md-6" >
+							<h5>Técnico GTS?</h5>	
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="tecnicoGTS" value="Sim" id="tecGtsSim">
+								<label for="tecGtsSim">Sim</label>
+							</div>
+							<div class="custom-radio custom-radio-inline custom-radio-primary">
+								<input type="radio" name="tecnicoGTS" value="Não" id="tecGtsNao">
+								<label for="tecGtsNao">Não</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="divItens">
+					<div class="row">
+						<div class="form-group col-md-2 col-md-offset-1">
+							<label for="sgAddItemCodigo">Código do Item:</label>
+							<input type="text" name="sgAddItemCodigo" id="sgAddItemCodigo" class="form-control">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="sgAddItemQtde">Quantidade</label>
+							<input type="text" name="sgAddItemQtde" id="sgAddItemQtde" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="sgAddItemDesc">Descrição</label>
+							<input type="text" name="sgAddItemDesc" id="sgAddItemDesc" class="form-control">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="sgAddItemModFalha">Modo de Falha</label>
+							<input type="text" name="sgAddItemModFalha" id="sgAddItemModFalha" class="form-control">
+						</div>						
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-md-offset-10">
+							<button type="button" class="btn btn-info">Adicionar Item</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12" align="left">
+							<table class="table table-condensed table-nonfluid table-striped" id="tbItens"
+								tablename="tbItens" name="tbItens" noaddbutton="true"
+								customFnDelete="removeDespesa(this)">
+								<thead>
+									<tr>										
+										<th class="col-md-1">Ordem</th>
+										<th class="col-md-1">Código do Item</th>
+										<th class="col-md-1">Quantidade</th>
+										<th class="col-md-2">Descrição</th>
+										<th class="col-md-2">Modo de Falha</th>
+										<th class="col-md-1">Resultado</th>
+										<th class="col-md-2">Motivo</th>
+										<th class="col-md-2">Observações</th>
+									</tr>
+								</thead>
+								<tbody class="cust-align-fields">
+									<tr detail="true" detailname="falTbRelDespesas" class="cust-table-row cust-align-fields">
+										<td class="col-md-12 cust-table-line cust-align-fields">
+											<!-- Inicio despesas Gerais -->
+											<div class="row" id="divItensSg">
+												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+													<!-- <label for="sgItensOrdem">Código</label> -->
+													<input type="text" id="sgItensOrdem" name="sgItensOrdem" class="form-control" readonly>
+												</div>
+												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+													<!-- <label for="sgItensOrdem">Código</label> -->
+													<input type="text" id="sgItensCod" name="sgItensCod" class="form-control" readonly>
+												</div>
+												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+													<!-- <label for="sgItensOrdem">Código</label> -->
+													<input type="text" id="sgItensQtd" name="sgItensQtd" class="form-control" readonly>
+												</div>
+												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+													<!-- <label for="sgItensOrdem">Código</label> -->
+													<input type="text" id="sgItensDesc" name="sgItensDesc" class="form-control" readonly>
+												</div>
+												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+													<!-- <label for="sgItensOrdem">Código</label> -->
+													<input type="text" id="sgItensModFalha" name="sgItensModFalha" class="form-control" readonly>
+												</div>
+												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+													<!-- <label for="sgItensOrdem">Código</label> -->
+													<input type="text" id="sgItensResultado" name="sgItensResultado" class="form-control" readonly>
+												</div>
+												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+													<!-- <label for="sgItensOrdem">Código</label> -->
+													<input type="text" id="sgItensMotivo" name="sgItensMotivo" class="form-control" readonly>
+												</div>
+												<div class="col-md-1 cust-table-fields cust-table-line cust-align-fields">
+													<!-- <label for="sgItensOrdem">Código</label> -->
+													<input type="text" id="sgItensObs" name="sgItensObs" class="form-control" readonly>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>		
+			</div>			
+		</div>
+	</div>
+
+
+</form>
+</div>
+</body>
+</html>

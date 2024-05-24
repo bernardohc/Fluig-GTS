@@ -2,15 +2,16 @@
   <ProcessDefinition>
     <processDefinitionPK>
       <companyId>1</companyId>
-      <processId>GarantiasSG</processId>
+      <processId>Solicitação de Garantia</processId>
     </processDefinitionPK>
-    <processDescription>Garantias SG</processDescription>
-    <instruction></instruction>
+    <processDescription>Solicitação de Garantia</processDescription>
+    <instruction>Grupo 0000059</instruction>
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
-    <managerEngineAllocationId></managerEngineAllocationId>
+    <categoryId>Garantia</categoryId>
+    <managerEngineAllocationId>Grupo</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;000059&lt;/Group&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
     <baseMonth>0</baseMonth>
@@ -27,11 +28,11 @@
   <ProcessDefinitionVersion>
     <processDefinitionVersionPK>
       <companyId>1</companyId>
-      <processId>Garantias SG</processId>
-      <version>1</version>
+      <processId>Solicitação de Garantia</processId>
+      <version>4</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>0</formId>
+    <formId>9169</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -49,7 +50,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>4</sequence>
       </processStatePK>
@@ -99,7 +100,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>7</sequence>
       </processStatePK>
@@ -150,7 +151,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>12</sequence>
       </processStatePK>
@@ -201,7 +202,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>17</sequence>
       </processStatePK>
@@ -251,7 +252,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>25</sequence>
       </processStatePK>
@@ -301,7 +302,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>34</sequence>
       </processStatePK>
@@ -351,7 +352,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>10</sequence>
       </processStatePK>
@@ -376,7 +377,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>14</sequence>
       </processStatePK>
@@ -401,7 +402,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>36</sequence>
       </processStatePK>
@@ -426,7 +427,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>23</sequence>
       </processStatePK>
@@ -473,7 +474,7 @@
     <ProcessState>
       <processStatePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>31</sequence>
       </processStatePK>
@@ -518,12 +519,49 @@
       <digitalSignature>false</digitalSignature>
     </ProcessState>
   </list>
-  <list/>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Garantia</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>10</sequence>
+      </conditionProcessStatePK>
+      <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Aguardar&quot;</condition>
+      <destinationSequenceId>17</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Garantia</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>14</sequence>
+      </conditionProcessStatePK>
+      <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Aguardar&quot;</condition>
+      <destinationSequenceId>12</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Garantia</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>4</version>
+        <sequence>36</sequence>
+      </conditionProcessStatePK>
+      <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Aguardar&quot;</condition>
+      <destinationSequenceId>23</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
   <list>
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>11</linkSequence>
       </processLinkPK>
@@ -540,7 +578,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>13</linkSequence>
       </processLinkPK>
@@ -557,7 +595,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>15</linkSequence>
       </processLinkPK>
@@ -574,7 +612,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>18</linkSequence>
       </processLinkPK>
@@ -591,7 +629,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>19</linkSequence>
       </processLinkPK>
@@ -608,7 +646,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>27</linkSequence>
       </processLinkPK>
@@ -625,7 +663,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>28</linkSequence>
       </processLinkPK>
@@ -642,7 +680,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>29</linkSequence>
       </processLinkPK>
@@ -659,7 +697,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>30</linkSequence>
       </processLinkPK>
@@ -676,7 +714,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>32</linkSequence>
       </processLinkPK>
@@ -693,7 +731,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>33</linkSequence>
       </processLinkPK>
@@ -710,7 +748,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>35</linkSequence>
       </processLinkPK>
@@ -727,7 +765,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>37</linkSequence>
       </processLinkPK>
@@ -744,7 +782,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>38</linkSequence>
       </processLinkPK>
@@ -761,7 +799,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>39</linkSequence>
       </processLinkPK>
@@ -778,7 +816,7 @@
     <ProcessLink>
       <processLinkPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <linkSequence>40</linkSequence>
       </processLinkPK>
@@ -786,6 +824,23 @@
       <returnPermited>false</returnPermited>
       <initialStateSequence>14</initialStateSequence>
       <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Garantia</processId>
+        <version>1</version>
+        <linkSequence>41</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>23</finalStateSequence>
       <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
@@ -808,7 +863,7 @@
       <parentSequence>0</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>1</sequence>
       </swimLanePK>
@@ -824,7 +879,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
@@ -840,7 +895,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>3</sequence>
       </swimLanePK>
@@ -856,7 +911,7 @@
       <parentSequence>1</parentSequence>
       <swimLanePK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
+        <processId>Solicitação de Garantia</processId>
         <version>1</version>
         <sequence>4</sequence>
       </swimLanePK>
@@ -868,8 +923,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>18</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -879,8 +934,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>27</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -890,8 +945,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>27</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -901,8 +956,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>27</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -912,8 +967,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>27</linkSequence>
         <bendSequence>4</bendSequence>
       </processLinkBendPK>
@@ -923,8 +978,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>28</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -934,8 +989,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>30</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -945,8 +1000,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>33</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -956,8 +1011,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>35</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -967,8 +1022,8 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>40</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -978,13 +1033,24 @@
     <ProcessLinkBend>
       <processLinkBendPK>
         <companyId>1</companyId>
-        <processId>GarantiasSG</processId>
-        <version>1</version>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
         <linkSequence>40</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
       <positionX>1030</positionX>
       <positionY>168</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Garantia</processId>
+        <version>4</version>
+        <linkSequence>41</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>924</positionX>
+      <positionY>193</positionY>
     </ProcessLinkBend>
   </list>
   <list/>
