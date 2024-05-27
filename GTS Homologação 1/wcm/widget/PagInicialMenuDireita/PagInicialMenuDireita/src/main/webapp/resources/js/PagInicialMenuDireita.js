@@ -230,6 +230,13 @@ var PagInicialMenuDireita = SuperWidget.extend({
 					$('#divQualidade').show();
 	            	$('#000054').show();
 	            }
+
+				//Garantia Solicitação de Garantia
+	            if(record['colleagueGroupPK.groupId'] == '000060' ){
+	            	definiuMenu = true;
+					$('#divGarantia').show();
+	            	$('#000060').show();
+	            }
 	        }
 		        
 		}
