@@ -223,13 +223,6 @@ var PagInicialMenuDireita = SuperWidget.extend({
 					$('#divPCP').show();
 	            	$('#000011').show();
 	            }
-				//Qualidade
-				if(record['colleagueGroupPK.groupId'] == '000054' ){
-	            	//Cancelamento Comercial
-	            	definiuMenu = true;
-					$('#divQualidade').show();
-	            	$('#000054').show();
-	            }
 	        }
 		        
 		}
