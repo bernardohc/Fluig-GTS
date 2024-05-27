@@ -658,6 +658,10 @@ function validateForm(form){
         			 message += getMessage("Administrativo GTS", 3, form);
 	   	           	 hasErros = true;
 	   	       	}
+        		if (isEmpty("acompanhaAdmGTSClas", form)) {	
+        			 message += getMessage("Classificação Pedido", 3, form);
+	   	           	 hasErros = true;
+	   	       	}
         		
         		if( form.getValue("aprovAdmGTS") == 'reprovado' || form.getValue("aprovAdmGTS") == 'retornadoSol' ){
     	       		if (isEmpty("aprovAdmGTSMotivo", form)) {	

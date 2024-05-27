@@ -16,7 +16,9 @@ function displayFields(form,customHTML){
 	/*
 	 * Início Eventos Globais (para todas as atividades)
 	 */
-
+	//Mostra Opção de Reserva de Máquina
+	displayReservaMaquina(form, customHTML);
+	
 	//Oculta botão de Gerar/Imprimir Relatório para usuário que está no grupo revendaMaquina
 	removeBotaoImprimir(form, customHTML);
 	
@@ -250,6 +252,10 @@ function displayFields(form,customHTML){
 			
 		}
 		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
+		
 		//Oculta botão de Gerar/Imprimir Relatório para usuário que está no grupo revendaMaquina
 		removeBotaoImprimir(form, customHTML);
 		//Define se o valor é dolar ou real (somente a descrição do campo)
@@ -273,9 +279,19 @@ function displayFields(form,customHTML){
 			customHTML.append("<script>$('#lbDefineGerarPedido').text('Enviar pedido para o Representante')</script>");
 		}
 		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
+		
 		if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-			form.setVisibleById("divPreencheComInterna", false);
+			var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+			if(indexTbItensPedido.length > 0){
+			    for (var i = 0; i < indexTbItensPedido.length; i++) {
+			    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+			    }
+			}
+	    	form.setVisibleById("divPreencheComInterna", false);
 		}else{
 			
 			form.setValue("defineGeracaoPedidoInicio", "");
@@ -373,7 +389,16 @@ function displayFields(form,customHTML){
 		
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
+		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
 		
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		
@@ -400,7 +425,16 @@ function displayFields(form,customHTML){
 		
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
+		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
 		
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		form.setVisibleById("divMotivoCancelamentoGeracaoPedido", true);
@@ -423,13 +457,22 @@ function displayFields(form,customHTML){
 		
 		form.setValue("defineGeracaoPedidoInicio", "");
 		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
+		
 		if(modoDeVisualizacaoDoFormulario == "MOD"){
 			customHTML.append("<script>$('#divDefineRetornarRevenda').show();</script>");
 			form.setVisibleById("divPedidoInicial", true);
 		}else if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			//Oculta busca de máquina
 			customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-			customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+			var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+			if(indexTbItensPedido.length > 0){
+			    for (var i = 0; i < indexTbItensPedido.length; i++) {
+			    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+			    }
+			}
 			form.setVisibleById("divPreencheComInterna", false);
 		}
 		
@@ -447,6 +490,10 @@ function displayFields(form,customHTML){
 		
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
+		
 		if(modoDeVisualizacaoDoFormulario == "MOD"){
 			customHTML.append("<script>$('#lbDefineGerarPedido').text('Enviar pedido para o Representante')</script>");
 			form.setValue("defineGeracaoPedidoInicio", "");
@@ -455,7 +502,12 @@ function displayFields(form,customHTML){
 		}else if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			//Oculta busca de máquina
 			customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-			customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+			var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+			if(indexTbItensPedido.length > 0){
+			    for (var i = 0; i < indexTbItensPedido.length; i++) {
+			    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+			    }
+			}
 			form.setVisibleById("divPreencheComInterna", false);
 		}
 	
@@ -473,11 +525,19 @@ function displayFields(form,customHTML){
 		
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
 		
 	   if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			//Oculta busca de máquina
 			customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-			customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+			var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+			if(indexTbItensPedido.length > 0){
+			    for (var i = 0; i < indexTbItensPedido.length; i++) {
+			    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+			    }
+			}
 			form.setVisibleById("divPreencheComInterna", false);
 		}
 		
@@ -495,10 +555,19 @@ function displayFields(form,customHTML){
 		form.setVisibleById("divMotivoCancelamentoGeracaoPedido", true);
 		form.setVisibleById("divPedidoInicial", true);
 		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
+		
 		if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			//Oculta busca de máquina
 			customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-			customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+			var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+			if(indexTbItensPedido.length > 0){
+			    for (var i = 0; i < indexTbItensPedido.length; i++) {
+			    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+			    }
+			}
 			form.setVisibleById("divPreencheComInterna", false);
 		}
 	}else if( atv_atual == GER_TER_APROVA ){
@@ -517,7 +586,16 @@ function displayFields(form,customHTML){
 		
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
+		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
 		
 		form.setVisibleById("divAprovacaoGerTerritorial", true);
 		
@@ -549,10 +627,19 @@ function displayFields(form,customHTML){
 		form.setVisibleById("divAprovacaoGerTerritorial", true);
 		form.setVisibleById("divMotivoReprovadoGerTerritorial", true);
 		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
+		
 		if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			//Oculta busca de máquina
 			customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-			customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+			var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+			if(indexTbItensPedido.length > 0){
+			    for (var i = 0; i < indexTbItensPedido.length; i++) {
+			    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+			    }
+			}
 			form.setVisibleById("divPreencheComInterna", false);
 		}else{
 			form.setVisibleById("divSolRevisaPedido", true);
@@ -576,9 +663,19 @@ function displayFields(form,customHTML){
 		removeBotaoImprimir(form, customHTML);
 		
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
+		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
+		
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
 		form.setVisibleById("divPreencheComInterna", false);
 		form.setVisibleById("divSolRevisaPedido", true);
 		
@@ -597,7 +694,12 @@ function displayFields(form,customHTML){
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
 		form.setVisibleById("divAprovacaoGerTerritorial", true);
 		
 		//Itens Pedido
@@ -608,6 +710,8 @@ function displayFields(form,customHTML){
 		    	customHTML.append("<script>$('#itPedFilialItem___"+indexes[i]+"').removeAttr('readonly')</script>");
 		    }
 		}
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
 		
 		if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			form.setVisibleById("divPreencheComInterna", false);
@@ -625,6 +729,7 @@ function displayFields(form,customHTML){
 			form.setVisibleById("divVend3", true);
 			form.setVisibleById("divVend5", true);
 			form.setVisibleById("divVend6", true);
+			form.setVisibleById("divVend9", true);
 			
 			if ( isEmpty("cliCodigo", form)) {	
 				customHTML.append("<script>$('#cliCodigo').prop('readonly', false);</script>");
@@ -648,7 +753,12 @@ function displayFields(form,customHTML){
 		
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
 		
 		if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			form.setVisibleById("divPreencheComInterna", false);
@@ -669,7 +779,12 @@ function displayFields(form,customHTML){
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
 		
 		//Itens Pedido
 		customHTML.append("<script>$('.itPedFilial').show()</script>");
@@ -699,7 +814,12 @@ function displayFields(form,customHTML){
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
 		form.setVisibleById("divAprovacaoAdministrativoGTS", true);
 		
 		if(modoDeVisualizacaoDoFormulario == "VIEW"){
@@ -721,7 +841,12 @@ function displayFields(form,customHTML){
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
 		
 		//Itens Pedido
 		customHTML.append("<script>$('.itPedFilial').show()</script>");
@@ -750,10 +875,19 @@ function displayFields(form,customHTML){
 		//Oculta botão de Gerar/Imprimir Relatório para usuário que está no grupo revendaMaquina
 		removeBotaoImprimir(form, customHTML);
 		
+		//Incluso para remover, por conta da Filial e Num Orc Totvs aparecer no mobile
+		customHTML.append("<script>$('.itPedFilial').remove();</script>");
+		customHTML.append("<script>$('.itPedNumOrcTotvs').remove();</script>");
+		
 		if(modoDeVisualizacaoDoFormulario == "VIEW"){
 			//Oculta busca de máquina
 			customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-			customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+			var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+			if(indexTbItensPedido.length > 0){
+			    for (var i = 0; i < indexTbItensPedido.length; i++) {
+			    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+			    }
+			}
 			form.setVisibleById("divPreencheComInterna", false);
 		}
 		form.setVisibleById("divAcompanhaAdministrativoGTS", true);
@@ -773,7 +907,12 @@ function displayFields(form,customHTML){
 		form.setValue("cliUF", form.getValue("cliUFHidden"));
 		//Oculta busca de máquina
 		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
-		customHTML.append("<script>$('.inputItPedCodItem').css('border-radius', '4px');</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
 		form.setVisibleById("divNumOrcProtheus", true);
 		form.setVisibleById("divPreencheComInterna", false);
 		form.setVisibleById("divAcompanhaAdministrativoGTS", false);
@@ -1223,6 +1362,47 @@ function defineMoeda(form, customHTML){
 		customHTML.append("<script>$('.tipoMoeda').text('(R$)')</script>");
 	}
 	
+}
+/**
+*
+*/
+function displayReservaMaquina(form, customHTML){
 	
+	var atv_atual = getValue("WKNumState");
+	if(atv_atual ==  INICIO_0){
+		//Grupo 000038 - Comercial - Pedido de Máquina - Reserva de Máquina
+		var constrainsResMaq1 = DatasetFactory.createConstraint("colleagueGroupPK.companyId", getValue("WKCompany"), getValue("WKCompany"), ConstraintType.MUST);
+		var constrainsResMaq2 = DatasetFactory.createConstraint("colleagueGroupPK.groupId", '000038', '000038', ConstraintType.MUST);
+		var constrainsResMaq3 = DatasetFactory.createConstraint("colleagueGroupPK.colleagueId", getValue("WKUser"), getValue("WKUser"), ConstraintType.MUST);
+		var constrainsResMaq = new Array(constrainsResMaq1, constrainsResMaq2, constrainsResMaq3);
+		
+		var dsGrupoReservaMaquina = DatasetFactory.getDataset("colleagueGroup", null, constrainsResMaq, null);
+		if(dsTemValor(dsGrupoReservaMaquina)){
+			//Se o usuário está no grupo de 'Reserva de Máquina'
+			form.setVisibleById("divReservaMaquina", true);
+			
+//			form.setVisibleById("idSelecionaMaquinaReservada", true);
+		}
+	
+	}
+	
+	if(form.getValue("pedMaqResNumPedidoTotvs") != "" ){
+		form.setVisibleById("divReservaMaquina", true);
+		form.setVisibleById("idSelecionaMaquinaReservada", false);
+		customHTML.append("<script>$('input[name*=pedMaqResDesc]').closest('.input-group').removeClass('input-group');</script>");
+	
+		//Produto
+		customHTML.append("<script>$('.btn-search-maquina').hide()</script>");
+		var indexTbItensPedido = form.getChildrenIndexes("tbItensPedido");
+		if(indexTbItensPedido.length > 0){
+		    for (var i = 0; i < indexTbItensPedido.length; i++) {
+		    	form.setEnabled("itPedCodItemItem___" + indexTbItensPedido[i], false);
+		    	customHTML.append("<script>$('input[name*=itPedCodItemItem___"+indexTbItensPedido[i]+"]').closest('.input-group').removeClass('input-group');</script>");
+		    }
+		}
+	}
+	
+	
+		
 	
 }

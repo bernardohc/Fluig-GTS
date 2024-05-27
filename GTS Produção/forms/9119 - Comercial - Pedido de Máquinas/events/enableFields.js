@@ -54,6 +54,12 @@ function enableFields(form){
 		form.setEnabled("pedDataPrevEmbarque", false);
 		form.setEnabled("pedObservacao", false);
 		form.setEnabled("pedTipoPreco", false);
+		form.setEnabled("pedTipoPedido", false);
+		form.setEnabled("pedMaqResDesc", false);
+		form.setEnabled("pedMaqResModelo", false);
+		form.setEnabled("pedMaqResEstoque", false);
+		form.setEnabled("pedMaqResPrazoEnt", false);
+		form.setEnabled("pedMaqResNumPedidoTotvs", false);
 		//Itens Pedido
 		var indexes = form.getChildrenIndexes("tbItensPedido");
 		if(indexes.length > 0){
@@ -175,6 +181,12 @@ function enableFields(form){
 		form.setEnabled("pedDataPrevEmbarque", false);
 		form.setEnabled("pedObservacao", false);
 		form.setEnabled("pedTipoPreco", false);
+		form.setEnabled("pedTipoPedido", false);
+		form.setEnabled("pedMaqResDesc", false);
+		form.setEnabled("pedMaqResModelo", false);
+		form.setEnabled("pedMaqResEstoque", false);
+		form.setEnabled("pedMaqResPrazoEnt", false);
+		form.setEnabled("pedMaqResNumPedidoTotvs", false);
 		//Itens Pedido
 		var indexes = form.getChildrenIndexes("tbItensPedido");
 		if(indexes.length > 0){
@@ -221,12 +233,6 @@ function enableFields(form){
 			form.setEnabled("repEmailGestorTerritorial", false);
 		}
 		
-		//Dados Revenda
-		form.setEnabled("revCpfCnpj", false);
-		form.setEnabled("revNome", false);
-		form.setEnabled("revMatFluig", false);
-		form.setEnabled("revNomeFluig", false);
-		
 		//Aprovação Gerente Comercial
 		form.setEnabled("aprovGerTerritorial", false);
 		form.setEnabled("aprovGerTerritorialMotivoRep", false);
@@ -257,6 +263,12 @@ function enableFields(form){
 		form.setEnabled("pedDataPrevEmbarque", false);
 		form.setEnabled("pedObservacao", false);
 		form.setEnabled("pedTipoPreco", false);
+		form.setEnabled("pedTipoPedido", false);
+		form.setEnabled("pedMaqResDesc", false);
+		form.setEnabled("pedMaqResModelo", false);
+		form.setEnabled("pedMaqResEstoque", false);
+		form.setEnabled("pedMaqResPrazoEnt", false);
+		form.setEnabled("pedMaqResNumPedidoTotvs", false);
 		//Itens Pedido
 		var indexes = form.getChildrenIndexes("tbItensPedido");
 		if(indexes.length > 0){
@@ -328,7 +340,13 @@ function enableFields(form){
 		form.setEnabled("pedDataPrevEmbarque", false);
 		form.setEnabled("pedObservacao", false);
 		form.setEnabled("pedTipoPreco", false);
+		form.setEnabled("pedTipoPedido", false);
 		form.setEnabled("pedObservacaoProduto", false);
+		form.setEnabled("pedMaqResDesc", false);
+		form.setEnabled("pedMaqResModelo", false);
+		form.setEnabled("pedMaqResEstoque", false);
+		form.setEnabled("pedMaqResPrazoEnt", false);
+		form.setEnabled("pedMaqResNumPedidoTotvs", false);
 		//Itens Pedido
 		var indexes = form.getChildrenIndexes("tbItensPedido");
 		if(indexes.length > 0){
@@ -393,7 +411,13 @@ function enableFields(form){
 		form.setEnabled("pedDataPrevEmbarque", false);
 		form.setEnabled("pedObservacao", false);
 		form.setEnabled("pedTipoPreco", false);
+		form.setEnabled("pedTipoPedido", false);
 		form.setEnabled("pedObservacaoProduto", false);
+		form.setEnabled("pedMaqResDesc", false);
+		form.setEnabled("pedMaqResModelo", false);
+		form.setEnabled("pedMaqResEstoque", false);
+		form.setEnabled("pedMaqResPrazoEnt", false);
+		form.setEnabled("pedMaqResNumPedidoTotvs", false);
 		//Itens Pedido
 		var indexes = form.getChildrenIndexes("tbItensPedido");
 		if(indexes.length > 0){
@@ -457,7 +481,13 @@ function enableFields(form){
 		form.setEnabled("pedDataPrevEmbarque", false);
 		form.setEnabled("pedObservacao", false);
 		form.setEnabled("pedTipoPreco", false);
+		form.setEnabled("pedTipoPedido", false);
 		form.setEnabled("pedObservacaoProduto", false);
+		form.setEnabled("pedMaqResDesc", false);
+		form.setEnabled("pedMaqResModelo", false);
+		form.setEnabled("pedMaqResEstoque", false);
+		form.setEnabled("pedMaqResPrazoEnt", false);
+		form.setEnabled("pedMaqResNumPedidoTotvs", false);
 		//Itens Pedido
 		var indexes = form.getChildrenIndexes("tbItensPedido");
 		if(indexes.length > 0){

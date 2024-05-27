@@ -18,6 +18,15 @@ function validateForm(form){
         case INICIO : 
         case REP_VERIFICA_PED : 
         case REV_VERIFICA_PED : 
+        	
+        	//Se tiver preenchido o campo de Reserva de Máquina
+    		if( !isEmpty("pedMaqResDesc", form) ){
+    			if( isEmpty("pedMaqResNumPedidoTotvs", form) ){
+    				message += getMessage("Nº Pedido da Máquina Reservada", 1, form);
+    				hasErros = true;
+    			}
+    		}
+    		
         	if (getValue("WKCompletTask") == "true" ){
 	        	
         		var pedidoNoPrazo = true;
@@ -278,7 +287,11 @@ function validateForm(form){
          		    
 		    		}
 		    		
-		    		if ( form.getValue("pedTipoPreco") == '' ) {
+					if (isEmpty("pedTipoPedido", form)) {
+						message += getMessage("Tipo de Pedido", 3, form);
+						hasErros = true;
+					}
+		    		if( form.getValue("pedTipoPreco") == '' ) {
 		    			message += getMessage("Tipo de Preço", 3, form);
 		                hasErros = true;
 		            }
@@ -595,11 +608,15 @@ function validateForm(form){
          		    
 		    		}
 		    		
+					if (isEmpty("pedTipoPedido", form)) {
+						message += getMessage("Tipo de Pedido", 3, form);
+						hasErros = true;
+					}
 		    		if ( form.getValue("pedTipoPreco") == '' ) {
 		    			message += getMessage("Tipo de Preço", 3, form);
 		                hasErros = true;
 		            }
-		    		
+
 		    		//Itens Pedido
 		    		var indexesItensPedido = form.getChildrenIndexes("tbItensPedido");
 		    		if(indexesItensPedido.length == 0){
@@ -966,11 +983,15 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 	    		
+				if (isEmpty("pedTipoPedido", form)) {
+					message += getMessage("Tipo de Pedido", 3, form);
+					hasErros = true;
+				}
 	    		if ( form.getValue("pedTipoPreco") == '' ) {
 	    			message += getMessage("Tipo de Preço", 3, form);
 	                hasErros = true;
 	            }
-	    		
+
 	    		//Itens Pedido
 	    		var indexesItensPedido = form.getChildrenIndexes("tbItensPedido");
 	    		if(indexesItensPedido.length == 0){
@@ -1277,11 +1298,15 @@ function validateForm(form){
      		    
 	    		}*/
 	    		
+				if (isEmpty("pedTipoPedido", form)) {
+					message += getMessage("Tipo de Pedido", 3, form);
+					hasErros = true;
+				}
 	    		if ( form.getValue("pedTipoPreco") == '' ) {
 	    			message += getMessage("Tipo de Preço", 3, form);
 	                hasErros = true;
 	            }
-	    		
+
 	    		//Itens Pedido
 	    		var indexesItensPedido = form.getChildrenIndexes("tbItensPedido");
 	    		if(indexesItensPedido.length == 0){
