@@ -375,6 +375,10 @@ var funcoes = (function() {
 						message += getMessage("Quantidade de Litros", 1, form);
 						hasErros = true
 					}
+					if( abastQtdLitros == '0,00' ){
+						message += getMessage("Quantidade de Litros", 11, form);
+						hasErros = true
+					}
 					if( abastValorLitro == '' ){
 						message += getMessage("Valor por Litro", 1, form);
 						hasErros = true
@@ -401,6 +405,10 @@ var funcoes = (function() {
 					}
 					if( abastQtdLitros == '' ){
 						message += getMessage("Quantidade de Litros", 1, form);
+						hasErros = true
+					}
+					if( abastQtdLitros == '0,00' ){
+						message += getMessage("Quantidade de Litros", 11, form);
 						hasErros = true
 					}
 					if( abastValorLitro == '' ){

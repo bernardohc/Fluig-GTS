@@ -380,7 +380,7 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
 			case 10:
 				return 'Campo "' + texto + '" está fora do período da viagem.\n'; 
 			case 11:
-				return 'Campo "' + texto + '" tem que ser maior que zero.\n';   
+				return 'Campo "' + texto + '" valor inválido.\n';   
 			case 12:
 				return ' " ' + texto + ' " \n';   
 			case 13:
@@ -409,7 +409,7 @@ function getMessage(texto, tipoMensagem, tabpaifilho) {
             case 10:
                 return '<li>Campo: <b>"' + texto + '"</b> está fora do período da viagem.\n';    
 			case 11:
-				return '<li>Campo: <b>"' + texto + '"</b> tem que ser maior que zero.\n';
+				return '<li>Campo: <b>"' + texto + '"</b> valor inválido.\n';
 			case 12:
 				return '<b>"' + texto + '"</b> \n';
 			case 13:
