@@ -242,10 +242,12 @@ var funcoes = (function() {
 			let abastNomePosto = $('#abastNomePosto').val().trim();
 			let abastTpCombustivel = $('#abastTpCombustivel').val().trim();
 			let abastKmAbastecimento = $('#abastKmAbastecimento').val().trim();
-			let abastQtdLitros = $('#abastQtdLitros').val().trim();
+			let abastQtdLitros = $('#abastQtdLitros').trim();
 			let abastValorLitro = $('#abastValorLitro').val().trim();
 			let solSetor = $('#solSetor').val().trim();	
 			let geraisPlaca = $('#geraisPlaca').val().trim();	
+
+			console.log(abastQtdLitros + ' qde litros' );
 			
 			// Função para remover a máscara "00/00/0000" e converter para o formato "YYYY-MM-DD".
 			function formatarData(data) {
@@ -367,12 +369,16 @@ var funcoes = (function() {
 						message += getMessage("Km Abastecimento", 1, form);
 						hasErros = true
 					}
-					if( abastKmAbastecimento == '0' ){
+					if( abastKmAbastecimento === '0,00' ){
 						message += getMessage("Km Abastecimento ", 11, form);
 						hasErros = true
 					}
 					if( abastQtdLitros == '' ){
 						message += getMessage("Quantidade de Litros", 1, form);
+						hasErros = true
+					}
+					if( abastQtdLitros <= '1' ){
+						message += getMessage("Quantidade de Litros", 11, form);
 						hasErros = true
 					}
 					if( abastValorLitro == '' ){
@@ -395,12 +401,16 @@ var funcoes = (function() {
 						message += getMessage("Km Abastecimento", 1, form);
 						hasErros = true
 					}
-					if( abastKmAbastecimento == '0' ){
+					if( abastKmAbastecimento === '0,00' ){
 						message += getMessage("Km Abastecimento ", 11, form);
 						hasErros = true
 					}
 					if( abastQtdLitros == '' ){
 						message += getMessage("Quantidade de Litros", 1, form);
+						hasErros = true
+					}
+					if( abastQtdLitros <= '1' ){
+						message += getMessage("Quantidade de Litros", 11, form);
 						hasErros = true
 					}
 					if( abastValorLitro == '' ){

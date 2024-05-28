@@ -128,22 +128,14 @@ var funcoes = (function() {
     			    			let nomeRevendaFluig = getNome(VENDMAT);
     			    			$("#revNomeFluig").val(nomeRevendaFluig);
     			    		}else{
-    			    			if(isMobile == 'true'){
-    								alert("A matrícula da revenda não foi localizada, comunicar o Administrador do Sistema!");
-    							}else{
-    								FLUIGC.toast({ message: "A matrícula da revenda não foi localizada, comunicar o Administrador do Sistema!", type: 'danger' });
-    							}
+    			    			FLUIGC.toast({ title: '', message: 'A matrícula da revenda não foi localizada, comunicar o Administrador do Sistema!', type: 'danger' });
     			    		}
     			    		
 //    			    		if( $("#vendedor2").val().trim() != CODVEND.trim() ){
 //    			    			FLUIGC.toast({ title: 'Atenção!', message: 'A Revenda definida no formulário não está vinculada como "Revenda do Cliente"!', type: 'danger' });
 //    			    		}
 	    	    		}else if (records[0].CODRET == "2"){
-	    	    			if(isMobile == 'true'){
-								alert(records[0].MSGRET);
-							}else{
-								FLUIGC.toast({ message: records[0].MSGRET, type: 'warning' });
-							}
+		    	    		FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
 		    	    		funcoes.limpaCamposRevenda();
 		    	    		$('#revNome').prop('readonly', false);
 		    	    	}
@@ -158,7 +150,11 @@ var funcoes = (function() {
 	    	    },
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
 	    	    	console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
-	    	    	FLUIGC.toast({message: 'Erro na consulta da revenda, comunica Administrador do Sistema!', type: 'danger'});
+	    	    	FLUIGC.toast({
+			    		title: '',
+			    		message: 'Erro na consulta da revenda, comunica Administrador do Sistema!' ,
+			    		type: 'danger'
+			    	});
 	    	    	loading.hide();
 				}
 			});
@@ -367,19 +363,11 @@ var funcoes = (function() {
     			    		}
     			    		
     			    		if( CLIVEND1.trim() != $('#repA3COD').val().trim() ){
-    			    			if(isMobile == 'true'){
-    								alert("O Representante definido no formulário não está vinculado como 'Representante do Cliente'!");
-    							}else{
-    								FLUIGC.toast({title: 'Atenção!', message: "O Representante definido no formulário não está vinculado como 'Representante do Cliente'!", type: 'danger' });
-    							}
+    			    			FLUIGC.toast({ title: 'Atenção!', message: 'O Representante definido no formulário não está vinculado como "Representante do Cliente"!', type: 'danger' });
     			    		}
     			    		if( $('#solTipoSolicitante').val() != 'RepresentanteExportacao'){
 	    			    		if( CLIVEND5.trim() != $('#repGesTerA3COD').val().trim() ){
-	    			    			if(isMobile == 'true'){
-	    								alert("O Gestor Territorial definido no formulário não está vinculado como 'Gestor Territorial do Cliente'!");
-	    							}else{
-	    								FLUIGC.toast({title: 'Atenção!', message: "O Gestor Territorial definido no formulário não está vinculado como 'Gestor Territorial do Cliente'!", type: 'danger' });
-	    							}
+	    			    			FLUIGC.toast({ title: 'Atenção!', message: 'O Gestor Territorial definido no formulário não está vinculado como "Gestor Territorial do Cliente"!', type: 'danger' });
 	    			    		}
     			    		}
 //    			    		if( CLIVEND2.trim() != $('#revA3COD').val().trim() ){
@@ -387,12 +375,7 @@ var funcoes = (function() {
 //    			    		}
     			    		
 	    	    		}else if (records[0].CODRET == "2"){
-	    	    			if(isMobile == 'true'){
-	    	    				alert(records[0].MSGRET);
-	    	    			}else{
-	    	    				FLUIGC.toast({ message: records[0].MSGRET, type: 'warning' });
-	    	    			}
-	    	    			
+		    	    		FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
 		    	    		
 		    	    		$('#vendedor1').val('');
     						$('#vendedor2').val('');
@@ -418,11 +401,7 @@ var funcoes = (function() {
 	    	    		
 	    	    		
 	    	    	}else{
-	    	    		if(isMobile == 'true'){
-    	    				alert('O código do cliente informado não existe na base de dados!');
-    	    			}else{
-    	    				FLUIGC.toast({ message: 'O código do cliente informado não existe na base de dados!', type: 'warning' });
-    	    			}
+	    	    		FLUIGC.toast({ title: '', message: 'O código do cliente informado não existe na base de dados!', type: 'warning' });
 	    	    		//Libera os campos para preencher manualmente os dados do cliente
 	    	    		funcoes.somenteLeituraCamposCliente(false);
 	    	    		
@@ -448,19 +427,7 @@ var funcoes = (function() {
 		/*
 		 * Dados Pedido
 		 */
-		limpaCamposMaquinaReservada : function(){
-			
-			$('#pedMaqResWKUserReserva').val('');
-			$('#pedMaqResDataReserva').val('');
-			$('#pedMaqResWKUserCancelReserva').val('');
-			$('#pedMaqResDataCancelReserva').val('');
-			$('#pedMaqResDesc').val('');
-			$('#pedMaqResModelo').val('');
-			$('#pedMaqResEstoque').val('');
-			$('#pedMaqResPrazoEnt').val('');
-			$('#pedMaqResNumPedidoTotvs').val('');
-			
-		},
+		
 		
 		/*
 		 * Itens Pedido
@@ -500,17 +467,12 @@ var funcoes = (function() {
 		 * 
 		 * @param {*} indexItem (linha que está consultando os campos)
 		 */
-		consultaProduto : function(indexItem, gatilho){
-			
+		consultaProduto : function(indexItem){
 			
 			let tabPreco = ( $("#tabPreco").val() == '' ? 'PADRAO' : $("#tabPreco").val());
 			let codProduto = $("#itPedCodItemItem___"+indexItem).val();
-//			let precoUnitItem = ( $("#itPedPrecoUnitItem___"+indexItem).val() != '' ) ? validafunctions.getFloatValue("itPedPrecoUnitItem___"+indexItem) : '0';
-			let precoUnitItem = '0';
-			if(gatilho == 'PrecoUnit'){
-				precoUnitItem = ( $("#itPedPrecoUnitItem___"+indexItem).val() != '' ) ? validafunctions.getFloatValue("itPedPrecoUnitItem___"+indexItem) : '0';
-			}
-			
+			let precoUnitItem = ( $("#itPedPrecoUnitItem___"+indexItem).val() != '' ) ? validafunctions.getFloatValue("itPedPrecoUnitItem___"+indexItem) : '0';
+
 			if( codProduto.trim() == "" ){
 				return;
 			}
@@ -572,11 +534,7 @@ var funcoes = (function() {
     			    		funcoes.somaFrete(indexItem);
     			    		funcoes.calculaTotalCusto();
 	    	    		}else if (records[0].CODRET == "2"){
-	    	    			if(isMobile == 'true'){
-	    						alert(records[0].MSGRET);
-	    	    			}else{
-	    	    				FLUIGC.toast({ message: records[0].MSGRET, type: 'warning' });
-	    	    			}
+		    	    		FLUIGC.toast({ title: '', message: records[0].MSGRET, type: 'warning' });
 		    	    		funcoes.limpaCamposItem(indexItem);
 		    	    		
 		    	    	}
@@ -650,45 +608,48 @@ var funcoes = (function() {
 			let totalCustoItensComImposto = 0;
 			let totalIPIItens = 0;
 			let itPedValorFreteItem = 0;
+			let valorPeca = 0;
 			let pecaPossuiPeca = $("input:radio[name='pecaPossuiPeca']:checked").val();
 			
-			const index = "1";
-			
-			let valTotalCustoSemImpItem = validafunctions.getFloatValue("itPedTotalCustoSemImpItem___"+index);
-			if (!isNaN(valTotalCustoSemImpItem) ) {
-				totalCustoItensSemImposto +=  valTotalCustoSemImpItem;
-			}
-			
-			
-			let valIPI = validafunctions.getFloatValue("itPedIPIValorItem___"+index);
-			let valTotalCustoComImpItem = validafunctions.getFloatValue("itPedTotalCustoComImpItem___"+index);
-			itPedValorFreteItem = validafunctions.getFloatValue("itPedValorFreteItem___"+index);
-			
-			if (!isNaN(valTotalCustoComImpItem) ) {
-				totalCustoItensComImposto +=  valTotalCustoComImpItem + itPedValorFreteItem;
-			}
-			
-			if(!isNaN(valIPI)){
-				totalIPIItens += (valIPI)
-			}
-			
-			//Se for marcado como Possui Peça SIM, soma o valor da peça para ter o valor total
-			if(pecaPossuiPeca == "pecaPossuiPecaSim"){
-				let pecaValor = validafunctions.getFloatValue("pecaValor");
+			$("input[name*=itPedCodItemItem___]").each(function(index){
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
 				
-				if(!isNaN(pecaValor)){
-					totalCustoItensSemImposto +=  pecaValor;
-					totalCustoItensComImposto +=  pecaValor;
+				var valTotalCustoSemImpItem = validafunctions.getFloatValue("itPedTotalCustoSemImpItem___"+index);
+				if (!isNaN(valTotalCustoSemImpItem) ) {
+					totalCustoItensSemImposto +=  valTotalCustoSemImpItem;
 				}
 				
-				$("#pedTotalPeca").text( $('#pecaValor').val() );
-			}else{
-				$("#pedTotalPeca").text('0,00');
-			}
-			
-			//Vai ter sempre somente 1 item
-			$("#pedTotalMaquina").text( $('#itPedPrecoUnitItem___'+index).val()  );
-			$("#pedTotalFrete").text( $('#itPedValorFreteItem___'+index).val()  );
+				
+				var valIPI = validafunctions.getFloatValue("itPedIPIValorItem___"+index);
+				var valTotalCustoComImpItem = validafunctions.getFloatValue("itPedTotalCustoComImpItem___"+index);
+				var itPedValorFreteItem = validafunctions.getFloatValue("itPedValorFreteItem___"+index);
+				
+				if (!isNaN(valTotalCustoComImpItem) ) {
+					totalCustoItensComImposto +=  valTotalCustoComImpItem + itPedValorFreteItem;
+				}
+				
+				if(!isNaN(valIPI)){
+					totalIPIItens += (valIPI)
+				}
+				
+				//Se for marcado como Possui Peça SIM, soma o valor da peça para ter o valor total
+				if(pecaPossuiPeca == "pecaPossuiPecaSim"){
+					var pecaValor = validafunctions.getFloatValue("pecaValor");
+					
+					if(!isNaN(pecaValor)){
+						totalCustoItensSemImposto +=  pecaValor;
+						totalCustoItensComImposto +=  pecaValor;
+					}
+					
+					$("#pedTotalPeca").text( $('#pecaValor').val() );
+				}else{
+					$("#pedTotalPeca").text('0,00');
+				}
+				
+				//Vai ter sempre somente 1 item
+				$("#pedTotalMaquina").text( $('#itPedPrecoUnitItem___'+index).val()  );
+				$("#pedTotalFrete").text( $('#itPedValorFreteItem___'+index).val()  );
+			});
 			
 			
 			$("#pedTotalPedidoSemImposto").val(totalCustoItensSemImposto.toFixed(2));
@@ -778,11 +739,7 @@ var eventsFuncoes = (function() {
 				}else if($(this).val().length == 14 || $(this).val().length == 18){
 					funcoes.consultaRevenda( $(this).val() );
 				}else{
-					if(isMobile == 'true'){
-						alert('O CPF/CNPJ está preenchido incorretamente!');
-					}else{
-						FLUIGC.toast({ title: '', message: 'O CPF/CNPJ está preenchido incorretamente!', type: 'warning' });
-					}
+					FLUIGC.toast({ title: '', message: 'O CPF/CNPJ está preenchido incorretamente!', type: 'warning' });
 				}
 				
 			});
@@ -801,11 +758,7 @@ var eventsFuncoes = (function() {
 				if($("#cliCodigo").val().trim().length == 9 && $("#cliLoja").val().trim().length == 4){
 					funcoes.consultaCliente('codLoja');
 				}else if( $("#cliCodigo").val().trim().length <= 9 && $("#cliLoja").val().trim().length != 0 ){
-					if(isMobile == 'true'){
-						alert('O código está preenchido incorretamente!');
-					}else{
-						FLUIGC.toast({ message: 'O código está preenchido incorretamente!', type: 'warning' });
-					}
+					FLUIGC.toast({ title: '', message: 'O código está preenchido incorretamente!', type: 'warning' });
 				}
 			});
 			
@@ -813,11 +766,7 @@ var eventsFuncoes = (function() {
 				if($("#cliCodigo").val().trim().length == 9 && $("#cliLoja").val().trim().length == 4){
 					funcoes.consultaCliente('codLoja');
 				}else if( $("#cliCodigo").val().trim().length != 0 && $("#cliLoja").val().trim().length < 4 ){
-					if(isMobile == 'true'){
-						alert('A loja está preenchido incorretamente!');
-					}else{
-						FLUIGC.toast({ message: 'A loja está preenchido incorretamente!', type: 'warning' });
-					}
+					FLUIGC.toast({ title: '', message: 'A loja está preenchido incorretamente!', type: 'warning' });
 				}
 			});
 			
@@ -853,11 +802,7 @@ var eventsFuncoes = (function() {
 					funcoes.consultaCliente('cpfCnpj');
 					
 				}else{
-					if(isMobile == 'true'){
-						alert('O CPF/CNPJ/Código Exterior está preenchido incorretamente!');
-					}else{
-						FLUIGC.toast({ message: 'O CPF/CNPJ/Código Exterior está preenchido incorretamente!', type: 'warning' });
-					}
+					FLUIGC.toast({ title: '', message: 'O CPF/CNPJ/Código Exterior está preenchido incorretamente!', type: 'warning' });
 				}
 				
 			});
@@ -876,11 +821,7 @@ var eventsFuncoes = (function() {
 						funcoes.consultaCliente('cpfCnpj');
 						
 					}else{
-						if(isMobile == 'true'){
-							alert('O CPF/CNPJ/Código Exterior está preenchido incorretamente!');
-						}else{
-							FLUIGC.toast({ message: 'O CPF/CNPJ/Código Exterior está preenchido incorretamente!', type: 'warning' });
-						}
+						FLUIGC.toast({ title: '', message: 'O CPF/CNPJ/Código Exterior está preenchido incorretamente!', type: 'warning' });
 					}
 					
 				});
@@ -945,11 +886,7 @@ var eventsFuncoes = (function() {
 		    					$('#cliBairro').val(bairroCliente);
 			    					
 			    	    	}else{
-			    	    		if(isMobile == 'true'){
-									alert('O CEP não existe na base de dados');
-								}else{
-									FLUIGC.toast({ message: 'O CEP não existe na base de dados', type: 'warning' });
-								}
+			    	    		FLUIGC.toast({ title: '', message: 'O CEP não existe na base de dados!', type: 'warning' });
 			    	    		$('#cliUF').val('');
 			    	    		$('#cliUFHidden').val('');
 		    					$('#cliCidade').val('');
@@ -962,6 +899,7 @@ var eventsFuncoes = (function() {
 						error: function(XMLHttpRequest, textStatus, errorThrown) {
 			    	    	console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
 			    	    	FLUIGC.toast({
+					    		title: '',
 					    		message: 'Erro ao consultar CEP, servidor indisponível!' ,
 					    		type: 'danger'
 					    	});
@@ -1072,13 +1010,9 @@ var eventsFuncoes = (function() {
 					funcoes.calculaTotalCusto();
 				}else{
 					if( $(this).val().length >= 3 ){
-						funcoes.consultaProduto(index, 'CodProduto');
+						funcoes.consultaProduto(index);
 					}else{
-						if(isMobile == 'true'){
-							alert("É preciso digitar no mínimo 3 caracteres do 'Código da Máquina'!");
-						}else{
-							FLUIGC.toast({ message: "É preciso digitar no mínimo 3 caracteres do 'Código da Máquina'!", type: 'warning' });
-						}
+						FLUIGC.toast({ title: '', message: 'É preciso digitar no mínimo 3 caracteres do <b>Código da Máquina</b>!', type: 'warning' });
 					}
 					
 					
@@ -1095,7 +1029,7 @@ var eventsFuncoes = (function() {
 			$(document).on("change", ".inputItPedPrecoUnitItem", function() {
 				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
 				
-				funcoes.consultaProduto(index, 'PrecoUnit');
+				funcoes.consultaProduto(index);
 				
 			});
 			
@@ -1105,7 +1039,7 @@ var eventsFuncoes = (function() {
 					
 					var index = validafunctions.getPosicaoFilho($(this).attr("id"));
 					
-					funcoes.consultaProduto(index, 'PrecoUnit');
+					funcoes.consultaProduto(index);
 					
 				}
 				
@@ -1205,11 +1139,7 @@ var eventsFuncoes = (function() {
 		    		
 		    		$('#divTbComInterna').show();
 				}else{
-					if(isMobile == 'true'){
-						alert("Preencha o campo 'Descrição' para adicionar a comunicação!");
-					}else{
-						FLUIGC.toast({ message: "Preencha o campo 'Descrição' para adicionar a comunicação!", type: 'warning' });
-					}
+					FLUIGC.toast({ title: '', message: 'Preencha o campo "Descrição" para adicionar a comunicação!', type: 'warning' });
 				}
 				
 				
@@ -1264,31 +1194,6 @@ function removeComunicacaoInterna(oElement){
 	}
 }
 
-function removeMaquinaReservada(oElement){
-	//Somente se estiver na Atividade 0 que pode remover
-	if(CURRENT_STATE == INICIO_0)
-	{	
-		try {
-			let pedMaqResDesc = $('#pedMaqResDesc').val();
-	        FLUIGC.message.confirm({
-	            message: `Deseja remover a Máquina Reservada <b>${pedMaqResDesc}</b> do pedido?`,
-	            title: 'Confirmação',
-	            labelYes: 'Sim, quero remover',
-	            labelNo: 'Não, quero cancelar',
-	        }, function (result) {
-	            if (result) {
-	            	funcoes.limpaCamposMaquinaReservada();
-	            	$('#divMaquinaReservadaRemove').hide();
-	        		$('#divMaquinaReservadaDesc').addClass('col-md-offset-1');
-	            }
-	        });
-	    } catch (e) {
-	        console.error("Houve um erro inesperado na função removeMaquinaReservada")
-	        console.error(e)
-	    }
-	}
-}
-
 function loadForm(){
 	
 	$('#cliDDDTelefone').mask('000');
@@ -1301,8 +1206,6 @@ function loadForm(){
 	window.parent.$('#wcm_widget').find("[data-back]").removeAttr("data-back");
 	window.parent.$('#wcm_widget').find("[data-cancel]").css("display","none");
 	window.parent.$('#wcm_widget').find("[data-cancel]").removeAttr("data-cancel");
-	window.parent.$('#wcm_widget').find("[data-cancel-workflow-request]").css("display","none");
-	window.parent.$('#wcm_widget').find("[data-cancel-workflow-request]").removeAttr("data-cancel");
 	
 	funcoes.trataCampoConsumidorFinalOURevendedor();
 	

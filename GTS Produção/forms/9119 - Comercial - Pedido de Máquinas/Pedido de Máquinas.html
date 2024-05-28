@@ -14,10 +14,12 @@
 	<script type="text/javascript" src="js-priceformat.js"></script>
 	<script type="text/javascript" src="js-jquery_mask.js"></script>
 	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js-modal-zoom.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-valor-extenso.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-imprimir.js" charset="utf-8"></script>
+	
+
+
 </head>
 <body onload="loadForm();">
 <form name="form" role="form" >
@@ -26,8 +28,7 @@
 	
 	<input type="hidden" name="WKNumProces" id="WKNumProces" >
 	<input type="hidden" name="cancelamentoAutomatico" id="cancelamentoAutomatico" >
-	<input type="hidden" name="origemSolicitacao" id="origemSolicitacao" >
-
+	
 	<div id="banner-header" class="row">
 		<div  class="col-md-12"  >
         	<font color="000" >Pedido de Máquina</font>
@@ -138,7 +139,7 @@
 					<option value="Revenda">Revendedor</option>
 		      	</select>	
             </div>
-	        <div class="col-md-2 col-xs-6" align="left">
+	        <div class="col-md-2" align="left">
 				<label for="solDataAbertura">Data Abertura</label>
 				<div class="input-group">
 					<input type="text" name="solDataAbertura" id="solDataAbertura"  class="form-control" readonly/>				
@@ -147,7 +148,7 @@
                     </span>			                    
 				</div>
             </div>
-	        <div class="col-md-2 col-xs-6" align="left">
+	        <div class="col-md-2" align="left">
 				<label for="solDataValidadePedido">Validade Orçamento</label>
 				<div class="input-group">
 					<input type="text" name="solDataValidadePedido" id="solDataValidadePedido"  class="form-control" readonly/>				
@@ -195,11 +196,11 @@
 		    </div>
 		</div>
 		<div class="row">
-			<div class="col-md-1 col-md-offset-1 col-xs-4" align="left" >
+			<div class="col-md-1 col-md-offset-1" align="left" >
 				<label for="repA3COD">Código</label>
 				<input type="text" name="repA3COD" id="repA3COD" class="form-control" readonly />
 	        </div>
-			<div class="col-md-5 col-xs-8" align="left">
+			<div class="col-md-5" align="left">
 				<label for="repNome">Representante</label>
 				<input type="hidden" name="repWKUser" id="repWKUser" class="form-control" >
 				<input type="hidden" name="repTipo" id="repTipo" class="form-control" >
@@ -217,7 +218,7 @@
                    	data-protection="repNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir representante do pedido de máquina" /> 
             </div>
             
-            <div class="col-md-4 col-xs-12" align="left">
+            <div class="col-md-4 " align="left">
 				<label for="repEmail">E-mail Representante</label>
 				<input type="text" name="repEmail" id="repEmail" class="form-control" readonly 
 					data-protection="repEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do representante do pedido de máquina" />
@@ -227,18 +228,18 @@
 		
 		<div class="row">
 			
-			<div class="col-md-1 col-md-offset-1 col-xs-4" align="left" >
+			<div class="col-md-1 col-md-offset-1" align="left" >
 				<label for="repGesTerA3COD">Código</label>
 				<input type="text" name="repGesTerA3COD" id="repGesTerA3COD" class="form-control" readonly />
 	        </div>
-			<div class="col-md-5 col-xs-8" align="left">
+			<div class="col-md-5" align="left">
 				<label for="repGestorTerritorial">Gestor Territorial</label>
 				<input type="hidden" name="repGestorTerritorialWKUser" id="repGestorTerritorialWKUser" class="form-control" />
 				<input type="text" name="repGestorTerritorial" id="repGestorTerritorial" class="form-control" readonly
 					data-protection="repGestorTerritorial" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir gestor territorial do pedido de máquina" />
 	        </div>
 	        
-	        <div class="col-md-4 col-xs-12" align="left">
+	        <div class="col-md-4 " align="left">
 				<label for="repEmailGestorTerritorial">E-mail Gestor Territorial</label>
 				<input type="text" name="repEmailGestorTerritorial" id="repEmailGestorTerritorial" class="form-control"  readonly
 					data-protection="repEmailGestorTerritorial" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do gestor territorial do pedido de máquina" />
@@ -246,18 +247,18 @@
 	        
 		</div>
 		<div class="row">
-			<div class="col-md-1 col-md-offset-1 col-xs-4" align="left">
+			<div class="col-md-1 col-md-offset-1" align="left">
 				<label for="repGesComA3COD">Código</label>
 				<input type="text" name="repGesComA3COD" id=repGesComA3COD class="form-control" readonly />
 	        </div>
-			<div class="col-md-5 col-xs-8" align="left">
+			<div class="col-md-5" align="left">
 				<label for="repGestorTerritorial">Gestor Comercial</label>
 				<input type="hidden" name="repGestorComercialWKUser" id="repGestorComercialWKUser" class="form-control" />
 				<input type="text" name="repGestorComercial" id="repGestorComercial" class="form-control" readonly
 					data-protection="repGestorComercial" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir gestor comercial do pedido de máquina" />
 	        </div>
 	        
-	        <div class="col-md-4 col-xs-12" align="left">
+	        <div class="col-md-4 " align="left">
 				<label for="repEmailGestorComercial">E-mail Gestor Comercial</label>
 				<input type="text" name="repEmailGestorComercial" id="repEmailGestorComercial" class="form-control"  readonly
 					data-protection="repEmailGestorComercial" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do gestor comercial do pedido de máquina" />
@@ -294,7 +295,6 @@
 				<input type="text" name="vendedor8" id="vendedor8" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
 			<div id="divVend9" class="col-md-1" align="left" style="display:none;">
-				<label for="vendedor9">Vend. 9</label>
 				<input type="text" name="vendedor9" id="vendedor9" class="form-control" maxlength="6" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
 			<div id="divVend10" class="col-md-1" align="left" style="display:none;">
@@ -310,34 +310,34 @@
 		    </div>
 		</div>
 	    <div class="row">
-	    	<div class="col-md-2 col-md-offset-1 col-xs-8" align="left">
+	    	<div class="col-md-2 col-md-offset-1" align="left">
 				<label for="revCpfCnpj">CPF/CNPJ</label>
 				<input type="text" name="revCpfCnpj" id="revCpfCnpj" class="form-control" maxlength="20" 
 					data-protection="revCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir revenda do pedido de máquina" />
 	        </div>
-	        <div class="col-md-1 col-xs-4" align="left">
+	        <div class="col-md-1 " align="left">
 				<label for="revA3COD">Código</label>
 				<input type="text" name="revA3COD" id="revA3COD" class="form-control" readonly />
 				<!-- revA1COD e revA1LOJA puxa dos dados adicionais da Revenda quando ela está cadastrando o pedido -->
 				<input type="hidden" name="revA1COD" id="revA1COD" />
 				<input type="hidden" name="revA1LOJA" id="revA1LOJA" />
 	        </div>
-	    	<div class="col-md-4 col-xs-12" align="left">
+	    	<div class="col-md-4 " align="left">
 				<label for="revNome">Nome Revenda</label>
 				<input type="text" name="revNome" id="revNome" class="form-control" maxlength="100" readonly
 					data-protection="revNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir revenda do pedido de máquina" />
 	        </div>
-	        <div class="col-md-2 col-xs-6" align="left">
+	        <div class="col-md-2 " align="left">
 				<label for="revFator">Fator Revenda</label>
 				<input type="text" name="revFator" id="revFator" class="form-control" maxlength="20" />
 	        </div>
 	    </div>
 	    <div class="row">
-	    	<div class="col-md-2 col-md-offset-1 col-xs-6" align="left">
+	    	<div class="col-md-2 col-md-offset-1" align="left">
 				<label for="revMatFluig">Matrícula Revenda</label>
 				<input type="text" name="revMatFluig" id="revMatFluig" class="form-control" maxlength="20" readonly />
 	        </div>
-	        <div class="col-md-4 col-xs-12" align="left">
+	        <div class="col-md-4 " align="left">
 				<label for="revNomeFluig">Nome Fluig Revenda</label>
 				<input type="text" name="revNomeFluig" id="revNomeFluig" class="form-control" readonly />
 	        </div>
@@ -353,30 +353,30 @@
 		    </div>
 		</div>
 	    <div class="row">	
-	    	<div class="col-md-2 col-md-offset-1 col-xs-6" align="left">
+	    	<div class="col-md-2 col-md-offset-1" align="left">
 				<label for="cliCodigo">Código</label>
 				<input type="text" name="cliCodigo" id="cliCodigo" class="form-control" readonly maxlength="9" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
 	        
-	        <div class="col-md-1 col-xs-6" align="left">
+	        <div class="col-md-1" align="left">
 				<label for="cliLoja">Loja</label>
 				<input type="text" name="cliLoja" id="cliLoja" class="form-control" readonly maxlength="4" onchange="somenteNumerosInteiros(this, 10, 1);"  onkeyup="somenteNumerosInteiros(this, 10, 1);" />
 	        </div>
 	    </div>
 	    
 	    <div class="row">
-	    	<div class="col-md-2 col-md-offset-1 col-xs-7" align="left">
+	    	<div class="col-md-2 col-md-offset-1" align="left">
 				<label for="cliCpfCnpj">CPF/CNPJ/Código Exterior*</label>
 				<input type="text" name="cliCpfCnpj" id="cliCpfCnpj" class="form-control" readonly maxlength="20" 
 					data-protection="cliCpfCnpj" data-protection-anonymizable="true" data-protection-cpf data-protection-class-legitimate-interests="Necessário para definir cliente do pedido de máquina" />
 	        </div>
 	    	
-	    	<div class="col-md-2 col-xs-5" align="left">
+	    	<div class="col-md-2 " align="left">
 				<label for="cliInscricaoEstadual">Inscrição Estadual*</label>
 				<input type="text" name="cliInscricaoEstadual" id="cliInscricaoEstadual" readonly maxlength="20" class="form-control"/>
 	        </div>
 	    	
-	    	<div class="col-md-5 col-xs-12" align="left">
+	    	<div class="col-md-5" align="left">
 				<label for="cliNome">Nome*</label>
 				<input type="text" name="cliNome" id="cliNome" class="form-control" 
 					data-protection="cliNome" data-protection-anonymizable="true" data-protection-name data-protection-class-legitimate-interests="Necessário para definir cliente do pedido de máquina" />
@@ -388,12 +388,12 @@
 	        </div>
 	    </div>
 	    <div class="row">
-	    	<div class="col-md-2 col-md-offset-1 col-xs-5" align="left">
+	    	<div class="col-md-2 col-md-offset-1" align="left">
 				<label for="cepCliente">CEP*</label>
 				<input type="text" name="cliCEP" id="cliCEP" class="form-control"  />
             </div>
 	    
-	    	<div class="col-md-2 col-xs-7" align="left">
+	    	<div class="col-md-2" align="left">
 				<label for="cliUF">Estado*</label>
 				<input type="hidden" name="cliUFHidden" id="cliUFHidden"  />
 				<select name="cliUF" id="cliUF" class="form-control" >
@@ -428,39 +428,39 @@
 		      	</select>
 		      	
             </div>
-			<div class="col-md-5 col-xs-12" align="left">
+			<div class="col-md-5" align="left">
 				<label for="cliCidade">Cidade*</label>
 				<input type="text" name="cliCidade" id="cliCidade" class="form-control" />
 			</div>           
 	    </div> 
 	    
 	    <div  class="row">
-	    	<div class="col-md-4 col-md-offset-1 col-xs-12" align="left">
+	    	<div class="col-md-4 col-md-offset-1" align="left">
 				<label for="cliEndereco">Endereço*</label>
 				<input type="text" name="cliEndereco" id="cliEndereco" class="form-control" />
             </div>	
-            <div class="col-md-2 col-xs-12" align="left">
+            <div class="col-md-2" align="left">
 				<label for="cliBairro">Bairro*</label>
 				<input type="text" name="cliBairro" id="cliBairro" class="form-control" />
             </div>
-            <div class="col-md-3 col-xs-12" align="left">
+            <div class="col-md-3" align="left">
 				<label for="cliComplemento">Complemento</label>
 				<input type="text" name="cliComplemento" id="cliComplemento" class="form-control" />
             </div>
 	    </div> 
 
 	    <div class="row">
-	    	<div class="col-md-5 col-md-offset-1 col-xs-12" align="left">
+	    	<div class="col-md-5 col-md-offset-1" align="left">
 				<label for="cliEmail">E-mail*</label>
 				<input type="text" name="cliEmail" id="cliEmail" class="form-control"
 					data-protection="cliEmail" data-protection-anonymizable="true" data-protection-mail data-protection-class-legitimate-interests="Necessário para contato do cliente do pedido de máquina" />
             </div>	
-            <div class="col-md-1 col-xs-3" align="left">
+            <div class="col-md-1" align="left">
 				<label for="cliDDDTelefone">DDD</label>
 				<input type="text" name="cliDDDTelefone" id="cliDDDTelefone" class="form-control" 
 					data-protection="cliDDDTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente do pedido de máquina" />
             </div>
-            <div class="col-md-2 col-xs-9" align="left">
+            <div class="col-md-2" align="left">
 				<label for="cliTelefone">Telefone</label>
 				<input type="text" name="cliTelefone" id="cliTelefone" class="form-control" 
 					data-protection="cliTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente do pedido de máquina" />
@@ -476,11 +476,11 @@
 		    </div>
 		</div>
 	    <div  class="row">
-	    	<div class="col-md-1 col-md-offset-1 col-xs-12" align="left">
+	    	<div class="col-md-1 col-md-offset-1" align="left">
 				<label for="pedVersao">Versão</label>
 				<input type="text" name="pedVersao" id="pedVersao" class="form-control" readonly />
 	        </div>
-	    	<div class="col-md-3 col-xs-12" align="left">
+	    	<div class="col-md-3 " align="left">
 				<label for="pedCondPagto">Condição de Pagamento*</label>
 				<input type="hidden" name="pedCodCondPagto" id="pedCodCondPagto" class="form-control" >
 				<input type="zoom" name="pedCondPagto" id="pedCondPagto"
@@ -495,11 +495,11 @@
 					                              ] 
 				                              	}" /> 
 			</div>
-       		<div class="col-md-2 col-xs-12" align="left">
+       		<div class="col-md-2" align="left">
 				<label for="pedOutraCodPagto">Outra Condição Pagamento*</label>
 				<input type="text" name="pedOutraCodPagto" id="pedOutraCodPagto" class="form-control" readonly />
 			</div>	
-            <div class="col-md-1 col-xs-5" align="left">
+            <div class="col-md-1" align="left">
 				<label for="pedFrete">Frete*</label>
 				<select name="pedFrete" id="pedFrete" class="form-control">
 					<option value=""></option>
@@ -507,7 +507,7 @@
 					<option value="FOB">FOB</option>
 				</select>	
             </div>
-			<div class="col-md-2 col-xs-7" align="left">
+			<div class="col-md-2" align="left">
 				<label for="dataVigenciaInicial">Data Prev. Embarque*</label>
 				<div class="input-group">
 					<input type="text" name="pedDataPrevEmbarque" id="pedDataPrevEmbarque"  class="form-control" />				
@@ -519,16 +519,7 @@
 		</div>
 	    
 	    <div  class="row">
-			<div class="col-md-2 col-md-offset-1 col-xs-12" align="left">
-				<label for="pedTipoPedido">Tipo de Pedido*</label>
-				<select name="pedTipoPedido" id="pedTipoPedido" class="form-control">
-					<option value=""></option>
-					<option value="Faturamento">Faturamento</option>
-					<option value="Consignacao">Consignação</option>
-					<option value="Demonstracao">Demonstração</option>
-				</select>	
-            </div>
-	    	<div id="divTipoPreco" class="col-md-3  col-xs-12" align="left" >
+	    	<div class="col-md-3 col-md-offset-1" align="left" >
 	    		<label for="pedTipoPreco">Tipo de Preço*</label>
 				<div class="radio input-group">
 					<div class="custom-radio custom-radio-primary">
@@ -541,57 +532,11 @@
 					</div>
 				</div>
             </div>
-			<div class="col-md-4 col-xs-12" align="left">
+			<div class="col-md-4 " align="left">
 			    <label for="pedObservacao">Observação Relatório</label>
 				<textarea rows="3" cols="6" name="pedObservacao" id="pedObservacao" class="form-control " ></textarea>
             </div>
 	    </div>
-	    <div id="divReservaMaquina" style="display:none;">
-		    <div  class="row">
-		    	<div class="col-md-10 col-md-offset-1" align="left" >
-					<div style="text-align:left; border-bottom: 1px solid rgb(209, 211, 212); margin-bottom:3px;">
-			       		<label >Reserva de Máquina</label>
-			       		<input type="hidden" name="pedMaqResWKUserReserva" id="pedMaqResWKUserReserva" class="form-control" />
-			    		<input type="hidden" name="pedMaqResDataReserva" id="pedMaqResDataReserva" class="form-control" />
-						<input type="hidden" name="pedMaqResWKUserCancelReserva" id="pedMaqResWKUserCancelReserva" class="form-control" />
-						<input type="hidden" name="pedMaqResDataCancelReserva" id="pedMaqResDataCancelReserva" class="form-control" />
-		       		</div>
-			    </div>
-		    </div>
-		    <div  class="row">
-		    	<div id="divMaquinaReservadaRemove" class="col-md-1" align="right" style="display:none;">
-		    		<br>
-		    		<i class="fluigicon fluigicon-trash icon-md fs-xs-padding fs-cursor-pointer" title="Remover Máquina Reservada" onclick="removeMaquinaReservada(this)"></i>
-		    	</div>
-		    	<div id="divMaquinaReservadaDesc" class="col-md-4 col-md-offset-1" align="left" >
-		    		<label for="pedMaqResDesc">Máquina Reservada</label>
-			    	<div class="input-group">
-						<input type="text" name="pedMaqResDesc" id="pedMaqResDesc" class="form-control" readonly /> 
-						<span id="idSelecionaMaquinaReservada" class="input-group-addon group-zoom no-view modal-zoom zoom-click btn-search-maquina-reservada" data-event="selecionaMaquinaReservada" >
-							<span class="fluigicon fluigicon-zoom-in "></span>
-						</span> 
-			    	</div>
-		    	</div>
-		    	<div class="col-md-2" align="left">
-					<label for="pedMaqResModelo">Modelo</label>
-					<input type="text" name="pedMaqResModelo" id="pedMaqResModelo" class="form-control" readonly />
-		        </div>
-		    	<div class="col-md-1 col-xs-3" align="left">
-					<label for="pedMaqResEstoque">Estoque</label>
-					<input type="text" name="pedMaqResEstoque" id="pedMaqResEstoque" class="form-control" readonly />
-		        </div>
-		    	<div class="col-md-2 col-xs-5" align="left">
-					<label for="pedMaqResPrazoEnt">Prazo de Entrega</label>
-					<input type="text" name="pedMaqResPrazoEnt" id="pedMaqResPrazoEnt" class="form-control" readonly />
-		        </div>
-		    	<div class="col-md-1 col-xs-4" align="left">
-					<label for="pedMaqResNumPedidoTotvs">Nº Pedido</label>
-					<input type="text" name="pedMaqResFilialPedidoTotvs" id="pedMaqResFilialPedidoTotvs" class="form-control" readonly style="display: none;" />
-					<input type="text" name="pedMaqResNumPedidoTotvs" id="pedMaqResNumPedidoTotvs" class="form-control" readonly />
-		        </div>
-	    	</div>
-    	</div>
-
 	    
 	    <br><br><br>
 	    
@@ -631,7 +576,7 @@
 								<div class="input-group">
 									<input type="text" name="itPedCodItemItem" id="itPedCodItemItem" class="form-control inputItPedCodItem" style="width: 150px !important; min-width: 150px !important; max-width: 150px !important;" /> 
 									<span  class="input-group-addon group-zoom no-view btn-search-maquina" style="padding: 3px 10px !important; width: 40px !important; min-width: 40px !important; max-width: 40px !important;">
-										<input type="text" id="itPedImageBuscaMaqItem"  name="itPedImageBuscaMaqItem" readonly  class="transparent zoom-icon zoom-click" data-event="selecionaMaquina" style="margin: -10px; padding-left: 18px; padding-right: 18px" >
+										<input type="text" id="itPedImageBuscaMaqItem"  name="itPedImageBuscaMaqItem" readonly  class="transparent zoom-icon zoom-click zoomItemOpc" data-event="selecionaMaquina" style="margin: -10px; padding-left: 18px; padding-right: 18px" >
 									</span> 
 						    	</div>
 							</td>
@@ -717,15 +662,15 @@
          </div>
 		 <div  class="row">
            	<div id="divPossuiPecaSim" style="display:none;">
-	            <div class="col-md-4 col-md-offset-1 col-xs-12" align="left">
+	            <div class="col-md-4 col-md-offset-1" align="left">
 				    <label for="pecaDescricao">Descrição Peça(s)*</label>
 					<textarea rows="3" cols="6" name="pecaDescricao" id="pecaDescricao" class="form-control " ></textarea>
 	            </div>
-	            <div class="col-md-3 col-xs-12" align="left">
+	            <div class="col-md-3" align="left">
 					<label for="pecaCodPagto">Condição Pagamento Peça(s)*</label>
 					<input type="text" name="pecaCodPagto" id="pecaCodPagto" class="form-control" maxlength="50" />
 				</div>	
-	            <div class="col-md-2 col-xs-6" align="left">
+	            <div class="col-md-2" align="left">
 					<label for="pecaValor">Valor Peça(s) <span class="tipoMoeda"></span>*</label>
 					<input type="text" name="pecaValor" id="pecaValor" class="form-control" onKeyPress="validafunctions.setMoeda(this.id, 2, false , '')" />
 				</div>	
@@ -742,26 +687,26 @@
 		       		<hr />  
 	       		</div>
 	       		<div class="row">
-	       			<div class="col-md-3 col-xs-6" align="left"> 
+	       			<div class="col-md-3 " align="left"> 
 						<label for="pedTotalMaquina">Máquina<span class="tipoMoeda"></span>:</label>
 			      		<p id="pedTotalMaquina" class="form-control" readonly ></p>
 					</div>
-	       			<div class="col-md-3 col-xs-6" align="left"> 
+	       			<div class="col-md-3 " align="left"> 
 						<label for="pedTotalFrete">Frete<span class="tipoMoeda"></span>:</label>
 			      		<p id="pedTotalFrete" class="form-control" readonly ></p>
 					</div>
-					<div class="col-md-3 col-xs-6" align="left">
+					<div class="col-md-3 " align="left">
 						<label for="pedTotalIPI">IPI <span class="tipoMoeda"></span></label>
 				      	<input type="text" name="pedTotalIPI" id="pedTotalIPI" class="form-control" readonly />
 					</div>
-					<div class="col-md-3 col-xs-6" align="left"> 
+					<div class="col-md-3 " align="left"> 
 						<label for="pedTotalPeca">Peça<span class="tipoMoeda"></span>:</label>
 			      		<p id="pedTotalPeca" class="form-control" readonly ></p>
 					</div>
 				</div>
 				
 				<div class="row">	
-	       			<div  class="col-md-offset-3 col-md-6 col-xs-12" align="center">
+	       			<div  class="col-md-offset-3 col-md-6" align="center">
 						<label for="pedTotalPedido">Valor Total <span class="tipoMoeda"></span></label>
 				      	<input type="text" name="pedTotalPedidoSemImposto" id="pedTotalPedidoSemImposto" class="form-control" readonly style="display:none;" />
 				      	<input type="text" name="pedTotalPedido" id="pedTotalPedido" class="form-control" style="font-size: 18px; font-weight: bold; color: #3F3F3C; text-align:center;" readonly />
@@ -914,8 +859,24 @@
 			<div class="col-md-5 col-md-offset-1" align="left">
 				<label for="aprovAdmGTSMotivo">Motivo*</label>
 				<textarea rows="2" cols="6" name="aprovAdmGTSMotivo" id="aprovAdmGTSMotivo" class="form-control " ></textarea>
-           	</div>
-        </div>  
+			</div>			
+        </div>  		
+		<div class="col-md-2 col-md-offset-1" align="left" id="divClassificacaoPed">
+			<label for="">Classificação Pedido*</label>
+			<select name="acompanhaAdmGTSClas" id="acompanhaAdmGTSClas" class="form-control" >
+				<option value=""></option>	        						        
+				<option value="PROGRAMADA">PROGRAMADA</option>	        						        
+				<option value="PROGRAMADA - TRANSFORMAR">PROGRAMADA - TRANSFORMAR</option>	        						        
+				<option value="GERAR NOVA">GERAR NOVA</option>	        						        
+				<option value="PRONTA - TRANSFORMAR">PRONTA - TRANSFORMAR</option>	        						        
+				<option value="PRONTA - REVISAR">PRONTA - REVISAR</option>	        						        
+				<option value="FATURAMENTO DE UMA CONSIGNAÇÃO">FATURAMENTO DE UMA CONSIGNAÇÃO</option>	        						        
+				<option value="FATURAMENTO DE UMA DEMONSTRAÇÃO">FATURAMENTO DE UMA DEMONSTRAÇÃO</option>	        						        
+				<option value="FATURAMENTO DE UMA FEIRA">FATURAMENTO DE UMA FEIRA</option>	        						        
+				<option value="REFATURAMENTO">REFATURAMENTO</option>	        						        
+				<option value="MÁQUINA PRONTA ESTOQUE">MÁQUINA PRONTA ESTOQUE</option>	        						        	        						        
+			</select>
+		</div>
 	</div>	
 		
 	<div id="divAcompanhaAdministrativoGTS" style="display:none;">
@@ -942,7 +903,7 @@
 			<div class="col-md-5 col-md-offset-1" align="left">
 				<label for="acompanhaAdmGTSObs">Observação*</label>
 				<textarea rows="2" cols="6" name="acompanhaAdmGTSObs" id="acompanhaAdmGTSObs" class="form-control " ></textarea>
-           	</div>
+			</div>			   
         </div>  
 	</div>	
 	<div class="row">
