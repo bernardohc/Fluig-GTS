@@ -20,23 +20,27 @@ var funcoes = (function() {
 
 		addAno : function(){
 			var input = document.getElementById("sgSolAno");
-            var texto = input.value;
-            // Remove qualquer caractere que não seja número
-            input = texto.replace(/[^0-9]/g, "");
+			var texto = input.value;
 
-            // Limita o comprimento a 4 caracteres
-            if (texto.length > 4) {
-                texto = texto.slice(0, 4);
-            }
-            // Verifica se o ano está dentro do intervalo permitido
-            if (texto.length === 4) {
-                var ano = parseInt(texto, 10);
-                if (ano < 1900 || ano > 2050) {
-                    texto = "";
-                }
-            }
-			
-			$('#sgSolAno').val(input);
+			// Remove qualquer caractere que não seja número
+			texto = texto.replace(/[^0-9]/g, "");
+
+			// Limita o comprimento a 4 caracteres
+			if (texto.length > 4) {
+				texto = texto.slice(0, 4);
+			}
+
+			// Verifica se o ano está dentro do intervalo permitido
+			if (texto.length === 4) {
+				var ano = parseInt(texto, 10);
+				var anoAtual = new Date().getFullYear();
+				if (ano < 1900 || ano > anoAtual) {
+					texto = "";
+				}
+			}
+
+			// Atualiza o valor do input
+			$('#sgSolAno').val(texto);
 		},
 
 		aplicarMascaraTelefone : function(elementId){
@@ -403,12 +407,20 @@ function loadForm(){
 	$("[flexer]").hide();
 	$("[terrus]").hide();
 	
+	$("[tpAtendimento]").hide();
+	
 	if(CURRENT_STATE == INICIO_0){
 		funcoes.gerarDataHora();
 		$('#sgAddItemOrdem').val("1");	
 		$('#sgSolAtend').val("1");	
 
 		var solDataSaidaCal = FLUIGC.calendar('#sgSolDtFat', {
+			language: 'pt-br',
+			pickDate: true,
+			pickTime: false,
+		});
+
+		var solDataSaidaCal = FLUIGC.calendar('#sgSolEntTec', {
 			language: 'pt-br',
 			pickDate: true,
 			pickTime: false,
@@ -448,6 +460,17 @@ function loadForm(){
 
 			funcoes.LimpaTpMaq();
 			$('#tipoMaqHidden').val(tpMaquina);
+		});
+
+		$(document).on("input", "#tpAtendMp", function() {
+			var tpAtendimentoMp = $("input:radio[name='tpAtendimentoMp']:checked").val();
+			if(tpAtendimentoMp == "sim"){
+				$("[tpAtendimento]").show();
+			}else if(tpAtendimentoMp == "nao"){
+				$("[tpAtendimento]").hide();
+			}
+
+			$('#tipoAtendMpHidden').val(tpAtendimentoMp);
 		});
 
 	}else if(CURRENT_STATE == INICIO){

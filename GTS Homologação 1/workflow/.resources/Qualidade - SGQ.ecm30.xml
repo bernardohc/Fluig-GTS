@@ -29,10 +29,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Qualidade - SGQ</processId>
-      <version>35</version>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>9051</formId>
+    <formId>105227</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -379,7 +379,7 @@
         <companyId>1</companyId>
         <processId>Qualidade-SGQ</processId>
         <expressionOrder>1</expressionOrder>
-        <version>35</version>
+        <version>1</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Finalizar&quot;</condition>
@@ -391,7 +391,7 @@
         <companyId>1</companyId>
         <processId>Qualidade-SGQ</processId>
         <expressionOrder>2</expressionOrder>
-        <version>35</version>
+        <version>1</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Cancelar&quot;</condition>
@@ -403,7 +403,7 @@
         <companyId>1</companyId>
         <processId>Qualidade-SGQ</processId>
         <expressionOrder>3</expressionOrder>
-        <version>35</version>
+        <version>1</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition> hAPI.getCardValue(&quot;sgqAcao&quot;) == &quot;Aguardar&quot;</condition>
@@ -578,7 +578,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Qualidade-SGQ</processId>
-        <version>35</version>
+        <version>1</version>
         <linkSequence>25</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -596,7 +596,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Qualidade-SGQ</processId>
-      <processVersion>35</processVersion>
+      <processVersion>1</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -606,7 +606,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Qualidade-SGQ</processId>
-      <processVersion>35</processVersion>
+      <processVersion>1</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -616,7 +616,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Qualidade-SGQ</processId>
-      <processVersion>35</processVersion>
+      <processVersion>1</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -626,7 +626,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Qualidade-SGQ</processId>
-      <processVersion>35</processVersion>
+      <processVersion>1</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -636,7 +636,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Qualidade-SGQ</processId>
-      <processVersion>35</processVersion>
+      <processVersion>1</processVersion>
       <stateSequence>31</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

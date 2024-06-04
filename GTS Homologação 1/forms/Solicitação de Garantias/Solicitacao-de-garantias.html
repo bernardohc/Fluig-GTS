@@ -44,6 +44,7 @@
 	<!-- Campo oculto-->
 	<input type="hidden" name="dataAbertura" id="dataAbertura">
 	<input type="hidden" name="tipoMaqHidden" id="tipoMaqHidden">
+	<input type="hidden" name="tipoAtendMpHidden" id="tipoAtendMpHidden">
 	
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -119,7 +120,7 @@
 						</div>
 						<div id="divDefineCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
 							<input type="radio" name="tpMaquina" value="outros" id="tpOutros">
-							<label for="tpOutros"> Terrus </label>
+							<label for="tpOutros"> Outros </label>
 						</div>
 					</div>
 				</div>
@@ -406,7 +407,19 @@
 				<hr>
 			</div>
 			<div class="col-md-12 ">
-				<div class="radio col-md-6" >
+				<div class="radio col-md-2" id="tpAtendMp">
+					<h5>Máquina Parada: </h5>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimentoMp" value="sim" id="tpsAtendSim">
+						<label for="tpsAtendSim">Sim</label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimentoMp" value="nao" id="tpsAtendNao">
+						<label for="tpsAtendNao">Não</label>
+					</div>
+				</div>
+				<div class="radio col-md-3" tpAtendimento>
+					<h5>Tipo de Atendimento: </h5>
 					<div class="custom-radio custom-radio-inline custom-radio-primary">
 						<input type="radio" name="tpAtendimento" value="Substituição" id="tpsSbstitui">
 						<label for="tpsSbstitui">Substituição dos itens danificados.</label>
@@ -414,10 +427,6 @@
 					<div class="custom-radio custom-radio-inline custom-radio-primary">
 						<input type="radio" name="tpAtendimento" value="Paliativo" id="tpPaliativo">
 						<label for="tpPaliativo">Paliativo.</label>
-					</div>
-					<div id="divDefineCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
-						<input type="radio" name="tpAtendimento" value="Máquina_parada" id="tpMp">
-						<label for="tpMp">Máquina parada </label>
 					</div>
 				</div>
 			</div>
@@ -470,7 +479,7 @@
 						customFnDelete="removeAtend(this)">
 						<thead>
 							<tr>										
-								<th class="col-md-1">  Atendimento</th>
+								<th class="col-md-1">Atendimento</th>
 								<th class="col-md-3">Data do Atendimento</th>
 								<th class="col-md-2">Tempo de Seriviço</th>
 								<th class="col-md-3">Deslocamento</th>
