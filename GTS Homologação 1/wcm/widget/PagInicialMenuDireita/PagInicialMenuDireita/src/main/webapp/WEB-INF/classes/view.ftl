@@ -221,6 +221,15 @@
 				</div>
 			</div>
 
+			<div id="000063" class="row" style="display:none; background-color: #f2842;" >
+				<div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " align="center">
+					<a href="/portal/p/GTS/pageworkflowview?processID=IM-PesquisaSatisfaçãoTécnicoOS" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/entrega-tecnica/pesquisa_de_satisfacao.png" /></a>
+				</div>
+				<div class="col-md-8 col-xs-8" align="center">	
+					<a href="/portal/p/GTS/pageworkflowview?processID=IM-PesquisaSatisfaçãoTécnicoOS"><h3 class="texto-link">Pesquisa de Satisfação Técnico OS</h3></a>
+				</div>
+			</div>
+
 			<div id="politicaPosVenda" class="row" style="display:none; background-color: #f2842;" >
 				<div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " align="center">
 					<a href="/portal/p/GTS/pageworkflowview?processID=P%C3%B3s-Venda%20-%20Pol%C3%ADtica%20P%C3%B3s-Venda-Servi%C3%A7os" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/entrega-tecnica/politica_pos_venda.png" /></a>

@@ -187,6 +187,12 @@ var PagInicialMenuDireita = SuperWidget.extend({
 					$('#divPosVenda').show();
 	            	$('#000046').show();
 				}
+				if(record['colleagueGroupPK.groupId'] == '000063' ){
+					//Pós-Venda - Pesquisa de Satisfação Técnico OS
+	            	definiuMenu = true;
+					$('#divPosVenda').show();
+	            	$('#000063').show();
+				}
 				/*
 	             * Frota
 	             */
