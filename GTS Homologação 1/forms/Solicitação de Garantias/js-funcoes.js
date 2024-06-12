@@ -125,10 +125,10 @@ var funcoes = (function() {
 				message += getMessage("Deslocamento", 1, form);
 				hasErros = true
 			}
-			// if( sgSolObs === '' ){
-			// 	message += getMessage("Observação", 1, form);
-			// 	hasErros = true
-			// }
+			if( sgSolObs === '' ){
+				message += getMessage("Observação", 1, form);
+				hasErros = true
+			}
 			if( hasErros ){
 				messageToast({message: message}, 'warning')
 				return;
@@ -180,7 +180,7 @@ var funcoes = (function() {
 			//Adiciona a ordem do item
 			let sgSolAtendNext = parseInt($("#sgSolAtend").val()) + 1;
 			$("#sgSolAtend").val(sgSolAtendNext);
-			//funcoes.LimpaItensSg();
+			funcoes.LimpaAtendSg();
 		},
 
 		LimpaItensSg : function(){
@@ -278,6 +278,34 @@ var funcoes = (function() {
 
 			// Atualiza o valor do campo com o texto formatado
 			$input.val(texto);
+		},
+
+		showCamera : function(elementId){
+			var $input = $('#' + elementId);
+			var descAnexo = $input.val();
+			
+			console.log(descAnexo);
+
+			if(descAnexo === 'Plaqueta Número de Série'){
+				$('#anexoFotoPlaqueta').val(descAnexo);
+				JSInterface.showCamera(descAnexo);
+			}if(descAnexo === 'Fotos Falha1'){
+				$('#anexoFotoDescricaoPro1').val(descAnexo);
+				JSInterface.showCamera(descAnexo);
+			}if(descAnexo === 'Fotos Falha2'){
+				$('#anexoFotoDescricaoPro2').val(descAnexo);
+				JSInterface.showCamera(descAnexo);
+			}if(descAnexo === 'Fotos Falha3'){
+				$('#anexoFotoDescricaoPro3').val(descAnexo);
+				JSInterface.showCamera(descAnexo);
+			}if(descAnexo === 'Foto 1 Parecer'){
+				$('#anexoFotoParecer1').val(descAnexo);
+				JSInterface.showCamera(descAnexo);
+			}if(descAnexo === 'Foto 2 Parecer'){
+				$('#anexoFotoParecer2').val(descAnexo);
+				JSInterface.showCamera(descAnexo);
+			}
+				
 		},
 
 
@@ -397,17 +425,60 @@ var eventsFuncoes = (function() {
 				}						
 			});
 
+			$(document).on("click", "#btnAddPlaqueta", function() {
+				funcoes.showCamera('btnAddPlaqueta');
+				//$('#btnAddPlaqueta').attr("disabled", true);
+			});
+			$(document).on("click", "#btnAddFtFalha1", function() {
+				funcoes.showCamera('btnAddFtFalha1');
+			});
+			$(document).on("click", "#btnAddFtFalha2", function() {
+				funcoes.showCamera('btnAddFtFalha2');
+			});
+			$(document).on("click", "#btnAddFtFalha3", function() {
+				funcoes.showCamera('btnAddFtFalha3');
+			});
+			$(document).on("click", "#btnAddParecerFt1", function() {
+				funcoes.showCamera('btnAddParecerFt1');
+			});
+			$(document).on("click", "#btnAddParecerFt2", function() {
+				funcoes.showCamera('btnAddParecerFt2');
+			});
+
 		}
 	}
 })();
 
 function loadForm(){
+	$("[divNumSerie]").hide();
 	
-	$("[milho]").hide();
-	$("[flexer]").hide();
-	$("[terrus]").hide();
+	// $("[milho]").hide();
+	// $("[flexer]").hide();
+	// $("[terrus]").hide();
 	
 	$("[tpAtendimento]").hide();
+
+	var myModal = FLUIGC.modal({
+		title: 'Observções sobre Solicitação de Garantia',
+		content: 'O preenchimento correto do formulário de Solicitação de Garantia e o envio das informações detalhadas para análise do processo de garantia, '+ 
+		'são indispensáveis para que o comitê de garantias GTS possa realizar a análise ágil dos processos.'+ 
+		'<h3>Instruções para preenchimento do Formulário:</h3>'+
+		'<p>Os processos devem ser gerados por modo de falha encontrados no equipamento,'+ 
+		'por tanto o formulário deve conter as informações dos itens que correspondem ao mesmo modo de falha.</p>'+
+		'O solicitante deverá preencher todos os campos do formulário, com exceção dos que estão com observação que serão preenchidos pela GTS.'+ 
+		'As informações devem ser coletadas no momento do atendimento para que não fique nenhuma informação ausente no processo.',
+		id: 'fluig-modal',
+		actions: [{
+			'label': 'Fechar',
+			'autoClose': true
+		}]
+	}, function(err, data) {
+		if(err) {
+			// do error handling
+		} else {
+			// do something with data
+		}
+	});
 	
 	if(CURRENT_STATE == INICIO_0){
 		funcoes.gerarDataHora();
@@ -438,35 +509,48 @@ function loadForm(){
 			pickTime: false,
 		});
 
-		$(document).on("input", "#divRadio", function() {
-			var tpMaquina = $("input:radio[name='tpMaquina']:checked").val();
-			if(tpMaquina == "milho"){
-				$("[milho]").show();
-				$("[flexer]").hide();
-				$("[terrus]").hide();
-			}else if(tpMaquina == "flexer"){
-				$("[milho]").hide();
-				$("[flexer]").show();
-				$("[terrus]").hide();
-			}else if(tpMaquina == "terrus"){
-				$("[milho]").hide();
-				$("[flexer]").hide();
-				$("[terrus]").show();
-			}else if(tpMaquina == "outros"){
-				$("[milho]").hide();
-				$("[flexer]").hide();
-				$("[terrus]").hide();
+		$(document).on("input", "#divRadioTpAtendimento", function() {
+			var tpMaquina = $("input:radio[name='tpAtendimentoMaq']:checked").val();
+			if(tpMaquina == "Balcao"){
+				$("[divNumSerie]").hide();
+			}else{
+				$("[divNumSerie]").show();
 			}
 
 			funcoes.LimpaTpMaq();
 			$('#tipoMaqHidden').val(tpMaquina);
 		});
 
+
+		// $(document).on("input", "#divRadio", function() {
+		// 	var tpMaquina = $("input:radio[name='tpMaquina']:checked").val();
+		// 	if(tpMaquina == "milho"){
+		// 		$("[milho]").show();
+		// 		$("[flexer]").hide();
+		// 		$("[terrus]").hide();
+		// 	}else if(tpMaquina == "flexer"){
+		// 		$("[milho]").hide();
+		// 		$("[flexer]").show();
+		// 		$("[terrus]").hide();
+		// 	}else if(tpMaquina == "terrus"){
+		// 		$("[milho]").hide();
+		// 		$("[flexer]").hide();
+		// 		$("[terrus]").show();
+		// 	}else if(tpMaquina == "outros"){
+		// 		$("[milho]").hide();
+		// 		$("[flexer]").hide();
+		// 		$("[terrus]").hide();
+		// 	}
+
+		// 	funcoes.LimpaTpMaq();
+		// 	$('#tipoMaqHidden').val(tpMaquina);
+		// });
+
 		$(document).on("input", "#tpAtendMp", function() {
 			var tpAtendimentoMp = $("input:radio[name='tpAtendimentoMp']:checked").val();
-			if(tpAtendimentoMp == "sim"){
+			if(tpAtendimentoMp == "nao"){
 				$("[tpAtendimento]").show();
-			}else if(tpAtendimentoMp == "nao"){
+			}else if(tpAtendimentoMp == "sim"){
 				$("[tpAtendimento]").hide();
 			}
 

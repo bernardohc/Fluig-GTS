@@ -45,6 +45,12 @@
 	<input type="hidden" name="dataAbertura" id="dataAbertura">
 	<input type="hidden" name="tipoMaqHidden" id="tipoMaqHidden">
 	<input type="hidden" name="tipoAtendMpHidden" id="tipoAtendMpHidden">
+	<input type="hidden" name="anexoFotoPlaqueta" id="anexoFotoPlaqueta">
+	<input type="hidden" name="anexoFotoDescricaoPro1" id="anexoFotoDescricaoPro1">
+	<input type="hidden" name="anexoFotoDescricaoPro2" id="anexoFotoDescricaoPro2">
+	<input type="hidden" name="anexoFotoDescricaoPro3" id="anexoFotoDescricaoPro3">
+	<input type="hidden" name="anexoFotoParecer1" id="anexoFotoParecer1">
+	<input type="hidden" name="anexoFotoParecer2" id="anexoFotoParecer2">
 	
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -78,8 +84,32 @@
 			<h3 class="panel-title">Dados do Equipamento</h3>
 		</div>
 		<div class="panel-body">
-			<div class="row">
-				<div class="form-group col-md-3">
+			<div class="row sub-titulo col-md-6 col-md-offset-">
+				<h5><strong><u>Tipo de Atendimento:</u></strong></h5>
+			</div>
+			<div class="col-md-12">			
+				<div class="radio col-md-4 col-md-offset-4" id="divRadioTpAtendimento">
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimentoMaq" value="Revenda" id="tpAtendRevenda">
+						<label for="tpAtendRevenda"> Estoque Revenda </label>
+					</div>
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimentoMaq" value="Balcao" id="tpAtendBalcao">
+						<label for="tpAtendBalcao"> Garantia Balcão </label>
+					</div>					
+					<div class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimentoMaq" value="Cliente" id="tpAtendCliente">
+						<label for="tpAtendCliente"> Máquina Cliente </label>
+					</div>
+					<!-- 
+					<div id="divDefineCancelar" class="custom-radio custom-radio-inline custom-radio-primary">
+						<input type="radio" name="tpAtendimentoMaq" value="Patio" id="tpAtendPatio">
+						<label for="tpAtendPatio"> Máquina Pátio </label>
+					</div> -->
+				</div>
+			</div>
+			<div class="row" divNumSerie>
+				<div class="form-group col-md-3" >
 					<label for="sgSolNumeroSerie">Número de Série:</label>
 					<input type="text" name="sgSolNumeroSerie" id="sgSolNumeroSerie" class="form-control">
 				</div>
@@ -99,8 +129,15 @@
 					<label for="sgSolDtFabrica">Data de Fabricação:</label>
 					<input type="text" name="sgSolDtFabrica" id="sgSolDtFabrica" class="form-control">
 				</div>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-10">
+						<button type="button" class="btn btn-info" id="btnAddPlaqueta"  value="Plaqueta Número de Série">Adicionar Foto da Plaqueta</button>
+					</div>
+				</div>
 			</div>
-			<div id="selecionaMaq" >
+			<br>
+			
+			<!-- <div id="selecionaMaq" >
 				<div class="row sub-titulo">
 					<h5><strong><u>Tipo de Máquina:</u></strong></h5>
 				</div>
@@ -124,8 +161,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div id="divMilho" milho>
+			</div> -->
+			<!-- <div id="divMilho" milho>
 				<div class="row sub-titulo">
 					<h5><strong><u>Plataforma de Milho</u></strong></h5>
 				</div>
@@ -239,35 +276,37 @@
 						</select>
 					</div>
 				</div>
-			</div>
-			<div class="row sub-titulo">
-				<h5><strong>Colheitadeira ou Trator:</strong></h5>
-				<hr>
-			</div>
-			<div class="form-group col-md-2">
-				<label for="sgSolMarca">Marca:</label>
-				<select name="sgSolMarca" id="sgSolMarca" class="form-control sgSolMarca">
-					<option value=""></option>
-					<option value="Agrale">Agrale</option>
-					<option value="Case">Case</option>
-					<option value="Claas">Claas</option>
-					<option value="John Deere">John Deere</option>
-					<option value="Landini">Landini</option>
-					<option value="Ls Tractor">Ls Tractor</option>
-					<option value="Massey Fergunson">Massey Fergunson</option>
-					<option value="New Holland">New Holland</option>
-					<option value="Stara">Stara</option>
-					<option value="Valtra">Valtra</option>
-					<option value="Outra Marca">Outra Marca</option>
-				</select>					
-			</div>
-			<div class="form-group col-md-2">
-				<label for="sgSolAno">Ano:</label>
-				<input type="text" name="sgSolAno" id="sgSolAno" class="form-control" maxlength="4" placeholder="0000">
-			</div>
-			<div class="form-group col-md-2">
-				<label for="sgSolModeloTrator">Modelo:</label>
-				<input type="text" name="sgSolModeloTrator" id="sgSolModeloTrator" class="form-control">
+			</div> -->
+			<div>
+				<div class="row sub-titulo">
+					<h5><strong>Colheitadeira ou Trator:</strong></h5>
+					<hr>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolMarca">Marca:</label>
+					<select name="sgSolMarca" id="sgSolMarca" class="form-control sgSolMarca">
+						<option value=""></option>
+						<option value="Agrale">Agrale</option>
+						<option value="Case">Case</option>
+						<option value="Claas">Claas</option>
+						<option value="John Deere">John Deere</option>
+						<option value="Landini">Landini</option>
+						<option value="Ls Tractor">Ls Tractor</option>
+						<option value="Massey Fergunson">Massey Fergunson</option>
+						<option value="New Holland">New Holland</option>
+						<option value="Stara">Stara</option>
+						<option value="Valtra">Valtra</option>
+						<option value="Outra Marca">Outra Marca</option>
+					</select>					
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolAno">Ano:</label>
+					<input type="text" name="sgSolAno" id="sgSolAno" class="form-control" maxlength="4" placeholder="0000">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="sgSolModeloTrator">Modelo:</label>
+					<input type="text" name="sgSolModeloTrator" id="sgSolModeloTrator" class="form-control">
+				</div>
 			</div>
 		</div>
 		<div class="panel-heading">
@@ -439,7 +478,14 @@
 					<label for="sgSolDescProble">Descreva a operaçao no momento da falha (Coletar Informação com o operador):</label>
 					<textarea class="form-control" rows="3" name="sgSolDescProble"></textarea>
 				</div>
-			</div>			
+			</div>	
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<button type="button" class="btn btn-info" id="btnAddFtFalha1" value="Fotos Falha1">Adicionar Primeira foto da Falha</button>
+					<button type="button" class="btn btn-info" id="btnAddFtFalha2" value="Fotos Falha2">Adicionar Segunda Foto da Falha</button>
+					<button type="button" class="btn btn-info" id="btnAddFtFalha3" value="Fotos Falha3">Adicionar Terceira Foto da Falha</button>
+				</div>
+			</div>		
 			<div class="row sub-titulo">
 				<h5><strong>Detalhes do Atendimento:</strong></h5>
 				<hr>
@@ -521,6 +567,12 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<button type="button" class="btn btn-info" id="btnAddParecerFt1" value="Foto 1 Parecer">Adicionar Primeira Foto</button>
+						<button type="button" class="btn btn-info" id="btnAddParecerFt2" value="Foto 2 Parecer">Adicionar Segunda Foto</button>
+					</div>
+				</div>
+				<div class="row">
 					<div class="form-group col-md-3 col-md-offset-1">
 						<label for="sgSolNomeTecnico">Nome Técnico:</label>
 						<input type="text" name="sgSolNomeTecnico" id="sgSolNomeTecnico" class="form-control">
@@ -578,7 +630,7 @@
 								<option value="Quebra">Quebra</option>
 								<option value="Risco">Risco</option>
 								<option value="Ruído">Ruído</option>
-								<option value="Ruptura">Ruptura</option>
+								<option value="Rasgo">Rasgo</option>
 								<option value="Superaquecimento">Superaquecimento</option>
 								<option value="Trinca">Trinca</option>
 								<option value="Vazamento">Vazamento</option>
@@ -629,8 +681,10 @@
 											<select name="sgItensResultado" id="sgItensResultado" class="form-control sgSolsgItensResultadoEstRev" readonly>
 												<option value=""></option>
 												<option value="Indeferido">Indeferido</option>
+												<option value="Rejeitado">Rejeitado</option>
 												<option value="Deferido Sem Retorno">Deferido Sem Retorno</option>
 												<option value="Deferido Com Retorno">Deferido Com Retorno</option>
+												<option value="Deferido Com Retorno">Em Análise</option>
 											</select>
 										</td>
 										<td>
