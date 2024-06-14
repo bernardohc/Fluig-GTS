@@ -10,56 +10,40 @@ function validateForm(form){
         //INICIAL
         case INICIO_0 : 
         case INICIO :  
-        // case SALVAR_RELATORIO :
+            //Se for clicado em Enviar 
+            if (getValue("WKCompletTask") == "true" ){
 
-        //     //Se for clicado em Enviar 
-        //     if (getValue("WKCompletTask") == "true" ){
-
-        //         // if (getValue("solSetor") == "") {
-        //         //     message += getMessage("Setor", 1, form);
-        //         //     hasErros = true;
-        //         // }
+                if (isEmpty("psoNumSerie", form)) {
+                    message += getMessage("Número de Série", 1, form);
+                    hasErros = true;
+                }                
+                if (isEmpty("psoNotaTec", form)) {
+                    message += getMessage("Nota", 1, form);
+                    hasErros = true;
+                }                
                 
+                // if (isEmpty("salvarEnviar", form)) {
+                //     if (isMobile(form)){
+                //         message += getMessage("É preciso selecionar a ação ('Salvar' ou 'Enviar')", 6, form);
+                //     }else{
+                //         message += getMessage("É preciso selecionar a ação (<b>Salvar</b> ou <b>Enviar</b>)", 6, form);
+                //     }
+                //         hasErros = true;
+                // }else{
+                //     if( form.getValue("salvarEnviar") == 'Enviar' ){
+                //         if( WKNumState == WKNextState ){
+                //             if (isMobile(form)){
+                //             message += getMessage("Você selecionou a opção 'Enviar' e está salvando a solicitação.", 6, form);
+                //         }else{
+                //             message += getMessage("Você selecionou a opção <b>Enviar</b> e está salvando a solicitação.", 6, form);
+                //         }
+                //             hasErros = true;
+                //         }
+                //     }
+                // }
                 
-        //         if (isEmpty("salvarEnviar", form)) {
-        //             if (isMobile(form)){
-        //                 message += getMessage("É preciso selecionar a ação ('Salvar' ou 'Enviar')", 6, form);
-        //             }else{
-        //                 message += getMessage("É preciso selecionar a ação (<b>Salvar</b> ou <b>Enviar</b>)", 6, form);
-        //             }
-        //                 hasErros = true;
-        //         }else{
-        //             if( form.getValue("salvarEnviar") == 'Enviar' ){
-        //                 if( WKNumState == WKNextState ){
-        //                     if (isMobile(form)){
-        //                     message += getMessage("Você selecionou a opção 'Enviar' e está salvando a solicitação.", 6, form);
-        //                 }else{
-        //                     message += getMessage("Você selecionou a opção <b>Enviar</b> e está salvando a solicitação.", 6, form);
-        //                 }
-        //                     hasErros = true;
-        //                 }
-        //             }
-        //         }
-                
-        //     }         
+            }         
         break;
-
-        // case ANALISA_RELATORIO  :
-        //     if (getValue("WKCompletTask") == "true" ){
-        //         if (isEmpty("aprovRelatorio", form)) {
-        //             message += getMessage("Aprovação:", 1, form);
-        //             hasErros = true;
-        //         }else{
-                    
-                
-        //             }
-        //         }
-                
-            
-        
-        // break;
-
-
 
     }
     

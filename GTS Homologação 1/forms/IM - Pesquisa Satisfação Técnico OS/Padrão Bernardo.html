@@ -43,6 +43,10 @@
 
 	<!-- Campo oculto-->
 	<input type="hidden" name="dataAbertura" id="dataAbertura">
+	<input type="hidden" name="idEntregaTec" id="idEntregaTec">
+	<input type="hidden" name="nfEquipamento" id="nfEquipamento">
+	<input type="hidden" name="codCliente" id="codCliente">
+	<input type="hidden" name="lojaCliente" id="lojaCliente">
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -52,13 +56,17 @@
 			<div class="row col-md-12">				
 				<div class="form-group col-md-3">
 					<label for="psoCliente">Cliente:</label>
-					<input type="text" name="psoCliente" id="psoCliente" class="form-control" >
+					<input type="text" name="psoCliente" id="psoCliente" class="form-control" readonly>
 				</div>
 				<div class="form-group col-md-3">
 					<label for="psoCidade">Cidade:</label>
-					<input type="text" name="psoCidade" id="psoCidade" class="form-control" >
+					<input type="text" name="psoCidade" id="psoCidade" class="form-control" readonly>
 				</div>
 				<div class="form-group col-md-3">
+					<label for="psoEstado">Estado:</label>
+					<input type="text" name="psoEstado" id="psoEstado" class="form-control" readonly>
+				</div>
+				<!-- <div class="form-group col-md-3">
 					<label for="psoEstado">Estado:</label>
 					<select name="psoEstado" id="psoEstado" class="form-control psoEstado">
 						<option value=""></option>
@@ -90,24 +98,24 @@
 						<option value="SE">SE</option>
 						<option value="TO">TO</option>
 					</select>
-				</div>
+				</div> -->
 				<div class="form-group col-md-3">
 					<label for="psoTelefone">Telefone:</label>
-					<input type="text" name="psoTelefone" id="psoTelefone" class="form-control" >
+					<input type="text" name="psoTelefone" id="psoTelefone" class="form-control" readonly>
 				</div>
 			</div>
-			<div class="row col-md-12">
+			<!-- <div class="row col-md-12">
 				<div class="form-group col-md-3">
-					<label for="psoRevenda">Revenda:</label>
-					<input type="text" name="psoRevenda" id="psoRevenda" class="form-control" >
+					<label for="psoCliente">Cliente:</label>
+					<input type="text" name="psoCliente" id="psoCliente" class="form-control" >
 				</div>
 				<div class="form-group col-md-3">
-					<label for="psoRevCidade">Cidade:</label>
-					<input type="text" name="psoRevCidade" id="psoRevCidade" class="form-control" >
+					<label for="psoCliCidade">Cidade:</label>
+					<input type="text" name="psoCliCidade" id="psoCliCidade" class="form-control" >
 				</div>
 				<div class="form-group col-md-3">
-					<label for="psoRevEstado">Estado:</label>
-					<select name="psoRevEstado" id="psoRevEstado" class="form-control psoRevEstado">
+					<label for="psoCliEstado">Estado:</label>
+					<select name="psoCliEstado" id="psoCliEstado" class="form-control psoCliEstado">
 						<option value=""></option>
 						<option value="AC">AC</option>
 						<option value="AL">AL</option>
@@ -138,7 +146,7 @@
 						<option value="TO">TO</option>
 					</select>
 				</div>
-			</div>
+			</div> -->
 			<div class="row col-md-12">
 				<div class="form-group col-md-4">
 					<label for="psoNumSerie">Número de Série:</label>
@@ -146,13 +154,13 @@
 				</div>
 				<div class="form-group col-md-4">
 					<label for="psoDescEquip">Descrição do Equipamento:</label>
-					<input type="text" name="psoDescEquip" id="psoDescEquip" class="form-control" >
+					<input type="text" name="psoDescEquip" id="psoDescEquip" class="form-control" readonly>
 				</div>
 			</div>
 			<div class="row col-md-12">
 				<div class="form-group col-md-4">
 					<label for="psoTecnico">Técnico:</label>
-					<input type="text" name="psoTecnico" id="psoTecnico" class="form-control" >
+					<input type="text" name="psoTecnico" id="psoTecnico" class="form-control" readonly>
 				</div>
 				<div class="form-group col-md-2">
 					<label for="psoNotaTec">Nota:</label>
@@ -168,6 +176,7 @@
 						<option value="8">8</option>
 						<option value="9">9</option>
 						<option value="10">10</option>						
+						<option value="Não quis Opinar">Não quis Opinar</option>						
 					</select>
 				</div>
 			</div>
