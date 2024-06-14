@@ -142,6 +142,13 @@ function validateForm(form){
                     }
                     hasErros = true;
                 }
+
+                if( form.getValue("sgAddItemModFalha") == 'Falha Elétrica' ){
+                    if (isEmpty("anexoFalhaEletrica", form)) {
+                        message += getMessage("Falha Elétrica", 10, form);
+                        hasErros = true;
+                    }
+                }
                 
 
                 // if (isEmpty("anexoFotoParecer1", form)) {
@@ -208,7 +215,7 @@ function getMessage(texto, tipoMensagem, form, tabpaifilho) {
             case 9:
                 return "Atenção! Selcione a opção: " +texto;    
             case 10:
-                return "Atenção! Não existe a foto: " +texto;    
+                return "Atenção! Não existe a evidência: " +texto;    
         }
     } else {
         switch (tipoMensagem) {
@@ -231,7 +238,7 @@ function getMessage(texto, tipoMensagem, form, tabpaifilho) {
             case 9:
                 return "<li>Atenção! Selcione a opção: <b>"+texto+"</b></li>";  
             case 10:
-                return "<li>Atenção! Não existe a foto: <b>"+texto+"</b></li>";  
+                return "<li>Atenção! Não existe a evidência: <b>"+texto+"</b></li>";  
         }
     }
 } 

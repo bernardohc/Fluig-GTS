@@ -51,6 +51,7 @@
 	<input type="hidden" name="anexoFotoDescricaoPro3" id="anexoFotoDescricaoPro3">
 	<input type="hidden" name="anexoFotoParecer1" id="anexoFotoParecer1">
 	<input type="hidden" name="anexoFotoParecer2" id="anexoFotoParecer2">
+	<input type="hidden" name="anexoFalhaEletrica" id="anexoFalhaEletrica">
 	
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -480,10 +481,11 @@
 				</div>
 			</div>	
 			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<button type="button" class="btn btn-info" id="btnAddFtFalha1" value="Fotos Falha1">Adicionar Primeira foto da Falha</button>
-					<button type="button" class="btn btn-info" id="btnAddFtFalha2" value="Fotos Falha2">Adicionar Segunda Foto da Falha</button>
-					<button type="button" class="btn btn-info" id="btnAddFtFalha3" value="Fotos Falha3">Adicionar Terceira Foto da Falha</button>
+				<div class="col-md-8 col-md-offset-2">
+					<button type="button" class="btn btn-info" id="btnAddFtFalha1" value="Fotos Falha1">Eviência Item Danificado no equipamento</button>
+					<button type="button" class="btn btn-info" id="btnAddFtFalha2" value="Fotos Falha2">Eviência Item Danificado Fora do Equipamento</button>
+					<button type="button" class="btn btn-info" id="btnAddFtFalha3" value="Fotos Falha3">Eviência Item Substituido</button>
+					<button type="button" class="btn btn-info" id="btnAddFtFalhaOutras" value="Outras Eviência da Falha">Outras Eviência</button>
 				</div>
 			</div>		
 			<div class="row sub-titulo">
@@ -512,7 +514,8 @@
 					<input type="text" name="sgSolObs" id="sgSolObs" class="form-control">
 				</div>
 				<div class="row">
-					<div class="col-md-2 col-md-offset-10">
+					<div class="col-md-3 col-md-offset-9">
+						<button type="button" class="btn btn-info" id="btnAddAnexoAtend">Evidência Atendimento</button>
 						<button type="button" class="btn btn-info" id="btnAddAtend">Adicionar Atendimento</button>
 					</div>
 				</div>
@@ -634,9 +637,12 @@
 								<option value="Superaquecimento">Superaquecimento</option>
 								<option value="Trinca">Trinca</option>
 								<option value="Vazamento">Vazamento</option>
-							</select>
-						</div>						
+							</select>							
+						</div>							
 					</div>
+					<div class="form-group col-md-2 col-md-offset-10" falhaEletrica>
+						<button type="button" class="btn btn-info" id="btnAddFalhaEltrica" value="Evidência Falha Eletrica" falhaEletrica>Video Falha Elétrica</button>
+					</div>										
 					<div class="row">
 						<div class="col-md-2 col-md-offset-10">
 							<button type="button" class="btn btn-info" id="btnAddItem">Adicionar Item</button>

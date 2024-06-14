@@ -304,11 +304,15 @@ var funcoes = (function() {
 			}if(descAnexo === 'Foto 2 Parecer'){
 				$('#anexoFotoParecer2').val(descAnexo);
 				JSInterface.showCamera(descAnexo);
+			}if(descAnexo === 'Evidência Falha Eletrica'){
+				$('#anexoFalhaEletrica').val(descAnexo);
+				JSInterface.showCamera(descAnexo);
+			}else{
+				JSInterface.showCamera(descAnexo);
 			}
 				
 		},
-
-
+		
 	}
 })();
 
@@ -438,11 +442,17 @@ var eventsFuncoes = (function() {
 			$(document).on("click", "#btnAddFtFalha3", function() {
 				funcoes.showCamera('btnAddFtFalha3');
 			});
+			$(document).on("click", "#btnAddFtFalhaOutras", function() {
+				funcoes.showCamera('btnAddFtFalhaOutras');
+			});
 			$(document).on("click", "#btnAddParecerFt1", function() {
 				funcoes.showCamera('btnAddParecerFt1');
 			});
 			$(document).on("click", "#btnAddParecerFt2", function() {
 				funcoes.showCamera('btnAddParecerFt2');
+			});
+			$(document).on("click", "#btnAddFalhaEltrica", function() {
+				funcoes.showCamera('btnAddFalhaEltrica');
 			});
 
 		}
@@ -457,6 +467,7 @@ function loadForm(){
 	// $("[terrus]").hide();
 	
 	$("[tpAtendimento]").hide();
+	$("[falhaEletrica]").hide();
 
 	var myModal = FLUIGC.modal({
 		title: 'Observções sobre Solicitação de Garantia',
@@ -521,6 +532,15 @@ function loadForm(){
 			$('#tipoMaqHidden').val(tpMaquina);
 		});
 
+
+		$(document).on("input", "#sgAddItemModFalha", function() {
+			var tpFalhaEletrica = $("#sgAddItemModFalha").val();
+			if(tpFalhaEletrica == "Falha Elétrica"){
+				$("[falhaEletrica]").show();
+			}else{
+				$("[falhaEletrica]").hide();
+			}
+		});
 
 		// $(document).on("input", "#divRadio", function() {
 		// 	var tpMaquina = $("input:radio[name='tpMaquina']:checked").val();
