@@ -186,6 +186,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 	            	definiuMenu = true;
 					$('#divPosVenda').show();
 	            	$('#000046').show();
+	            	$('#pesqOS').show();
 				}
 				/*
 	             * Frota

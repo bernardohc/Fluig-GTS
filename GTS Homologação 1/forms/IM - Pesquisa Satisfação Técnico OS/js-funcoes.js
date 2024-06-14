@@ -55,7 +55,6 @@ var funcoes = (function() {
 							$("#psoCidade").val(record.cliCidade);
 							$("#psoEstado").val(record.cliEstado);
 							$("#psoTecnico").val(record.revEntTecNome);
-							//$("#pesqAcompanhouEntrega").val(record.protoRecResponsavel);
 							$("#psoTelefone").val(record.protoRecTelefone);							
 							
 						}else if (records[0].CODRET == "2"){		
