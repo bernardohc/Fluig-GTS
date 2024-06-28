@@ -1419,6 +1419,305 @@
    </array>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 7144</string>
+   <array class="java.lang.String" length="98">
+    <void index="0">
+     <string>codCliente</string>
+    </void>
+    <void index="1">
+     <string>codRevenda</string>
+    </void>
+    <void index="2">
+     <string>dataAtual</string>
+    </void>
+    <void index="3">
+     <string>entRealizada</string>
+    </void>
+    <void index="4">
+     <string>falCodFalhaFalhaItem</string>
+    </void>
+    <void index="5">
+     <string>falCodFalhaFamiliaItem</string>
+    </void>
+    <void index="6">
+     <string>falCodFalhaGrupoMaquinaItem</string>
+    </void>
+    <void index="7">
+     <string>falCodFalhaModeloMaquinaItem</string>
+    </void>
+    <void index="8">
+     <string>falCodFamiliaItem</string>
+    </void>
+    <void index="9">
+     <string>falCodigoFalhaItem</string>
+    </void>
+    <void index="10">
+     <string>falDescFalhaFalhaItem</string>
+    </void>
+    <void index="11">
+     <string>falFamiliaItem</string>
+    </void>
+    <void index="12">
+     <string>falGrupoMaquinaItem</string>
+    </void>
+    <void index="13">
+     <string>falModeloMaquinaItem</string>
+    </void>
+    <void index="14">
+     <string>falPendenciaItem</string>
+    </void>
+    <void index="15">
+     <string>grupoResponsavelRegiao</string>
+    </void>
+    <void index="16">
+     <string>idEntregaTec</string>
+    </void>
+    <void index="17">
+     <string>lojaCliente</string>
+    </void>
+    <void index="18">
+     <string>lojaRevenda</string>
+    </void>
+    <void index="19">
+     <string>maqCodFalhaFamilia</string>
+    </void>
+    <void index="20">
+     <string>maqCodFalhaModeloMaquina</string>
+    </void>
+    <void index="21">
+     <string>maqCodFamilia</string>
+    </void>
+    <void index="22">
+     <string>maqDescFamilia</string>
+    </void>
+    <void index="23">
+     <string>maqDescModeloMaquina</string>
+    </void>
+    <void index="24">
+     <string>nfEquipamento</string>
+    </void>
+    <void index="25">
+     <string>pesNomePesquisador</string>
+    </void>
+    <void index="26">
+     <string>pesqAcompanhouEntrega</string>
+    </void>
+    <void index="27">
+     <string>pesqCidadeCliente</string>
+    </void>
+    <void index="28">
+     <string>pesqCidadeRevenda</string>
+    </void>
+    <void index="29">
+     <string>pesqCliente</string>
+    </void>
+    <void index="30">
+     <string>pesqEfetivoCont</string>
+    </void>
+    <void index="31">
+     <string>pesqEntregadorTec</string>
+    </void>
+    <void index="32">
+     <string>pesqEntregaPor</string>
+    </void>
+    <void index="33">
+     <string>pesqEstadoCliente</string>
+    </void>
+    <void index="34">
+     <string>pesqEstadoRevenda</string>
+    </void>
+    <void index="35">
+     <string>pesqFeedbackAtendimento</string>
+    </void>
+    <void index="36">
+     <string>pesqFeedbackEquipamento</string>
+    </void>
+    <void index="37">
+     <string>pesqFimOcorrencia</string>
+    </void>
+    <void index="38">
+     <string>pesqFimSemRet</string>
+    </void>
+    <void index="39">
+     <string>pesqModelo</string>
+    </void>
+    <void index="40">
+     <string>pesqNotaAtendimento</string>
+    </void>
+    <void index="41">
+     <string>pesqNotaDesempenho</string>
+    </void>
+    <void index="42">
+     <string>pesqNumSerie</string>
+    </void>
+    <void index="43">
+     <string>pesqOcorreAponta</string>
+    </void>
+    <void index="44">
+     <string>pesqOcorreAtendente</string>
+    </void>
+    <void index="45">
+     <string>pesqOcorreData</string>
+    </void>
+    <void index="46">
+     <string>pesqOcorreFeedback</string>
+    </void>
+    <void index="47">
+     <string>pesqOcorrencia</string>
+    </void>
+    <void index="48">
+     <string>pesqOcorrenciaApontamento</string>
+    </void>
+    <void index="49">
+     <string>pesqOcorrenciaFeedback</string>
+    </void>
+    <void index="50">
+     <string>pesqPrevColheita</string>
+    </void>
+    <void index="51">
+     <string>pesqPsFimOcorrencia</string>
+    </void>
+    <void index="52">
+     <string>pesqPsFimSemRet</string>
+    </void>
+    <void index="53">
+     <string>pesqPsMelhoria</string>
+    </void>
+    <void index="54">
+     <string>pesqPsSatisfacaoOBS</string>
+    </void>
+    <void index="55">
+     <string>pesqPsSatisfacaoSGM</string>
+    </void>
+    <void index="56">
+     <string>pesqRepresentante</string>
+    </void>
+    <void index="57">
+     <string>pesqRevenda</string>
+    </void>
+    <void index="58">
+     <string>pesqSatisfacaoOBS</string>
+    </void>
+    <void index="59">
+     <string>pesqTelefone</string>
+    </void>
+    <void index="60">
+     <string>pesqTermColheita</string>
+    </void>
+    <void index="61">
+     <string>processoId</string>
+    </void>
+    <void index="62">
+     <string>psPesqAcompanhouEntrega</string>
+    </void>
+    <void index="63">
+     <string>psPesqCidadeCliente</string>
+    </void>
+    <void index="64">
+     <string>psPesqCidadeRevenda</string>
+    </void>
+    <void index="65">
+     <string>psPesqCliente</string>
+    </void>
+    <void index="66">
+     <string>psPesqDispRevenda</string>
+    </void>
+    <void index="67">
+     <string>psPesqEfetivoCont</string>
+    </void>
+    <void index="68">
+     <string>psPesqEntregadorTec</string>
+    </void>
+    <void index="69">
+     <string>psPesqEntregaPor</string>
+    </void>
+    <void index="70">
+     <string>psPesqEstadoCliente</string>
+    </void>
+    <void index="71">
+     <string>psPesqEstadoRevenda</string>
+    </void>
+    <void index="72">
+     <string>psPesqFeedbackAtendimento</string>
+    </void>
+    <void index="73">
+     <string>psPesqFeedbackEquipamento</string>
+    </void>
+    <void index="74">
+     <string>psPesqFeedbackPecas</string>
+    </void>
+    <void index="75">
+     <string>psPesqModelo</string>
+    </void>
+    <void index="76">
+     <string>psPesqNotaAtendimento</string>
+    </void>
+    <void index="77">
+     <string>psPesqNotaDesempenho</string>
+    </void>
+    <void index="78">
+     <string>psPesqNumSerie</string>
+    </void>
+    <void index="79">
+     <string>psPesqOcorreAponta</string>
+    </void>
+    <void index="80">
+     <string>psPesqOcorreAtendente</string>
+    </void>
+    <void index="81">
+     <string>psPesqOcorreData</string>
+    </void>
+    <void index="82">
+     <string>psPesqOcorreFeedback</string>
+    </void>
+    <void index="83">
+     <string>psPesqOcorrencia</string>
+    </void>
+    <void index="84">
+     <string>psPesqOcorrenciaApontamento</string>
+    </void>
+    <void index="85">
+     <string>psPesqOcorrenciaFeedback</string>
+    </void>
+    <void index="86">
+     <string>psPesqRepresentante</string>
+    </void>
+    <void index="87">
+     <string>psPesqRevenda</string>
+    </void>
+    <void index="88">
+     <string>psPesqTelefone</string>
+    </void>
+    <void index="89">
+     <string>psSolDataPesq</string>
+    </void>
+    <void index="90">
+     <string>revEquipCodigo</string>
+    </void>
+    <void index="91">
+     <string>revEquipEstado</string>
+    </void>
+    <void index="92">
+     <string>revEquipLoJa</string>
+    </void>
+    <void index="93">
+     <string>revEquipRazaoSocialRevenda</string>
+    </void>
+    <void index="94">
+     <string>revEstado</string>
+    </void>
+    <void index="95">
+     <string>solDataPesq</string>
+    </void>
+    <void index="96">
+     <string>tbPesqOcorrencias</string>
+    </void>
+    <void index="97">
+     <string>tbPSPesqOcorrencias</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>processosServidor</string>
    <object class="java.util.ArrayList">
     <void method="add">

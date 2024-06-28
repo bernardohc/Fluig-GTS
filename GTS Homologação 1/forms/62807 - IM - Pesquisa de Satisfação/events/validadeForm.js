@@ -272,7 +272,7 @@ function validateForm(form){
                             hasErros = true;
                         }
                     } if(form.getValue("pesqPsFimOcorrencia") == 'sim'){
-                        if (isEmpty("psPesqNotaAtendimento", form)) {
+                        if (form.getValue("psPesqNotaAtendimento") === '') {
                             message += getMessage("Pesquisa de Satisfação Pós Safra - Como foi o Atendimento:", 1, form);
                             hasErros = true;
                         }
@@ -280,7 +280,7 @@ function validateForm(form){
                             message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do atendimento:", 1, form);
                             hasErros = true;
                         }
-                        if (isEmpty("psPesqNotaDesempenho", form)) {
+                        if (form.getValue("psPesqNotaDesempenho") === '') {
                             message += getMessage("Pesquisa de Satisfação Pós Safra - Desempenho do equipamento:", 1, form);
                             hasErros = true;
                         }

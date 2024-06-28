@@ -2165,6 +2165,98 @@
    </object>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 105227</string>
+   <array class="java.lang.String" length="29">
+    <void index="0">
+     <string>dataAanalise</string>
+    </void>
+    <void index="1">
+     <string>dataAtribuicao</string>
+    </void>
+    <void index="2">
+     <string>dataCancelamento</string>
+    </void>
+    <void index="3">
+     <string>dataFinalizacao</string>
+    </void>
+    <void index="4">
+     <string>dataPendendcia</string>
+    </void>
+    <void index="5">
+     <string>dataSolicitacao</string>
+    </void>
+    <void index="6">
+     <string>grupoResponsavelAtend</string>
+    </void>
+    <void index="7">
+     <string>sgqAcao</string>
+    </void>
+    <void index="8">
+     <string>sgqAtendente</string>
+    </void>
+    <void index="9">
+     <string>sgqCaDLinkDoc</string>
+    </void>
+    <void index="10">
+     <string>sgqCadObjDoc</string>
+    </void>
+    <void index="11">
+     <string>sgqCadPalChave</string>
+    </void>
+    <void index="12">
+     <string>sgqDescCodDoc</string>
+    </void>
+    <void index="13">
+     <string>sgqDescMotivoDoc</string>
+    </void>
+    <void index="14">
+     <string>sgqDtHoraAguarda</string>
+    </void>
+    <void index="15">
+     <string>sgqDtHoraAloca</string>
+    </void>
+    <void index="16">
+     <string>sgqDtHoraCance</string>
+    </void>
+    <void index="17">
+     <string>sgqDtHoraFim</string>
+    </void>
+    <void index="18">
+     <string>sgqDtHoraIni</string>
+    </void>
+    <void index="19">
+     <string>sgqEmail</string>
+    </void>
+    <void index="20">
+     <string>sgqObservacao</string>
+    </void>
+    <void index="21">
+     <string>sgqRevCodDoc</string>
+    </void>
+    <void index="22">
+     <string>sgqRevMotivoDoc</string>
+    </void>
+    <void index="23">
+     <string>sgqSetor</string>
+    </void>
+    <void index="24">
+     <string>sgqSolNome</string>
+    </void>
+    <void index="25">
+     <string>sgqTpDocumento</string>
+    </void>
+    <void index="26">
+     <string>sgqTpSolicitacao</string>
+    </void>
+    <void index="27">
+     <string>sgqValLinkDoc</string>
+    </void>
+    <void index="28">
+     <string>sgqValObjDoc</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>mecanismo</string>
    <array class="[Ljava.lang.Object;" length="10">
     <void index="0">

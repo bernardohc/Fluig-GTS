@@ -608,6 +608,10 @@ $(document).on("change", "#pesqNotaAtendimento", function() {
 	funcoes.preencheCampos();
 });
 
+$(document).on("change", "#pesqRepresentante", function() {
+	funcoes.preencheCampos();
+});
+
 $(document).on("change", "#pesqTermColheita", function() {
 	funcoes.blocCalendar();
 	//funcoes.limpaCalendario();
