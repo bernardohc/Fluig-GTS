@@ -144,21 +144,24 @@
 								</div>
 								<div class="form-group col-md-2 ">
 									<label for="solDataSaida">Data de Saída</label>
+									<input type="text" name="solDataSaida" id="solDataSaida" class="form-control" readonly>	
+									<!-- <label for="solDataSaida">Data de Saída</label>
 									<div class="input-group">
 										<input type="text" name="solDataSaida" id="solDataSaida" class="form-control">
 										<span class="input-group-addon">
 											<span class="fluigicon fluigicon-calendar"></span>
 										</span>
-									</div>
+									</div> -->
 								</div>
-								<div class="form-group col-md-2 ">
+								<div class="form-group col-md-2 ">									
 									<label for="solDataRet">Data de Retorno</label>
-									<div class="input-group">
+									<input type="text" name="solDataRet" id="solDataRet" class="form-control" readonly>									
+									<!-- <div class="input-group">
 										<input type="text" name="solDataRet" id="solDataRet" class="form-control">
 										<span class="input-group-addon">
 											<span class="fluigicon fluigicon-calendar"></span>
 										</span>
-									</div>
+									</div> -->
 								</div>
 								<div class="form-group col-md-2">
 									<label for="solNumColab">Nº de Colaboradores</label>
@@ -238,6 +241,20 @@
 									<div class="form-group col-md-2">
 										<label for="addRvDespCCusto">Centro de Custo*</label>
 										<input type="text" name="addRvDespCCusto" id="addRvDespCCusto" class="form-control">
+									</div>
+								</div>
+								<div class="row" id="divNumOs" numOs>
+									<div class="form-group col-md-2 col-md-offset-1" align="left">
+										<label for="addRvDespNumOs1">Número OS 1*</label>
+										<input type="text" name="addRvDespNumOs1" id="addRvDespNumOs1" class="form-control">
+									</div>
+									<div class="form-group col-md-2" align="left">
+										<label for="addRvDespNumOs2">Número OS 2</label>
+										<input type="text" name="addRvDespNumOs2" id="addRvDespNumOs2" class="form-control">
+									</div>
+									<div class="form-group col-md-2" align="left">
+										<label for="addRvDespNumOs3">Número OS 3</label>
+										<input type="text" name="addRvDespNumOs3" id="addRvDespNumOs3" class="form-control">
 									</div>
 								</div>
 								<!-- Inicio Abastecimento -->
@@ -352,6 +369,18 @@
 														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields"> 
 															<label for="rvDespCCusto">Centro de Custo</label>
 															<input type="text" id="rvDespCCusto" name="rvDespCCusto" class="form-control" readonly>
+														</div>
+														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields"> 
+															<label for="rvDespNumOs1">Núm.OS 1</label>
+															<input type="text" id="rvDespNumOs1" name="rvDespNumOs1" class="form-control" readonly >
+														</div>
+														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields"> 
+															<label for="rvDespNumOs2">Núm.OS 1</label>
+															<input type="text" id="rvDespNumOs2" name="rvDespNumOs2" class="form-control" readonly>
+														</div>
+														<div class="col-md-2 cust-table-fields cust-table-line cust-align-fields"> 
+															<label for="rvDespNumOs3">Núm.OS 1</label>
+															<input type="text" id="rvDespNumOs3" name="rvDespNumOs3" class="form-control" readonly>
 														</div>
 													</div>
 													<!-- Fim despesas Gerais -->

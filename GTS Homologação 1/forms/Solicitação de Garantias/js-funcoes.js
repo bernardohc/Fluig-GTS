@@ -255,29 +255,23 @@ var funcoes = (function() {
 
 		formatarNumero4Dig: function(elementId) {
 			var $input = $('#' + elementId);
-			var texto = $input.val();
+                var texto = $input.val();
 
-			// Remove todos os caracteres que não são dígitos
-			texto = texto.replace(/\D/g, "");
+                // Remove todos os caracteres que não são dígitos
+                texto = texto.replace(/\D/g, "");
 
-			// Adiciona zeros à esquerda se necessário
-			while (texto.length < 3) {
-				texto = '0' + texto;
-			}
+                // Adiciona zeros à esquerda se necessário até completar 6 caracteres
+                while (texto.length < 6) {
+                    texto = '0' + texto;
+                }
 
-			// Aplica a máscara de número
-			texto = texto.slice(0, -2) + ',' + texto.slice(-2);
+                // Limita o comprimento a 6 caracteres
+                if (texto.length > 6) {
+                    texto = texto.slice(0, 6);
+                }
 
-			// Limita o comprimento a 7 caracteres (formato 0000,00)
-			if (texto.length > 7) {
-				texto = texto.slice(0, 7);
-			}
-
-			// Remove zeros à esquerda desnecessários
-			texto = texto.replace(/^0+(?![,])/g, "");
-
-			// Atualiza o valor do campo com o texto formatado
-			$input.val(texto);
+                // Atualiza o valor do campo com o texto formatado
+                $input.val(texto);
 		},
 
 		showCamera : function(elementId){
