@@ -78,10 +78,10 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 
-	    		if (isEmpty("equipModelo", form)) {
-	    			message += getMessage("Modelo do Equipamento", 1, form);
-	    			hasErros = true;
-	    		}
+	    		// if (isEmpty("equipModelo", form)) {
+	    		// 	message += getMessage("Modelo do Equipamento", 1, form);
+	    		// 	hasErros = true;
+	    		// }
 	    		
 	    		if (isEmpty("equipAcoplamento", form)) {
 	    			message += getMessage("Acoplamento do Equipamento", 1, form);
@@ -189,30 +189,32 @@ function validateForm(form){
 		    			message += getMessage("Estado da Loja que está realizando a Entrega Técnica", 1, form);
 		    			hasErros = true;
 		    		}
-		    		if (!isEmpty("revContVendasTelefone", form)) {
-		    			if( form.getValue("revContVendasTelefone").length() < 10 ){
-			    			message += getMessage("Telefone do Contato de Vendas", 2, form);
-			    			hasErros = true;
-			    		}
-		    		}
-		    		if (!isEmpty("revContVendasEmail", form)) {
-		    			if( !validaEmail(form.getValue("revContVendasEmail")) ){	
-		        			message += getMessage("<b>Contato de Vendas</b> está inválido.", 6, form);
-		        			hasErros = true;
-		        		}
-		    		}
-		    		if (!isEmpty("revContPecasTelefone", form)) {
-		    			if( form.getValue("revContPecasTelefone").length() < 10 ){
-			    			message += getMessage("Telefone do Contato de Peças", 2, form);
-			    			hasErros = true;
-			    		}
-		    		}
-		    		if (!isEmpty("revContPecasEmail", form)) {
-		    			if( !validaEmail(form.getValue("revContPecasEmail")) ){	
-		    				message += getMessage("<b>E-mail do Contato de Peças</b> está inválido.", 6, form);
-		    				hasErros = true;
-		    			}
-		    		}
+					//chamado 29991
+		    		// if (!isEmpty("revContVendasTelefone", form)) {
+		    		// 	if( form.getValue("revContVendasTelefone").length() < 10 ){
+			    	// 		message += getMessage("Telefone do Contato de Vendas", 2, form);
+			    	// 		hasErros = true;
+			    	// 	}
+		    		// }
+		    		// if (!isEmpty("revContVendasEmail", form)) {
+		    		// 	if( !validaEmail(form.getValue("revContVendasEmail")) ){	
+		        	// 		message += getMessage("<b>Contato de Vendas</b> está inválido.", 6, form);
+		        	// 		hasErros = true;
+		        	// 	}
+		    		// }
+					//chamado 29991
+		    		// if (!isEmpty("revContPecasTelefone", form)) {
+		    		// 	if( form.getValue("revContPecasTelefone").length() < 10 ){
+			    	// 		message += getMessage("Telefone do Contato de Peças", 2, form);
+			    	// 		hasErros = true;
+			    	// 	}
+		    		// }
+		    		// if (!isEmpty("revContPecasEmail", form)) {
+		    		// 	if( !validaEmail(form.getValue("revContPecasEmail")) ){	
+		    		// 		message += getMessage("<b>E-mail do Contato de Peças</b> está inválido.", 6, form);
+		    		// 		hasErros = true;
+		    		// 	}
+		    		// }
 	    		
 		    		if (isEmpty("revContServicoNome", form)) {
 		    			message += getMessage("Nome do Contato de Serviço", 1, form);
@@ -387,6 +389,11 @@ function validateForm(form){
 					hasErros = true;
 				}else if( form.getValue("cliTelefone").length() < 10 ){
 					message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
+					hasErros = true;
+				}
+				//chamado 29991
+				if (isEmpty("cliAcompanhouEnt", form)) {
+					message += getMessage("Quem Acompanhou a Entrega", 1, form);
 					hasErros = true;
 				}
 				if (isEmpty("cliTelefonePesqSatisfacao", form)){
@@ -574,10 +581,10 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 
-	    		if (isEmpty("equipModelo", form)) {
-	    			message += getMessage("Modelo do Equipamento", 1, form);
-	    			hasErros = true;
-	    		}
+	    		// if (isEmpty("equipModelo", form)) {
+	    		// 	message += getMessage("Modelo do Equipamento", 1, form);
+	    		// 	hasErros = true;
+	    		// }
 	    		
 	    		if (isEmpty("equipAcoplamento", form)) {
 	    			message += getMessage("Acoplamento do Equipamento", 1, form);
@@ -687,30 +694,32 @@ function validateForm(form){
 		    			message += getMessage("Estado da Loja que está realizando a Entrega Técnica", 1, form);
 		    			hasErros = true;
 		    		}
-		    		if (!isEmpty("revContVendasTelefone", form)) {
-		    			if( form.getValue("revContVendasTelefone").length() < 10 ){
-			    			message += getMessage("Telefone do Contato de Vendas", 2, form);
-			    			hasErros = true;
-			    		}
-		    		}
-		    		if (!isEmpty("revContVendasEmail", form)) {
-		    			if( !validaEmail(form.getValue("revContVendasEmail")) ){	
-		        			message += getMessage("<b>Contato de Vendas</b> está inválido.", 6, form);
-		        			hasErros = true;
-		        		}
-		    		}
-		    		if (!isEmpty("revContPecasTelefone", form)) {
-		    			if( form.getValue("revContPecasTelefone").length() < 10 ){
-			    			message += getMessage("Telefone do Contato de Peças", 2, form);
-			    			hasErros = true;
-			    		}
-		    		}
-		    		if (!isEmpty("revContPecasEmail", form)) {
-		    			if( !validaEmail(form.getValue("revContPecasEmail")) ){	
-		    				message += getMessage("<b>E-mail do Contato de Peças</b> está inválido.", 6, form);
-		    				hasErros = true;
-		    			}
-		    		}
+					//chamado 29991
+		    		// if (!isEmpty("revContVendasTelefone", form)) {
+		    		// 	if( form.getValue("revContVendasTelefone").length() < 10 ){
+			    	// 		message += getMessage("Telefone do Contato de Vendas", 2, form);
+			    	// 		hasErros = true;
+			    	// 	}
+		    		// }
+		    		// if (!isEmpty("revContVendasEmail", form)) {
+		    		// 	if( !validaEmail(form.getValue("revContVendasEmail")) ){	
+		        	// 		message += getMessage("<b>Contato de Vendas</b> está inválido.", 6, form);
+		        	// 		hasErros = true;
+		        	// 	}
+		    		// }
+					//chamado 29991
+		    		// if (!isEmpty("revContPecasTelefone", form)) {
+		    		// 	if( form.getValue("revContPecasTelefone").length() < 10 ){
+			    	// 		message += getMessage("Telefone do Contato de Peças", 2, form);
+			    	// 		hasErros = true;
+			    	// 	}
+		    		// }
+		    		// if (!isEmpty("revContPecasEmail", form)) {
+		    		// 	if( !validaEmail(form.getValue("revContPecasEmail")) ){	
+		    		// 		message += getMessage("<b>E-mail do Contato de Peças</b> está inválido.", 6, form);
+		    		// 		hasErros = true;
+		    		// 	}
+		    		// }
 	    		
 		    		if (isEmpty("revContServicoNome", form)) {
 		    			message += getMessage("Nome do Contato de Serviço", 1, form);
@@ -883,6 +892,11 @@ function validateForm(form){
 					hasErros = true;
 				}else if( form.getValue("cliTelefone").length() < 10 ){
 					message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
+					hasErros = true;
+				}
+				//chamado 29991
+				if (isEmpty("cliAcompanhouEnt", form)) {
+					message += getMessage("Quem Acompanhou a Entrega", 1, form);
 					hasErros = true;
 				}
 	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
@@ -1092,6 +1106,11 @@ function validateForm(form){
 				message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
 				hasErros = true;
 			}
+			//chamado 29991
+			if (isEmpty("cliAcompanhouEnt", form)) {
+				message += getMessage("Quem Acompanhou a Entrega", 1, form);
+				hasErros = true;
+			}
     		if (isEmpty("cliTelefonePesqSatisfacao", form)){
     			message += getMessage("Celular para Pesquisa de Satisfação", 1, form);
     			hasErros = true;
@@ -1180,10 +1199,10 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 
-	    		if (isEmpty("equipModelo", form)) {
-	    			message += getMessage("Modelo do Equipamento", 1, form);
-	    			hasErros = true;
-	    		}
+	    		// if (isEmpty("equipModelo", form)) {
+	    		// 	message += getMessage("Modelo do Equipamento", 1, form);
+	    		// 	hasErros = true;
+	    		// }
 	    		
 	    		if (isEmpty("equipAcoplamento", form)) {
 	    			message += getMessage("Acoplamento do Equipamento", 1, form);
@@ -1292,30 +1311,32 @@ function validateForm(form){
 		    			message += getMessage("Estado da Loja que está realizando a Entrega Técnica", 1, form);
 		    			hasErros = true;
 		    		}
-		    		if (!isEmpty("revContVendasTelefone", form)) {
-		    			if( form.getValue("revContVendasTelefone").length() < 10 ){
-			    			message += getMessage("Telefone do Contato de Vendas", 2, form);
-			    			hasErros = true;
-			    		}
-		    		}
-		    		if (!isEmpty("revContVendasEmail", form)) {
-		    			if( !validaEmail(form.getValue("revContVendasEmail")) ){	
-		        			message += getMessage("<b>Contato de Vendas</b> está inválido.", 6, form);
-		        			hasErros = true;
-		        		}
-		    		}
-		    		if (!isEmpty("revContPecasTelefone", form)) {
-		    			if( form.getValue("revContPecasTelefone").length() < 10 ){
-			    			message += getMessage("Telefone do Contato de Peças", 2, form);
-			    			hasErros = true;
-			    		}
-		    		}
-		    		if (!isEmpty("revContPecasEmail", form)) {
-		    			if( !validaEmail(form.getValue("revContPecasEmail")) ){	
-		    				message += getMessage("<b>E-mail do Contato de Peças</b> está inválido.", 6, form);
-		    				hasErros = true;
-		    			}
-		    		}
+					//chamado 29991
+		    		// if (!isEmpty("revContVendasTelefone", form)) {
+		    		// 	if( form.getValue("revContVendasTelefone").length() < 10 ){
+			    	// 		message += getMessage("Telefone do Contato de Vendas", 2, form);
+			    	// 		hasErros = true;
+			    	// 	}
+		    		// }
+		    		// if (!isEmpty("revContVendasEmail", form)) {
+		    		// 	if( !validaEmail(form.getValue("revContVendasEmail")) ){	
+		        	// 		message += getMessage("<b>Contato de Vendas</b> está inválido.", 6, form);
+		        	// 		hasErros = true;
+		        	// 	}
+		    		// }
+					//chamado 29991
+		    		// if (!isEmpty("revContPecasTelefone", form)) {
+		    		// 	if( form.getValue("revContPecasTelefone").length() < 10 ){
+			    	// 		message += getMessage("Telefone do Contato de Peças", 2, form);
+			    	// 		hasErros = true;
+			    	// 	}
+		    		// }
+		    		// if (!isEmpty("revContPecasEmail", form)) {
+		    		// 	if( !validaEmail(form.getValue("revContPecasEmail")) ){	
+		    		// 		message += getMessage("<b>E-mail do Contato de Peças</b> está inválido.", 6, form);
+		    		// 		hasErros = true;
+		    		// 	}
+		    		// }
 	    		
 		    		if (isEmpty("revContServicoNome", form)) {
 		    			message += getMessage("Nome do Contato de Serviço", 1, form);
@@ -1489,6 +1510,11 @@ function validateForm(form){
 					hasErros = true;
 				}else if( form.getValue("cliTelefone").length() < 10 ){
 					message += getMessage("Celular para Pesquisa de Satisfação", 2, form);
+					hasErros = true;
+				}
+				//chamado 29991
+				if (isEmpty("cliAcompanhouEnt", form)) {
+					message += getMessage("Quem Acompanhou a Entrega", 1, form);
 					hasErros = true;
 				}
 	    		if (isEmpty("cliTelefonePesqSatisfacao", form)){
