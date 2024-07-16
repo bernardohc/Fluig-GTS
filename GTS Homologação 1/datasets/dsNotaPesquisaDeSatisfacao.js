@@ -39,6 +39,7 @@ function createDataset(fields, constraints, sortFields) {
 					" 	JOIN PROCES_WORKFLOW" +
 					" 	ON pesquisa.companyid = PROCES_WORKFLOW.COD_EMPRESA" +
 					" 	AND pesquisa.cardid = PROCES_WORKFLOW.NR_DOCUMENTO_CARD_INDEX" +
+					"	AND pesquisa.documentid = PROCES_WORKFLOW.NR_DOCUMENTO_CARD" +
 					" 	WHERE pesqNumSerie = '" + numSerie + "' and" +
 					" 	PROCES_WORKFLOW.COD_DEF_PROCES = 'IM - Pesquisa de Satisfação'" +
 					" 	AND STATUS <> 1" +

@@ -138,7 +138,7 @@
 							<input type="text" name="equipAcoplamento" id="equipAcoplamento" class="form-control" maxlength="150"/>
 		        		</div>
 		        		<div class="col-md-2" align="left">
-							<label for="equipDataEntrega">Data de Entrega*</label>
+							<label for="equipDataEntrega">Data de Entrega Técnica*</label>
 							<input type="text" name="equipDataVenda" id="equipDataVenda"  class="form-control" style="display:none;" readonly  />				
 							<div class="input-group">
 								<input type="text" name="equipDataEntrega" id="equipDataEntrega"  class="form-control" />				
@@ -674,7 +674,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-2" align="left">
-							<label for="cliTelefone">Telefone</label>
+							<label for="cliTelefone">Telefone*</label>
 							<input type="text" name="cliTelefone" id="cliTelefone" class="form-control"  readonly
 								data-protection="cliTelefone" data-protection-anonymizable="true"  data-protection-other data-protection-class-legitimate-interests="Necessário para contato do cliente da entrega técnica" />
 		        		</div>
@@ -1080,14 +1080,16 @@
 						<div class="col-md-7 " align="left">
 						    <label for="NFvalObservacao">Observação</label>
 							<textarea rows="3" cols="6" name="NFvalObservacao" id="NFvalObservacao" class="form-control " ></textarea>
-			            </div>
-					</div><div class="row">
+			            </div>												
+					</div>
+					<div class="row">
 						<div class="col-md-2" align="left">
 							<label for="NFfNotaEntrega">Nota da Entrega Técnica</label>
 							<input type="text" name="NFfNotaEntrega" id="NFfNotaEntrega" class="form-control" readonly />
-		        		</div>
+						</div>
 					</div>
-					<div class="row">s
+				</div>
+					<div class="row">
 						<div class="col-md-4" align="left">
 							<h5><strong>Entrega de Equipamento</strong></h5>
 		       				<hr /> 
@@ -1335,7 +1337,7 @@
 		        		</div>
 						<div class="col-md-2" align="left">
 							<label for="OCValorNota">Valor da Nota</label>
-							<input type="text" name="OCValorNota" id="OCValorNota" class="form-control" readonly />
+							<input type="text" name="OCValorNota" id="OCValorNota" class="form-control" /> <!-- readonly -->
 		        		</div>
 	        		</div>
 					<div class="row">

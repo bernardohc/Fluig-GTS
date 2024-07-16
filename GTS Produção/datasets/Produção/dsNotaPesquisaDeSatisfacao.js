@@ -16,7 +16,7 @@ function createDataset(fields, constraints, sortFields) {
 	dataset.addColumn("MSGRET");
 	
 	//Cabeçalho
-	var numSerie  = "FPC0821410108";
+	var numSerie  = "";
 
 	var constraintsForm = new Array(); 
 	for (var i in constraints){
@@ -39,6 +39,7 @@ function createDataset(fields, constraints, sortFields) {
 					" 	JOIN PROCES_WORKFLOW" +
 					" 	ON pesquisa.companyid = PROCES_WORKFLOW.COD_EMPRESA" +
 					" 	AND pesquisa.cardid = PROCES_WORKFLOW.NR_DOCUMENTO_CARD_INDEX" +
+					"	AND pesquisa.documentid = PROCES_WORKFLOW.NR_DOCUMENTO_CARD" +
 					" 	WHERE pesqNumSerie = '" + numSerie + "' and" +
 					" 	PROCES_WORKFLOW.COD_DEF_PROCES = 'IM - Pesquisa de Satisfação'" +
 					" 	AND STATUS <> 1" +
@@ -48,10 +49,16 @@ function createDataset(fields, constraints, sortFields) {
 					" 	)  as sub on sub.pesqNumSerie = pesquisa.pesqNumSerie and PROCES_WORKFLOW.START_DATE = sub.START_DATE" +
 					" 	where pesquisa.pesqNumSerie = '" + numSerie + "'" ;
 	}
-	//Tabela Produção ML001046
-	//Tabela Homologação ML001097
+
 		
-	log.info(" dsConsultaNota"+ SQL);	
+	// var SQL =	" SELECT pesqNotaAtendimento ,pesqNumSerie " +
+	// 			" FROM ML001097 entrega (NOLOCK) " ;
+				
+	// 	if( numSerie != ""  ){
+	// 		SQL += " WHERE pesqNumSerie = '" + numSerie + "'";
+	// 	}
+		
+	log.info(" dsConsultaSAC:"+ SQL);	
 	
 	var statementWD = connectionWD.prepareStatement(SQL);
 	var rsWD = statementWD.executeQuery();

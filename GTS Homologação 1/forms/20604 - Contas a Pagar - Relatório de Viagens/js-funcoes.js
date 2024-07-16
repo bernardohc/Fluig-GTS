@@ -390,16 +390,14 @@ var funcoes = (function() {
 				}
 			}
 			if(solSetor === "tecnico"){
-				if( addRvDespNumOs1 == '' ){
-					message += getMessage("Num. OS 1", 1, form);
-					hasErros = true
-				}
-				if( addRvDespNumOs1 === '000000' ){
-					message += getMessage("Num. OS 1", 2, form);
-					hasErros = true
+				if( addRvDespNumOs1 != '' ){
+					if( addRvDespNumOs1 === '000000' ){
+						message += getMessage("Num. OS 1", 2, form);
+						hasErros = true
+					}
 				}
 				if( addRvDespNumOs2 != '' ){
-					if( addRvDespNumOs2 === '000000' ){
+					if( addRvDespNumOs1 === '000000' ){
 						message += getMessage("Num. OS 2", 2, form);
 						hasErros = true
 					}

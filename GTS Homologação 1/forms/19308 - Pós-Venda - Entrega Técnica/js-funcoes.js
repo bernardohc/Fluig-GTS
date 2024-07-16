@@ -503,7 +503,7 @@ var funcoes = (function() {
 
 		//Consulta nota da pesquisa de satisfação
 		consultaNotaPesq : function(indexItem){
-			
+			console.log("Acionou a consulta")
 			let numSerie = $("#equipNumSerie").val();
 			
 			if( numSerie.trim() == "" ){
@@ -525,7 +525,7 @@ var funcoes = (function() {
 						const records = data.content;
 						if( records[0].CODRET == "1"){
 							var record = records[0];
-							var entrepaPor = ''
+							//var entrepaPor = ''
 
 							$("#NFfNotaEntrega").val(record.pesqNotaAtendimento);
 							
@@ -533,11 +533,11 @@ var funcoes = (function() {
 							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
 							funcoes.limpaCamposItem(indexItem);
 						}
-						
-					}else{
-							FLUIGC.toast({ title: '', message: 'Erro ao consultar o item, comunicar o Administrador do Sistema!', type: 'danger' });
-							funcoes.limpaCamposItem(indexItem);
-						}
+					}	
+					// }else{
+					// 		FLUIGC.toast({ title: '', message: 'Erro ao consultar a nota, comunicar o Administrador do Sistema!', type: 'danger' });
+					// 		//funcoes.limpaCamposItem(indexItem);
+					// 	}
 					setTimeout(function(){ 
 						loading.hide();
 					}, 1000);
@@ -547,7 +547,7 @@ var funcoes = (function() {
 					console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
 					FLUIGC.toast({
 						title: '',
-						message: 'Erro na consulta do Item, comunicar Administrador do Sistema' ,
+						message: 'Erro ao consultar a nota01, comunicar Administrador do Sistema' ,
 						type: 'danger'
 					});
 					funcoes.limpaCamposItem(indexItem)
@@ -577,6 +577,9 @@ var eventsFuncoes = (function() {
 			 */
 			$(document).on("keyup", "#equipNumSerie", function() {
 				$("#equipNumSerie").val( $("#equipNumSerie").val().toUpperCase()   );
+			});
+			$(document).on("click", "#divEmissaoNF", function() {
+				funcoes.consultaNotaPesq();
 			});
 			/**
 			 * Busca os dados do Equipamento pelo numero de serie
@@ -1556,8 +1559,7 @@ function loadForm(){
 		}
 		
 	}else if(CURRENT_STATE == ANALISA_RETORNO_GTS){
-
-		funcoes.consultaNotaPesq();
+		
 		
 		/*
 		 * Cadastro do Equipamento
@@ -1597,7 +1599,8 @@ function loadForm(){
 			&& $('#cliCodigo').val().trim() == ''){
 			funcoes.somenteLeituraCamposCliente(false);
 		}
-		
+	}else if(CURRENT_STATE == REVENDA_NF_PGTO){
+		funcoes.consultaNotaPesq();
 	}else if(CURRENT_STATE == GTS_ANALISA_NF_PGTO){
 		
 		/*

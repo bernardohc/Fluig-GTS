@@ -1,4 +1,0 @@
-var INICIO_0 = 0;
-var INICIO = 4;
-var GTS_ANALISA_DEMANDA = 23;
-var GTS_ANALISA_RETORNO = 27;

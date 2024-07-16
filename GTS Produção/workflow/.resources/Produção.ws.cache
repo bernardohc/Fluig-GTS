@@ -1900,6 +1900,703 @@
    </array>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 19308</string>
+   <array class="java.lang.String" length="157">
+    <void index="0">
+     <string>A1_COD</string>
+    </void>
+    <void index="1">
+     <string>A1_LOJA</string>
+    </void>
+    <void index="2">
+     <string>A1_PAIS</string>
+    </void>
+    <void index="3">
+     <string>A1_TIPO</string>
+    </void>
+    <void index="4">
+     <string>anexoBoleto</string>
+    </void>
+    <void index="5">
+     <string>anexoBoletoDesc</string>
+    </void>
+    <void index="6">
+     <string>anexoChecklist</string>
+    </void>
+    <void index="7">
+     <string>anexoChecklistDesc</string>
+    </void>
+    <void index="8">
+     <string>anexoNotaFiscal</string>
+    </void>
+    <void index="9">
+     <string>anexoNotaFiscalDesc</string>
+    </void>
+    <void index="10">
+     <string>anexoRelAtendimento</string>
+    </void>
+    <void index="11">
+     <string>anexoRelAtendimentoDesc</string>
+    </void>
+    <void index="12">
+     <string>atendKMTotalUtilizado</string>
+    </void>
+    <void index="13">
+     <string>cliBairro</string>
+    </void>
+    <void index="14">
+     <string>cliCEP</string>
+    </void>
+    <void index="15">
+     <string>cliCidade</string>
+    </void>
+    <void index="16">
+     <string>cliCodigo</string>
+    </void>
+    <void index="17">
+     <string>cliComplemento</string>
+    </void>
+    <void index="18">
+     <string>cliCpfCnpj</string>
+    </void>
+    <void index="19">
+     <string>cliEmail</string>
+    </void>
+    <void index="20">
+     <string>cliEndereco</string>
+    </void>
+    <void index="21">
+     <string>cliEquipAnoItem</string>
+    </void>
+    <void index="22">
+     <string>cliEquipEquipamentoItem</string>
+    </void>
+    <void index="23">
+     <string>cliEquipModeloItem</string>
+    </void>
+    <void index="24">
+     <string>cliEstado</string>
+    </void>
+    <void index="25">
+     <string>cliEstadoHidden</string>
+    </void>
+    <void index="26">
+     <string>cliInscricaoEstadual</string>
+    </void>
+    <void index="27">
+     <string>cliLoja</string>
+    </void>
+    <void index="28">
+     <string>cliNomeCliente</string>
+    </void>
+    <void index="29">
+     <string>cliPais</string>
+    </void>
+    <void index="30">
+     <string>cliPaisHidden</string>
+    </void>
+    <void index="31">
+     <string>cliPossuiEquipamentoGTS</string>
+    </void>
+    <void index="32">
+     <string>cliRUC</string>
+    </void>
+    <void index="33">
+     <string>cliTelefone</string>
+    </void>
+    <void index="34">
+     <string>cliTelefonePesqSatisfacao</string>
+    </void>
+    <void index="35">
+     <string>dataAbertura</string>
+    </void>
+    <void index="36">
+     <string>emailInternoOCCodRet</string>
+    </void>
+    <void index="37">
+     <string>emailInternoOCMsg</string>
+    </void>
+    <void index="38">
+     <string>emailProgPagtoCodRet</string>
+    </void>
+    <void index="39">
+     <string>emailProgPagtoMsg</string>
+    </void>
+    <void index="40">
+     <string>entTecAprov</string>
+    </void>
+    <void index="41">
+     <string>entTecAprovObservacao</string>
+    </void>
+    <void index="42">
+     <string>entTecGeracaoPagto</string>
+    </void>
+    <void index="43">
+     <string>equipAcoplamento</string>
+    </void>
+    <void index="44">
+     <string>equipCodBaseDeAtendimento</string>
+    </void>
+    <void index="45">
+     <string>equipCodProduto</string>
+    </void>
+    <void index="46">
+     <string>equipDataEntrega</string>
+    </void>
+    <void index="47">
+     <string>equipDataTerminoGarantia</string>
+    </void>
+    <void index="48">
+     <string>equipDataVenda</string>
+    </void>
+    <void index="49">
+     <string>equipDescricao</string>
+    </void>
+    <void index="50">
+     <string>equipFilialNotaFiscal</string>
+    </void>
+    <void index="51">
+     <string>equipModelo</string>
+    </void>
+    <void index="52">
+     <string>equipNumNotaFiscal</string>
+    </void>
+    <void index="53">
+     <string>equipNumSerie</string>
+    </void>
+    <void index="54">
+     <string>equipTipoNota</string>
+    </void>
+    <void index="55">
+     <string>equipTipoNotaHidden</string>
+    </void>
+    <void index="56">
+     <string>gerenteRevenda</string>
+    </void>
+    <void index="57">
+     <string>gerenteSolicitante</string>
+    </void>
+    <void index="58">
+     <string>NFAprovAprovacao</string>
+    </void>
+    <void index="59">
+     <string>NFAprovDataPrevPagto</string>
+    </void>
+    <void index="60">
+     <string>NFAprovEmailAprovador</string>
+    </void>
+    <void index="61">
+     <string>NFAprovObservacao</string>
+    </void>
+    <void index="62">
+     <string>NFPagtoAgencia</string>
+    </void>
+    <void index="63">
+     <string>NFPagtoBanco</string>
+    </void>
+    <void index="64">
+     <string>NFPagtoCodIdentificador</string>
+    </void>
+    <void index="65">
+     <string>NFPagtoConta</string>
+    </void>
+    <void index="66">
+     <string>NFPagtoCpfCnpj</string>
+    </void>
+    <void index="67">
+     <string>NFPagtoFormaPagamento</string>
+    </void>
+    <void index="68">
+     <string>NFPagtoNome</string>
+    </void>
+    <void index="69">
+     <string>NFvalEntregaCidade</string>
+    </void>
+    <void index="70">
+     <string>NFvalEntregaEstado</string>
+    </void>
+    <void index="71">
+     <string>NFvalEntregaKmAtePropriedade</string>
+    </void>
+    <void index="72">
+     <string>NFvalEntregaNomePropriedade</string>
+    </void>
+    <void index="73">
+     <string>NFvalKmTotalUtilizado</string>
+    </void>
+    <void index="74">
+     <string>NFvalObservacao</string>
+    </void>
+    <void index="75">
+     <string>NFvalTotalSimulacao</string>
+    </void>
+    <void index="76">
+     <string>NFvalValorAddDeslocamento</string>
+    </void>
+    <void index="77">
+     <string>NFvalValorAddEntrega</string>
+    </void>
+    <void index="78">
+     <string>NFvalValorDeslocamento</string>
+    </void>
+    <void index="79">
+     <string>NFvalValorEntrega</string>
+    </void>
+    <void index="80">
+     <string>NFvalValorKMRevenda</string>
+    </void>
+    <void index="81">
+     <string>NFvalValorTotal</string>
+    </void>
+    <void index="82">
+     <string>numFluig</string>
+    </void>
+    <void index="83">
+     <string>obsObservacaoGeral</string>
+    </void>
+    <void index="84">
+     <string>OCCentroCusto</string>
+    </void>
+    <void index="85">
+     <string>OCCodCondPagto</string>
+    </void>
+    <void index="86">
+     <string>OCCodProduto</string>
+    </void>
+    <void index="87">
+     <string>OCCondPagto</string>
+    </void>
+    <void index="88">
+     <string>OCConfirmaDados</string>
+    </void>
+    <void index="89">
+     <string>OCCpfCnpj</string>
+    </void>
+    <void index="90">
+     <string>OCDescProduto</string>
+    </void>
+    <void index="91">
+     <string>OCEmailRecebimentoOC</string>
+    </void>
+    <void index="92">
+     <string>OCNomeFantasiaRevenda</string>
+    </void>
+    <void index="93">
+     <string>OCNumOC</string>
+    </void>
+    <void index="94">
+     <string>OCRazaoSocialRevenda</string>
+    </void>
+    <void index="95">
+     <string>OCStatusOC</string>
+    </void>
+    <void index="96">
+     <string>OCValorNota</string>
+    </void>
+    <void index="97">
+     <string>propRuralCidade</string>
+    </void>
+    <void index="98">
+     <string>propRuralCidadeItem</string>
+    </void>
+    <void index="99">
+     <string>propRuralEntrega</string>
+    </void>
+    <void index="100">
+     <string>propRuralEstado</string>
+    </void>
+    <void index="101">
+     <string>propRuralEstadoItem</string>
+    </void>
+    <void index="102">
+     <string>propRuralKmAtePropriedade</string>
+    </void>
+    <void index="103">
+     <string>propRuralKmAtePropriedadeItem</string>
+    </void>
+    <void index="104">
+     <string>propRuralNomePropriedade</string>
+    </void>
+    <void index="105">
+     <string>propRuralNomePropriedadeItem</string>
+    </void>
+    <void index="106">
+     <string>protoRecAvariasDescricaoItem</string>
+    </void>
+    <void index="107">
+     <string>protoRecAvariasImagemDescItem</string>
+    </void>
+    <void index="108">
+     <string>protoRecAvariasImagemItem</string>
+    </void>
+    <void index="109">
+     <string>protoRecAvariasIndiceItem</string>
+    </void>
+    <void index="110">
+     <string>protoRecCienteSemAvarias</string>
+    </void>
+    <void index="111">
+     <string>protoRecDataRecebimento</string>
+    </void>
+    <void index="112">
+     <string>protoRecEmail</string>
+    </void>
+    <void index="113">
+     <string>protoRecPossuiAvarias</string>
+    </void>
+    <void index="114">
+     <string>protoRecResponsavel</string>
+    </void>
+    <void index="115">
+     <string>protoRecTelefone</string>
+    </void>
+    <void index="116">
+     <string>revCidade</string>
+    </void>
+    <void index="117">
+     <string>revCienteTransfEquipRev</string>
+    </void>
+    <void index="118">
+     <string>revClassPeca</string>
+    </void>
+    <void index="119">
+     <string>revClassServico</string>
+    </void>
+    <void index="120">
+     <string>revCodBaseDeAtendimento</string>
+    </void>
+    <void index="121">
+     <string>revCodigo</string>
+    </void>
+    <void index="122">
+     <string>revContPecasEmail</string>
+    </void>
+    <void index="123">
+     <string>revContPecasNome</string>
+    </void>
+    <void index="124">
+     <string>revContPecasTelefone</string>
+    </void>
+    <void index="125">
+     <string>revContServicoEmail</string>
+    </void>
+    <void index="126">
+     <string>revContServicoNome</string>
+    </void>
+    <void index="127">
+     <string>revContServicoTelefone</string>
+    </void>
+    <void index="128">
+     <string>revContVendasEmail</string>
+    </void>
+    <void index="129">
+     <string>revContVendasNome</string>
+    </void>
+    <void index="130">
+     <string>revContVendasTelefone</string>
+    </void>
+    <void index="131">
+     <string>revCpfCnpj</string>
+    </void>
+    <void index="132">
+     <string>revEmail</string>
+    </void>
+    <void index="133">
+     <string>revEntTecCpf</string>
+    </void>
+    <void index="134">
+     <string>revEntTecNome</string>
+    </void>
+    <void index="135">
+     <string>revEntTecRUC</string>
+    </void>
+    <void index="136">
+     <string>revEntTecTelefone</string>
+    </void>
+    <void index="137">
+     <string>revEquipCidade</string>
+    </void>
+    <void index="138">
+     <string>revEquipClassPeca</string>
+    </void>
+    <void index="139">
+     <string>revEquipClassServico</string>
+    </void>
+    <void index="140">
+     <string>revEquipCodigo</string>
+    </void>
+    <void index="141">
+     <string>revEquipCpfCnpj</string>
+    </void>
+    <void index="142">
+     <string>revEquipEmail</string>
+    </void>
+    <void index="143">
+     <string>revEquipEstado</string>
+    </void>
+    <void index="144">
+     <string>revEquipEstadoHidden</string>
+    </void>
+    <void index="145">
+     <string>revEquipLoja</string>
+    </void>
+    <void index="146">
+     <string>revEquipNomeFantasiaRevenda</string>
+    </void>
+    <void index="147">
+     <string>revEquipRazaoSocialRevenda</string>
+    </void>
+    <void index="148">
+     <string>revEquipTelefone</string>
+    </void>
+    <void index="149">
+     <string>revEstado</string>
+    </void>
+    <void index="150">
+     <string>revEstadoHidden</string>
+    </void>
+    <void index="151">
+     <string>revLoja</string>
+    </void>
+    <void index="152">
+     <string>revNomeFantasiaRevenda</string>
+    </void>
+    <void index="153">
+     <string>revRazaoSocialRevenda</string>
+    </void>
+    <void index="154">
+     <string>revTelefone</string>
+    </void>
+    <void index="155">
+     <string>solicitante</string>
+    </void>
+    <void index="156">
+     <string>tipoSolicitante</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 20604</string>
+   <array class="java.lang.String" length="72">
+    <void index="0">
+     <string>abastCNPJPosto</string>
+    </void>
+    <void index="1">
+     <string>abastKmAbastecimento</string>
+    </void>
+    <void index="2">
+     <string>abastNomePosto</string>
+    </void>
+    <void index="3">
+     <string>abastQtdLitros</string>
+    </void>
+    <void index="4">
+     <string>abastTpCombustivel</string>
+    </void>
+    <void index="5">
+     <string>abastValorLitro</string>
+    </void>
+    <void index="6">
+     <string>addRvDespAnexo</string>
+    </void>
+    <void index="7">
+     <string>addRvDespCCusto</string>
+    </void>
+    <void index="8">
+     <string>addRvDespClassi</string>
+    </void>
+    <void index="9">
+     <string>addRvDespCodiID</string>
+    </void>
+    <void index="10">
+     <string>addRvDespData</string>
+    </void>
+    <void index="11">
+     <string>addRvDespDocumento</string>
+    </void>
+    <void index="12">
+     <string>addRvDespEstabelecimento</string>
+    </void>
+    <void index="13">
+     <string>addRvDespNumOs1</string>
+    </void>
+    <void index="14">
+     <string>addRvDespNumOs2</string>
+    </void>
+    <void index="15">
+     <string>addRvDespNumOs3</string>
+    </void>
+    <void index="16">
+     <string>addRvDespTpPag</string>
+    </void>
+    <void index="17">
+     <string>addRvDespValor</string>
+    </void>
+    <void index="18">
+     <string>aprovRelatorio</string>
+    </void>
+    <void index="19">
+     <string>dataAbertura</string>
+    </void>
+    <void index="20">
+     <string>dataAtual</string>
+    </void>
+    <void index="21">
+     <string>geraisCarimboDataHora</string>
+    </void>
+    <void index="22">
+     <string>geraisCodMotorista</string>
+    </void>
+    <void index="23">
+     <string>geraisCPFMotorista</string>
+    </void>
+    <void index="24">
+     <string>geraisPlaca</string>
+    </void>
+    <void index="25">
+     <string>geraisVeiculo</string>
+    </void>
+    <void index="26">
+     <string>grupoAnalisaRelatorio</string>
+    </void>
+    <void index="27">
+     <string>pesNomePesquisador</string>
+    </void>
+    <void index="28">
+     <string>processoId</string>
+    </void>
+    <void index="29">
+     <string>revisaoRelatorio</string>
+    </void>
+    <void index="30">
+     <string>rvAproObs</string>
+    </void>
+    <void index="31">
+     <string>rvDespAnexo</string>
+    </void>
+    <void index="32">
+     <string>rvDespCCusto</string>
+    </void>
+    <void index="33">
+     <string>rvDespClassi</string>
+    </void>
+    <void index="34">
+     <string>rvDespCnpj</string>
+    </void>
+    <void index="35">
+     <string>rvDespCodiID</string>
+    </void>
+    <void index="36">
+     <string>rvDespData</string>
+    </void>
+    <void index="37">
+     <string>rvDespDocumento</string>
+    </void>
+    <void index="38">
+     <string>rvDespEstabelecimento</string>
+    </void>
+    <void index="39">
+     <string>rvDespKmAbast</string>
+    </void>
+    <void index="40">
+     <string>rvDespNomePosto</string>
+    </void>
+    <void index="41">
+     <string>rvDespNumOs1</string>
+    </void>
+    <void index="42">
+     <string>rvDespNumOs2</string>
+    </void>
+    <void index="43">
+     <string>rvDespNumOs3</string>
+    </void>
+    <void index="44">
+     <string>rvDespObs</string>
+    </void>
+    <void index="45">
+     <string>rvDespPlaca</string>
+    </void>
+    <void index="46">
+     <string>rvDespQtdL</string>
+    </void>
+    <void index="47">
+     <string>rvDespTpComb</string>
+    </void>
+    <void index="48">
+     <string>rvDespTpCombText</string>
+    </void>
+    <void index="49">
+     <string>rvDespTpPag</string>
+    </void>
+    <void index="50">
+     <string>rvDespValor</string>
+    </void>
+    <void index="51">
+     <string>rvDespValorL</string>
+    </void>
+    <void index="52">
+     <string>rvDespVeiculo</string>
+    </void>
+    <void index="53">
+     <string>rvDiaria</string>
+    </void>
+    <void index="54">
+     <string>rvRevisaoObs</string>
+    </void>
+    <void index="55">
+     <string>rvSaldo</string>
+    </void>
+    <void index="56">
+     <string>rvTotal</string>
+    </void>
+    <void index="57">
+     <string>rvTotalComb</string>
+    </void>
+    <void index="58">
+     <string>rvTotalCombFat</string>
+    </void>
+    <void index="59">
+     <string>salvarEnviar</string>
+    </void>
+    <void index="60">
+     <string>solAdianta</string>
+    </void>
+    <void index="61">
+     <string>solDataRet</string>
+    </void>
+    <void index="62">
+     <string>solDataSaida</string>
+    </void>
+    <void index="63">
+     <string>solDataSol</string>
+    </void>
+    <void index="64">
+     <string>solIdSol</string>
+    </void>
+    <void index="65">
+     <string>solMatSol</string>
+    </void>
+    <void index="66">
+     <string>solMoeda</string>
+    </void>
+    <void index="67">
+     <string>solNomeSol</string>
+    </void>
+    <void index="68">
+     <string>solNumColab</string>
+    </void>
+    <void index="69">
+     <string>solSetor</string>
+    </void>
+    <void index="70">
+     <string>solSetorHidden</string>
+    </void>
+    <void index="71">
+     <string>tbRelDespesas</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>mecanismoPapel</string>
    <object class="java.util.ArrayList">
     <void method="add">
