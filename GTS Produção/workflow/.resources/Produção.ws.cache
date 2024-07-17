@@ -3213,6 +3213,557 @@
    </object>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 27</string>
+   <array class="java.lang.String" length="182">
+    <void index="0">
+     <string>A1_COD</string>
+    </void>
+    <void index="1">
+     <string>A1_LOJA</string>
+    </void>
+    <void index="2">
+     <string>A1_PAIS</string>
+    </void>
+    <void index="3">
+     <string>A1_TIPO</string>
+    </void>
+    <void index="4">
+     <string>cabecalho</string>
+    </void>
+    <void index="5">
+     <string>chkAceitePG</string>
+    </void>
+    <void index="6">
+     <string>chkAceito</string>
+    </void>
+    <void index="7">
+     <string>chkPartesCientePedido</string>
+    </void>
+    <void index="8">
+     <string>chkPosVendaCientePedido</string>
+    </void>
+    <void index="9">
+     <string>chkRedespacho</string>
+    </void>
+    <void index="10">
+     <string>chkTransporteProprio</string>
+    </void>
+    <void index="11">
+     <string>codCondPagto</string>
+    </void>
+    <void index="12">
+     <string>codTransportadora</string>
+    </void>
+    <void index="13">
+     <string>codVendedorProtheus</string>
+    </void>
+    <void index="14">
+     <string>condPagto</string>
+    </void>
+    <void index="15">
+     <string>CPchkAceite</string>
+    </void>
+    <void index="16">
+     <string>CPDiasRetirada_1</string>
+    </void>
+    <void index="17">
+     <string>CPDiasRetirada_2</string>
+    </void>
+    <void index="18">
+     <string>CPDiasRetirada_3</string>
+    </void>
+    <void index="19">
+     <string>CPNumOrcProtheus_1</string>
+    </void>
+    <void index="20">
+     <string>CPNumOrcProtheus_2</string>
+    </void>
+    <void index="21">
+     <string>CPNumOrcProtheus_3</string>
+    </void>
+    <void index="22">
+     <string>CPNumPedProtheus_1</string>
+    </void>
+    <void index="23">
+     <string>CPNumPedProtheus_2</string>
+    </void>
+    <void index="24">
+     <string>CPNumPedProtheus_3</string>
+    </void>
+    <void index="25">
+     <string>CPOpcaoRecebimento_1</string>
+    </void>
+    <void index="26">
+     <string>CPOpcaoRecebimento_2</string>
+    </void>
+    <void index="27">
+     <string>CPOpcaoRecebimento_3</string>
+    </void>
+    <void index="28">
+     <string>CPProgramacaoRetirada_1</string>
+    </void>
+    <void index="29">
+     <string>CPProgramacaoRetirada_2</string>
+    </void>
+    <void index="30">
+     <string>CPProgramacaoRetirada_3</string>
+    </void>
+    <void index="31">
+     <string>CPqtdOpcaoRecebimento</string>
+    </void>
+    <void index="32">
+     <string>CPValor_1</string>
+    </void>
+    <void index="33">
+     <string>CPValor_2</string>
+    </void>
+    <void index="34">
+     <string>CPValor_3</string>
+    </void>
+    <void index="35">
+     <string>DataAbertura</string>
+    </void>
+    <void index="36">
+     <string>dataAberturaPed</string>
+    </void>
+    <void index="37">
+     <string>dataEmissaoBalcao</string>
+    </void>
+    <void index="38">
+     <string>dataItensProcessados</string>
+    </void>
+    <void index="39">
+     <string>dataVenda</string>
+    </void>
+    <void index="40">
+     <string>defineExpPedidoSalvarCancel</string>
+    </void>
+    <void index="41">
+     <string>defineOrcamentoPedido</string>
+    </void>
+    <void index="42">
+     <string>descontoUsuario</string>
+    </void>
+    <void index="43">
+     <string>endBairro</string>
+    </void>
+    <void index="44">
+     <string>endCEP</string>
+    </void>
+    <void index="45">
+     <string>endCidade</string>
+    </void>
+    <void index="46">
+     <string>endCNPJ</string>
+    </void>
+    <void index="47">
+     <string>endEndereco</string>
+    </void>
+    <void index="48">
+     <string>endIE</string>
+    </void>
+    <void index="49">
+     <string>endNomeCliente</string>
+    </void>
+    <void index="50">
+     <string>endNumero</string>
+    </void>
+    <void index="51">
+     <string>endUF</string>
+    </void>
+    <void index="52">
+     <string>formalizarPedido</string>
+    </void>
+    <void index="53">
+     <string>formalizarPedidoMotCancel</string>
+    </void>
+    <void index="54">
+     <string>garantiaBalcao</string>
+    </void>
+    <void index="55">
+     <string>gerarPedidoGTS</string>
+    </void>
+    <void index="56">
+     <string>gerarPedidoMotCancel</string>
+    </void>
+    <void index="57">
+     <string>gerenteRevenda</string>
+    </void>
+    <void index="58">
+     <string>gestorEstado</string>
+    </void>
+    <void index="59">
+     <string>itensProcessados</string>
+    </void>
+    <void index="60">
+     <string>matAnalisaPedidoGTS</string>
+    </void>
+    <void index="61">
+     <string>matFluigSuporteGTS</string>
+    </void>
+    <void index="62">
+     <string>matriculaValidaPedRiscoA</string>
+    </void>
+    <void index="63">
+     <string>NFEmissaoBalcao</string>
+    </void>
+    <void index="64">
+     <string>nomeRedespacho</string>
+    </void>
+    <void index="65">
+     <string>nomeSolicitante</string>
+    </void>
+    <void index="66">
+     <string>nomeTransportadora</string>
+    </void>
+    <void index="67">
+     <string>nroNFGTS</string>
+    </void>
+    <void index="68">
+     <string>nroNFVenda</string>
+    </void>
+    <void index="69">
+     <string>numCatalogo</string>
+    </void>
+    <void index="70">
+     <string>numOrcamento</string>
+    </void>
+    <void index="71">
+     <string>numPedido</string>
+    </void>
+    <void index="72">
+     <string>obsPosVendaCientePedido</string>
+    </void>
+    <void index="73">
+     <string>orcAlqICMSItem</string>
+    </void>
+    <void index="74">
+     <string>orcAlqIPIItem</string>
+    </void>
+    <void index="75">
+     <string>orcCodProdutoItem</string>
+    </void>
+    <void index="76">
+     <string>orcCP1RetTotalCustoItem</string>
+    </void>
+    <void index="77">
+     <string>orcCP2RetTotalCustoItem</string>
+    </void>
+    <void index="78">
+     <string>orcCP3RetTotalCustoItem</string>
+    </void>
+    <void index="79">
+     <string>orcDescProdutoItem</string>
+    </void>
+    <void index="80">
+     <string>orcDescProdutoUSAItem</string>
+    </void>
+    <void index="81">
+     <string>orcEmbalagemItem</string>
+    </void>
+    <void index="82">
+     <string>orcICMSItem</string>
+    </void>
+    <void index="83">
+     <string>orcICMSRetItem</string>
+    </void>
+    <void index="84">
+     <string>orcIPIItem</string>
+    </void>
+    <void index="85">
+     <string>orcItemProcessadoItem</string>
+    </void>
+    <void index="86">
+     <string>orcNCMItem</string>
+    </void>
+    <void index="87">
+     <string>orcNomeClienteFinal</string>
+    </void>
+    <void index="88">
+     <string>orcObservacao</string>
+    </void>
+    <void index="89">
+     <string>orcPrecoCustoDolarItem</string>
+    </void>
+    <void index="90">
+     <string>orcPrecoCustoItem</string>
+    </void>
+    <void index="91">
+     <string>orcPrecoCustoOrigItem</string>
+    </void>
+    <void index="92">
+     <string>orcPrecoMinItem</string>
+    </void>
+    <void index="93">
+     <string>orcPrecoSugeItem</string>
+    </void>
+    <void index="94">
+     <string>orcPrecoTabela</string>
+    </void>
+    <void index="95">
+     <string>orcPrecoTabelaDolar</string>
+    </void>
+    <void index="96">
+     <string>orcPrecoTabelaDolarItem</string>
+    </void>
+    <void index="97">
+     <string>orcPrecoTabelaItem</string>
+    </void>
+    <void index="98">
+     <string>orcPrecoUnitItem</string>
+    </void>
+    <void index="99">
+     <string>orcProdAlqICMS</string>
+    </void>
+    <void index="100">
+     <string>orcProdAlqIPI</string>
+    </void>
+    <void index="101">
+     <string>orcProdCod</string>
+    </void>
+    <void index="102">
+     <string>orcProdCodAntigo</string>
+    </void>
+    <void index="103">
+     <string>orcProdCodCritico</string>
+    </void>
+    <void index="104">
+     <string>orcProdCurvaABC</string>
+    </void>
+    <void index="105">
+     <string>orcProdDesc</string>
+    </void>
+    <void index="106">
+     <string>orcProdDescUSA</string>
+    </void>
+    <void index="107">
+     <string>orcProdEmbalagem</string>
+    </void>
+    <void index="108">
+     <string>orcProdEstoque</string>
+    </void>
+    <void index="109">
+     <string>orcProdICMS</string>
+    </void>
+    <void index="110">
+     <string>orcProdICMSRet</string>
+    </void>
+    <void index="111">
+     <string>orcProdIPI</string>
+    </void>
+    <void index="112">
+     <string>orcProdNCM</string>
+    </void>
+    <void index="113">
+     <string>orcProdPercentAcresc</string>
+    </void>
+    <void index="114">
+     <string>orcProdPesoUnit</string>
+    </void>
+    <void index="115">
+     <string>orcProdPrecoCusto</string>
+    </void>
+    <void index="116">
+     <string>orcProdPrecoCustoCab</string>
+    </void>
+    <void index="117">
+     <string>orcProdPrecoCustoCabDolar</string>
+    </void>
+    <void index="118">
+     <string>orcProdPrecoCustoDolar</string>
+    </void>
+    <void index="119">
+     <string>orcProdPrecoMin</string>
+    </void>
+    <void index="120">
+     <string>orcProdPrecoSugerido</string>
+    </void>
+    <void index="121">
+     <string>orcProdPrecoSugeridoMP</string>
+    </void>
+    <void index="122">
+     <string>orcProdPrecoVenda</string>
+    </void>
+    <void index="123">
+     <string>orcProdQtd</string>
+    </void>
+    <void index="124">
+     <string>orcProdRecompra</string>
+    </void>
+    <void index="125">
+     <string>orcProdUnMedida</string>
+    </void>
+    <void index="126">
+     <string>orcQtdCP1RetItem</string>
+    </void>
+    <void index="127">
+     <string>orcQtdCP2RetItem</string>
+    </void>
+    <void index="128">
+     <string>orcQtdCP3RetItem</string>
+    </void>
+    <void index="129">
+     <string>orcQtdItem</string>
+    </void>
+    <void index="130">
+     <string>orcTelClienteFinal</string>
+    </void>
+    <void index="131">
+     <string>orcTotalCustoComImpItem</string>
+    </void>
+    <void index="132">
+     <string>orcTotalCustoDolarItem</string>
+    </void>
+    <void index="133">
+     <string>orcTotalCustoItem</string>
+    </void>
+    <void index="134">
+     <string>orcTotalItem</string>
+    </void>
+    <void index="135">
+     <string>origemSolicitacao</string>
+    </void>
+    <void index="136">
+     <string>partesTransformaOrcEmPed</string>
+    </void>
+    <void index="137">
+     <string>pedObservacao</string>
+    </void>
+    <void index="138">
+     <string>PercentDesc</string>
+    </void>
+    <void index="139">
+     <string>PercentDesconto</string>
+    </void>
+    <void index="140">
+     <string>periodoFinalDescontoPP</string>
+    </void>
+    <void index="141">
+     <string>periodoInicialDescontoPP</string>
+    </void>
+    <void index="142">
+     <string>porcDescontoParamCondPgtoAV</string>
+    </void>
+    <void index="143">
+     <string>porcDescontoParamTipoPedido</string>
+    </void>
+    <void index="144">
+     <string>porcDescontoPP</string>
+    </void>
+    <void index="145">
+     <string>redespachoMsgNotaFiscal</string>
+    </void>
+    <void index="146">
+     <string>revExportacao</string>
+    </void>
+    <void index="147">
+     <string>riscoRevenda</string>
+    </void>
+    <void index="148">
+     <string>serieEquipamento</string>
+    </void>
+    <void index="149">
+     <string>solicitacao</string>
+    </void>
+    <void index="150">
+     <string>solicitante</string>
+    </void>
+    <void index="151">
+     <string>tipoGS</string>
+    </void>
+    <void index="152">
+     <string>tipoPedido</string>
+    </void>
+    <void index="153">
+     <string>tipoPedidoPosVenda</string>
+    </void>
+    <void index="154">
+     <string>totalCustoPedido</string>
+    </void>
+    <void index="155">
+     <string>totalCustoPedidoDolar</string>
+    </void>
+    <void index="156">
+     <string>totalICMS</string>
+    </void>
+    <void index="157">
+     <string>totalICMSRet</string>
+    </void>
+    <void index="158">
+     <string>totalIPI</string>
+    </void>
+    <void index="159">
+     <string>totalPedido</string>
+    </void>
+    <void index="160">
+     <string>tpFrete</string>
+    </void>
+    <void index="161">
+     <string>tpTransportadora</string>
+    </void>
+    <void index="162">
+     <string>ValorMinimo</string>
+    </void>
+    <void index="163">
+     <string>ValorValido</string>
+    </void>
+    <void index="164">
+     <string>vendedor1</string>
+    </void>
+    <void index="165">
+     <string>vendedor10</string>
+    </void>
+    <void index="166">
+     <string>vendedor11</string>
+    </void>
+    <void index="167">
+     <string>vendedor12</string>
+    </void>
+    <void index="168">
+     <string>vendedor13</string>
+    </void>
+    <void index="169">
+     <string>vendedor14</string>
+    </void>
+    <void index="170">
+     <string>vendedor15</string>
+    </void>
+    <void index="171">
+     <string>vendedor2</string>
+    </void>
+    <void index="172">
+     <string>vendedor3</string>
+    </void>
+    <void index="173">
+     <string>vendedor4</string>
+    </void>
+    <void index="174">
+     <string>vendedor5</string>
+    </void>
+    <void index="175">
+     <string>vendedor6</string>
+    </void>
+    <void index="176">
+     <string>vendedor7</string>
+    </void>
+    <void index="177">
+     <string>vendedor8</string>
+    </void>
+    <void index="178">
+     <string>vendedor9</string>
+    </void>
+    <void index="179">
+     <string>WKNumState</string>
+    </void>
+    <void index="180">
+     <string>zoomCondPagto</string>
+    </void>
+    <void index="181">
+     <string>zoomRedespacho</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>mecanismo</string>
    <array class="[Ljava.lang.Object;" length="10">
     <void index="0">
