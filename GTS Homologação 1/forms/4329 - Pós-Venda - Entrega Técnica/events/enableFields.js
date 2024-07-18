@@ -72,7 +72,6 @@ function enableFields(form){
 		}
 		//Cliente
 		form.setEnabled("cliTelefonePesqSatisfacao", false);
-		form.setEnabled("cliAcompanhouEnt", false);
 		form.setEnabled("cliPossuiEquipamentoGTS", false);
 		var indexesCliTbEquipamentos = form.getChildrenIndexes("cliTbEquipamentos");
 		if(indexesCliTbEquipamentos.length > 0){
@@ -172,7 +171,6 @@ function enableFields(form){
 		form.setEnabled("cliNomeCliente", false);
 		form.setEnabled("cliInscricaoEstadual", false);
 		form.setEnabled("cliTelefonePesqSatisfacao", false);
-		form.setEnabled("cliAcompanhouEnt", false);
 		form.setEnabled("cliPossuiEquipamentoGTS", false);
 		var indexesCliTbEquipamentos = form.getChildrenIndexes("cliTbEquipamentos");
 		if(indexesCliTbEquipamentos.length > 0){
@@ -282,7 +280,6 @@ function enableFields(form){
 		form.setEnabled("cliTelefone", false);
 		form.setEnabled("cliEmail", false);
 		form.setEnabled("cliTelefonePesqSatisfacao", false);
-		form.setEnabled("cliAcompanhouEnt", false);
 		form.setEnabled("cliPossuiEquipamentoGTS", false);
 		var indexesCliTbEquipamentos = form.getChildrenIndexes("cliTbEquipamentos");
 		if(indexesCliTbEquipamentos.length > 0){
@@ -412,7 +409,6 @@ function enableFields(form){
 		form.setEnabled("cliTelefone", false);
 		form.setEnabled("cliEmail", false);
 		form.setEnabled("cliTelefonePesqSatisfacao", false);
-		form.setEnabled("cliAcompanhouEnt", false);
 		form.setEnabled("cliPossuiEquipamentoGTS", false);
 		var indexesCliTbEquipamentos = form.getChildrenIndexes("cliTbEquipamentos");
 		if(indexesCliTbEquipamentos.length > 0){
@@ -666,7 +662,6 @@ function enableFields(form){
 		form.setEnabled("cliTelefone", false);
 		form.setEnabled("cliEmail", false);
 		form.setEnabled("cliTelefonePesqSatisfacao", false);
-		form.setEnabled("cliAcompanhouEnt", false);
 		form.setEnabled("cliPossuiEquipamentoGTS", false);
 		var indexesCliTbEquipamentos = form.getChildrenIndexes("cliTbEquipamentos");
 		if(indexesCliTbEquipamentos.length > 0){
@@ -808,7 +803,6 @@ function enableFields(form){
 		form.setEnabled("cliTelefone", false);
 		form.setEnabled("cliEmail", false);
 		form.setEnabled("cliTelefonePesqSatisfacao", false);
-		form.setEnabled("cliAcompanhouEnt", false);
 		form.setEnabled("cliPossuiEquipamentoGTS", false);
 		var indexesCliTbEquipamentos = form.getChildrenIndexes("cliTbEquipamentos");
 		if(indexesCliTbEquipamentos.length > 0){
@@ -949,7 +943,6 @@ function enableFields(form){
 		form.setEnabled("cliTelefone", false);
 		form.setEnabled("cliEmail", false);
 		form.setEnabled("cliTelefonePesqSatisfacao", false);
-		form.setEnabled("cliAcompanhouEnt", false);
 		form.setEnabled("cliPossuiEquipamentoGTS", false);
 		var indexesCliTbEquipamentos = form.getChildrenIndexes("cliTbEquipamentos");
 		if(indexesCliTbEquipamentos.length > 0){

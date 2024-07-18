@@ -78,10 +78,10 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 
-	    		if (isEmpty("equipModelo", form)) {
-	    			message += getMessage("Modelo do Equipamento", 1, form);
-	    			hasErros = true;
-	    		}
+	    		// if (isEmpty("equipModelo", form)) {
+	    		// 	message += getMessage("Modelo do Equipamento", 1, form);
+	    		// 	hasErros = true;
+	    		// }
 	    		
 	    		if (isEmpty("equipAcoplamento", form)) {
 	    			message += getMessage("Acoplamento do Equipamento", 1, form);
@@ -574,10 +574,10 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 
-	    		if (isEmpty("equipModelo", form)) {
-	    			message += getMessage("Modelo do Equipamento", 1, form);
-	    			hasErros = true;
-	    		}
+	    		// if (isEmpty("equipModelo", form)) {
+	    		// 	message += getMessage("Modelo do Equipamento", 1, form);
+	    		// 	hasErros = true;
+	    		// }
 	    		
 	    		if (isEmpty("equipAcoplamento", form)) {
 	    			message += getMessage("Acoplamento do Equipamento", 1, form);
@@ -1180,10 +1180,10 @@ function validateForm(form){
 	    			hasErros = true;
 	    		}
 
-	    		if (isEmpty("equipModelo", form)) {
-	    			message += getMessage("Modelo do Equipamento", 1, form);
-	    			hasErros = true;
-	    		}
+	    		// if (isEmpty("equipModelo", form)) {
+	    		// 	message += getMessage("Modelo do Equipamento", 1, form);
+	    		// 	hasErros = true;
+	    		// }
 	    		
 	    		if (isEmpty("equipAcoplamento", form)) {
 	    			message += getMessage("Acoplamento do Equipamento", 1, form);

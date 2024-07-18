@@ -681,13 +681,12 @@ var eventsFuncoes = (function() {
 			/*
 			 * Cadastro da Loja (Revenda)
 			 */
-			//chamado 29991
-			// $(document).on("keydown", "#revContVendasTelefone", function(event) {	
-			// 	funcoes.mascaraTelefone('revContVendasTelefone', event);
-			// });			
-			// $(document).on("keydown", "#revContPecasTelefone", function(event) {	
-			// 	funcoes.mascaraTelefone('revContPecasTelefone', event);
-			// });
+			$(document).on("keydown", "#revContVendasTelefone", function(event) {	
+				funcoes.mascaraTelefone('revContVendasTelefone', event);
+			});
+			$(document).on("keydown", "#revContPecasTelefone", function(event) {	
+				funcoes.mascaraTelefone('revContPecasTelefone', event);
+			});
 			$(document).on("keydown", "#revContServicoTelefone", function(event) {	
 				funcoes.mascaraTelefone('revContServicoTelefone', event);
 			});

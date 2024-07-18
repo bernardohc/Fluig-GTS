@@ -621,7 +621,6 @@
 								<option value="Corte">Corte</option>
 								<option value="Desalinhamento">Desalinhamento</option>
 								<option value="Desgaste">Desgaste</option>
-								<option value="Desgaste">Desgaste</option>
 								<option value="Dimensão Incorreta">Dimensão Incorreta</option>
 								<option value="Empenamento">Empenamento</option>
 								<option value="Falha Elétrica">Falha Elétrica</option>
@@ -653,7 +652,7 @@
 						<div class="col-md-12" align="left">
 							<table class="table table-condensed table-nonfluid table-striped" id="tbItens"
 								tablename="tbItens" name="tbItens" noaddbutton="true"
-								customFnDelete="removeItem(this)">
+								customFnDelete="removeItem(this)"> <!-- removeAtend(this) -->
 								<thead>
 									<tr>										
 										<th class="col-md-1">Ordem</th>
@@ -708,7 +707,95 @@
 				</div>		
 			</div>			
 		</div>
+
+		<!-- Inicio segunda seção -->
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Base de Dados</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<!--Inicio Tabela Pai x Filho-->
+				<div class="col-md-12" align="left">
+					<table class="table table-condensed table-nonfluid table-striped" id="tbItensBD"
+						tablename="tbItensBD" name="tbItensBD" noaddbutton="true"  nodeletebutton="true" customFnDelete="removeItem(this)">
+						<thead>
+							<tr>										
+								<th class="col-md-1">Ordem</th>
+								<th class="col-md-1">Código do Item</th>
+								<th class="col-md-1">Quantidade</th>
+								<th class="col-md-1">Descrição</th>
+								<th class="col-md-1">Valor Unitário</th>
+								<th class="col-md-1">Ipi Unitário</th>
+								<th class="col-md-1">Adicional</th>
+								<th class="col-md-1">Frete</th>
+								<th class="col-md-1">Serviço</th>
+								<th class="col-md-1">Nf/Nota Débito</th>
+								<th class="col-md-1">Data NF/ND</th>
+
+							</tr>
+						</thead>
+						<tbody class="cust-align-fields">
+							<tr detail="true" detailname="faltbItensBD" class="cust-table-row cust-align-fields">
+								<td>
+									<input type="text" id="bdItensOrdem" name="bdItensOrdem" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdItensCod" name="bdItensCod" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdItensQtd" name="bdItensQtd" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdItensDesc" name="bdItensDesc" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdValorUnit" name="bdValorUnit" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdIpiUnit" name="bdIpiUnit" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdAdicional" name="bdAdicional" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdFrete" name="bdFrete" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdServico" name="bdServico" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdNfNd" name="bdNfNd" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="bdDataNfNd" name="bdDataNfNd" class="form-control" readonly>
+								</td>								
+							</tr>
+						</tbody>
+					</table>
+					<!--Fim Tabela Pai x Filho-->
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-2 col-md-offset-3">
+					<label for="bdCustoPecas">Custo de Peças</label>
+					<input type="text" name="bdCustoPecas" id="bdCustoPecas" class="form-control" readonly>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="bdIpiTotal">IPI Total</label>
+					<input type="text" name="bdIpiTotal" id="bdIpiTotal" class="form-control" readonly>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="bdValorTotal">Valor Total</label>
+					<input type="text" name="bdValorTotal" id="bdValorTotal" class="form-control" readonly>
+				</div>
+			</div>
+		</div>			
 	</div>
+
+	</div>
+	
+
 </form>
 </div>
 </body>

@@ -141,6 +141,7 @@ var funcoes = (function() {
 
 		addItensSg : function(){
 			const indice = wdkAddChild("tbItens");
+			const indiceDb = wdkAddChild("tbItensBD");
 
 			let sgAddItemOrdem = $("#sgAddItemOrdem").val();
 			let sgAddItemCodigo = $("#sgAddItemCodigo").val();
@@ -153,6 +154,12 @@ var funcoes = (function() {
 			$(`#sgItensQtd___${indice}`).val(sgAddItemQtde)
 			$(`#sgItensDesc___${indice}`).val(sgAddItemDesc)
 			$(`#sgItensModFalha___${indice}`).val(sgAddItemModFalha)
+
+			//Itens base de dados
+			$(`#bdItensOrdem___${indiceDb}`).val(sgAddItemOrdem)
+			$(`#bdItensCod___${indiceDb}`).val(sgAddItemCodigo)
+			$(`#bdItensQtd___${indiceDb}`).val(sgAddItemQtde)
+			$(`#bdItensDesc___${indiceDb}`).val(sgAddItemDesc)
 
 			//Adiciona a ordem do item
 			let sgItensOrdemNext = parseInt($("#sgAddItemOrdem").val()) + 1;
@@ -310,39 +317,77 @@ var funcoes = (function() {
 	}
 })();
 
-function removeItem(oElement){
-	//fnWdkRemoveChild(oElement);
+function removeItem(oElement) {
+    try {
+        // Pega o índice da linha na tabela original
+        let indexTableA = $($(oElement).closest("tbody").find('tr:not(:first())')).index($(oElement).closest("tr"));
+        //const sgItensOrdem = $(`#sgItensOrdem___${indexTableA + 1}`).val() || "";
 
-	try {
-		const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
-		console.log(indice + ' Indice')
-        const sgItensOrdemID = $(`#sgItensOrdem___${indice}`).val() || "";
-		console.log(sgItensOrdemID + ' Ordem')
         FLUIGC.message.confirm({
-            message: `Deseja remover o item código <b>${sgItensOrdemID}</b>?`,
+            message: `Deseja remover o atendimento?`, //<b>${sgItensOrdem}</b>
             title: 'Confirmação',
             labelYes: 'Sim, quero remover',
             labelNo: 'Não   ',
         }, function (result) {
             if (result) {
-				//funcoes.removeAnexo(indice);
-				fnWdkRemoveChild(oElement);
-				
-				let temRegistro = false;
-				$("input[name*=sgItensOrdemID___]").each(function(){
-					temRegistro = true;
-				});
-				if(!temRegistro){
-					$('#tbRelDespesas').hide();
-				}
-			}
+                // Remove a linha da tabela original (tbItens)
+                let rowToRemoveA = $("table#tbItens tbody").find("tr:not(:first())").eq(indexTableA);
+                fnWdkRemoveChild(rowToRemoveA.find('input:first')[0]);
+                
+                // Remove a linha correspondente na tabela tbItensBD
+                let rowToRemoveB = $("table#tbItensBD tbody").find("tr:not(:first())").eq(indexTableA);
+                fnWdkRemoveChild(rowToRemoveB.find('input:first')[0]);
+
+				// Reindexar as linhas restantes em ambas as tabelas
+                //reindexTables(["tbRelDespesas", "tbItensBD"]);
+            }
         });
     } catch (e) {
-        console.error("Houve um erro inesperado na função removeDespesa")
-        console.error(e)
+        console.error("Houve um erro inesperado na função removeAtend");
+        console.error(e);
     }
-
 };
+
+// function removeItem(oElement){
+
+// 	try {
+// 		const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
+//         const sgItensOrdemID = $(`#sgItensOrdem___${indice}`).val() || "";		
+
+//         FLUIGC.message.confirm({
+//             message: `Deseja remover o item código <b>${sgItensOrdemID}</b>?`,
+//             title: 'Confirmação',
+//             labelYes: 'Sim, quero remover',
+//             labelNo: 'Não   ',
+//         }, function (result) {
+//             if (result) {
+// 				//funcoes.removeAnexo(indice);
+// 				fnWdkRemoveChild(oElement);
+				
+// 				$("input[name*=sgItensOrdem___]").each(function(index){
+// 					var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+// 					console.log(index + " indice 01")
+// 					$("table#tbItens tbody").find("tr:not(:first())").eq(index).addClass("tr--delete");
+// 					$("table#tbItensBD").find("tr:not(:first())").eq(index).addClass("tr--delete");
+
+// 					fnWdkRemoveChild(document.querySelector("tr.tr--delete"));
+					
+// 				});
+
+// 				let temRegistro = false;
+// 				$("input[name*=sgItensOrdemID___]").each(function(){
+// 					temRegistro = true;
+// 				});
+// 				if(!temRegistro){
+// 					$('#tbRelDespesas').hide();
+// 				}
+// 			}
+//         });
+//     } catch (e) {
+//         console.error("Houve um erro inesperado na função removeDespesa")
+//         console.error(e)
+//     }
+// };
 
 function removeAtend(oElement){
 	//fnWdkRemoveChild(oElement);
@@ -447,7 +492,7 @@ var eventsFuncoes = (function() {
 			});
 			$(document).on("click", "#btnAddFalhaEltrica", function() {
 				funcoes.showCamera('btnAddFalhaEltrica');
-			});
+			});			
 
 		}
 	}
