@@ -137,6 +137,26 @@ var funcoes = (function() {
 
 			//funcoes.addItensSg();
 		},
+
+		//Valida os dados da comunicacao antes de enviar pro pai x filho
+		validaComunicacao : function(){
+
+			let hasErros = false;
+			let message = '';
+			let bdComInternaMen = $('#bdComInternaMen').val().trim();
+
+			if( bdComInternaMen === '' ){
+				message += getMessage("Mensagem", 1, form);
+				hasErros = true
+			}
+			if( hasErros ){
+				messageToast({message: message}, 'warning')
+				return;
+			}	
+			return true;
+
+			//funcoes.addItensSg();
+		},
 		
 
 		addItensSg : function(){
@@ -190,6 +210,27 @@ var funcoes = (function() {
 			funcoes.LimpaAtendSg();
 		},
 
+		addComunicao : function(){
+			const indice = wdkAddChild("tbComInterna");
+
+			let bdComInternaDt = $("#bdComInternaDt").val();
+			let bdComInternaColab = $("#bdComInternaColab").val();
+			let bdComInternaMen = $("#bdComInternaMen").val();			
+
+			$(`#comInterData___${indice}`).val(bdComInternaDt);
+			$(`#comInterColab___${indice}`).val(bdComInternaColab);
+			$(`#comInterMen___${indice}`).val(bdComInternaMen);		
+			
+
+			funcoes.LimpaComunicacao();
+		},
+
+		LimpaComunicacao : function(){
+			// $("#bdComInternaDt").val("");
+			// $("#bdComInternaColab").val("");
+			$("#bdComInternaMen").val("");
+		},
+
 		LimpaItensSg : function(){
 			$("#sgAddItemCodigo").val("");
 			$("#sgAddItemQtde").val("");
@@ -221,6 +262,18 @@ var funcoes = (function() {
 			const carimboData = `${dia}/${mes}/${ano} `;
 			
 			$('#sgSolDataPre').val(carimboData);			
+		},
+
+		gerarDataHora1 : function(elementId) {
+			var $input = $('#' + elementId);
+			const dataAtual = new Date();
+			const dia = dataAtual.getDate().toString().padStart(2, '0');
+			const mes = (dataAtual.getMonth() + 1).toString().padStart(2, '0'); // Lembre-se que os meses em JavaScript são base 0.
+			const ano = dataAtual.getFullYear();
+		
+			const carimboData = `${dia}/${mes}/${ano} `;
+			
+			$input.val(carimboData);			
 		},
 
 		formatarCNPJ: function(elementId) {
@@ -324,7 +377,7 @@ function removeItem(oElement) {
         //const sgItensOrdem = $(`#sgItensOrdem___${indexTableA + 1}`).val() || "";
 
         FLUIGC.message.confirm({
-            message: `Deseja remover o atendimento?`, //<b>${sgItensOrdem}</b>
+            message: `Deseja remover o item?`, //<b>${sgItensOrdem}</b>
             title: 'Confirmação',
             labelYes: 'Sim, quero remover',
             labelNo: 'Não   ',
@@ -348,46 +401,30 @@ function removeItem(oElement) {
     }
 };
 
-// function removeItem(oElement){
+function removeComunica(oElement) {
+    try {
+        // Pega o índice da linha na tabela original
+        let indexTableA = $($(oElement).closest("tbody").find('tr:not(:first())')).index($(oElement).closest("tr"));
+        //const sgItensOrdem = $(`#sgItensOrdem___${indexTableA + 1}`).val() || "";
 
-// 	try {
-// 		const indice = validafunctions.getPosicaoFilho($(oElement).closest('tr').find("input")[0].id);
-//         const sgItensOrdemID = $(`#sgItensOrdem___${indice}`).val() || "";		
+        FLUIGC.message.confirm({
+            message: `Deseja remover o item?`, //<b>${sgItensOrdem}</b>
+            title: 'Confirmação',
+            labelYes: 'Sim, quero remover',
+            labelNo: 'Não   ',
+        }, function (result) {
+            if (result) {
+                // Remove a linha da tabela original (tbItens)
+                let rowToRemoveA = $("table#tbComInterna tbody").find("tr:not(:first())").eq(indexTableA);
+                fnWdkRemoveChild(rowToRemoveA.find('input:first')[0]);
+            }
+        });
+    } catch (e) {
+        console.error("Houve um erro inesperado na função removeAtend");
+        console.error(e);
+    }
+};
 
-//         FLUIGC.message.confirm({
-//             message: `Deseja remover o item código <b>${sgItensOrdemID}</b>?`,
-//             title: 'Confirmação',
-//             labelYes: 'Sim, quero remover',
-//             labelNo: 'Não   ',
-//         }, function (result) {
-//             if (result) {
-// 				//funcoes.removeAnexo(indice);
-// 				fnWdkRemoveChild(oElement);
-				
-// 				$("input[name*=sgItensOrdem___]").each(function(index){
-// 					var index = validafunctions.getPosicaoFilho($(this).attr("id"));
-// 					console.log(index + " indice 01")
-// 					$("table#tbItens tbody").find("tr:not(:first())").eq(index).addClass("tr--delete");
-// 					$("table#tbItensBD").find("tr:not(:first())").eq(index).addClass("tr--delete");
-
-// 					fnWdkRemoveChild(document.querySelector("tr.tr--delete"));
-					
-// 				});
-
-// 				let temRegistro = false;
-// 				$("input[name*=sgItensOrdemID___]").each(function(){
-// 					temRegistro = true;
-// 				});
-// 				if(!temRegistro){
-// 					$('#tbRelDespesas').hide();
-// 				}
-// 			}
-//         });
-//     } catch (e) {
-//         console.error("Houve um erro inesperado na função removeDespesa")
-//         console.error(e)
-//     }
-// };
 
 function removeAtend(oElement){
 	//fnWdkRemoveChild(oElement);
@@ -493,6 +530,19 @@ var eventsFuncoes = (function() {
 			$(document).on("click", "#btnAddFalhaEltrica", function() {
 				funcoes.showCamera('btnAddFalhaEltrica');
 			});			
+			$(document).on("click", "#btnAddAnexoAtend", function() {
+				funcoes.showCamera('btnAddAnexoAtend');
+			});			
+			//Btn excluir item
+			$(document).on("click", "#btnDel", function() {
+				funcoes.removeItem(this)
+			});	
+			//Btn add cominuicação
+			$(document).on("click", "#btnAddMen", function() {
+				if(funcoes.validaComunicacao()){
+					funcoes.addComunicao();		
+				}				
+			});				
 
 		}
 	}
@@ -508,27 +558,6 @@ function loadForm(){
 	$("[tpAtendimento]").hide();
 	$("[falhaEletrica]").hide();
 
-	var myModal = FLUIGC.modal({
-		title: 'Observções sobre Solicitação de Garantia',
-		content: 'O preenchimento correto do formulário de Solicitação de Garantia e o envio das informações detalhadas para análise do processo de garantia, '+ 
-		'são indispensáveis para que o comitê de garantias GTS possa realizar a análise ágil dos processos.'+ 
-		'<h3>Instruções para preenchimento do Formulário:</h3>'+
-		'<p>Os processos devem ser gerados por modo de falha encontrados no equipamento,'+ 
-		'por tanto o formulário deve conter as informações dos itens que correspondem ao mesmo modo de falha.</p>'+
-		'O solicitante deverá preencher todos os campos do formulário, com exceção dos que estão com observação que serão preenchidos pela GTS.'+ 
-		'As informações devem ser coletadas no momento do atendimento para que não fique nenhuma informação ausente no processo.',
-		id: 'fluig-modal',
-		actions: [{
-			'label': 'Fechar',
-			'autoClose': true
-		}]
-	}, function(err, data) {
-		if(err) {
-			// do error handling
-		} else {
-			// do something with data
-		}
-	});
 	
 	if(CURRENT_STATE == INICIO_0){
 		funcoes.gerarDataHora();
@@ -616,6 +645,28 @@ function loadForm(){
 			$('#tipoAtendMpHidden').val(tpAtendimentoMp);
 		});
 
+		var myModal = FLUIGC.modal({
+			title: 'Observções sobre Solicitação de Garantia',
+			content: 'O preenchimento correto do formulário de Solicitação de Garantia e o envio das informações detalhadas para análise do processo de garantia, '+ 
+			'são indispensáveis para que o comitê de garantias GTS possa realizar a análise ágil dos processos.'+ 
+			'<h3>Instruções para preenchimento do Formulário:</h3>'+
+			'<p>Os processos devem ser gerados por modo de falha encontrados no equipamento,'+ 
+			'por tanto o formulário deve conter as informações dos itens que correspondem ao mesmo modo de falha.</p>'+
+			'O solicitante deverá preencher todos os campos do formulário, com exceção dos que estão com observação que serão preenchidos pela GTS.'+ 
+			'As informações devem ser coletadas no momento do atendimento para que não fique nenhuma informação ausente no processo.',
+			id: 'fluig-modal',
+			actions: [{
+				'label': 'Fechar',
+				'autoClose': true
+			}]
+		}, function(err, data) {
+			if(err) {
+				// do error handling
+			} else {
+				// do something with data
+			}
+		});
+
 	}else if(CURRENT_STATE == INICIO){
 
 		if(FORM_MODE == "MOD"){
@@ -624,6 +675,38 @@ function loadForm(){
 			}
 		}if(isMobile == 'true'){
 			
+		}
+
+	}else if(CURRENT_STATE == PRE_ANALISE){
+		funcoes.gerarDataHora1("#bdComInternaDt");
+		//Remove botao excluir
+		$(".btnDel").remove();
+		//Desabiltar Botões
+		$("#btnAddPlaqueta").attr("disabled", "disabled");
+		$("#btnAddFtFalha1").attr("disabled", "disabled"); 
+		$("#btnAddFtFalha2").attr("disabled", "disabled"); 
+		$("#btnAddFtFalha3").attr("disabled", "disabled"); 
+		$("#btnAddFtFalhaOutras").attr("disabled", "disabled");
+		$("#btnAddAnexoAtend").attr("disabled", "disabled");
+		$("#btnAddAtend").attr("disabled", "disabled");
+		$("#btnAddParecerFt1").attr("disabled", "disabled");
+		$("#btnAddParecerFt2").attr("disabled", "disabled");
+		$("#btnAddFalhaEltrica").attr("disabled", "disabled");
+		$("#btnAddItem").attr("disabled", "disabled");
+		
+
+		var tpMaquina = $("#tipoMaqHidden").val();
+		if(tpMaquina == "Revenda" || tpMaquina == "Revenda"){
+			$("[divNumSerie]").show();
+		}else{
+			$("[divNumSerie]").hide();
+		}
+
+		var tpAtendimentoMp = $("#tipoAtendMpHidden").val();
+		if(tpAtendimentoMp == "nao"){
+			$("[tpAtendimento]").show();
+		}else if(tpAtendimentoMp == "sim"){
+			$("[tpAtendimento]").hide();
 		}
 
 	}

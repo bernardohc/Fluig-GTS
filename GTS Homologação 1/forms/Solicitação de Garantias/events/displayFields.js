@@ -13,30 +13,24 @@ function displayFields(form, customHTML) {
 
 	if(atv_atual == INICIO_0) {
 		form.setValue("sgSolUsuario", fluigAPI.getUserService().getCurrent().getFullName());
-
-		customHTML.append("<script>$('.divVisualizaAnexo').show()</script>");
-		if (!isMobile(form)) {
-			//Somente mostra botão de download se for Web
-			customHTML.append("<script>$('.btnDownloadFile').prop('disabled', false);</script>");
-			customHTML.append("<script>$('.btnDownloadFile').show()</script>");
-		}
-
-		form.setVisibleById("imprimirRelatorio", false);
-
+		
+		form.setVisibleById("divBaseDados", false);
+		
 	}else if (atv_atual == INICIO) {
-		if (form.getFormMode() == 'MOD') {
-			form.setVisibleById("divAddDespesa", true);
-			form.setVisibleById("divImprimirSol", false);
+		form.setVisibleById("divBaseDados", false);
+		// if (form.getFormMode() == 'MOD') {
 			
-		} 
-		form.setVisibleById("divAprovacao", false);
-		form.setVisibleById("divRevisao", false);
-		form.setVisibleById("imprimirRelatorio", false);
+		// } 
+
+	}else if(atv_atual == PRE_ANALISE){
+		//customHTML.append('<script>$(function () { $(".bpm-mobile-trash-column").hide(); });</script>');
+		form.setValue("bdComInternaColab", fluigAPI.getUserService().getCurrent().getFullName());
+
+		form.setVisibleById("divBaseDados", true);
+	
+		
 	}else if (atv_atual == FIM) {
-		form.setVisibleById("divImprimirSol", false);
-		form.setVisibleById("divImprimirAprov", false);
-		//form.setVisibleById("divImprimirRev", false);
-		form.setVisibleById("divSalvarEnviar", false);
+		
 	}
 }
 

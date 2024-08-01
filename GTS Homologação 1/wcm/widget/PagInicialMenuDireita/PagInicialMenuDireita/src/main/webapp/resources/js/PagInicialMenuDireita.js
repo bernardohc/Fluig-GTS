@@ -186,12 +186,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 	            	definiuMenu = true;
 					$('#divPosVenda').show();
 	            	$('#000046').show();
-				}
-				if(record['colleagueGroupPK.groupId'] == '000063' ){
-					//Pós-Venda - Pesquisa de Satisfação Técnico OS
-	            	definiuMenu = true;
-					$('#divPosVenda').show();
-	            	$('#000063').show();
+	            	$('#pesqOS').show();
 				}
 				/*
 	             * Frota
@@ -230,18 +225,11 @@ var PagInicialMenuDireita = SuperWidget.extend({
 	            	$('#000011').show();
 	            }
 
-				//Qualidade SGQ
+	            //Qualidade SGQ
 	            if(record['colleagueGroupPK.groupId'] == '000054' ){
 	            	definiuMenu = true;
 					$('#divQualidade').show();
 	            	$('#000054').show();
-	            }
-
-				//Garantia Solicitação de Garantia
-	            if(record['colleagueGroupPK.groupId'] == '000060' ){
-	            	definiuMenu = true;
-					$('#divGarantia').show();
-	            	$('#000060').show();
 	            }
 	        }
 		        
@@ -295,6 +283,8 @@ var PagInicialMenuDireita = SuperWidget.extend({
 								$("#classRev").text('Prata');
 							}if(calassificacaoRev == 'B'){
 								$("#classRev").text('Bronze');
+							}if(calassificacaoRev == 'D'){
+								$("#classRev").text('Premium Dealer');
 							}if(calassificacaoRev == ''){
 								$("#classRev").text('Não Classificada');
 							}

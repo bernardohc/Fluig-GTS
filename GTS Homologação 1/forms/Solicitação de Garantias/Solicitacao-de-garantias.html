@@ -651,10 +651,11 @@
 						<!--Inicio Tabela Pai x Filho-->
 						<div class="col-md-12" align="left">
 							<table class="table table-condensed table-nonfluid table-striped" id="tbItens"
-								tablename="tbItens" name="tbItens" noaddbutton="true"
-								customFnDelete="removeItem(this)"> <!-- removeAtend(this) -->
+								tablename="tbItens" name="tbItens" noaddbutton="true" nodeletebutton="true"
+								> <!-- customFnDelete="removeItem(this)" -->
 								<thead>
 									<tr>										
+										<th class="col-md-1"></th>
 										<th class="col-md-1">Ordem</th>
 										<th class="col-md-1">Código do Item</th>
 										<th class="col-md-1">Quantidade</th>
@@ -667,6 +668,11 @@
 								</thead>
 								<tbody class="cust-align-fields">
 									<tr detail="true" detailname="falTbItens" class="cust-table-row cust-align-fields">
+										<td>
+											<button type="button" class="btn btn-default btnDel" id="btnDel"  onclick="removeItem(this)">
+												<i class="flaticon flaticon-trash icon-md" aria-hidden="true"  ></i>
+											</button>											
+										</td>
 										<td>
 											<input type="text" id="sgItensOrdem" name="sgItensOrdem" class="form-control" readonly>
 										</td>
@@ -683,7 +689,7 @@
 											<input type="text" id="sgItensModFalha" name="sgItensModFalha" class="form-control" readonly>
 										</td>
 										<td>											
-											<select name="sgItensResultado" id="sgItensResultado" class="form-control sgSolsgItensResultadoEstRev" readonly>
+											<select name="sgItensResultado" id="sgItensResultado" class="form-control sgSolsgItensResultadoEstRev" >
 												<option value=""></option>
 												<option value="Indeferido">Indeferido</option>
 												<option value="Rejeitado">Rejeitado</option>
@@ -693,10 +699,10 @@
 											</select>
 										</td>
 										<td>
-											<input type="text" id="sgItensMotivo" name="sgItensMotivo" class="form-control" readonly>
+											<input type="text" id="sgItensMotivo" name="sgItensMotivo" class="form-control">
 										</td>
 										<td>
-											<input type="text" id="sgItensObs" name="sgItensObs" class="form-control" readonly>
+											<input type="text" id="sgItensObs" name="sgItensObs" class="form-control">
 										</td>
 									</tr>
 								</tbody>
@@ -709,7 +715,7 @@
 		</div>
 
 		<!-- Inicio segunda seção -->
-	<div class="panel panel-primary">
+	<div class="panel panel-primary" id="divBaseDados">
 		<div class="panel-heading">
 			<h3 class="panel-title">Base de Dados</h3>
 		</div>
@@ -790,6 +796,69 @@
 					<input type="text" name="bdValorTotal" id="bdValorTotal" class="form-control" readonly>
 				</div>
 			</div>
+		</div>
+		<div class="panel-heading">
+			<h3 class="panel-title">Comunicação Interna</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="form-group col-md-2 col-md-offset-1">
+					<label for="bdComInternaDt">Data</label>
+					<input type="text" name="bdComInternaDt" id="bdComInternaDt" class="form-control" readonly>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="bdComInternaColab">Colaborador</label>
+					<input type="text" name="bdComInternaColab" id="bdComInternaColab" class="form-control" readonly>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="bdComInternaMen">Mensagem</label>
+					<input type="text" name="bdComInternaMen" id="bdComInternaMen" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-10">
+						<button type="button" class="btn btn-info" id="btnAddMen">Adicionar Mensagem</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!--Inicio Tabela Pai x Filho-->
+				<div class="col-md-12" align="left">
+					<table class="table table-condensed table-nonfluid table-striped" id="tbComInterna"
+						tablename="tbComInterna" name="tbComInterna" noaddbutton="true" nodeletebutton="true">
+						<thead>
+							<tr>										
+								<th class="col-md-1"></th>
+								<th class="col-md-1">Data</th>
+								<th class="col-md-2">Colaborador</th>
+								<th class="col-md-5">Mensagem</th>
+							</tr>
+						</thead>
+						<tbody class="cust-align-fields">
+							<tr detail="true" detailname="tbComInternaTb" class="cust-table-row cust-align-fields">
+								<td>
+									<button type="button" class="btn btn-default btnDelCom" id="btnDelCom"  onclick="removeComunica(this)">
+										<i class="flaticon flaticon-trash icon-md" aria-hidden="true"  ></i>
+									</button>											
+								</td>
+								<td>
+									<input type="text" id="comInterData" name="comInterData" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="comInterColab" name="comInterColab" class="form-control" readonly>
+								</td>
+								<td>
+									<input type="text" id="comInterMen" name="comInterMen" class="form-control" readonly>
+								</td>
+																
+							</tr>
+						</tbody>
+					</table>
+					<!--Fim Tabela Pai x Filho-->
+			</div>
+
+			
 		</div>			
 	</div>
 
