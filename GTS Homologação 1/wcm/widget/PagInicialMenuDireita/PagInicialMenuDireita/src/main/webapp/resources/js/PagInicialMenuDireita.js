@@ -231,6 +231,13 @@ var PagInicialMenuDireita = SuperWidget.extend({
 					$('#divQualidade').show();
 	            	$('#000054').show();
 	            }
+
+				//Qualidade
+	            if(record['colleagueGroupPK.groupId'] == '000060' ){
+	            	definiuMenu = true;
+					$('#divGarantias').show();
+	            	$('#000060').show();
+	            }
 	        }
 		        
 		}

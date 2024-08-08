@@ -385,6 +385,25 @@
 		</div>
 	</div>
 
+	<div id="divGarantias" class="row" style="display:none;" >
+		<div class="col-md-12">
+			<div class="row">
+		    	<div class="col-md-offset-1 col-md-10 ">
+		        	<h2 class="banner-header">Garantia</h2>
+			    </div>
+		    </div>
+		    
+			<div id="000060" class="row" style="display:none; background-color: #f2842;" >
+				<div class="col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " align="center">
+					<a href="/portal/p/GTS/pageworkflowview?processID=Solicita%C3%A7%C3%A3o%20de%20Garantia" ><img style="padding-top: 2px;" height="60px" width="60px" src="/PagInicialMenuDireita/resources/images/qualidade/qualidade.png" /></a>
+				</div>
+				<div class="col-md-8 col-xs-8 " align="left">	
+					<a href="/portal/p/GTS/pageworkflowview?processID=Solicita%C3%A7%C3%A3o%20de%20Garantia"><h3 class="texto-link">Solicitação de Garantia</h3></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div id="divImgDefault" class="row" style="display:none;"  >
 
 		<img style="padding-top: 2px;" height="274px" width="500px" src="/PagInicialMenuDireita/resources/images/default.png" />
