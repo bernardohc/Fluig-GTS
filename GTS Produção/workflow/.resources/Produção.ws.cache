@@ -261,6 +261,77 @@
    </array>
   </void>
   <void method="put">
+   <string>camposFormulario, documentoId = 5400</string>
+   <array class="java.lang.String" length="22">
+    <void index="0">
+     <string>A1_COD</string>
+    </void>
+    <void index="1">
+     <string>A1_LOJA</string>
+    </void>
+    <void index="2">
+     <string>chkGTSCienteRetornoRevenda</string>
+    </void>
+    <void index="3">
+     <string>condPagamento</string>
+    </void>
+    <void index="4">
+     <string>dataEmissao</string>
+    </void>
+    <void index="5">
+     <string>dataHoraRespostaRevenda</string>
+    </void>
+    <void index="6">
+     <string>idFluigOrcamento</string>
+    </void>
+    <void index="7">
+     <string>itmCodProdutoItem</string>
+    </void>
+    <void index="8">
+     <string>itmDataPrevistaChegadaItem</string>
+    </void>
+    <void index="9">
+     <string>itmDescProdutoItem</string>
+    </void>
+    <void index="10">
+     <string>itmEliminarHiddenItem</string>
+    </void>
+    <void index="11">
+     <string>itmEliminarItem</string>
+    </void>
+    <void index="12">
+     <string>itmPrcDolarTotalPendenteItem</string>
+    </void>
+    <void index="13">
+     <string>itmPrcTotalPendenteItem</string>
+    </void>
+    <void index="14">
+     <string>itmQtdPendenteItem</string>
+    </void>
+    <void index="15">
+     <string>itmQtdSolicitadaItem</string>
+    </void>
+    <void index="16">
+     <string>nomeRevenda</string>
+    </void>
+    <void index="17">
+     <string>numPedidoVenda</string>
+    </void>
+    <void index="18">
+     <string>tipoFrete</string>
+    </void>
+    <void index="19">
+     <string>tipoPedido</string>
+    </void>
+    <void index="20">
+     <string>vlrFrete</string>
+    </void>
+    <void index="21">
+     <string>WKUserGerRevenda</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
    <string>mecanismoGrupo</string>
    <object class="java.util.ArrayList">
     <void method="add">

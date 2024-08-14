@@ -6,7 +6,7 @@ function createDataset(fields, constraints, sortFields) {
 
 	try{
 			
-		var cPROD  = '';
+		var cPROD  = 'SPM005001038';
 
 		for (var i in constraints){
 			if ( constraints[i].getFieldName().toString() == 'cPROD' ) {
