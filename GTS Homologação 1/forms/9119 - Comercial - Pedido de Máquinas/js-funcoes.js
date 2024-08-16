@@ -1236,6 +1236,19 @@ var eventsFuncoes = (function() {
 				}
 				
 			});
+
+			$(document).on("click", "#imprimirOrcamentoStrassTech", function() {
+				//função que está no arquivo js-imprimir
+				/*
+				 * Nesta função além do orçamento, está junto o contrato. 
+				 */
+				if( $('#solTipoSolicitante').val() == 'RepresentanteExportacao'){
+					imprimeRelatorioStrassTech('ImprimeOrcamentoExportacao');
+				}else{
+					imprimeRelatorioStrassTech('ImprimeOrcamento');
+				}
+				
+			});
 			
 
 		}

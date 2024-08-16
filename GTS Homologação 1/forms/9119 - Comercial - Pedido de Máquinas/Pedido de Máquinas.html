@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-valor-extenso.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js-imprimir.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-imprimir_strasstech.js" charset="utf-8"></script>
 </head>
 <body onload="loadForm();">
 <form name="form" role="form" >
@@ -679,9 +680,17 @@
 			<div class="col-md-2 " align="left">
 				<div id="divImprimir" >
 	            	<br>
-					<button type="button" class="btn btn-primary" id="imprimirOrcamento" style="min-width: 130px;">Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
-					<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
+					<div>
+						<button type="button" class="btn btn-primary" id="imprimirOrcamento" style="min-width: 130px;">Imprimir <i class="fluigicon fluigicon-print icon-sm"></i></button>
+						<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
+								<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatório</div>"></i>	
+					</div>
+					<br>
+					<div>						
+						<img src="/api/public/ecm/document/documentfile/9465/1000" alt="StrassTech" class="btn" height="42" width="120" id="imprimirOrcamentoStrassTech"> <i class="fluigicon fluigicon-print icon-sm"></i>
+						<i id="popoverRelatorio" class="fluigicon fluigicon-info-sign icon-sm bs-docs-popover-hover "  data-toggle="popover" title="" data-original-title="" data-content="
 								<div class='cor-verde'    >Utilize o navegador Google Chrome para gerar o relatório</div>"></i>		
+					</div>
 				</div>
 			</div>
 			
