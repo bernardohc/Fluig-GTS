@@ -396,7 +396,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 									wb.SheetNames.push("Lista de Preço GTS");
 									
 									//Conteúdo
-									var dataExcel = [[ 'Cod. Produto', 'Desc. Produto', 'Família', 'Grupo' ,'NCM', 'IPI','Preço Tabela', 'Unid./Embalagem', 'Cod. Crítico', 'Cod. Origem', 'Origem', 'Percentual Conteúdo de Importação', 'Alíquota ICMS', 'Curva ABC', 'Recompra']];
+									var dataExcel = [[ 'Cod. Produto', 'Desc. Produto', 'Família', 'Desc. Família','Grupo' ,'NCM', 'IPI','Preço Tabela', 'Unid./Embalagem', 'Cod. Crítico', 'Desc. Cód Crítico', 'Cod. Origem', 'Origem', 'Percentual Conteúdo de Importação', 'Alíquota ICMS', 'Curva ABC', 'Recompra']];
 									
 									for( let index in records) {
 										const record = records[index];
@@ -413,16 +413,91 @@ var PagInicialMenuDireita = SuperWidget.extend({
 										} else if (record.RECOMPRA == 2) {
 											reCompraText = 'Não';
 										};
+
+										let CODCRITICODESC = '';
+										if(record.CODCRITICO == 'G10'){
+											CODCRITICODESC = "BAIXA COMPLEXIDADE - ALTO GIRO"
+										}else if(record.CODCRITICO == 'G20'){
+											CODCRITICODESC = "MANUTENÇÃO PERIÓDICA"
+										}else if(record.CODCRITICO == 'G21'){
+											CODCRITICODESC = "MÁQUINA PARADA, MENOS DE 2 HRS PARA A MANUTENÇÃO"
+										}else if(record.CODCRITICO == 'G30'){
+											CODCRITICODESC = "MÁQUINA PARADA, MAIS DE 2 HRS PARA A MANUTENÇÃO"
+										}else if(record.CODCRITICO == 'G31'){
+											CODCRITICODESC = "DESGASTE – REPAROS, DIÁRIO / SEMPRE QUE NECESSÁRIO"
+										}else if(record.CODCRITICO == 'G32'){
+											CODCRITICODESC = "ALTA COMPLEXIDADE"
+										}else if(record.CODCRITICO == 'G40'){
+											CODCRITICODESC = "BAIXO GIRO - REFORMA"
+										}else{
+											CODCRITICODESC = CODCRITICODESC
+										};
+
+										let DESCFAMILIA ='';
+										if(record.FAMILIA == 'CG'){
+											DESCFAMILIA = 'CARRETA GRANELEIRA'
+										}
+										else if(record.FAMILIA == 'CS'){
+											DESCFAMILIA = 'CORRETOR DE SOLO'
+										}
+										else if(record.FAMILIA == 'DD'){
+											DESCFAMILIA = 'CORRETOR DE SOLO'
+										}
+										else if(record.FAMILIA == 'FE'){
+											DESCFAMILIA = 'FERTILIZADORA'
+										}
+										else if(record.FAMILIA == 'DC'){
+											DESCFAMILIA = 'DESCOMPACTADOR'
+										}
+										else if(record.FAMILIA == 'DI'){
+											DESCFAMILIA = 'DRIVERSOS'
+										}
+										else if(record.FAMILIA == 'EM'){
+											DESCFAMILIA = 'EMBOLSADORA'
+										}
+										else if(record.FAMILIA == 'EX'){
+											DESCFAMILIA = 'EXTRATORA'
+										}
+										else if(record.FAMILIA == 'PL'){
+											DESCFAMILIA = 'NIVELADORA PLANNER'
+										}
+										else if(record.FAMILIA == 'PN'){
+											DESCFAMILIA = 'NIVELADORA PLANNER'
+										}
+										else if(record.FAMILIA == 'GN'){
+											DESCFAMILIA = 'NIVELADORA TRITURADORA'
+										}
+										else if(record.FAMILIA == 'PC'){
+											DESCFAMILIA = 'PLATAFORMA CEREAIS'
+										}
+										else if(record.FAMILIA == 'PM'){
+											DESCFAMILIA = 'PLATAFORMA MILHO'
+										}
+										else if(record.FAMILIA == 'GS'){
+											DESCFAMILIA = 'PLATAFORMA MILHO GREENSYSTEM'
+										}
+										else if(record.FAMILIA == 'IH'){
+											DESCFAMILIA = 'PLATAFORMA MILHO CASE IH'
+										}
+										else if(record.FAMILIA == 'SM'){
+											DESCFAMILIA = 'SEMEADORA'
+										}
+										else if(record.FAMILIA == 'TR'){
+											DESCFAMILIA = 'TRANSPOR'
+										}
+
 										const newDatas = [
 												record.CODPRODUTO,
 												ZDESCP,	
 												record.FAMILIA,
+												DESCFAMILIA,
 												record.GRUPO,
 												record.NCM,
-												record.IPI,
+												record.IPI+"%",
 												record.PRCTABELA,
 												record.UNEMBALAGEM,
 												record.CODCRITICO,
+												CODCRITICODESC,
 												record.ORIGEM_CODIGO,
 												record.ORIGEM_NACIONAL_IMPORTADO,
 												record.ORIGEM_PERC_CONTEUDO_IMPORTACAO,

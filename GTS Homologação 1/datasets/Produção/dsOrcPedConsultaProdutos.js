@@ -28,7 +28,7 @@ function createDataset(fields, constraints, sortFields) {
 
         var SQL = " SELECT B1_COD CODPRODUTO, B1_ZDESCP ZDESCP, B1_POSIPI NCM, FORMAT( DA1.DA1_PRCVEN,'N', 'pt-br') PRCTABELA "  +
                 " ,CONVERT(VARCHAR, case when B1_ZQEMB = 0 then 1 else B1_ZQEMB end ) UNEMBALAGEM, B1_ZCRITIC CODCRITICO    "+
-                " ,B1_ORIGEM ORIGEM_CODIGO, B1_ZRECOMP RECOMPRA, B1_ZCLABC CURVAABC, B1_GRUPOP GRUPO, B1_ZFAMILP FAMILIA, BZ_IPI IPI   "+
+                " ,B1_ORIGEM ORIGEM_CODIGO, B1_ZRECOMP RECOMPRA, B1_ZCLABC CURVAABC, B1_GRUPOP GRUPO,  BZ_IPI IPI, B1_ZFAMPEC FAMILIA "+ 
                 " ,case " +
                 "	when B1_ORIGEM = 0 then 'NACIONAL' " +
                 "	when B1_ORIGEM = 1 then 'IMPORTADO' " +
@@ -75,7 +75,7 @@ function createDataset(fields, constraints, sortFields) {
                 "WHERE B1.D_E_L_E_T_ <> '*' "+
 				"GROUP BY B1_ZDESCP, B1_COD, B1_ZDESCP, B1_POSIPI, FORMAT( DA1.DA1_PRCVEN,'N', 'pt-br')   "+
                  ",CONVERT(VARCHAR, case when B1_ZQEMB = 0 then 1 else B1_ZQEMB end ), B1_ZCRITIC     "+
-                 ",B1_ORIGEM, B1_ZRECOMP, B1_ZCLABC, B1_GRUPOP, B1_ZFAMILP, BZ_IPI "+
+                 ",B1_ORIGEM, B1_ZRECOMP, B1_ZCLABC, B1_GRUPOP, BZ_IPI, B1_ZFAMPEC "+ 
                 "	ORDER BY B1_COD ";
 			  
 	    log.info(" dsOrcPedConsultaProdutos :"+ SQL);

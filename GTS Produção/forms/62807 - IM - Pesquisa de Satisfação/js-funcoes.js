@@ -95,34 +95,21 @@ var funcoes = (function() {
 							$("#revEquipLoJa").val(record.revEquipLoJa);
 							$("#revEquipEstado").val(record.revEquipEstado);
 							
+							//$("#pesqEntregaPor").val(record.tipoSolicitante);
 							let entregaPor = record.tipoSolicitante;
 							console.log("1 " + entregaPor)
 							if(entregaPor === 'Administrativo GTS'){
 								$("#pesqEntregaPor").val("Técnico GTS");
-								$("#pesqRevenda").val(record.rpRevenda);
-								$("#pesqCidadeRevenda").val(record.rpCidadeRev);
-								$("#pesqEstadoRevenda").val(record.rpEstadoRev);
-								//Pos safra
-								$("#psPesqRevenda").val(record.rpRevenda);
-								$("#psPesqCidadeRevenda").val(record.rpCidadeRev);
-								$("#psPesqEstadoRevenda").val(record.rpEstadoRev);
 								console.log("2 " + entregaPor)
 							}else if(entregaPor === 'Revenda'){
 								$("#pesqEntregaPor").val("Revenda");
-								$("#pesqRevenda").val(record.revRazaoSocialRevenda);
-								$("#pesqCidadeRevenda").val(record.revCidade);
-								$("#pesqEstadoRevenda").val(record.revEstado);
-								//Pos Safra
-								$("#psPesqRevenda").val(record.revRazaoSocialRevenda);
-								$("#psPesqCidadeRevenda").val(record.revCidade);
-								$("#psPesqEstadoRevenda").val(record.revEstado);
 								console.log("3 " + entregaPor)
 							};																					
 
 							$("#pesqModelo").val(record.equipDescricao);
-							// $("#pesqRevenda").val(record.revRazaoSocialRevenda);
-							// $("#pesqCidadeRevenda").val(record.revCidade);
-							// $("#pesqEstadoRevenda").val(record.revEstado);
+							$("#pesqRevenda").val(record.revRazaoSocialRevenda);
+							$("#pesqCidadeRevenda").val(record.revCidade);
+							$("#pesqEstadoRevenda").val(record.revEstado);
 							$("#pesqCliente").val(record.cliNomeCliente);
 							$("#pesqCidadeCliente").val(record.cliCidade);
 							$("#pesqEstadoCliente").val(record.cliEstado);
@@ -132,9 +119,9 @@ var funcoes = (function() {
 							//pos safra
 							$("#psPesqEntregaPor").val(record.tipoSolicitante);
 							$("#psPesqModelo").val(record.equipDescricao);
-							// $("#psPesqRevenda").val(record.revRazaoSocialRevenda);
-							// $("#psPesqCidadeRevenda").val(record.revCidade);
-							// $("#psPesqEstadoRevenda").val(record.revEstado);
+							$("#psPesqRevenda").val(record.revRazaoSocialRevenda);
+							$("#psPesqCidadeRevenda").val(record.revCidade);
+							$("#psPesqEstadoRevenda").val(record.revEstado);
 							$("#psPesqCliente").val(record.cliNomeCliente);
 							$("#psPesqCidadeCliente").val(record.cliCidade);
 							$("#psPesqEstadoCliente").val(record.cliEstado);							

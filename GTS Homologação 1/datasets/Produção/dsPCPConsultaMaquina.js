@@ -6,7 +6,7 @@ function createDataset(fields, constraints, sortFields) {
 
 	try{
 			
-		var cPROD  = 'SPM005001038';
+		var cPROD  = '';
 
 		for (var i in constraints){
 			if ( constraints[i].getFieldName().toString() == 'cPROD' ) {
@@ -52,7 +52,7 @@ function createDataset(fields, constraints, sortFields) {
 							result.CDESC
 							));
             }else{
-				var CMSG = result.CMSG;
+				var CMSG    = result.CMSG;
 				newDataset.addRow(new Array('2', CMSG));
             }
            

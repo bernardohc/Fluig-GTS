@@ -88,10 +88,14 @@ function enableFields(form){
         form.setEnabled("psPesqNumSerie", false);
         form.setEnabled("psPesqModelo", false);
         form.setEnabled("psPesqRevenda", false);
-        form.setEnabled("psPesqCidadeRevenda", false);
+        //form.setEnabled("psPesqCidadeRevenda", false);
         form.setEnabled("psPesqRepresentante", false);
         form.setEnabled("psPesqCliente", false);
         form.setEnabled("psPesqCidadeCliente", false);
+        
+        form.setEnabled("pesqPrecisouRev", false);
+        form.setEnabled("pesqRevendaZoom", false);
+
 
     }else if(atv_atual == Ocorrência_Pos_Safra){
         //Pesquisa pos safra

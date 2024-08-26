@@ -95,9 +95,9 @@ function displayFields(form, customHTML) {
 			}
 
 			// form.setVisibleById("divFimOcorrencia", false);
-        	form.setVisibleById("divPsPesqOcorrencia", false);
-        	form.setVisibleById("divPsFimOcorrencia", false);
-        	form.setVisibleById("divAddOcorrencia", false);
+			form.setVisibleById("divPsPesqOcorrencia", false);
+			form.setVisibleById("divPsFimOcorrencia", false);
+			form.setVisibleById("divAddOcorrencia", false);
 
 		}if (form.getFormMode() == 'VIEW') {
 			customHTML.append("<script>$('#pesqPrevColheita').attr('readonly', true);</script>");	

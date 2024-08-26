@@ -9,7 +9,7 @@ function validateForm(form){
         //INICIAL
         case INICIO_0 : 
         case INICIO :  
-
+        
             //Se for clicado em Enviar 
             if (getValue("WKCompletTask") == "true" ){
                 if (isEmpty("pesqEfetivoCont", form)) {
@@ -60,7 +60,7 @@ function validateForm(form){
                     if (isEmpty("pesqTelefone", form)) {
                         message += getMessage("Pesquisa de Satisfação - Telefone:", 1, form);
                         hasErros = true;
-                    }                    
+                    }                         
                     if (form.getValue("pesqNotaAtendimento") === '') {
                         message += getMessage("Pesquisa de Satisfação - Como foi o Atendimento:", 1, form);
                         hasErros = true;
@@ -272,10 +272,16 @@ function validateForm(form){
                             hasErros = true;
                         }
                     } if(form.getValue("pesqPsFimOcorrencia") == 'sim'){
-                        if (form.getValue("psPesqNotaAtendimento") === '') {
+                        var notaAtendimento = form.getValue("psPesqNotaAtendimento");
+                        // Verifica se o campo está vazio (string vazia)
+                        if (notaAtendimento === '') {
                             message += getMessage("Pesquisa de Satisfação Pós Safra - Como foi o Atendimento:", 1, form);
                             hasErros = true;
                         }
+                        // if (form.getValue("psPesqNotaAtendimento") === '') {
+                        //     message += getMessage("Pesquisa de Satisfação Pós Safra - Como foi o Atendimento:", 1, form);
+                        //     hasErros = true;
+                        // }
                         if (isEmpty("psPesqFeedbackAtendimento", form)) {
                             message += getMessage("Pesquisa de Satisfação Pós Safra - Feedback do atendimento:", 1, form);
                             hasErros = true;

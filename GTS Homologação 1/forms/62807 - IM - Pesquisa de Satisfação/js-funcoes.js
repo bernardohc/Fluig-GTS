@@ -7,14 +7,17 @@ $(document).ready(function() {wdkAddChild
 //const dataAtual = getDataAtual();
 
 //Aqui cria as funcioes
+var entregaGlobal = '';
 var funcoes = (function() {
 	var loading = FLUIGC.loading(window);
-	var index = 0;
+	var index = 0;	
 
 	return {
+		
 		start : function() {
 			//eventsFuncoes.setup();
 		},
+		
 
 		gerarDataHora : function() {
 			const dataAtual = new Date();
@@ -51,10 +54,18 @@ var funcoes = (function() {
 			$("#pesqModelo").val('');
 			$("#pesqRevenda").val('');
 			$("#pesqCidadeRevenda").val('');
+			$("#pesqEstadoRevenda").val('');
+			$("#pesqEntregadorTec").val('');
 			$("#pesqCliente").val('');
 			$("#pesqCidadeCliente").val('');
+			$("#pesqEstadoCliente").val('');
 			$("#pesqAcompanhouEntrega").val('');
 			$("#pesqTelefone").val('');
+			$("#entregaHidden").val('');
+			$("#pesqEntregaPor").val('');
+			
+			$("#pesqAtivaRevenda").val('');
+
 		},
 		
 		consultaProduto : function(indexItem){
@@ -75,12 +86,11 @@ var funcoes = (function() {
 				url: "/api/public/ecm/dataset/search?datasetId=dsImConsultaInfMaqDb&filterFields=numSerie,"+numSerie,
 				
 				success: function (data, status, xhr) {
-					//console.log(data)
+					
 					if (data != null && data.content != null && data.content.length > 0) {
 						const records = data.content;
 						if( records[0].CODRET == "1"){
 							var record = records[0];
-							var entrepaPor = ''
 
 							//Campos Hidden
 							$("#idEntregaTec").val(record.numFluig);
@@ -97,13 +107,13 @@ var funcoes = (function() {
 							
 							//$("#pesqEntregaPor").val(record.tipoSolicitante);
 							let entregaPor = record.tipoSolicitante;
-							console.log("1 " + entregaPor)
+							$("#entregaHidden").val(record.revEquipEstado);
 							if(entregaPor === 'Administrativo GTS'){
 								$("#pesqEntregaPor").val("Técnico GTS");
-								console.log("2 " + entregaPor)
+								$("#psPesqEntregaPor").val("Técnico GTS");
 							}else if(entregaPor === 'Revenda'){
 								$("#pesqEntregaPor").val("Revenda");
-								console.log("3 " + entregaPor)
+								$("#psPesqEntregaPor").val("Revenda");
 							};																					
 
 							$("#pesqModelo").val(record.equipDescricao);
@@ -117,7 +127,7 @@ var funcoes = (function() {
 							$("#pesqAcompanhouEntrega").val(record.protoRecResponsavel);
 							$("#pesqTelefone").val(record.protoRecTelefone);
 							//pos safra
-							$("#psPesqEntregaPor").val(record.tipoSolicitante);
+							//$("#psPesqEntregaPor").val(record.tipoSolicitante);
 							$("#psPesqModelo").val(record.equipDescricao);
 							$("#psPesqRevenda").val(record.revRazaoSocialRevenda);
 							$("#psPesqCidadeRevenda").val(record.revCidade);
@@ -125,7 +135,18 @@ var funcoes = (function() {
 							$("#psPesqCliente").val(record.cliNomeCliente);
 							$("#psPesqCidadeCliente").val(record.cliCidade);
 							$("#psPesqEstadoCliente").val(record.cliEstado);							
-							$("#psPesqEntregadorTec").val(record.revEntTecNome);							
+							$("#psPesqEntregadorTec").val(record.revEntTecNome);	
+							
+							if(entregaPor === "Administrativo GTS"){
+								$("[ativaZoom]").show();
+								$("[revenda]").hide();
+							}else if(entregaPor === "Revenda"){
+								$("[ativaZoom]").hide();
+								$("[revenda]").show();
+							}else{
+								$("[ativaZoom]").hide();
+								$("[revenda]").show();
+							}
 							
 						}else if (records[0].CODRET == "2"){		
 							FLUIGC.toast({ title: '', message: records[0].CMSG, type: 'warning' });
@@ -152,8 +173,10 @@ var funcoes = (function() {
 					loading.hide();
 				}
 			});
+
+			funcoes.ativaZoom();
 			
-		},
+		},	
 
 		efetivouContato : function(){
 			let pesqEfetivoCont = document.getElementById("pesqEfetivoCont").value;
@@ -167,7 +190,7 @@ var funcoes = (function() {
 			let pesqPrevColheita = document.getElementById("pesqPrevColheita");
 			let pesqOcorrencia = document.getElementById("pesqOcorrencia");
 
-			if (pesqEfetivoCont === "nao" || pesqEfetivoCont === "") {
+			if (pesqEfetivoCont === "nao") {
 				// pesqAcompanhouEntrega.disabled = true;
 				// pesqTelefone.disabled = true;
 				pesqNotaAtendimento.disabled = true;
@@ -177,6 +200,17 @@ var funcoes = (function() {
 				pesqTermColheita.disabled = true;
 				pesqPrevColheita.disabled = true;
 				pesqOcorrencia.disabled = true;
+			}if (pesqEfetivoCont === ""){
+				pesqNotaAtendimento.disabled = true;
+				pesqFeedbackAtendimento.disabled = true;
+				pesqNotaDesempenho.disabled = true;
+				pesqFeedbackEquipamento.disabled = true;
+				pesqTermColheita.disabled = true;
+				pesqPrevColheita.disabled = true;
+				pesqOcorrencia.disabled = true;
+
+				funcoes.limpaCamposItem();
+				funcoes.ativaZoom();	
 			}else{
 				// pesqAcompanhouEntrega.disabled = false;
 				// pesqTelefone.disabled = false;
@@ -310,13 +344,10 @@ var funcoes = (function() {
 		
 			if(pesqPsMelhoria == "sim"){
 				$("[temMelhoria]").show();
-				console.log("mostrou");
 			}else if(pesqPsMelhoria == "" || pesqPsMelhoria == "nao"){
 				$("[temMelhoria]").hide();
-				console.log("Escondeu");
 			}else{
 				$("[temMelhoria]").hide();
-				console.log("Escondeu");
 			}
 		},
 
@@ -330,19 +361,16 @@ var funcoes = (function() {
 			if(pesqOcorrencia == "nao"){
 				$("[teveOcorrencia]").hide();
 				$("[fimOcorrencia]").hide();
-				$("#divFalha").hide();
 				limpPesqOcorrenciaFeedback.value = '';
 				limpaPesqOcorrenciaApontamento.value = '';
 			}else if(pesqOcorrencia == ""){
 				$("[teveOcorrencia]").hide();
 				$("[fimOcorrencia]").hide();
-				$("#divFalha").hide();
 				limpPesqOcorrenciaFeedback.value = '';
 				limpaPesqOcorrenciaApontamento.value = '';
 			}else{
 				$("[teveOcorrencia]").show();
 				$("[fimOcorrencia]").show();
-				$("#divFalha").show();
 			}
 		},
 
@@ -471,37 +499,79 @@ var funcoes = (function() {
 			$(`#psPesqNumSerie`).val(pesqNumSerie).prop("readonly", true);
 		},
 
-		copiaFamilia: function(){
-			//const indexTbFalha = wdkAddChild('falTbFalha');
-			//$("#falFamiliaItem___"+ indexTbFalha).val( $("#maqDescFamilia").val() );
-			$("#falFamiliaItem").val( $("#maqDescFamilia").val() );
+		ativaZoom : function(){
+			var campo = document.getElementById("pesqEntregaPor");			
+			// Verifica se o campo foi encontrado e, em seguida, acessa o valor
+			if (campo) {
+				var valor = campo.value;
+
+				if(valor == "Técnico GTS"){
+					$("[ativaZoom]").show();
+					$("[revenda]").hide();
+				}else if(valor == "Revenda"){
+					$("[ativaZoom]").hide();
+					$("[revenda]").show();
+				}else{
+					$("[ativaZoom]").hide();
+					$("[revenda]").show();
+				}
+			} else {
+				console.log("Campo não encontrado.");
+			}
 		},
 
-		copiaModelo: function(){
-			//const indexTbFalha = wdkAddChild('falTbFalha');
-			//$("#falFamiliaItem___"+ indexTbFalha).val( $("#maqDescFamilia").val() );
-			$("#falModeloMaquinaItem").val( $("#maqDescModeloMaquina").val() );
+		ocultaRevenda : function(){
+			var pesPrecisouRev = $("input:radio[name='pesqPrecisouRev']:checked").val();
+			if(pesPrecisouRev === "sim"){
+				$("[revendaZoom]").show();
+			}if(pesPrecisouRev === "nao"){
+				$("[revendaZoom]").hide();
+			}if(pesPrecisouRev === ""){
+				$("[revendaZoom]").hide();
+			}		
 		},
 
-		addFalha : function(){
-			
-			const indexTbFalha = wdkAddChild('falTbFalha');
-
-			//Família
-			$("#falCodFamiliaItem___"+ indexTbFalha).val( $("#maqCodFamilia").val() );
-			$("#falCodFalhaFamiliaItem___"+ indexTbFalha).val( $("#maqCodFalhaFamilia").val() );
-			$("#falFamiliaItem___"+ indexTbFalha).val( $("#maqDescFamilia").val() );
-			//Modelo Máquina
-			$("#falCodFalhaModeloMaquinaItem___"+ indexTbFalha).val( $("#maqCodFalhaModeloMaquina").val() );
-			$("#falModeloMaquinaItem___"+ indexTbFalha).val( $("#maqDescModeloMaquina").val() );
-
-			//Grupo
-			reloadZoomFilterValues('falGrupoMaquinaItem___'+ indexTbFalha, 'tipoFiltro,grupo,codFamilia,'+ $("#maqCodFamilia").val() );
-
-
+		ocultaRevendaPs : function(){
+			var psPesqPrecisouRev = $("input:radio[name='psPesqPrecisouRev']:checked").val();
+			if(psPesqPrecisouRev === "sim"){
+				$("[revendaZoomPs]").show();
+			}if(psPesqPrecisouRev === "nao"){
+				$("[revendaZoomPs]").hide();
+			}if(psPesqPrecisouRev === ""){
+				$("[revendaZoomPs]").hide();
+			}		
 		},
+
 	}
 })();
+
+//Testar se funciona dentro de outra função
+function validateFieldIsNull(valor){
+	console.log("Chamou")
+    if(valor == "nao"){
+        window["pesqRevendaZoom"].disable(true);
+        window['pesqRevendaZoom'].clear()
+		$("#pesqCidadeRevenda").val('');
+		$("#pesqEstadoRevenda").val('');
+    } else {
+        window["pesqRevendaZoom"].disable(false);
+		console.log("sim");
+    }
+};
+
+function validateFieldIsNullPs(valor){
+    if(valor == "nao"){
+		console.log("nao");
+        window["psPesqRevendaZoom"].disable(true);
+        window['psPesqRevendaZoom'].clear()
+		$("#psPesqCidadeRevenda").val('');
+		$("#psPesqEstadoRevenda").val('');
+		//$("#pesqCidadeRevenda").val('');
+		//$("#pesqEstadoRevenda").val('');
+    } else {
+        window["psPesqRevendaZoom"].disable(false);
+    }
+};
 
 function getDataAtual() {
 	const today = new Date();
@@ -509,7 +579,7 @@ function getDataAtual() {
 	const mes = String(today.getMonth() + 1).padStart(2, '0'); // Os meses começam do zero (janeiro é 0)
 	const ano = today.getFullYear();
 	return dia + '/' + mes + '/' + ano;
-}
+};
 
 //Aqui colocar os gatilhos
 var eventsFuncoes = (function() {
@@ -523,20 +593,16 @@ var eventsFuncoes = (function() {
 //Itens para atribuição da tarefa por campo.
 $(document).on("change", "#pesqOcorrencia", function() {
 	let estado = $("#pesqEstadoCliente").val();
-	console.log("pesqEstadoCliente" + pesqEstadoCliente);
 	
 	if(estado == "RS" || estado == "SC" || estado == "PR" || estado == "SP" || estado == "MS"){
 		//Inteligência de Mercado - Pesquisa de Satisfação - Registro de Ocorrências - Região 01
 		$('#grupoResponsavelRegiao').val('Pool:Group:000048');
-		console.log('Pool:Group:000048');
 	}else if(estado == "MT" || estado == "RO" || estado == "PA" || estado == "AC" || estado == "AM" || estado == "RR" || estado == "AP" || estado == "EX"){
 		//Inteligência de Mercado - Pesquisa de Satisfação - Registro de Ocorrências - Região 02
 		$('#grupoResponsavelRegiao').val('Pool:Group:000049');
-		console.log('Pool:Group:000049');
 	}else if(estado == "MG" || estado == "GO" || estado == "BA" || estado == "TO" || estado == "MA" || estado == "PI" || estado == "CE" || estado == "DF" || estado == "SE"){
 		//Inteligência de Mercado - Pesquisa de Satisfação - Registro de Ocorrências - Região 03
 		$('#grupoResponsavelRegiao').val('Pool:Group:000050');
-		console.log('Pool:Group:000049');
 	}else{
 		$('#grupoResponsavelRegiao').val('');
 	}
@@ -547,6 +613,7 @@ $(document).on("change", "#pesqOcorrencia", function() {
 $(document).on("change", ".infPesqNumSerie", function() {			
 	if( $(this).val().trim() == ""){
 		funcoes.limpaCamposItem();
+		funcoes.ativaZoom();
 	}else{
 		funcoes.consultaProduto();	
 	}
@@ -641,6 +708,10 @@ $(document).on("change", "#pesqNotaAtendimento", function() {
 	funcoes.preencheCampos();
 });
 
+$(document).on("change", "#pesqRepresentante", function() {
+	funcoes.preencheCampos();
+});
+
 $(document).on("change", "#pesqTermColheita", function() {
 	funcoes.blocCalendar();
 	//funcoes.limpaCalendario();
@@ -697,22 +768,14 @@ $(document).on("change", "#psPesqOcorrencia", function() {
 	funcoes.limpaOcorrenciaPs();
 });
 
-//Copia Familia
-$(document).on("change", "#maqDescFamilia", function() {
-	funcoes.copiaFamilia();
+//Campo checkbox
+$(document).on("input", "#divRadioPrecisouRev", function() {
+	funcoes.ocultaRevenda();
 });
-
-//Copia Modelo
-$(document).on("change", "#maqDescModeloMaquina", function() {
-	funcoes.copiaModelo();
-	console.log("Modelo")
-}),
-
-//Add Falha
-$(document).on("click", "#divBtnAddFalha", function() {
-				
-	funcoes.addFalha();
-
+//Campo checkbox
+$(document).on("input", "#divRadioPrecisouRevPs", function() {
+	funcoes.ocultaRevendaPs();
+	console.log("Acionou gatilho");
 });
 
 function loadForm(){	
@@ -725,16 +788,26 @@ function loadForm(){
 	//Carrega data atual
 	//$(`#solDataPesq`).val(dataAtual);
 	//$(`#psSolDataPesq`).val(dataAtual);
-
+	funcoes.ativaZoom();
+	//$("[revendaZoom]").hide();
 	
 	if(CURRENT_STATE == INICIO_0 || CURRENT_STATE == INICIO){
+		funcoes.ativaZoom();
+		//funcoes.ocultaRevenda();
+		$("[revendaZoom]").hide();
 		$(document).on("change", "#pesqTermColheita", function() {
 			funcoes.blocCalendar();
 			funcoes.limpaCalendario();
 		});
+		
+	}
+	if(CURRENT_STATE == Registro_Ocorrências){
+		funcoes.ativaZoom();
+		funcoes.ocultaRevenda();		
 	}
 	if(CURRENT_STATE == Aguardando_Colheita){
-
+		funcoes.ativaZoom();
+		funcoes.ocultaRevenda();
 		$(document).on("change", "#pesqTermColheita", function() {
 			//funcoes.blocCalendar();
 			//funcoes.limpaCalendario();
@@ -742,6 +815,22 @@ function loadForm(){
 			$(`#pesqPrevColheita`).prop('style', 'pointer-events:none');
 			
 		});
+	}
+	if(CURRENT_STATE == Pesquisa_Pos_Safra){
+		funcoes.ativaZoom();
+		funcoes.ocultaRevenda();	
+		$("[revendaZoomPs]").hide();	
+	}
+	if(CURRENT_STATE == Ocorrência_Pos_Safra){
+		funcoes.ativaZoom();	
+		funcoes.ocultaRevenda();	
+		funcoes.ocultaRevendaPs();
+
+	}
+	if(CURRENT_STATE == FIM_1 || CURRENT_STATE == FIM_2|| CURRENT_STATE == FIM_3){
+		funcoes.ativaZoom();		
+		funcoes.ocultaRevenda();
+		funcoes.ocultaRevendaPs();
 	}
 
 	

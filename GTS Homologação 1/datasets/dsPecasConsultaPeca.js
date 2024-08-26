@@ -6,7 +6,7 @@ function createDataset(fields, constraints, sortFields) {
 
 	try{
 			
-		var cPROD  = '';
+		let cPROD  = '';
 
 		for (var i in constraints){
 			if ( constraints[i].getFieldName().toString() == 'cPROD' ) {
@@ -26,28 +26,28 @@ function createDataset(fields, constraints, sortFields) {
 		
 		var clientService = fluigAPI.getAuthorizeClientService();
 		var data = {
-	            companyId : getValue("WKCompany") + '',
-	            serviceCode : 'PROTHEUSGTS_REST',
-	            endpoint : '/rest/ws_gts_fluig/getMaquina?CPROD='+ cPROD,
-	            method : 'get',
-	            timeoutService: '100', // segundos
-            	headers: {
-            		"Content-Type": "application/json"
+                companyId : getValue("WKCompany") + '',
+                serviceCode : 'PROTHEUSGTS_REST',
+                endpoint : '/rest/ws_gts_fluig/getItem?CPROD='+cPROD,
+                method : 'get',
+                timeoutService: '100', // segundos
+                headers: {
+                    "Content-Type": "application/json"
                 }
-	        }
+            }
 		
 		var vo = clientService.invoke(JSON.stringify(data));
 		
         if(vo.getResult()== null || vo.getResult().isEmpty()){
-        	newDataset.addRow(new Array('2', "Retorno está vazio"));
+            newDataset.addRow(new Array('2', "Retorno está vazio"));
         }else{
             
             var result = JSON.parse(vo.getResult());
             
             var CODRET = result.CODRET.toString();
             if( CODRET == '1'){
-            	newDataset.addRow( new Array( 
-            				CODRET, 
+                newDataset.addRow( new Array( 
+                            CODRET, 
 							'Sucesso', 
 							result.CDESC
 							));
@@ -55,13 +55,13 @@ function createDataset(fields, constraints, sortFields) {
 				var CMSG    = result.CMSG;
 				newDataset.addRow(new Array('2', CMSG));
             }
-           
+        
         }
         
 		
     }catch(erro){    
-    	log.info("Erro na consulta do produto: " + erro);
-    	newDataset.addRow(new Array('2', erro));
+        log.info("Erro na consulta do produto: " + erro);
+        newDataset.addRow(new Array('2', erro));
     }
     
 	

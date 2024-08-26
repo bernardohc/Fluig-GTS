@@ -14,6 +14,7 @@ var funcoes = (function() {
 		},
 
         openDocument : function(docId, docVersion) {
+           
             var parentOBJ;
         
             if (window.opener) {
@@ -76,12 +77,12 @@ var funcoes = (function() {
                 var valorCheckbox = checkbox.value;
     
                 // Faça o que for necessário com o valor capturado
-                console.log('Valor do checkbox:', valorCheckbox);
+
                 $('#confirmaLeitura').val(valorCheckbox);	
                 funcoes.gerarDataHora();
                 $('#dtConfirmaLeitura').val(carimboDataHora);	
             } else {
-                console.log('O checkbox não está marcado.');
+
                 $('#confirmaLeitura').val("Não");
                 funcoes.gerarDataHora();
                 $('#dtConfirmaLeitura').val(carimboDataHora);
@@ -89,7 +90,7 @@ var funcoes = (function() {
         },
 
         dadosAdicionais : function(){
-            console.log("Dados adicionais");
+
             $.ajax({
                 url: '/api/public/2.0/users/getCurrent', 
                 type: "GET",
@@ -105,20 +106,41 @@ var funcoes = (function() {
             });
 
         },
-
-        //https://forum.fluig.com/1583-consultar-cadastro-de-dados-adicionais
 		
 	}
 })();
 
 $(document).on("click", "#btnPolitica", function() {
-    funcoes.openDocument(86078, 1000);
-    funcoes.gerarDataHora();
-    funcoes.dadosAdicionais();
+    let usrLogin = $('#usrLogin').val().trim();
+    if(usrLogin == 'admin' || usrLogin == 'EXPAR0101SVA'){
+        funcoes.openDocument(120114, 1000);
+        funcoes.gerarDataHora();
+    }else{
+        funcoes.openDocument(120097, 1000);
+        //funcoes.openDocument(116162, 1000);
+        funcoes.gerarDataHora();
+    }
+
+
+    
+   // funcoes.dadosAdicionais();
 });
+
+$(document).on("click", "#btnInicia", function() {
+    //funcoes.openDocument(8778, 1000);
+    funcoes.gerarDataHora();
+    //funcoes.dadosAdicionais();
+});
+
 
 $(document).on("input", "#ckConfirma", function() {
     funcoes.capturarValorCheckbox();
+});
+
+$(document).on("click", "#btnConfirma", function() {
+    
+    window.parent.$('button[data-send]').first().click();
+
 });
 
 //Aqui colocar os gatilhos
@@ -133,7 +155,28 @@ var eventsFuncoes = (function() {
 
 function loadForm(){	
 
+
+    funcoes.gerarDataHora();
+    funcoes.dadosAdicionais();
+
 }
-	
+
+// salvarFormulario : function() {
+//     console.log("save")
+//     var form = document.forms['Pós-Venda - Política Pós-Venda-Serviços'];
+
+//     WCMAPI.Create({
+//         url: '/api/public/2.0/dataset/save',
+//         data: form,
+//         datasetId: 'dsFrmPoliticaDeServico',
+//         success: function(data) {
+//         console.log('Formulário salvo com sucesso');
+//         },
+//         error: function(error) {
+//         console.error('Erro ao salvar o formulário:', error);
+//         }
+//     });
+// }
+
 
 
