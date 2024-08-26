@@ -27,7 +27,6 @@ function displayFields(form, customHTML) {
 
 	if (atv_atual == INICIO_0) {
 		form.setValue("solNomeSol", usuarioCorrente.getFullName());
-		form.setValue("solMatSol", usuarioCorrente.getCode());
 
 		//Preenche nome do motorista com o nome de quem está abrindo a solicitação
 		var dsAbastConsultaMotorista = DatasetFactory.getDataset("dsAbastConsultaMotorista", null, null, null);

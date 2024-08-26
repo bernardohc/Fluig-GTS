@@ -396,7 +396,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 									wb.SheetNames.push("Lista de Preço GTS");
 									
 									//Conteúdo
-									var dataExcel = [[ 'Cod. Produto', 'Desc. Produto', 'Família', 'NCM', 'Preço Tabela', 'Unid./Embalagem', 'Cod. Crítico', 'Cod. Origem', 'Origem', 'Percentual Conteúdo de Importação', 'Alíquota ICMS', 'Curva ABC', 'Recompra']];
+									var dataExcel = [[ 'Cod. Produto', 'Desc. Produto', 'Família', 'Grupo' ,'NCM', 'IPI','Preço Tabela', 'Unid./Embalagem', 'Cod. Crítico', 'Cod. Origem', 'Origem', 'Percentual Conteúdo de Importação', 'Alíquota ICMS', 'Curva ABC', 'Recompra']];
 									
 									for( let index in records) {
 										const record = records[index];
@@ -417,7 +417,9 @@ var PagInicialMenuDireita = SuperWidget.extend({
 												record.CODPRODUTO,
 												ZDESCP,	
 												record.FAMILIA,
+												record.GRUPO,
 												record.NCM,
+												record.IPI,
 												record.PRCTABELA,
 												record.UNEMBALAGEM,
 												record.CODCRITICO,
