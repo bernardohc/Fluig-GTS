@@ -15,7 +15,6 @@ var PagInicialMenuDireita = SuperWidget.extend({
 		var constColleagueRole = new Array(constRoleCompanyId, constRoleColleagueId)
     	var dsWorkflowColleagueRole = DatasetFactory.getDataset('workflowColleagueRole', null, constColleagueRole, null);
 
-		
 		if(dsTemValor(dsWorkflowColleagueRole)){
 	        var records = dsWorkflowColleagueRole.values;
 	        for ( var index in records) {
@@ -449,6 +448,9 @@ var PagInicialMenuDireita = SuperWidget.extend({
 										else if(record.FAMILIA == 'DC'){
 											DESCFAMILIA = 'DESCOMPACTADOR'
 										}
+										else if(record.FAMILIA == 'DI'){
+											DESCFAMILIA = 'DRIVERSOS'
+										}
 										else if(record.FAMILIA == 'EM'){
 											DESCFAMILIA = 'EMBOLSADORA'
 										}
@@ -462,7 +464,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 											DESCFAMILIA = 'NIVELADORA PLANNER'
 										}
 										else if(record.FAMILIA == 'GN'){
-											DESCFAMILIA = 'GRADE NIVELADORA'
+											DESCFAMILIA = 'NIVELADORA TRITURADORA'
 										}
 										else if(record.FAMILIA == 'PC'){
 											DESCFAMILIA = 'PLATAFORMA CEREAIS'
@@ -491,16 +493,7 @@ var PagInicialMenuDireita = SuperWidget.extend({
 										else if(record.FAMILIA == 'ST'){
 											DESCFAMILIA = 'SEMEADORA TECH SEEDER'
 										}
-										else if(record.FAMILIA == 'AB'){
-											DESCFAMILIA = 'ABASTECEDOR'
-										}
-										else if(record.FAMILIA == 'NT'){
-											DESCFAMILIA = 'NIVELADORA TRITURADORA'
-										}
-										else if(record.FAMILIA == 'PD'){
-											DESCFAMILIA = 'PLANTADEIRA'
-										}
-										else if(record.FAMILIA == 'DV'){
+										else if(record.FAMILIA == 'SV'){
 											DESCFAMILIA = 'DIVERSOS'
 										}
 

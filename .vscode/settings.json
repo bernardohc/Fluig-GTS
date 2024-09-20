@@ -1,5 +1,9 @@
 {
     "totvsLanguageServer.welcomePage": false,
     "indentRainbow.indicatorStyle": "light",
-    "totvsLanguageServer.editor.linter.includes": "C:\\Users\\bernardo.correa\\Documents\\Repositorio\\protheus-gts"
+    "totvsLanguageServer.editor.linter.includes": "C:\\Users\\bernardo.correa\\Documents\\Repositorio\\protheus-gts",
+    "editor.renderWhitespace": "none",
+    "diffEditor.ignoreTrimWhitespace": true,
+    "scm.diffDecorationsIgnoreTrimWhitespace": "false",
+    "files.trimTrailingWhitespaceInRegexAndStrings": false
 }

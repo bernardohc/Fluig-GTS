@@ -1,0 +1,151 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="css-custom.css"/>
+	<script type="text/javascript" src="js-atividades.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+  	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="js-util.js" charset="utf-8"></script>
+	<!-- <script type="text/javascript" src="js-vcXMLRPC.js" charset="utf-8"></script> -->
+	<script type="text/javascript" src="js-validafunctions.js"></script>
+	<script type="text/javascript" src="js-priceformat.js"></script>
+	
+	<script type="text/javascript" src="js-jquery_mask.js"></script>
+	
+	<script type="text/javascript" src="js-funcoes.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js-zoom.js" charset="utf-8"></script>
+</head>
+<body onload="loadForm()" >
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<div class="col-sm-12">
+	    <div class="row">
+	    	<div class="col-xs-2" align="left">
+				<img align="center" height="50" width="250" src="https://i.ibb.co/dGqW1VS/logo-gts-20-anos.png">
+            </div>
+			<div class="col-xs-8" align="left">
+				<font class="banner-header" color="000" ><h1><strong>Orçamento nº <span id="numOrcamento"></span></strong></h1></font>
+            </div>
+	    </div>
+	    <hr /> 
+	</div>
+	
+	<div id="divOrcamentoRevenda" class="col-sm-12"  >
+		<div class="row">
+			<div class="col-sm-12">
+			    <div class="row">
+			        <div class="col-md-6 col-md-offset-6" style="text-align:center">
+			       		<h4 ><strong><p id="orcNomeRevenda"></p></strong></h4>
+			       		
+			       		<h6 ><span id="orcTelRevenda"></span> </h6>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+		
+	<div id="divOrcamentoCliente" class="col-sm-12"  >
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-xs-6 col-md-offset-3" align="left">
+						<label class="labelsrel" for="orcNomeFantasia">Nome Fantasia</label>
+						<p id="orcNomeClienteFinal" class="textDesc"></p>
+		            </div>
+					<div class="col-xs-3" align="left">
+						<label class="labelsrel"  for="orcTelClienteFinal">Telefone</label>
+						<p id="orcTelClienteFinal" class="textDesc"></p>
+		            </div>
+					<div class="col-xs-3" align="left">
+						<label class="labelsrel"  for="orcDataOrcamento">Data</label>
+						<p id="orcDataOrcamento" class="textDesc"></p>
+		            </div>
+	            </div>
+            </div>
+            
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-3" align="left">
+						<label class="labelsrel" for="orcObservacao">Observação</label>
+						<p id="orcObservacao" class="textDesc"></p>
+		             </div>
+		         </div>    
+			</div>  
+			
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-3" align="left">
+						<p id="orcAtencao" class="textDesc">ATENÇÃO: Preços praticados no orçamento, são validos para 15 dias a contas da data de abertura<br>
+										   ATENÇÃO: Apenas após a confirmação do pedido teremos a real disponibilidade dos itens.</p>
+		             </div>
+		         </div>    
+			</div>  
+		</div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div id="divOrcamentoTabItens" class="col-sm-12"  >
+		<div class="row">
+			<table class="table table-condensed table-nonfluid table-striped" id="tbItensOrcamento">
+				<thead>
+					<tr>	
+						<th class="font-cab-tabela">Qtd</th>
+						<th class="font-cab-tabela">Cod. Produto</th>		
+						<th class="font-cab-tabela">Desc. Produto</th>
+						<th class="font-cab-tabela">NCM</th>
+						<th class="font-cab-tabela">Preço</th>
+						<th class="font-cab-tabela">Total</th>
+					</tr>
+				</thead>
+				
+			</table>
+		
+			
+			<div id="divTotais">
+            	<div class="col-sm-12">
+				    <div class="row">
+				        <div class="col-xs-6 col-xs-offset-6" style="text-align:center">
+				       		<h3 class="totais" ><strong>Totais</strong></h3>
+				       		<hr />  
+				        </div>
+				    </div>
+				</div>
+            
+            	<div class="col-sm-12">
+					<div class="row">
+						<div class="col-xs-3 col-xs-offset-9" align="left">
+							<label class="labelsrel" for="totalPedido">Valor Total</label>
+					      	<p id="totalPedido" class="textDesc"></p>
+						</div>
+					</div>
+				</div>
+			</div>	
+		
+		</div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+	<div class="col-sm-12">
+	    <div class="row">
+	        &nbsp;
+	    </div>
+	</div>
+	
+</form>
+</div>
+</body>
+</html>

@@ -20,6 +20,11 @@ function validateForm(form){
     			hasErros = true;
     		}
 
+			if (isEmpty("cliAcompanhouEnt", form)) {
+				message += getMessage("Quem Acompanhou a Entrega", 1, form);
+				hasErros = true;
+			}
+
         	/*
 			 * Cadastro de Equipamento
 			 */
@@ -58,6 +63,7 @@ function validateForm(form){
     		//Se for clicado em Enviar
     		if (getValue("WKCompletTask") == "true" ){
     		
+	    		
 	    		if (isEmpty("equipFilialNotaFiscal", form)) {
 	    			message += getMessage("Filial da Nota Fiscal", 1, form);
 	    			hasErros = true;

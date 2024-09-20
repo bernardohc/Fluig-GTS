@@ -74,8 +74,8 @@ function createDataset(fields, constraints, sortFields) {
                 "			AND DA1.D_E_L_E_T_ <> '*' "+
                 "WHERE B1.D_E_L_E_T_ <> '*' "+
 				"GROUP BY B1_ZDESCP, B1_COD, B1_ZDESCP, B1_POSIPI, FORMAT( DA1.DA1_PRCVEN,'N', 'pt-br')   "+
-                 ",CONVERT(VARCHAR, case when B1_ZQEMB = 0 then 1 else B1_ZQEMB end ), B1_ZCRITIC     "+
-                 ",B1_ORIGEM, B1_ZRECOMP, B1_ZCLABC, B1_GRUPOP, BZ_IPI, B1_ZFAMPEC "+ 
+                ",CONVERT(VARCHAR, case when B1_ZQEMB = 0 then 1 else B1_ZQEMB end ), B1_ZCRITIC     "+
+                ",B1_ORIGEM, B1_ZRECOMP, B1_ZCLABC, B1_GRUPOP, BZ_IPI, B1_ZFAMPEC "+ 
                 "	ORDER BY B1_COD ";
 			  
 	    log.info(" dsOrcPedConsultaProdutos :"+ SQL);
