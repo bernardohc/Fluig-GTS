@@ -39,12 +39,76 @@ var funcoes = (function() {
 			$('#revEquipEstadoHidden').val('');
 			$('#revEquipEstado').val('');
 			$('#revEquipClassPeca').val('');
-			$('#revEquipClassServico').val('');
 			$('#revEquipEmail').val('');
 			$('#revEquipTelefone').val('');
-			
 			$('#divCienteTransfEquipRev').hide();
 		},
+
+		classificaServicoRevenda : function() {
+			//Pega os dados adicionais
+		$.ajax({
+			url: '/api/public/2.0/users/getCurrent', 
+			type: "GET",
+		}).done(function(data) {
+			var user_fluig     = data;
+			var codCli        = user_fluig.content.extData.A1_COD;
+			var lojaCli       = user_fluig.content.extData.A1_LOJA;
+			$('#codRev').val(codCli);
+			$('#lojaRev').val(lojaCli);
+			
+			//Dataset de consulta da classificação da revenda
+			$.ajax({
+				type: "GET",
+				dataType: "json",
+				async: true,
+				url: "/api/public/ecm/dataset/search?datasetId=dsMenuConsultaClassRevenda&filterFields=codCli,"+codCli+",lojaCli,"+lojaCli,
+				
+				success: function (data, status, xhr) {
+					if (data != null && data.content != null && data.content.length > 0) {
+						const records = data.content;
+						if( records[0].CODRET == "1"){
+							var record = records[0];
+							var calassificacaoRev = record.CLASSREV;
+
+							$('#revClassServico').val(calassificacaoRev);
+							if(calassificacaoRev == 'O'){								
+								$('#revClassServico').val('Ouro');
+							}if(calassificacaoRev == 'P'){								
+								$('#revClassServico').val('Prata');
+							}if(calassificacaoRev == 'B'){								
+								$('#revClassServico').val('Bronze');
+							}if(calassificacaoRev == 'D'){								
+								$('#revClassServico').val('Premium Dealer');
+								console.log("Premium Dealer");
+							}if(calassificacaoRev == ''){								
+								$('#revClassServico').val('Não Classificada');
+							}
+							
+						}
+						else if (records[0].CODRET == "2"){
+							console.log(records[0].CMSG);
+						}
+						
+					}
+					else{
+							FLUIGC.toast({ title: '', message: 'Erro ao consultar revenda, comunicar o Administrador do Sistema!', type: 'danger' });
+						}
+					setTimeout(function(){
+					}, 1000);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log("dataset error", XMLHttpRequest, textStatus, errorThrown)
+					FLUIGC.toast({
+						title: '',
+						message: 'Erro na consulta do revenda, comunicar Administrador do Sistema' ,
+						type: 'danger'
+					});
+				}
+			});
+			
+		})
+	},
 		
 		/**
 		 * Busca dados do Equipamento e da Revenda.
@@ -55,6 +119,8 @@ var funcoes = (function() {
 			let equipNumSerie = $('#equipNumSerie').val().trim();
 			let equipTipoNota = $('#equipTipoNota').val().trim();
 			let equipNumNotaFiscal = $('#equipNumNotaFiscal').val().trim();
+
+			console.log(record.CLASSREV)
 			
 			if(equipTipoNota == 'ND' && equipNumNotaFiscal == '' ){
 				FLUIGC.toast({ title: '', message: 'É obrigatório preencher o número da Nota Fiscal quando o Tipo da Nota for Nota de Demonstração.!', type: 'warning' });
@@ -123,7 +189,8 @@ var funcoes = (function() {
 			    					let revEquipCidade = record.REVCIDADE;
 			    					let revEquipEstado = record.REVESTADO;
 			    					let revEquipClassPeca = record.REVCLPECA;
-			    					let revEquipClassServico = record.REVCLSER;
+			    					//let revEquipClassServico = record.REVCLSER;
+									let revEquipClassServico = record.REVCLSER
 			    					let revEquipEmail =  record.REVEMAIL;
 			    					let revEquipTelefone =  record.REVTELEFONE;
 			    					
@@ -136,7 +203,8 @@ var funcoes = (function() {
 			    					$("#revEquipEstadoHidden").val(revEquipEstado);
 			    					$("#revEquipEstado").val(revEquipEstado);
 			    					$("#revEquipClassPeca").val(revEquipClassPeca);
-			    					$("#revEquipClassServico").val(revEquipClassServico);
+			    					//$("#revClassServico").val(revClassServico);
+									$("#revEquipClassServico").val(revEquipClassServico);
 			    					$("#revEquipEmail").val(revEquipEmail);
 			    					$("#revEquipTelefone").val(revEquipTelefone);
 			    					
@@ -564,8 +632,7 @@ var funcoes = (function() {
 var eventsFuncoes = (function() {
 	return {
 		setup : function() {	
-			
-			
+
 			/*
 			 * CADASTRAMENTO
 			 */
@@ -592,6 +659,7 @@ var eventsFuncoes = (function() {
 					funcoes.limpaCamposRevendaEquipamento();
 					
 				}else{
+					console.log("EventFuncoes")
 					//conforme o tipoSolicitante ter regra diferente para localizar cliente
 					let tipoSolicitante = $('#tipoSolicitante').val();
 					funcoes.consultaEquipamento(tipoSolicitante);
@@ -1361,6 +1429,8 @@ var eventsFuncoes = (function() {
 				}
 				
 			});
+
+			
 			
 		}
 	}
@@ -1442,15 +1512,18 @@ function loadForm(){
 	
 	if(CURRENT_STATE == INICIO_0)
 	{	
+			
+		funcoes.classificaServicoRevenda();		
+
 		/*
 		 * Cadastro do Equipamento
 		 */
 		FLUIGC.calendar('#equipDataEntrega',{
-			  language: 'pt-br',
-			  maxDate: today,
-			  pickDate: true,
-			  pickTime: false,
-			  showToday: true
+			language: 'pt-br',
+			maxDate: today,
+			pickDate: true,
+			pickTime: false,
+			showToday: true
 
 		});
 		/*
@@ -1481,6 +1554,8 @@ function loadForm(){
 		/*
 		 * Cadastro do Equipamento
 		 */
+		
+
 		FLUIGC.calendar('#equipDataEntrega',{
 			  language: 'pt-br',
 			  maxDate: today,

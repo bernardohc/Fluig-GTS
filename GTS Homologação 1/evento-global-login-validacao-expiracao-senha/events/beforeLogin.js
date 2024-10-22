@@ -50,5 +50,5 @@ function usuarioComControleSenha(login){
 	// return ['usuario1','usuario2'].indexOf(login) >= 0;
 	
 	// NÃO validar apenas alguns usuários
-	// return ['adm','admin'].indexOf(login) == -1;
+	return ['adm','admin', 'bernardo.correa'].indexOf(login) == -1;
 }

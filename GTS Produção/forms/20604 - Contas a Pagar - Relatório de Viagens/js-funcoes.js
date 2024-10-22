@@ -246,6 +246,9 @@ var funcoes = (function() {
 			let abastValorLitro = $('#abastValorLitro').val().trim();
 			let solSetor = $('#solSetor').val().trim();	
 			let geraisPlaca = $('#geraisPlaca').val().trim();	
+			let addRvDespNumOs1 = $('#addRvDespNumOs1').val().trim();	
+			let addRvDespNumOs2 = $('#addRvDespNumOs2').val().trim();	
+			let addRvDespNumOs3 = $('#addRvDespNumOs3').val().trim();	
 			
 			// Função para remover a máscara "00/00/0000" e converter para o formato "YYYY-MM-DD".
 			function formatarData(data) {
@@ -304,18 +307,19 @@ var funcoes = (function() {
 				message += getMessage("Documento", 1, form);
 				hasErros = true
 			}
-			if( solDataSaida == '' ){
-				message += getMessage("Data de Saída", 1, form);
-				hasErros = true
-			}
-			if( solDataRet == '' ){
-				message += getMessage("Data de Retorno", 1, form);
-				hasErros = true
-			}			
-			if(!(dataDespesaObj >= dataInicialObj && dataDespesaObj <= dataFinalObj)){
-				message += getMessage("Data", 10, form);
-				hasErros = true
-			}			
+			// if( solDataSaida == '' ){
+			// 	message += getMessage("Data de Saída", 1, form);
+			// 	hasErros = true
+			// }
+			//Desabilitado 03/07/2024 a para levar solicitado pela morgana, data de retorno automatica
+			// if( solDataRet == '' ){
+			// 	message += getMessage("Data de Retorno", 1, form);
+			// 	hasErros = true
+			// }			
+			// if(!(dataDespesaObj >= dataInicialObj && dataDespesaObj <= dataFinalObj)){
+			// 	message += getMessage("Data", 10, form);
+			// 	hasErros = true
+			// }			
 			if( addRvDespData == '' ){
 				message += getMessage("Data", 1, form);
 				hasErros = true
@@ -386,6 +390,25 @@ var funcoes = (function() {
 				}
 			}
 			if(solSetor === "tecnico"){
+				if( addRvDespNumOs1 != '' ){
+					if( addRvDespNumOs1 === '000000' ){
+						message += getMessage("Num. OS 1", 2, form);
+						hasErros = true
+					}
+				}
+				if( addRvDespNumOs2 != '' ){
+					if( addRvDespNumOs1 === '000000' ){
+						message += getMessage("Num. OS 2", 2, form);
+						hasErros = true
+					}
+				}
+				if( addRvDespNumOs3 != '' ){
+					if( addRvDespNumOs3 === '000000' ){
+						message += getMessage("Num. OS 3", 2, form);
+						hasErros = true
+					}
+				}				
+				
 				if( addRvDespClassi == "Combustível" ){
 					if( geraisPlaca == '' ){
 						message += getMessage("Placa", 1, form);
@@ -447,6 +470,9 @@ var funcoes = (function() {
 			let solSetor = $("#solSetor").val();
 			let geraisPlaca = $("#geraisPlaca").val();
 			let geraisVeiculo = $("#geraisVeiculo").val();
+			let addRvDespNumOs1 = $("#addRvDespNumOs1").val();
+			let addRvDespNumOs2 = $("#addRvDespNumOs2").val();
+			let addRvDespNumOs3 = $("#addRvDespNumOs3").val();
 
 
 			$(`#rvDespEstabelecimento___${indice}`).val(addRvDespEstabelecimento)
@@ -481,6 +507,11 @@ var funcoes = (function() {
 				$('input[name*=rvDespVeiculo___'+indice+']').closest('.abast').show();
 		
 			}
+			if( solSetor == "tecnico" ){
+				$(`#rvDespNumOs1___${indice}`).val(addRvDespNumOs1)		
+				$(`#rvDespNumOs2___${indice}`).val(addRvDespNumOs2)		
+				$(`#rvDespNumOs3___${indice}`).val(addRvDespNumOs3)		
+			}
 			if( solSetor == "tecnico" && addRvDespClassi == "Combustível"){
 				//$(`#rvDespCnpj___${indice}`).val(abastCNPJPosto)
 				//$(`#rvDespNomePosto___${indice}`).val(abastNomePosto)
@@ -507,6 +538,10 @@ var funcoes = (function() {
 			funcoes.limpaAddDespesa();
 			funcoes.gerarCarimboDataHora();
 			funcoes.validaClassificacao();
+			//Ultima Data
+			funcoes.ultimaDtDespesa();
+			//primeira
+			funcoes.primeiraDtDespesa();
 
 			$("[liberaComb]").hide();
 
@@ -554,6 +589,10 @@ var funcoes = (function() {
 			$(`#abastFormaPagamento`).val("");
 			$(`#geraisPlaca`).val("");
 			$(`#geraisVeiculo`).val("");
+
+			$('#addRvDespNumOs1').val("");
+			$('#addRvDespNumOs2').val("");
+			$('#addRvDespNumOs3').val("");
 		
 		},
 
@@ -595,6 +634,25 @@ var funcoes = (function() {
 			const carimboDataHora = `${dia}/${mes}/${ano}`;
 			
 			$('#solDataSol').val(carimboDataHora);			
+		},
+
+		//Regra para ocultar ou exibir campo Num OS
+		exibeNumOs: function(){
+			let setor = $("#solSetor").val();
+				
+			if(setor == 'motorista'){
+				$("[numOs]").hide();
+			}else if(setor == 'tecnico'){
+				$("[numOs]").show();
+			}else if(setor == 'outro'){
+				$("[numOs]").hide();
+			}else{
+				$("[numOs]").hide();
+			}
+
+			$('#addRvDespNumOs1').val("");
+			$('#addRvDespNumOs2').val("");
+			$('#addRvDespNumOs3').val("");
 		},
 
 		calculaTotal : function(){
@@ -742,6 +800,30 @@ var funcoes = (function() {
 			validafunctions.setMoeda("rvDiaria", 2, false , '');
 		},
 
+		//Ultima Data do despesa
+		ultimaDtDespesa : function(){
+			
+			$("input[name*=rvDespData___]").each(function(index){
+				var index = validafunctions.getPosicaoFilho($(this).attr("id"));
+				let ultimaData = $("#rvDespData___"+index).val();
+				
+				$("#solDataRet").val(ultimaData);
+			});			
+			
+		},
+
+		primeiraDtDespesa: function() {
+			// Seleciona apenas o primeiro input encontrado com o padrão
+			var primeiroInput = $("input[name*=rvDespData___]:first");
+		
+			if (primeiroInput.length > 0) {
+				var index = validafunctions.getPosicaoFilho(primeiroInput.attr("id"));
+				var primeiraData = primeiroInput.val();
+				
+				$("#solDataSaida").val(primeiraData);
+			} 
+		},
+
 		removeAnexo : function(index){
 			
 			const idFluig = getWKNumProces();
@@ -804,6 +886,28 @@ var funcoes = (function() {
 
 			}
 		},
+
+		formatarNumero6Dig: function(elementId) {
+			var $input = $('#' + elementId);
+			var texto = $input.val();
+
+			// Remove todos os caracteres que não são dígitos
+			texto = texto.replace(/\D/g, "");
+
+			// Adiciona zeros à esquerda se necessário até completar 6 caracteres
+			while (texto.length < 6) {
+				texto = '0' + texto;
+			}
+
+			// Limita o comprimento a 6 caracteres
+			if (texto.length > 6) {
+				texto = texto.slice(0, 6);
+			}
+
+			// Atualiza o valor do campo com o texto formatado
+			$input.val(texto);
+		}
+	
 	}
 })();
 
@@ -857,6 +961,7 @@ var eventsFuncoes = (function() {
 				funcoes.validaClassificacao();
 				funcoes.liberaPagamentos();
 				funcoes.dataRelatorio();
+				funcoes.exibeNumOs();
 			});	
 
 			// $(document).on("change", "#addRvDespValor", function() {
@@ -906,6 +1011,7 @@ var eventsFuncoes = (function() {
 				}else if(setor == 'tecnico'){
 					//Grupo Relatório de Viagens - Analisa Técnico
 					$('#grupoAnalisaRelatorio').val('Pool:Group:000004');
+
 				}else if(setor == 'outro'){
 					//Grupo Relatório de Viagens - Analisa Outro
 					$('#grupoAnalisaRelatorio').val('Pool:Group:000005');
@@ -1021,6 +1127,26 @@ var eventsFuncoes = (function() {
 				$("#rvDespValorL___"+index).val(valorLitroFilho.toFixed(2));		
 				validafunctions.setMoeda("rvDespValorL___"+index, 2, false , '');							
 			});	
+
+			//Gatilhos num os
+			$(document).on("blur", "#addRvDespNumOs1", function() {
+                funcoes.formatarNumero6Dig(this.id);
+            });
+
+            $(document).on("change", "#addRvDespNumOs2", function() {
+                funcoes.formatarNumero6Dig(this.id);
+            });
+
+            $(document).on("change", "#addRvDespNumOs3", function() {
+                funcoes.formatarNumero6Dig(this.id);
+            });
+
+			$(document).on("input", "#addRvDespNumOs1, #addRvDespNumOs2, #addRvDespNumOs3", function() {
+                this.value = this.value.replace(/\D/g, '');
+                if (this.value.length > 6) {
+                    this.value = this.value.slice(0, 6);
+                }
+            });
 		}
 	}
 })();
@@ -1031,6 +1157,7 @@ function loadForm(){
 	funcoes.validaClassificacao();
 	funcoes.liberaPagamentos();
 	funcoes.limpaAddDespesa();
+	funcoes.exibeNumOs();
 
 	var psSolDataPesq = FLUIGC.calendar('#addRvDespData', {
 		language: 'pt-br',

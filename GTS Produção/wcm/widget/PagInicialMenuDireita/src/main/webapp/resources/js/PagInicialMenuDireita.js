@@ -231,6 +231,15 @@ var PagInicialMenuDireita = SuperWidget.extend({
 					$('#divQualidade').show();
 	            	$('#000054').show();
 	            }
+
+				//Marketing
+	            if(record['colleagueGroupPK.groupId'] == '000088' || record['colleagueGroupPK.groupId'] == '000076'  || 
+					record['colleagueGroupPK.groupId'] == 'revenda' || record['colleagueGroupPK.groupId'] == 'revendaMaquina' ||
+					record['colleagueGroupPK.groupId'] == 'revendaEXUSA' || record['colleagueGroupPK.groupId'] == '000089' || record['colleagueGroupPK.groupId'] == 'admin'){
+	            	definiuMenu = true;
+					$('#divMarketing').show();
+	            	$('#000076').show();
+	            }
 	        }
 		        
 		}
