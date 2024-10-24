@@ -1,0 +1,21 @@
+/* Coloque aqui seu codigo CSS */
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  text-align: center;
+}
+
+.th-icon-acoes{
+	width: 1% !important;
+	max-width: 1% !important;
+}
+
+.th-id-fluig{
+	width: 7% !important;
+	max-width: 7% !important;
+}
+.th-num-pedido{
+	width: 8% !important;
+	max-width: 8% !important;
+}
